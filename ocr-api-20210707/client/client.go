@@ -10,6 +10,7 @@ import (
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type RecognizeAdvancedRequest struct {
@@ -21,8 +22,10 @@ type RecognizeAdvancedRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAdvancedRequest) String() string {
@@ -55,6 +58,11 @@ func (s *RecognizeAdvancedRequest) SetOutputTable(v bool) *RecognizeAdvancedRequ
 
 func (s *RecognizeAdvancedRequest) SetUrl(v string) *RecognizeAdvancedRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeAdvancedRequest) SetBody(v io.Reader) *RecognizeAdvancedRequest {
+	s.Body = v
 	return s
 }
 
@@ -121,8 +129,10 @@ func (s *RecognizeAdvancedResponse) SetBody(v *RecognizeAdvancedResponseBody) *R
 }
 
 type RecognizeAirItineraryRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAirItineraryRequest) String() string {
@@ -135,6 +145,11 @@ func (s RecognizeAirItineraryRequest) GoString() string {
 
 func (s *RecognizeAirItineraryRequest) SetUrl(v string) *RecognizeAirItineraryRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeAirItineraryRequest) SetBody(v io.Reader) *RecognizeAirItineraryRequest {
+	s.Body = v
 	return s
 }
 
@@ -197,8 +212,10 @@ func (s *RecognizeAirItineraryResponse) SetBody(v *RecognizeAirItineraryResponse
 }
 
 type RecognizeBankAccountLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBankAccountLicenseRequest) String() string {
@@ -211,6 +228,11 @@ func (s RecognizeBankAccountLicenseRequest) GoString() string {
 
 func (s *RecognizeBankAccountLicenseRequest) SetUrl(v string) *RecognizeBankAccountLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeBankAccountLicenseRequest) SetBody(v io.Reader) *RecognizeBankAccountLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -273,8 +295,10 @@ func (s *RecognizeBankAccountLicenseResponse) SetBody(v *RecognizeBankAccountLic
 }
 
 type RecognizeBankCardRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBankCardRequest) String() string {
@@ -287,6 +311,11 @@ func (s RecognizeBankCardRequest) GoString() string {
 
 func (s *RecognizeBankCardRequest) SetUrl(v string) *RecognizeBankCardRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeBankCardRequest) SetBody(v io.Reader) *RecognizeBankCardRequest {
+	s.Body = v
 	return s
 }
 
@@ -349,8 +378,10 @@ func (s *RecognizeBankCardResponse) SetBody(v *RecognizeBankCardResponseBody) *R
 }
 
 type RecognizeBasicRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBasicRequest) String() string {
@@ -363,6 +394,11 @@ func (s RecognizeBasicRequest) GoString() string {
 
 func (s *RecognizeBasicRequest) SetUrl(v string) *RecognizeBasicRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeBasicRequest) SetBody(v io.Reader) *RecognizeBasicRequest {
+	s.Body = v
 	return s
 }
 
@@ -425,8 +461,10 @@ func (s *RecognizeBasicResponse) SetBody(v *RecognizeBasicResponseBody) *Recogni
 }
 
 type RecognizeBirthCertificationRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBirthCertificationRequest) String() string {
@@ -439,6 +477,11 @@ func (s RecognizeBirthCertificationRequest) GoString() string {
 
 func (s *RecognizeBirthCertificationRequest) SetUrl(v string) *RecognizeBirthCertificationRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeBirthCertificationRequest) SetBody(v io.Reader) *RecognizeBirthCertificationRequest {
+	s.Body = v
 	return s
 }
 
@@ -501,8 +544,10 @@ func (s *RecognizeBirthCertificationResponse) SetBody(v *RecognizeBirthCertifica
 }
 
 type RecognizeBusinessLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBusinessLicenseRequest) String() string {
@@ -515,6 +560,11 @@ func (s RecognizeBusinessLicenseRequest) GoString() string {
 
 func (s *RecognizeBusinessLicenseRequest) SetUrl(v string) *RecognizeBusinessLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeBusinessLicenseRequest) SetBody(v io.Reader) *RecognizeBusinessLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -577,8 +627,10 @@ func (s *RecognizeBusinessLicenseResponse) SetBody(v *RecognizeBusinessLicenseRe
 }
 
 type RecognizeCarInvoiceRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarInvoiceRequest) String() string {
@@ -591,6 +643,11 @@ func (s RecognizeCarInvoiceRequest) GoString() string {
 
 func (s *RecognizeCarInvoiceRequest) SetUrl(v string) *RecognizeCarInvoiceRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeCarInvoiceRequest) SetBody(v io.Reader) *RecognizeCarInvoiceRequest {
+	s.Body = v
 	return s
 }
 
@@ -653,8 +710,10 @@ func (s *RecognizeCarInvoiceResponse) SetBody(v *RecognizeCarInvoiceResponseBody
 }
 
 type RecognizeCarNumberRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarNumberRequest) String() string {
@@ -667,6 +726,11 @@ func (s RecognizeCarNumberRequest) GoString() string {
 
 func (s *RecognizeCarNumberRequest) SetUrl(v string) *RecognizeCarNumberRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeCarNumberRequest) SetBody(v io.Reader) *RecognizeCarNumberRequest {
+	s.Body = v
 	return s
 }
 
@@ -729,8 +793,10 @@ func (s *RecognizeCarNumberResponse) SetBody(v *RecognizeCarNumberResponseBody) 
 }
 
 type RecognizeCarVinCodeRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarVinCodeRequest) String() string {
@@ -743,6 +809,11 @@ func (s RecognizeCarVinCodeRequest) GoString() string {
 
 func (s *RecognizeCarVinCodeRequest) SetUrl(v string) *RecognizeCarVinCodeRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeCarVinCodeRequest) SetBody(v io.Reader) *RecognizeCarVinCodeRequest {
+	s.Body = v
 	return s
 }
 
@@ -805,8 +876,10 @@ func (s *RecognizeCarVinCodeResponse) SetBody(v *RecognizeCarVinCodeResponseBody
 }
 
 type RecognizeCtwoMedicalDeviceManageLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCtwoMedicalDeviceManageLicenseRequest) String() string {
@@ -819,6 +892,11 @@ func (s RecognizeCtwoMedicalDeviceManageLicenseRequest) GoString() string {
 
 func (s *RecognizeCtwoMedicalDeviceManageLicenseRequest) SetUrl(v string) *RecognizeCtwoMedicalDeviceManageLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeCtwoMedicalDeviceManageLicenseRequest) SetBody(v io.Reader) *RecognizeCtwoMedicalDeviceManageLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -881,8 +959,10 @@ func (s *RecognizeCtwoMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeCt
 }
 
 type RecognizeDrivingLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeDrivingLicenseRequest) String() string {
@@ -895,6 +975,11 @@ func (s RecognizeDrivingLicenseRequest) GoString() string {
 
 func (s *RecognizeDrivingLicenseRequest) SetUrl(v string) *RecognizeDrivingLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeDrivingLicenseRequest) SetBody(v io.Reader) *RecognizeDrivingLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -957,8 +1042,10 @@ func (s *RecognizeDrivingLicenseResponse) SetBody(v *RecognizeDrivingLicenseResp
 }
 
 type RecognizeEduFormulaRequest struct {
-	// 图片链接（不支持 base64）,图片最大尺寸 1024*1024
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduFormulaRequest) String() string {
@@ -971,6 +1058,11 @@ func (s RecognizeEduFormulaRequest) GoString() string {
 
 func (s *RecognizeEduFormulaRequest) SetUrl(v string) *RecognizeEduFormulaRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduFormulaRequest) SetBody(v io.Reader) *RecognizeEduFormulaRequest {
+	s.Body = v
 	return s
 }
 
@@ -1033,8 +1125,10 @@ func (s *RecognizeEduFormulaResponse) SetBody(v *RecognizeEduFormulaResponseBody
 }
 
 type RecognizeEduOralCalculationRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduOralCalculationRequest) String() string {
@@ -1047,6 +1141,11 @@ func (s RecognizeEduOralCalculationRequest) GoString() string {
 
 func (s *RecognizeEduOralCalculationRequest) SetUrl(v string) *RecognizeEduOralCalculationRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduOralCalculationRequest) SetBody(v io.Reader) *RecognizeEduOralCalculationRequest {
+	s.Body = v
 	return s
 }
 
@@ -1115,8 +1214,10 @@ type RecognizeEduPaperCutRequest struct {
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// 年级学科
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperCutRequest) String() string {
@@ -1144,6 +1245,11 @@ func (s *RecognizeEduPaperCutRequest) SetSubject(v string) *RecognizeEduPaperCut
 
 func (s *RecognizeEduPaperCutRequest) SetUrl(v string) *RecognizeEduPaperCutRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduPaperCutRequest) SetBody(v io.Reader) *RecognizeEduPaperCutRequest {
+	s.Body = v
 	return s
 }
 
@@ -1212,8 +1318,10 @@ type RecognizeEduPaperOcrRequest struct {
 	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
 	// 年级学科
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperOcrRequest) String() string {
@@ -1241,6 +1349,11 @@ func (s *RecognizeEduPaperOcrRequest) SetSubject(v string) *RecognizeEduPaperOcr
 
 func (s *RecognizeEduPaperOcrRequest) SetUrl(v string) *RecognizeEduPaperOcrRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduPaperOcrRequest) SetBody(v io.Reader) *RecognizeEduPaperOcrRequest {
+	s.Body = v
 	return s
 }
 
@@ -1305,8 +1418,10 @@ func (s *RecognizeEduPaperOcrResponse) SetBody(v *RecognizeEduPaperOcrResponseBo
 type RecognizeEduPaperStructedRequest struct {
 	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
 	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperStructedRequest) String() string {
@@ -1324,6 +1439,11 @@ func (s *RecognizeEduPaperStructedRequest) SetNeedRotate(v bool) *RecognizeEduPa
 
 func (s *RecognizeEduPaperStructedRequest) SetUrl(v string) *RecognizeEduPaperStructedRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduPaperStructedRequest) SetBody(v io.Reader) *RecognizeEduPaperStructedRequest {
+	s.Body = v
 	return s
 }
 
@@ -1388,8 +1508,10 @@ func (s *RecognizeEduPaperStructedResponse) SetBody(v *RecognizeEduPaperStructed
 type RecognizeEduQuestionOcrRequest struct {
 	// 是否需要自动旋转功能(结构化检测、混贴场景、教育相关场景会自动做旋转，无需设置)，返回角度信息
 	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduQuestionOcrRequest) String() string {
@@ -1407,6 +1529,11 @@ func (s *RecognizeEduQuestionOcrRequest) SetNeedRotate(v bool) *RecognizeEduQues
 
 func (s *RecognizeEduQuestionOcrRequest) SetUrl(v string) *RecognizeEduQuestionOcrRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEduQuestionOcrRequest) SetBody(v io.Reader) *RecognizeEduQuestionOcrRequest {
+	s.Body = v
 	return s
 }
 
@@ -1473,8 +1600,10 @@ type RecognizeEnglishRequest struct {
 	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEnglishRequest) String() string {
@@ -1497,6 +1626,11 @@ func (s *RecognizeEnglishRequest) SetOutputTable(v bool) *RecognizeEnglishReques
 
 func (s *RecognizeEnglishRequest) SetUrl(v string) *RecognizeEnglishRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEnglishRequest) SetBody(v io.Reader) *RecognizeEnglishRequest {
+	s.Body = v
 	return s
 }
 
@@ -1559,8 +1693,10 @@ func (s *RecognizeEnglishResponse) SetBody(v *RecognizeEnglishResponseBody) *Rec
 }
 
 type RecognizeEstateCertificationRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEstateCertificationRequest) String() string {
@@ -1573,6 +1709,11 @@ func (s RecognizeEstateCertificationRequest) GoString() string {
 
 func (s *RecognizeEstateCertificationRequest) SetUrl(v string) *RecognizeEstateCertificationRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeEstateCertificationRequest) SetBody(v io.Reader) *RecognizeEstateCertificationRequest {
+	s.Body = v
 	return s
 }
 
@@ -1635,8 +1776,10 @@ func (s *RecognizeEstateCertificationResponse) SetBody(v *RecognizeEstateCertifi
 }
 
 type RecognizeFoodManageLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeFoodManageLicenseRequest) String() string {
@@ -1649,6 +1792,11 @@ func (s RecognizeFoodManageLicenseRequest) GoString() string {
 
 func (s *RecognizeFoodManageLicenseRequest) SetUrl(v string) *RecognizeFoodManageLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeFoodManageLicenseRequest) SetBody(v io.Reader) *RecognizeFoodManageLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -1711,8 +1859,10 @@ func (s *RecognizeFoodManageLicenseResponse) SetBody(v *RecognizeFoodManageLicen
 }
 
 type RecognizeFoodProduceLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeFoodProduceLicenseRequest) String() string {
@@ -1725,6 +1875,11 @@ func (s RecognizeFoodProduceLicenseRequest) GoString() string {
 
 func (s *RecognizeFoodProduceLicenseRequest) SetUrl(v string) *RecognizeFoodProduceLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeFoodProduceLicenseRequest) SetBody(v io.Reader) *RecognizeFoodProduceLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -1787,8 +1942,10 @@ func (s *RecognizeFoodProduceLicenseResponse) SetBody(v *RecognizeFoodProduceLic
 }
 
 type RecognizeGeneralRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeGeneralRequest) String() string {
@@ -1801,6 +1958,11 @@ func (s RecognizeGeneralRequest) GoString() string {
 
 func (s *RecognizeGeneralRequest) SetUrl(v string) *RecognizeGeneralRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeGeneralRequest) SetBody(v io.Reader) *RecognizeGeneralRequest {
+	s.Body = v
 	return s
 }
 
@@ -1871,8 +2033,10 @@ type RecognizeHandwritingRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHandwritingRequest) String() string {
@@ -1905,6 +2069,11 @@ func (s *RecognizeHandwritingRequest) SetOutputTable(v bool) *RecognizeHandwriti
 
 func (s *RecognizeHandwritingRequest) SetUrl(v string) *RecognizeHandwritingRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeHandwritingRequest) SetBody(v io.Reader) *RecognizeHandwritingRequest {
+	s.Body = v
 	return s
 }
 
@@ -1967,8 +2136,10 @@ func (s *RecognizeHandwritingResponse) SetBody(v *RecognizeHandwritingResponseBo
 }
 
 type RecognizeHouseholdRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHouseholdRequest) String() string {
@@ -1981,6 +2152,11 @@ func (s RecognizeHouseholdRequest) GoString() string {
 
 func (s *RecognizeHouseholdRequest) SetUrl(v string) *RecognizeHouseholdRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeHouseholdRequest) SetBody(v io.Reader) *RecognizeHouseholdRequest {
+	s.Body = v
 	return s
 }
 
@@ -2043,8 +2219,10 @@ func (s *RecognizeHouseholdResponse) SetBody(v *RecognizeHouseholdResponseBody) 
 }
 
 type RecognizeIdcardRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeIdcardRequest) String() string {
@@ -2057,6 +2235,11 @@ func (s RecognizeIdcardRequest) GoString() string {
 
 func (s *RecognizeIdcardRequest) SetUrl(v string) *RecognizeIdcardRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeIdcardRequest) SetBody(v io.Reader) *RecognizeIdcardRequest {
+	s.Body = v
 	return s
 }
 
@@ -2119,8 +2302,10 @@ func (s *RecognizeIdcardResponse) SetBody(v *RecognizeIdcardResponseBody) *Recog
 }
 
 type RecognizeInvoiceRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInvoiceRequest) String() string {
@@ -2133,6 +2318,11 @@ func (s RecognizeInvoiceRequest) GoString() string {
 
 func (s *RecognizeInvoiceRequest) SetUrl(v string) *RecognizeInvoiceRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeInvoiceRequest) SetBody(v io.Reader) *RecognizeInvoiceRequest {
+	s.Body = v
 	return s
 }
 
@@ -2201,8 +2391,10 @@ type RecognizeJanpaneseRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeJanpaneseRequest) String() string {
@@ -2230,6 +2422,11 @@ func (s *RecognizeJanpaneseRequest) SetOutputTable(v bool) *RecognizeJanpaneseRe
 
 func (s *RecognizeJanpaneseRequest) SetUrl(v string) *RecognizeJanpaneseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeJanpaneseRequest) SetBody(v io.Reader) *RecognizeJanpaneseRequest {
+	s.Body = v
 	return s
 }
 
@@ -2298,8 +2495,10 @@ type RecognizeKoreanRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeKoreanRequest) String() string {
@@ -2327,6 +2526,11 @@ func (s *RecognizeKoreanRequest) SetOutputTable(v bool) *RecognizeKoreanRequest 
 
 func (s *RecognizeKoreanRequest) SetUrl(v string) *RecognizeKoreanRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeKoreanRequest) SetBody(v io.Reader) *RecognizeKoreanRequest {
+	s.Body = v
 	return s
 }
 
@@ -2395,8 +2599,10 @@ type RecognizeLatinRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeLatinRequest) String() string {
@@ -2424,6 +2630,11 @@ func (s *RecognizeLatinRequest) SetOutputTable(v bool) *RecognizeLatinRequest {
 
 func (s *RecognizeLatinRequest) SetUrl(v string) *RecognizeLatinRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeLatinRequest) SetBody(v io.Reader) *RecognizeLatinRequest {
+	s.Body = v
 	return s
 }
 
@@ -2486,8 +2697,10 @@ func (s *RecognizeLatinResponse) SetBody(v *RecognizeLatinResponseBody) *Recogni
 }
 
 type RecognizeMedicalDeviceManageLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMedicalDeviceManageLicenseRequest) String() string {
@@ -2500,6 +2713,11 @@ func (s RecognizeMedicalDeviceManageLicenseRequest) GoString() string {
 
 func (s *RecognizeMedicalDeviceManageLicenseRequest) SetUrl(v string) *RecognizeMedicalDeviceManageLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeMedicalDeviceManageLicenseRequest) SetBody(v io.Reader) *RecognizeMedicalDeviceManageLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -2562,8 +2780,10 @@ func (s *RecognizeMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeMedica
 }
 
 type RecognizeMedicalDeviceProduceLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMedicalDeviceProduceLicenseRequest) String() string {
@@ -2576,6 +2796,11 @@ func (s RecognizeMedicalDeviceProduceLicenseRequest) GoString() string {
 
 func (s *RecognizeMedicalDeviceProduceLicenseRequest) SetUrl(v string) *RecognizeMedicalDeviceProduceLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeMedicalDeviceProduceLicenseRequest) SetBody(v io.Reader) *RecognizeMedicalDeviceProduceLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -2638,8 +2863,10 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponse) SetBody(v *RecognizeMedic
 }
 
 type RecognizeMixedInvoicesRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMixedInvoicesRequest) String() string {
@@ -2652,6 +2879,11 @@ func (s RecognizeMixedInvoicesRequest) GoString() string {
 
 func (s *RecognizeMixedInvoicesRequest) SetUrl(v string) *RecognizeMixedInvoicesRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeMixedInvoicesRequest) SetBody(v io.Reader) *RecognizeMixedInvoicesRequest {
+	s.Body = v
 	return s
 }
 
@@ -2724,8 +2956,10 @@ type RecognizeMultiLanguageRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageRequest) String() string {
@@ -2766,6 +3000,11 @@ func (s *RecognizeMultiLanguageRequest) SetUrl(v string) *RecognizeMultiLanguage
 	return s
 }
 
+func (s *RecognizeMultiLanguageRequest) SetBody(v io.Reader) *RecognizeMultiLanguageRequest {
+	s.Body = v
+	return s
+}
+
 type RecognizeMultiLanguageShrinkRequest struct {
 	// 识别语种
 	LanguagesShrink *string `json:"Languages,omitempty" xml:"Languages,omitempty"`
@@ -2777,8 +3016,10 @@ type RecognizeMultiLanguageShrinkRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageShrinkRequest) String() string {
@@ -2816,6 +3057,11 @@ func (s *RecognizeMultiLanguageShrinkRequest) SetOutputTable(v bool) *RecognizeM
 
 func (s *RecognizeMultiLanguageShrinkRequest) SetUrl(v string) *RecognizeMultiLanguageShrinkRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeMultiLanguageShrinkRequest) SetBody(v io.Reader) *RecognizeMultiLanguageShrinkRequest {
+	s.Body = v
 	return s
 }
 
@@ -2878,8 +3124,10 @@ func (s *RecognizeMultiLanguageResponse) SetBody(v *RecognizeMultiLanguageRespon
 }
 
 type RecognizePassportRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePassportRequest) String() string {
@@ -2892,6 +3140,11 @@ func (s RecognizePassportRequest) GoString() string {
 
 func (s *RecognizePassportRequest) SetUrl(v string) *RecognizePassportRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizePassportRequest) SetBody(v io.Reader) *RecognizePassportRequest {
+	s.Body = v
 	return s
 }
 
@@ -2954,8 +3207,10 @@ func (s *RecognizePassportResponse) SetBody(v *RecognizePassportResponseBody) *R
 }
 
 type RecognizeQuotaInvoiceRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeQuotaInvoiceRequest) String() string {
@@ -2968,6 +3223,11 @@ func (s RecognizeQuotaInvoiceRequest) GoString() string {
 
 func (s *RecognizeQuotaInvoiceRequest) SetUrl(v string) *RecognizeQuotaInvoiceRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeQuotaInvoiceRequest) SetBody(v io.Reader) *RecognizeQuotaInvoiceRequest {
+	s.Body = v
 	return s
 }
 
@@ -3030,8 +3290,10 @@ func (s *RecognizeQuotaInvoiceResponse) SetBody(v *RecognizeQuotaInvoiceResponse
 }
 
 type RecognizeRollTicketRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRollTicketRequest) String() string {
@@ -3044,6 +3306,11 @@ func (s RecognizeRollTicketRequest) GoString() string {
 
 func (s *RecognizeRollTicketRequest) SetUrl(v string) *RecognizeRollTicketRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeRollTicketRequest) SetBody(v io.Reader) *RecognizeRollTicketRequest {
+	s.Body = v
 	return s
 }
 
@@ -3112,8 +3379,10 @@ type RecognizeRussianRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRussianRequest) String() string {
@@ -3141,6 +3410,11 @@ func (s *RecognizeRussianRequest) SetOutputTable(v bool) *RecognizeRussianReques
 
 func (s *RecognizeRussianRequest) SetUrl(v string) *RecognizeRussianRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeRussianRequest) SetBody(v io.Reader) *RecognizeRussianRequest {
+	s.Body = v
 	return s
 }
 
@@ -3203,8 +3477,10 @@ func (s *RecognizeRussianResponse) SetBody(v *RecognizeRussianResponseBody) *Rec
 }
 
 type RecognizeTableOcrRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTableOcrRequest) String() string {
@@ -3217,6 +3493,11 @@ func (s RecognizeTableOcrRequest) GoString() string {
 
 func (s *RecognizeTableOcrRequest) SetUrl(v string) *RecognizeTableOcrRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeTableOcrRequest) SetBody(v io.Reader) *RecognizeTableOcrRequest {
+	s.Body = v
 	return s
 }
 
@@ -3279,8 +3560,10 @@ func (s *RecognizeTableOcrResponse) SetBody(v *RecognizeTableOcrResponseBody) *R
 }
 
 type RecognizeTaxiInvoiceRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTaxiInvoiceRequest) String() string {
@@ -3293,6 +3576,11 @@ func (s RecognizeTaxiInvoiceRequest) GoString() string {
 
 func (s *RecognizeTaxiInvoiceRequest) SetUrl(v string) *RecognizeTaxiInvoiceRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeTaxiInvoiceRequest) SetBody(v io.Reader) *RecognizeTaxiInvoiceRequest {
+	s.Body = v
 	return s
 }
 
@@ -3361,8 +3649,10 @@ type RecognizeThaiRequest struct {
 	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
 	// 是否输出表格识别结果，包含单元格信息
 	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeThaiRequest) String() string {
@@ -3390,6 +3680,11 @@ func (s *RecognizeThaiRequest) SetOutputTable(v bool) *RecognizeThaiRequest {
 
 func (s *RecognizeThaiRequest) SetUrl(v string) *RecognizeThaiRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeThaiRequest) SetBody(v io.Reader) *RecognizeThaiRequest {
+	s.Body = v
 	return s
 }
 
@@ -3452,8 +3747,10 @@ func (s *RecognizeThaiResponse) SetBody(v *RecognizeThaiResponseBody) *Recognize
 }
 
 type RecognizeTradeMarkCertificationRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTradeMarkCertificationRequest) String() string {
@@ -3466,6 +3763,11 @@ func (s RecognizeTradeMarkCertificationRequest) GoString() string {
 
 func (s *RecognizeTradeMarkCertificationRequest) SetUrl(v string) *RecognizeTradeMarkCertificationRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeTradeMarkCertificationRequest) SetBody(v io.Reader) *RecognizeTradeMarkCertificationRequest {
+	s.Body = v
 	return s
 }
 
@@ -3528,8 +3830,10 @@ func (s *RecognizeTradeMarkCertificationResponse) SetBody(v *RecognizeTradeMarkC
 }
 
 type RecognizeTrainInvoiceRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTrainInvoiceRequest) String() string {
@@ -3542,6 +3846,11 @@ func (s RecognizeTrainInvoiceRequest) GoString() string {
 
 func (s *RecognizeTrainInvoiceRequest) SetUrl(v string) *RecognizeTrainInvoiceRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeTrainInvoiceRequest) SetBody(v io.Reader) *RecognizeTrainInvoiceRequest {
+	s.Body = v
 	return s
 }
 
@@ -3604,8 +3913,10 @@ func (s *RecognizeTrainInvoiceResponse) SetBody(v *RecognizeTrainInvoiceResponse
 }
 
 type RecognizeVehicleLicenseRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeVehicleLicenseRequest) String() string {
@@ -3618,6 +3929,11 @@ func (s RecognizeVehicleLicenseRequest) GoString() string {
 
 func (s *RecognizeVehicleLicenseRequest) SetUrl(v string) *RecognizeVehicleLicenseRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeVehicleLicenseRequest) SetBody(v io.Reader) *RecognizeVehicleLicenseRequest {
+	s.Body = v
 	return s
 }
 
@@ -3680,8 +3996,10 @@ func (s *RecognizeVehicleLicenseResponse) SetBody(v *RecognizeVehicleLicenseResp
 }
 
 type RecognizeWaybillRequest struct {
-	// 图片链接（长度不超 1014，不支持 base64）
+	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeWaybillRequest) String() string {
@@ -3694,6 +4012,11 @@ func (s RecognizeWaybillRequest) GoString() string {
 
 func (s *RecognizeWaybillRequest) SetUrl(v string) *RecognizeWaybillRequest {
 	s.Url = &v
+	return s
+}
+
+func (s *RecognizeWaybillRequest) SetBody(v io.Reader) *RecognizeWaybillRequest {
+	s.Body = v
 	return s
 }
 
@@ -3807,12 +4130,30 @@ func (client *Client) RecognizeAdvancedWithOptions(request *RecognizeAdvancedReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["NeedSortPage"] = request.NeedSortPage
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeAdvanced"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeAdvancedResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeAdvanced"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3836,12 +4177,26 @@ func (client *Client) RecognizeAirItineraryWithOptions(request *RecognizeAirItin
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeAirItinerary"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeAirItineraryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeAirItinerary"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3865,12 +4220,26 @@ func (client *Client) RecognizeBankAccountLicenseWithOptions(request *RecognizeB
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBankAccountLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBankAccountLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBankAccountLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3894,12 +4263,26 @@ func (client *Client) RecognizeBankCardWithOptions(request *RecognizeBankCardReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBankCard"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBankCardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBankCard"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3923,12 +4306,26 @@ func (client *Client) RecognizeBasicWithOptions(request *RecognizeBasicRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBasic"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBasicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBasic"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3952,12 +4349,26 @@ func (client *Client) RecognizeBirthCertificationWithOptions(request *RecognizeB
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBirthCertification"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBirthCertificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBirthCertification"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3981,12 +4392,26 @@ func (client *Client) RecognizeBusinessLicenseWithOptions(request *RecognizeBusi
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBusinessLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBusinessLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBusinessLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4010,12 +4435,26 @@ func (client *Client) RecognizeCarInvoiceWithOptions(request *RecognizeCarInvoic
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCarInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeCarInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeCarInvoice"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4039,12 +4478,26 @@ func (client *Client) RecognizeCarNumberWithOptions(request *RecognizeCarNumberR
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCarNumber"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeCarNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeCarNumber"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4068,12 +4521,26 @@ func (client *Client) RecognizeCarVinCodeWithOptions(request *RecognizeCarVinCod
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCarVinCode"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeCarVinCodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeCarVinCode"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4097,12 +4564,26 @@ func (client *Client) RecognizeCtwoMedicalDeviceManageLicenseWithOptions(request
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCtwoMedicalDeviceManageLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeCtwoMedicalDeviceManageLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeCtwoMedicalDeviceManageLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4126,12 +4607,26 @@ func (client *Client) RecognizeDrivingLicenseWithOptions(request *RecognizeDrivi
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeDrivingLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeDrivingLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeDrivingLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4155,12 +4650,26 @@ func (client *Client) RecognizeEduFormulaWithOptions(request *RecognizeEduFormul
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduFormula"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduFormulaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduFormula"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4184,12 +4693,26 @@ func (client *Client) RecognizeEduOralCalculationWithOptions(request *RecognizeE
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduOralCalculation"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduOralCalculationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduOralCalculation"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4213,12 +4736,29 @@ func (client *Client) RecognizeEduPaperCutWithOptions(request *RecognizeEduPaper
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["CutType"] = request.CutType
+	query["ImageType"] = request.ImageType
+	query["Subject"] = request.Subject
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduPaperCut"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduPaperCutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduPaperCut"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4242,12 +4782,29 @@ func (client *Client) RecognizeEduPaperOcrWithOptions(request *RecognizeEduPaper
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["ImageType"] = request.ImageType
+	query["OutputOricoord"] = request.OutputOricoord
+	query["Subject"] = request.Subject
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduPaperOcr"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduPaperOcrResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduPaperOcr"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4271,12 +4828,27 @@ func (client *Client) RecognizeEduPaperStructedWithOptions(request *RecognizeEdu
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduPaperStructed"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduPaperStructedResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduPaperStructed"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4300,12 +4872,27 @@ func (client *Client) RecognizeEduQuestionOcrWithOptions(request *RecognizeEduQu
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEduQuestionOcr"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEduQuestionOcrResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEduQuestionOcr"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4329,12 +4916,28 @@ func (client *Client) RecognizeEnglishWithOptions(request *RecognizeEnglishReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEnglish"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEnglishResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEnglish"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4358,12 +4961,26 @@ func (client *Client) RecognizeEstateCertificationWithOptions(request *Recognize
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeEstateCertification"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeEstateCertificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeEstateCertification"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4387,12 +5004,26 @@ func (client *Client) RecognizeFoodManageLicenseWithOptions(request *RecognizeFo
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeFoodManageLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeFoodManageLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeFoodManageLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4416,12 +5047,26 @@ func (client *Client) RecognizeFoodProduceLicenseWithOptions(request *RecognizeF
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeFoodProduceLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeFoodProduceLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeFoodProduceLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4445,12 +5090,26 @@ func (client *Client) RecognizeGeneralWithOptions(request *RecognizeGeneralReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeGeneral"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeGeneralResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeGeneral"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4474,12 +5133,30 @@ func (client *Client) RecognizeHandwritingWithOptions(request *RecognizeHandwrit
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["NeedSortPage"] = request.NeedSortPage
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeHandwriting"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeHandwritingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeHandwriting"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4503,12 +5180,26 @@ func (client *Client) RecognizeHouseholdWithOptions(request *RecognizeHouseholdR
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeHousehold"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeHouseholdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeHousehold"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4532,12 +5223,26 @@ func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeIdcard"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeIdcardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeIdcard"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4561,12 +5266,26 @@ func (client *Client) RecognizeInvoiceWithOptions(request *RecognizeInvoiceReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeInvoice"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4590,12 +5309,29 @@ func (client *Client) RecognizeJanpaneseWithOptions(request *RecognizeJanpaneseR
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeJanpanese"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeJanpaneseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeJanpanese"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4619,12 +5355,29 @@ func (client *Client) RecognizeKoreanWithOptions(request *RecognizeKoreanRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeKorean"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeKoreanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeKorean"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4648,12 +5401,29 @@ func (client *Client) RecognizeLatinWithOptions(request *RecognizeLatinRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeLatin"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeLatinResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeLatin"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4677,12 +5447,26 @@ func (client *Client) RecognizeMedicalDeviceManageLicenseWithOptions(request *Re
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeMedicalDeviceManageLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeMedicalDeviceManageLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeMedicalDeviceManageLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4706,12 +5490,26 @@ func (client *Client) RecognizeMedicalDeviceProduceLicenseWithOptions(request *R
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeMedicalDeviceProduceLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeMedicalDeviceProduceLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeMedicalDeviceProduceLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4735,12 +5533,26 @@ func (client *Client) RecognizeMixedInvoicesWithOptions(request *RecognizeMixedI
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeMixedInvoices"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeMixedInvoicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeMixedInvoices"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4770,12 +5582,31 @@ func (client *Client) RecognizeMultiLanguageWithOptions(tmpReq *RecognizeMultiLa
 		request.LanguagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Languages, tea.String("Languages"), tea.String("simple"))
 	}
 
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Languages"] = request.LanguagesShrink
+	query["NeedRotate"] = request.NeedRotate
+	query["NeedSortPage"] = request.NeedSortPage
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeMultiLanguage"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeMultiLanguageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeMultiLanguage"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4799,12 +5630,26 @@ func (client *Client) RecognizePassportWithOptions(request *RecognizePassportReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizePassport"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizePassportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizePassport"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4828,12 +5673,26 @@ func (client *Client) RecognizeQuotaInvoiceWithOptions(request *RecognizeQuotaIn
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeQuotaInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeQuotaInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeQuotaInvoice"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4857,12 +5716,26 @@ func (client *Client) RecognizeRollTicketWithOptions(request *RecognizeRollTicke
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeRollTicket"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeRollTicketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeRollTicket"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4886,12 +5759,29 @@ func (client *Client) RecognizeRussianWithOptions(request *RecognizeRussianReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeRussian"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeRussianResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeRussian"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4915,12 +5805,26 @@ func (client *Client) RecognizeTableOcrWithOptions(request *RecognizeTableOcrReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTableOcr"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTableOcrResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTableOcr"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4944,12 +5848,26 @@ func (client *Client) RecognizeTaxiInvoiceWithOptions(request *RecognizeTaxiInvo
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTaxiInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTaxiInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTaxiInvoice"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4973,12 +5891,29 @@ func (client *Client) RecognizeThaiWithOptions(request *RecognizeThaiRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["NeedRotate"] = request.NeedRotate
+	query["OutputCharInfo"] = request.OutputCharInfo
+	query["OutputTable"] = request.OutputTable
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeThai"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeThaiResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeThai"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5002,12 +5937,26 @@ func (client *Client) RecognizeTradeMarkCertificationWithOptions(request *Recogn
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTradeMarkCertification"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTradeMarkCertificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTradeMarkCertification"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5031,12 +5980,26 @@ func (client *Client) RecognizeTrainInvoiceWithOptions(request *RecognizeTrainIn
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTrainInvoice"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTrainInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTrainInvoice"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5060,12 +6023,26 @@ func (client *Client) RecognizeVehicleLicenseWithOptions(request *RecognizeVehic
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVehicleLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVehicleLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVehicleLicense"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5089,12 +6066,26 @@ func (client *Client) RecognizeWaybillWithOptions(request *RecognizeWaybillReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["Url"] = request.Url
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query:  openapiutil.Query(query),
+		Body:   util.ToMap(request),
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeWaybill"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeWaybillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeWaybill"), tea.String("2021-07-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
