@@ -749,6 +749,75 @@ func (s *DeleteAutoLiveStreamRuleResponse) SetBody(v *DeleteAutoLiveStreamRuleRe
 	return s
 }
 
+type DeleteChannelRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DeleteChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelRequest) SetAppId(v string) *DeleteChannelRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteChannelRequest) SetChannelId(v string) *DeleteChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DeleteChannelRequest) SetOwnerId(v int64) *DeleteChannelRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DeleteChannelResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelResponseBody) SetRequestId(v string) *DeleteChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteChannelResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChannelResponse) SetHeaders(v map[string]*string) *DeleteChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChannelResponse) SetBody(v *DeleteChannelResponseBody) *DeleteChannelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEventSubscribeRequest struct {
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -952,6 +1021,198 @@ func (s *DeleteRecordTemplateResponse) SetHeaders(v map[string]*string) *DeleteR
 }
 
 func (s *DeleteRecordTemplateResponse) SetBody(v *DeleteRecordTemplateResponseBody) *DeleteRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppsRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Order    *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeAppsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsRequest) SetAppId(v string) *DescribeAppsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetOrder(v string) *DescribeAppsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetOwnerId(v int64) *DescribeAppsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetPageNum(v int32) *DescribeAppsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetPageSize(v int32) *DescribeAppsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetStatus(v string) *DescribeAppsRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeAppsResponseBody struct {
+	AppList   *DescribeAppsResponseBodyAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum  *int32                           `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPage *int32                           `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeAppsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBody) SetAppList(v *DescribeAppsResponseBodyAppList) *DescribeAppsResponseBody {
+	s.AppList = v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetRequestId(v string) *DescribeAppsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetTotalNum(v int32) *DescribeAppsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetTotalPage(v int32) *DescribeAppsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeAppsResponseBodyAppList struct {
+	App []*DescribeAppsResponseBodyAppListApp `json:"App,omitempty" xml:"App,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppsResponseBodyAppList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyAppList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyAppList) SetApp(v []*DescribeAppsResponseBodyAppListApp) *DescribeAppsResponseBodyAppList {
+	s.App = v
+	return s
+}
+
+type DescribeAppsResponseBodyAppListApp struct {
+	AppId        *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType      *string                                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	BillType     *string                                         `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ServiceAreas *DescribeAppsResponseBodyAppListAppServiceAreas `json:"ServiceAreas,omitempty" xml:"ServiceAreas,omitempty" type:"Struct"`
+	Status       *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyAppListApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyAppListApp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetAppId(v string) *DescribeAppsResponseBodyAppListApp {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetAppName(v string) *DescribeAppsResponseBodyAppListApp {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetAppType(v string) *DescribeAppsResponseBodyAppListApp {
+	s.AppType = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetBillType(v string) *DescribeAppsResponseBodyAppListApp {
+	s.BillType = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetCreateTime(v string) *DescribeAppsResponseBodyAppListApp {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetServiceAreas(v *DescribeAppsResponseBodyAppListAppServiceAreas) *DescribeAppsResponseBodyAppListApp {
+	s.ServiceAreas = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetStatus(v int32) *DescribeAppsResponseBodyAppListApp {
+	s.Status = &v
+	return s
+}
+
+type DescribeAppsResponseBodyAppListAppServiceAreas struct {
+	ServiceArea []*string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppsResponseBodyAppListAppServiceAreas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyAppListAppServiceAreas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyAppListAppServiceAreas) SetServiceArea(v []*string) *DescribeAppsResponseBodyAppListAppServiceAreas {
+	s.ServiceArea = v
+	return s
+}
+
+type DescribeAppsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAppsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponse) SetHeaders(v map[string]*string) *DescribeAppsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeAppsResponse {
 	s.Body = v
 	return s
 }
@@ -2462,6 +2723,75 @@ func (s *GetMPUTaskStatusResponse) SetBody(v *GetMPUTaskStatusResponseBody) *Get
 	return s
 }
 
+type ModifyAppRequest struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ModifyAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRequest) SetAppId(v string) *ModifyAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppRequest) SetAppName(v string) *ModifyAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ModifyAppRequest) SetOwnerId(v int64) *ModifyAppRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ModifyAppResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppResponseBody) SetRequestId(v string) *ModifyAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppResponse) SetHeaders(v map[string]*string) *ModifyAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyMPULayoutRequest struct {
 	AppId         *string                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AudioMixCount *int32                         `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
@@ -3603,81 +3933,6 @@ func (s *StartRecordTaskResponse) SetHeaders(v map[string]*string) *StartRecordT
 }
 
 func (s *StartRecordTaskResponse) SetBody(v *StartRecordTaskResponseBody) *StartRecordTaskResponse {
-	s.Body = v
-	return s
-}
-
-type StopChannelUserPublishRequest struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s StopChannelUserPublishRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopChannelUserPublishRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopChannelUserPublishRequest) SetAppId(v string) *StopChannelUserPublishRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *StopChannelUserPublishRequest) SetChannelId(v string) *StopChannelUserPublishRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *StopChannelUserPublishRequest) SetOwnerId(v int64) *StopChannelUserPublishRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *StopChannelUserPublishRequest) SetUserId(v string) *StopChannelUserPublishRequest {
-	s.UserId = &v
-	return s
-}
-
-type StopChannelUserPublishResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StopChannelUserPublishResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopChannelUserPublishResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StopChannelUserPublishResponseBody) SetRequestId(v string) *StopChannelUserPublishResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StopChannelUserPublishResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopChannelUserPublishResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StopChannelUserPublishResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopChannelUserPublishResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopChannelUserPublishResponse) SetHeaders(v map[string]*string) *StopChannelUserPublishResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StopChannelUserPublishResponse) SetBody(v *StopChannelUserPublishResponseBody) *StopChannelUserPublishResponse {
 	s.Body = v
 	return s
 }
@@ -5319,6 +5574,50 @@ func (client *Client) DeleteAutoLiveStreamRule(request *DeleteAutoLiveStreamRule
 	return _result, _err
 }
 
+func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["ChannelId"] = request.ChannelId
+	query["OwnerId"] = request.OwnerId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChannel"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *DeleteChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChannelResponse{}
+	_body, _err := client.DeleteChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscribeRequest, runtime *util.RuntimeOptions) (_result *DeleteEventSubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5444,6 +5743,53 @@ func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRecordTemplateResponse{}
 	_body, _err := client.DeleteRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runtime *util.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["Order"] = request.Order
+	query["OwnerId"] = request.OwnerId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["Status"] = request.Status
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApps"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *DescribeAppsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppsResponse{}
+	_body, _err := client.DescribeAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5904,6 +6250,50 @@ func (client *Client) GetMPUTaskStatus(request *GetMPUTaskStatusRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AppId"] = request.AppId
+	query["AppName"] = request.AppName
+	query["OwnerId"] = request.OwnerId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApp"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppResponse{}
+	_body, _err := client.ModifyAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest, runtime *util.RuntimeOptions) (_result *ModifyMPULayoutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6120,51 +6510,6 @@ func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRecordTaskResponse{}
 	_body, _err := client.StartRecordTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StopChannelUserPublishWithOptions(request *StopChannelUserPublishRequest, runtime *util.RuntimeOptions) (_result *StopChannelUserPublishResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["OwnerId"] = request.OwnerId
-	query["UserId"] = request.UserId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopChannelUserPublish"),
-		Version:     tea.String("2018-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &StopChannelUserPublishResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopChannelUserPublish(request *StopChannelUserPublishRequest) (_result *StopChannelUserPublishResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopChannelUserPublishResponse{}
-	_body, _err := client.StopChannelUserPublishWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
