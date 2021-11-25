@@ -2105,6 +2105,319 @@ func (s *GetPipelineRunResponse) SetBody(v *GetPipelineRunResponseBody) *GetPipe
 	return s
 }
 
+type GetVMDeployOrderResponseBody struct {
+	// 部署单
+	DeployOrder *GetVMDeployOrderResponseBodyDeployOrder `json:"deployOrder,omitempty" xml:"deployOrder,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBody) SetDeployOrder(v *GetVMDeployOrderResponseBodyDeployOrder) *GetVMDeployOrderResponseBody {
+	s.DeployOrder = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBody) SetErrorCode(v string) *GetVMDeployOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBody) SetErrorMessage(v string) *GetVMDeployOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBody) SetRequestId(v string) *GetVMDeployOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBody) SetSuccess(v bool) *GetVMDeployOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVMDeployOrderResponseBodyDeployOrder struct {
+	// 后续action
+	Actions []*GetVMDeployOrderResponseBodyDeployOrderActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// 创建时时间
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 当前发布批次
+	CurrentBatch *int32 `json:"currentBatch,omitempty" xml:"currentBatch,omitempty"`
+	// 部署机器信息
+	DeployMachineInfo *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo `json:"deployMachineInfo,omitempty" xml:"deployMachineInfo,omitempty" type:"Struct"`
+	// 部署单ID
+	DeployOrderId *string `json:"deployOrderId,omitempty" xml:"deployOrderId,omitempty"`
+	// 错误码
+	ExceptionCode *string `json:"exceptionCode,omitempty" xml:"exceptionCode,omitempty"`
+	// 发布状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 总发布批次
+	TotalBatch *int32 `json:"totalBatch,omitempty" xml:"totalBatch,omitempty"`
+	// 修改时间
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrder) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetActions(v []*GetVMDeployOrderResponseBodyDeployOrderActions) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.Actions = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetCreateTime(v int64) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetCreator(v string) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetCurrentBatch(v int32) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.CurrentBatch = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetDeployMachineInfo(v *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.DeployMachineInfo = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetDeployOrderId(v string) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.DeployOrderId = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetExceptionCode(v string) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.ExceptionCode = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetStatus(v string) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetTotalBatch(v int32) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.TotalBatch = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrder) SetUpdateTime(v int64) *GetVMDeployOrderResponseBodyDeployOrder {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetVMDeployOrderResponseBodyDeployOrderActions struct {
+	// 是否可用
+	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
+	// 参数
+	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// Action
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderActions) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetDisable(v bool) *GetVMDeployOrderResponseBodyDeployOrderActions {
+	s.Disable = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetParams(v map[string]interface{}) *GetVMDeployOrderResponseBodyDeployOrderActions {
+	s.Params = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderActions) SetType(v string) *GetVMDeployOrderResponseBodyDeployOrderActions {
+	s.Type = &v
+	return s
+}
+
+type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo struct {
+	// 发布批次
+	BatchNum *int32 `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
+	// 部署机器列表
+	DeployMachines []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines `json:"deployMachines,omitempty" xml:"deployMachines,omitempty" type:"Repeated"`
+	// 主机组ID
+	HostGroupId *int64 `json:"hostGroupId,omitempty" xml:"hostGroupId,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) SetBatchNum(v int32) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo {
+	s.BatchNum = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) SetDeployMachines(v []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo {
+	s.DeployMachines = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo) SetHostGroupId(v int64) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo {
+	s.HostGroupId = &v
+	return s
+}
+
+type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines struct {
+	// 后续action
+	Actions []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// 部署批次
+	BatchNum *int32 `json:"batchNum,omitempty" xml:"batchNum,omitempty"`
+	// 机器状态
+	ClientStatus *string `json:"clientStatus,omitempty" xml:"clientStatus,omitempty"`
+	// 开始时间
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 机器IP
+	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	// 机器sn
+	MachineSn *string `json:"machineSn,omitempty" xml:"machineSn,omitempty"`
+	// 部署状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 修改时间
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetActions(v []*GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.Actions = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetBatchNum(v int32) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.BatchNum = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetClientStatus(v string) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.ClientStatus = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetCreateTime(v int64) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetIp(v string) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetMachineSn(v string) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.MachineSn = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetStatus(v string) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines) SetUpdateTime(v int64) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions struct {
+	// 是否可用
+	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
+	// 参数
+	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// Action
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) SetDisable(v bool) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions {
+	s.Disable = &v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) SetParams(v map[string]interface{}) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions {
+	s.Params = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions) SetType(v string) *GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions {
+	s.Type = &v
+	return s
+}
+
+type GetVMDeployOrderResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetVMDeployOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVMDeployOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVMDeployOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVMDeployOrderResponse) SetHeaders(v map[string]*string) *GetVMDeployOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVMDeployOrderResponse) SetBody(v *GetVMDeployOrderResponseBody) *GetVMDeployOrderResponse {
+	s.Body = v
+	return s
+}
+
 type GetVariableGroupResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -4111,6 +4424,208 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 	return s
 }
 
+type LogPipelineJobRunResponseBody struct {
+	ErrorCode    *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                           `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Log          *LogPipelineJobRunResponseBodyLog `json:"log,omitempty" xml:"log,omitempty" type:"Struct"`
+	RequestId    *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s LogPipelineJobRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogPipelineJobRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LogPipelineJobRunResponseBody) SetErrorCode(v string) *LogPipelineJobRunResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *LogPipelineJobRunResponseBody) SetErrorMessage(v string) *LogPipelineJobRunResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *LogPipelineJobRunResponseBody) SetLog(v *LogPipelineJobRunResponseBodyLog) *LogPipelineJobRunResponseBody {
+	s.Log = v
+	return s
+}
+
+func (s *LogPipelineJobRunResponseBody) SetRequestId(v string) *LogPipelineJobRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LogPipelineJobRunResponseBody) SetSuccess(v bool) *LogPipelineJobRunResponseBody {
+	s.Success = &v
+	return s
+}
+
+type LogPipelineJobRunResponseBodyLog struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	More    *bool   `json:"more,omitempty" xml:"more,omitempty"`
+}
+
+func (s LogPipelineJobRunResponseBodyLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogPipelineJobRunResponseBodyLog) GoString() string {
+	return s.String()
+}
+
+func (s *LogPipelineJobRunResponseBodyLog) SetContent(v string) *LogPipelineJobRunResponseBodyLog {
+	s.Content = &v
+	return s
+}
+
+func (s *LogPipelineJobRunResponseBodyLog) SetMore(v bool) *LogPipelineJobRunResponseBodyLog {
+	s.More = &v
+	return s
+}
+
+type LogPipelineJobRunResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *LogPipelineJobRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LogPipelineJobRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogPipelineJobRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LogPipelineJobRunResponse) SetHeaders(v map[string]*string) *LogPipelineJobRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LogPipelineJobRunResponse) SetBody(v *LogPipelineJobRunResponseBody) *LogPipelineJobRunResponse {
+	s.Body = v
+	return s
+}
+
+type LogVMDeployMachineResponseBody struct {
+	// 部署单
+	DeployMachineLog *LogVMDeployMachineResponseBodyDeployMachineLog `json:"deployMachineLog,omitempty" xml:"deployMachineLog,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s LogVMDeployMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogVMDeployMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LogVMDeployMachineResponseBody) SetDeployMachineLog(v *LogVMDeployMachineResponseBodyDeployMachineLog) *LogVMDeployMachineResponseBody {
+	s.DeployMachineLog = v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBody) SetErrorCode(v string) *LogVMDeployMachineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBody) SetErrorMessage(v string) *LogVMDeployMachineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBody) SetRequestId(v string) *LogVMDeployMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBody) SetSuccess(v bool) *LogVMDeployMachineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type LogVMDeployMachineResponseBodyDeployMachineLog struct {
+	// 部署地域
+	AliyunRegion *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
+	// 部署开始时间
+	DeployBeginTime *int64 `json:"deployBeginTime,omitempty" xml:"deployBeginTime,omitempty"`
+	// 部署结束时间
+	DeployEndTime *int64 `json:"deployEndTime,omitempty" xml:"deployEndTime,omitempty"`
+	// 部署日志
+	DeployLog *string `json:"deployLog,omitempty" xml:"deployLog,omitempty"`
+	// 部署日志路径
+	DeployLogPath *string `json:"deployLogPath,omitempty" xml:"deployLogPath,omitempty"`
+}
+
+func (s LogVMDeployMachineResponseBodyDeployMachineLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogVMDeployMachineResponseBodyDeployMachineLog) GoString() string {
+	return s.String()
+}
+
+func (s *LogVMDeployMachineResponseBodyDeployMachineLog) SetAliyunRegion(v string) *LogVMDeployMachineResponseBodyDeployMachineLog {
+	s.AliyunRegion = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBodyDeployMachineLog) SetDeployBeginTime(v int64) *LogVMDeployMachineResponseBodyDeployMachineLog {
+	s.DeployBeginTime = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBodyDeployMachineLog) SetDeployEndTime(v int64) *LogVMDeployMachineResponseBodyDeployMachineLog {
+	s.DeployEndTime = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBodyDeployMachineLog) SetDeployLog(v string) *LogVMDeployMachineResponseBodyDeployMachineLog {
+	s.DeployLog = &v
+	return s
+}
+
+func (s *LogVMDeployMachineResponseBodyDeployMachineLog) SetDeployLogPath(v string) *LogVMDeployMachineResponseBodyDeployMachineLog {
+	s.DeployLogPath = &v
+	return s
+}
+
+type LogVMDeployMachineResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *LogVMDeployMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LogVMDeployMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogVMDeployMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LogVMDeployMachineResponse) SetHeaders(v map[string]*string) *LogVMDeployMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LogVMDeployMachineResponse) SetBody(v *LogVMDeployMachineResponseBody) *LogVMDeployMachineResponse {
+	s.Body = v
+	return s
+}
+
 type PassPipelineValidateResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -4391,6 +4906,68 @@ func (s *ResetSshKeyResponse) SetBody(v *ResetSshKeyResponseBody) *ResetSshKeyRe
 	return s
 }
 
+type ResumeVMDeployOrderResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ResumeVMDeployOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeVMDeployOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeVMDeployOrderResponseBody) SetErrorCode(v string) *ResumeVMDeployOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ResumeVMDeployOrderResponseBody) SetErrorMessage(v string) *ResumeVMDeployOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ResumeVMDeployOrderResponseBody) SetRequestId(v string) *ResumeVMDeployOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResumeVMDeployOrderResponseBody) SetSuccess(v bool) *ResumeVMDeployOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResumeVMDeployOrderResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ResumeVMDeployOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeVMDeployOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeVMDeployOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeVMDeployOrderResponse) SetHeaders(v map[string]*string) *ResumeVMDeployOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeVMDeployOrderResponse) SetBody(v *ResumeVMDeployOrderResponseBody) *ResumeVMDeployOrderResponse {
+	s.Body = v
+	return s
+}
+
 type RetryPipelineJobRunResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -4449,6 +5026,68 @@ func (s *RetryPipelineJobRunResponse) SetBody(v *RetryPipelineJobRunResponseBody
 	return s
 }
 
+type RetryVMDeployMachineResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RetryVMDeployMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryVMDeployMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryVMDeployMachineResponseBody) SetErrorCode(v string) *RetryVMDeployMachineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RetryVMDeployMachineResponseBody) SetErrorMessage(v string) *RetryVMDeployMachineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RetryVMDeployMachineResponseBody) SetRequestId(v string) *RetryVMDeployMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetryVMDeployMachineResponseBody) SetSuccess(v bool) *RetryVMDeployMachineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RetryVMDeployMachineResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RetryVMDeployMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryVMDeployMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryVMDeployMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryVMDeployMachineResponse) SetHeaders(v map[string]*string) *RetryVMDeployMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryVMDeployMachineResponse) SetBody(v *RetryVMDeployMachineResponseBody) *RetryVMDeployMachineResponse {
+	s.Body = v
+	return s
+}
+
 type SkipPipelineJobRunResponseBody struct {
 	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -4503,6 +5142,68 @@ func (s *SkipPipelineJobRunResponse) SetHeaders(v map[string]*string) *SkipPipel
 }
 
 func (s *SkipPipelineJobRunResponse) SetBody(v *SkipPipelineJobRunResponseBody) *SkipPipelineJobRunResponse {
+	s.Body = v
+	return s
+}
+
+type SkipVMDeployMachineResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SkipVMDeployMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipVMDeployMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SkipVMDeployMachineResponseBody) SetErrorCode(v string) *SkipVMDeployMachineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SkipVMDeployMachineResponseBody) SetErrorMessage(v string) *SkipVMDeployMachineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SkipVMDeployMachineResponseBody) SetRequestId(v string) *SkipVMDeployMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SkipVMDeployMachineResponseBody) SetSuccess(v bool) *SkipVMDeployMachineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SkipVMDeployMachineResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SkipVMDeployMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SkipVMDeployMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipVMDeployMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SkipVMDeployMachineResponse) SetHeaders(v map[string]*string) *SkipVMDeployMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SkipVMDeployMachineResponse) SetBody(v *SkipVMDeployMachineResponseBody) *SkipVMDeployMachineResponse {
 	s.Body = v
 	return s
 }
@@ -4714,6 +5415,68 @@ func (s *StopPipelineRunResponse) SetHeaders(v map[string]*string) *StopPipeline
 }
 
 func (s *StopPipelineRunResponse) SetBody(v *StopPipelineRunResponseBody) *StopPipelineRunResponse {
+	s.Body = v
+	return s
+}
+
+type StopVMDeployOrderResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StopVMDeployOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopVMDeployOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopVMDeployOrderResponseBody) SetErrorCode(v string) *StopVMDeployOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopVMDeployOrderResponseBody) SetErrorMessage(v string) *StopVMDeployOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StopVMDeployOrderResponseBody) SetRequestId(v string) *StopVMDeployOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopVMDeployOrderResponseBody) SetSuccess(v bool) *StopVMDeployOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopVMDeployOrderResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopVMDeployOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopVMDeployOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopVMDeployOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopVMDeployOrderResponse) SetHeaders(v map[string]*string) *StopVMDeployOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopVMDeployOrderResponse) SetBody(v *StopVMDeployOrderResponseBody) *StopVMDeployOrderResponse {
 	s.Body = v
 	return s
 }
@@ -5132,8 +5895,19 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHostGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateHostGroupResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateHostGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5174,8 +5948,19 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/{resourceType}/{resourceId}/members"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateResourceMemberResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateResourceMember"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/"+tea.StringValue(resourceType)+"/"+tea.StringValue(resourceId)+"/members"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5200,8 +5985,19 @@ func (client *Client) CreateSshKeyWithOptions(organizationId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSshKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sshKey"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateSshKeyResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateSshKey"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/sshKey"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5244,8 +6040,19 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVariableGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateVariableGroupResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateVariableGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/variableGroups"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5307,8 +6114,19 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWorkspace"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/workspaces"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateWorkspaceResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/workspaces"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5334,8 +6152,19 @@ func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHostGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/{id}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteHostGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteHostGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5361,8 +6190,19 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeletePipelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeletePipeline"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5390,8 +6230,19 @@ func (client *Client) DeleteResourceMemberWithOptions(organizationId *string, re
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/{resourceType}/{resourceId}/members/{accountId}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteResourceMemberResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteResourceMember"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/"+tea.StringValue(resourceType)+"/"+tea.StringValue(resourceId)+"/members/"+tea.StringValue(accountId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5417,8 +6268,19 @@ func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVariableGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/{id}"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteVariableGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteVariableGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/variableGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5443,8 +6305,19 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("FrozenWorkspace"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId) + "/frozen"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &FrozenWorkspaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("FrozenWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)+"/frozen"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5470,8 +6343,19 @@ func (client *Client) GetHostGroupWithOptions(organizationId *string, id *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHostGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/{id}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetHostGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetHostGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5497,8 +6381,19 @@ func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, a
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrganizationMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/members/{accountId}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetOrganizationMemberResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetOrganizationMember"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/members/"+tea.StringValue(accountId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5524,8 +6419,19 @@ func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipeline"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPipelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPipeline"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5552,8 +6458,58 @@ func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipeline
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipelineRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPipelineRunResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetPipelineRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *GetVMDeployOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVMDeployOrderResponse{}
+	_body, _err := client.GetVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVMDeployOrderResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVMDeployOrder"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVMDeployOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5579,8 +6535,19 @@ func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVariableGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/{id}"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetVariableGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetVariableGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/variableGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5605,8 +6572,19 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkspace"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetWorkspaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5673,8 +6651,19 @@ func (client *Client) ListHostGroupsWithOptions(organizationId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHostGroups"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListHostGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListHostGroups"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5737,8 +6726,19 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOrganizationMembers"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/members"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListOrganizationMembersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListOrganizationMembers"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/members"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5794,8 +6794,19 @@ func (client *Client) ListPipelineRunsWithOptions(organizationId *string, pipeli
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineRuns"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListPipelineRunsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListPipelineRuns"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5866,8 +6877,19 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelines"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListPipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListPipelines"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5894,8 +6916,19 @@ func (client *Client) ListResourceMembersWithOptions(organizationId *string, res
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceMembers"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/{resourceType}/{resourceId}/members"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListResourceMembersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListResourceMembers"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/"+tea.StringValue(resourceType)+"/"+tea.StringValue(resourceId)+"/members"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5930,8 +6963,19 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceConnections"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/serviceConnections"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListServiceConnectionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListServiceConnections"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/serviceConnections"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5978,8 +7022,19 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVariableGroups"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListVariableGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListVariableGroups"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/variableGroups"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6035,8 +7090,99 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkspaces"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/workspaces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListWorkspacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListWorkspaces"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/workspaces"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LogPipelineJobRun(organizationId *string, pipelineId *string, jobId *string, pipelineRunId *string) (_result *LogPipelineJobRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &LogPipelineJobRunResponse{}
+	_body, _err := client.LogPipelineJobRunWithOptions(organizationId, pipelineId, jobId, pipelineRunId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LogPipelineJobRunWithOptions(organizationId *string, pipelineId *string, jobId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LogPipelineJobRunResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	jobId = openapiutil.GetEncodeParam(jobId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LogPipelineJobRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/{pipelineId}/pipelineRun/{pipelineRunId}/job/{jobId}/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LogPipelineJobRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LogVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *LogVMDeployMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &LogVMDeployMachineResponse{}
+	_body, _err := client.LogVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LogVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LogVMDeployMachineResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	machineSn = openapiutil.GetEncodeParam(machineSn)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LogVMDeployMachine"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}/machine/{machineSn}/log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LogVMDeployMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6064,8 +7210,19 @@ func (client *Client) PassPipelineValidateWithOptions(organizationId *string, pi
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PassPipelineValidate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/jobs/{jobId}/pass"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PassPipelineValidateResponse{}
-	_body, _err := client.DoROARequest(tea.String("PassPipelineValidate"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)+"/pass"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6093,8 +7250,19 @@ func (client *Client) RefusePipelineValidateWithOptions(organizationId *string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RefusePipelineValidate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/jobs/{jobId}/refuse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RefusePipelineValidateResponse{}
-	_body, _err := client.DoROARequest(tea.String("RefusePipelineValidate"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)+"/refuse"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6119,8 +7287,19 @@ func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseWorkspace"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId) + "/release"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ReleaseWorkspaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ReleaseWorkspace"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/workspaces/"+tea.StringValue(workspaceId)+"/release"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6145,8 +7324,58 @@ func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetSshKey"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sshKey"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ResetSshKeyResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResetSshKey"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/sshKey"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *ResumeVMDeployOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeVMDeployOrderResponse{}
+	_body, _err := client.ResumeVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeVMDeployOrderResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeVMDeployOrder"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}/resume"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeVMDeployOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6174,8 +7403,59 @@ func (client *Client) RetryPipelineJobRunWithOptions(organizationId *string, pip
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryPipelineJobRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/jobs/{jobId}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RetryPipelineJobRunResponse{}
-	_body, _err := client.DoROARequest(tea.String("RetryPipelineJobRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *RetryVMDeployMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RetryVMDeployMachineResponse{}
+	_body, _err := client.RetryVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryVMDeployMachineResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	machineSn = openapiutil.GetEncodeParam(machineSn)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryVMDeployMachine"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}/machine/{machineSn}/retry"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryVMDeployMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6203,8 +7483,59 @@ func (client *Client) SkipPipelineJobRunWithOptions(organizationId *string, pipe
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("SkipPipelineJobRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/jobs/{jobId}/skip"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SkipPipelineJobRunResponse{}
-	_body, _err := client.DoROARequest(tea.String("SkipPipelineJobRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)+"/skip"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SkipVMDeployMachine(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string) (_result *SkipVMDeployMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SkipVMDeployMachineResponse{}
+	_body, _err := client.SkipVMDeployMachineWithOptions(organizationId, pipelineId, deployOrderId, machineSn, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SkipVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SkipVMDeployMachineResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	machineSn = openapiutil.GetEncodeParam(machineSn)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SkipVMDeployMachine"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}/machine/{machineSn}/skip"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SkipVMDeployMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6240,8 +7571,19 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartPipelineRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organizations/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/run"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartPipelineRunResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("StartPipelineRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/organizations/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/run"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6269,8 +7611,19 @@ func (client *Client) StopPipelineJobRunWithOptions(organizationId *string, pipe
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopPipelineJobRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/jobs/{jobId}/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopPipelineJobRunResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopPipelineJobRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/jobs/"+tea.StringValue(jobId)+"/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6297,8 +7650,58 @@ func (client *Client) StopPipelineRunWithOptions(organizationId *string, pipelin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopPipelineRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/pipelineRuns/{pipelineRunId}/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopPipelineRunResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopPipelineRun"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/pipelines/"+tea.StringValue(pipelineId)+"/pipelineRuns/"+tea.StringValue(pipelineRunId)+"/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *StopVMDeployOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopVMDeployOrderResponse{}
+	_body, _err := client.StopVMDeployOrderWithOptions(organizationId, pipelineId, deployOrderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopVMDeployOrderResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopVMDeployOrder"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/{pipelineId}/deploy/{deployOrderId}/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopVMDeployOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6370,8 +7773,19 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHostGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/{id}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateHostGroupResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateHostGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/hostGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6409,8 +7823,19 @@ func (client *Client) UpdateResourceMemberWithOptions(organizationId *string, re
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/{resourceType}/{resourceId}/members/{accountId}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateResourceMemberResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateResourceMember"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/"+tea.StringValue(resourceType)+"/"+tea.StringValue(resourceId)+"/members/"+tea.StringValue(accountId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6454,8 +7879,19 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVariableGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/{id}"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateVariableGroupResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateVariableGroup"), tea.String("2021-06-25"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/organization/"+tea.StringValue(organizationId)+"/variableGroups/"+tea.StringValue(id)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
