@@ -656,7 +656,6 @@ type GetJMeterSampleMetricsResponseBody struct {
 	// 采样器列表，可根据该列表传递需要查询的采样器
 	SamplerMap map[string]interface{} `json:"SamplerMap,omitempty" xml:"SamplerMap,omitempty"`
 	Success    *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetJMeterSampleMetricsResponseBody) String() string {
@@ -694,11 +693,6 @@ func (s *GetJMeterSampleMetricsResponseBody) SetSamplerMap(v map[string]interfac
 
 func (s *GetJMeterSampleMetricsResponseBody) SetSuccess(v bool) *GetJMeterSampleMetricsResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *GetJMeterSampleMetricsResponseBody) SetTotalCount(v int64) *GetJMeterSampleMetricsResponseBody {
-	s.TotalCount = &v
 	return s
 }
 
