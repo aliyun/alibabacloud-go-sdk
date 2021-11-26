@@ -42,7 +42,7 @@ type AddEditingProjectMaterialsResponseBody struct {
 	// 符合要求的媒资集合
 	MediaInfos       []*AddEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	ProjectId        *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMaterials *string                                             `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty"`
+	ProjectMaterials []*string                                           `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -70,8 +70,8 @@ func (s *AddEditingProjectMaterialsResponseBody) SetProjectId(v string) *AddEdit
 	return s
 }
 
-func (s *AddEditingProjectMaterialsResponseBody) SetProjectMaterials(v string) *AddEditingProjectMaterialsResponseBody {
-	s.ProjectMaterials = &v
+func (s *AddEditingProjectMaterialsResponseBody) SetProjectMaterials(v []*string) *AddEditingProjectMaterialsResponseBody {
+	s.ProjectMaterials = v
 	return s
 }
 
@@ -409,6 +409,70 @@ func (s *AddEditingProjectMaterialsResponse) SetHeaders(v map[string]*string) *A
 }
 
 func (s *AddEditingProjectMaterialsResponse) SetBody(v *AddEditingProjectMaterialsResponseBody) *AddEditingProjectMaterialsResponse {
+	s.Body = v
+	return s
+}
+
+type AddFavoritePublicMediaRequest struct {
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+}
+
+func (s AddFavoritePublicMediaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFavoritePublicMediaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddFavoritePublicMediaRequest) SetMediaIds(v string) *AddFavoritePublicMediaRequest {
+	s.MediaIds = &v
+	return s
+}
+
+type AddFavoritePublicMediaResponseBody struct {
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddFavoritePublicMediaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFavoritePublicMediaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddFavoritePublicMediaResponseBody) SetIgnoredList(v []*string) *AddFavoritePublicMediaResponseBody {
+	s.IgnoredList = v
+	return s
+}
+
+func (s *AddFavoritePublicMediaResponseBody) SetRequestId(v string) *AddFavoritePublicMediaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddFavoritePublicMediaResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddFavoritePublicMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddFavoritePublicMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFavoritePublicMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddFavoritePublicMediaResponse) SetHeaders(v map[string]*string) *AddFavoritePublicMediaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaResponseBody) *AddFavoritePublicMediaResponse {
 	s.Body = v
 	return s
 }
@@ -944,6 +1008,70 @@ func (s *BatchGetMediaInfosResponse) SetHeaders(v map[string]*string) *BatchGetM
 }
 
 func (s *BatchGetMediaInfosResponse) SetBody(v *BatchGetMediaInfosResponseBody) *BatchGetMediaInfosResponse {
+	s.Body = v
+	return s
+}
+
+type CancelFavoritePublicMediaRequest struct {
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+}
+
+func (s CancelFavoritePublicMediaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFavoritePublicMediaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFavoritePublicMediaRequest) SetMediaIds(v string) *CancelFavoritePublicMediaRequest {
+	s.MediaIds = &v
+	return s
+}
+
+type CancelFavoritePublicMediaResponseBody struct {
+	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelFavoritePublicMediaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFavoritePublicMediaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFavoritePublicMediaResponseBody) SetIgnoredList(v []*string) *CancelFavoritePublicMediaResponseBody {
+	s.IgnoredList = v
+	return s
+}
+
+func (s *CancelFavoritePublicMediaResponseBody) SetRequestId(v string) *CancelFavoritePublicMediaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelFavoritePublicMediaResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelFavoritePublicMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelFavoritePublicMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFavoritePublicMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFavoritePublicMediaResponse) SetHeaders(v map[string]*string) *CancelFavoritePublicMediaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelFavoritePublicMediaResponse) SetBody(v *CancelFavoritePublicMediaResponseBody) *CancelFavoritePublicMediaResponse {
 	s.Body = v
 	return s
 }
@@ -1539,6 +1667,23 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 	return s
 }
 
+type DescribeIceProductStatusRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+}
+
+func (s DescribeIceProductStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIceProductStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIceProductStatusRequest) SetCommodityCode(v string) *DescribeIceProductStatusRequest {
+	s.CommodityCode = &v
+	return s
+}
+
 type DescribeIceProductStatusResponseBody struct {
 	ICEServiceAvaliable *bool `json:"ICEServiceAvaliable,omitempty" xml:"ICEServiceAvaliable,omitempty"`
 	// Id of the request
@@ -1582,6 +1727,182 @@ func (s *DescribeIceProductStatusResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DescribeIceProductStatusResponse) SetBody(v *DescribeIceProductStatusResponseBody) *DescribeIceProductStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMaterialPackageInfoRequest struct {
+	MaterialPackageId   *string `json:"MaterialPackageId,omitempty" xml:"MaterialPackageId,omitempty"`
+	MaterialPackageType *string `json:"MaterialPackageType,omitempty" xml:"MaterialPackageType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeMaterialPackageInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaterialPackageInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaterialPackageInfoRequest) SetMaterialPackageId(v string) *DescribeMaterialPackageInfoRequest {
+	s.MaterialPackageId = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoRequest) SetMaterialPackageType(v string) *DescribeMaterialPackageInfoRequest {
+	s.MaterialPackageType = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoRequest) SetStatus(v string) *DescribeMaterialPackageInfoRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeMaterialPackageInfoResponseBody struct {
+	MaterialPackageInfoList []*DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList `json:"MaterialPackageInfoList,omitempty" xml:"MaterialPackageInfoList,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMaterialPackageInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaterialPackageInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaterialPackageInfoResponseBody) SetMaterialPackageInfoList(v []*DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) *DescribeMaterialPackageInfoResponseBody {
+	s.MaterialPackageInfoList = v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBody) SetRequestId(v string) *DescribeMaterialPackageInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList struct {
+	AuthTime                    *string                                                                                      `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	Authorized                  *bool                                                                                        `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	DisplayPrice                *string                                                                                      `json:"DisplayPrice,omitempty" xml:"DisplayPrice,omitempty"`
+	InitCapacity                *string                                                                                      `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	MaterialCount               *int32                                                                                       `json:"MaterialCount,omitempty" xml:"MaterialCount,omitempty"`
+	MaterialPackageId           *string                                                                                      `json:"MaterialPackageId,omitempty" xml:"MaterialPackageId,omitempty"`
+	MaterialPackagePurchaseList []*DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList `json:"MaterialPackagePurchaseList,omitempty" xml:"MaterialPackagePurchaseList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetAuthTime(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.AuthTime = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetAuthorized(v bool) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.Authorized = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetDisplayPrice(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.DisplayPrice = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetInitCapacity(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.InitCapacity = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetMaterialCount(v int32) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.MaterialCount = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetMaterialPackageId(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.MaterialPackageId = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList) SetMaterialPackagePurchaseList(v []*DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoList {
+	s.MaterialPackagePurchaseList = v
+	return s
+}
+
+type DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList struct {
+	CurrCapacity      *string `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InitCapacity      *string `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	RemainingAuthTime *string `json:"RemainingAuthTime,omitempty" xml:"RemainingAuthTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetCurrCapacity(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.CurrCapacity = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetEndTime(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetInitCapacity(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.InitCapacity = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetRemainingAuthTime(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.RemainingAuthTime = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetStartTime(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList) SetStatus(v string) *DescribeMaterialPackageInfoResponseBodyMaterialPackageInfoListMaterialPackagePurchaseList {
+	s.Status = &v
+	return s
+}
+
+type DescribeMaterialPackageInfoResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeMaterialPackageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMaterialPackageInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaterialPackageInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaterialPackageInfoResponse) SetHeaders(v map[string]*string) *DescribeMaterialPackageInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMaterialPackageInfoResponse) SetBody(v *DescribeMaterialPackageInfoResponseBody) *DescribeMaterialPackageInfoResponse {
 	s.Body = v
 	return s
 }
@@ -1935,7 +2256,7 @@ type GetEditingProjectMaterialsResponseBody struct {
 	// 符合要求的媒资集合
 	MediaInfos       []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
 	ProjectId        *string                                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectMaterials *string                                             `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty"`
+	ProjectMaterials []*string                                           `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1963,8 +2284,8 @@ func (s *GetEditingProjectMaterialsResponseBody) SetProjectId(v string) *GetEdit
 	return s
 }
 
-func (s *GetEditingProjectMaterialsResponseBody) SetProjectMaterials(v string) *GetEditingProjectMaterialsResponseBody {
-	s.ProjectMaterials = &v
+func (s *GetEditingProjectMaterialsResponseBody) SetProjectMaterials(v []*string) *GetEditingProjectMaterialsResponseBody {
+	s.ProjectMaterials = v
 	return s
 }
 
@@ -2762,7 +3083,7 @@ type GetMediaInfoResponseBodyMediaInfo struct {
 	// AIMetadata
 	AiRoughDataList []*GetMediaInfoResponseBodyMediaInfoAiRoughDataList `json:"AiRoughDataList,omitempty" xml:"AiRoughDataList,omitempty" type:"Repeated"`
 	// 其他元数据
-	DynamicMetaDataList []*GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList `json:"DynamicMetaDataList,omitempty" xml:"DynamicMetaDataList,omitempty" type:"Repeated"`
+	DynamicMetaData *GetMediaInfoResponseBodyMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
 	// FileInfos
 	FileInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
 	// BasicInfo
@@ -2784,8 +3105,8 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetAiRoughDataList(v []*GetMediaInfo
 	return s
 }
 
-func (s *GetMediaInfoResponseBodyMediaInfo) SetDynamicMetaDataList(v []*GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) *GetMediaInfoResponseBodyMediaInfo {
-	s.DynamicMetaDataList = v
+func (s *GetMediaInfoResponseBodyMediaInfo) SetDynamicMetaData(v *GetMediaInfoResponseBodyMediaInfoDynamicMetaData) *GetMediaInfoResponseBodyMediaInfo {
+	s.DynamicMetaData = v
 	return s
 }
 
@@ -2829,41 +3150,27 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataList) SetType(v string) *Ge
 	return s
 }
 
-type GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList struct {
-	// 元数据json string
+type GetMediaInfoResponseBodyMediaInfoDynamicMetaData struct {
+	// 元数据json
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 开始时间
-	In *float32 `json:"In,omitempty" xml:"In,omitempty"`
-	// 结束时间
-	Out *float32 `json:"Out,omitempty" xml:"Out,omitempty"`
 	// 类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
-func (s GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) String() string {
+func (s GetMediaInfoResponseBodyMediaInfoDynamicMetaData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) GoString() string {
+func (s GetMediaInfoResponseBodyMediaInfoDynamicMetaData) GoString() string {
 	return s.String()
 }
 
-func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) SetData(v string) *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList {
+func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaData) SetData(v string) *GetMediaInfoResponseBodyMediaInfoDynamicMetaData {
 	s.Data = &v
 	return s
 }
 
-func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) SetIn(v float32) *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList {
-	s.In = &v
-	return s
-}
-
-func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) SetOut(v float32) *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList {
-	s.Out = &v
-	return s
-}
-
-func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList) SetType(v string) *GetMediaInfoResponseBodyMediaInfoDynamicMetaDataList {
+func (s *GetMediaInfoResponseBodyMediaInfoDynamicMetaData) SetType(v string) *GetMediaInfoResponseBodyMediaInfoDynamicMetaData {
 	s.Type = &v
 	return s
 }
@@ -3594,6 +3901,7 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Timeline     *string  `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	VodMediaId   *string  `json:"VodMediaId,omitempty" xml:"VodMediaId,omitempty"`
 }
 
 func (s GetMediaProducingJobResponseBodyMediaProducingJob) String() string {
@@ -3674,6 +3982,11 @@ func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetTimeline(v string
 	return s
 }
 
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetVodMediaId(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.VodMediaId = &v
+	return s
+}
+
 type GetMediaProducingJobResponse struct {
 	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetMediaProducingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3697,9 +4010,777 @@ func (s *GetMediaProducingJobResponse) SetBody(v *GetMediaProducingJobResponseBo
 	return s
 }
 
+type GetPublicMediaInfoRequest struct {
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s GetPublicMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoRequest) SetMediaId(v string) *GetPublicMediaInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBody struct {
+	MediaInfo *GetPublicMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBody) SetMediaInfo(v *GetPublicMediaInfoResponseBodyMediaInfo) *GetPublicMediaInfoResponseBody {
+	s.MediaInfo = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBody) SetRequestId(v string) *GetPublicMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfo struct {
+	// 公共媒资动态元数据
+	DynamicMetaData *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
+	// FileInfos
+	FileInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// BasicInfo
+	MediaBasicInfo *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// 媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetDynamicMetaData(v *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) *GetPublicMediaInfoResponseBodyMediaInfo {
+	s.DynamicMetaData = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetFileInfoList(v []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) *GetPublicMediaInfoResponseBodyMediaInfo {
+	s.FileInfoList = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetMediaBasicInfo(v *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) *GetPublicMediaInfoResponseBodyMediaInfo {
+	s.MediaBasicInfo = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetPublicMediaInfoResponseBodyMediaInfo {
+	s.MediaId = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData struct {
+	// 元数据json
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) SetData(v string) *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData {
+	s.Data = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData) SetType(v string) *GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData {
+	s.Type = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoFileInfoList struct {
+	// 音频流信息，一个媒资可能有多条音频流
+	AudioStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	// 文件基础信息，包含时长，大小等
+	FileBasicInfo *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// 字幕流信息，一个媒资可能有多条字幕流
+	SubtitleStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
+	// 视频流信息，一个媒资可能有多条视频流
+	VideoStreamInfoList []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetAudioStreamInfoList(v []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList {
+	s.AudioStreamInfoList = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetFileBasicInfo(v *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList {
+	s.FileBasicInfo = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetSubtitleStreamInfoList(v []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList {
+	s.SubtitleStreamInfoList = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList) SetVideoStreamInfoList(v []*GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoList {
+	s.VideoStreamInfoList = v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
+	// 码率
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 声道输出样式
+	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// 声道数
+	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// 编码格式长述名
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// 编码格式简述名
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// 编码格式标记
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// 编码格式标记文本
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// 编码时基
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 音频帧率
+	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// 音频流序号
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 总帧数
+	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// 编码预置
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// 采样格式
+	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// 采样率
+	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 时基
+	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetBitrate(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetChannelLayout(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetChannels(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Channels = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetCodecLongName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetCodecName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetCodecTag(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetCodecTagString(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetCodecTimeBase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetDuration(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetFps(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetIndex(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetLang(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetNumFrames(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetProfile(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Profile = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetSampleFmt(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.SampleFmt = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetSampleRate(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetStartTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) SetTimebase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
+	// 码率
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 文件大小（字节）
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// 文件状态
+	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// 文件oss地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// 封装格式
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// 高
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// 文件存储区域
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 宽
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetBitrate(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetDuration(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFileName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFileSize(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFileStatus(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FileStatus = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFileType(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFileUrl(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetFormatName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.FormatName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetHeight(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetRegion(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) SetWidth(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo {
+	s.Width = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
+	// 编码格式长述名
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// 编码格式简述名
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// 编码格式标记
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// 编码格式标记文本
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// 编码时基
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 音频流序号
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 时基
+	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetCodecLongName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetCodecName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetCodecTag(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetCodecTagString(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetCodecTimeBase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetDuration(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetIndex(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetLang(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetStartTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) SetTimebase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
+	// 平均帧率
+	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	// 码率
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 编码格式长述名
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// 编码格式简述名
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// 编码格式标记
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// 编码格式标记文本
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// 编码时基
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// 编码显示分辨率比
+	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// 时长
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 视频帧率
+	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// 是否有B帧
+	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// 高
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// 视频流序号
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 编码等级
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// 总帧数
+	NbFrames *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
+	// 总帧数
+	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// 像素格式
+	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// 编码预置
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// 旋转
+	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// 编码信号分辨率比
+	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 时基
+	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	// 宽
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetAvgFPS(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.AvgFPS = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetBitrate(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetCodecLongName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetCodecName(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetCodecTag(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetCodecTagString(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetCodecTimeBase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetDar(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Dar = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetDuration(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetFps(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetHasBFrames(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetHeight(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Height = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetIndex(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetLang(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetLevel(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Level = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetNbFrames(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.NbFrames = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetNumFrames(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetPixFmt(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetProfile(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Profile = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetRotate(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Rotate = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetSar(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Sar = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetStartTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetTimebase(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) SetWidth(v string) *GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList {
+	s.Width = &v
+	return s
+}
+
+type GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 封面地址
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 媒资创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 媒资删除时间
+	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// MediaId
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 标签
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 媒资媒体类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// 资源状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 用户数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetBusinessType(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetCategory(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetCoverURL(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetCreateTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetDeletedTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.DeletedTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetDescription(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetMediaId(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetMediaTags(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetMediaType(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.MediaType = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetModifiedTime(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetSource(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetSpriteImages(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.SpriteImages = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetStatus(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetTitle(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Title = &v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetUserData(v string) *GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.UserData = &v
+	return s
+}
+
+type GetPublicMediaInfoResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPublicMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPublicMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublicMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublicMediaInfoResponse) SetHeaders(v map[string]*string) *GetPublicMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPublicMediaInfoResponse) SetBody(v *GetPublicMediaInfoResponseBody) *GetPublicMediaInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetSmartHandleJobRequest struct {
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	WithAiResult *string `json:"WithAiResult,omitempty" xml:"WithAiResult,omitempty"`
+	// 任务Id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s GetSmartHandleJobRequest) String() string {
@@ -3715,20 +4796,19 @@ func (s *GetSmartHandleJobRequest) SetJobId(v string) *GetSmartHandleJobRequest 
 	return s
 }
 
-func (s *GetSmartHandleJobRequest) SetWithAiResult(v string) *GetSmartHandleJobRequest {
-	s.WithAiResult = &v
-	return s
-}
-
 type GetSmartHandleJobResponseBody struct {
-	FEExtend *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Output   *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// Id of the request
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务Id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 任务结果
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 智能任务信息
 	SmartJobInfo *GetSmartHandleJobResponseBodySmartJobInfo `json:"SmartJobInfo,omitempty" xml:"SmartJobInfo,omitempty" type:"Struct"`
-	State        *string                                    `json:"State,omitempty" xml:"State,omitempty"`
-	UserData     *string                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 任务状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 用户自定义信息
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBody) String() string {
@@ -3737,11 +4817,6 @@ func (s GetSmartHandleJobResponseBody) String() string {
 
 func (s GetSmartHandleJobResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetSmartHandleJobResponseBody) SetFEExtend(v string) *GetSmartHandleJobResponseBody {
-	s.FEExtend = &v
-	return s
 }
 
 func (s *GetSmartHandleJobResponseBody) SetJobId(v string) *GetSmartHandleJobResponseBody {
@@ -3775,15 +4850,22 @@ func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJob
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfo struct {
-	CreateTime    *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EditingConfig *string                                                `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *GetSmartHandleJobResponseBodySmartJobInfoInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
-	JobType       *string                                                `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	ModifiedTime  *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	OutputConfig  *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
-	Title         *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserId        *string                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 输入参数
+	InputConfig *GetSmartHandleJobResponseBodySmartJobInfoInputConfig `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	// 任务类型
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 输出配置
+	OutputConfig *GetSmartHandleJobResponseBodySmartJobInfoOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	// 任务标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// userid
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodySmartJobInfo) String() string {
@@ -3801,11 +4883,6 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetCreateTime(v string) *Get
 
 func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetDescription(v string) *GetSmartHandleJobResponseBodySmartJobInfo {
 	s.Description = &v
-	return s
-}
-
-func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetEditingConfig(v string) *GetSmartHandleJobResponseBodySmartJobInfo {
-	s.EditingConfig = &v
 	return s
 }
 
@@ -3840,8 +4917,8 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfo) SetUserId(v string) *GetSmar
 }
 
 type GetSmartHandleJobResponseBodySmartJobInfoInputConfig struct {
-	InputFile     *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// OSS地址 或 内容库素材ID
+	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodySmartJobInfoInputConfig) String() string {
@@ -3857,13 +4934,10 @@ func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetInputFile(v st
 	return s
 }
 
-func (s *GetSmartHandleJobResponseBodySmartJobInfoInputConfig) SetJobParameters(v string) *GetSmartHandleJobResponseBodySmartJobInfoInputConfig {
-	s.JobParameters = &v
-	return s
-}
-
 type GetSmartHandleJobResponseBodySmartJobInfoOutputConfig struct {
+	// OSS Bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// OSS Object
 	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
 }
 
@@ -4165,6 +5239,7 @@ func (s *GetTemplateMaterialsResponse) SetBody(v *GetTemplateMaterialsResponseBo
 type ListAllPublicMediaTagsRequest struct {
 	// 媒资业务类型
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	EntityId     *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
 
 func (s ListAllPublicMediaTagsRequest) String() string {
@@ -4177,6 +5252,11 @@ func (s ListAllPublicMediaTagsRequest) GoString() string {
 
 func (s *ListAllPublicMediaTagsRequest) SetBusinessType(v string) *ListAllPublicMediaTagsRequest {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *ListAllPublicMediaTagsRequest) SetEntityId(v string) *ListAllPublicMediaTagsRequest {
+	s.EntityId = &v
 	return s
 }
 
@@ -4211,7 +5291,8 @@ type ListAllPublicMediaTagsResponseBodyMediaTagList struct {
 	// 素材标签中文名
 	MediaTagNameChinese *string `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
 	// 素材标签英文名
-	MediaTagNameEnglish *string `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
+	MediaTagNameEnglish *string                                                  `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
+	Options             []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
 }
 
 func (s ListAllPublicMediaTagsResponseBodyMediaTagList) String() string {
@@ -4234,6 +5315,40 @@ func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) SetMediaTagNameChinese(
 
 func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) SetMediaTagNameEnglish(v string) *ListAllPublicMediaTagsResponseBodyMediaTagList {
 	s.MediaTagNameEnglish = &v
+	return s
+}
+
+func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) SetOptions(v []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions) *ListAllPublicMediaTagsResponseBodyMediaTagList {
+	s.Options = v
+	return s
+}
+
+type ListAllPublicMediaTagsResponseBodyMediaTagListOptions struct {
+	OptionChineseName *string `json:"OptionChineseName,omitempty" xml:"OptionChineseName,omitempty"`
+	OptionEnglishName *string `json:"OptionEnglishName,omitempty" xml:"OptionEnglishName,omitempty"`
+	OptionId          *string `json:"OptionId,omitempty" xml:"OptionId,omitempty"`
+}
+
+func (s ListAllPublicMediaTagsResponseBodyMediaTagListOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllPublicMediaTagsResponseBodyMediaTagListOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllPublicMediaTagsResponseBodyMediaTagListOptions) SetOptionChineseName(v string) *ListAllPublicMediaTagsResponseBodyMediaTagListOptions {
+	s.OptionChineseName = &v
+	return s
+}
+
+func (s *ListAllPublicMediaTagsResponseBodyMediaTagListOptions) SetOptionEnglishName(v string) *ListAllPublicMediaTagsResponseBodyMediaTagListOptions {
+	s.OptionEnglishName = &v
+	return s
+}
+
+func (s *ListAllPublicMediaTagsResponseBodyMediaTagListOptions) SetOptionId(v string) *ListAllPublicMediaTagsResponseBodyMediaTagListOptions {
+	s.OptionId = &v
 	return s
 }
 
@@ -6224,6 +7339,323 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 	return s
 }
 
+type SearchPublicMediaInfoRequest struct {
+	Authorized                 *bool   `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	DynamicMetaDataMatchFields *string `json:"DynamicMetaDataMatchFields,omitempty" xml:"DynamicMetaDataMatchFields,omitempty"`
+	EntityId                   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	Favorite                   *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	MediaIds                   *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	PageNo                     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize                   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy                     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s SearchPublicMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoRequest) SetAuthorized(v bool) *SearchPublicMediaInfoRequest {
+	s.Authorized = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetDynamicMetaDataMatchFields(v string) *SearchPublicMediaInfoRequest {
+	s.DynamicMetaDataMatchFields = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetEntityId(v string) *SearchPublicMediaInfoRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetFavorite(v bool) *SearchPublicMediaInfoRequest {
+	s.Favorite = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetMediaIds(v string) *SearchPublicMediaInfoRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetPageNo(v int32) *SearchPublicMediaInfoRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetPageSize(v int32) *SearchPublicMediaInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoRequest) SetSortBy(v string) *SearchPublicMediaInfoRequest {
+	s.SortBy = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponseBody struct {
+	PublicMediaInfos []*SearchPublicMediaInfoResponseBodyPublicMediaInfos `json:"PublicMediaInfos,omitempty" xml:"PublicMediaInfos,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SearchPublicMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponseBody) SetPublicMediaInfos(v []*SearchPublicMediaInfoResponseBodyPublicMediaInfos) *SearchPublicMediaInfoResponseBody {
+	s.PublicMediaInfos = v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBody) SetRequestId(v string) *SearchPublicMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBody) SetTotalCount(v int64) *SearchPublicMediaInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponseBodyPublicMediaInfos struct {
+	Authorized        *bool                                                       `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	Favorite          *bool                                                       `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	MediaInfo         *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	RemainingAuthTime *string                                                     `json:"RemainingAuthTime,omitempty" xml:"RemainingAuthTime,omitempty"`
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetAuthorized(v bool) *SearchPublicMediaInfoResponseBodyPublicMediaInfos {
+	s.Authorized = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetFavorite(v bool) *SearchPublicMediaInfoResponseBodyPublicMediaInfos {
+	s.Favorite = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetMediaInfo(v *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) *SearchPublicMediaInfoResponseBodyPublicMediaInfos {
+	s.MediaInfo = v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) SetRemainingAuthTime(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfos {
+	s.RemainingAuthTime = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
+	DynamicMetaData *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
+	// BasicInfo
+	MediaBasicInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// 媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) SetDynamicMetaData(v *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo {
+	s.DynamicMetaData = v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) SetMediaBasicInfo(v *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo {
+	s.MediaBasicInfo = v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) SetMediaId(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo {
+	s.MediaId = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData) SetData(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData {
+	s.Data = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData) SetType(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData {
+	s.Type = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo struct {
+	// 媒资业务类型
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 分类
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 封面地址
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// 媒资创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 媒资删除时间
+	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// 内容描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// MediaId
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 标签
+	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// 媒资媒体类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 雪碧图
+	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// 资源状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 用户数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetBusinessType(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetCategory(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetCoverURL(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetCreateTime(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetDeletedTime(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.DeletedTime = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetDescription(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetMediaId(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetMediaTags(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.MediaTags = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetMediaType(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.MediaType = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetModifiedTime(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetSource(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetSpriteImages(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.SpriteImages = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetStatus(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetTitle(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo) SetUserData(v string) *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo {
+	s.UserData = &v
+	return s
+}
+
+type SearchPublicMediaInfoResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SearchPublicMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchPublicMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchPublicMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchPublicMediaInfoResponse) SetHeaders(v map[string]*string) *SearchPublicMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchPublicMediaInfoResponse) SetBody(v *SearchPublicMediaInfoResponseBody) *SearchPublicMediaInfoResponse {
+	s.Body = v
+	return s
+}
+
 type SetDefaultStorageLocationRequest struct {
 	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -6480,13 +7912,20 @@ func (s *SubmitASRJobResponse) SetBody(v *SubmitASRJobResponseBody) *SubmitASRJo
 }
 
 type SubmitAudioProduceJobRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 音频生产配置
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 文本内容。  最大支持300个汉字
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// 音频输出配置
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// 是否覆盖现有OSS文件
+	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// 任务标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 自定义数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitAudioProduceJobRequest) String() string {
@@ -6535,7 +7974,7 @@ func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduce
 type SubmitAudioProduceJobResponseBody struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 任务状态
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
@@ -8094,11 +9533,26 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MaterialMaps"] = request.MaterialMaps
+	query["ProjectId"] = request.ProjectId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEditingProjectMaterials"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddEditingProjectMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8117,16 +9571,79 @@ func (client *Client) AddEditingProjectMaterials(request *AddEditingProjectMater
 	return _result, _err
 }
 
+func (client *Client) AddFavoritePublicMediaWithOptions(request *AddFavoritePublicMediaRequest, runtime *util.RuntimeOptions) (_result *AddFavoritePublicMediaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["MediaIds"] = request.MediaIds
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddFavoritePublicMedia"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddFavoritePublicMediaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequest) (_result *AddFavoritePublicMediaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddFavoritePublicMediaResponse{}
+	_body, _err := client.AddFavoritePublicMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtime *util.RuntimeOptions) (_result *AddTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Config"] = request.Config
+	query["CoverUrl"] = request.CoverUrl
+	query["Name"] = request.Name
+	query["PreviewMedia"] = request.PreviewMedia
+	query["RelatedMediaids"] = request.RelatedMediaids
+	query["Source"] = request.Source
+	query["Status"] = request.Status
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8150,11 +9667,26 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AdditionType"] = request.AdditionType
+	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetMediaInfos"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchGetMediaInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchGetMediaInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8173,16 +9705,80 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CancelFavoritePublicMediaWithOptions(request *CancelFavoritePublicMediaRequest, runtime *util.RuntimeOptions) (_result *CancelFavoritePublicMediaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["MediaIds"] = request.MediaIds
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelFavoritePublicMedia"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelFavoritePublicMediaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelFavoritePublicMedia(request *CancelFavoritePublicMediaRequest) (_result *CancelFavoritePublicMediaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelFavoritePublicMediaResponse{}
+	_body, _err := client.CancelFavoritePublicMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProjectRequest, runtime *util.RuntimeOptions) (_result *CreateEditingProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessConfig"] = request.BusinessConfig
+	query["ClipsParam"] = request.ClipsParam
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["MaterialMaps"] = request.MaterialMaps
+	query["ProjectType"] = request.ProjectType
+	query["TemplateId"] = request.TemplateId
+	query["Timeline"] = request.Timeline
+	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEditingProject"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8208,10 +9804,21 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEditingProjectMaterials"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEditingProjectMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8235,11 +9842,25 @@ func (client *Client) DeleteEditingProjectsWithOptions(request *DeleteEditingPro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ProjectIds"] = request.ProjectIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEditingProjects"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEditingProjects"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8263,11 +9884,26 @@ func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InputURLs"] = request.InputURLs
+	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaInfos"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMediaInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8291,11 +9927,25 @@ func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSmartJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSmartJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSmartJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8321,10 +9971,21 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8343,10 +10004,30 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DescribeIceProductStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeIceProductStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeIceProductStatusWithOptions(request *DescribeIceProductStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeIceProductStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["CommodityCode"] = request.CommodityCode
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIceProductStatus"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeIceProductStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIceProductStatus"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8354,10 +10035,54 @@ func (client *Client) DescribeIceProductStatusWithOptions(runtime *util.RuntimeO
 	return _result, _err
 }
 
-func (client *Client) DescribeIceProductStatus() (_result *DescribeIceProductStatusResponse, _err error) {
+func (client *Client) DescribeIceProductStatus(request *DescribeIceProductStatusRequest) (_result *DescribeIceProductStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIceProductStatusResponse{}
-	_body, _err := client.DescribeIceProductStatusWithOptions(runtime)
+	_body, _err := client.DescribeIceProductStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMaterialPackageInfoWithOptions(request *DescribeMaterialPackageInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeMaterialPackageInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["MaterialPackageId"] = request.MaterialPackageId
+	query["MaterialPackageType"] = request.MaterialPackageType
+	query["Status"] = request.Status
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMaterialPackageInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMaterialPackageInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMaterialPackageInfo(request *DescribeMaterialPackageInfoRequest) (_result *DescribeMaterialPackageInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMaterialPackageInfoResponse{}
+	_body, _err := client.DescribeMaterialPackageInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8367,8 +10092,19 @@ func (client *Client) DescribeIceProductStatus() (_result *DescribeIceProductSta
 
 func (client *Client) DescribeRelatedAuthorizationStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRelatedAuthorizationStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRelatedAuthorizationStatus"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRelatedAuthorizationStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRelatedAuthorizationStatus"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8389,8 +10125,19 @@ func (client *Client) DescribeRelatedAuthorizationStatus() (_result *DescribeRel
 
 func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultStorageLocationResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetDefaultStorageLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetDefaultStorageLocationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8416,10 +10163,21 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEditingProject"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8445,10 +10203,21 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEditingProjectMaterials"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEditingProjectMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8469,8 +10238,19 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 
 func (client *Client) GetEventCallbackWithOptions(runtime *util.RuntimeOptions) (_result *GetEventCallbackResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetEventCallback"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEventCallbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEventCallback"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8496,10 +10276,21 @@ func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditing
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveEditingIndexFile"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLiveEditingIndexFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveEditingIndexFile"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8523,11 +10314,25 @@ func (client *Client) GetLiveEditingJobWithOptions(request *GetLiveEditingJobReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveEditingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLiveEditingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveEditingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8551,11 +10356,27 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InputURL"] = request.InputURL
+	query["MediaId"] = request.MediaId
+	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8581,10 +10402,21 @@ func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducing
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaProducingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaProducingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMediaProducingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8603,6 +10435,48 @@ func (client *Client) GetMediaProducingJob(request *GetMediaProducingJobRequest)
 	return _result, _err
 }
 
+func (client *Client) GetPublicMediaInfoWithOptions(request *GetPublicMediaInfoRequest, runtime *util.RuntimeOptions) (_result *GetPublicMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["MediaId"] = request.MediaId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPublicMediaInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPublicMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPublicMediaInfo(request *GetPublicMediaInfoRequest) (_result *GetPublicMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPublicMediaInfoResponse{}
+	_body, _err := client.GetPublicMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobRequest, runtime *util.RuntimeOptions) (_result *GetSmartHandleJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8610,10 +10484,21 @@ func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmartHandleJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSmartHandleJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSmartHandleJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8639,10 +10524,21 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8668,10 +10564,21 @@ func (client *Client) GetTemplateMaterialsWithOptions(request *GetTemplateMateri
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateMaterials"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateMaterialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplateMaterials"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8695,11 +10602,26 @@ func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessType"] = request.BusinessType
+	query["EntityId"] = request.EntityId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllPublicMediaTags"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAllPublicMediaTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAllPublicMediaTags"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8723,11 +10645,35 @@ func (client *Client) ListMediaBasicInfosWithOptions(request *ListMediaBasicInfo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessType"] = request.BusinessType
+	query["Category"] = request.Category
+	query["EndTime"] = request.EndTime
+	query["IncludeFileBasicInfo"] = request.IncludeFileBasicInfo
+	query["MaxResults"] = request.MaxResults
+	query["MediaType"] = request.MediaType
+	query["NextToken"] = request.NextToken
+	query["SortBy"] = request.SortBy
+	query["Source"] = request.Source
+	query["StartTime"] = request.StartTime
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaBasicInfos"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaBasicInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMediaBasicInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8751,11 +10697,25 @@ func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProduc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaProducingJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaProducingJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMediaProducingJobs"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8779,11 +10739,28 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IncludeFileBasicInfo"] = request.IncludeFileBasicInfo
+	query["MaxResults"] = request.MaxResults
+	query["MediaTagId"] = request.MediaTagId
+	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPublicMediaBasicInfos"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicMediaBasicInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPublicMediaBasicInfos"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8809,10 +10786,21 @@ func (client *Client) ListSmartJobsWithOptions(request *ListSmartJobsRequest, ru
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSmartJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSmartJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSmartJobs"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8838,10 +10826,21 @@ func (client *Client) ListSysTemplatesWithOptions(request *ListSysTemplatesReque
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSysTemplates"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSysTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSysTemplates"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8865,11 +10864,29 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateSource"] = request.CreateSource
+	query["Keyword"] = request.Keyword
+	query["SortType"] = request.SortType
+	query["Status"] = request.Status
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTemplates"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTemplates"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8893,11 +10910,37 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessType"] = request.BusinessType
+	query["Category"] = request.Category
+	query["ClientToken"] = request.ClientToken
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["DynamicMetaDataList"] = request.DynamicMetaDataList
+	query["InputURL"] = request.InputURL
+	query["MediaTags"] = request.MediaTags
+	query["MediaType"] = request.MediaType
+	query["Overwrite"] = request.Overwrite
+	query["RegisterConfig"] = request.RegisterConfig
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterMediaInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8921,11 +10964,33 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CreateSource"] = request.CreateSource
+	query["EndTime"] = request.EndTime
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["ProjectType"] = request.ProjectType
+	query["SortBy"] = request.SortBy
+	query["StartTime"] = request.StartTime
+	query["Status"] = request.Status
+	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchEditingProject"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8944,16 +11009,81 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 	return _result, _err
 }
 
+func (client *Client) SearchPublicMediaInfoWithOptions(request *SearchPublicMediaInfoRequest, runtime *util.RuntimeOptions) (_result *SearchPublicMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["Authorized"] = request.Authorized
+	query["DynamicMetaDataMatchFields"] = request.DynamicMetaDataMatchFields
+	query["EntityId"] = request.EntityId
+	query["Favorite"] = request.Favorite
+	query["MediaIds"] = request.MediaIds
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["SortBy"] = request.SortBy
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchPublicMediaInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchPublicMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchPublicMediaInfo(request *SearchPublicMediaInfoRequest) (_result *SearchPublicMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchPublicMediaInfoResponse{}
+	_body, _err := client.SearchPublicMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultStorageLocationRequest, runtime *util.RuntimeOptions) (_result *SetDefaultStorageLocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Bucket"] = request.Bucket
+	query["Path"] = request.Path
+	query["StorageType"] = request.StorageType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultStorageLocation"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultStorageLocationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultStorageLocation"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8977,11 +11107,26 @@ func (client *Client) SetEventCallbackWithOptions(request *SetEventCallbackReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallbackQueueName"] = request.CallbackQueueName
+	query["EventTypeList"] = request.EventTypeList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetEventCallback"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetEventCallbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetEventCallback"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9005,11 +11150,30 @@ func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["Duration"] = request.Duration
+	query["InputFile"] = request.InputFile
+	query["StartTime"] = request.StartTime
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitASRJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitASRJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitASRJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9033,11 +11197,31 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["EditingConfig"] = request.EditingConfig
+	query["InputConfig"] = request.InputConfig
+	query["OutputConfig"] = request.OutputConfig
+	query["Overwrite"] = request.Overwrite
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAudioProduceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAudioProduceJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitAudioProduceJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9061,11 +11245,32 @@ func (client *Client) SubmitDelogoJobWithOptions(request *SubmitDelogoJobRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["InputFile"] = request.InputFile
+	query["InputType"] = request.InputType
+	query["OutputConfig"] = request.OutputConfig
+	query["OutputMediaTarget"] = request.OutputMediaTarget
+	query["Overwrite"] = request.Overwrite
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDelogoJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitDelogoJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitDelogoJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9089,11 +11294,32 @@ func (client *Client) SubmitH2VJobWithOptions(request *SubmitH2VJobRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["InputFile"] = request.InputFile
+	query["InputType"] = request.InputType
+	query["OutputConfig"] = request.OutputConfig
+	query["OutputMediaTarget"] = request.OutputMediaTarget
+	query["Overwrite"] = request.Overwrite
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitH2VJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitH2VJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitH2VJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9119,10 +11345,21 @@ func (client *Client) SubmitKeyWordCutJobWithOptions(request *SubmitKeyWordCutJo
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitKeyWordCutJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitKeyWordCutJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitKeyWordCutJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9146,11 +11383,31 @@ func (client *Client) SubmitLiveEditingJobWithOptions(request *SubmitLiveEditing
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Clips"] = request.Clips
+	query["LiveStreamConfig"] = request.LiveStreamConfig
+	query["MediaProduceConfig"] = request.MediaProduceConfig
+	query["OutputMediaConfig"] = request.OutputMediaConfig
+	query["OutputMediaTarget"] = request.OutputMediaTarget
+	query["ProjectId"] = request.ProjectId
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitLiveEditingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitLiveEditingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitLiveEditingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9174,11 +11431,32 @@ func (client *Client) SubmitMattingJobWithOptions(request *SubmitMattingJobReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["InputFile"] = request.InputFile
+	query["InputType"] = request.InputType
+	query["OutputConfig"] = request.OutputConfig
+	query["OutputMediaTarget"] = request.OutputMediaTarget
+	query["Overwrite"] = request.Overwrite
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMattingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMattingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitMattingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9202,11 +11480,35 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["ClipsParam"] = request.ClipsParam
+	query["EditingProduceConfig"] = request.EditingProduceConfig
+	query["OutputMediaConfig"] = request.OutputMediaConfig
+	query["OutputMediaTarget"] = request.OutputMediaTarget
+	query["ProjectId"] = request.ProjectId
+	query["ProjectMetadata"] = request.ProjectMetadata
+	query["Source"] = request.Source
+	query["TemplateId"] = request.TemplateId
+	query["Timeline"] = request.Timeline
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMediaProducingJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaProducingJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitMediaProducingJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9232,10 +11534,21 @@ func (client *Client) SubmitPPTCutJobWithOptions(request *SubmitPPTCutJobRequest
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitPPTCutJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPPTCutJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitPPTCutJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9259,11 +11572,32 @@ func (client *Client) SubmitSubtitleProduceJobWithOptions(request *SubmitSubtitl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["EditingConfig"] = request.EditingConfig
+	query["InputConfig"] = request.InputConfig
+	query["IsAsync"] = request.IsAsync
+	query["OutputConfig"] = request.OutputConfig
+	query["Title"] = request.Title
+	query["Type"] = request.Type
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSubtitleProduceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSubtitleProduceJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSubtitleProduceJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9287,11 +11621,32 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BusinessStatus"] = request.BusinessStatus
+	query["ClipsParam"] = request.ClipsParam
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["ProjectId"] = request.ProjectId
+	query["TemplateId"] = request.TemplateId
+	query["Timeline"] = request.Timeline
+	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEditingProject"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEditingProjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEditingProject"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9315,11 +11670,36 @@ func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppendDynamicMeta"] = request.AppendDynamicMeta
+	query["AppendTags"] = request.AppendTags
+	query["BusinessType"] = request.BusinessType
+	query["Category"] = request.Category
+	query["CoverURL"] = request.CoverURL
+	query["Description"] = request.Description
+	query["DynamicMetaDataList"] = request.DynamicMetaDataList
+	query["InputURL"] = request.InputURL
+	query["MediaId"] = request.MediaId
+	query["MediaTags"] = request.MediaTags
+	query["Title"] = request.Title
+	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaInfo"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateMediaInfo"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9343,11 +11723,26 @@ func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FEExtend"] = request.FEExtend
+	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSmartJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateSmartJob"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9371,11 +11766,32 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Config"] = request.Config
+	query["CoverUrl"] = request.CoverUrl
+	query["Name"] = request.Name
+	query["PreviewMedia"] = request.PreviewMedia
+	query["RelatedMediaids"] = request.RelatedMediaids
+	query["Source"] = request.Source
+	query["Status"] = request.Status
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTemplate"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTemplate"), tea.String("2020-11-09"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
