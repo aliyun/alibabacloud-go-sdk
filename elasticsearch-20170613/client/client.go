@@ -940,6 +940,105 @@ func (s *CreateCollectorResponse) SetBody(v *CreateCollectorResponseBody) *Creat
 	return s
 }
 
+type CreateComponentIndexRequest struct {
+	Meta     map[string]interface{}               `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Template *CreateComponentIndexRequestTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+}
+
+func (s CreateComponentIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateComponentIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateComponentIndexRequest) SetMeta(v map[string]interface{}) *CreateComponentIndexRequest {
+	s.Meta = v
+	return s
+}
+
+func (s *CreateComponentIndexRequest) SetTemplate(v *CreateComponentIndexRequestTemplate) *CreateComponentIndexRequest {
+	s.Template = v
+	return s
+}
+
+type CreateComponentIndexRequestTemplate struct {
+	Aliases  map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s CreateComponentIndexRequestTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateComponentIndexRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateComponentIndexRequestTemplate) SetAliases(v map[string]interface{}) *CreateComponentIndexRequestTemplate {
+	s.Aliases = v
+	return s
+}
+
+func (s *CreateComponentIndexRequestTemplate) SetMappings(v map[string]interface{}) *CreateComponentIndexRequestTemplate {
+	s.Mappings = v
+	return s
+}
+
+func (s *CreateComponentIndexRequestTemplate) SetSettings(v map[string]interface{}) *CreateComponentIndexRequestTemplate {
+	s.Settings = v
+	return s
+}
+
+type CreateComponentIndexResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s CreateComponentIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateComponentIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateComponentIndexResponseBody) SetRequestId(v string) *CreateComponentIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateComponentIndexResponseBody) SetResult(v bool) *CreateComponentIndexResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CreateComponentIndexResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateComponentIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateComponentIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateComponentIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateComponentIndexResponse) SetHeaders(v map[string]*string) *CreateComponentIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateComponentIndexResponse) SetBody(v *CreateComponentIndexResponseBody) *CreateComponentIndexResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataStreamRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
@@ -1588,7 +1687,11 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 
 type CreateVpcEndpointRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// 终端节点服务ID
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// 可用区ID
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	DryRun *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateVpcEndpointRequest) String() string {
@@ -1601,6 +1704,16 @@ func (s CreateVpcEndpointRequest) GoString() string {
 
 func (s *CreateVpcEndpointRequest) SetClientToken(v string) *CreateVpcEndpointRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetServiceId(v string) *CreateVpcEndpointRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetZoneId(v string) *CreateVpcEndpointRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -1816,6 +1929,53 @@ func (s *DeleteCollectorResponse) SetBody(v *DeleteCollectorResponseBody) *Delet
 	return s
 }
 
+type DeleteComponentIndexResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteComponentIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteComponentIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteComponentIndexResponseBody) SetRequestId(v string) *DeleteComponentIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteComponentIndexResponseBody) SetResult(v bool) *DeleteComponentIndexResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteComponentIndexResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteComponentIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteComponentIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteComponentIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteComponentIndexResponse) SetHeaders(v map[string]*string) *DeleteComponentIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteComponentIndexResponse) SetBody(v *DeleteComponentIndexResponseBody) *DeleteComponentIndexResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteConnectedClusterRequest struct {
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	ConnectedInstanceId *string `json:"connectedInstanceId,omitempty" xml:"connectedInstanceId,omitempty"`
@@ -2013,6 +2173,52 @@ func (s *DeleteDataTaskResponse) SetHeaders(v map[string]*string) *DeleteDataTas
 }
 
 func (s *DeleteDataTaskResponse) SetBody(v *DeleteDataTaskResponseBody) *DeleteDataTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDeprecatedTemplateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteDeprecatedTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeprecatedTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeprecatedTemplateResponseBody) SetRequestId(v string) *DeleteDeprecatedTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeprecatedTemplateResponseBody) SetResult(v bool) *DeleteDeprecatedTemplateResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteDeprecatedTemplateResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeprecatedTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDeprecatedTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeprecatedTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeprecatedTemplateResponse) SetHeaders(v map[string]*string) *DeleteDeprecatedTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeprecatedTemplateResponse) SetBody(v *DeleteDeprecatedTemplateResponseBody) *DeleteDeprecatedTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -2529,26 +2735,25 @@ func (s *DescribeApmResponseBody) SetResult(v *DescribeApmResponseBodyResult) *D
 }
 
 type DescribeApmResponseBodyResult struct {
-	ApmServerDomain     *string `json:"apmServerDomain,omitempty" xml:"apmServerDomain,omitempty"`
-	CreatedAt           *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	DeployedReplica     *int64  `json:"deployedReplica,omitempty" xml:"deployedReplica,omitempty"`
-	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
-	EndTime             *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	InstanceId          *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	NodeAmount          *int64  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	OutputES            *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
-	OutputESUserName    *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
-	OutputEsDescription *string `json:"outputEsDescription,omitempty" xml:"outputEsDescription,omitempty"`
-	OwnerId             *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	PaymentType         *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	Region              *string `json:"region,omitempty" xml:"region,omitempty"`
-	Replica             *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
-	ResourceSpec        *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
-	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
-	Version             *string `json:"version,omitempty" xml:"version,omitempty"`
-	VpcId               *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VsArea              *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	VswitchId           *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	ApmServerDomain  *string `json:"apmServerDomain,omitempty" xml:"apmServerDomain,omitempty"`
+	CreatedAt        *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	DeployedReplica  *int64  `json:"deployedReplica,omitempty" xml:"deployedReplica,omitempty"`
+	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	EndTime          *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeAmount       *int64  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	OutputES         *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	OutputESUserName *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
+	OwnerId          *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	PaymentType      *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Region           *string `json:"region,omitempty" xml:"region,omitempty"`
+	Replica          *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+	ResourceSpec     *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	Version          *string `json:"version,omitempty" xml:"version,omitempty"`
+	VpcId            *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea           *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	VswitchId        *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
 func (s DescribeApmResponseBodyResult) String() string {
@@ -2601,11 +2806,6 @@ func (s *DescribeApmResponseBodyResult) SetOutputES(v string) *DescribeApmRespon
 
 func (s *DescribeApmResponseBodyResult) SetOutputESUserName(v string) *DescribeApmResponseBodyResult {
 	s.OutputESUserName = &v
-	return s
-}
-
-func (s *DescribeApmResponseBodyResult) SetOutputEsDescription(v string) *DescribeApmResponseBodyResult {
-	s.OutputEsDescription = &v
 	return s
 }
 
@@ -2958,6 +3158,104 @@ func (s *DescribeCollectorResponse) SetBody(v *DescribeCollectorResponseBody) *D
 	return s
 }
 
+type DescribeComponentIndexResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeComponentIndexResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DescribeComponentIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComponentIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComponentIndexResponseBody) SetRequestId(v string) *DescribeComponentIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeComponentIndexResponseBody) SetResult(v *DescribeComponentIndexResponseBodyResult) *DescribeComponentIndexResponseBody {
+	s.Result = v
+	return s
+}
+
+type DescribeComponentIndexResponseBodyResult struct {
+	Meta     map[string]interface{}                            `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Template *DescribeComponentIndexResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+}
+
+func (s DescribeComponentIndexResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComponentIndexResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComponentIndexResponseBodyResult) SetMeta(v map[string]interface{}) *DescribeComponentIndexResponseBodyResult {
+	s.Meta = v
+	return s
+}
+
+func (s *DescribeComponentIndexResponseBodyResult) SetTemplate(v *DescribeComponentIndexResponseBodyResultTemplate) *DescribeComponentIndexResponseBodyResult {
+	s.Template = v
+	return s
+}
+
+type DescribeComponentIndexResponseBodyResultTemplate struct {
+	Aliases  map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s DescribeComponentIndexResponseBodyResultTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComponentIndexResponseBodyResultTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComponentIndexResponseBodyResultTemplate) SetAliases(v map[string]interface{}) *DescribeComponentIndexResponseBodyResultTemplate {
+	s.Aliases = v
+	return s
+}
+
+func (s *DescribeComponentIndexResponseBodyResultTemplate) SetMappings(v map[string]interface{}) *DescribeComponentIndexResponseBodyResultTemplate {
+	s.Mappings = v
+	return s
+}
+
+func (s *DescribeComponentIndexResponseBodyResultTemplate) SetSettings(v map[string]interface{}) *DescribeComponentIndexResponseBodyResultTemplate {
+	s.Settings = v
+	return s
+}
+
+type DescribeComponentIndexResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeComponentIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeComponentIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeComponentIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeComponentIndexResponse) SetHeaders(v map[string]*string) *DescribeComponentIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeComponentIndexResponse) SetBody(v *DescribeComponentIndexResponseBody) *DescribeComponentIndexResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeConnectableClustersRequest struct {
 	AlreadySetItems *bool `json:"alreadySetItems,omitempty" xml:"alreadySetItems,omitempty"`
 }
@@ -3040,6 +3338,128 @@ func (s *DescribeConnectableClustersResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DescribeConnectableClustersResponse) SetBody(v *DescribeConnectableClustersResponseBody) *DescribeConnectableClustersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDeprecatedTemplateResponseBody struct {
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeDeprecatedTemplateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DescribeDeprecatedTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeprecatedTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeprecatedTemplateResponseBody) SetRequestId(v string) *DescribeDeprecatedTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBody) SetResult(v *DescribeDeprecatedTemplateResponseBodyResult) *DescribeDeprecatedTemplateResponseBody {
+	s.Result = v
+	return s
+}
+
+type DescribeDeprecatedTemplateResponseBodyResult struct {
+	DataStream    *bool                                                 `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	IndexPatterns []*string                                             `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	IndexTemplate *string                                               `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	Order         *int64                                                `json:"order,omitempty" xml:"order,omitempty"`
+	Template      *DescribeDeprecatedTemplateResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	Version       *string                                               `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeDeprecatedTemplateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeprecatedTemplateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetDataStream(v bool) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.DataStream = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetIndexPatterns(v []*string) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.IndexPatterns = v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetIndexTemplate(v string) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.IndexTemplate = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetOrder(v int64) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetTemplate(v *DescribeDeprecatedTemplateResponseBodyResultTemplate) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.Template = v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResult) SetVersion(v string) *DescribeDeprecatedTemplateResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type DescribeDeprecatedTemplateResponseBodyResultTemplate struct {
+	Aliases  *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s DescribeDeprecatedTemplateResponseBodyResultTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeprecatedTemplateResponseBodyResultTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResultTemplate) SetAliases(v string) *DescribeDeprecatedTemplateResponseBodyResultTemplate {
+	s.Aliases = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResultTemplate) SetMappings(v string) *DescribeDeprecatedTemplateResponseBodyResultTemplate {
+	s.Mappings = &v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponseBodyResultTemplate) SetSettings(v string) *DescribeDeprecatedTemplateResponseBodyResultTemplate {
+	s.Settings = &v
+	return s
+}
+
+type DescribeDeprecatedTemplateResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDeprecatedTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDeprecatedTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeprecatedTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeprecatedTemplateResponse) SetHeaders(v map[string]*string) *DescribeDeprecatedTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeprecatedTemplateResponse) SetBody(v *DescribeDeprecatedTemplateResponseBody) *DescribeDeprecatedTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -8637,6 +9057,259 @@ func (s *ListCollectorsResponse) SetBody(v *ListCollectorsResponseBody) *ListCol
 	return s
 }
 
+type ListComponentIndicesRequest struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Page *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	Size *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListComponentIndicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesRequest) SetName(v string) *ListComponentIndicesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListComponentIndicesRequest) SetPage(v int32) *ListComponentIndicesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListComponentIndicesRequest) SetSize(v int32) *ListComponentIndicesRequest {
+	s.Size = &v
+	return s
+}
+
+type ListComponentIndicesResponseBody struct {
+	Headers   *ListComponentIndicesResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListComponentIndicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListComponentIndicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBody) SetHeaders(v *ListComponentIndicesResponseBodyHeaders) *ListComponentIndicesResponseBody {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBody) SetRequestId(v string) *ListComponentIndicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBody) SetResult(v []*ListComponentIndicesResponseBodyResult) *ListComponentIndicesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListComponentIndicesResponseBodyHeaders struct {
+	XTotalCount *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+}
+
+func (s ListComponentIndicesResponseBodyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyHeaders) SetXTotalCount(v int64) *ListComponentIndicesResponseBodyHeaders {
+	s.XTotalCount = &v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResult struct {
+	Composed []*string                                      `json:"composed,omitempty" xml:"composed,omitempty" type:"Repeated"`
+	Content  *ListComponentIndicesResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	Name     *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListComponentIndicesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResult) SetComposed(v []*string) *ListComponentIndicesResponseBodyResult {
+	s.Composed = v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResult) SetContent(v *ListComponentIndicesResponseBodyResultContent) *ListComponentIndicesResponseBodyResult {
+	s.Content = v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResult) SetName(v string) *ListComponentIndicesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContent struct {
+	Meta     *ListComponentIndicesResponseBodyResultContentMeta     `json:"_meta,omitempty" xml:"_meta,omitempty" type:"Struct"`
+	Template *ListComponentIndicesResponseBodyResultContentTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	Version  *int64                                                 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContent) SetMeta(v *ListComponentIndicesResponseBodyResultContentMeta) *ListComponentIndicesResponseBodyResultContent {
+	s.Meta = v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResultContent) SetTemplate(v *ListComponentIndicesResponseBodyResultContentTemplate) *ListComponentIndicesResponseBodyResultContent {
+	s.Template = v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResultContent) SetVersion(v int64) *ListComponentIndicesResponseBodyResultContent {
+	s.Version = &v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContentMeta struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Managed     *bool   `json:"managed,omitempty" xml:"managed,omitempty"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContentMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContentMeta) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentMeta) SetDescription(v string) *ListComponentIndicesResponseBodyResultContentMeta {
+	s.Description = &v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentMeta) SetManaged(v bool) *ListComponentIndicesResponseBodyResultContentMeta {
+	s.Managed = &v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContentTemplate struct {
+	Settings *ListComponentIndicesResponseBodyResultContentTemplateSettings `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentTemplate) SetSettings(v *ListComponentIndicesResponseBodyResultContentTemplateSettings) *ListComponentIndicesResponseBodyResultContentTemplate {
+	s.Settings = v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContentTemplateSettings struct {
+	Index *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex `json:"index,omitempty" xml:"index,omitempty" type:"Struct"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettings) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) SetIndex(v *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) *ListComponentIndicesResponseBodyResultContentTemplateSettings {
+	s.Index = v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex struct {
+	Codec     *string                                                                      `json:"codec,omitempty" xml:"codec,omitempty"`
+	Lifecycle *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle `json:"lifecycle,omitempty" xml:"lifecycle,omitempty" type:"Struct"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) SetCodec(v string) *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex {
+	s.Codec = &v
+	return s
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) SetLifecycle(v *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle) *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex {
+	s.Lifecycle = v
+	return s
+}
+
+type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle) SetName(v string) *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle {
+	s.Name = &v
+	return s
+}
+
+type ListComponentIndicesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListComponentIndicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListComponentIndicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListComponentIndicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListComponentIndicesResponse) SetHeaders(v map[string]*string) *ListComponentIndicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListComponentIndicesResponse) SetBody(v *ListComponentIndicesResponseBody) *ListComponentIndicesResponse {
+	s.Body = v
+	return s
+}
+
 type ListConnectedClustersResponseBody struct {
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ListConnectedClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
@@ -9202,6 +9875,180 @@ func (s *ListDefaultCollectorConfigurationsResponse) SetHeaders(v map[string]*st
 }
 
 func (s *ListDefaultCollectorConfigurationsResponse) SetBody(v *ListDefaultCollectorConfigurationsResponseBody) *ListDefaultCollectorConfigurationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeprecatedTemplatesRequest struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Page *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	Size *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListDeprecatedTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesRequest) SetName(v string) *ListDeprecatedTemplatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesRequest) SetPage(v int32) *ListDeprecatedTemplatesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesRequest) SetSize(v int32) *ListDeprecatedTemplatesRequest {
+	s.Size = &v
+	return s
+}
+
+type ListDeprecatedTemplatesResponseBody struct {
+	Headers   *ListDeprecatedTemplatesResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListDeprecatedTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListDeprecatedTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesResponseBody) SetHeaders(v *ListDeprecatedTemplatesResponseBodyHeaders) *ListDeprecatedTemplatesResponseBody {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBody) SetRequestId(v string) *ListDeprecatedTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBody) SetResult(v []*ListDeprecatedTemplatesResponseBodyResult) *ListDeprecatedTemplatesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListDeprecatedTemplatesResponseBodyHeaders struct {
+	XTotalCount *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+}
+
+func (s ListDeprecatedTemplatesResponseBodyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesResponseBodyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyHeaders) SetXTotalCount(v int64) *ListDeprecatedTemplatesResponseBodyHeaders {
+	s.XTotalCount = &v
+	return s
+}
+
+type ListDeprecatedTemplatesResponseBodyResult struct {
+	DataStream    *bool                                              `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
+	IndexPatterns []*string                                          `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
+	IndexTemplate *string                                            `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	Order         *int64                                             `json:"order,omitempty" xml:"order,omitempty"`
+	Template      *ListDeprecatedTemplatesResponseBodyResultTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+	Version       *string                                            `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListDeprecatedTemplatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetDataStream(v bool) *ListDeprecatedTemplatesResponseBodyResult {
+	s.DataStream = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetIndexPatterns(v []*string) *ListDeprecatedTemplatesResponseBodyResult {
+	s.IndexPatterns = v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetIndexTemplate(v string) *ListDeprecatedTemplatesResponseBodyResult {
+	s.IndexTemplate = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetOrder(v int64) *ListDeprecatedTemplatesResponseBodyResult {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetTemplate(v *ListDeprecatedTemplatesResponseBodyResultTemplate) *ListDeprecatedTemplatesResponseBodyResult {
+	s.Template = v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResult) SetVersion(v string) *ListDeprecatedTemplatesResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type ListDeprecatedTemplatesResponseBodyResultTemplate struct {
+	Aliases  *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s ListDeprecatedTemplatesResponseBodyResultTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesResponseBodyResultTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResultTemplate) SetAliases(v string) *ListDeprecatedTemplatesResponseBodyResultTemplate {
+	s.Aliases = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResultTemplate) SetMappings(v string) *ListDeprecatedTemplatesResponseBodyResultTemplate {
+	s.Mappings = &v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponseBodyResultTemplate) SetSettings(v string) *ListDeprecatedTemplatesResponseBodyResultTemplate {
+	s.Settings = &v
+	return s
+}
+
+type ListDeprecatedTemplatesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDeprecatedTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDeprecatedTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeprecatedTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeprecatedTemplatesResponse) SetHeaders(v map[string]*string) *ListDeprecatedTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeprecatedTemplatesResponse) SetBody(v *ListDeprecatedTemplatesResponseBody) *ListDeprecatedTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -17317,6 +18164,99 @@ func (s *UpdateCollectorNameResponse) SetBody(v *UpdateCollectorNameResponseBody
 	return s
 }
 
+type UpdateComponentIndexRequest struct {
+	Meta     map[string]interface{}               `json:"_meta,omitempty" xml:"_meta,omitempty"`
+	Template *UpdateComponentIndexRequestTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
+}
+
+func (s UpdateComponentIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateComponentIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateComponentIndexRequest) SetMeta(v map[string]interface{}) *UpdateComponentIndexRequest {
+	s.Meta = v
+	return s
+}
+
+func (s *UpdateComponentIndexRequest) SetTemplate(v *UpdateComponentIndexRequestTemplate) *UpdateComponentIndexRequest {
+	s.Template = v
+	return s
+}
+
+type UpdateComponentIndexRequestTemplate struct {
+	Aliases  map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
+	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
+}
+
+func (s UpdateComponentIndexRequestTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateComponentIndexRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateComponentIndexRequestTemplate) SetAliases(v map[string]interface{}) *UpdateComponentIndexRequestTemplate {
+	s.Aliases = v
+	return s
+}
+
+func (s *UpdateComponentIndexRequestTemplate) SetMappings(v map[string]interface{}) *UpdateComponentIndexRequestTemplate {
+	s.Mappings = v
+	return s
+}
+
+func (s *UpdateComponentIndexRequestTemplate) SetSettings(v map[string]interface{}) *UpdateComponentIndexRequestTemplate {
+	s.Settings = v
+	return s
+}
+
+type UpdateComponentIndexResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateComponentIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateComponentIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateComponentIndexResponseBody) SetRequestId(v string) *UpdateComponentIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateComponentIndexResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateComponentIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateComponentIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateComponentIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateComponentIndexResponse) SetHeaders(v map[string]*string) *UpdateComponentIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateComponentIndexResponse) SetBody(v *UpdateComponentIndexResponseBody) *UpdateComponentIndexResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDescriptionRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
@@ -19569,10 +20509,10 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type UpdateWhiteIpsRequest struct {
-	ClientToken   *string                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	EsIPWhitelist []*string                          `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
-	ModifyMode    *string                            `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 	WhiteIpGroup  *UpdateWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
+	ClientToken   *string                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ModifyMode    *string                            `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdateWhiteIpsRequest) String() string {
@@ -19583,23 +20523,23 @@ func (s UpdateWhiteIpsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateWhiteIpsRequest) SetClientToken(v string) *UpdateWhiteIpsRequest {
-	s.ClientToken = &v
-	return s
-}
-
 func (s *UpdateWhiteIpsRequest) SetEsIPWhitelist(v []*string) *UpdateWhiteIpsRequest {
 	s.EsIPWhitelist = v
 	return s
 }
 
-func (s *UpdateWhiteIpsRequest) SetModifyMode(v string) *UpdateWhiteIpsRequest {
-	s.ModifyMode = &v
+func (s *UpdateWhiteIpsRequest) SetWhiteIpGroup(v *UpdateWhiteIpsRequestWhiteIpGroup) *UpdateWhiteIpsRequest {
+	s.WhiteIpGroup = v
 	return s
 }
 
-func (s *UpdateWhiteIpsRequest) SetWhiteIpGroup(v *UpdateWhiteIpsRequestWhiteIpGroup) *UpdateWhiteIpsRequest {
-	s.WhiteIpGroup = v
+func (s *UpdateWhiteIpsRequest) SetClientToken(v string) *UpdateWhiteIpsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateWhiteIpsRequest) SetModifyMode(v string) *UpdateWhiteIpsRequest {
+	s.ModifyMode = &v
 	return s
 }
 
@@ -19656,7 +20596,8 @@ func (s *UpdateWhiteIpsResponseBody) SetResult(v *UpdateWhiteIpsResponseBodyResu
 }
 
 type UpdateWhiteIpsResponseBodyResult struct {
-	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	EsIPWhitelist []*string                                      `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	NetworkConfig *UpdateWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateWhiteIpsResponseBodyResult) String() string {
@@ -19669,6 +20610,57 @@ func (s UpdateWhiteIpsResponseBodyResult) GoString() string {
 
 func (s *UpdateWhiteIpsResponseBodyResult) SetEsIPWhitelist(v []*string) *UpdateWhiteIpsResponseBodyResult {
 	s.EsIPWhitelist = v
+	return s
+}
+
+func (s *UpdateWhiteIpsResponseBodyResult) SetNetworkConfig(v *UpdateWhiteIpsResponseBodyResultNetworkConfig) *UpdateWhiteIpsResponseBodyResult {
+	s.NetworkConfig = v
+	return s
+}
+
+type UpdateWhiteIpsResponseBodyResultNetworkConfig struct {
+	WhiteIpGroupList []*UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateWhiteIpsResponseBodyResultNetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWhiteIpsResponseBodyResultNetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWhiteIpsResponseBodyResultNetworkConfig) SetWhiteIpGroupList(v []*UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) *UpdateWhiteIpsResponseBodyResultNetworkConfig {
+	s.WhiteIpGroupList = v
+	return s
+}
+
+type UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
+	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+}
+
+func (s UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetGroupName(v string) *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetIps(v []*string) *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.Ips = v
+	return s
+}
+
+func (s *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList) SetWhiteIpType(v string) *UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList {
+	s.WhiteIpType = &v
 	return s
 }
 
@@ -20315,8 +21307,19 @@ func (client *Client) ActivateZonesWithOptions(InstanceId *string, request *Acti
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ActivateZones"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/recover-zones"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ActivateZonesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ActivateZones"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/recover-zones"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20351,8 +21354,19 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddConnectableCluster"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AddConnectableClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddConnectableCluster"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/connected-clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20377,8 +21391,19 @@ func (client *Client) AddSnapshotRepoWithOptions(InstanceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSnapshotRepo"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AddSnapshotRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddSnapshotRepo"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshot-repos"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20413,8 +21438,19 @@ func (client *Client) CancelDeletionWithOptions(InstanceId *string, request *Can
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelDeletion"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/cancel-deletion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelDeletionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelDeletion"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/cancel-deletion"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20449,8 +21485,19 @@ func (client *Client) CancelLogstashDeletionWithOptions(InstanceId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelLogstashDeletion"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/cancel-deletion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelLogstashDeletionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelLogstashDeletion"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/cancel-deletion"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20489,8 +21536,19 @@ func (client *Client) CancelTaskWithOptions(InstanceId *string, request *CancelT
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/cancel-task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/cancel-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20536,8 +21594,19 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CapacityPlan"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/assist/actions/capacity-plan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CapacityPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("CapacityPlan"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/assist/actions/capacity-plan"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20576,8 +21645,19 @@ func (client *Client) CloseDiagnosisWithOptions(InstanceId *string, request *Clo
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseDiagnosis"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/close-diagnosis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CloseDiagnosisResponse{}
-	_body, _err := client.DoROARequest(tea.String("CloseDiagnosis"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/actions/close-diagnosis"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20612,8 +21692,19 @@ func (client *Client) CloseHttpsWithOptions(InstanceId *string, request *CloseHt
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseHttps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/close-https"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CloseHttpsResponse{}
-	_body, _err := client.DoROARequest(tea.String("CloseHttps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/close-https"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20649,8 +21740,19 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseManagedIndex"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/indices/" + tea.StringValue(Index) + "/close-managed"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CloseManagedIndexResponse{}
-	_body, _err := client.DoROARequest(tea.String("CloseManagedIndex"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/indices/"+tea.StringValue(Index)+"/close-managed"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20684,8 +21786,71 @@ func (client *Client) CreateCollectorWithOptions(request *CreateCollectorRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateComponentIndex(InstanceId *string, name *string, request *CreateComponentIndexRequest) (_result *CreateComponentIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateComponentIndexResponse{}
+	_body, _err := client.CreateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateComponentIndexWithOptions(InstanceId *string, name *string, request *CreateComponentIndexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateComponentIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Meta)) {
+		body["_meta"] = request.Meta
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Template))) {
+		body["template"] = request.Template
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateComponentIndex"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateComponentIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20720,8 +21885,19 @@ func (client *Client) CreateDataStreamWithOptions(InstanceId *string, request *C
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataStream"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateDataStreamResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateDataStream"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-streams"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20756,8 +21932,19 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataTasks"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateDataTasksResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateDataTasks"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20792,8 +21979,19 @@ func (client *Client) CreateILMPolicyWithOptions(InstanceId *string, request *Cr
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateILMPolicy"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateILMPolicyResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateILMPolicy"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ilm-policies"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20828,8 +22026,19 @@ func (client *Client) CreateIndexTemplateWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIndexTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateIndexTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateIndexTemplate"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/index-templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20863,8 +22072,19 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20903,8 +22123,19 @@ func (client *Client) CreatePipelinesWithOptions(InstanceId *string, request *Cr
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePipelines"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreatePipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreatePipelines"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20939,8 +22170,19 @@ func (client *Client) CreateSnapshotWithOptions(InstanceId *string, request *Cre
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSnapshot"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateSnapshot"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshots"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20975,12 +22217,33 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 		query["dryRun"] = request.DryRun
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		body["zoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVpcEndpoint"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVpcEndpointResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateVpcEndpoint"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/vpc-endpoints"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21015,8 +22278,19 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeactivateZones"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/down-zones"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeactivateZonesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeactivateZones"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/down-zones"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21051,8 +22325,57 @@ func (client *Client) DeleteCollectorWithOptions(ResId *string, request *DeleteC
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteComponentIndex(InstanceId *string, name *string) (_result *DeleteComponentIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteComponentIndexResponse{}
+	_body, _err := client.DeleteComponentIndexWithOptions(InstanceId, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteComponentIndexWithOptions(InstanceId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteComponentIndexResponse, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteComponentIndex"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteComponentIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21091,8 +22414,19 @@ func (client *Client) DeleteConnectedClusterWithOptions(InstanceId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConnectedCluster"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteConnectedClusterResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteConnectedCluster"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/connected-clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21128,8 +22462,19 @@ func (client *Client) DeleteDataStreamWithOptions(InstanceId *string, DataStream
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataStream"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams/" + tea.StringValue(DataStream)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteDataStreamResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteDataStream"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-streams/"+tea.StringValue(DataStream)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21168,8 +22513,57 @@ func (client *Client) DeleteDataTaskWithOptions(InstanceId *string, request *Del
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteDataTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteDataTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeprecatedTemplate(InstanceId *string, name *string) (_result *DeleteDeprecatedTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDeprecatedTemplateResponse{}
+	_body, _err := client.DeleteDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDeprecatedTemplateWithOptions(InstanceId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDeprecatedTemplateResponse, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeprecatedTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates/" + tea.StringValue(name)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeprecatedTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21195,8 +22589,19 @@ func (client *Client) DeleteILMPolicyWithOptions(InstanceId *string, PolicyName 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteILMPolicy"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteILMPolicyResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteILMPolicy"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ilm-policies/"+tea.StringValue(PolicyName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21222,8 +22627,19 @@ func (client *Client) DeleteIndexTemplateWithOptions(InstanceId *string, IndexTe
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndexTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteIndexTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteIndexTemplate"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/index-templates/"+tea.StringValue(IndexTemplate)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21262,8 +22678,19 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, request *Del
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21302,8 +22729,19 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21342,8 +22780,19 @@ func (client *Client) DeletePipelinesWithOptions(InstanceId *string, request *De
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePipelines"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeletePipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeletePipelines"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21382,8 +22831,19 @@ func (client *Client) DeleteSnapshotRepoWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnapshotRepo"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteSnapshotRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteSnapshotRepo"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshot-repos"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21419,8 +22879,19 @@ func (client *Client) DeleteVpcEndpointWithOptions(InstanceId *string, EndpointI
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVpcEndpoint"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints/" + tea.StringValue(EndpointId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteVpcEndpointResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteVpcEndpoint"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/vpc-endpoints/"+tea.StringValue(EndpointId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21445,8 +22916,19 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAckOperator"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/operator"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAckOperatorResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeAckOperator"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/ack-clusters/"+tea.StringValue(ClusterId)+"/operator"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21471,8 +22953,19 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, headers map[str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21497,8 +22990,57 @@ func (client *Client) DescribeCollectorWithOptions(ResId *string, headers map[st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeComponentIndex(InstanceId *string, name *string) (_result *DescribeComponentIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeComponentIndexResponse{}
+	_body, _err := client.DescribeComponentIndexWithOptions(InstanceId, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeComponentIndexWithOptions(InstanceId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeComponentIndexResponse, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeComponentIndex"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeComponentIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21533,8 +23075,57 @@ func (client *Client) DescribeConnectableClustersWithOptions(InstanceId *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConnectableClusters"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connectable-clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeConnectableClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeConnectableClusters"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/connectable-clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *string) (_result *DescribeDeprecatedTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeDeprecatedTemplateResponse{}
+	_body, _err := client.DescribeDeprecatedTemplateWithOptions(InstanceId, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeDeprecatedTemplateResponse, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeprecatedTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates/" + tea.StringValue(name)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDeprecatedTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21570,8 +23161,19 @@ func (client *Client) DescribeDiagnoseReportWithOptions(InstanceId *string, Repo
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnoseReport"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/reports/" + tea.StringValue(ReportId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeDiagnoseReportResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeDiagnoseReport"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/reports/"+tea.StringValue(ReportId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21606,8 +23208,19 @@ func (client *Client) DescribeDiagnosisSettingsWithOptions(InstanceId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosisSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/settings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeDiagnosisSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeDiagnosisSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21632,8 +23245,19 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeElasticsearchHealth"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elasticsearch-health"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeElasticsearchHealthResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeElasticsearchHealth"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/elasticsearch-health"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21659,8 +23283,19 @@ func (client *Client) DescribeILMPolicyWithOptions(InstanceId *string, PolicyNam
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeILMPolicy"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeILMPolicyResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeILMPolicy"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ilm-policies/"+tea.StringValue(PolicyName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21686,8 +23321,19 @@ func (client *Client) DescribeIndexTemplateWithOptions(InstanceId *string, Index
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIndexTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeIndexTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeIndexTemplate"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/index-templates/"+tea.StringValue(IndexTemplate)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21712,8 +23358,19 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21738,8 +23395,19 @@ func (client *Client) DescribeKibanaSettingsWithOptions(InstanceId *string, head
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKibanaSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-settings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeKibanaSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeKibanaSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/kibana-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21764,8 +23432,19 @@ func (client *Client) DescribeLogstashWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21791,8 +23470,19 @@ func (client *Client) DescribePipelineWithOptions(InstanceId *string, PipelineId
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePipeline"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/" + tea.StringValue(PipelineId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePipelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePipeline"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines/"+tea.StringValue(PipelineId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21827,8 +23517,19 @@ func (client *Client) DescribePipelineManagementConfigWithOptions(InstanceId *st
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePipelineManagementConfig"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipeline-management-config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribePipelineManagementConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribePipelineManagementConfig"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipeline-management-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21852,8 +23553,19 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeRegions"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/regions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21878,8 +23590,19 @@ func (client *Client) DescribeSnapshotSettingWithOptions(InstanceId *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSnapshotSetting"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-setting"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSnapshotSettingResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeSnapshotSetting"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshot-setting"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21904,8 +23627,19 @@ func (client *Client) DescribeTemplatesWithOptions(InstanceId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTemplates"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/templates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeTemplatesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTemplates"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21930,8 +23664,19 @@ func (client *Client) DescribeXpackMonitorConfigWithOptions(InstanceId *string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeXpackMonitorConfig"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/xpack-monitor-config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeXpackMonitorConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeXpackMonitorConfig"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/xpack-monitor-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21970,8 +23715,19 @@ func (client *Client) DiagnoseInstanceWithOptions(InstanceId *string, request *D
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DiagnoseInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/diagnose"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DiagnoseInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DiagnoseInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/actions/diagnose"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22006,8 +23762,19 @@ func (client *Client) EstimatedLogstashRestartTimeWithOptions(InstanceId *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EstimatedLogstashRestartTime"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/estimated-time/restart-time"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EstimatedLogstashRestartTimeResponse{}
-	_body, _err := client.DoROARequest(tea.String("EstimatedLogstashRestartTime"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/estimated-time/restart-time"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22042,8 +23809,19 @@ func (client *Client) EstimatedRestartTimeWithOptions(InstanceId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EstimatedRestartTime"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/estimated-time/restart-time"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EstimatedRestartTimeResponse{}
-	_body, _err := client.DoROARequest(tea.String("EstimatedRestartTime"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/estimated-time/restart-time"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22067,8 +23845,19 @@ func (client *Client) GetClusterDataInformationWithOptions(headers map[string]*s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterDataInformation"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/cluster/data-information"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetClusterDataInformationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetClusterDataInformation"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/cluster/data-information"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22093,8 +23882,19 @@ func (client *Client) GetElastictaskWithOptions(InstanceId *string, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetElastictask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elastic-task"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetElastictaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetElastictask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/elastic-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22119,8 +23919,19 @@ func (client *Client) GetEmonGrafanaAlertsWithOptions(ProjectId *string, headers
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmonGrafanaAlerts"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/grafana/proxy/api/alerts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEmonGrafanaAlertsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEmonGrafanaAlerts"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/emon/projects/"+tea.StringValue(ProjectId)+"/grafana/proxy/api/alerts"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22145,8 +23956,19 @@ func (client *Client) GetEmonGrafanaDashboardsWithOptions(ProjectId *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmonGrafanaDashboards"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/grafana/proxy/api/search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEmonGrafanaDashboardsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEmonGrafanaDashboards"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/emon/projects/"+tea.StringValue(ProjectId)+"/grafana/proxy/api/search"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22171,8 +23993,19 @@ func (client *Client) GetEmonMonitorDataWithOptions(ProjectId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmonMonitorData"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/metrics/query"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEmonMonitorDataResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEmonMonitorData"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/emon/projects/"+tea.StringValue(ProjectId)+"/metrics/query"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22197,8 +24030,19 @@ func (client *Client) GetOpenStoreUsageWithOptions(InstanceId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOpenStoreUsage"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/openstore/usage"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetOpenStoreUsageResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetOpenStoreUsage"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/openstore/usage"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22232,8 +24076,19 @@ func (client *Client) GetRegionConfigurationWithOptions(request *GetRegionConfig
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegionConfiguration"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/region"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetRegionConfigurationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRegionConfiguration"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/region"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22276,8 +24131,19 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSuggestShrinkableNodes"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/suggest-shrinkable-nodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetSuggestShrinkableNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSuggestShrinkableNodes"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/suggest-shrinkable-nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22316,8 +24182,19 @@ func (client *Client) GetTransferableNodesWithOptions(InstanceId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTransferableNodes"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/transferable-nodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetTransferableNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetTransferableNodes"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/transferable-nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22351,8 +24228,19 @@ func (client *Client) InitializeOperationRoleWithOptions(request *InitializeOper
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InitializeOperationRole"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/user/slr"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InitializeOperationRoleResponse{}
-	_body, _err := client.DoROARequest(tea.String("InitializeOperationRole"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/user/slr"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22387,8 +24275,19 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallAckOperator"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/operator"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InstallAckOperatorResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallAckOperator"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/ack-clusters/"+tea.StringValue(ClusterId)+"/operator"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22423,8 +24322,19 @@ func (client *Client) InstallKibanaSystemPluginWithOptions(InstanceId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallKibanaSystemPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins/system/actions/install"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InstallKibanaSystemPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallKibanaSystemPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/kibana-plugins/system/actions/install"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22459,8 +24369,19 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallLogstashSystemPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins/system/actions/install"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InstallLogstashSystemPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallLogstashSystemPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/plugins/system/actions/install"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22495,8 +24416,19 @@ func (client *Client) InstallSystemPluginWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallSystemPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/system/actions/install"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InstallSystemPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallSystemPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/plugins/system/actions/install"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22521,8 +24453,19 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallUserPlugins"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/user/actions/install"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InstallUserPluginsResponse{}
-	_body, _err := client.DoROARequest(tea.String("InstallUserPlugins"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/plugins/user/actions/install"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22557,8 +24500,19 @@ func (client *Client) InterruptElasticsearchTaskWithOptions(InstanceId *string, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InterruptElasticsearchTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/interrupt"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InterruptElasticsearchTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("InterruptElasticsearchTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/interrupt"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22593,8 +24547,19 @@ func (client *Client) InterruptLogstashTaskWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InterruptLogstashTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/interrupt"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InterruptLogstashTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("InterruptLogstashTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/interrupt"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22636,8 +24601,19 @@ func (client *Client) ListAckClustersWithOptions(request *ListAckClustersRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAckClusters"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ack-clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAckClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAckClusters"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/ack-clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22676,8 +24652,19 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAckNamespaces"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ack-clusters/" + tea.StringValue(ClusterId) + "/namespaces"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAckNamespacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAckNamespaces"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/ack-clusters/"+tea.StringValue(ClusterId)+"/namespaces"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22712,8 +24699,19 @@ func (client *Client) ListAllNodeWithOptions(InstanceId *string, request *ListAl
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllNode"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/nodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAllNodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAllNode"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22748,8 +24746,19 @@ func (client *Client) ListAlternativeSnapshotReposWithOptions(InstanceId *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlternativeSnapshotRepos"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/alternative-snapshot-repos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAlternativeSnapshotReposResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAlternativeSnapshotRepos"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/alternative-snapshot-repos"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22799,8 +24808,19 @@ func (client *Client) ListApmWithOptions(request *ListApmRequest, headers map[st
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/apm"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22825,8 +24845,19 @@ func (client *Client) ListAvailableEsInstanceIdsWithOptions(InstanceId *string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableEsInstanceIds"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/available-elasticsearch-for-centralized-management"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAvailableEsInstanceIdsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAvailableEsInstanceIds"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/available-elasticsearch-for-centralized-management"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22880,8 +24911,74 @@ func (client *Client) ListCollectorsWithOptions(request *ListCollectorsRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCollectors"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListCollectorsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListCollectors"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/collectors"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListComponentIndices(InstanceId *string, request *ListComponentIndicesRequest) (_result *ListComponentIndicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListComponentIndicesResponse{}
+	_body, _err := client.ListComponentIndicesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, request *ListComponentIndicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListComponentIndicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListComponentIndices"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListComponentIndicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22906,8 +25003,19 @@ func (client *Client) ListConnectedClustersWithOptions(InstanceId *string, heade
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnectedClusters"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/connected-clusters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListConnectedClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListConnectedClusters"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/connected-clusters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22946,8 +25054,19 @@ func (client *Client) ListDataStreamsWithOptions(InstanceId *string, request *Li
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataStreams"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataStreamsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataStreams"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-streams"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22972,8 +25091,19 @@ func (client *Client) ListDataTasksWithOptions(InstanceId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataTasks"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-task"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataTasksResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataTasks"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23015,8 +25145,74 @@ func (client *Client) ListDefaultCollectorConfigurationsWithOptions(request *Lis
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDefaultCollectorConfigurations"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/beats/default-configurations"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDefaultCollectorConfigurationsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDefaultCollectorConfigurations"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/beats/default-configurations"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeprecatedTemplates(InstanceId *string, request *ListDeprecatedTemplatesRequest) (_result *ListDeprecatedTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDeprecatedTemplatesResponse{}
+	_body, _err := client.ListDeprecatedTemplatesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, request *ListDeprecatedTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDeprecatedTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeprecatedTemplates"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/deprecated-templates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeprecatedTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23051,8 +25247,19 @@ func (client *Client) ListDiagnoseIndicesWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnoseIndices"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/indices"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDiagnoseIndicesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDiagnoseIndices"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/indices"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23111,8 +25318,19 @@ func (client *Client) ListDiagnoseReportWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnoseReport"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/reports"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDiagnoseReportResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDiagnoseReport"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/reports"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23167,8 +25385,19 @@ func (client *Client) ListDiagnoseReportIdsWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnoseReportIds"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/report-ids"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDiagnoseReportIdsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDiagnoseReportIds"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/report-ids"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23211,8 +25440,19 @@ func (client *Client) ListDictInformationWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDictInformation"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dict/_info"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDictInformationResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDictInformation"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dict/_info"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23251,8 +25491,19 @@ func (client *Client) ListDictsWithOptions(InstanceId *string, request *ListDict
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDicts"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dicts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDictsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDicts"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dicts"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23306,8 +25557,19 @@ func (client *Client) ListEcsInstancesWithOptions(request *ListEcsInstancesReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEcsInstances"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ecs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEcsInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEcsInstances"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/ecs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23332,8 +25594,19 @@ func (client *Client) ListExtendfilesWithOptions(InstanceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExtendfiles"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/extendfiles"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListExtendfilesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListExtendfiles"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/extendfiles"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23368,8 +25641,19 @@ func (client *Client) ListILMPoliciesWithOptions(InstanceId *string, request *Li
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListILMPolicies"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListILMPoliciesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListILMPolicies"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ilm-policies"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23404,8 +25688,19 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIndexTemplates"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIndexTemplatesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIndexTemplates"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/index-templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23479,8 +25774,19 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23535,8 +25841,19 @@ func (client *Client) ListInstanceIndicesWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceIndices"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/indices"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstanceIndicesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstanceIndices"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/indices"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23575,8 +25892,19 @@ func (client *Client) ListKibanaPluginsWithOptions(InstanceId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKibanaPlugins"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListKibanaPluginsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListKibanaPlugins"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/kibana-plugins"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23634,8 +25962,19 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23690,8 +26029,19 @@ func (client *Client) ListLogstashLogWithOptions(InstanceId *string, request *Li
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogstashLog"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/search-log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLogstashLogResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLogstashLog"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/search-log"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23738,8 +26088,19 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogstashPlugins"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLogstashPluginsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLogstashPlugins"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/plugins"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23790,8 +26151,19 @@ func (client *Client) ListNodesWithOptions(ResId *string, request *ListNodesRequ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodes"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/nodes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNodes"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23834,8 +26206,19 @@ func (client *Client) ListPipelineWithOptions(InstanceId *string, request *ListP
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipeline"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListPipelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListPipeline"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23860,8 +26243,19 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineIds"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/pipeline-ids"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListPipelineIdsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListPipelineIds"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/pipeline-ids"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23908,8 +26302,19 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPlugins"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListPluginsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListPlugins"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/plugins"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23964,8 +26369,19 @@ func (client *Client) ListSearchLogWithOptions(InstanceId *string, request *List
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchLog"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/search-log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSearchLogResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSearchLog"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/search-log"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24000,8 +26416,19 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListShardRecoveries"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/cat-recovery"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListShardRecoveriesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListShardRecoveries"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/cat-recovery"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24026,8 +26453,19 @@ func (client *Client) ListSnapshotReposByInstanceIdWithOptions(InstanceId *strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshotReposByInstanceId"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-repos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSnapshotReposByInstanceIdResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSnapshotReposByInstanceId"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshot-repos"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24081,8 +26519,19 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTagResources"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24120,8 +26569,19 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTags"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tags/all-tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTagsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTags"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/tags/all-tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24160,8 +26620,19 @@ func (client *Client) ListVpcEndpointsWithOptions(InstanceId *string, request *L
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVpcEndpoints"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/vpc-endpoints"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListVpcEndpointsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListVpcEndpoints"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/vpc-endpoints"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24196,8 +26667,19 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("MigrateToOtherZone"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/migrate-zones"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &MigrateToOtherZoneResponse{}
-	_body, _err := client.DoROARequest(tea.String("MigrateToOtherZone"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/migrate-zones"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24232,8 +26714,19 @@ func (client *Client) ModifyDeployMachineWithOptions(ResId *string, request *Mod
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDeployMachine"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/modify-deploy-machines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyDeployMachineResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyDeployMachine"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/modify-deploy-machines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24258,8 +26751,19 @@ func (client *Client) ModifyElastictaskWithOptions(InstanceId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyElastictask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/elastic-task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyElastictaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyElastictask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/elastic-task"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24294,8 +26798,19 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceMaintainTime"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/modify-maintaintime"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyInstanceMaintainTimeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyInstanceMaintainTime"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/modify-maintaintime"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24352,8 +26867,19 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWhiteIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/modify-white-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyWhiteIpsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("ModifyWhiteIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/modify-white-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24388,8 +26914,19 @@ func (client *Client) MoveResourceGroupWithOptions(InstanceId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/resourcegroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("MoveResourceGroup"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/resourcegroup"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24428,8 +26965,19 @@ func (client *Client) OpenDiagnosisWithOptions(InstanceId *string, request *Open
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenDiagnosis"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/actions/open-diagnosis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &OpenDiagnosisResponse{}
-	_body, _err := client.DoROARequest(tea.String("OpenDiagnosis"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/actions/open-diagnosis"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24464,8 +27012,19 @@ func (client *Client) OpenHttpsWithOptions(InstanceId *string, request *OpenHttp
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenHttps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/open-https"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &OpenHttpsResponse{}
-	_body, _err := client.DoROARequest(tea.String("OpenHttps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/open-https"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24491,8 +27050,19 @@ func (client *Client) PostEmonTryAlarmRuleWithOptions(ProjectId *string, AlarmGr
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PostEmonTryAlarmRule"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/emon/projects/" + tea.StringValue(ProjectId) + "/alarm-groups/" + tea.StringValue(AlarmGroupId) + "/alarm-rules/_test"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PostEmonTryAlarmRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("PostEmonTryAlarmRule"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/emon/projects/"+tea.StringValue(ProjectId)+"/alarm-groups/"+tea.StringValue(AlarmGroupId)+"/alarm-rules/_test"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24527,8 +27097,19 @@ func (client *Client) RecommendTemplatesWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RecommendTemplates"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/recommended-templates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RecommendTemplatesResponse{}
-	_body, _err := client.DoROARequest(tea.String("RecommendTemplates"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/recommended-templates"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24563,8 +27144,19 @@ func (client *Client) ReinstallCollectorWithOptions(ResId *string, request *Rein
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ReinstallCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/reinstall"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ReinstallCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("ReinstallCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/reinstall"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24589,8 +27181,19 @@ func (client *Client) RemoveApmWithOptions(instanceId *string, headers map[strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RemoveApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("RemoveApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24625,8 +27228,19 @@ func (client *Client) RenewInstanceWithOptions(InstanceId *string, request *Rene
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/renew"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RenewInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/renew"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24661,8 +27275,19 @@ func (client *Client) RenewLogstashWithOptions(InstanceId *string, request *Rene
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/renew"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RenewLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("RenewLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/renew"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24697,8 +27322,19 @@ func (client *Client) RestartCollectorWithOptions(ResId *string, request *Restar
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/restart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RestartCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("RestartCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/restart"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24737,8 +27373,19 @@ func (client *Client) RestartInstanceWithOptions(InstanceId *string, request *Re
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/restart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RestartInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RestartInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/restart"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24777,8 +27424,19 @@ func (client *Client) RestartLogstashWithOptions(InstanceId *string, request *Re
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/restart"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RestartLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("RestartLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/restart"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24813,8 +27471,19 @@ func (client *Client) ResumeElasticsearchTaskWithOptions(InstanceId *string, req
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeElasticsearchTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/resume"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ResumeElasticsearchTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResumeElasticsearchTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/resume"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24849,8 +27518,19 @@ func (client *Client) ResumeLogstashTaskWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeLogstashTask"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/resume"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ResumeLogstashTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("ResumeLogstashTask"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/resume"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24886,8 +27566,19 @@ func (client *Client) RolloverDataStreamWithOptions(InstanceId *string, DataStre
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RolloverDataStream"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/data-streams/" + tea.StringValue(DataStream) + "/rollover"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RolloverDataStreamResponse{}
-	_body, _err := client.DoROARequest(tea.String("RolloverDataStream"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/data-streams/"+tea.StringValue(DataStream)+"/rollover"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24922,8 +27613,19 @@ func (client *Client) RunPipelinesWithOptions(InstanceId *string, request *RunPi
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RunPipelines"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/action/run"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RunPipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("RunPipelines"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines/action/run"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24966,8 +27668,19 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ShrinkNode"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/shrink"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ShrinkNodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("ShrinkNode"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/shrink"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24992,8 +27705,19 @@ func (client *Client) StartApmWithOptions(instanceId *string, headers map[string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId) + "/actions/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)+"/actions/start"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25028,8 +27752,19 @@ func (client *Client) StartCollectorWithOptions(ResId *string, request *StartCol
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/start"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25054,8 +27789,19 @@ func (client *Client) StopApmWithOptions(instanceId *string, headers map[string]
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId) + "/actions/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)+"/actions/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25090,8 +27836,19 @@ func (client *Client) StopCollectorWithOptions(ResId *string, request *StopColle
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25126,8 +27883,19 @@ func (client *Client) StopPipelinesWithOptions(InstanceId *string, request *Stop
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopPipelines"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines/action/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopPipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopPipelines"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines/action/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25151,8 +27919,19 @@ func (client *Client) TagResourcesWithOptions(headers map[string]*string, runtim
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tags"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("TagResources"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25191,8 +27970,19 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferNode"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/transfer"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TransferNodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("TransferNode"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/transfer"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25241,8 +28031,19 @@ func (client *Client) TriggerNetworkWithOptions(InstanceId *string, request *Tri
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TriggerNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/network-trigger"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &TriggerNetworkResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("TriggerNetwork"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/network-trigger"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25277,8 +28078,19 @@ func (client *Client) UninstallKibanaPluginWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallKibanaPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-plugins/actions/uninstall"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UninstallKibanaPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("UninstallKibanaPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/kibana-plugins/actions/uninstall"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25313,8 +28125,19 @@ func (client *Client) UninstallLogstashPluginWithOptions(InstanceId *string, req
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallLogstashPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/plugins/actions/uninstall"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UninstallLogstashPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("UninstallLogstashPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/plugins/actions/uninstall"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25349,8 +28172,19 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallPlugin"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/plugins/actions/uninstall"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UninstallPluginResponse{}
-	_body, _err := client.DoROARequest(tea.String("UninstallPlugin"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/plugins/actions/uninstall"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25396,8 +28230,19 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tags"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("UntagResources"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25432,8 +28277,19 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAdminPassword"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/admin-pwd"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAdminPasswordResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateAdminPassword"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/admin-pwd"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25468,8 +28324,19 @@ func (client *Client) UpdateAdvancedSettingWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAdvancedSetting"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-advanced-setting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAdvancedSettingResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateAdvancedSetting"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/update-advanced-setting"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25504,8 +28371,19 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAliwsDict"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/aliws-dict"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAliwsDictResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateAliwsDict"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/aliws-dict"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25556,8 +28434,19 @@ func (client *Client) UpdateApmWithOptions(instanceId *string, request *UpdateAp
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApm"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/apm/" + tea.StringValue(instanceId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateApmResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateApm"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/apm/"+tea.StringValue(instanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25598,8 +28487,19 @@ func (client *Client) UpdateBlackIpsWithOptions(InstanceId *string, request *Upd
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBlackIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/black-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateBlackIpsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateBlackIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/black-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25634,8 +28534,19 @@ func (client *Client) UpdateCollectorWithOptions(ResId *string, request *UpdateC
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCollector"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateCollectorResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateCollector"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25670,8 +28581,71 @@ func (client *Client) UpdateCollectorNameWithOptions(ResId *string, request *Upd
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCollectorName"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/collectors/" + tea.StringValue(ResId) + "/actions/rename"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateCollectorNameResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateCollectorName"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/collectors/"+tea.StringValue(ResId)+"/actions/rename"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateComponentIndex(InstanceId *string, name *string, request *UpdateComponentIndexRequest) (_result *UpdateComponentIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateComponentIndexResponse{}
+	_body, _err := client.UpdateComponentIndexWithOptions(InstanceId, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateComponentIndexWithOptions(InstanceId *string, name *string, request *UpdateComponentIndexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateComponentIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	name = openapiutil.GetEncodeParam(name)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Meta)) {
+		body["_meta"] = request.Meta
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Template))) {
+		body["template"] = request.Template
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateComponentIndex"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/component-index/" + tea.StringValue(name)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateComponentIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25712,8 +28686,19 @@ func (client *Client) UpdateDescriptionWithOptions(InstanceId *string, request *
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDescription"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/description"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateDescriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateDescription"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/description"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25752,8 +28737,19 @@ func (client *Client) UpdateDiagnosisSettingsWithOptions(InstanceId *string, req
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDiagnosisSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/diagnosis/instances/" + tea.StringValue(InstanceId) + "/settings"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateDiagnosisSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateDiagnosisSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/diagnosis/instances/"+tea.StringValue(InstanceId)+"/settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25788,8 +28784,19 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDict"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/dict"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateDictResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateDict"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dict"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25824,8 +28831,19 @@ func (client *Client) UpdateExtendConfigWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExtendConfig"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/extend-configs/actions/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateExtendConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateExtendConfig"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/extend-configs/actions/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25860,8 +28878,19 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExtendfiles"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/extendfiles"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateExtendfilesResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateExtendfiles"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/extendfiles"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25896,8 +28925,19 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotIkDicts"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ik-hot-dict"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateHotIkDictsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateHotIkDicts"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ik-hot-dict"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25933,8 +28973,19 @@ func (client *Client) UpdateILMPolicyWithOptions(InstanceId *string, PolicyName 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateILMPolicy"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/ilm-policies/" + tea.StringValue(PolicyName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateILMPolicyResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateILMPolicy"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/ilm-policies/"+tea.StringValue(PolicyName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25970,8 +29021,19 @@ func (client *Client) UpdateIndexTemplateWithOptions(InstanceId *string, IndexTe
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIndexTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/index-templates/" + tea.StringValue(IndexTemplate)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateIndexTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateIndexTemplate"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/index-templates/"+tea.StringValue(IndexTemplate)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26014,8 +29076,19 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26050,8 +29123,19 @@ func (client *Client) UpdateInstanceChargeTypeWithOptions(InstanceId *string, re
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceChargeType"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/convert-pay-type"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateInstanceChargeTypeResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateInstanceChargeType"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/convert-pay-type"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26086,8 +29170,19 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/instance-settings"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateInstanceSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateInstanceSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/instance-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26122,8 +29217,19 @@ func (client *Client) UpdateKibanaSettingsWithOptions(InstanceId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKibanaSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-kibana-settings"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateKibanaSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateKibanaSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/update-kibana-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26162,8 +29268,19 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKibanaWhiteIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/kibana-white-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateKibanaWhiteIpsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateKibanaWhiteIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/kibana-white-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26198,8 +29315,19 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogstash"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLogstashResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateLogstash"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26234,8 +29362,19 @@ func (client *Client) UpdateLogstashChargeTypeWithOptions(InstanceId *string, re
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogstashChargeType"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/actions/convert-pay-type"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLogstashChargeTypeResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateLogstashChargeType"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/actions/convert-pay-type"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26270,8 +29409,19 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogstashDescription"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/description"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLogstashDescriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateLogstashDescription"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/description"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26306,8 +29456,19 @@ func (client *Client) UpdateLogstashSettingsWithOptions(InstanceId *string, requ
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogstashSettings"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/instance-settings"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLogstashSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateLogstashSettings"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/instance-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26342,8 +29503,19 @@ func (client *Client) UpdatePipelineManagementConfigWithOptions(InstanceId *stri
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePipelineManagementConfig"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipeline-management-config"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdatePipelineManagementConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdatePipelineManagementConfig"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipeline-management-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26382,8 +29554,19 @@ func (client *Client) UpdatePipelinesWithOptions(InstanceId *string, request *Up
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePipelines"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/pipelines"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdatePipelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdatePipelines"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/pipelines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26422,8 +29605,19 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePrivateNetworkWhiteIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/private-network-white-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdatePrivateNetworkWhiteIpsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdatePrivateNetworkWhiteIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/private-network-white-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26458,8 +29652,19 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePublicNetwork"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/public-network"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdatePublicNetworkResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdatePublicNetwork"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/public-network"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26498,8 +29703,19 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePublicWhiteIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/public-white-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdatePublicWhiteIpsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdatePublicWhiteIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/public-white-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26534,8 +29750,19 @@ func (client *Client) UpdateReadWritePolicyWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateReadWritePolicy"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/update-read-write-policy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateReadWritePolicyResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateReadWritePolicy"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/update-read-write-policy"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26560,8 +29787,19 @@ func (client *Client) UpdateSnapshotSettingWithOptions(InstanceId *string, heade
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSnapshotSetting"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/snapshot-setting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateSnapshotSettingResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateSnapshotSetting"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/snapshot-setting"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26596,8 +29834,19 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSynonymsDicts"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/synonymsDict"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateSynonymsDictsResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateSynonymsDicts"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/synonymsDict"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26633,8 +29882,19 @@ func (client *Client) UpdateTemplateWithOptions(InstanceId *string, TemplateName
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTemplate"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/templates/" + tea.StringValue(TemplateName)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateTemplate"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/templates/"+tea.StringValue(TemplateName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26683,8 +29943,19 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWhiteIps"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/white-ips"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateWhiteIpsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateWhiteIps"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/white-ips"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26719,8 +29990,19 @@ func (client *Client) UpdateXpackMonitorConfigWithOptions(InstanceId *string, re
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateXpackMonitorConfig"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/xpack-monitor-config"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateXpackMonitorConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateXpackMonitorConfig"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/xpack-monitor-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26769,8 +30051,19 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeEngineVersion"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/actions/upgrade-version"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpgradeEngineVersionResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpgradeEngineVersion"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/upgrade-version"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26805,8 +30098,19 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateConnection"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/logstashes/" + tea.StringValue(InstanceId) + "/validate-connection"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ValidateConnectionResponse{}
-	_body, _err := client.DoROARequest(tea.String("ValidateConnection"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/logstashes/"+tea.StringValue(InstanceId)+"/validate-connection"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26845,8 +30149,19 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateShrinkNodes"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/validate-shrink-nodes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ValidateShrinkNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ValidateShrinkNodes"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/validate-shrink-nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26884,8 +30199,19 @@ func (client *Client) ValidateSlrPermissionWithOptions(request *ValidateSlrPermi
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateSlrPermission"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/user/servicerolepermission"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ValidateSlrPermissionResponse{}
-	_body, _err := client.DoROARequest(tea.String("ValidateSlrPermission"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/user/servicerolepermission"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26920,8 +30246,19 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateTransferableNodes"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(InstanceId) + "/validate-transfer-nodes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ValidateTransferableNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ValidateTransferableNodes"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/validate-transfer-nodes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26955,8 +30292,19 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("createInstance"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("createInstance"), tea.String("2017-06-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
