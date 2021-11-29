@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -370,105 +371,6 @@ func (s *BatchRobotSmartCallResponse) SetHeaders(v map[string]*string) *BatchRob
 }
 
 func (s *BatchRobotSmartCallResponse) SetBody(v *BatchRobotSmartCallResponseBody) *BatchRobotSmartCallResponse {
-	s.Body = v
-	return s
-}
-
-type BindNumberAndVoipIdRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
-}
-
-func (s BindNumberAndVoipIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BindNumberAndVoipIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BindNumberAndVoipIdRequest) SetOwnerId(v int64) *BindNumberAndVoipIdRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdRequest) SetPhoneNumber(v string) *BindNumberAndVoipIdRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *BindNumberAndVoipIdRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdRequest) SetResourceOwnerId(v int64) *BindNumberAndVoipIdRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdRequest) SetVoipId(v string) *BindNumberAndVoipIdRequest {
-	s.VoipId = &v
-	return s
-}
-
-type BindNumberAndVoipIdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BindNumberAndVoipIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BindNumberAndVoipIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BindNumberAndVoipIdResponseBody) SetCode(v string) *BindNumberAndVoipIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdResponseBody) SetMessage(v string) *BindNumberAndVoipIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdResponseBody) SetModule(v string) *BindNumberAndVoipIdResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *BindNumberAndVoipIdResponseBody) SetRequestId(v string) *BindNumberAndVoipIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BindNumberAndVoipIdResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BindNumberAndVoipIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BindNumberAndVoipIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BindNumberAndVoipIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BindNumberAndVoipIdResponse) SetHeaders(v map[string]*string) *BindNumberAndVoipIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BindNumberAndVoipIdResponse) SetBody(v *BindNumberAndVoipIdResponseBody) *BindNumberAndVoipIdResponse {
 	s.Body = v
 	return s
 }
@@ -893,105 +795,6 @@ func (s *ClickToDialResponse) SetBody(v *ClickToDialResponseBody) *ClickToDialRe
 	return s
 }
 
-type CloseSipAccountRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SipAccountID         *string `json:"SipAccountID,omitempty" xml:"SipAccountID,omitempty"`
-}
-
-func (s CloseSipAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseSipAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CloseSipAccountRequest) SetOwnerId(v int64) *CloseSipAccountRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CloseSipAccountRequest) SetPartnerId(v int64) *CloseSipAccountRequest {
-	s.PartnerId = &v
-	return s
-}
-
-func (s *CloseSipAccountRequest) SetResourceOwnerAccount(v string) *CloseSipAccountRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CloseSipAccountRequest) SetResourceOwnerId(v int64) *CloseSipAccountRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CloseSipAccountRequest) SetSipAccountID(v string) *CloseSipAccountRequest {
-	s.SipAccountID = &v
-	return s
-}
-
-type CloseSipAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CloseSipAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseSipAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CloseSipAccountResponseBody) SetCode(v string) *CloseSipAccountResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CloseSipAccountResponseBody) SetData(v bool) *CloseSipAccountResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CloseSipAccountResponseBody) SetMessage(v string) *CloseSipAccountResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CloseSipAccountResponseBody) SetRequestId(v string) *CloseSipAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CloseSipAccountResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CloseSipAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CloseSipAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CloseSipAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CloseSipAccountResponse) SetHeaders(v map[string]*string) *CloseSipAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CloseSipAccountResponse) SetBody(v *CloseSipAccountResponseBody) *CloseSipAccountResponse {
-	s.Body = v
-	return s
-}
-
 type CreateCallTaskRequest struct {
 	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	Data                 *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -1286,134 +1089,6 @@ func (s *CreateRobotTaskResponse) SetBody(v *CreateRobotTaskResponseBody) *Creat
 	return s
 }
 
-type CreateSipAccountRequest struct {
-	BusinessKey          *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PartnerId            *int64  `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s CreateSipAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSipAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSipAccountRequest) SetBusinessKey(v string) *CreateSipAccountRequest {
-	s.BusinessKey = &v
-	return s
-}
-
-func (s *CreateSipAccountRequest) SetOwnerId(v int64) *CreateSipAccountRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateSipAccountRequest) SetPartnerId(v int64) *CreateSipAccountRequest {
-	s.PartnerId = &v
-	return s
-}
-
-func (s *CreateSipAccountRequest) SetResourceOwnerAccount(v string) *CreateSipAccountRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateSipAccountRequest) SetResourceOwnerId(v int64) *CreateSipAccountRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type CreateSipAccountResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateSipAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateSipAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSipAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSipAccountResponseBody) SetCode(v string) *CreateSipAccountResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateSipAccountResponseBody) SetData(v *CreateSipAccountResponseBodyData) *CreateSipAccountResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateSipAccountResponseBody) SetMessage(v string) *CreateSipAccountResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateSipAccountResponseBody) SetRequestId(v string) *CreateSipAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateSipAccountResponseBodyData struct {
-	SipAccountID *string `json:"SipAccountID,omitempty" xml:"SipAccountID,omitempty"`
-	VoipName     *string `json:"VoipName,omitempty" xml:"VoipName,omitempty"`
-	VoipPassword *string `json:"VoipPassword,omitempty" xml:"VoipPassword,omitempty"`
-}
-
-func (s CreateSipAccountResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSipAccountResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSipAccountResponseBodyData) SetSipAccountID(v string) *CreateSipAccountResponseBodyData {
-	s.SipAccountID = &v
-	return s
-}
-
-func (s *CreateSipAccountResponseBodyData) SetVoipName(v string) *CreateSipAccountResponseBodyData {
-	s.VoipName = &v
-	return s
-}
-
-func (s *CreateSipAccountResponseBodyData) SetVoipPassword(v string) *CreateSipAccountResponseBodyData {
-	s.VoipPassword = &v
-	return s
-}
-
-type CreateSipAccountResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSipAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSipAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSipAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSipAccountResponse) SetHeaders(v map[string]*string) *CreateSipAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSipAccountResponse) SetBody(v *CreateSipAccountResponseBody) *CreateSipAccountResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1503,387 +1178,6 @@ func (s *DeleteRobotTaskResponse) SetHeaders(v map[string]*string) *DeleteRobotT
 }
 
 func (s *DeleteRobotTaskResponse) SetBody(v *DeleteRobotTaskResponseBody) *DeleteRobotTaskResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRecordDataRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Acid                 *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecLevel             *int32  `json:"SecLevel,omitempty" xml:"SecLevel,omitempty"`
-}
-
-func (s DescribeRecordDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordDataRequest) SetAccountId(v string) *DescribeRecordDataRequest {
-	s.AccountId = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetAccountType(v string) *DescribeRecordDataRequest {
-	s.AccountType = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetAcid(v string) *DescribeRecordDataRequest {
-	s.Acid = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetOwnerId(v int64) *DescribeRecordDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetProdCode(v string) *DescribeRecordDataRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetResourceOwnerAccount(v string) *DescribeRecordDataRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetResourceOwnerId(v int64) *DescribeRecordDataRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeRecordDataRequest) SetSecLevel(v int32) *DescribeRecordDataRequest {
-	s.SecLevel = &v
-	return s
-}
-
-type DescribeRecordDataResponseBody struct {
-	Acid      *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OssLink   *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRecordDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordDataResponseBody) SetAcid(v string) *DescribeRecordDataResponseBody {
-	s.Acid = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetAgentId(v string) *DescribeRecordDataResponseBody {
-	s.AgentId = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetCode(v string) *DescribeRecordDataResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetMessage(v string) *DescribeRecordDataResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetOssLink(v string) *DescribeRecordDataResponseBody {
-	s.OssLink = &v
-	return s
-}
-
-func (s *DescribeRecordDataResponseBody) SetRequestId(v string) *DescribeRecordDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRecordDataResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecordDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRecordDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRecordDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRecordDataResponse) SetHeaders(v map[string]*string) *DescribeRecordDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRecordDataResponse) SetBody(v *DescribeRecordDataResponseBody) *DescribeRecordDataResponse {
-	s.Body = v
-	return s
-}
-
-type DoRtcNumberAuthRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s DoRtcNumberAuthRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoRtcNumberAuthRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DoRtcNumberAuthRequest) SetOwnerId(v int64) *DoRtcNumberAuthRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthRequest) SetPhoneNumber(v string) *DoRtcNumberAuthRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *DoRtcNumberAuthRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthRequest) SetResourceOwnerId(v int64) *DoRtcNumberAuthRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type DoRtcNumberAuthResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DoRtcNumberAuthResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoRtcNumberAuthResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DoRtcNumberAuthResponseBody) SetCode(v string) *DoRtcNumberAuthResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthResponseBody) SetMessage(v string) *DoRtcNumberAuthResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthResponseBody) SetModule(v string) *DoRtcNumberAuthResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *DoRtcNumberAuthResponseBody) SetRequestId(v string) *DoRtcNumberAuthResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DoRtcNumberAuthResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoRtcNumberAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DoRtcNumberAuthResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoRtcNumberAuthResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DoRtcNumberAuthResponse) SetHeaders(v map[string]*string) *DoRtcNumberAuthResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DoRtcNumberAuthResponse) SetBody(v *DoRtcNumberAuthResponseBody) *DoRtcNumberAuthResponse {
-	s.Body = v
-	return s
-}
-
-type DoubleCallSeatRequest struct {
-	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	CallType             *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
-	RecordPoint          *int32  `json:"RecordPoint,omitempty" xml:"RecordPoint,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-}
-
-func (s DoubleCallSeatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoubleCallSeatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DoubleCallSeatRequest) SetAsrFlag(v bool) *DoubleCallSeatRequest {
-	s.AsrFlag = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetAsrModelId(v string) *DoubleCallSeatRequest {
-	s.AsrModelId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCallType(v string) *DoubleCallSeatRequest {
-	s.CallType = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCalledNumber(v string) *DoubleCallSeatRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCalledShowNumber(v string) *DoubleCallSeatRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCallerNumber(v string) *DoubleCallSeatRequest {
-	s.CallerNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetCallerShowNumber(v string) *DoubleCallSeatRequest {
-	s.CallerShowNumber = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetOutId(v string) *DoubleCallSeatRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetOwnerId(v int64) *DoubleCallSeatRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetRecordFlag(v bool) *DoubleCallSeatRequest {
-	s.RecordFlag = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetRecordPoint(v int32) *DoubleCallSeatRequest {
-	s.RecordPoint = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetResourceOwnerAccount(v string) *DoubleCallSeatRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetResourceOwnerId(v int64) *DoubleCallSeatRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetSessionTimeout(v int32) *DoubleCallSeatRequest {
-	s.SessionTimeout = &v
-	return s
-}
-
-func (s *DoubleCallSeatRequest) SetVoiceCode(v string) *DoubleCallSeatRequest {
-	s.VoiceCode = &v
-	return s
-}
-
-type DoubleCallSeatResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DoubleCallSeatResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoubleCallSeatResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DoubleCallSeatResponseBody) SetCallId(v string) *DoubleCallSeatResponseBody {
-	s.CallId = &v
-	return s
-}
-
-func (s *DoubleCallSeatResponseBody) SetCode(v string) *DoubleCallSeatResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DoubleCallSeatResponseBody) SetMessage(v string) *DoubleCallSeatResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DoubleCallSeatResponseBody) SetRequestId(v string) *DoubleCallSeatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DoubleCallSeatResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoubleCallSeatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DoubleCallSeatResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoubleCallSeatResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DoubleCallSeatResponse) SetHeaders(v map[string]*string) *DoubleCallSeatResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DoubleCallSeatResponse) SetBody(v *DoubleCallSeatResponseBody) *DoubleCallSeatResponse {
 	s.Body = v
 	return s
 }
@@ -2221,6 +1515,152 @@ func (s *GetHotlineQualificationByOrderResponse) SetHeaders(v map[string]*string
 }
 
 func (s *GetHotlineQualificationByOrderResponse) SetBody(v *GetHotlineQualificationByOrderResponseBody) *GetHotlineQualificationByOrderResponse {
+	s.Body = v
+	return s
+}
+
+type GetMqttTokenRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetMqttTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMqttTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMqttTokenRequest) SetOwnerId(v int64) *GetMqttTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetMqttTokenRequest) SetResourceOwnerAccount(v string) *GetMqttTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetMqttTokenRequest) SetResourceOwnerId(v int64) *GetMqttTokenRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetMqttTokenResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetMqttTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMqttTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMqttTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMqttTokenResponseBody) SetCode(v string) *GetMqttTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBody) SetData(v *GetMqttTokenResponseBodyData) *GetMqttTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMqttTokenResponseBody) SetMessage(v string) *GetMqttTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBody) SetRequestId(v string) *GetMqttTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMqttTokenResponseBodyData struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	P2pTopic   *string `json:"P2pTopic,omitempty" xml:"P2pTopic,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetMqttTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMqttTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMqttTokenResponseBodyData) SetClientId(v string) *GetMqttTokenResponseBodyData {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetExpireTime(v string) *GetMqttTokenResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetHost(v string) *GetMqttTokenResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetInstanceId(v string) *GetMqttTokenResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetP2pTopic(v string) *GetMqttTokenResponseBodyData {
+	s.P2pTopic = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetServerId(v string) *GetMqttTokenResponseBodyData {
+	s.ServerId = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetToken(v string) *GetMqttTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+func (s *GetMqttTokenResponseBodyData) SetUsername(v string) *GetMqttTokenResponseBodyData {
+	s.Username = &v
+	return s
+}
+
+type GetMqttTokenResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMqttTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMqttTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMqttTokenResponse) SetHeaders(v map[string]*string) *GetMqttTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMqttTokenResponse) SetBody(v *GetMqttTokenResponseBody) *GetMqttTokenResponse {
 	s.Body = v
 	return s
 }
@@ -3423,512 +2863,6 @@ func (s *ListHotlineTransferRegisterFileResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransferRegisterFileResponseBody) *ListHotlineTransferRegisterFileResponse {
-	s.Body = v
-	return s
-}
-
-type ListOrderedNumbersRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListOrderedNumbersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOrderedNumbersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListOrderedNumbersRequest) SetOwnerId(v int64) *ListOrderedNumbersRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListOrderedNumbersRequest) SetProdCode(v string) *ListOrderedNumbersRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *ListOrderedNumbersRequest) SetResourceOwnerAccount(v string) *ListOrderedNumbersRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListOrderedNumbersRequest) SetResourceOwnerId(v int64) *ListOrderedNumbersRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListOrderedNumbersResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Numbers   []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListOrderedNumbersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOrderedNumbersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListOrderedNumbersResponseBody) SetCode(v string) *ListOrderedNumbersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListOrderedNumbersResponseBody) SetMessage(v string) *ListOrderedNumbersResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListOrderedNumbersResponseBody) SetNumbers(v []*string) *ListOrderedNumbersResponseBody {
-	s.Numbers = v
-	return s
-}
-
-func (s *ListOrderedNumbersResponseBody) SetRequestId(v string) *ListOrderedNumbersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListOrderedNumbersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOrderedNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListOrderedNumbersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOrderedNumbersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListOrderedNumbersResponse) SetHeaders(v map[string]*string) *ListOrderedNumbersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListOrderedNumbersResponse) SetBody(v *ListOrderedNumbersResponseBody) *ListOrderedNumbersResponse {
-	s.Body = v
-	return s
-}
-
-type ListOutboundStrategiesRequest struct {
-	BuId                 *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListOutboundStrategiesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOutboundStrategiesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListOutboundStrategiesRequest) SetBuId(v int64) *ListOutboundStrategiesRequest {
-	s.BuId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetKeyword(v string) *ListOutboundStrategiesRequest {
-	s.Keyword = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetOwnerId(v int64) *ListOutboundStrategiesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetProdCode(v string) *ListOutboundStrategiesRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetResourceOwnerAccount(v string) *ListOutboundStrategiesRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesRequest) SetResourceOwnerId(v int64) *ListOutboundStrategiesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListOutboundStrategiesResponseBody struct {
-	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	OutboundStrategies []*ListOutboundStrategiesResponseBodyOutboundStrategies `json:"OutboundStrategies,omitempty" xml:"OutboundStrategies,omitempty" type:"Repeated"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListOutboundStrategiesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOutboundStrategiesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListOutboundStrategiesResponseBody) SetCode(v string) *ListOutboundStrategiesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBody) SetMessage(v string) *ListOutboundStrategiesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBody) SetOutboundStrategies(v []*ListOutboundStrategiesResponseBodyOutboundStrategies) *ListOutboundStrategiesResponseBody {
-	s.OutboundStrategies = v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBody) SetRequestId(v string) *ListOutboundStrategiesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListOutboundStrategiesResponseBodyOutboundStrategies struct {
-	BuId               *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	CreatorId          *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName        *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	DepartmentId       *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	ExtAttr            *string `json:"ExtAttr,omitempty" xml:"ExtAttr,omitempty"`
-	GmtCreateStr       *string `json:"GmtCreateStr,omitempty" xml:"GmtCreateStr,omitempty"`
-	GmtModifiedStr     *string `json:"GmtModifiedStr,omitempty" xml:"GmtModifiedStr,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifierId         *int64  `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	ModifierName       *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
-	NumType            *int32  `json:"NumType,omitempty" xml:"NumType,omitempty"`
-	OutboundNum        *string `json:"OutboundNum,omitempty" xml:"OutboundNum,omitempty"`
-	Process            *int32  `json:"Process,omitempty" xml:"Process,omitempty"`
-	ResourceAllocation *int32  `json:"ResourceAllocation,omitempty" xml:"ResourceAllocation,omitempty"`
-	RobotId            *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	RobotName          *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	RobotType          *int32  `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
-	RuleCode           *int64  `json:"RuleCode,omitempty" xml:"RuleCode,omitempty"`
-	SceneName          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuccessRate        *int32  `json:"SuccessRate,omitempty" xml:"SuccessRate,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s ListOutboundStrategiesResponseBodyOutboundStrategies) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOutboundStrategiesResponseBodyOutboundStrategies) GoString() string {
-	return s.String()
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetBuId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.BuId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetCreatorId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.CreatorId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetCreatorName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.CreatorName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetDepartmentId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.DepartmentId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetExtAttr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ExtAttr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtCreateStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.GmtCreateStr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetGmtModifiedStr(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.GmtModifiedStr = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Id = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierId(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ModifierId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetModifierName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ModifierName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetNumType(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.NumType = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetOutboundNum(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.OutboundNum = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetProcess(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Process = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetResourceAllocation(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.ResourceAllocation = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotId(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RobotId = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RobotName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRobotType(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RobotType = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetRuleCode(v int64) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.RuleCode = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSceneName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.SceneName = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetStatus(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Status = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetSuccessRate(v int32) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.SuccessRate = &v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponseBodyOutboundStrategies) SetName(v string) *ListOutboundStrategiesResponseBodyOutboundStrategies {
-	s.Name = &v
-	return s
-}
-
-type ListOutboundStrategiesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOutboundStrategiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListOutboundStrategiesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOutboundStrategiesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListOutboundStrategiesResponse) SetHeaders(v map[string]*string) *ListOutboundStrategiesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListOutboundStrategiesResponse) SetBody(v *ListOutboundStrategiesResponseBody) *ListOutboundStrategiesResponse {
-	s.Body = v
-	return s
-}
-
-type ListRobotTaskCallsRequest struct {
-	CallResult           *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
-	DialogCountFrom      *string `json:"DialogCountFrom,omitempty" xml:"DialogCountFrom,omitempty"`
-	DialogCountTo        *string `json:"DialogCountTo,omitempty" xml:"DialogCountTo,omitempty"`
-	DurationFrom         *string `json:"DurationFrom,omitempty" xml:"DurationFrom,omitempty"`
-	DurationTo           *string `json:"DurationTo,omitempty" xml:"DurationTo,omitempty"`
-	HangupDirection      *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ListRobotTaskCallsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRobotTaskCallsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRobotTaskCallsRequest) SetCallResult(v string) *ListRobotTaskCallsRequest {
-	s.CallResult = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetCalled(v string) *ListRobotTaskCallsRequest {
-	s.Called = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDialogCountFrom(v string) *ListRobotTaskCallsRequest {
-	s.DialogCountFrom = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDialogCountTo(v string) *ListRobotTaskCallsRequest {
-	s.DialogCountTo = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDurationFrom(v string) *ListRobotTaskCallsRequest {
-	s.DurationFrom = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetDurationTo(v string) *ListRobotTaskCallsRequest {
-	s.DurationTo = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetHangupDirection(v string) *ListRobotTaskCallsRequest {
-	s.HangupDirection = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetOwnerId(v int64) *ListRobotTaskCallsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetPageNo(v int32) *ListRobotTaskCallsRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetPageSize(v int32) *ListRobotTaskCallsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetResourceOwnerAccount(v string) *ListRobotTaskCallsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetResourceOwnerId(v int64) *ListRobotTaskCallsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsRequest) SetTaskId(v string) *ListRobotTaskCallsRequest {
-	s.TaskId = &v
-	return s
-}
-
-type ListRobotTaskCallsResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListRobotTaskCallsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRobotTaskCallsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetCode(v string) *ListRobotTaskCallsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetData(v string) *ListRobotTaskCallsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetMessage(v string) *ListRobotTaskCallsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetPageNo(v string) *ListRobotTaskCallsResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetPageSize(v string) *ListRobotTaskCallsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetRequestId(v string) *ListRobotTaskCallsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponseBody) SetTotalCount(v string) *ListRobotTaskCallsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListRobotTaskCallsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRobotTaskCallsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRobotTaskCallsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRobotTaskCallsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRobotTaskCallsResponse) SetHeaders(v map[string]*string) *ListRobotTaskCallsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRobotTaskCallsResponse) SetBody(v *ListRobotTaskCallsResponseBody) *ListRobotTaskCallsResponse {
 	s.Body = v
 	return s
 }
@@ -5147,99 +4081,6 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 	return s
 }
 
-type QueryRtcNumberAuthStatusRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s QueryRtcNumberAuthStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRtcNumberAuthStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRtcNumberAuthStatusRequest) SetOwnerId(v int64) *QueryRtcNumberAuthStatusRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusRequest) SetPhoneNumber(v string) *QueryRtcNumberAuthStatusRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusRequest) SetResourceOwnerAccount(v string) *QueryRtcNumberAuthStatusRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusRequest) SetResourceOwnerId(v int64) *QueryRtcNumberAuthStatusRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type QueryRtcNumberAuthStatusResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryRtcNumberAuthStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRtcNumberAuthStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRtcNumberAuthStatusResponseBody) SetCode(v string) *QueryRtcNumberAuthStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusResponseBody) SetMessage(v string) *QueryRtcNumberAuthStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusResponseBody) SetModule(v string) *QueryRtcNumberAuthStatusResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusResponseBody) SetRequestId(v string) *QueryRtcNumberAuthStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryRtcNumberAuthStatusResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryRtcNumberAuthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryRtcNumberAuthStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryRtcNumberAuthStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryRtcNumberAuthStatusResponse) SetHeaders(v map[string]*string) *QueryRtcNumberAuthStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryRtcNumberAuthStatusResponse) SetBody(v *QueryRtcNumberAuthStatusResponseBody) *QueryRtcNumberAuthStatusResponse {
-	s.Body = v
-	return s
-}
-
 type QueryVirtualNumberRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -5480,212 +4321,154 @@ func (s *QueryVirtualNumberRelationResponse) SetBody(v *QueryVirtualNumberRelati
 	return s
 }
 
-type QueryVoipNumberBindInfosRequest struct {
+type RefreshMqttTokenRequest struct {
+	ClientId             *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
 }
 
-func (s QueryVoipNumberBindInfosRequest) String() string {
+func (s RefreshMqttTokenRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryVoipNumberBindInfosRequest) GoString() string {
+func (s RefreshMqttTokenRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryVoipNumberBindInfosRequest) SetOwnerId(v int64) *QueryVoipNumberBindInfosRequest {
+func (s *RefreshMqttTokenRequest) SetClientId(v string) *RefreshMqttTokenRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *RefreshMqttTokenRequest) SetOwnerId(v int64) *RefreshMqttTokenRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosRequest) SetPhoneNumber(v string) *QueryVoipNumberBindInfosRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *QueryVoipNumberBindInfosRequest) SetResourceOwnerAccount(v string) *QueryVoipNumberBindInfosRequest {
+func (s *RefreshMqttTokenRequest) SetResourceOwnerAccount(v string) *RefreshMqttTokenRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosRequest) SetResourceOwnerId(v int64) *QueryVoipNumberBindInfosRequest {
+func (s *RefreshMqttTokenRequest) SetResourceOwnerId(v int64) *RefreshMqttTokenRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosRequest) SetVoipId(v string) *QueryVoipNumberBindInfosRequest {
-	s.VoipId = &v
-	return s
+type RefreshMqttTokenResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RefreshMqttTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-type QueryVoipNumberBindInfosResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryVoipNumberBindInfosResponseBody) String() string {
+func (s RefreshMqttTokenResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryVoipNumberBindInfosResponseBody) GoString() string {
+func (s RefreshMqttTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryVoipNumberBindInfosResponseBody) SetCode(v string) *QueryVoipNumberBindInfosResponseBody {
+func (s *RefreshMqttTokenResponseBody) SetCode(v string) *RefreshMqttTokenResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosResponseBody) SetMessage(v string) *QueryVoipNumberBindInfosResponseBody {
+func (s *RefreshMqttTokenResponseBody) SetData(v *RefreshMqttTokenResponseBodyData) *RefreshMqttTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBody) SetMessage(v string) *RefreshMqttTokenResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosResponseBody) SetModule(v string) *QueryVoipNumberBindInfosResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *QueryVoipNumberBindInfosResponseBody) SetRequestId(v string) *QueryVoipNumberBindInfosResponseBody {
+func (s *RefreshMqttTokenResponseBody) SetRequestId(v string) *RefreshMqttTokenResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type QueryVoipNumberBindInfosResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryVoipNumberBindInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type RefreshMqttTokenResponseBodyData struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	P2pTopic   *string `json:"P2pTopic,omitempty" xml:"P2pTopic,omitempty"`
+	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
-func (s QueryVoipNumberBindInfosResponse) String() string {
+func (s RefreshMqttTokenResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryVoipNumberBindInfosResponse) GoString() string {
+func (s RefreshMqttTokenResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryVoipNumberBindInfosResponse) SetHeaders(v map[string]*string) *QueryVoipNumberBindInfosResponse {
+func (s *RefreshMqttTokenResponseBodyData) SetClientId(v string) *RefreshMqttTokenResponseBodyData {
+	s.ClientId = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetExpireTime(v string) *RefreshMqttTokenResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetHost(v string) *RefreshMqttTokenResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetInstanceId(v string) *RefreshMqttTokenResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetP2pTopic(v string) *RefreshMqttTokenResponseBodyData {
+	s.P2pTopic = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetServerId(v string) *RefreshMqttTokenResponseBodyData {
+	s.ServerId = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetToken(v string) *RefreshMqttTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+func (s *RefreshMqttTokenResponseBodyData) SetUsername(v string) *RefreshMqttTokenResponseBodyData {
+	s.Username = &v
+	return s
+}
+
+type RefreshMqttTokenResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshMqttTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshMqttTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshMqttTokenResponse) SetHeaders(v map[string]*string) *RefreshMqttTokenResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *QueryVoipNumberBindInfosResponse) SetBody(v *QueryVoipNumberBindInfosResponseBody) *QueryVoipNumberBindInfosResponse {
-	s.Body = v
-	return s
-}
-
-type ReportVoipProblemsRequest struct {
-	ChannelId            *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Desc                 *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
-}
-
-func (s ReportVoipProblemsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportVoipProblemsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ReportVoipProblemsRequest) SetChannelId(v string) *ReportVoipProblemsRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetDesc(v string) *ReportVoipProblemsRequest {
-	s.Desc = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetOwnerId(v int64) *ReportVoipProblemsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetResourceOwnerAccount(v string) *ReportVoipProblemsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetResourceOwnerId(v int64) *ReportVoipProblemsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetTitle(v string) *ReportVoipProblemsRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *ReportVoipProblemsRequest) SetVoipId(v string) *ReportVoipProblemsRequest {
-	s.VoipId = &v
-	return s
-}
-
-type ReportVoipProblemsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ReportVoipProblemsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportVoipProblemsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ReportVoipProblemsResponseBody) SetCode(v string) *ReportVoipProblemsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ReportVoipProblemsResponseBody) SetMessage(v string) *ReportVoipProblemsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ReportVoipProblemsResponseBody) SetModule(v string) *ReportVoipProblemsResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *ReportVoipProblemsResponseBody) SetRequestId(v string) *ReportVoipProblemsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ReportVoipProblemsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportVoipProblemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ReportVoipProblemsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportVoipProblemsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ReportVoipProblemsResponse) SetHeaders(v map[string]*string) *ReportVoipProblemsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ReportVoipProblemsResponse) SetBody(v *ReportVoipProblemsResponseBody) *ReportVoipProblemsResponse {
+func (s *RefreshMqttTokenResponse) SetBody(v *RefreshMqttTokenResponseBody) *RefreshMqttTokenResponse {
 	s.Body = v
 	return s
 }
@@ -6541,153 +5324,6 @@ func (s *SmartCallOperateResponse) SetBody(v *SmartCallOperateResponseBody) *Sma
 	return s
 }
 
-type StartMicroOutboundRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	CommandCode          *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
-	ExtInfo              *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s StartMicroOutboundRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartMicroOutboundRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartMicroOutboundRequest) SetAccountId(v string) *StartMicroOutboundRequest {
-	s.AccountId = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetAccountType(v string) *StartMicroOutboundRequest {
-	s.AccountType = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetAppName(v string) *StartMicroOutboundRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCalledNumber(v string) *StartMicroOutboundRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCallingNumber(v string) *StartMicroOutboundRequest {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetCommandCode(v string) *StartMicroOutboundRequest {
-	s.CommandCode = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetExtInfo(v string) *StartMicroOutboundRequest {
-	s.ExtInfo = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetOwnerId(v int64) *StartMicroOutboundRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetProdCode(v string) *StartMicroOutboundRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetResourceOwnerAccount(v string) *StartMicroOutboundRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *StartMicroOutboundRequest) SetResourceOwnerId(v int64) *StartMicroOutboundRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type StartMicroOutboundResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CustomerInfo     *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
-	InvokeCmdId      *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
-	InvokeCreateTime *string `json:"InvokeCreateTime,omitempty" xml:"InvokeCreateTime,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartMicroOutboundResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartMicroOutboundResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartMicroOutboundResponseBody) SetCode(v string) *StartMicroOutboundResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetCustomerInfo(v string) *StartMicroOutboundResponseBody {
-	s.CustomerInfo = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetInvokeCmdId(v string) *StartMicroOutboundResponseBody {
-	s.InvokeCmdId = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetInvokeCreateTime(v string) *StartMicroOutboundResponseBody {
-	s.InvokeCreateTime = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetMessage(v string) *StartMicroOutboundResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StartMicroOutboundResponseBody) SetRequestId(v string) *StartMicroOutboundResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartMicroOutboundResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartMicroOutboundResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartMicroOutboundResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartMicroOutboundResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartMicroOutboundResponse) SetHeaders(v map[string]*string) *StartMicroOutboundResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartMicroOutboundResponse) SetBody(v *StartMicroOutboundResponseBody) *StartMicroOutboundResponse {
-	s.Body = v
-	return s
-}
-
 type StartRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -7056,198 +5692,6 @@ func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransfer
 	return s
 }
 
-type UnbindNumberAndVoipIdRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
-}
-
-func (s UnbindNumberAndVoipIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnbindNumberAndVoipIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetOwnerId(v int64) *UnbindNumberAndVoipIdRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetPhoneNumber(v string) *UnbindNumberAndVoipIdRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetResourceOwnerAccount(v string) *UnbindNumberAndVoipIdRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetResourceOwnerId(v int64) *UnbindNumberAndVoipIdRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdRequest) SetVoipId(v string) *UnbindNumberAndVoipIdRequest {
-	s.VoipId = &v
-	return s
-}
-
-type UnbindNumberAndVoipIdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UnbindNumberAndVoipIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnbindNumberAndVoipIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UnbindNumberAndVoipIdResponseBody) SetCode(v string) *UnbindNumberAndVoipIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdResponseBody) SetMessage(v string) *UnbindNumberAndVoipIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdResponseBody) SetModule(v string) *UnbindNumberAndVoipIdResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdResponseBody) SetRequestId(v string) *UnbindNumberAndVoipIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UnbindNumberAndVoipIdResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnbindNumberAndVoipIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UnbindNumberAndVoipIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnbindNumberAndVoipIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UnbindNumberAndVoipIdResponse) SetHeaders(v map[string]*string) *UnbindNumberAndVoipIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UnbindNumberAndVoipIdResponse) SetBody(v *UnbindNumberAndVoipIdResponseBody) *UnbindNumberAndVoipIdResponse {
-	s.Body = v
-	return s
-}
-
-type UndoRtcNumberAuthRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s UndoRtcNumberAuthRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UndoRtcNumberAuthRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UndoRtcNumberAuthRequest) SetOwnerId(v int64) *UndoRtcNumberAuthRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthRequest) SetPhoneNumber(v string) *UndoRtcNumberAuthRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthRequest) SetResourceOwnerAccount(v string) *UndoRtcNumberAuthRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthRequest) SetResourceOwnerId(v int64) *UndoRtcNumberAuthRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type UndoRtcNumberAuthResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UndoRtcNumberAuthResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UndoRtcNumberAuthResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UndoRtcNumberAuthResponseBody) SetCode(v string) *UndoRtcNumberAuthResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthResponseBody) SetMessage(v string) *UndoRtcNumberAuthResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthResponseBody) SetModule(v string) *UndoRtcNumberAuthResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *UndoRtcNumberAuthResponseBody) SetRequestId(v string) *UndoRtcNumberAuthResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UndoRtcNumberAuthResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UndoRtcNumberAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UndoRtcNumberAuthResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UndoRtcNumberAuthResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UndoRtcNumberAuthResponse) SetHeaders(v map[string]*string) *UndoRtcNumberAuthResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UndoRtcNumberAuthResponse) SetBody(v *UndoRtcNumberAuthResponseBody) *UndoRtcNumberAuthResponse {
-	s.Body = v
-	return s
-}
-
 type UploadRobotTaskCalledFileRequest struct {
 	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -7359,204 +5803,6 @@ func (s *UploadRobotTaskCalledFileResponse) SetBody(v *UploadRobotTaskCalledFile
 	return s
 }
 
-type VoipAddAccountRequest struct {
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s VoipAddAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipAddAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *VoipAddAccountRequest) SetDeviceId(v string) *VoipAddAccountRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *VoipAddAccountRequest) SetOwnerId(v int64) *VoipAddAccountRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *VoipAddAccountRequest) SetResourceOwnerAccount(v string) *VoipAddAccountRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *VoipAddAccountRequest) SetResourceOwnerId(v int64) *VoipAddAccountRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type VoipAddAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s VoipAddAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipAddAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *VoipAddAccountResponseBody) SetCode(v string) *VoipAddAccountResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *VoipAddAccountResponseBody) SetMessage(v string) *VoipAddAccountResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *VoipAddAccountResponseBody) SetModule(v string) *VoipAddAccountResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *VoipAddAccountResponseBody) SetRequestId(v string) *VoipAddAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type VoipAddAccountResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VoipAddAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s VoipAddAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipAddAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *VoipAddAccountResponse) SetHeaders(v map[string]*string) *VoipAddAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *VoipAddAccountResponse) SetBody(v *VoipAddAccountResponseBody) *VoipAddAccountResponse {
-	s.Body = v
-	return s
-}
-
-type VoipGetTokenRequest struct {
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	IsCustomAccount      *bool   `json:"IsCustomAccount,omitempty" xml:"IsCustomAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VoipId               *string `json:"VoipId,omitempty" xml:"VoipId,omitempty"`
-}
-
-func (s VoipGetTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipGetTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *VoipGetTokenRequest) SetDeviceId(v string) *VoipGetTokenRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetIsCustomAccount(v bool) *VoipGetTokenRequest {
-	s.IsCustomAccount = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetOwnerId(v int64) *VoipGetTokenRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetResourceOwnerAccount(v string) *VoipGetTokenRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetResourceOwnerId(v int64) *VoipGetTokenRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *VoipGetTokenRequest) SetVoipId(v string) *VoipGetTokenRequest {
-	s.VoipId = &v
-	return s
-}
-
-type VoipGetTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s VoipGetTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipGetTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *VoipGetTokenResponseBody) SetCode(v string) *VoipGetTokenResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *VoipGetTokenResponseBody) SetMessage(v string) *VoipGetTokenResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *VoipGetTokenResponseBody) SetModule(v string) *VoipGetTokenResponseBody {
-	s.Module = &v
-	return s
-}
-
-func (s *VoipGetTokenResponseBody) SetRequestId(v string) *VoipGetTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type VoipGetTokenResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VoipGetTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s VoipGetTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VoipGetTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *VoipGetTokenResponse) SetHeaders(v map[string]*string) *VoipGetTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *VoipGetTokenResponse) SetBody(v *VoipGetTokenResponseBody) *VoipGetTokenResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -7609,11 +5855,28 @@ func (client *Client) AddRtcAccountWithOptions(request *AddRtcAccountRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DeviceId"] = request.DeviceId
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRtcAccount"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddRtcAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddRtcAccount"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7637,11 +5900,32 @@ func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNum
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CorpNameList"] = request.CorpNameList
+	query["NumberList"] = request.NumberList
+	query["OwnerId"] = request.OwnerId
+	query["PhoneNum"] = request.PhoneNum
+	query["ProdCode"] = request.ProdCode
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["RouteType"] = request.RouteType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVirtualNumberRelation"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVirtualNumberRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVirtualNumberRelation"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7665,11 +5949,38 @@ func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCal
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["CorpName"] = request.CorpName
+	query["DialogId"] = request.DialogId
+	query["EarlyMediaAsr"] = request.EarlyMediaAsr
+	query["IsSelfLine"] = request.IsSelfLine
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["ScheduleCall"] = request.ScheduleCall
+	query["ScheduleTime"] = request.ScheduleTime
+	query["TaskName"] = request.TaskName
+	query["TtsParam"] = request.TtsParam
+	query["TtsParamHead"] = request.TtsParamHead
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchRobotSmartCall"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BatchRobotSmartCallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BatchRobotSmartCall"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7688,44 +5999,33 @@ func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (
 	return _result, _err
 }
 
-func (client *Client) BindNumberAndVoipIdWithOptions(request *BindNumberAndVoipIdRequest, runtime *util.RuntimeOptions) (_result *BindNumberAndVoipIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &BindNumberAndVoipIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindNumberAndVoipId"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BindNumberAndVoipId(request *BindNumberAndVoipIdRequest) (_result *BindNumberAndVoipIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BindNumberAndVoipIdResponse{}
-	_body, _err := client.BindNumberAndVoipIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CancelCallWithOptions(request *CancelCallRequest, runtime *util.RuntimeOptions) (_result *CancelCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallId"] = request.CallId
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelCall"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelCallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelCall"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7749,11 +6049,28 @@ func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOrderRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelOrderRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelOrderRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7777,11 +6094,28 @@ func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7805,11 +6139,36 @@ func (client *Client) ClickToDialWithOptions(request *ClickToDialRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AsrFlag"] = request.AsrFlag
+	query["AsrModelId"] = request.AsrModelId
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["CallerNumber"] = request.CallerNumber
+	query["CallerShowNumber"] = request.CallerShowNumber
+	query["OutId"] = request.OutId
+	query["OwnerId"] = request.OwnerId
+	query["RecordFlag"] = request.RecordFlag
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["SessionTimeout"] = request.SessionTimeout
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClickToDial"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ClickToDialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ClickToDial"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7828,44 +6187,43 @@ func (client *Client) ClickToDial(request *ClickToDialRequest) (_result *ClickTo
 	return _result, _err
 }
 
-func (client *Client) CloseSipAccountWithOptions(request *CloseSipAccountRequest, runtime *util.RuntimeOptions) (_result *CloseSipAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CloseSipAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CloseSipAccount"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CloseSipAccount(request *CloseSipAccountRequest) (_result *CloseSipAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CloseSipAccountResponse{}
-	_body, _err := client.CloseSipAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, runtime *util.RuntimeOptions) (_result *CreateCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["Data"] = request.Data
+	query["DataType"] = request.DataType
+	query["FireTime"] = request.FireTime
+	query["OwnerId"] = request.OwnerId
+	query["Resource"] = request.Resource
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["ResourceType"] = request.ResourceType
+	query["ScheduleType"] = request.ScheduleType
+	query["StopTime"] = request.StopTime
+	query["TaskName"] = request.TaskName
+	query["TemplateCode"] = request.TemplateCode
+	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCallTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCallTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCallTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7889,11 +6247,37 @@ func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Caller"] = request.Caller
+	query["CorpName"] = request.CorpName
+	query["DialogId"] = request.DialogId
+	query["IsSelfLine"] = request.IsSelfLine
+	query["NumberStatusIdent"] = request.NumberStatusIdent
+	query["OwnerId"] = request.OwnerId
+	query["RecallInterval"] = request.RecallInterval
+	query["RecallStateCodes"] = request.RecallStateCodes
+	query["RecallTimes"] = request.RecallTimes
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["RetryType"] = request.RetryType
+	query["TaskName"] = request.TaskName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7912,44 +6296,33 @@ func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateSipAccountWithOptions(request *CreateSipAccountRequest, runtime *util.RuntimeOptions) (_result *CreateSipAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateSipAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSipAccount"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateSipAccount(request *CreateSipAccountRequest) (_result *CreateSipAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSipAccountResponse{}
-	_body, _err := client.CreateSipAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7968,100 +6341,35 @@ func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DescribeRecordDataWithOptions(request *DescribeRecordDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeRecordDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecordData"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRecordData(request *DescribeRecordDataRequest) (_result *DescribeRecordDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRecordDataResponse{}
-	_body, _err := client.DescribeRecordDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DoRtcNumberAuthWithOptions(request *DoRtcNumberAuthRequest, runtime *util.RuntimeOptions) (_result *DoRtcNumberAuthResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DoRtcNumberAuthResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoRtcNumberAuth"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DoRtcNumberAuth(request *DoRtcNumberAuthRequest) (_result *DoRtcNumberAuthResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DoRtcNumberAuthResponse{}
-	_body, _err := client.DoRtcNumberAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DoubleCallSeatWithOptions(request *DoubleCallSeatRequest, runtime *util.RuntimeOptions) (_result *DoubleCallSeatResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DoubleCallSeatResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoubleCallSeat"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DoubleCallSeat(request *DoubleCallSeatRequest) (_result *DoubleCallSeatResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DoubleCallSeatResponse{}
-	_body, _err := client.DoubleCallSeatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest, runtime *util.RuntimeOptions) (_result *ExecuteCallTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FireTime"] = request.FireTime
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Status"] = request.Status
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteCallTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteCallTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteCallTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8085,11 +6393,28 @@ func (client *Client) GetCallInfoWithOptions(request *GetCallInfoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["RtcId"] = request.RtcId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCallInfo"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCallInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCallInfo"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8113,11 +6438,28 @@ func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OrderId"] = request.OrderId
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotlineQualificationByOrder"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetHotlineQualificationByOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetHotlineQualificationByOrder"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8136,16 +6478,79 @@ func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualific
 	return _result, _err
 }
 
+func (client *Client) GetMqttTokenWithOptions(request *GetMqttTokenRequest, runtime *util.RuntimeOptions) (_result *GetMqttTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMqttToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMqttTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMqttToken(request *GetMqttTokenRequest) (_result *GetMqttTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMqttTokenResponse{}
+	_body, _err := client.GetMqttTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRtcTokenWithOptions(request *GetRtcTokenRequest, runtime *util.RuntimeOptions) (_result *GetRtcTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DeviceId"] = request.DeviceId
+	query["IsCustomAccount"] = request.IsCustomAccount
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRtcToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRtcTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRtcToken"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8169,11 +6574,28 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TokenType"] = request.TokenType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetToken"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8197,11 +6619,37 @@ func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ByeCode"] = request.ByeCode
+	query["ByeTtsParams"] = request.ByeTtsParams
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["MenuKeyMap"] = request.MenuKeyMap
+	query["OutId"] = request.OutId
+	query["OwnerId"] = request.OwnerId
+	query["PlayTimes"] = request.PlayTimes
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["StartCode"] = request.StartCode
+	query["StartTtsParams"] = request.StartTtsParams
+	query["Timeout"] = request.Timeout
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IvrCall"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &IvrCallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("IvrCall"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8225,11 +6673,34 @@ func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["OwnerId"] = request.OwnerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Status"] = request.Status
+	query["TaskId"] = request.TaskId
+	query["TaskName"] = request.TaskName
+	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCallTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCallTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8253,11 +6724,32 @@ func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledNum"] = request.CalledNum
+	query["OwnerId"] = request.OwnerId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Status"] = request.Status
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallTaskDetail"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCallTaskDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCallTaskDetail"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8281,11 +6773,31 @@ func (client *Client) ListHotlineTransferNumberWithOptions(request *ListHotlineT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["HotlineNumber"] = request.HotlineNumber
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["QualificationId"] = request.QualificationId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotlineTransferNumber"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListHotlineTransferNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListHotlineTransferNumber"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8309,11 +6821,31 @@ func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["HotlineNumber"] = request.HotlineNumber
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["QualificationId"] = request.QualificationId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotlineTransferRegisterFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListHotlineTransferRegisterFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListHotlineTransferRegisterFile"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8332,100 +6864,35 @@ func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransf
 	return _result, _err
 }
 
-func (client *Client) ListOrderedNumbersWithOptions(request *ListOrderedNumbersRequest, runtime *util.RuntimeOptions) (_result *ListOrderedNumbersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListOrderedNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListOrderedNumbers"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListOrderedNumbers(request *ListOrderedNumbersRequest) (_result *ListOrderedNumbersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListOrderedNumbersResponse{}
-	_body, _err := client.ListOrderedNumbersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListOutboundStrategiesWithOptions(request *ListOutboundStrategiesRequest, runtime *util.RuntimeOptions) (_result *ListOutboundStrategiesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListOutboundStrategiesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListOutboundStrategies"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListOutboundStrategies(request *ListOutboundStrategiesRequest) (_result *ListOutboundStrategiesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListOutboundStrategiesResponse{}
-	_body, _err := client.ListOutboundStrategiesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRobotTaskCallsWithOptions(request *ListRobotTaskCallsRequest, runtime *util.RuntimeOptions) (_result *ListRobotTaskCallsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListRobotTaskCallsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRobotTaskCalls"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRobotTaskCalls(request *ListRobotTaskCallsRequest) (_result *ListRobotTaskCallsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListRobotTaskCallsResponse{}
-	_body, _err := client.ListRobotTaskCallsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetailByCallIdRequest, runtime *util.RuntimeOptions) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallId"] = request.CallId
+	query["OwnerId"] = request.OwnerId
+	query["ProdId"] = request.ProdId
+	query["QueryDate"] = request.QueryDate
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallDetailByCallId"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCallDetailByCallIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCallDetailByCallId"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8449,11 +6916,30 @@ func (client *Client) QueryCallDetailByTaskIdWithOptions(request *QueryCallDetai
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Callee"] = request.Callee
+	query["OwnerId"] = request.OwnerId
+	query["QueryDate"] = request.QueryDate
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallDetailByTaskId"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCallDetailByTaskIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCallDetailByTaskId"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8477,11 +6963,28 @@ func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCal
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["PhoneNumber"] = request.PhoneNumber
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallInPoolTransferConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCallInPoolTransferConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCallInPoolTransferConfig"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8505,11 +7008,32 @@ func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallInCaller"] = request.CallInCaller
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["PhoneNumber"] = request.PhoneNumber
+	query["QueryDate"] = request.QueryDate
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCallInTransferRecord"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCallInTransferRecordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCallInTransferRecord"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8533,11 +7057,28 @@ func (client *Client) QueryRobotInfoListWithOptions(request *QueryRobotInfoListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuditStatus"] = request.AuditStatus
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotInfoList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotInfoListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotInfoList"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8561,11 +7102,30 @@ func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTas
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Callee"] = request.Callee
+	query["OwnerId"] = request.OwnerId
+	query["QueryDate"] = request.QueryDate
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotTaskCallDetail"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotTaskCallDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotTaskCallDetail"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8589,11 +7149,37 @@ func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallResult"] = request.CallResult
+	query["Called"] = request.Called
+	query["DialogCountFrom"] = request.DialogCountFrom
+	query["DialogCountTo"] = request.DialogCountTo
+	query["DurationFrom"] = request.DurationFrom
+	query["DurationTo"] = request.DurationTo
+	query["HangupDirection"] = request.HangupDirection
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotTaskCallList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotTaskCallListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotTaskCallList"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8617,11 +7203,28 @@ func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDet
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Id"] = request.Id
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotTaskDetail"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotTaskDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotTaskDetail"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8645,11 +7248,32 @@ func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Status"] = request.Status
+	query["TaskName"] = request.TaskName
+	query["Time"] = request.Time
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotTaskList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotTaskListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotTaskList"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8673,11 +7297,27 @@ func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllLis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRobotv2AllList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRobotv2AllListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRobotv2AllList"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8696,44 +7336,36 @@ func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (
 	return _result, _err
 }
 
-func (client *Client) QueryRtcNumberAuthStatusWithOptions(request *QueryRtcNumberAuthStatusRequest, runtime *util.RuntimeOptions) (_result *QueryRtcNumberAuthStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryRtcNumberAuthStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRtcNumberAuthStatus"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryRtcNumberAuthStatus(request *QueryRtcNumberAuthStatusRequest) (_result *QueryRtcNumberAuthStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryRtcNumberAuthStatusResponse{}
-	_body, _err := client.QueryRtcNumberAuthStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberRequest, runtime *util.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["ProdCode"] = request.ProdCode
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["RouteType"] = request.RouteType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryVirtualNumber"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVirtualNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryVirtualNumber"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8757,11 +7389,36 @@ func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtua
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["PageNo"] = request.PageNo
+	query["PageSize"] = request.PageSize
+	query["PhoneNum"] = request.PhoneNum
+	query["ProdCode"] = request.ProdCode
+	query["QualificationId"] = request.QualificationId
+	query["RegionNameCity"] = request.RegionNameCity
+	query["RelatedNum"] = request.RelatedNum
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["RouteType"] = request.RouteType
+	query["SpecId"] = request.SpecId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryVirtualNumberRelation"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVirtualNumberRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryVirtualNumberRelation"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8780,16 +7437,33 @@ func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRela
 	return _result, _err
 }
 
-func (client *Client) QueryVoipNumberBindInfosWithOptions(request *QueryVoipNumberBindInfosRequest, runtime *util.RuntimeOptions) (_result *QueryVoipNumberBindInfosResponse, _err error) {
+func (client *Client) RefreshMqttTokenWithOptions(request *RefreshMqttTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshMqttTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientId"] = request.ClientId
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
 	}
-	_result = &QueryVoipNumberBindInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryVoipNumberBindInfos"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("RefreshMqttToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshMqttTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8797,38 +7471,10 @@ func (client *Client) QueryVoipNumberBindInfosWithOptions(request *QueryVoipNumb
 	return _result, _err
 }
 
-func (client *Client) QueryVoipNumberBindInfos(request *QueryVoipNumberBindInfosRequest) (_result *QueryVoipNumberBindInfosResponse, _err error) {
+func (client *Client) RefreshMqttToken(request *RefreshMqttTokenRequest) (_result *RefreshMqttTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &QueryVoipNumberBindInfosResponse{}
-	_body, _err := client.QueryVoipNumberBindInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ReportVoipProblemsWithOptions(request *ReportVoipProblemsRequest, runtime *util.RuntimeOptions) (_result *ReportVoipProblemsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ReportVoipProblemsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReportVoipProblems"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ReportVoipProblems(request *ReportVoipProblemsRequest) (_result *ReportVoipProblemsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ReportVoipProblemsResponse{}
-	_body, _err := client.ReportVoipProblemsWithOptions(request, runtime)
+	_result = &RefreshMqttTokenResponse{}
+	_body, _err := client.RefreshMqttTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8841,11 +7487,30 @@ func (client *Client) SendVerificationWithOptions(request *SendVerificationReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Target"] = request.Target
+	query["VerifyType"] = request.VerifyType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendVerification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SendVerificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendVerification"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8869,11 +7534,31 @@ func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransfe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledRouteMode"] = request.CalledRouteMode
+	query["Details"] = request.Details
+	query["OwnerId"] = request.OwnerId
+	query["PhoneNumber"] = request.PhoneNumber
+	query["QualificationId"] = request.QualificationId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetTransferCalleePoolConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetTransferCalleePoolConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetTransferCalleePoolConfig"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8897,11 +7582,35 @@ func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["OutId"] = request.OutId
+	query["OwnerId"] = request.OwnerId
+	query["PlayTimes"] = request.PlayTimes
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Speed"] = request.Speed
+	query["TtsCode"] = request.TtsCode
+	query["TtsParam"] = request.TtsParam
+	query["Volume"] = request.Volume
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SingleCallByTts"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SingleCallByTtsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SingleCallByTts"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8925,11 +7634,34 @@ func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["OutId"] = request.OutId
+	query["OwnerId"] = request.OwnerId
+	query["PlayTimes"] = request.PlayTimes
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["Speed"] = request.Speed
+	query["VoiceCode"] = request.VoiceCode
+	query["Volume"] = request.Volume
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SingleCallByVoice"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SingleCallByVoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SingleCallByVoice"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8953,11 +7685,53 @@ func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ActionCodeBreak"] = request.ActionCodeBreak
+	query["ActionCodeTimeBreak"] = request.ActionCodeTimeBreak
+	query["AsrBaseId"] = request.AsrBaseId
+	query["AsrModelId"] = request.AsrModelId
+	query["BackgroundFileCode"] = request.BackgroundFileCode
+	query["BackgroundSpeed"] = request.BackgroundSpeed
+	query["BackgroundVolume"] = request.BackgroundVolume
+	query["CalledNumber"] = request.CalledNumber
+	query["CalledShowNumber"] = request.CalledShowNumber
+	query["DynamicId"] = request.DynamicId
+	query["EarlyMediaAsr"] = request.EarlyMediaAsr
+	query["EnableITN"] = request.EnableITN
+	query["MuteTime"] = request.MuteTime
+	query["OutId"] = request.OutId
+	query["OwnerId"] = request.OwnerId
+	query["PauseTime"] = request.PauseTime
+	query["RecordFlag"] = request.RecordFlag
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["SessionTimeout"] = request.SessionTimeout
+	query["Speed"] = request.Speed
+	query["StreamAsr"] = request.StreamAsr
+	query["TtsConf"] = request.TtsConf
+	query["TtsSpeed"] = request.TtsSpeed
+	query["TtsStyle"] = request.TtsStyle
+	query["TtsVolume"] = request.TtsVolume
+	query["VoiceCode"] = request.VoiceCode
+	query["VoiceCodeParam"] = request.VoiceCodeParam
+	query["Volume"] = request.Volume
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmartCall"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SmartCallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SmartCall"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8981,11 +7755,30 @@ func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallId"] = request.CallId
+	query["Command"] = request.Command
+	query["OwnerId"] = request.OwnerId
+	query["Param"] = request.Param
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmartCallOperate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SmartCallOperateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SmartCallOperate"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9004,44 +7797,34 @@ func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) StartMicroOutboundWithOptions(request *StartMicroOutboundRequest, runtime *util.RuntimeOptions) (_result *StartMicroOutboundResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartMicroOutboundResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartMicroOutbound"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartMicroOutbound(request *StartMicroOutboundRequest) (_result *StartMicroOutboundResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartMicroOutboundResponse{}
-	_body, _err := client.StartMicroOutboundWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, runtime *util.RuntimeOptions) (_result *StartRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["ScheduleTime"] = request.ScheduleTime
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9065,11 +7848,28 @@ func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopRobotTask"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopRobotTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopRobotTask"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9093,11 +7893,37 @@ func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Agreement"] = request.Agreement
+	query["HotlineNumber"] = request.HotlineNumber
+	query["OperatorIdentityCard"] = request.OperatorIdentityCard
+	query["OperatorMail"] = request.OperatorMail
+	query["OperatorMailVerifyCode"] = request.OperatorMailVerifyCode
+	query["OperatorMobile"] = request.OperatorMobile
+	query["OperatorMobileVerifyCode"] = request.OperatorMobileVerifyCode
+	query["OperatorName"] = request.OperatorName
+	query["OwnerId"] = request.OwnerId
+	query["QualificationId"] = request.QualificationId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TransferPhoneNumberInfos"] = request.TransferPhoneNumberInfos
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitHotlineTransferRegister"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitHotlineTransferRegisterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitHotlineTransferRegister"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9116,72 +7942,36 @@ func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransf
 	return _result, _err
 }
 
-func (client *Client) UnbindNumberAndVoipIdWithOptions(request *UnbindNumberAndVoipIdRequest, runtime *util.RuntimeOptions) (_result *UnbindNumberAndVoipIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UnbindNumberAndVoipIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindNumberAndVoipId"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UnbindNumberAndVoipId(request *UnbindNumberAndVoipIdRequest) (_result *UnbindNumberAndVoipIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UnbindNumberAndVoipIdResponse{}
-	_body, _err := client.UnbindNumberAndVoipIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UndoRtcNumberAuthWithOptions(request *UndoRtcNumberAuthRequest, runtime *util.RuntimeOptions) (_result *UndoRtcNumberAuthResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UndoRtcNumberAuthResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UndoRtcNumberAuth"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UndoRtcNumberAuth(request *UndoRtcNumberAuthRequest) (_result *UndoRtcNumberAuthResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UndoRtcNumberAuthResponse{}
-	_body, _err := client.UndoRtcNumberAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotTaskCalledFileRequest, runtime *util.RuntimeOptions) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CalledNumber"] = request.CalledNumber
+	query["Id"] = request.Id
+	query["OwnerId"] = request.OwnerId
+	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	query["ResourceOwnerId"] = request.ResourceOwnerId
+	query["TtsParam"] = request.TtsParam
+	query["TtsParamHead"] = request.TtsParamHead
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadRobotTaskCalledFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UploadRobotTaskCalledFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UploadRobotTaskCalledFile"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9193,62 +7983,6 @@ func (client *Client) UploadRobotTaskCalledFile(request *UploadRobotTaskCalledFi
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadRobotTaskCalledFileResponse{}
 	_body, _err := client.UploadRobotTaskCalledFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) VoipAddAccountWithOptions(request *VoipAddAccountRequest, runtime *util.RuntimeOptions) (_result *VoipAddAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &VoipAddAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VoipAddAccount"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) VoipAddAccount(request *VoipAddAccountRequest) (_result *VoipAddAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &VoipAddAccountResponse{}
-	_body, _err := client.VoipAddAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) VoipGetTokenWithOptions(request *VoipGetTokenRequest, runtime *util.RuntimeOptions) (_result *VoipGetTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &VoipGetTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VoipGetToken"), tea.String("2017-05-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) VoipGetToken(request *VoipGetTokenRequest) (_result *VoipGetTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &VoipGetTokenResponse{}
-	_body, _err := client.VoipGetTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
