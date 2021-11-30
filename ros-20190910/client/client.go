@@ -1376,6 +1376,286 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 	return s
 }
 
+type CreateTemplateScratchRequest struct {
+	ClientToken          *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description          *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode        *string                                             `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	LogicalIdStrategy    *string                                             `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParameters []*CreateTemplateScratchRequestPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceResourceGroup  *CreateTemplateScratchRequestSourceResourceGroup    `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
+	SourceResources      []*CreateTemplateScratchRequestSourceResources      `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
+	SourceTag            *CreateTemplateScratchRequestSourceTag              `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
+	TemplateScratchType  *string                                             `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
+}
+
+func (s CreateTemplateScratchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchRequest) SetClientToken(v string) *CreateTemplateScratchRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetDescription(v string) *CreateTemplateScratchRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetExecutionMode(v string) *CreateTemplateScratchRequest {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetLogicalIdStrategy(v string) *CreateTemplateScratchRequest {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetPreferenceParameters(v []*CreateTemplateScratchRequestPreferenceParameters) *CreateTemplateScratchRequest {
+	s.PreferenceParameters = v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetRegionId(v string) *CreateTemplateScratchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetSourceResourceGroup(v *CreateTemplateScratchRequestSourceResourceGroup) *CreateTemplateScratchRequest {
+	s.SourceResourceGroup = v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetSourceResources(v []*CreateTemplateScratchRequestSourceResources) *CreateTemplateScratchRequest {
+	s.SourceResources = v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetSourceTag(v *CreateTemplateScratchRequestSourceTag) *CreateTemplateScratchRequest {
+	s.SourceTag = v
+	return s
+}
+
+func (s *CreateTemplateScratchRequest) SetTemplateScratchType(v string) *CreateTemplateScratchRequest {
+	s.TemplateScratchType = &v
+	return s
+}
+
+type CreateTemplateScratchRequestPreferenceParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s CreateTemplateScratchRequestPreferenceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchRequestPreferenceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchRequestPreferenceParameters) SetParameterKey(v string) *CreateTemplateScratchRequestPreferenceParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequestPreferenceParameters) SetParameterValue(v string) *CreateTemplateScratchRequestPreferenceParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type CreateTemplateScratchRequestSourceResourceGroup struct {
+	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s CreateTemplateScratchRequestSourceResourceGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchRequestSourceResourceGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchRequestSourceResourceGroup) SetResourceGroupId(v string) *CreateTemplateScratchRequestSourceResourceGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequestSourceResourceGroup) SetResourceTypeFilter(v []*string) *CreateTemplateScratchRequestSourceResourceGroup {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type CreateTemplateScratchRequestSourceResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateTemplateScratchRequestSourceResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchRequestSourceResources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchRequestSourceResources) SetResourceId(v string) *CreateTemplateScratchRequestSourceResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequestSourceResources) SetResourceType(v string) *CreateTemplateScratchRequestSourceResources {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateTemplateScratchRequestSourceTag struct {
+	ResourceTags       map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	ResourceTypeFilter []*string              `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s CreateTemplateScratchRequestSourceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchRequestSourceTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchRequestSourceTag) SetResourceTags(v map[string]interface{}) *CreateTemplateScratchRequestSourceTag {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *CreateTemplateScratchRequestSourceTag) SetResourceTypeFilter(v []*string) *CreateTemplateScratchRequestSourceTag {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type CreateTemplateScratchShrinkRequest struct {
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode              *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	LogicalIdStrategy          *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParametersShrink *string `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceResourceGroupShrink  *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
+	SourceResourcesShrink      *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
+	SourceTagShrink            *string `json:"SourceTag,omitempty" xml:"SourceTag,omitempty"`
+	TemplateScratchType        *string `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
+}
+
+func (s CreateTemplateScratchShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetClientToken(v string) *CreateTemplateScratchShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetDescription(v string) *CreateTemplateScratchShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetExecutionMode(v string) *CreateTemplateScratchShrinkRequest {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetLogicalIdStrategy(v string) *CreateTemplateScratchShrinkRequest {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetPreferenceParametersShrink(v string) *CreateTemplateScratchShrinkRequest {
+	s.PreferenceParametersShrink = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetRegionId(v string) *CreateTemplateScratchShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetSourceResourceGroupShrink(v string) *CreateTemplateScratchShrinkRequest {
+	s.SourceResourceGroupShrink = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetSourceResourcesShrink(v string) *CreateTemplateScratchShrinkRequest {
+	s.SourceResourcesShrink = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetSourceTagShrink(v string) *CreateTemplateScratchShrinkRequest {
+	s.SourceTagShrink = &v
+	return s
+}
+
+func (s *CreateTemplateScratchShrinkRequest) SetTemplateScratchType(v string) *CreateTemplateScratchShrinkRequest {
+	s.TemplateScratchType = &v
+	return s
+}
+
+type CreateTemplateScratchResponseBody struct {
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s CreateTemplateScratchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchResponseBody) SetRequestId(v string) *CreateTemplateScratchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchResponseBody) SetTemplateScratchId(v string) *CreateTemplateScratchResponseBody {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type CreateTemplateScratchResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTemplateScratchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTemplateScratchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateScratchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateScratchResponse) SetHeaders(v map[string]*string) *CreateTemplateScratchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTemplateScratchResponse) SetBody(v *CreateTemplateScratchResponseBody) *CreateTemplateScratchResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteChangeSetRequest struct {
 	ChangeSetId *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1829,6 +2109,69 @@ func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplat
 }
 
 func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTemplateScratchRequest struct {
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s DeleteTemplateScratchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateScratchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateScratchRequest) SetRegionId(v string) *DeleteTemplateScratchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteTemplateScratchRequest) SetTemplateScratchId(v string) *DeleteTemplateScratchRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type DeleteTemplateScratchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTemplateScratchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateScratchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateScratchResponseBody) SetRequestId(v string) *DeleteTemplateScratchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTemplateScratchResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTemplateScratchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTemplateScratchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateScratchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateScratchResponse) SetHeaders(v map[string]*string) *DeleteTemplateScratchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTemplateScratchResponse) SetBody(v *DeleteTemplateScratchResponseBody) *DeleteTemplateScratchResponse {
 	s.Body = v
 	return s
 }
@@ -2351,6 +2694,116 @@ func (s *ExecuteChangeSetResponse) SetHeaders(v map[string]*string) *ExecuteChan
 }
 
 func (s *ExecuteChangeSetResponse) SetBody(v *ExecuteChangeSetResponseBody) *ExecuteChangeSetResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateTemplateByScratchRequest struct {
+	ProvisionRegionId *string `json:"ProvisionRegionId,omitempty" xml:"ProvisionRegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s GenerateTemplateByScratchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTemplateByScratchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplateByScratchRequest) SetProvisionRegionId(v string) *GenerateTemplateByScratchRequest {
+	s.ProvisionRegionId = &v
+	return s
+}
+
+func (s *GenerateTemplateByScratchRequest) SetRegionId(v string) *GenerateTemplateByScratchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GenerateTemplateByScratchRequest) SetTemplateScratchId(v string) *GenerateTemplateByScratchRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type GenerateTemplateByScratchResponseBody struct {
+	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourcesToImport []*GenerateTemplateByScratchResponseBodyResourcesToImport `json:"ResourcesToImport,omitempty" xml:"ResourcesToImport,omitempty" type:"Repeated"`
+	TemplateBody      *string                                                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+}
+
+func (s GenerateTemplateByScratchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTemplateByScratchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplateByScratchResponseBody) SetRequestId(v string) *GenerateTemplateByScratchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateTemplateByScratchResponseBody) SetResourcesToImport(v []*GenerateTemplateByScratchResponseBodyResourcesToImport) *GenerateTemplateByScratchResponseBody {
+	s.ResourcesToImport = v
+	return s
+}
+
+func (s *GenerateTemplateByScratchResponseBody) SetTemplateBody(v string) *GenerateTemplateByScratchResponseBody {
+	s.TemplateBody = &v
+	return s
+}
+
+type GenerateTemplateByScratchResponseBodyResourcesToImport struct {
+	LogicalResourceId  *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	ResourceIdentifier map[string]interface{} `json:"ResourceIdentifier,omitempty" xml:"ResourceIdentifier,omitempty"`
+	ResourceType       *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GenerateTemplateByScratchResponseBodyResourcesToImport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTemplateByScratchResponseBodyResourcesToImport) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplateByScratchResponseBodyResourcesToImport) SetLogicalResourceId(v string) *GenerateTemplateByScratchResponseBodyResourcesToImport {
+	s.LogicalResourceId = &v
+	return s
+}
+
+func (s *GenerateTemplateByScratchResponseBodyResourcesToImport) SetResourceIdentifier(v map[string]interface{}) *GenerateTemplateByScratchResponseBodyResourcesToImport {
+	s.ResourceIdentifier = v
+	return s
+}
+
+func (s *GenerateTemplateByScratchResponseBodyResourcesToImport) SetResourceType(v string) *GenerateTemplateByScratchResponseBodyResourcesToImport {
+	s.ResourceType = &v
+	return s
+}
+
+type GenerateTemplateByScratchResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GenerateTemplateByScratchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateTemplateByScratchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTemplateByScratchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTemplateByScratchResponse) SetHeaders(v map[string]*string) *GenerateTemplateByScratchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateTemplateByScratchResponse) SetBody(v *GenerateTemplateByScratchResponseBody) *GenerateTemplateByScratchResponse {
 	s.Body = v
 	return s
 }
@@ -5281,6 +5734,297 @@ func (s *GetTemplateParameterConstraintsResponse) SetBody(v *GetTemplateParamete
 	return s
 }
 
+type GetTemplateScratchRequest struct {
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShowDataOption    *string `json:"ShowDataOption,omitempty" xml:"ShowDataOption,omitempty"`
+	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s GetTemplateScratchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchRequest) SetRegionId(v string) *GetTemplateScratchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateScratchRequest) SetShowDataOption(v string) *GetTemplateScratchRequest {
+	s.ShowDataOption = &v
+	return s
+}
+
+func (s *GetTemplateScratchRequest) SetTemplateScratchId(v string) *GetTemplateScratchRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type GetTemplateScratchResponseBody struct {
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateScratch *GetTemplateScratchResponseBodyTemplateScratch `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
+}
+
+func (s GetTemplateScratchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBody) SetRequestId(v string) *GetTemplateScratchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBody) SetTemplateScratch(v *GetTemplateScratchResponseBodyTemplateScratch) *GetTemplateScratchResponseBody {
+	s.TemplateScratch = v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratch struct {
+	CreateTime           *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description          *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	FailedCode           *string                                                              `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
+	LogicalIdStrategy    *string                                                              `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParameters []*GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	SourceResourceGroup  *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup    `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
+	SourceResources      []*GetTemplateScratchResponseBodyTemplateScratchSourceResources      `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
+	SourceTag            *GetTemplateScratchResponseBodyTemplateScratchSourceTag              `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
+	Stacks               []*GetTemplateScratchResponseBodyTemplateScratchStacks               `json:"Stacks,omitempty" xml:"Stacks,omitempty" type:"Repeated"`
+	Status               *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason         *string                                                              `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	TemplateScratchData  map[string]interface{}                                               `json:"TemplateScratchData,omitempty" xml:"TemplateScratchData,omitempty"`
+	TemplateScratchId    *string                                                              `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchType  *string                                                              `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
+	UpdateTime           *string                                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratch) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetCreateTime(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetDescription(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetFailedCode(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.FailedCode = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetLogicalIdStrategy(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetPreferenceParameters(v []*GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.PreferenceParameters = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetSourceResourceGroup(v *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.SourceResourceGroup = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetSourceResources(v []*GetTemplateScratchResponseBodyTemplateScratchSourceResources) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.SourceResources = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetSourceTag(v *GetTemplateScratchResponseBodyTemplateScratchSourceTag) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.SourceTag = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetStacks(v []*GetTemplateScratchResponseBodyTemplateScratchStacks) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.Stacks = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetStatus(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetStatusReason(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetTemplateScratchData(v map[string]interface{}) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.TemplateScratchData = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetTemplateScratchId(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetTemplateScratchType(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.TemplateScratchType = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetUpdateTime(v string) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) SetParameterKey(v string) *GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters) SetParameterValue(v string) *GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup struct {
+	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) SetResourceGroupId(v string) *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) SetResourceTypeFilter(v []*string) *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratchSourceResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResources) SetResourceId(v string) *GetTemplateScratchResponseBodyTemplateScratchSourceResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResources) SetResourceType(v string) *GetTemplateScratchResponseBodyTemplateScratchSourceResources {
+	s.ResourceType = &v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratchSourceTag struct {
+	ResourceTags       map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	ResourceTypeFilter []*string              `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchSourceTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceTag) SetResourceTags(v map[string]interface{}) *GetTemplateScratchResponseBodyTemplateScratchSourceTag {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceTag) SetResourceTypeFilter(v []*string) *GetTemplateScratchResponseBodyTemplateScratchSourceTag {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type GetTemplateScratchResponseBodyTemplateScratchStacks struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchStacks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchStacks) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchStacks) SetRegionId(v string) *GetTemplateScratchResponseBodyTemplateScratchStacks {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchStacks) SetStackId(v string) *GetTemplateScratchResponseBodyTemplateScratchStacks {
+	s.StackId = &v
+	return s
+}
+
+type GetTemplateScratchResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTemplateScratchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTemplateScratchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponse) SetHeaders(v map[string]*string) *GetTemplateScratchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateScratchResponse) SetBody(v *GetTemplateScratchResponseBody) *GetTemplateScratchResponse {
+	s.Body = v
+	return s
+}
+
 type GetTemplateSummaryRequest struct {
 	ChangeSetId     *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7650,6 +8394,298 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 	return s
 }
 
+type ListTemplateScratchesRequest struct {
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateScratchId   *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchType *string `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
+}
+
+func (s ListTemplateScratchesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesRequest) SetPageNumber(v int32) *ListTemplateScratchesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetPageSize(v int32) *ListTemplateScratchesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetRegionId(v string) *ListTemplateScratchesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetStatus(v string) *ListTemplateScratchesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetTemplateScratchId(v string) *ListTemplateScratchesRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesRequest) SetTemplateScratchType(v string) *ListTemplateScratchesRequest {
+	s.TemplateScratchType = &v
+	return s
+}
+
+type ListTemplateScratchesResponseBody struct {
+	PageNumber        *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateScratches []*ListTemplateScratchesResponseBodyTemplateScratches `json:"TemplateScratches,omitempty" xml:"TemplateScratches,omitempty" type:"Repeated"`
+	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTemplateScratchesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBody) SetPageNumber(v int32) *ListTemplateScratchesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBody) SetPageSize(v int32) *ListTemplateScratchesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBody) SetRequestId(v string) *ListTemplateScratchesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBody) SetTemplateScratches(v []*ListTemplateScratchesResponseBodyTemplateScratches) *ListTemplateScratchesResponseBody {
+	s.TemplateScratches = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBody) SetTotalCount(v int32) *ListTemplateScratchesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTemplateScratchesResponseBodyTemplateScratches struct {
+	CreateTime           *string                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description          *string                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FailedCode           *string                                                                   `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
+	LogicalIdStrategy    *string                                                                   `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParameters []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	SourceResourceGroup  *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup    `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
+	SourceResources      []*ListTemplateScratchesResponseBodyTemplateScratchesSourceResources      `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
+	SourceTag            *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag              `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
+	Status               *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason         *string                                                                   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	TemplateScratchId    *string                                                                   `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchType  *string                                                                   `json:"TemplateScratchType,omitempty" xml:"TemplateScratchType,omitempty"`
+	UpdateTime           *string                                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratches) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetCreateTime(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetDescription(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetFailedCode(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.FailedCode = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetLogicalIdStrategy(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetPreferenceParameters(v []*ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.PreferenceParameters = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetSourceResourceGroup(v *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.SourceResourceGroup = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetSourceResources(v []*ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.SourceResources = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetSourceTag(v *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.SourceTag = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetStatus(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetStatusReason(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetTemplateScratchId(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetTemplateScratchType(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.TemplateScratchType = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratches) SetUpdateTime(v string) *ListTemplateScratchesResponseBodyTemplateScratches {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) SetParameterKey(v string) *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters) SetParameterValue(v string) *ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup struct {
+	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) SetResourceGroupId(v string) *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup) SetResourceTypeFilter(v []*string) *ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type ListTemplateScratchesResponseBodyTemplateScratchesSourceResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) SetResourceId(v string) *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources) SetResourceType(v string) *ListTemplateScratchesResponseBodyTemplateScratchesSourceResources {
+	s.ResourceType = &v
+	return s
+}
+
+type ListTemplateScratchesResponseBodyTemplateScratchesSourceTag struct {
+	ResourceTags       map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	ResourceTypeFilter []*string              `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) SetResourceTags(v map[string]interface{}) *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag) SetResourceTypeFilter(v []*string) *ListTemplateScratchesResponseBodyTemplateScratchesSourceTag {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type ListTemplateScratchesResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTemplateScratchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTemplateScratchesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplateScratchesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplateScratchesResponse) SetHeaders(v map[string]*string) *ListTemplateScratchesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTemplateScratchesResponse) SetBody(v *ListTemplateScratchesResponseBody) *ListTemplateScratchesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTemplateVersionsRequest struct {
 	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -9942,6 +10978,286 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 	return s
 }
 
+type UpdateTemplateScratchRequest struct {
+	ClientToken          *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description          *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode        *string                                             `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	LogicalIdStrategy    *string                                             `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParameters []*UpdateTemplateScratchRequestPreferenceParameters `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty" type:"Repeated"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceResourceGroup  *UpdateTemplateScratchRequestSourceResourceGroup    `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
+	SourceResources      []*UpdateTemplateScratchRequestSourceResources      `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
+	SourceTag            *UpdateTemplateScratchRequestSourceTag              `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
+	TemplateScratchId    *string                                             `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s UpdateTemplateScratchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchRequest) SetClientToken(v string) *UpdateTemplateScratchRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetDescription(v string) *UpdateTemplateScratchRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetExecutionMode(v string) *UpdateTemplateScratchRequest {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetLogicalIdStrategy(v string) *UpdateTemplateScratchRequest {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetPreferenceParameters(v []*UpdateTemplateScratchRequestPreferenceParameters) *UpdateTemplateScratchRequest {
+	s.PreferenceParameters = v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetRegionId(v string) *UpdateTemplateScratchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetSourceResourceGroup(v *UpdateTemplateScratchRequestSourceResourceGroup) *UpdateTemplateScratchRequest {
+	s.SourceResourceGroup = v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetSourceResources(v []*UpdateTemplateScratchRequestSourceResources) *UpdateTemplateScratchRequest {
+	s.SourceResources = v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetSourceTag(v *UpdateTemplateScratchRequestSourceTag) *UpdateTemplateScratchRequest {
+	s.SourceTag = v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequest) SetTemplateScratchId(v string) *UpdateTemplateScratchRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type UpdateTemplateScratchRequestPreferenceParameters struct {
+	ParameterKey   *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s UpdateTemplateScratchRequestPreferenceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchRequestPreferenceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchRequestPreferenceParameters) SetParameterKey(v string) *UpdateTemplateScratchRequestPreferenceParameters {
+	s.ParameterKey = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequestPreferenceParameters) SetParameterValue(v string) *UpdateTemplateScratchRequestPreferenceParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+type UpdateTemplateScratchRequestSourceResourceGroup struct {
+	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTemplateScratchRequestSourceResourceGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchRequestSourceResourceGroup) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchRequestSourceResourceGroup) SetResourceGroupId(v string) *UpdateTemplateScratchRequestSourceResourceGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequestSourceResourceGroup) SetResourceTypeFilter(v []*string) *UpdateTemplateScratchRequestSourceResourceGroup {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type UpdateTemplateScratchRequestSourceResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s UpdateTemplateScratchRequestSourceResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchRequestSourceResources) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchRequestSourceResources) SetResourceId(v string) *UpdateTemplateScratchRequestSourceResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequestSourceResources) SetResourceType(v string) *UpdateTemplateScratchRequestSourceResources {
+	s.ResourceType = &v
+	return s
+}
+
+type UpdateTemplateScratchRequestSourceTag struct {
+	ResourceTags       map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
+	ResourceTypeFilter []*string              `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTemplateScratchRequestSourceTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchRequestSourceTag) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchRequestSourceTag) SetResourceTags(v map[string]interface{}) *UpdateTemplateScratchRequestSourceTag {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *UpdateTemplateScratchRequestSourceTag) SetResourceTypeFilter(v []*string) *UpdateTemplateScratchRequestSourceTag {
+	s.ResourceTypeFilter = v
+	return s
+}
+
+type UpdateTemplateScratchShrinkRequest struct {
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecutionMode              *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
+	LogicalIdStrategy          *string `json:"LogicalIdStrategy,omitempty" xml:"LogicalIdStrategy,omitempty"`
+	PreferenceParametersShrink *string `json:"PreferenceParameters,omitempty" xml:"PreferenceParameters,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceResourceGroupShrink  *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
+	SourceResourcesShrink      *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
+	SourceTagShrink            *string `json:"SourceTag,omitempty" xml:"SourceTag,omitempty"`
+	TemplateScratchId          *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s UpdateTemplateScratchShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetClientToken(v string) *UpdateTemplateScratchShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetDescription(v string) *UpdateTemplateScratchShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetExecutionMode(v string) *UpdateTemplateScratchShrinkRequest {
+	s.ExecutionMode = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetLogicalIdStrategy(v string) *UpdateTemplateScratchShrinkRequest {
+	s.LogicalIdStrategy = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetPreferenceParametersShrink(v string) *UpdateTemplateScratchShrinkRequest {
+	s.PreferenceParametersShrink = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetRegionId(v string) *UpdateTemplateScratchShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetSourceResourceGroupShrink(v string) *UpdateTemplateScratchShrinkRequest {
+	s.SourceResourceGroupShrink = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetSourceResourcesShrink(v string) *UpdateTemplateScratchShrinkRequest {
+	s.SourceResourcesShrink = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetSourceTagShrink(v string) *UpdateTemplateScratchShrinkRequest {
+	s.SourceTagShrink = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchShrinkRequest) SetTemplateScratchId(v string) *UpdateTemplateScratchShrinkRequest {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type UpdateTemplateScratchResponseBody struct {
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+}
+
+func (s UpdateTemplateScratchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchResponseBody) SetRequestId(v string) *UpdateTemplateScratchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTemplateScratchResponseBody) SetTemplateScratchId(v string) *UpdateTemplateScratchResponseBody {
+	s.TemplateScratchId = &v
+	return s
+}
+
+type UpdateTemplateScratchResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateTemplateScratchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTemplateScratchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTemplateScratchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTemplateScratchResponse) SetHeaders(v map[string]*string) *UpdateTemplateScratchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTemplateScratchResponse) SetBody(v *UpdateTemplateScratchResponseBody) *UpdateTemplateScratchResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateTemplateRequest struct {
 	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -10116,11 +11432,27 @@ func (client *Client) CancelUpdateStackWithOptions(request *CancelUpdateStackReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CancelType"] = request.CancelType
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelUpdateStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelUpdateStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelUpdateStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10144,11 +11476,36 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DryRun"] = request.DryRun
+	query["Mode"] = request.Mode
+	query["Parallelism"] = request.Parallelism
+	query["Parameters"] = request.Parameters
+	query["RamRoleName"] = request.RamRoleName
+	query["RecreatingResources"] = request.RecreatingResources
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContinueCreateStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ContinueCreateStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ContinueCreateStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10172,11 +11529,49 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetName"] = request.ChangeSetName
+	query["ChangeSetType"] = request.ChangeSetType
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["DisableRollback"] = request.DisableRollback
+	query["NotificationURLs"] = request.NotificationURLs
+	query["Parallelism"] = request.Parallelism
+	query["Parameters"] = request.Parameters
+	query["RamRoleName"] = request.RamRoleName
+	query["RegionId"] = request.RegionId
+	query["ReplacementOption"] = request.ReplacementOption
+	query["ResourcesToImport"] = request.ResourcesToImport
+	query["StackId"] = request.StackId
+	query["StackName"] = request.StackName
+	query["StackPolicyBody"] = request.StackPolicyBody
+	query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
+	query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
+	query["StackPolicyURL"] = request.StackPolicyURL
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	query["UsePreviousParameters"] = request.UsePreviousParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChangeSet"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateChangeSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateChangeSet"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10200,11 +11595,44 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["CreateOption"] = request.CreateOption
+	query["DeletionProtection"] = request.DeletionProtection
+	query["DisableRollback"] = request.DisableRollback
+	query["NotificationURLs"] = request.NotificationURLs
+	query["Parallelism"] = request.Parallelism
+	query["Parameters"] = request.Parameters
+	query["RamRoleName"] = request.RamRoleName
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["StackName"] = request.StackName
+	query["StackPolicyBody"] = request.StackPolicyBody
+	query["StackPolicyURL"] = request.StackPolicyURL
+	query["Tags"] = request.Tags
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10234,11 +11662,38 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		request.AutoDeploymentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AutoDeployment), tea.String("AutoDeployment"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["AdministrationRoleName"] = request.AdministrationRoleName
+	query["AutoDeployment"] = request.AutoDeploymentShrink
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["ExecutionRoleName"] = request.ExecutionRoleName
+	query["Parameters"] = request.Parameters
+	query["PermissionModel"] = request.PermissionModel
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["StackGroupName"] = request.StackGroupName
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStackGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStackGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10280,11 +11735,35 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["AccountIds"] = request.AccountIdsShrink
+	query["ClientToken"] = request.ClientToken
+	query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	query["DisableRollback"] = request.DisableRollback
+	query["OperationDescription"] = request.OperationDescription
+	query["OperationPreferences"] = request.OperationPreferencesShrink
+	query["ParameterOverrides"] = request.ParameterOverrides
+	query["RegionId"] = request.RegionId
+	query["RegionIds"] = request.RegionIdsShrink
+	query["StackGroupName"] = request.StackGroupName
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStackInstances"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateStackInstances"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10308,11 +11787,29 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateName"] = request.TemplateName
+	query["TemplateURL"] = request.TemplateURL
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10331,16 +11828,100 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScratchRequest, runtime *util.RuntimeOptions) (_result *CreateTemplateScratchResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTemplateScratchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PreferenceParameters)) {
+		request.PreferenceParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreferenceParameters, tea.String("PreferenceParameters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceResourceGroup))) {
+		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceResourceGroup), tea.String("SourceResourceGroup"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResources)) {
+		request.SourceResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResources, tea.String("SourceResources"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceTag))) {
+		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceTag), tea.String("SourceTag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["ExecutionMode"] = request.ExecutionMode
+	query["LogicalIdStrategy"] = request.LogicalIdStrategy
+	query["PreferenceParameters"] = request.PreferenceParametersShrink
+	query["RegionId"] = request.RegionId
+	query["SourceResourceGroup"] = request.SourceResourceGroupShrink
+	query["SourceResources"] = request.SourceResourcesShrink
+	query["SourceTag"] = request.SourceTagShrink
+	query["TemplateScratchType"] = request.TemplateScratchType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTemplateScratch"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTemplateScratchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTemplateScratch(request *CreateTemplateScratchRequest) (_result *CreateTemplateScratchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTemplateScratchResponse{}
+	_body, _err := client.CreateTemplateScratchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest, runtime *util.RuntimeOptions) (_result *DeleteChangeSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChangeSet"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChangeSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteChangeSet"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10364,11 +11945,29 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RamRoleName"] = request.RamRoleName
+	query["RegionId"] = request.RegionId
+	query["RetainAllResources"] = request.RetainAllResources
+	query["RetainResources"] = request.RetainResources
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10392,11 +11991,26 @@ func (client *Client) DeleteStackGroupWithOptions(request *DeleteStackGroupReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStackGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteStackGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10438,11 +12052,33 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["AccountIds"] = request.AccountIdsShrink
+	query["ClientToken"] = request.ClientToken
+	query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	query["OperationDescription"] = request.OperationDescription
+	query["OperationPreferences"] = request.OperationPreferencesShrink
+	query["RegionId"] = request.RegionId
+	query["RegionIds"] = request.RegionIdsShrink
+	query["RetainStacks"] = request.RetainStacks
+	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStackInstances"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteStackInstances"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10466,11 +12102,25 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10489,16 +12139,73 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateScratchRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplateScratchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["TemplateScratchId"] = request.TemplateScratchId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplateScratch"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTemplateScratchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTemplateScratch(request *DeleteTemplateScratchRequest) (_result *DeleteTemplateScratchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTemplateScratchResponse{}
+	_body, _err := client.DeleteTemplateScratchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceptLanguage"] = request.AcceptLanguage
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10522,11 +12229,28 @@ func (client *Client) DetectStackDriftWithOptions(request *DetectStackDriftReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectStackDrift"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackDriftResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectStackDrift"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10556,11 +12280,28 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 		request.OperationPreferencesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationPreferences, tea.String("OperationPreferences"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["OperationPreferences"] = request.OperationPreferencesShrink
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectStackGroupDrift"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackGroupDriftResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectStackGroupDrift"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10584,11 +12325,28 @@ func (client *Client) DetectStackResourceDriftWithOptions(request *DetectStackRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectStackResourceDrift"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackResourceDriftResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectStackResourceDrift"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10612,11 +12370,27 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteChangeSet"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteChangeSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteChangeSet"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10635,16 +12409,77 @@ func (client *Client) ExecuteChangeSet(request *ExecuteChangeSetRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemplateByScratchRequest, runtime *util.RuntimeOptions) (_result *GenerateTemplateByScratchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ProvisionRegionId"] = request.ProvisionRegionId
+	query["RegionId"] = request.RegionId
+	query["TemplateScratchId"] = request.TemplateScratchId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateTemplateByScratch"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateTemplateByScratchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateTemplateByScratch(request *GenerateTemplateByScratchRequest) (_result *GenerateTemplateByScratchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateTemplateByScratchResponse{}
+	_body, _err := client.GenerateTemplateByScratchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplatePolicyRequest, runtime *util.RuntimeOptions) (_result *GenerateTemplatePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateTemplatePolicy"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateTemplatePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateTemplatePolicy"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10668,11 +12503,27 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["RegionId"] = request.RegionId
+	query["ShowTemplate"] = request.ShowTemplate
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChangeSet"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetChangeSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetChangeSet"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10696,11 +12547,26 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Feature"] = request.Feature
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFeatureDetails"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetFeatureDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetFeatureDetails"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10724,11 +12590,25 @@ func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceType"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceType"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10752,11 +12632,25 @@ func (client *Client) GetResourceTypeTemplateWithOptions(request *GetResourceTyp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceTypeTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceTypeTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceTypeTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10780,11 +12674,31 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Parameters"] = request.Parameters
+	query["RegionId"] = request.RegionId
+	query["Services"] = request.Services
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceProvisions"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceProvisionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceProvisions"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10808,11 +12722,29 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["OutputOption"] = request.OutputOption
+	query["RegionId"] = request.RegionId
+	query["ShowResourceProgress"] = request.ShowResourceProgress
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10836,11 +12768,26 @@ func (client *Client) GetStackDriftDetectionStatusWithOptions(request *GetStackD
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DriftDetectionId"] = request.DriftDetectionId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackDriftDetectionStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackDriftDetectionStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackDriftDetectionStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10864,11 +12811,27 @@ func (client *Client) GetStackGroupWithOptions(request *GetStackGroupRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackGroupId"] = request.StackGroupId
+	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10892,11 +12855,26 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OperationId"] = request.OperationId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackGroupOperation"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackGroupOperationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackGroupOperation"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10920,11 +12898,28 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
+	query["StackInstanceAccountId"] = request.StackInstanceAccountId
+	query["StackInstanceRegionId"] = request.StackInstanceRegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackInstance"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackInstance"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10948,11 +12943,26 @@ func (client *Client) GetStackPolicyWithOptions(request *GetStackPolicyRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackPolicy"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackPolicy"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10976,11 +12986,29 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["RegionId"] = request.RegionId
+	query["ShowResourceAttributes"] = request.ShowResourceAttributes
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStackResource"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStackResource"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11004,11 +13032,32 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["IncludePermission"] = request.IncludePermission
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
+	query["StackId"] = request.StackId
+	query["TemplateId"] = request.TemplateId
+	query["TemplateStage"] = request.TemplateStage
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11032,11 +13081,31 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Parameters"] = request.Parameters
+	query["RegionId"] = request.RegionId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateEstimateCost"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateEstimateCostResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplateEstimateCost"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11066,11 +13135,32 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		request.ParametersKeyFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParametersKeyFilter, tea.String("ParametersKeyFilter"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Parameters"] = request.Parameters
+	query["ParametersKeyFilter"] = request.ParametersKeyFilterShrink
+	query["RegionId"] = request.RegionId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateParameterConstraints"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateParameterConstraintsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplateParameterConstraints"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11089,16 +13179,81 @@ func (client *Client) GetTemplateParameterConstraints(request *GetTemplateParame
 	return _result, _err
 }
 
+func (client *Client) GetTemplateScratchWithOptions(request *GetTemplateScratchRequest, runtime *util.RuntimeOptions) (_result *GetTemplateScratchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ShowDataOption"] = request.ShowDataOption
+	query["TemplateScratchId"] = request.TemplateScratchId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateScratch"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTemplateScratchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemplateScratch(request *GetTemplateScratchRequest) (_result *GetTemplateScratchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateScratchResponse{}
+	_body, _err := client.GetTemplateScratchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryRequest, runtime *util.RuntimeOptions) (_result *GetTemplateSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
+	query["StackId"] = request.StackId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateSummary"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTemplateSummary"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11122,11 +13277,32 @@ func (client *Client) ListChangeSetsWithOptions(request *ListChangeSetsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChangeSetId"] = request.ChangeSetId
+	query["ChangeSetName"] = request.ChangeSetName
+	query["ExecutionStatus"] = request.ExecutionStatus
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChangeSets"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListChangeSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListChangeSets"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11147,8 +13323,19 @@ func (client *Client) ListChangeSets(request *ListChangeSetsRequest) (_result *L
 
 func (client *Client) ListResourceTypesWithOptions(runtime *util.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceTypes"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListResourceTypesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResourceTypes"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11172,11 +13359,31 @@ func (client *Client) ListStackEventsWithOptions(request *ListStackEventsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["ResourceType"] = request.ResourceType
+	query["StackId"] = request.StackId
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackEvents"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackEvents"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11200,11 +13407,28 @@ func (client *Client) ListStackGroupOperationResultsWithOptions(request *ListSta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OperationId"] = request.OperationId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackGroupOperationResults"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupOperationResultsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackGroupOperationResults"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11228,11 +13452,28 @@ func (client *Client) ListStackGroupOperationsWithOptions(request *ListStackGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackGroupOperations"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupOperationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackGroupOperations"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11256,11 +13497,29 @@ func (client *Client) ListStackGroupsWithOptions(request *ListStackGroupsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackGroups"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackGroups"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11284,11 +13543,30 @@ func (client *Client) ListStackInstancesWithOptions(request *ListStackInstancesR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["StackGroupName"] = request.StackGroupName
+	query["StackInstanceAccountId"] = request.StackInstanceAccountId
+	query["StackInstanceRegionId"] = request.StackInstanceRegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackInstances"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackInstances"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11312,11 +13590,31 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["OperationType"] = request.OperationType
+	query["RamRoleName"] = request.RamRoleName
+	query["RegionId"] = request.RegionId
+	query["RetainAllResources"] = request.RetainAllResources
+	query["RetainResources"] = request.RetainResources
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackOperationRisks"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackOperationRisksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackOperationRisks"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11340,11 +13638,29 @@ func (client *Client) ListStackResourceDriftsWithOptions(request *ListStackResou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceDriftStatus"] = request.ResourceDriftStatus
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackResourceDrifts"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackResourceDriftsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackResourceDrifts"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11368,11 +13684,26 @@ func (client *Client) ListStackResourcesWithOptions(request *ListStackResourcesR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStackResources"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStackResources"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11396,11 +13727,35 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ParentStackId"] = request.ParentStackId
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["ShowNestedStack"] = request.ShowNestedStack
+	query["StackId"] = request.StackId
+	query["StackIds"] = request.StackIds
+	query["StackName"] = request.StackName
+	query["Status"] = request.Status
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStacks"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListStacksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListStacks"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11424,11 +13779,27 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagKeys"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagKeys"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11452,11 +13823,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagResources"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11480,11 +13869,28 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Key"] = request.Key
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagValues"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagValues"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11503,16 +13909,79 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScratchesRequest, runtime *util.RuntimeOptions) (_result *ListTemplateScratchesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["Status"] = request.Status
+	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateScratchType"] = request.TemplateScratchType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTemplateScratches"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTemplateScratchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTemplateScratches(request *ListTemplateScratchesRequest) (_result *ListTemplateScratchesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTemplateScratchesResponse{}
+	_body, _err := client.ListTemplateScratchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersionsRequest, runtime *util.RuntimeOptions) (_result *ListTemplateVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTemplateVersions"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplateVersionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTemplateVersions"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11536,11 +14005,30 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["ShareType"] = request.ShareType
+	query["Tag"] = request.Tag
+	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTemplates"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTemplates"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11564,11 +14052,28 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["NewResourceGroupId"] = request.NewResourceGroupId
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveResourceGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11592,11 +14097,37 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DisableRollback"] = request.DisableRollback
+	query["Parallelism"] = request.Parallelism
+	query["Parameters"] = request.Parameters
+	query["RegionId"] = request.RegionId
+	query["StackName"] = request.StackName
+	query["StackPolicyBody"] = request.StackPolicyBody
+	query["StackPolicyURL"] = request.StackPolicyURL
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreviewStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PreviewStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PreviewStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11620,11 +14151,27 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DeletionProtection"] = request.DeletionProtection
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDeletionProtection"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDeletionProtectionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDeletionProtection"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11648,11 +14195,28 @@ func (client *Client) SetStackPolicyWithOptions(request *SetStackPolicyRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
+	query["StackPolicyBody"] = request.StackPolicyBody
+	query["StackPolicyURL"] = request.StackPolicyURL
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetStackPolicy"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetStackPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetStackPolicy"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11676,11 +14240,29 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountIds"] = request.AccountIds
+	query["ShareOption"] = request.ShareOption
+	query["TemplateId"] = request.TemplateId
+	query["TemplateVersion"] = request.TemplateVersion
+	query["VersionOption"] = request.VersionOption
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetTemplatePermission"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetTemplatePermissionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetTemplatePermission"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11704,11 +14286,30 @@ func (client *Client) SignalResourceWithOptions(request *SignalResourceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
+	query["Status"] = request.Status
+	query["UniqueId"] = request.UniqueId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SignalResource"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SignalResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SignalResource"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11732,11 +14333,26 @@ func (client *Client) StopStackGroupOperationWithOptions(request *StopStackGroup
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OperationId"] = request.OperationId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopStackGroupOperation"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopStackGroupOperationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopStackGroupOperation"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11760,11 +14376,28 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11788,11 +14421,29 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["All"] = request.All
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11816,11 +14467,43 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DisableRollback"] = request.DisableRollback
+	query["Parallelism"] = request.Parallelism
+	query["Parameters"] = request.Parameters
+	query["RamRoleName"] = request.RamRoleName
+	query["RegionId"] = request.RegionId
+	query["ReplacementOption"] = request.ReplacementOption
+	query["StackId"] = request.StackId
+	query["StackPolicyBody"] = request.StackPolicyBody
+	query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
+	query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
+	query["StackPolicyURL"] = request.StackPolicyURL
+	query["Tags"] = request.Tags
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	query["UsePreviousParameters"] = request.UsePreviousParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStack"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateStack"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11866,11 +14549,42 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["AccountIds"] = request.AccountIdsShrink
+	query["AdministrationRoleName"] = request.AdministrationRoleName
+	query["AutoDeployment"] = request.AutoDeploymentShrink
+	query["ClientToken"] = request.ClientToken
+	query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	query["Description"] = request.Description
+	query["ExecutionRoleName"] = request.ExecutionRoleName
+	query["OperationDescription"] = request.OperationDescription
+	query["OperationPreferences"] = request.OperationPreferencesShrink
+	query["Parameters"] = request.Parameters
+	query["PermissionModel"] = request.PermissionModel
+	query["RegionId"] = request.RegionId
+	query["RegionIds"] = request.RegionIdsShrink
+	query["StackGroupName"] = request.StackGroupName
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateURL"] = request.TemplateURL
+	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStackGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateStackGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11912,11 +14626,34 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	query["AccountIds"] = request.AccountIdsShrink
+	query["ClientToken"] = request.ClientToken
+	query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	query["OperationDescription"] = request.OperationDescription
+	query["OperationPreferences"] = request.OperationPreferencesShrink
+	query["ParameterOverrides"] = request.ParameterOverrides
+	query["RegionId"] = request.RegionId
+	query["RegionIds"] = request.RegionIdsShrink
+	query["StackGroupName"] = request.StackGroupName
+	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStackInstances"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateStackInstances"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11940,11 +14677,30 @@ func (client *Client) UpdateStackTemplateByResourcesWithOptions(request *UpdateS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["LogicalResourceId"] = request.LogicalResourceId
+	query["RegionId"] = request.RegionId
+	query["StackId"] = request.StackId
+	query["TemplateFormat"] = request.TemplateFormat
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStackTemplateByResources"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackTemplateByResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateStackTemplateByResources"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11968,11 +14724,29 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateId"] = request.TemplateId
+	query["TemplateName"] = request.TemplateName
+	query["TemplateURL"] = request.TemplateURL
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11991,16 +14765,103 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 	return _result, _err
 }
 
+func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScratchRequest, runtime *util.RuntimeOptions) (_result *UpdateTemplateScratchResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTemplateScratchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PreferenceParameters)) {
+		request.PreferenceParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PreferenceParameters, tea.String("PreferenceParameters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceResourceGroup))) {
+		request.SourceResourceGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceResourceGroup), tea.String("SourceResourceGroup"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceResources)) {
+		request.SourceResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceResources, tea.String("SourceResources"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.SourceTag))) {
+		request.SourceTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.SourceTag), tea.String("SourceTag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["ExecutionMode"] = request.ExecutionMode
+	query["LogicalIdStrategy"] = request.LogicalIdStrategy
+	query["PreferenceParameters"] = request.PreferenceParametersShrink
+	query["RegionId"] = request.RegionId
+	query["SourceResourceGroup"] = request.SourceResourceGroupShrink
+	query["SourceResources"] = request.SourceResourcesShrink
+	query["SourceTag"] = request.SourceTagShrink
+	query["TemplateScratchId"] = request.TemplateScratchId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTemplateScratch"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTemplateScratchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTemplateScratch(request *UpdateTemplateScratchRequest) (_result *UpdateTemplateScratchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTemplateScratchResponse{}
+	_body, _err := client.UpdateTemplateScratchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateRequest, runtime *util.RuntimeOptions) (_result *ValidateTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
+	query["TemplateBody"] = request.TemplateBody
+	query["TemplateURL"] = request.TemplateURL
+	query["ValidationOption"] = request.ValidationOption
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateTemplate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ValidateTemplate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
