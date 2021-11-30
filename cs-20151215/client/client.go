@@ -2279,6 +2279,40 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 	return s
 }
 
+type DeleteAlertContactResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteAlertContactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactResponse) SetHeaders(v map[string]*string) *DeleteAlertContactResponse {
+	s.Headers = v
+	return s
+}
+
+type DeleteAlertContactGroupResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteAlertContactGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactGroupResponse) SetHeaders(v map[string]*string) *DeleteAlertContactGroupResponse {
+	s.Headers = v
+	return s
+}
+
 type DeleteClusterRequest struct {
 	// 是否保留SLB。  true：保留 false：不保留 默认值：false。
 	KeepSlb *bool `json:"keep_slb,omitempty" xml:"keep_slb,omitempty"`
@@ -10912,6 +10946,23 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
+type StartAlertResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s StartAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAlertResponse) SetHeaders(v map[string]*string) *StartAlertResponse {
+	s.Headers = v
+	return s
+}
+
 type StartWorkflowRequest struct {
 	// bam文件输出名称。
 	MappingBamOutFilename *string `json:"mapping_bam_out_filename,omitempty" xml:"mapping_bam_out_filename,omitempty"`
@@ -11097,6 +11148,23 @@ func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWork
 	return s
 }
 
+type StopAlertResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s StopAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAlertResponse) SetHeaders(v map[string]*string) *StopAlertResponse {
+	s.Headers = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// 资源所属的地域ID
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
@@ -11136,8 +11204,27 @@ func (s *TagResourcesRequest) SetTags(v []*Tag) *TagResourcesRequest {
 	return s
 }
 
+type TagResourcesResponseBody struct {
+	// 请求id。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type TagResourcesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -11150,6 +11237,11 @@ func (s TagResourcesResponse) GoString() string {
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
 	return s
 }
 
@@ -11207,6 +11299,8 @@ func (s *UnInstallClusterAddonsResponse) SetHeaders(v map[string]*string) *UnIns
 }
 
 type UntagResourcesRequest struct {
+	// 是否删除全部自定义标签，仅当tag_keys为空时生效，取值：[true,false]。
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
 	// 资源所属的地域ID
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
 	// 资源ID。数组长度取值范围为：1~50
@@ -11223,6 +11317,11 @@ func (s UntagResourcesRequest) String() string {
 
 func (s UntagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
 }
 
 func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
@@ -11245,8 +11344,27 @@ func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
 	return s
 }
 
+type UntagResourcesResponseBody struct {
+	// 请求id。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type UntagResourcesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -11258,6 +11376,28 @@ func (s UntagResourcesResponse) GoString() string {
 }
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateContactGroupForAlertResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s UpdateContactGroupForAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContactGroupForAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContactGroupForAlertResponse) SetHeaders(v map[string]*string) *UpdateContactGroupForAlertResponse {
 	s.Headers = v
 	return s
 }
@@ -11742,7 +11882,7 @@ func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, compo
 		Action:      tea.String("CancelComponentUpgrade"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/cancel"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/" + tea.StringValue(componentId) + "/cancel"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12558,6 +12698,78 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 	return _result, _err
 }
 
+func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertContactResponse{}
+	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlertContact"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/contacts"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAlertContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertContactGroupResponse{}
+	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlertContactGroup"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/contact_groups"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAlertContactGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteCluster(ClusterId *string, request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12641,7 +12853,7 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 		Action:      tea.String("DeleteClusterNodepool"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/" + tea.StringValue(NodepoolId)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12828,7 +13040,7 @@ func (client *Client) DeletePolicyInstanceWithOptions(clusterId *string, policyN
 		Action:      tea.String("DeletePolicyInstance"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/" + tea.StringValue(policyName)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12959,7 +13171,7 @@ func (client *Client) DeployPolicyInstanceWithOptions(clusterId *string, policyN
 		Action:      tea.String("DeployPolicyInstance"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/" + tea.StringValue(policyName)),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13085,7 +13297,7 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 		Action:      tea.String("DescribeClusterAddonMetadata"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/metadata"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/" + tea.StringValue(componentId) + "/metadata"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13123,7 +13335,7 @@ func (client *Client) DescribeClusterAddonUpgradeStatusWithOptions(ClusterId *st
 		Action:      tea.String("DescribeClusterAddonUpgradeStatus"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/{ComponentId}/upgradestatus"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/components/" + tea.StringValue(ComponentId) + "/upgradestatus"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13429,7 +13641,7 @@ func (client *Client) DescribeClusterNodePoolDetailWithOptions(ClusterId *string
 		Action:      tea.String("DescribeClusterNodePoolDetail"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/" + tea.StringValue(NodepoolId)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15095,7 +15307,7 @@ func (client *Client) ModifyClusterAddonWithOptions(clusterId *string, component
 		Action:      tea.String("ModifyClusterAddon"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/{componentId}/config"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/components/" + tea.StringValue(componentId) + "/config"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15214,7 +15426,7 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 		Action:      tea.String("ModifyClusterNodePool"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/" + tea.StringValue(NodepoolId)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15316,7 +15528,7 @@ func (client *Client) ModifyPolicyInstanceWithOptions(clusterId *string, policyN
 		Action:      tea.String("ModifyPolicyInstance"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/{policyName}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/policies/" + tea.StringValue(policyName)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15437,7 +15649,7 @@ func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, compon
 		Action:      tea.String("PauseComponentUpgrade"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/{componentid}/pause"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/" + tea.StringValue(componentid) + "/pause"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15567,7 +15779,7 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 		Action:      tea.String("ResumeComponentUpgrade"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/{componentid}/resume"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterid) + "/components/" + tea.StringValue(componentid) + "/resume"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15771,7 +15983,7 @@ func (client *Client) ScaleClusterNodePoolWithOptions(ClusterId *string, Nodepoo
 		Action:      tea.String("ScaleClusterNodePool"),
 		Version:     tea.String("2015-12-15"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/{NodepoolId}"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(ClusterId) + "/nodepools/" + tea.StringValue(NodepoolId)),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15914,6 +16126,43 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 	return _result, _err
 }
 
+func (client *Client) StartAlert(ClusterId *string) (_result *StartAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartAlertResponse{}
+	_body, _err := client.StartAlertWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16032,6 +16281,43 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, he
 	return _result, _err
 }
 
+func (client *Client) StopAlert(ClusterId *string) (_result *StopAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopAlertResponse{}
+	_body, _err := client.StopAlertWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16079,7 +16365,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -16150,6 +16436,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["all"] = request.All
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["region_id"] = request.RegionId
 	}
@@ -16179,9 +16469,46 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateContactGroupForAlertResponse{}
+	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContactGroupForAlertResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateContactGroupForAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/contact_groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateContactGroupForAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
