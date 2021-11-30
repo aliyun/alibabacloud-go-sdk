@@ -1171,6 +1171,10 @@ func (s *CreateBandwidthPackageResponse) SetBody(v *CreateBandwidthPackageRespon
 type CreateBasicAcceleratorRequest struct {
 	// 自动续费
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// 自动续费
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// 续费周期
+	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// 自动使用优惠券
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// 客户端Token
@@ -1193,6 +1197,16 @@ func (s CreateBasicAcceleratorRequest) GoString() string {
 
 func (s *CreateBasicAcceleratorRequest) SetAutoPay(v bool) *CreateBasicAcceleratorRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetAutoRenew(v bool) *CreateBasicAcceleratorRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetAutoRenewDuration(v int32) *CreateBasicAcceleratorRequest {
+	s.AutoRenewDuration = &v
 	return s
 }
 
@@ -3833,6 +3847,93 @@ func (s *DescribeAcceleratorResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeAcceleratorResponse) SetBody(v *DescribeAcceleratorResponseBody) *DescribeAcceleratorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAcceleratorAutoRenewAttributeRequest struct {
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeRequest) SetAcceleratorId(v string) *DescribeAcceleratorAutoRenewAttributeRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeRequest) SetRegionId(v string) *DescribeAcceleratorAutoRenewAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAcceleratorAutoRenewAttributeResponseBody struct {
+	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	RenewalStatus     *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponseBody) SetAcceleratorId(v string) *DescribeAcceleratorAutoRenewAttributeResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponseBody) SetAutoRenew(v bool) *DescribeAcceleratorAutoRenewAttributeResponseBody {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponseBody) SetAutoRenewDuration(v int32) *DescribeAcceleratorAutoRenewAttributeResponseBody {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponseBody) SetRenewalStatus(v string) *DescribeAcceleratorAutoRenewAttributeResponseBody {
+	s.RenewalStatus = &v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponseBody) SetRequestId(v string) *DescribeAcceleratorAutoRenewAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAcceleratorAutoRenewAttributeResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAcceleratorAutoRenewAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorAutoRenewAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponse) SetHeaders(v map[string]*string) *DescribeAcceleratorAutoRenewAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAcceleratorAutoRenewAttributeResponse) SetBody(v *DescribeAcceleratorAutoRenewAttributeResponseBody) *DescribeAcceleratorAutoRenewAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -6694,6 +6795,7 @@ func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvail
 
 type ListAvailableBusiRegionsResponseBodyRegions struct {
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	Pop       *bool   `json:"Pop,omitempty" xml:"Pop,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6707,6 +6809,11 @@ func (s ListAvailableBusiRegionsResponseBodyRegions) GoString() string {
 
 func (s *ListAvailableBusiRegionsResponseBodyRegions) SetLocalName(v string) *ListAvailableBusiRegionsResponseBodyRegions {
 	s.LocalName = &v
+	return s
+}
+
+func (s *ListAvailableBusiRegionsResponseBodyRegions) SetPop(v bool) *ListAvailableBusiRegionsResponseBodyRegions {
+	s.Pop = &v
 	return s
 }
 
@@ -9203,6 +9310,105 @@ func (s *UpdateAcceleratorResponse) SetBody(v *UpdateAcceleratorResponseBody) *U
 	return s
 }
 
+type UpdateAcceleratorAutoRenewAttributeRequest struct {
+	AcceleratorId     *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenewalStatus     *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetAcceleratorId(v string) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetAutoRenew(v bool) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetAutoRenewDuration(v int32) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetClientToken(v string) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetName(v string) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetRegionId(v string) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeRequest) SetRenewalStatus(v string) *UpdateAcceleratorAutoRenewAttributeRequest {
+	s.RenewalStatus = &v
+	return s
+}
+
+type UpdateAcceleratorAutoRenewAttributeResponseBody struct {
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeResponseBody) SetAcceleratorId(v string) *UpdateAcceleratorAutoRenewAttributeResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeResponseBody) SetRequestId(v string) *UpdateAcceleratorAutoRenewAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAcceleratorAutoRenewAttributeResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAcceleratorAutoRenewAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAcceleratorAutoRenewAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeResponse) SetHeaders(v map[string]*string) *UpdateAcceleratorAutoRenewAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAcceleratorAutoRenewAttributeResponse) SetBody(v *UpdateAcceleratorAutoRenewAttributeResponseBody) *UpdateAcceleratorAutoRenewAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAcceleratorConfirmRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -11428,6 +11634,8 @@ func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcce
 	}
 	query := map[string]interface{}{}
 	query["AutoPay"] = request.AutoPay
+	query["AutoRenew"] = request.AutoRenew
+	query["AutoRenewDuration"] = request.AutoRenewDuration
 	query["AutoUseCoupon"] = request.AutoUseCoupon
 	query["ClientToken"] = request.ClientToken
 	query["Duration"] = request.Duration
@@ -12469,6 +12677,49 @@ func (client *Client) DescribeAccelerator(request *DescribeAcceleratorRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAcceleratorResponse{}
 	_body, _err := client.DescribeAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAcceleratorAutoRenewAttributeWithOptions(request *DescribeAcceleratorAutoRenewAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeAcceleratorAutoRenewAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAcceleratorAutoRenewAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAcceleratorAutoRenewAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAcceleratorAutoRenewAttribute(request *DescribeAcceleratorAutoRenewAttributeRequest) (_result *DescribeAcceleratorAutoRenewAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAcceleratorAutoRenewAttributeResponse{}
+	_body, _err := client.DescribeAcceleratorAutoRenewAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13992,6 +14243,54 @@ func (client *Client) UpdateAccelerator(request *UpdateAcceleratorRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAcceleratorResponse{}
 	_body, _err := client.UpdateAcceleratorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAcceleratorAutoRenewAttributeWithOptions(request *UpdateAcceleratorAutoRenewAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateAcceleratorAutoRenewAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AcceleratorId"] = request.AcceleratorId
+	query["AutoRenew"] = request.AutoRenew
+	query["AutoRenewDuration"] = request.AutoRenewDuration
+	query["ClientToken"] = request.ClientToken
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	query["RenewalStatus"] = request.RenewalStatus
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAcceleratorAutoRenewAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAcceleratorAutoRenewAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAcceleratorAutoRenewAttribute(request *UpdateAcceleratorAutoRenewAttributeRequest) (_result *UpdateAcceleratorAutoRenewAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAcceleratorAutoRenewAttributeResponse{}
+	_body, _err := client.UpdateAcceleratorAutoRenewAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
