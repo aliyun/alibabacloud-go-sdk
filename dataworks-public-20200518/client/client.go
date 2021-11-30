@@ -1986,6 +1986,105 @@ func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *Cre
 	return s
 }
 
+type CreateExportMigrationRequest struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExportMode         *string `json:"ExportMode,omitempty" xml:"ExportMode,omitempty"`
+	ExportObjectStatus *string `json:"ExportObjectStatus,omitempty" xml:"ExportObjectStatus,omitempty"`
+	IncrementalSince   *int64  `json:"IncrementalSince,omitempty" xml:"IncrementalSince,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId          *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s CreateExportMigrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExportMigrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExportMigrationRequest) SetDescription(v string) *CreateExportMigrationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateExportMigrationRequest) SetExportMode(v string) *CreateExportMigrationRequest {
+	s.ExportMode = &v
+	return s
+}
+
+func (s *CreateExportMigrationRequest) SetExportObjectStatus(v string) *CreateExportMigrationRequest {
+	s.ExportObjectStatus = &v
+	return s
+}
+
+func (s *CreateExportMigrationRequest) SetIncrementalSince(v int64) *CreateExportMigrationRequest {
+	s.IncrementalSince = &v
+	return s
+}
+
+func (s *CreateExportMigrationRequest) SetName(v string) *CreateExportMigrationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateExportMigrationRequest) SetProjectId(v int64) *CreateExportMigrationRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type CreateExportMigrationResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateExportMigrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExportMigrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExportMigrationResponseBody) SetData(v int64) *CreateExportMigrationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateExportMigrationResponseBody) SetRequestId(v string) *CreateExportMigrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateExportMigrationResponseBody) SetSuccess(v bool) *CreateExportMigrationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateExportMigrationResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateExportMigrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateExportMigrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExportMigrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExportMigrationResponse) SetHeaders(v map[string]*string) *CreateExportMigrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateExportMigrationResponse) SetBody(v *CreateExportMigrationResponseBody) *CreateExportMigrationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFileRequest struct {
 	AutoParsing             *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
 	AutoRerunIntervalMillis *int32  `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
@@ -9366,6 +9465,7 @@ type GetDagResponseBodyData struct {
 	Gmtdate    *int64  `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
 	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpSeq      *int64  `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
 	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -9417,6 +9517,11 @@ func (s *GetDagResponseBodyData) SetModifyTime(v int64) *GetDagResponseBodyData 
 
 func (s *GetDagResponseBodyData) SetName(v string) *GetDagResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetDagResponseBodyData) SetOpSeq(v int64) *GetDagResponseBodyData {
+	s.OpSeq = &v
 	return s
 }
 
@@ -13177,6 +13282,7 @@ type GetInstanceResponseBodyData struct {
 	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	Connection        *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
 	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
@@ -13242,6 +13348,11 @@ func (s *GetInstanceResponseBodyData) SetConnection(v string) *GetInstanceRespon
 
 func (s *GetInstanceResponseBodyData) SetCreateTime(v int64) *GetInstanceResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetCreateUser(v string) *GetInstanceResponseBodyData {
+	s.CreateUser = &v
 	return s
 }
 
@@ -13956,9 +14067,11 @@ func (s *GetInstanceStatusCountResponse) SetBody(v *GetInstanceStatusCountRespon
 }
 
 type GetInstanceStatusStatisticRequest struct {
-	BizDate    *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	BizDate       *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	DagType       *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
+	ProjectEnv    *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 }
 
 func (s GetInstanceStatusStatisticRequest) String() string {
@@ -13974,6 +14087,11 @@ func (s *GetInstanceStatusStatisticRequest) SetBizDate(v string) *GetInstanceSta
 	return s
 }
 
+func (s *GetInstanceStatusStatisticRequest) SetDagType(v string) *GetInstanceStatusStatisticRequest {
+	s.DagType = &v
+	return s
+}
+
 func (s *GetInstanceStatusStatisticRequest) SetProjectEnv(v string) *GetInstanceStatusStatisticRequest {
 	s.ProjectEnv = &v
 	return s
@@ -13981,6 +14099,11 @@ func (s *GetInstanceStatusStatisticRequest) SetProjectEnv(v string) *GetInstance
 
 func (s *GetInstanceStatusStatisticRequest) SetProjectId(v int64) *GetInstanceStatusStatisticRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetInstanceStatusStatisticRequest) SetSchedulerType(v string) *GetInstanceStatusStatisticRequest {
+	s.SchedulerType = &v
 	return s
 }
 
@@ -14141,6 +14264,7 @@ type GetManualDagInstancesResponseBodyInstances struct {
 	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
 	BizDate           *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
 	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
@@ -14184,6 +14308,11 @@ func (s *GetManualDagInstancesResponseBodyInstances) SetBizDate(v int64) *GetMan
 
 func (s *GetManualDagInstancesResponseBodyInstances) SetCreateTime(v int64) *GetManualDagInstancesResponseBodyInstances {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetManualDagInstancesResponseBodyInstances) SetCreateUser(v string) *GetManualDagInstancesResponseBodyInstances {
+	s.CreateUser = &v
 	return s
 }
 
@@ -17244,6 +17373,146 @@ func (s *GetMigrationProcessResponse) SetHeaders(v map[string]*string) *GetMigra
 }
 
 func (s *GetMigrationProcessResponse) SetBody(v *GetMigrationProcessResponseBody) *GetMigrationProcessResponse {
+	s.Body = v
+	return s
+}
+
+type GetMigrationSummaryRequest struct {
+	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
+	ProjectId   *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetMigrationSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationSummaryRequest) SetMigrationId(v int64) *GetMigrationSummaryRequest {
+	s.MigrationId = &v
+	return s
+}
+
+func (s *GetMigrationSummaryRequest) SetProjectId(v int64) *GetMigrationSummaryRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetMigrationSummaryResponseBody struct {
+	Data      *GetMigrationSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMigrationSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationSummaryResponseBody) SetData(v *GetMigrationSummaryResponseBodyData) *GetMigrationSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBody) SetRequestId(v string) *GetMigrationSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBody) SetSuccess(v bool) *GetMigrationSummaryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMigrationSummaryResponseBodyData struct {
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MigrationId *int64  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpUser      *string `json:"OpUser,omitempty" xml:"OpUser,omitempty"`
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetMigrationSummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationSummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetCreateUser(v string) *GetMigrationSummaryResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetDownloadUrl(v string) *GetMigrationSummaryResponseBodyData {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetGmtCreate(v int64) *GetMigrationSummaryResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetGmtModified(v int64) *GetMigrationSummaryResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetMigrationId(v int64) *GetMigrationSummaryResponseBodyData {
+	s.MigrationId = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetName(v string) *GetMigrationSummaryResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetOpUser(v string) *GetMigrationSummaryResponseBodyData {
+	s.OpUser = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetProjectId(v int64) *GetMigrationSummaryResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetMigrationSummaryResponseBodyData) SetStatus(v string) *GetMigrationSummaryResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetMigrationSummaryResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMigrationSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMigrationSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMigrationSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMigrationSummaryResponse) SetHeaders(v map[string]*string) *GetMigrationSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMigrationSummaryResponse) SetBody(v *GetMigrationSummaryResponseBody) *GetMigrationSummaryResponse {
 	s.Body = v
 	return s
 }
@@ -22887,6 +23156,205 @@ func (s *ListDISyncTasksResponse) SetBody(v *ListDISyncTasksResponseBody) *ListD
 	return s
 }
 
+type ListDagsRequest struct {
+	OpSeq      *int64  `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
+	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+}
+
+func (s ListDagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDagsRequest) SetOpSeq(v int64) *ListDagsRequest {
+	s.OpSeq = &v
+	return s
+}
+
+func (s *ListDagsRequest) SetProjectEnv(v string) *ListDagsRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+type ListDagsResponseBody struct {
+	Data           *ListDagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDagsResponseBody) SetData(v *ListDagsResponseBodyData) *ListDagsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDagsResponseBody) SetErrorCode(v string) *ListDagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDagsResponseBody) SetErrorMessage(v string) *ListDagsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDagsResponseBody) SetHttpStatusCode(v int32) *ListDagsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDagsResponseBody) SetRequestId(v string) *ListDagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDagsResponseBody) SetSuccess(v bool) *ListDagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDagsResponseBodyData struct {
+	Dags []*ListDagsResponseBodyDataDags `json:"Dags,omitempty" xml:"Dags,omitempty" type:"Repeated"`
+}
+
+func (s ListDagsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDagsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDagsResponseBodyData) SetDags(v []*ListDagsResponseBodyDataDags) *ListDagsResponseBodyData {
+	s.Dags = v
+	return s
+}
+
+type ListDagsResponseBodyDataDags struct {
+	Bizdate    *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Gmtdate    *int64  `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
+	ModifyTime *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpSeq      *int64  `json:"OpSeq,omitempty" xml:"OpSeq,omitempty"`
+	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDagsResponseBodyDataDags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDagsResponseBodyDataDags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDagsResponseBodyDataDags) SetBizdate(v int64) *ListDagsResponseBodyDataDags {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetCreateTime(v int64) *ListDagsResponseBodyDataDags {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetCreateUser(v string) *ListDagsResponseBodyDataDags {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetDagId(v int64) *ListDagsResponseBodyDataDags {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetFinishTime(v int64) *ListDagsResponseBodyDataDags {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetGmtdate(v int64) *ListDagsResponseBodyDataDags {
+	s.Gmtdate = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetModifyTime(v int64) *ListDagsResponseBodyDataDags {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetName(v string) *ListDagsResponseBodyDataDags {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetOpSeq(v int64) *ListDagsResponseBodyDataDags {
+	s.OpSeq = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetProjectId(v int64) *ListDagsResponseBodyDataDags {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetStartTime(v int64) *ListDagsResponseBodyDataDags {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetStatus(v string) *ListDagsResponseBodyDataDags {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDagsResponseBodyDataDags) SetType(v string) *ListDagsResponseBodyDataDags {
+	s.Type = &v
+	return s
+}
+
+type ListDagsResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDagsResponse) SetHeaders(v map[string]*string) *ListDagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDagsResponse) SetBody(v *ListDagsResponseBody) *ListDagsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDataServiceApiAuthoritiesRequest struct {
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -27186,6 +27654,7 @@ type ListInstancesResponseBodyDataInstances struct {
 	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	Connection        *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
 	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
@@ -27252,6 +27721,11 @@ func (s *ListInstancesResponseBodyDataInstances) SetConnection(v string) *ListIn
 
 func (s *ListInstancesResponseBodyDataInstances) SetCreateTime(v int64) *ListInstancesResponseBodyDataInstances {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetCreateUser(v string) *ListInstancesResponseBodyDataInstances {
+	s.CreateUser = &v
 	return s
 }
 
@@ -27431,6 +27905,7 @@ type ListManualDagInstancesResponseBodyInstances struct {
 	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
 	BizDate           *int64  `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
 	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagType           *string `json:"DagType,omitempty" xml:"DagType,omitempty"`
@@ -27474,6 +27949,11 @@ func (s *ListManualDagInstancesResponseBodyInstances) SetBizDate(v int64) *ListM
 
 func (s *ListManualDagInstancesResponseBodyInstances) SetCreateTime(v int64) *ListManualDagInstancesResponseBodyInstances {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListManualDagInstancesResponseBodyInstances) SetCreateUser(v string) *ListManualDagInstancesResponseBodyInstances {
+	s.CreateUser = &v
 	return s
 }
 
@@ -38586,6 +39066,34 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateExportMigrationWithOptions(request *CreateExportMigrationRequest, runtime *util.RuntimeOptions) (_result *CreateExportMigrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &CreateExportMigrationResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("CreateExportMigration"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateExportMigration(request *CreateExportMigrationRequest) (_result *CreateExportMigrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateExportMigrationResponse{}
+	_body, _err := client.CreateExportMigrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime *util.RuntimeOptions) (_result *CreateFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41252,6 +41760,34 @@ func (client *Client) GetMigrationProcess(request *GetMigrationProcessRequest) (
 	return _result, _err
 }
 
+func (client *Client) GetMigrationSummaryWithOptions(request *GetMigrationSummaryRequest, runtime *util.RuntimeOptions) (_result *GetMigrationSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &GetMigrationSummaryResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("GetMigrationSummary"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMigrationSummary(request *GetMigrationSummaryRequest) (_result *GetMigrationSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMigrationSummaryResponse{}
+	_body, _err := client.GetMigrationSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *util.RuntimeOptions) (_result *GetNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42089,6 +42625,34 @@ func (client *Client) ListDISyncTasks(request *ListDISyncTasksRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDISyncTasksResponse{}
 	_body, _err := client.ListDISyncTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *util.RuntimeOptions) (_result *ListDagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDagsResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDags"), tea.String("2020-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDags(request *ListDagsRequest) (_result *ListDagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDagsResponse{}
+	_body, _err := client.ListDagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
