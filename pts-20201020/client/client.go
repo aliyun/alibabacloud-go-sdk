@@ -1171,7 +1171,7 @@ type GetOpenJMeterSceneResponseBodyScene struct {
 	// 最大并发
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	// constantThroughputTimerType
-	ConstantThroughputTimers *string `json:"ConstantThroughputTimers,omitempty" xml:"ConstantThroughputTimers,omitempty"`
+	ConstantThroughputTimerType *string `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
 	// DNS配置
 	DnsCacheConfig *GetOpenJMeterSceneResponseBodySceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
 	// 压测持续时间，单位为s
@@ -1195,7 +1195,7 @@ type GetOpenJMeterSceneResponseBodyScene struct {
 	// 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
 	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
 	// synchronizing timer 类型
-	SyncTimers *string `json:"SyncTimers,omitempty" xml:"SyncTimers,omitempty"`
+	SyncTimerType *string `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
 	// 测试文件
 	TestFile *string `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
 	// 交换机id，VPC压测时配置
@@ -1227,8 +1227,8 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetConcurrency(v int32) *GetOpenJM
 	return s
 }
 
-func (s *GetOpenJMeterSceneResponseBodyScene) SetConstantThroughputTimers(v string) *GetOpenJMeterSceneResponseBodyScene {
-	s.ConstantThroughputTimers = &v
+func (s *GetOpenJMeterSceneResponseBodyScene) SetConstantThroughputTimerType(v string) *GetOpenJMeterSceneResponseBodyScene {
+	s.ConstantThroughputTimerType = &v
 	return s
 }
 
@@ -1287,8 +1287,8 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetSteps(v int32) *GetOpenJMeterSc
 	return s
 }
 
-func (s *GetOpenJMeterSceneResponseBodyScene) SetSyncTimers(v string) *GetOpenJMeterSceneResponseBodyScene {
-	s.SyncTimers = &v
+func (s *GetOpenJMeterSceneResponseBodyScene) SetSyncTimerType(v string) *GetOpenJMeterSceneResponseBodyScene {
+	s.SyncTimerType = &v
 	return s
 }
 
@@ -5115,7 +5115,7 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	// 最大并发
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	// constantThroughputTimerType
-	ConstantThroughputTimers *string `json:"ConstantThroughputTimers,omitempty" xml:"ConstantThroughputTimers,omitempty"`
+	ConstantThroughputTimerType *string `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
 	// DNS配置
 	DnsCacheConfig *SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig `json:"DnsCacheConfig,omitempty" xml:"DnsCacheConfig,omitempty" type:"Struct"`
 	// 压测持续时间
@@ -5141,7 +5141,7 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	// 预热阶段
 	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
 	// synchronizing timer 类型
-	SyncTimers *string `json:"SyncTimers,omitempty" xml:"SyncTimers,omitempty"`
+	SyncTimerType *string `json:"SyncTimerType,omitempty" xml:"SyncTimerType,omitempty"`
 	// 测试文件
 	TestFile *string `json:"TestFile,omitempty" xml:"TestFile,omitempty"`
 	// 交换机id，VPC压测时配置
@@ -5168,8 +5168,8 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetConcurrency(v int32) *Sav
 	return s
 }
 
-func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetConstantThroughputTimers(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
-	s.ConstantThroughputTimers = &v
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetConstantThroughputTimerType(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.ConstantThroughputTimerType = &v
 	return s
 }
 
@@ -5233,8 +5233,8 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetSteps(v int32) *SaveOpenJ
 	return s
 }
 
-func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetSyncTimers(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
-	s.SyncTimers = &v
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetSyncTimerType(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.SyncTimerType = &v
 	return s
 }
 
