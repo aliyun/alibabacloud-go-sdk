@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -41,11 +42,11 @@ func (s *ExecuteExtendServiceRequest) SetServiceParameters(v string) *ExecuteExt
 }
 
 type ExecuteExtendServiceResponseBody struct {
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ExecuteExtendServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *string                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	HttpStatusCode *string                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Data           *ExecuteExtendServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -57,18 +58,8 @@ func (s ExecuteExtendServiceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteExtendServiceResponseBody) SetMessage(v string) *ExecuteExtendServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ExecuteExtendServiceResponseBody) SetRequestId(v string) *ExecuteExtendServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExecuteExtendServiceResponseBody) SetHttpStatusCode(v string) *ExecuteExtendServiceResponseBody {
-	s.HttpStatusCode = &v
+func (s *ExecuteExtendServiceResponseBody) SetCode(v string) *ExecuteExtendServiceResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -77,8 +68,18 @@ func (s *ExecuteExtendServiceResponseBody) SetData(v *ExecuteExtendServiceRespon
 	return s
 }
 
-func (s *ExecuteExtendServiceResponseBody) SetCode(v string) *ExecuteExtendServiceResponseBody {
-	s.Code = &v
+func (s *ExecuteExtendServiceResponseBody) SetHttpStatusCode(v string) *ExecuteExtendServiceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteExtendServiceResponseBody) SetMessage(v string) *ExecuteExtendServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteExtendServiceResponseBody) SetRequestId(v string) *ExecuteExtendServiceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -128,8 +129,8 @@ func (s *ExecuteExtendServiceResponse) SetBody(v *ExecuteExtendServiceResponseBo
 }
 
 type ExecuteRequestRequest struct {
-	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
 func (s ExecuteRequestRequest) String() string {
@@ -140,21 +141,21 @@ func (s ExecuteRequestRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestRequest) SetServiceParameters(v string) *ExecuteRequestRequest {
-	s.ServiceParameters = &v
-	return s
-}
-
 func (s *ExecuteRequestRequest) SetService(v string) *ExecuteRequestRequest {
 	s.Service = &v
 	return s
 }
 
+func (s *ExecuteRequestRequest) SetServiceParameters(v string) *ExecuteRequestRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
 type ExecuteRequestResponseBody struct {
+	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ExecuteRequestResponseBody) String() string {
@@ -165,13 +166,8 @@ func (s ExecuteRequestResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestResponseBody) SetMessage(v string) *ExecuteRequestResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ExecuteRequestResponseBody) SetRequestId(v string) *ExecuteRequestResponseBody {
-	s.RequestId = &v
+func (s *ExecuteRequestResponseBody) SetCode(v int32) *ExecuteRequestResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -180,8 +176,13 @@ func (s *ExecuteRequestResponseBody) SetData(v map[string]interface{}) *ExecuteR
 	return s
 }
 
-func (s *ExecuteRequestResponseBody) SetCode(v int32) *ExecuteRequestResponseBody {
-	s.Code = &v
+func (s *ExecuteRequestResponseBody) SetMessage(v string) *ExecuteRequestResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteRequestResponseBody) SetRequestId(v string) *ExecuteRequestResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -209,8 +210,9 @@ func (s *ExecuteRequestResponse) SetBody(v *ExecuteRequestResponseBody) *Execute
 }
 
 type ExecuteRequestMLRequest struct {
-	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
 func (s ExecuteRequestMLRequest) String() string {
@@ -221,8 +223,8 @@ func (s ExecuteRequestMLRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestMLRequest) SetServiceParameters(v string) *ExecuteRequestMLRequest {
-	s.ServiceParameters = &v
+func (s *ExecuteRequestMLRequest) SetLang(v string) *ExecuteRequestMLRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -231,11 +233,16 @@ func (s *ExecuteRequestMLRequest) SetService(v string) *ExecuteRequestMLRequest 
 	return s
 }
 
+func (s *ExecuteRequestMLRequest) SetServiceParameters(v string) *ExecuteRequestMLRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
 type ExecuteRequestMLResponseBody struct {
+	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ExecuteRequestMLResponseBody) String() string {
@@ -246,13 +253,8 @@ func (s ExecuteRequestMLResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestMLResponseBody) SetMessage(v string) *ExecuteRequestMLResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ExecuteRequestMLResponseBody) SetRequestId(v string) *ExecuteRequestMLResponseBody {
-	s.RequestId = &v
+func (s *ExecuteRequestMLResponseBody) SetCode(v int32) *ExecuteRequestMLResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -261,8 +263,13 @@ func (s *ExecuteRequestMLResponseBody) SetData(v map[string]interface{}) *Execut
 	return s
 }
 
-func (s *ExecuteRequestMLResponseBody) SetCode(v int32) *ExecuteRequestMLResponseBody {
-	s.Code = &v
+func (s *ExecuteRequestMLResponseBody) SetMessage(v string) *ExecuteRequestMLResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteRequestMLResponseBody) SetRequestId(v string) *ExecuteRequestMLResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -290,8 +297,9 @@ func (s *ExecuteRequestMLResponse) SetBody(v *ExecuteRequestMLResponseBody) *Exe
 }
 
 type ExecuteRequestSGRequest struct {
-	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
 func (s ExecuteRequestSGRequest) String() string {
@@ -302,8 +310,8 @@ func (s ExecuteRequestSGRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestSGRequest) SetServiceParameters(v string) *ExecuteRequestSGRequest {
-	s.ServiceParameters = &v
+func (s *ExecuteRequestSGRequest) SetLang(v string) *ExecuteRequestSGRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -312,11 +320,16 @@ func (s *ExecuteRequestSGRequest) SetService(v string) *ExecuteRequestSGRequest 
 	return s
 }
 
+func (s *ExecuteRequestSGRequest) SetServiceParameters(v string) *ExecuteRequestSGRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
 type ExecuteRequestSGResponseBody struct {
+	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ExecuteRequestSGResponseBody) String() string {
@@ -327,13 +340,8 @@ func (s ExecuteRequestSGResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ExecuteRequestSGResponseBody) SetMessage(v string) *ExecuteRequestSGResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ExecuteRequestSGResponseBody) SetRequestId(v string) *ExecuteRequestSGResponseBody {
-	s.RequestId = &v
+func (s *ExecuteRequestSGResponseBody) SetCode(v int32) *ExecuteRequestSGResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -342,8 +350,13 @@ func (s *ExecuteRequestSGResponseBody) SetData(v map[string]interface{}) *Execut
 	return s
 }
 
-func (s *ExecuteRequestSGResponseBody) SetCode(v int32) *ExecuteRequestSGResponseBody {
-	s.Code = &v
+func (s *ExecuteRequestSGResponseBody) SetMessage(v string) *ExecuteRequestSGResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteRequestSGResponseBody) SetRequestId(v string) *ExecuteRequestSGResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -366,6 +379,88 @@ func (s *ExecuteRequestSGResponse) SetHeaders(v map[string]*string) *ExecuteRequ
 }
 
 func (s *ExecuteRequestSGResponse) SetBody(v *ExecuteRequestSGResponseBody) *ExecuteRequestSGResponse {
+	s.Body = v
+	return s
+}
+
+type RequestDecisionRequest struct {
+	EventCode         *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s RequestDecisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestDecisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RequestDecisionRequest) SetEventCode(v string) *RequestDecisionRequest {
+	s.EventCode = &v
+	return s
+}
+
+func (s *RequestDecisionRequest) SetServiceParameters(v string) *RequestDecisionRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type RequestDecisionResponseBody struct {
+	Code    *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RequestDecisionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestDecisionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RequestDecisionResponseBody) SetCode(v int64) *RequestDecisionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RequestDecisionResponseBody) SetData(v map[string]interface{}) *RequestDecisionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RequestDecisionResponseBody) SetMessage(v string) *RequestDecisionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RequestDecisionResponseBody) SetRequestId(v string) *RequestDecisionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RequestDecisionResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RequestDecisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RequestDecisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestDecisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RequestDecisionResponse) SetHeaders(v map[string]*string) *RequestDecisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RequestDecisionResponse) SetBody(v *RequestDecisionResponseBody) *RequestDecisionResponse {
 	s.Body = v
 	return s
 }
@@ -425,11 +520,27 @@ func (client *Client) ExecuteExtendServiceWithOptions(request *ExecuteExtendServ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Region"] = request.Region
+	query["Service"] = request.Service
+	query["ServiceParameters"] = request.ServiceParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteExtendService"),
+		Version:     tea.String("2019-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteExtendServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteExtendService"), tea.String("2019-05-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -453,11 +564,26 @@ func (client *Client) ExecuteRequestWithOptions(request *ExecuteRequestRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Service"] = request.Service
+	query["ServiceParameters"] = request.ServiceParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteRequest"),
+		Version:     tea.String("2019-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteRequestResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteRequest"), tea.String("2019-05-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -481,11 +607,27 @@ func (client *Client) ExecuteRequestMLWithOptions(request *ExecuteRequestMLReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Lang"] = request.Lang
+	query["Service"] = request.Service
+	query["ServiceParameters"] = request.ServiceParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteRequestML"),
+		Version:     tea.String("2019-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteRequestMLResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteRequestML"), tea.String("2019-05-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -509,11 +651,27 @@ func (client *Client) ExecuteRequestSGWithOptions(request *ExecuteRequestSGReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Lang"] = request.Lang
+	query["Service"] = request.Service
+	query["ServiceParameters"] = request.ServiceParameters
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteRequestSG"),
+		Version:     tea.String("2019-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteRequestSGResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteRequestSG"), tea.String("2019-05-21"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -525,6 +683,49 @@ func (client *Client) ExecuteRequestSG(request *ExecuteRequestSGRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteRequestSGResponse{}
 	_body, _err := client.ExecuteRequestSGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RequestDecisionWithOptions(request *RequestDecisionRequest, runtime *util.RuntimeOptions) (_result *RequestDecisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["EventCode"] = request.EventCode
+	query["ServiceParameters"] = request.ServiceParameters
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RequestDecision"),
+		Version:     tea.String("2019-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RequestDecisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RequestDecision(request *RequestDecisionRequest) (_result *RequestDecisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RequestDecisionResponse{}
+	_body, _err := client.RequestDecisionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
