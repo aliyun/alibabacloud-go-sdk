@@ -1,9 +1,9 @@
-module github.com/alibabacloud-go/facebody-20191230/v2
+module github.com/alibabacloud-go/facebody-20191230/v3
 
 go 1.15
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi v0.1.7
+	github.com/alibabacloud-go/darabonba-openapi v0.1.11
 	github.com/alibabacloud-go/endpoint-util v1.1.0
 	github.com/alibabacloud-go/openapi-util v0.0.9
 	github.com/alibabacloud-go/openplatform-20191219 v1.1.7
