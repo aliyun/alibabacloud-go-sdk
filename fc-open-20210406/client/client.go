@@ -3238,8 +3238,6 @@ func (s *GetLayerVersionByArnResponse) SetBody(v *GetLayerVersionByArnResponseBo
 }
 
 type GetProvisionConfigRequest struct {
-	// 预留的目标资源个数
-	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
 	// 别名名称
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
@@ -3250,11 +3248,6 @@ func (s GetProvisionConfigRequest) String() string {
 
 func (s GetProvisionConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetProvisionConfigRequest) SetTarget(v int64) *GetProvisionConfigRequest {
-	s.Target = &v
-	return s
 }
 
 func (s *GetProvisionConfigRequest) SetQualifier(v string) *GetProvisionConfigRequest {
@@ -7522,19 +7515,8 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateAlias"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7580,19 +7562,8 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCustomDomain"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/custom-domains"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7704,19 +7675,8 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateFunction"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7759,19 +7719,8 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateLayerVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7833,19 +7782,8 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateService"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7905,19 +7843,8 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateTrigger"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CreateTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7952,19 +7879,8 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVpcBinding"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &CreateVpcBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("CreateVpcBinding"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7999,19 +7915,8 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAlias"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8036,19 +7941,8 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCustomDomain"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8083,19 +7977,8 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFunction"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8131,19 +8014,8 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFunctionAsyncInvokeConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8188,19 +8060,8 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFunctionOnDemandConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8226,19 +8087,8 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteLayerVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8272,19 +8122,8 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteService"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8310,19 +8149,8 @@ func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versi
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteServiceVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions/" + tea.StringValue(versionId)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteServiceVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions/"+tea.StringValue(versionId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8358,19 +8186,8 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteTrigger"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8396,19 +8213,8 @@ func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVpcBinding"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings/" + tea.StringValue(vpcId)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeleteVpcBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeleteVpcBinding"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings/"+tea.StringValue(vpcId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8445,19 +8251,8 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeregisterEventSource"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources/" + tea.StringValue(sourceArn)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &DeregisterEventSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("DeregisterEventSource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources/"+tea.StringValue(sourceArn)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8481,19 +8276,8 @@ func (client *Client) GetAccountSettingsWithOptions(headers map[string]*string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAccountSettings"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/account-settings"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetAccountSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetAccountSettings"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/account-settings"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8519,19 +8303,8 @@ func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAlias"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8556,19 +8329,8 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetCustomDomain"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8604,19 +8366,8 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFunction"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8652,19 +8403,8 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFunctionAsyncInvokeConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8700,19 +8440,8 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFunctionCode"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/code"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetFunctionCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetFunctionCode"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/code"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8748,19 +8477,8 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFunctionOnDemandConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8786,19 +8504,8 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetLayerVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8823,19 +8530,8 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetLayerVersionByArn"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layerarn/" + tea.StringValue(arn)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetLayerVersionByArnResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetLayerVersionByArn"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layerarn/"+tea.StringValue(arn)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8867,29 +8563,12 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 		query["qualifier"] = request.Qualifier
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Target)) {
-		body["target"] = request.Target
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetProvisionConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
 	}
 	_result = &GetProvisionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetProvisionConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/provision-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8923,19 +8602,8 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetResourceTags"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/tag"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetResourceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetResourceTags"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8970,19 +8638,8 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetService"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9019,19 +8676,8 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetStatefulAsyncInvocation"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetStatefulAsyncInvocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetStatefulAsyncInvocation"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations/"+tea.StringValue(invocationId)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9058,19 +8704,8 @@ func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetTrigger"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GetTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("GetTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9128,19 +8763,8 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		Query:   openapiutil.Query(query),
 		Body:    request.Body,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InvokeFunction"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/invocations"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("byte"),
-	}
 	_result = &InvokeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("InvokeFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/invocations"), tea.String("byte"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9187,19 +8811,8 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListAliases"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListAliasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListAliases"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9245,19 +8858,8 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCustomDomains"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListCustomDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListCustomDomains"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/custom-domains"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9293,19 +8895,8 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEventSources"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListEventSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListEventSources"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9345,19 +8936,8 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFunctionAsyncInvokeConfigs"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-configs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListFunctionAsyncInvokeConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListFunctionAsyncInvokeConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9408,19 +8988,8 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFunctions"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListFunctionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListFunctions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9473,19 +9042,8 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstances"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/instances"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListInstances"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/instances"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9524,19 +9082,8 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLayerVersions"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListLayerVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListLayerVersions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9582,19 +9129,8 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLayers"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListLayersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListLayers"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9640,19 +9176,8 @@ func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfig
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListOnDemandConfigs"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/on-demand-configs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListOnDemandConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListOnDemandConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/on-demand-configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9698,19 +9223,8 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListProvisionConfigs"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/provision-configs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListProvisionConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListProvisionConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/provision-configs"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9748,19 +9262,8 @@ func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCap
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListReservedCapacities"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/reserved-capacities"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListReservedCapacitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListReservedCapacities"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/reserved-capacities"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9807,19 +9310,8 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListServiceVersions"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListServiceVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListServiceVersions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9865,19 +9357,8 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListServices"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListServices"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9945,19 +9426,8 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListStatefulAsyncInvocations"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListStatefulAsyncInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListStatefulAsyncInvocations"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9995,19 +9465,8 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTaggedResources"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/tags"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListTaggedResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListTaggedResources"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/tags"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10055,19 +9514,8 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTriggers"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListTriggersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListTriggers"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10092,19 +9540,8 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVpcBindings"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ListVpcBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("ListVpcBindings"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10131,19 +9568,8 @@ func (client *Client) PermanentDeleteLayerVersionWithOptions(userID *string, lay
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PermanentDeleteLayerVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/adminlayers/" + tea.StringValue(userID) + "/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &PermanentDeleteLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PermanentDeleteLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/adminlayers/"+tea.StringValue(userID)+"/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10169,19 +9595,8 @@ func (client *Client) PublishLayerAsPublicWithOptions(layerName *string, version
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PublishLayerAsPublic"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &PublishLayerAsPublicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PublishLayerAsPublic"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10225,19 +9640,8 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PublishServiceVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PublishServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PublishServiceVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10291,19 +9695,8 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PutFunctionAsyncInvokeConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PutFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PutFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10354,19 +9747,8 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PutFunctionOnDemandConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PutFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PutFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10416,19 +9798,8 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("PutProvisionConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &PutProvisionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("PutProvisionConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/provision-config"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10470,19 +9841,8 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RegisterEventSource"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &RegisterEventSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("RegisterEventSource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10519,19 +9879,8 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StopStatefulAsyncInvocation"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &StopStatefulAsyncInvocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("StopStatefulAsyncInvocation"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations/"+tea.StringValue(invocationId)), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10569,19 +9918,8 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResource"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/tag"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &TagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("TagResource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10623,19 +9961,8 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResource"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/tag"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
 	_result = &UntagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UntagResource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("none"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10688,19 +10015,8 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateAlias"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10743,19 +10059,8 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateCustomDomain"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10872,19 +10177,8 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateFunction"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10956,19 +10250,8 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateService"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11030,19 +10313,8 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateTrigger"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &UpdateTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoROARequest(tea.String("UpdateTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
