@@ -30,63 +30,6 @@ func (s *AccelerationInfo) SetStatus(v string) *AccelerationInfo {
 	return s
 }
 
-type AvailableAZ struct {
-	// az
-	AvailableAZs *string `json:"availableAZs,omitempty" xml:"availableAZs,omitempty"`
-}
-
-func (s AvailableAZ) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AvailableAZ) GoString() string {
-	return s.String()
-}
-
-func (s *AvailableAZ) SetAvailableAZs(v string) *AvailableAZ {
-	s.AvailableAZs = &v
-	return s
-}
-
-type CDNEventsTriggerConfig struct {
-	// eventName
-	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
-	// eventVersion
-	EventVersion *string `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
-	// filter
-	Filter map[string][]*string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// notes
-	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-}
-
-func (s CDNEventsTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CDNEventsTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CDNEventsTriggerConfig) SetEventName(v string) *CDNEventsTriggerConfig {
-	s.EventName = &v
-	return s
-}
-
-func (s *CDNEventsTriggerConfig) SetEventVersion(v string) *CDNEventsTriggerConfig {
-	s.EventVersion = &v
-	return s
-}
-
-func (s *CDNEventsTriggerConfig) SetFilter(v map[string][]*string) *CDNEventsTriggerConfig {
-	s.Filter = v
-	return s
-}
-
-func (s *CDNEventsTriggerConfig) SetNotes(v string) *CDNEventsTriggerConfig {
-	s.Notes = &v
-	return s
-}
-
 type CertConfig struct {
 	// 证书名称
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
@@ -372,81 +315,6 @@ func (s *DestinationConfig) SetOnSuccess(v *Destination) *DestinationConfig {
 	return s
 }
 
-type Error struct {
-	// 错误码
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误信息描述
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-}
-
-func (s Error) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Error) GoString() string {
-	return s.String()
-}
-
-func (s *Error) SetErrorCode(v string) *Error {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *Error) SetErrorMessage(v string) *Error {
-	s.ErrorMessage = &v
-	return s
-}
-
-type ErrorInfo struct {
-	// 错误信息
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 错误堆栈
-	StackTrace *string `json:"stackTrace,omitempty" xml:"stackTrace,omitempty"`
-}
-
-func (s ErrorInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ErrorInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ErrorInfo) SetErrorMessage(v string) *ErrorInfo {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
-	s.StackTrace = &v
-	return s
-}
-
-type HTTPTriggerConfig struct {
-	// authType
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
-	// methods
-	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
-}
-
-func (s HTTPTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HTTPTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
-	s.AuthType = &v
-	return s
-}
-
-func (s *HTTPTriggerConfig) SetMethods(v []*string) *HTTPTriggerConfig {
-	s.Methods = v
-	return s
-}
-
 type InstanceLifecycleConfig struct {
 	PreFreeze *LifecycleHook `json:"preFreeze,omitempty" xml:"preFreeze,omitempty"`
 	PreStop   *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
@@ -485,56 +353,6 @@ func (s JaegerConfig) GoString() string {
 
 func (s *JaegerConfig) SetEndpoint(v string) *JaegerConfig {
 	s.Endpoint = &v
-	return s
-}
-
-type JobConfig struct {
-	// maxRetryTime
-	MaxRetryTime *int64 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	// triggerInterval
-	TriggerInterval *int64 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
-}
-
-func (s JobConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobConfig) GoString() string {
-	return s.String()
-}
-
-func (s *JobConfig) SetMaxRetryTime(v int64) *JobConfig {
-	s.MaxRetryTime = &v
-	return s
-}
-
-func (s *JobConfig) SetTriggerInterval(v int64) *JobConfig {
-	s.TriggerInterval = &v
-	return s
-}
-
-type JobLogConfig struct {
-	// logstore
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// project
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-}
-
-func (s JobLogConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s JobLogConfig) GoString() string {
-	return s.String()
-}
-
-func (s *JobLogConfig) SetLogstore(v string) *JobLogConfig {
-	s.Logstore = &v
-	return s
-}
-
-func (s *JobLogConfig) SetProject(v string) *JobLogConfig {
-	s.Project = &v
 	return s
 }
 
@@ -715,81 +533,6 @@ func (s *LogConfig) SetProject(v string) *LogConfig {
 	return s
 }
 
-type LogTriggerConfig struct {
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// functionParameter
-	FunctionParameter map[string]*string `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
-	JobConfig         *JobConfig         `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
-	LogConfig         *JobLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	SourceConfig      *SourceConfig      `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
-}
-
-func (s LogTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LogTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *LogTriggerConfig) SetEnable(v bool) *LogTriggerConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *LogTriggerConfig) SetFunctionParameter(v map[string]*string) *LogTriggerConfig {
-	s.FunctionParameter = v
-	return s
-}
-
-func (s *LogTriggerConfig) SetJobConfig(v *JobConfig) *LogTriggerConfig {
-	s.JobConfig = v
-	return s
-}
-
-func (s *LogTriggerConfig) SetLogConfig(v *JobLogConfig) *LogTriggerConfig {
-	s.LogConfig = v
-	return s
-}
-
-func (s *LogTriggerConfig) SetSourceConfig(v *SourceConfig) *LogTriggerConfig {
-	s.SourceConfig = v
-	return s
-}
-
-type MnsTopicTriggerConfig struct {
-	// filterTag
-	FilterTag *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
-	// notifyContentFormat
-	NotifyContentFormat *string `json:"notifyContentFormat,omitempty" xml:"notifyContentFormat,omitempty"`
-	// notifyStrategy
-	NotifyStrategy *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
-}
-
-func (s MnsTopicTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MnsTopicTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *MnsTopicTriggerConfig) SetFilterTag(v string) *MnsTopicTriggerConfig {
-	s.FilterTag = &v
-	return s
-}
-
-func (s *MnsTopicTriggerConfig) SetNotifyContentFormat(v string) *MnsTopicTriggerConfig {
-	s.NotifyContentFormat = &v
-	return s
-}
-
-func (s *MnsTopicTriggerConfig) SetNotifyStrategy(v string) *MnsTopicTriggerConfig {
-	s.NotifyStrategy = &v
-	return s
-}
-
 type NASConfig struct {
 	// groupID
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
@@ -844,72 +587,6 @@ func (s *NASConfigMountPoints) SetMountDir(v string) *NASConfigMountPoints {
 
 func (s *NASConfigMountPoints) SetServerAddr(v string) *NASConfigMountPoints {
 	s.ServerAddr = &v
-	return s
-}
-
-type OSSTriggerConfig struct {
-	// events
-	Events []*string         `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	Filter *OSSTriggerFilter `json:"filter,omitempty" xml:"filter,omitempty"`
-}
-
-func (s OSSTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OSSTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *OSSTriggerConfig) SetEvents(v []*string) *OSSTriggerConfig {
-	s.Events = v
-	return s
-}
-
-func (s *OSSTriggerConfig) SetFilter(v *OSSTriggerFilter) *OSSTriggerConfig {
-	s.Filter = v
-	return s
-}
-
-type OSSTriggerFilter struct {
-	Key *OSSTriggerKey `json:"key,omitempty" xml:"key,omitempty"`
-}
-
-func (s OSSTriggerFilter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OSSTriggerFilter) GoString() string {
-	return s.String()
-}
-
-func (s *OSSTriggerFilter) SetKey(v *OSSTriggerKey) *OSSTriggerFilter {
-	s.Key = v
-	return s
-}
-
-type OSSTriggerKey struct {
-	// prefix
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// suffix
-	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
-}
-
-func (s OSSTriggerKey) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OSSTriggerKey) GoString() string {
-	return s.String()
-}
-
-func (s *OSSTriggerKey) SetPrefix(v string) *OSSTriggerKey {
-	s.Prefix = &v
-	return s
-}
-
-func (s *OSSTriggerKey) SetSuffix(v string) *OSSTriggerKey {
-	s.Suffix = &v
 	return s
 }
 
@@ -1062,95 +739,6 @@ func (s *PathConfig) SetServiceName(v string) *PathConfig {
 	return s
 }
 
-type PreFreeze struct {
-	// preFreeze handler name
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// handler timeout
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-}
-
-func (s PreFreeze) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreFreeze) GoString() string {
-	return s.String()
-}
-
-func (s *PreFreeze) SetHandler(v string) *PreFreeze {
-	s.Handler = &v
-	return s
-}
-
-func (s *PreFreeze) SetTimeout(v int32) *PreFreeze {
-	s.Timeout = &v
-	return s
-}
-
-type PreStop struct {
-	// PreStop handler
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// PreStop hander timeout
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-}
-
-func (s PreStop) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreStop) GoString() string {
-	return s.String()
-}
-
-func (s *PreStop) SetHandler(v string) *PreStop {
-	s.Handler = &v
-	return s
-}
-
-func (s *PreStop) SetTimeout(v int32) *PreStop {
-	s.Timeout = &v
-	return s
-}
-
-type RdsTriggerConfig struct {
-	// concurrency
-	Concurrency *int64 `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
-	// eventFormat
-	EventFormat *string `json:"eventFormat,omitempty" xml:"eventFormat,omitempty"`
-	// retry
-	Retry *int64 `json:"retry,omitempty" xml:"retry,omitempty"`
-	// subscriptionObjects
-	SubscriptionObjects []*string `json:"subscriptionObjects,omitempty" xml:"subscriptionObjects,omitempty" type:"Repeated"`
-}
-
-func (s RdsTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RdsTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *RdsTriggerConfig) SetConcurrency(v int64) *RdsTriggerConfig {
-	s.Concurrency = &v
-	return s
-}
-
-func (s *RdsTriggerConfig) SetEventFormat(v string) *RdsTriggerConfig {
-	s.EventFormat = &v
-	return s
-}
-
-func (s *RdsTriggerConfig) SetRetry(v int64) *RdsTriggerConfig {
-	s.Retry = &v
-	return s
-}
-
-func (s *RdsTriggerConfig) SetSubscriptionObjects(v []*string) *RdsTriggerConfig {
-	s.SubscriptionObjects = v
-	return s
-}
-
 type Resource struct {
 	// resourceArn
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
@@ -1237,24 +825,6 @@ func (s *ScheduledActions) SetStartTime(v string) *ScheduledActions {
 
 func (s *ScheduledActions) SetTarget(v int64) *ScheduledActions {
 	s.Target = &v
-	return s
-}
-
-type SourceConfig struct {
-	// logstore
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-}
-
-func (s SourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
-	s.Logstore = &v
 	return s
 }
 
@@ -1410,38 +980,6 @@ func (s *TargetTrackingPolicies) SetName(v string) *TargetTrackingPolicies {
 
 func (s *TargetTrackingPolicies) SetStartTime(v string) *TargetTrackingPolicies {
 	s.StartTime = &v
-	return s
-}
-
-type TimeTriggerConfig struct {
-	// cronExpression
-	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// enable
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// payload
-	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
-}
-
-func (s TimeTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TimeTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *TimeTriggerConfig) SetCronExpression(v string) *TimeTriggerConfig {
-	s.CronExpression = &v
-	return s
-}
-
-func (s *TimeTriggerConfig) SetEnable(v bool) *TimeTriggerConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *TimeTriggerConfig) SetPayload(v string) *TimeTriggerConfig {
-	s.Payload = &v
 	return s
 }
 
