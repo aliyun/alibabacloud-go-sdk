@@ -1937,6 +1937,196 @@ func (s *ListDbfsResponse) SetBody(v *ListDbfsResponseBody) *ListDbfsResponse {
 	return s
 }
 
+type ListDbfsAttachableEcsInstancesRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDbfsAttachableEcsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachableEcsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesRequest) SetRegionId(v string) *ListDbfsAttachableEcsInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDbfsAttachableEcsInstancesResponseBody struct {
+	EcsLabelInfo []*ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo `json:"EcsLabelInfo,omitempty" xml:"EcsLabelInfo,omitempty" type:"Repeated"`
+	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDbfsAttachableEcsInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachableEcsInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBody) SetEcsLabelInfo(v []*ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) *ListDbfsAttachableEcsInstancesResponseBody {
+	s.EcsLabelInfo = v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBody) SetRequestId(v string) *ListDbfsAttachableEcsInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo struct {
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetLabel(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.Label = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetValue(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.Value = &v
+	return s
+}
+
+type ListDbfsAttachableEcsInstancesResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDbfsAttachableEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDbfsAttachableEcsInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachableEcsInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponse) SetHeaders(v map[string]*string) *ListDbfsAttachableEcsInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponse) SetBody(v *ListDbfsAttachableEcsInstancesResponseBody) *ListDbfsAttachableEcsInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDbfsAttachedEcsInstancesRequest struct {
+	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDbfsAttachedEcsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachedEcsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachedEcsInstancesRequest) SetFsId(v string) *ListDbfsAttachedEcsInstancesRequest {
+	s.FsId = &v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesRequest) SetRegionId(v string) *ListDbfsAttachedEcsInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDbfsAttachedEcsInstancesResponseBody struct {
+	EcsLabelInfo []*ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo `json:"EcsLabelInfo,omitempty" xml:"EcsLabelInfo,omitempty" type:"Repeated"`
+	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDbfsAttachedEcsInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachedEcsInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBody) SetEcsLabelInfo(v []*ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) *ListDbfsAttachedEcsInstancesResponseBody {
+	s.EcsLabelInfo = v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBody) SetRequestId(v string) *ListDbfsAttachedEcsInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo struct {
+	MountPoint  *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
+	MountedTime *string `json:"MountedTime,omitempty" xml:"MountedTime,omitempty"`
+	Label       *string `json:"label,omitempty" xml:"label,omitempty"`
+	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetMountPoint(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.MountPoint = &v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetMountedTime(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.MountedTime = &v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetLabel(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.Label = &v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetValue(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.Value = &v
+	return s
+}
+
+type ListDbfsAttachedEcsInstancesResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDbfsAttachedEcsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDbfsAttachedEcsInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDbfsAttachedEcsInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponse) SetHeaders(v map[string]*string) *ListDbfsAttachedEcsInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponse) SetBody(v *ListDbfsAttachedEcsInstancesResponseBody) *ListDbfsAttachedEcsInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListSnapshotRequest struct {
 	FilterKey    *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
 	FilterValue  *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
@@ -3683,6 +3873,62 @@ func (client *Client) ListDbfs(request *ListDbfsRequest) (_result *ListDbfsRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDbfsResponse{}
 	_body, _err := client.ListDbfsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbfsAttachableEcsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDbfsAttachableEcsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDbfsAttachableEcsInstancesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDbfsAttachableEcsInstances"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDbfsAttachableEcsInstances(request *ListDbfsAttachableEcsInstancesRequest) (_result *ListDbfsAttachableEcsInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDbfsAttachableEcsInstancesResponse{}
+	_body, _err := client.ListDbfsAttachableEcsInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsAttachedEcsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListDbfsAttachedEcsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	_result = &ListDbfsAttachedEcsInstancesResponse{}
+	_body, _err := client.DoRPCRequest(tea.String("ListDbfsAttachedEcsInstances"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDbfsAttachedEcsInstances(request *ListDbfsAttachedEcsInstancesRequest) (_result *ListDbfsAttachedEcsInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDbfsAttachedEcsInstancesResponse{}
+	_body, _err := client.ListDbfsAttachedEcsInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
