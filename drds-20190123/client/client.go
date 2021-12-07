@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -17679,11 +17680,27 @@ func (client *Client) ChangeAccountPasswordWithOptions(request *ChangeAccountPas
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Password"] = request.Password
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeAccountPassword"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeAccountPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeAccountPassword"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17707,11 +17724,28 @@ func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["DrdsRegionId"] = request.DrdsRegionId
+	query["OriginAzoneId"] = request.OriginAzoneId
+	query["TargetAzoneId"] = request.TargetAzoneId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeInstanceAzone"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeInstanceAzoneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeInstanceAzone"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17735,11 +17769,30 @@ func (client *Client) ChangeInstanceNetworkWithOptions(request *ChangeInstanceNe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClassicExpiredDays"] = request.ClassicExpiredDays
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RetainClassic"] = request.RetainClassic
+	query["SrcInstanceNetworkType"] = request.SrcInstanceNetworkType
+	query["VpcId"] = request.VpcId
+	query["VswitchId"] = request.VswitchId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeInstanceNetwork"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeInstanceNetworkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeInstanceNetwork"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17763,11 +17816,26 @@ func (client *Client) CheckDrdsDbNameWithOptions(request *CheckDrdsDbNameRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckDrdsDbName"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckDrdsDbNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckDrdsDbName"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17791,11 +17859,26 @@ func (client *Client) CheckExpandStatusWithOptions(request *CheckExpandStatusReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckExpandStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckExpandStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckExpandStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17819,11 +17902,28 @@ func (client *Client) CheckRdsSuperAccountWithOptions(request *CheckRdsSuperAcco
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Password"] = request.Password
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckRdsSuperAccount"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckRdsSuperAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckRdsSuperAccount"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17847,11 +17947,26 @@ func (client *Client) CheckSqlAuditEnableStatusWithOptions(request *CheckSqlAudi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckSqlAuditEnableStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckSqlAuditEnableStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckSqlAuditEnableStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17875,11 +17990,27 @@ func (client *Client) ConfigureDrdsDbInstancesWithOptions(request *ConfigureDrds
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstance"] = request.DbInstance
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigureDrdsDbInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureDrdsDbInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConfigureDrdsDbInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17903,11 +18034,35 @@ func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbInstType"] = request.DbInstType
+	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Encode"] = request.Encode
+	query["InstDbName"] = request.InstDbName
+	query["Password"] = request.Password
+	query["RdsInstance"] = request.RdsInstance
+	query["RdsSuperAccount"] = request.RdsSuperAccount
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrdsDB"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDrdsDB"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17931,11 +18086,35 @@ func (client *Client) CreateDrdsDBPreCheckWithOptions(request *CreateDrdsDBPreCh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbInstType"] = request.DbInstType
+	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Encode"] = request.Encode
+	query["InstDbName"] = request.InstDbName
+	query["Password"] = request.Password
+	query["RdsInstance"] = request.RdsInstance
+	query["RdsSuperAccount"] = request.RdsSuperAccount
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrdsDBPreCheck"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsDBPreCheckResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDrdsDBPreCheck"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17959,11 +18138,33 @@ func (client *Client) CreateDrdsDBPreviewWithOptions(request *CreateDrdsDBPrevie
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbInstType"] = request.DbInstType
+	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["InstDbName"] = request.InstDbName
+	query["OrderId"] = request.OrderId
+	query["RdsInstance"] = request.RdsInstance
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrdsDBPreview"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsDBPreviewResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDrdsDBPreview"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17987,11 +18188,42 @@ func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["Duration"] = request.Duration
+	query["InstanceSeries"] = request.InstanceSeries
+	query["IsAutoRenew"] = request.IsAutoRenew
+	query["MasterInstId"] = request.MasterInstId
+	query["MySQLVersion"] = request.MySQLVersion
+	query["PayType"] = request.PayType
+	query["PricingCycle"] = request.PricingCycle
+	query["Quantity"] = request.Quantity
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["Specification"] = request.Specification
+	query["Type"] = request.Type
+	query["VpcId"] = request.VpcId
+	query["VswitchId"] = request.VswitchId
+	query["ZoneId"] = request.ZoneId
+	query["isHa"] = request.IsHa
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrdsInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDrdsInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18015,11 +18247,29 @@ func (client *Client) CreateEvaluatePreCheckTaskWithOptions(request *CreateEvalu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AvgQpsGrowthScale"] = request.AvgQpsGrowthScale
+	query["DataGrowthScale"] = request.DataGrowthScale
+	query["DbInfo"] = request.DbInfo
+	query["EvaluateHours"] = request.EvaluateHours
+	query["TaskName"] = request.TaskName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEvaluatePreCheckTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEvaluatePreCheckTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEvaluatePreCheckTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18043,11 +18293,28 @@ func (client *Client) CreateInstanceAccountWithOptions(request *CreateInstanceAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbPrivilege"] = request.DbPrivilege
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Password"] = request.Password
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceAccount"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstanceAccount"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18071,11 +18338,26 @@ func (client *Client) CreateInstanceInternetAddressWithOptions(request *CreateIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceInternetAddress"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceInternetAddressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstanceInternetAddress"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18099,11 +18381,26 @@ func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Params"] = request.Params
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrderForRds"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateOrderForRdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateOrderForRds"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18127,11 +18424,30 @@ func (client *Client) CreateShardTaskWithOptions(request *CreateShardTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["SourceTableName"] = request.SourceTableName
+	query["TargetTableName"] = request.TargetTableName
+	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateShardTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateShardTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateShardTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18155,11 +18471,25 @@ func (client *Client) DescribeBackMenuWithOptions(request *DescribeBackMenuReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackMenu"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackMenuResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackMenu"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18183,11 +18513,27 @@ func (client *Client) DescribeBackupDbsWithOptions(request *DescribeBackupDbsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupId"] = request.BackupId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PreferredRestoreTime"] = request.PreferredRestoreTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupDbs"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupDbsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupDbs"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18211,11 +18557,25 @@ func (client *Client) DescribeBackupLocalWithOptions(request *DescribeBackupLoca
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupLocal"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupLocalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupLocal"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18239,11 +18599,25 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPolicy"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicy"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18267,11 +18641,27 @@ func (client *Client) DescribeBackupSetsWithOptions(request *DescribeBackupSetsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupSets"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupSetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupSets"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18295,11 +18685,25 @@ func (client *Client) DescribeBackupTimesWithOptions(request *DescribeBackupTime
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupTimes"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupTimesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupTimes"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18323,11 +18727,30 @@ func (client *Client) DescribeBroadcastTablesWithOptions(request *DescribeBroadc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurrentPage"] = request.CurrentPage
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageSize"] = request.PageSize
+	query["Query"] = request.Query
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBroadcastTables"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBroadcastTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBroadcastTables"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18351,11 +18774,25 @@ func (client *Client) DescribeDataImportTaskReportWithOptions(request *DescribeD
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataImportTaskReport"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDataImportTaskReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDataImportTaskReport"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18379,11 +18816,29 @@ func (client *Client) DescribeDbInstanceDbsWithOptions(request *DescribeDbInstan
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbInstType"] = request.DbInstType
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Password"] = request.Password
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDbInstanceDbs"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbInstanceDbsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDbInstanceDbs"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18407,11 +18862,29 @@ func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstance
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["Search"] = request.Search
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDbInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDbInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18435,11 +18908,26 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDB"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDB"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18463,11 +18951,27 @@ func (client *Client) DescribeDrdsDBClusterWithOptions(request *DescribeDrdsDBCl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDBCluster"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDBCluster"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18491,11 +18995,27 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["GroupName"] = request.GroupName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDBIpWhiteList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBIpWhiteListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDBIpWhiteList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18519,11 +19039,28 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDBs"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDBs"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18547,11 +19084,27 @@ func (client *Client) DescribeDrdsDbInstanceWithOptions(request *DescribeDrdsDbI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDbInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18575,11 +19128,28 @@ func (client *Client) DescribeDrdsDbInstancesWithOptions(request *DescribeDrdsDb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDbInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18603,11 +19173,26 @@ func (client *Client) DescribeDrdsDbRdsNameListWithOptions(request *DescribeDrds
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDbRdsNameList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbRdsNameListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbRdsNameList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18631,11 +19216,27 @@ func (client *Client) DescribeDrdsDbSpecAndPriceWithOptions(request *DescribeDrd
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DBName"] = request.DBName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDbSpecAndPrice"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbSpecAndPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbSpecAndPrice"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18659,11 +19260,27 @@ func (client *Client) DescribeDrdsDbTasksWithOptions(request *DescribeDrdsDbTask
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsDbTasks"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbTasksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsDbTasks"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18687,11 +19304,26 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18715,11 +19347,30 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["Key"] = request.Key
+	query["RegionId"] = request.RegionId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstanceDbMonitor"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceDbMonitorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstanceDbMonitor"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18743,11 +19394,25 @@ func (client *Client) DescribeDrdsInstanceLevelTasksWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstanceLevelTasks"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceLevelTasksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstanceLevelTasks"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18771,11 +19436,30 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["Key"] = request.Key
+	query["PeriodMultiple"] = request.PeriodMultiple
+	query["RegionId"] = request.RegionId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstanceMonitor"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceMonitorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstanceMonitor"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18799,11 +19483,26 @@ func (client *Client) DescribeDrdsInstanceVersionWithOptions(request *DescribeDr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstanceVersion"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstanceVersion"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18827,11 +19526,34 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["Expired"] = request.Expired
+	query["Mix"] = request.Mix
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ProductVersion"] = request.ProductVersion
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["Tag"] = request.Tag
+	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18855,11 +19577,28 @@ func (client *Client) DescribeDrdsParamsWithOptions(request *DescribeDrdsParamsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["ParamLevel"] = request.ParamLevel
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsParams"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsParamsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsParams"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18883,11 +19622,25 @@ func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsRdsInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsRdsInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsRdsInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18911,11 +19664,29 @@ func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsSh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DbNamePattern"] = request.DbNamePattern
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsShardingDbs"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsShardingDbsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsShardingDbs"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18939,11 +19710,31 @@ func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["ExeTime"] = request.ExeTime
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsSlowSqls"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsSlowSqlsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsSlowSqls"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18967,11 +19758,25 @@ func (client *Client) DescribeDrdsSqlAuditStatusWithOptions(request *DescribeDrd
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsSqlAuditStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsSqlAuditStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsSqlAuditStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18995,11 +19800,27 @@ func (client *Client) DescribeDrdsTasksWithOptions(request *DescribeDrdsTasksReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrdsTasks"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsTasksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDrdsTasks"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19023,11 +19844,26 @@ func (client *Client) DescribeExpandLogicTableInfoListWithOptions(request *Descr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExpandLogicTableInfoList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExpandLogicTableInfoListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExpandLogicTableInfoList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19051,11 +19887,26 @@ func (client *Client) DescribeHiStoreInstanceInfoWithOptions(request *DescribeHi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["HistoreInstanceId"] = request.HistoreInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHiStoreInstanceInfo"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeHiStoreInstanceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeHiStoreInstanceInfo"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19079,11 +19930,26 @@ func (client *Client) DescribeHotDbListWithOptions(request *DescribeHotDbListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHotDbList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeHotDbListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeHotDbList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19107,11 +19973,26 @@ func (client *Client) DescribeInstDbLogInfoWithOptions(request *DescribeInstDbLo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstDbLogInfo"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstDbLogInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstDbLogInfo"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19135,11 +20016,26 @@ func (client *Client) DescribeInstDbSlsInfoWithOptions(request *DescribeInstDbSl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstDbSlsInfo"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstDbSlsInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstDbSlsInfo"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19163,11 +20059,25 @@ func (client *Client) DescribeInstanceAccountsWithOptions(request *DescribeInsta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceAccounts"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceAccountsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceAccounts"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19191,11 +20101,25 @@ func (client *Client) DescribeInstanceMenuSwitchWithOptions(request *DescribeIns
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceMenuSwitch"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceMenuSwitchResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceMenuSwitch"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19219,11 +20143,25 @@ func (client *Client) DescribeInstanceSwitchAzoneWithOptions(request *DescribeIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSwitchAzone"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSwitchAzoneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceSwitchAzone"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19247,11 +20185,25 @@ func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSwitchNetwork"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSwitchNetworkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceSwitchNetwork"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19275,11 +20227,27 @@ func (client *Client) DescribePreCheckResultWithOptions(request *DescribePreChec
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePreCheckResult"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePreCheckResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePreCheckResult"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19303,11 +20271,30 @@ func (client *Client) DescribeRDSPerformanceWithOptions(request *DescribeRDSPerf
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["Keys"] = request.Keys
+	query["RdsInstanceId"] = request.RdsInstanceId
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRDSPerformance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRDSPerformanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRDSPerformance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19331,11 +20318,27 @@ func (client *Client) DescribeRdsCommodityWithOptions(request *DescribeRdsCommod
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CommodityCode"] = request.CommodityCode
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["OrderType"] = request.OrderType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsCommodity"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsCommodityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsCommodity"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19359,11 +20362,26 @@ func (client *Client) DescribeRdsDrdsDBWithOptions(request *DescribeRdsDrdsDBReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RdsInstanceId"] = request.RdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsDrdsDB"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsDrdsDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsDrdsDB"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19387,11 +20405,27 @@ func (client *Client) DescribeRdsPerformanceSummaryWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RdsInstanceId"] = request.RdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsPerformanceSummary"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsPerformanceSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsPerformanceSummary"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19415,11 +20449,26 @@ func (client *Client) DescribeRdsPriceWithOptions(request *DescribeRdsPriceReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Params"] = request.Params
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsPrice"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsPrice"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19443,11 +20492,27 @@ func (client *Client) DescribeRdsReadOnlyWithOptions(request *DescribeRdsReadOnl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RdsInstanceId"] = request.RdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsReadOnly"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsReadOnlyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsReadOnly"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19471,11 +20536,27 @@ func (client *Client) DescribeRdsSuperAccountInstancesWithOptions(request *Descr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RdsInstance"] = request.RdsInstance
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsSuperAccountInstances"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsSuperAccountInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsSuperAccountInstances"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19499,11 +20580,26 @@ func (client *Client) DescribeRdsVpcForZoneWithOptions(request *DescribeRdsVpcFo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsVpcForZone"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsVpcForZoneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRdsVpcForZone"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19527,11 +20623,27 @@ func (client *Client) DescribeRecycleBinStatusWithOptions(request *DescribeRecyc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecycleBinStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecycleBinStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecycleBinStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19555,11 +20667,27 @@ func (client *Client) DescribeRecycleBinTablesWithOptions(request *DescribeRecyc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecycleBinTables"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecycleBinTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecycleBinTables"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19583,11 +20711,30 @@ func (client *Client) DescribeRestoreOrderWithOptions(request *DescribeRestoreOr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupDbNames"] = request.BackupDbNames
+	query["BackupId"] = request.BackupId
+	query["BackupLevel"] = request.BackupLevel
+	query["BackupMode"] = request.BackupMode
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PreferredBackupTime"] = request.PreferredBackupTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreOrder"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreOrder"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19611,11 +20758,29 @@ func (client *Client) DescribeShardTaskInfoWithOptions(request *DescribeShardTas
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["SourceTableName"] = request.SourceTableName
+	query["TargetTableName"] = request.TargetTableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeShardTaskInfo"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardTaskInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeShardTaskInfo"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19639,11 +20804,31 @@ func (client *Client) DescribeShardTaskListWithOptions(request *DescribeShardTas
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurrentPage"] = request.CurrentPage
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageSize"] = request.PageSize
+	query["Query"] = request.Query
+	query["RegionId"] = request.RegionId
+	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeShardTaskList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardTaskListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeShardTaskList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19667,11 +20852,25 @@ func (client *Client) DescribeSqlFlashbakTaskWithOptions(request *DescribeSqlFla
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlFlashbakTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSqlFlashbakTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSqlFlashbakTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19695,11 +20894,27 @@ func (client *Client) DescribeSrcRdsListWithOptions(request *DescribeSrcRdsListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PartitionMapping"] = request.PartitionMapping
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSrcRdsList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSrcRdsListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSrcRdsList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19723,11 +20938,28 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTable"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTable"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19751,11 +20983,31 @@ func (client *Client) DescribeTableListByTypeWithOptions(request *DescribeTableL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurrentPage"] = request.CurrentPage
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageSize"] = request.PageSize
+	query["Query"] = request.Query
+	query["RegionId"] = request.RegionId
+	query["TableType"] = request.TableType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTableListByType"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTableListByTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTableListByType"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19779,11 +21031,30 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurrentPage"] = request.CurrentPage
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PageSize"] = request.PageSize
+	query["Query"] = request.Query
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTables"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTables"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19807,11 +21078,26 @@ func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableSqlAudit"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableSqlAuditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableSqlAudit"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19835,11 +21121,26 @@ func (client *Client) EnableInstanceIpv6AddressWithOptions(request *EnableInstan
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableInstanceIpv6Address"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableInstanceIpv6AddressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableInstanceIpv6Address"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19863,11 +21164,29 @@ func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["IsRecall"] = request.IsRecall
+	query["RecallEndTimestamp"] = request.RecallEndTimestamp
+	query["RecallStartTimestamp"] = request.RecallStartTimestamp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableSqlAudit"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableSqlAuditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableSqlAudit"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19891,11 +21210,26 @@ func (client *Client) EnableSqlFlashbackMatchSwitchWithOptions(request *EnableSq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableSqlFlashbackMatchSwitch"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableSqlFlashbackMatchSwitchResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableSqlFlashbackMatchSwitch"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19919,11 +21253,28 @@ func (client *Client) FlashbackRecycleBinTableWithOptions(request *FlashbackRecy
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlashbackRecycleBinTable"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FlashbackRecycleBinTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FlashbackRecycleBinTable"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19947,11 +21298,26 @@ func (client *Client) GetDrdsDbRdsRelationInfoWithOptions(request *GetDrdsDbRdsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDrdsDbRdsRelationInfo"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDrdsDbRdsRelationInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDrdsDbRdsRelationInfo"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19975,11 +21341,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagResources"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20003,11 +21387,26 @@ func (client *Client) ListUserReportsWithOptions(request *ListUserReportsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["ReportId"] = request.ReportId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserReports"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserReportsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUserReports"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20031,11 +21430,26 @@ func (client *Client) ListVersionsWithOptions(request *ListVersionsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["DrdsVer"] = request.DrdsVer
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVersions"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVersionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVersions"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20059,11 +21473,29 @@ func (client *Client) ManagePrivateRdsWithOptions(request *ManagePrivateRdsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DBInstanceId"] = request.DBInstanceId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Params"] = request.Params
+	query["RdsAction"] = request.RdsAction
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ManagePrivateRds"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ManagePrivateRdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ManagePrivateRds"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20087,11 +21519,27 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["Description"] = request.Description
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountDescription"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountDescription"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20115,11 +21563,28 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DbPrivilege"] = request.DbPrivilege
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountPrivilege"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountPrivilegeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountPrivilege"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20143,11 +21608,26 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Description"] = request.Description
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDrdsInstanceDescription"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsInstanceDescriptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDrdsInstanceDescription"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20171,11 +21651,30 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["GroupAttribute"] = request.GroupAttribute
+	query["GroupName"] = request.GroupName
+	query["IpWhiteList"] = request.IpWhiteList
+	query["Mode"] = request.Mode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDrdsIpWhiteList"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsIpWhiteListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDrdsIpWhiteList"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20199,11 +21698,27 @@ func (client *Client) ModifyEventTaskStatusWithOptions(request *ModifyEventTaskS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EventId"] = request.EventId
+	query["Region"] = request.Region
+	query["SwitchTime"] = request.SwitchTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyEventTaskStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyEventTaskStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyEventTaskStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20227,11 +21742,29 @@ func (client *Client) ModifyPolarDbReadWeightWithOptions(request *ModifyPolarDbR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DbName"] = request.DbName
+	query["DbNodeIds"] = request.DbNodeIds
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Weights"] = request.Weights
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPolarDbReadWeight"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPolarDbReadWeightResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPolarDbReadWeight"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20255,11 +21788,28 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["InstanceNames"] = request.InstanceNames
+	query["Weights"] = request.Weights
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRdsReadWeight"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRdsReadWeightResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyRdsReadWeight"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20283,11 +21833,28 @@ func (client *Client) PreCheckSqlFlashbackTaskWithOptions(request *PreCheckSqlFl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreCheckSqlFlashbackTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PreCheckSqlFlashbackTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PreCheckSqlFlashbackTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20311,11 +21878,30 @@ func (client *Client) PutRestorePreCheckWithOptions(request *PutRestorePreCheckR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupDbNames"] = request.BackupDbNames
+	query["BackupId"] = request.BackupId
+	query["BackupLevel"] = request.BackupLevel
+	query["BackupMode"] = request.BackupMode
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PreferredBackupTime"] = request.PreferredBackupTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutRestorePreCheck"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PutRestorePreCheckResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PutRestorePreCheck"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20339,11 +21925,28 @@ func (client *Client) PutStartBackupWithOptions(request *PutStartBackupRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupDbNames"] = request.BackupDbNames
+	query["BackupLevel"] = request.BackupLevel
+	query["BackupMode"] = request.BackupMode
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutStartBackup"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PutStartBackupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PutStartBackup"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20367,11 +21970,30 @@ func (client *Client) RearrangeDbToInstanceWithOptions(request *RearrangeDbToIns
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ChooseRds"] = request.ChooseRds
+	query["ChooseSubDb"] = request.ChooseSubDb
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["InstanceList"] = request.InstanceList
+	query["OrderId"] = request.OrderId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RearrangeDbToInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RearrangeDbToInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RearrangeDbToInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20395,11 +22017,26 @@ func (client *Client) RefreshDrdsAtomUrlWithOptions(request *RefreshDrdsAtomUrlR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshDrdsAtomUrl"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshDrdsAtomUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshDrdsAtomUrl"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20423,11 +22060,26 @@ func (client *Client) ReleaseInstanceInternetAddressWithOptions(request *Release
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseInstanceInternetAddress"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseInstanceInternetAddressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReleaseInstanceInternetAddress"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20451,11 +22103,26 @@ func (client *Client) RemoveBackupsSetWithOptions(request *RemoveBackupsSetReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupId"] = request.BackupId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveBackupsSet"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveBackupsSetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveBackupsSet"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20479,11 +22146,26 @@ func (client *Client) RemoveDrdsDbWithOptions(request *RemoveDrdsDbRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDrdsDb"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsDbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveDrdsDb"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20507,11 +22189,26 @@ func (client *Client) RemoveDrdsDbFailedRecordWithOptions(request *RemoveDrdsDbF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDrdsDbFailedRecord"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsDbFailedRecordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveDrdsDbFailedRecord"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20535,11 +22232,25 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDrdsInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveDrdsInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20563,11 +22274,29 @@ func (client *Client) RemoveDrdsMysqlWithOptions(request *RemoveDrdsMysqlRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstanceId"] = request.DbInstanceId
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["Force"] = request.Force
+	query["RoDbInstanceId"] = request.RoDbInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDrdsMysql"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsMysqlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveDrdsMysql"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20591,11 +22320,26 @@ func (client *Client) RemoveInstanceAccountWithOptions(request *RemoveInstanceAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccountName"] = request.AccountName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveInstanceAccount"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveInstanceAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveInstanceAccount"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20619,11 +22363,28 @@ func (client *Client) RemoveRecycleBinTableWithOptions(request *RemoveRecycleBin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveRecycleBinTable"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveRecycleBinTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveRecycleBinTable"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20647,11 +22408,25 @@ func (client *Client) RestartDrdsInstanceWithOptions(request *RestartDrdsInstanc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartDrdsInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RestartDrdsInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RestartDrdsInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20675,11 +22450,26 @@ func (client *Client) RollbackInstanceVersionWithOptions(request *RollbackInstan
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackInstanceVersion"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RollbackInstanceVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RollbackInstanceVersion"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20703,11 +22493,28 @@ func (client *Client) SetBackupLocalWithOptions(request *SetBackupLocalRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["HighSpaceUsageProtection"] = request.HighSpaceUsageProtection
+	query["LocalLogRetentionHours"] = request.LocalLogRetentionHours
+	query["LocalLogRetentionSpace"] = request.LocalLogRetentionSpace
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetBackupLocal"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetBackupLocalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetBackupLocal"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20731,11 +22538,34 @@ func (client *Client) SetBackupPolicyWithOptions(request *SetBackupPolicyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupDbNames"] = request.BackupDbNames
+	query["BackupLevel"] = request.BackupLevel
+	query["BackupLog"] = request.BackupLog
+	query["BackupMode"] = request.BackupMode
+	query["DataBackupRetentionPeriod"] = request.DataBackupRetentionPeriod
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["LogBackupRetentionPeriod"] = request.LogBackupRetentionPeriod
+	query["PreferredBackupEndTime"] = request.PreferredBackupEndTime
+	query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	query["PreferredBackupStartTime"] = request.PreferredBackupStartTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetBackupPolicy"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetBackupPolicy"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20759,11 +22589,29 @@ func (client *Client) SetupBroadcastTablesWithOptions(request *SetupBroadcastTab
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Active"] = request.Active
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupBroadcastTables"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetupBroadcastTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetupBroadcastTables"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20787,11 +22635,28 @@ func (client *Client) SetupDrdsParamsWithOptions(request *SetupDrdsParamsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Data"] = request.Data
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["ParamLevel"] = request.ParamLevel
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupDrdsParams"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetupDrdsParamsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetupDrdsParams"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20815,11 +22680,28 @@ func (client *Client) SetupRecycleBinStatusWithOptions(request *SetupRecycleBinS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["StatusAction"] = request.StatusAction
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupRecycleBinStatus"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetupRecycleBinStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetupRecycleBinStatus"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20843,11 +22725,29 @@ func (client *Client) SetupTableWithOptions(request *SetupTableRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AllowFullTableScan"] = request.AllowFullTableScan
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupTable"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetupTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetupTable"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20871,11 +22771,29 @@ func (client *Client) SetupTableAsyncWithOptions(request *SetupTableAsyncRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AllowFullTableScan"] = request.AllowFullTableScan
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["TableName"] = request.TableName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupTableAsync"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetupTableAsyncResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetupTableAsync"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20899,11 +22817,26 @@ func (client *Client) SqlCompatibilityCancelWithOptions(request *SqlCompatibilit
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SqlCompatibilityCancel"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SqlCompatibilityCancelResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SqlCompatibilityCancel"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20927,11 +22860,27 @@ func (client *Client) SqlCompatibilityStartWithOptions(request *SqlCompatibility
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PerformanceTest"] = request.PerformanceTest
+	query["TargetVersion"] = request.TargetVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SqlCompatibilityStart"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SqlCompatibilityStartResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SqlCompatibilityStart"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20955,11 +22904,30 @@ func (client *Client) StartRestoreWithOptions(request *StartRestoreRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BackupDbNames"] = request.BackupDbNames
+	query["BackupId"] = request.BackupId
+	query["BackupLevel"] = request.BackupLevel
+	query["BackupMode"] = request.BackupMode
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PreferredBackupTime"] = request.PreferredBackupTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRestore"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartRestoreResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartRestore"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20983,11 +22951,29 @@ func (client *Client) SubmitCleanTaskWithOptions(request *SubmitCleanTaskRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["ExpandType"] = request.ExpandType
+	query["JobId"] = request.JobId
+	query["ParentJobId"] = request.ParentJobId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCleanTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitCleanTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitCleanTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21011,11 +22997,28 @@ func (client *Client) SubmitHotExpandPreCheckTaskWithOptions(request *SubmitHotE
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["TableList"] = request.TableList
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitHotExpandPreCheckTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitHotExpandPreCheckTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitHotExpandPreCheckTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21039,11 +23042,32 @@ func (client *Client) SubmitHotExpandTaskWithOptions(request *SubmitHotExpandTas
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["ExtendedMapping"] = request.ExtendedMapping
+	query["InstanceDbMapping"] = request.InstanceDbMapping
+	query["Mapping"] = request.Mapping
+	query["SupperAccountMapping"] = request.SupperAccountMapping
+	query["TaskDesc"] = request.TaskDesc
+	query["TaskName"] = request.TaskName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitHotExpandTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitHotExpandTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitHotExpandTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21067,11 +23091,27 @@ func (client *Client) SubmitSmoothExpandPreCheckWithOptions(request *SubmitSmoot
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbInstType"] = request.DbInstType
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmoothExpandPreCheck"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSmoothExpandPreCheckResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSmoothExpandPreCheck"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21095,11 +23135,26 @@ func (client *Client) SubmitSmoothExpandPreCheckTaskWithOptions(request *SubmitS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmoothExpandPreCheckTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSmoothExpandPreCheckTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSmoothExpandPreCheckTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21123,11 +23178,34 @@ func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["EndTime"] = request.EndTime
+	query["RecallRestoreType"] = request.RecallRestoreType
+	query["RecallType"] = request.RecallType
+	query["SqlPk"] = request.SqlPk
+	query["SqlType"] = request.SqlType
+	query["StartTime"] = request.StartTime
+	query["TableName"] = request.TableName
+	query["TraceId"] = request.TraceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSqlFlashbackTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSqlFlashbackTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSqlFlashbackTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21151,11 +23229,27 @@ func (client *Client) SwitchGlobalBroadcastTypeWithOptions(request *SwitchGlobal
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchGlobalBroadcastType"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchGlobalBroadcastTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SwitchGlobalBroadcastType"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21179,11 +23273,28 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21207,11 +23318,29 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["All"] = request.All
+	query["RegionId"] = request.RegionId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21235,11 +23364,28 @@ func (client *Client) UpdateInstanceNetworkWithOptions(request *UpdateInstanceNe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClassicExpiredDays"] = request.ClassicExpiredDays
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RetainClassic"] = request.RetainClassic
+	query["SrcInstanceNetworkType"] = request.SrcInstanceNetworkType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceNetwork"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateInstanceNetworkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateInstanceNetwork"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21263,11 +23409,30 @@ func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRds
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AutoUseCoupon"] = request.AutoUseCoupon
+	query["DBInstanceId"] = request.DBInstanceId
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["PrePayDuration"] = request.PrePayDuration
+	query["RdsClass"] = request.RdsClass
+	query["Storage"] = request.Storage
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePrivateRdsClass"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePrivateRdsClassResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdatePrivateRdsClass"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21291,11 +23456,27 @@ func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["NewResourceGroupId"] = request.NewResourceGroupId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceGroupAttribute"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateResourceGroupAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateResourceGroupAttribute"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21319,11 +23500,27 @@ func (client *Client) UpgradeHiStoreInstanceWithOptions(request *UpgradeHiStoreI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["HistoreInstanceId"] = request.HistoreInstanceId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeHiStoreInstance"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeHiStoreInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeHiStoreInstance"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21347,11 +23544,27 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["Rpm"] = request.Rpm
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeInstanceVersion"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeInstanceVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeInstanceVersion"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21375,11 +23588,30 @@ func (client *Client) ValidateShardTaskWithOptions(request *ValidateShardTaskReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbName"] = request.DbName
+	query["DrdsInstanceId"] = request.DrdsInstanceId
+	query["RegionId"] = request.RegionId
+	query["SourceTableName"] = request.SourceTableName
+	query["TargetTableName"] = request.TargetTableName
+	query["TaskType"] = request.TaskType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateShardTask"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateShardTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ValidateShardTask"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21403,11 +23635,27 @@ func (client *Client) DescribeRdsInstInfosWithOptions(request *DescribeRdsInstIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["Search"] = request.Search
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("describeRdsInstInfos"),
+		Version:     tea.String("2019-01-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsInstInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("describeRdsInstInfos"), tea.String("2019-01-23"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
