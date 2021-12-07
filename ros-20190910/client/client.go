@@ -2979,6 +2979,7 @@ type GetChangeSetResponseBody struct {
 	Description      *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback  *bool                                 `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	ExecutionStatus  *string                               `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
+	Log              *GetChangeSetResponseBodyLog          `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	Parameters       []*GetChangeSetResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId         *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3038,6 +3039,11 @@ func (s *GetChangeSetResponseBody) SetExecutionStatus(v string) *GetChangeSetRes
 	return s
 }
 
+func (s *GetChangeSetResponseBody) SetLog(v *GetChangeSetResponseBodyLog) *GetChangeSetResponseBody {
+	s.Log = v
+	return s
+}
+
 func (s *GetChangeSetResponseBody) SetParameters(v []*GetChangeSetResponseBodyParameters) *GetChangeSetResponseBody {
 	s.Parameters = v
 	return s
@@ -3080,6 +3086,52 @@ func (s *GetChangeSetResponseBody) SetTemplateBody(v string) *GetChangeSetRespon
 
 func (s *GetChangeSetResponseBody) SetTimeoutInMinutes(v int32) *GetChangeSetResponseBody {
 	s.TimeoutInMinutes = &v
+	return s
+}
+
+type GetChangeSetResponseBodyLog struct {
+	TerraformLogs []*GetChangeSetResponseBodyLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
+}
+
+func (s GetChangeSetResponseBodyLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeSetResponseBodyLog) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeSetResponseBodyLog) SetTerraformLogs(v []*GetChangeSetResponseBodyLogTerraformLogs) *GetChangeSetResponseBodyLog {
+	s.TerraformLogs = v
+	return s
+}
+
+type GetChangeSetResponseBodyLogTerraformLogs struct {
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Stream  *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
+}
+
+func (s GetChangeSetResponseBodyLogTerraformLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeSetResponseBodyLogTerraformLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeSetResponseBodyLogTerraformLogs) SetCommand(v string) *GetChangeSetResponseBodyLogTerraformLogs {
+	s.Command = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBodyLogTerraformLogs) SetContent(v string) *GetChangeSetResponseBodyLogTerraformLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBodyLogTerraformLogs) SetStream(v string) *GetChangeSetResponseBodyLogTerraformLogs {
+	s.Stream = &v
 	return s
 }
 
@@ -3731,6 +3783,7 @@ type GetStackResponseBody struct {
 	Description         *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback     *bool                                 `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	DriftDetectionTime  *string                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	Log                 *GetStackResponseBodyLog              `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	NotificationURLs    []*string                             `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	Outputs             []map[string]interface{}              `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	Parameters          []*GetStackResponseBodyParameters     `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
@@ -3783,6 +3836,11 @@ func (s *GetStackResponseBody) SetDisableRollback(v bool) *GetStackResponseBody 
 
 func (s *GetStackResponseBody) SetDriftDetectionTime(v string) *GetStackResponseBody {
 	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetLog(v *GetStackResponseBodyLog) *GetStackResponseBody {
+	s.Log = v
 	return s
 }
 
@@ -3883,6 +3941,52 @@ func (s *GetStackResponseBody) SetTimeoutInMinutes(v int32) *GetStackResponseBod
 
 func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
 	s.UpdateTime = &v
+	return s
+}
+
+type GetStackResponseBodyLog struct {
+	TerraformLogs []*GetStackResponseBodyLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
+}
+
+func (s GetStackResponseBodyLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyLog) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyLog) SetTerraformLogs(v []*GetStackResponseBodyLogTerraformLogs) *GetStackResponseBodyLog {
+	s.TerraformLogs = v
+	return s
+}
+
+type GetStackResponseBodyLogTerraformLogs struct {
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Stream  *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
+}
+
+func (s GetStackResponseBodyLogTerraformLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyLogTerraformLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyLogTerraformLogs) SetCommand(v string) *GetStackResponseBodyLogTerraformLogs {
+	s.Command = &v
+	return s
+}
+
+func (s *GetStackResponseBodyLogTerraformLogs) SetContent(v string) *GetStackResponseBodyLogTerraformLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *GetStackResponseBodyLogTerraformLogs) SetStream(v string) *GetStackResponseBodyLogTerraformLogs {
+	s.Stream = &v
 	return s
 }
 
@@ -9233,6 +9337,7 @@ func (s *PreviewStackResponseBody) SetStack(v *PreviewStackResponseBodyStack) *P
 type PreviewStackResponseBodyStack struct {
 	Description         *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback     *bool                                      `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Log                 *PreviewStackResponseBodyStackLog          `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	Parameters          []*PreviewStackResponseBodyStackParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId            *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resources           []*PreviewStackResponseBodyStackResources  `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -9257,6 +9362,11 @@ func (s *PreviewStackResponseBodyStack) SetDescription(v string) *PreviewStackRe
 
 func (s *PreviewStackResponseBodyStack) SetDisableRollback(v bool) *PreviewStackResponseBodyStack {
 	s.DisableRollback = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStack) SetLog(v *PreviewStackResponseBodyStackLog) *PreviewStackResponseBodyStack {
+	s.Log = v
 	return s
 }
 
@@ -9292,6 +9402,52 @@ func (s *PreviewStackResponseBodyStack) SetTemplateDescription(v string) *Previe
 
 func (s *PreviewStackResponseBodyStack) SetTimeoutInMinutes(v int32) *PreviewStackResponseBodyStack {
 	s.TimeoutInMinutes = &v
+	return s
+}
+
+type PreviewStackResponseBodyStackLog struct {
+	TerraformLogs []*PreviewStackResponseBodyStackLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
+}
+
+func (s PreviewStackResponseBodyStackLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackResponseBodyStackLog) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackResponseBodyStackLog) SetTerraformLogs(v []*PreviewStackResponseBodyStackLogTerraformLogs) *PreviewStackResponseBodyStackLog {
+	s.TerraformLogs = v
+	return s
+}
+
+type PreviewStackResponseBodyStackLogTerraformLogs struct {
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Stream  *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
+}
+
+func (s PreviewStackResponseBodyStackLogTerraformLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewStackResponseBodyStackLogTerraformLogs) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewStackResponseBodyStackLogTerraformLogs) SetCommand(v string) *PreviewStackResponseBodyStackLogTerraformLogs {
+	s.Command = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackLogTerraformLogs) SetContent(v string) *PreviewStackResponseBodyStackLogTerraformLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackLogTerraformLogs) SetStream(v string) *PreviewStackResponseBodyStackLogTerraformLogs {
+	s.Stream = &v
 	return s
 }
 
