@@ -1,3 +1,6 @@
+2021-12-08 Version: v0.0.2
+- Fix CreateDtsInstance bug.
+
 2021-10-28 Version: v0.0.1
 - DescribteDtsJObs api, delay filed change from in to long.
 

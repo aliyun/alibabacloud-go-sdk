@@ -2356,6 +2356,7 @@ type CreateDtsInstanceRequest struct {
 	DatabaseCount                 *int32  `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
 	DestinationEndpointEngineName *string `json:"DestinationEndpointEngineName,omitempty" xml:"DestinationEndpointEngineName,omitempty"`
 	DestinationRegion             *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	FeeType                       *string `json:"FeeType,omitempty" xml:"FeeType,omitempty"`
 	InstanceClass                 *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	JobId                         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	PayType                       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -2404,6 +2405,11 @@ func (s *CreateDtsInstanceRequest) SetDestinationEndpointEngineName(v string) *C
 
 func (s *CreateDtsInstanceRequest) SetDestinationRegion(v string) *CreateDtsInstanceRequest {
 	s.DestinationRegion = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetFeeType(v string) *CreateDtsInstanceRequest {
+	s.FeeType = &v
 	return s
 }
 
@@ -5118,6 +5124,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	ErrorMessage                  *string                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ExpireTime                    *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyDtsJobListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	OriginType                    *string                                                             `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobsResponseBodyDtsJobListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
 	PrecheckStatus                *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
@@ -5240,6 +5247,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetExpireTime(v string) *Describ
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMigrationMode(v *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetOriginType(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.OriginType = &v
 	return s
 }
 
@@ -6799,6 +6811,7 @@ type DescribeJobMonitorRuleResponseBody struct {
 	MonitorRules   []*DescribeJobMonitorRuleResponseBodyMonitorRules `json:"MonitorRules,omitempty" xml:"MonitorRules,omitempty" type:"Repeated"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Topics         []*string                                         `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
 func (s DescribeJobMonitorRuleResponseBody) String() string {
@@ -6851,6 +6864,11 @@ func (s *DescribeJobMonitorRuleResponseBody) SetRequestId(v string) *DescribeJob
 
 func (s *DescribeJobMonitorRuleResponseBody) SetSuccess(v bool) *DescribeJobMonitorRuleResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleResponseBody) SetTopics(v []*string) *DescribeJobMonitorRuleResponseBody {
+	s.Topics = v
 	return s
 }
 
@@ -16966,6 +16984,7 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 	query["DatabaseCount"] = request.DatabaseCount
 	query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
 	query["DestinationRegion"] = request.DestinationRegion
+	query["FeeType"] = request.FeeType
 	query["InstanceClass"] = request.InstanceClass
 	query["JobId"] = request.JobId
 	query["PayType"] = request.PayType
