@@ -234,13 +234,19 @@ type ResourceInstance struct {
 	// 实例IP
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// 实例的内存大小
-	InstanceMemory *int32 `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	InstanceMemory *string `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// 实例状态
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// 实例的机型
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 实例被使用的CPU数量
+	InstanceUsedCpu *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	// 实例被使用的GPU数量
+	InstanceUsedGpu *int32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	// 实例被使用的内存大小
+	InstanceUsedMemory *string `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -291,7 +297,7 @@ func (s *ResourceInstance) SetInstanceIp(v string) *ResourceInstance {
 	return s
 }
 
-func (s *ResourceInstance) SetInstanceMemory(v int32) *ResourceInstance {
+func (s *ResourceInstance) SetInstanceMemory(v string) *ResourceInstance {
 	s.InstanceMemory = &v
 	return s
 }
@@ -308,6 +314,21 @@ func (s *ResourceInstance) SetInstanceStatus(v string) *ResourceInstance {
 
 func (s *ResourceInstance) SetInstanceType(v string) *ResourceInstance {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstanceUsedCpu(v float32) *ResourceInstance {
+	s.InstanceUsedCpu = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstanceUsedGpu(v int32) *ResourceInstance {
+	s.InstanceUsedGpu = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
+	s.InstanceUsedMemory = &v
 	return s
 }
 
@@ -407,6 +428,8 @@ func (s *ResourceInstanceWorker) SetStatus(v string) *ResourceInstanceWorker {
 }
 
 type Service struct {
+	// 服务的请求Token
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// 服务创建账号的UID
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// 每个实例申请的cpu
@@ -447,10 +470,10 @@ type Service struct {
 	RunningInstance *int32 `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
 	// 服务的配置信息
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// 服务的名字
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 服务ID
-	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
 	// 服务的状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 服务的所有实例总个数
@@ -467,6 +490,11 @@ func (s Service) String() string {
 
 func (s Service) GoString() string {
 	return s.String()
+}
+
+func (s *Service) SetAccessToken(v string) *Service {
+	s.AccessToken = &v
+	return s
 }
 
 func (s *Service) SetCallerUid(v string) *Service {
@@ -569,13 +597,13 @@ func (s *Service) SetServiceConfig(v string) *Service {
 	return s
 }
 
-func (s *Service) SetServiceName(v string) *Service {
-	s.ServiceName = &v
+func (s *Service) SetServiceId(v string) *Service {
+	s.ServiceId = &v
 	return s
 }
 
-func (s *Service) SetServiceUid(v string) *Service {
-	s.ServiceUid = &v
+func (s *Service) SetServiceName(v string) *Service {
+	s.ServiceName = &v
 	return s
 }
 
