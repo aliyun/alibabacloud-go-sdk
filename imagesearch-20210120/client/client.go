@@ -1047,19 +1047,8 @@ func (client *Client) CommodityTitleWithOptions(request *CommodityTitleRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CommodityTitle"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &CommodityTitleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("CommodityTitle"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1192,19 +1181,8 @@ func (client *Client) GeneralRecognitionWithOptions(request *GeneralRecognitionR
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GeneralRecognition"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &GeneralRecognitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("GeneralRecognition"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1337,19 +1315,8 @@ func (client *Client) ImageAmazonWithOptions(request *ImageAmazonRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImageAmazon"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ImageAmazonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ImageAmazon"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1376,19 +1343,8 @@ func (client *Client) ImageCategoryWithOptions(request *ImageCategoryRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImageCategory"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ImageCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ImageCategory"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1415,19 +1371,8 @@ func (client *Client) ImageDuplicationWithOptions(request *ImageDuplicationReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImageDuplication"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ImageDuplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ImageDuplication"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1454,19 +1399,8 @@ func (client *Client) ImagePropertyWithOptions(request *ImagePropertyRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImageProperty"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ImagePropertyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ImageProperty"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1493,19 +1427,8 @@ func (client *Client) ImageSegmentationWithOptions(request *ImageSegmentationReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImageSegmentation"),
-		Version:     tea.String("2021-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
 	_result = &ImageSegmentationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(tea.String("ImageSegmentation"), tea.String("2021-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
