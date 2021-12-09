@@ -1636,6 +1636,8 @@ type DescribeResourceDLinkResponseBody struct {
 	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 已打通直连的安全组
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// 已打通直连的主VSwitch ID
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// 已打通直接的Vpc ID
@@ -1662,6 +1664,11 @@ func (s *DescribeResourceDLinkResponseBody) SetDestinationCIDRs(v string) *Descr
 
 func (s *DescribeResourceDLinkResponseBody) SetRequestId(v string) *DescribeResourceDLinkResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceDLinkResponseBody) SetSecurityGroupId(v string) *DescribeResourceDLinkResponseBody {
+	s.SecurityGroupId = &v
 	return s
 }
 
