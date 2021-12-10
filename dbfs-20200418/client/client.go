@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -169,106 +170,6 @@ func (s *AttachDbfsResponse) SetHeaders(v map[string]*string) *AttachDbfsRespons
 }
 
 func (s *AttachDbfsResponse) SetBody(v *AttachDbfsResponseBody) *AttachDbfsResponse {
-	s.Body = v
-	return s
-}
-
-type CreateConstantsRequest struct {
-	ConstantsData *string `json:"ConstantsData,omitempty" xml:"ConstantsData,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s CreateConstantsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConstantsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConstantsRequest) SetConstantsData(v string) *CreateConstantsRequest {
-	s.ConstantsData = &v
-	return s
-}
-
-func (s *CreateConstantsRequest) SetPageNumber(v int32) *CreateConstantsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *CreateConstantsRequest) SetPageSize(v int32) *CreateConstantsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *CreateConstantsRequest) SetRegionId(v string) *CreateConstantsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type CreateConstantsResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s CreateConstantsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConstantsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConstantsResponseBody) SetData(v string) *CreateConstantsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateConstantsResponseBody) SetPageNumber(v int64) *CreateConstantsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *CreateConstantsResponseBody) SetPageSize(v int64) *CreateConstantsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *CreateConstantsResponseBody) SetRequestId(v string) *CreateConstantsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateConstantsResponseBody) SetTotalCount(v int64) *CreateConstantsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type CreateConstantsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateConstantsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConstantsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConstantsResponse) SetHeaders(v map[string]*string) *CreateConstantsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateConstantsResponse) SetBody(v *CreateConstantsResponseBody) *CreateConstantsResponse {
 	s.Body = v
 	return s
 }
@@ -572,106 +473,6 @@ func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapsho
 }
 
 func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteConstantsRequest struct {
-	ConstantsData *string `json:"ConstantsData,omitempty" xml:"ConstantsData,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DeleteConstantsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConstantsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConstantsRequest) SetConstantsData(v string) *DeleteConstantsRequest {
-	s.ConstantsData = &v
-	return s
-}
-
-func (s *DeleteConstantsRequest) SetPageNumber(v int32) *DeleteConstantsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DeleteConstantsRequest) SetPageSize(v int32) *DeleteConstantsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DeleteConstantsRequest) SetRegionId(v string) *DeleteConstantsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DeleteConstantsResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DeleteConstantsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConstantsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConstantsResponseBody) SetData(v string) *DeleteConstantsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteConstantsResponseBody) SetPageNumber(v int64) *DeleteConstantsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DeleteConstantsResponseBody) SetPageSize(v int64) *DeleteConstantsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DeleteConstantsResponseBody) SetRequestId(v string) *DeleteConstantsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteConstantsResponseBody) SetTotalCount(v int64) *DeleteConstantsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DeleteConstantsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteConstantsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteConstantsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteConstantsResponse) SetHeaders(v map[string]*string) *DeleteConstantsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteConstantsResponse) SetBody(v *DeleteConstantsResponseBody) *DeleteConstantsResponse {
 	s.Body = v
 	return s
 }
@@ -1492,106 +1293,6 @@ func (s *GetServiceLinkedRoleResponse) SetHeaders(v map[string]*string) *GetServ
 }
 
 func (s *GetServiceLinkedRoleResponse) SetBody(v *GetServiceLinkedRoleResponseBody) *GetServiceLinkedRoleResponse {
-	s.Body = v
-	return s
-}
-
-type ListConstantsRequest struct {
-	ConstantsData *string `json:"ConstantsData,omitempty" xml:"ConstantsData,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListConstantsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConstantsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListConstantsRequest) SetConstantsData(v string) *ListConstantsRequest {
-	s.ConstantsData = &v
-	return s
-}
-
-func (s *ListConstantsRequest) SetPageNumber(v int32) *ListConstantsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListConstantsRequest) SetPageSize(v int32) *ListConstantsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListConstantsRequest) SetRegionId(v string) *ListConstantsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListConstantsResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListConstantsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConstantsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListConstantsResponseBody) SetData(v string) *ListConstantsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ListConstantsResponseBody) SetPageNumber(v int64) *ListConstantsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListConstantsResponseBody) SetPageSize(v int64) *ListConstantsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListConstantsResponseBody) SetRequestId(v string) *ListConstantsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListConstantsResponseBody) SetTotalCount(v int64) *ListConstantsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListConstantsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListConstantsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConstantsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListConstantsResponse) SetHeaders(v map[string]*string) *ListConstantsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListConstantsResponse) SetBody(v *ListConstantsResponseBody) *ListConstantsResponse {
 	s.Body = v
 	return s
 }
@@ -2731,148 +2432,6 @@ func (s *ListTaskResponse) SetBody(v *ListTaskResponseBody) *ListTaskResponse {
 	return s
 }
 
-type OpreateConstantsRequest struct {
-	ConstantsData *string `json:"ConstantsData,omitempty" xml:"ConstantsData,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s OpreateConstantsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpreateConstantsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *OpreateConstantsRequest) SetConstantsData(v string) *OpreateConstantsRequest {
-	s.ConstantsData = &v
-	return s
-}
-
-func (s *OpreateConstantsRequest) SetPageNumber(v int32) *OpreateConstantsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *OpreateConstantsRequest) SetPageSize(v int32) *OpreateConstantsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *OpreateConstantsRequest) SetRegionId(v string) *OpreateConstantsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type OpreateConstantsResponseBody struct {
-	AccessData      *string `json:"AccessData,omitempty" xml:"AccessData,omitempty"`
-	Data            *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	EndpointData    *string `json:"EndpointData,omitempty" xml:"EndpointData,omitempty"`
-	MasterData      *string `json:"MasterData,omitempty" xml:"MasterData,omitempty"`
-	OsversionData   *string `json:"OsversionData,omitempty" xml:"OsversionData,omitempty"`
-	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCodeData *string `json:"ProductCodeData,omitempty" xml:"ProductCodeData,omitempty"`
-	RegionData      *string `json:"RegionData,omitempty" xml:"RegionData,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	ZoneData   *string `json:"ZoneData,omitempty" xml:"ZoneData,omitempty"`
-}
-
-func (s OpreateConstantsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpreateConstantsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *OpreateConstantsResponseBody) SetAccessData(v string) *OpreateConstantsResponseBody {
-	s.AccessData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetData(v string) *OpreateConstantsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetEndpointData(v string) *OpreateConstantsResponseBody {
-	s.EndpointData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetMasterData(v string) *OpreateConstantsResponseBody {
-	s.MasterData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetOsversionData(v string) *OpreateConstantsResponseBody {
-	s.OsversionData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetPageNumber(v int64) *OpreateConstantsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetPageSize(v int64) *OpreateConstantsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetProductCodeData(v string) *OpreateConstantsResponseBody {
-	s.ProductCodeData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetRegionData(v string) *OpreateConstantsResponseBody {
-	s.RegionData = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetRequestId(v string) *OpreateConstantsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetTotalCount(v int64) *OpreateConstantsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *OpreateConstantsResponseBody) SetZoneData(v string) *OpreateConstantsResponseBody {
-	s.ZoneData = &v
-	return s
-}
-
-type OpreateConstantsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpreateConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s OpreateConstantsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OpreateConstantsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *OpreateConstantsResponse) SetHeaders(v map[string]*string) *OpreateConstantsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *OpreateConstantsResponse) SetBody(v *OpreateConstantsResponseBody) *OpreateConstantsResponse {
-	s.Body = v
-	return s
-}
-
 type RenameDbfsRequest struct {
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	FsName   *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
@@ -3149,106 +2708,6 @@ func (s *TagDbfsResponse) SetBody(v *TagDbfsResponseBody) *TagDbfsResponse {
 	return s
 }
 
-type UpdateConstantsRequest struct {
-	ConstantsData *string `json:"ConstantsData,omitempty" xml:"ConstantsData,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s UpdateConstantsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConstantsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConstantsRequest) SetConstantsData(v string) *UpdateConstantsRequest {
-	s.ConstantsData = &v
-	return s
-}
-
-func (s *UpdateConstantsRequest) SetPageNumber(v int32) *UpdateConstantsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *UpdateConstantsRequest) SetPageSize(v int32) *UpdateConstantsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *UpdateConstantsRequest) SetRegionId(v string) *UpdateConstantsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type UpdateConstantsResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s UpdateConstantsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConstantsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConstantsResponseBody) SetData(v string) *UpdateConstantsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdateConstantsResponseBody) SetPageNumber(v int64) *UpdateConstantsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *UpdateConstantsResponseBody) SetPageSize(v int64) *UpdateConstantsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *UpdateConstantsResponseBody) SetRequestId(v string) *UpdateConstantsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateConstantsResponseBody) SetTotalCount(v int64) *UpdateConstantsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type UpdateConstantsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateConstantsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConstantsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConstantsResponse) SetHeaders(v map[string]*string) *UpdateConstantsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateConstantsResponse) SetBody(v *UpdateConstantsResponseBody) *UpdateConstantsResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateTaskRequest struct {
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TaskIds      *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
@@ -3409,11 +2868,28 @@ func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DbfsList"] = request.DbfsList
+	query["RegionId"] = request.RegionId
+	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTagsBatch"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddTagsBatchResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddTagsBatch"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3437,11 +2913,30 @@ func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AttachMode"] = request.AttachMode
+	query["AttachPoint"] = request.AttachPoint
+	query["ECSInstanceId"] = request.ECSInstanceId
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
+	query["ServerUrl"] = request.ServerUrl
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3460,44 +2955,44 @@ func (client *Client) AttachDbfs(request *AttachDbfsRequest) (_result *AttachDbf
 	return _result, _err
 }
 
-func (client *Client) CreateConstantsWithOptions(request *CreateConstantsRequest, runtime *util.RuntimeOptions) (_result *CreateConstantsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateConstantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateConstants"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateConstants(request *CreateConstantsRequest) (_result *CreateConstantsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateConstantsResponse{}
-	_body, _err := client.CreateConstantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime *util.RuntimeOptions) (_result *CreateDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Category"] = request.Category
+	query["ClientToken"] = request.ClientToken
+	query["DeleteSnapshot"] = request.DeleteSnapshot
+	query["EnableRaid"] = request.EnableRaid
+	query["Encryption"] = request.Encryption
+	query["FsName"] = request.FsName
+	query["InstanceType"] = request.InstanceType
+	query["KMSKeyId"] = request.KMSKeyId
+	query["PerformanceLevel"] = request.PerformanceLevel
+	query["RaidStripeUnitNumber"] = request.RaidStripeUnitNumber
+	query["RegionId"] = request.RegionId
+	query["SizeG"] = request.SizeG
+	query["SnapshotId"] = request.SnapshotId
+	query["UsedScene"] = request.UsedScene
+	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3521,11 +3016,26 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceLinkedRole"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceLinkedRole"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3549,11 +3059,30 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
+	query["RetentionDays"] = request.RetentionDays
+	query["SnapshotName"] = request.SnapshotName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSnapshot"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSnapshotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSnapshot"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3572,44 +3101,31 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) DeleteConstantsWithOptions(request *DeleteConstantsRequest, runtime *util.RuntimeOptions) (_result *DeleteConstantsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteConstantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteConstants"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteConstants(request *DeleteConstantsRequest) (_result *DeleteConstantsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteConstantsResponse{}
-	_body, _err := client.DeleteConstantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime *util.RuntimeOptions) (_result *DeleteDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3633,11 +3149,27 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Force"] = request.Force
+	query["RegionId"] = request.RegionId
+	query["SnapshotId"] = request.SnapshotId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnapshot"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSnapshot"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3661,11 +3193,27 @@ func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbfsList"] = request.DbfsList
+	query["RegionId"] = request.RegionId
+	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTagsBatch"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTagsBatchResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTagsBatch"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3689,11 +3237,27 @@ func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbf
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Category"] = request.Category
+	query["EcsInstanceType"] = request.EcsInstanceType
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDbfsSpecifications"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbfsSpecificationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDbfsSpecifications"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3717,11 +3281,25 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceTypes"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceTypesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceTypes"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3745,11 +3323,27 @@ func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ECSInstanceId"] = request.ECSInstanceId
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3773,11 +3367,26 @@ func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3801,11 +3410,25 @@ func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceLinkedRole"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceLinkedRole"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3824,44 +3447,37 @@ func (client *Client) GetServiceLinkedRole(request *GetServiceLinkedRoleRequest)
 	return _result, _err
 }
 
-func (client *Client) ListConstantsWithOptions(request *ListConstantsRequest, runtime *util.RuntimeOptions) (_result *ListConstantsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListConstantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConstants"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListConstants(request *ListConstantsRequest) (_result *ListConstantsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListConstantsResponse{}
-	_body, _err := client.ListConstantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *util.RuntimeOptions) (_result *ListDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FilterKey"] = request.FilterKey
+	query["FilterValue"] = request.FilterValue
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["SortKey"] = request.SortKey
+	query["SortType"] = request.SortType
+	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3885,11 +3501,25 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDbfsAttachableEcsInstances"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsAttachableEcsInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDbfsAttachableEcsInstances"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3913,11 +3543,26 @@ func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsA
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDbfsAttachedEcsInstances"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsAttachedEcsInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDbfsAttachedEcsInstances"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3941,11 +3586,36 @@ func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FilterKey"] = request.FilterKey
+	query["FilterValue"] = request.FilterValue
+	query["FsId"] = request.FsId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["SnapshotIds"] = request.SnapshotIds
+	query["SnapshotName"] = request.SnapshotName
+	query["SnapshotType"] = request.SnapshotType
+	query["SortKey"] = request.SortKey
+	query["SortType"] = request.SortType
+	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshot"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSnapshotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSnapshot"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3969,11 +3639,25 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagKeys"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagKeys"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3997,11 +3681,26 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagValues"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagValues"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4025,11 +3724,31 @@ func (client *Client) ListTaskWithOptions(request *ListTaskRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FilterKey"] = request.FilterKey
+	query["FilterValue"] = request.FilterValue
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["RegionId"] = request.RegionId
+	query["SortKey"] = request.SortKey
+	query["SortType"] = request.SortType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTask"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTask"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4048,44 +3767,32 @@ func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskRespo
 	return _result, _err
 }
 
-func (client *Client) OpreateConstantsWithOptions(request *OpreateConstantsRequest, runtime *util.RuntimeOptions) (_result *OpreateConstantsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &OpreateConstantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpreateConstants"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) OpreateConstants(request *OpreateConstantsRequest) (_result *OpreateConstantsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &OpreateConstantsResponse{}
-	_body, _err := client.OpreateConstantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime *util.RuntimeOptions) (_result *RenameDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["FsName"] = request.FsName
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenameDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenameDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenameDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4109,11 +3816,27 @@ func (client *Client) ResetDbfsWithOptions(request *ResetDbfsRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["RegionId"] = request.RegionId
+	query["SnapshotId"] = request.SnapshotId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResetDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResetDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4137,11 +3860,27 @@ func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["FsId"] = request.FsId
+	query["NewSizeG"] = request.NewSizeG
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4165,11 +3904,27 @@ func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DbfsId"] = request.DbfsId
+	query["RegionId"] = request.RegionId
+	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagDbfs"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagDbfsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagDbfs"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4188,44 +3943,32 @@ func (client *Client) TagDbfs(request *TagDbfsRequest) (_result *TagDbfsResponse
 	return _result, _err
 }
 
-func (client *Client) UpdateConstantsWithOptions(request *UpdateConstantsRequest, runtime *util.RuntimeOptions) (_result *UpdateConstantsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateConstantsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateConstants"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateConstants(request *UpdateConstantsRequest) (_result *UpdateConstantsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateConstantsResponse{}
-	_body, _err := client.UpdateConstantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateTaskWithOptions(request *UpdateTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["TaskIds"] = request.TaskIds
+	query["TaskProgress"] = request.TaskProgress
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTask"),
+		Version:     tea.String("2020-04-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTask"), tea.String("2020-04-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
