@@ -285,8 +285,8 @@ func (s *GetNamespaceResponse) SetHeaders(v map[string]*string) *GetNamespaceRes
 }
 
 type GetNamespaceListRequest struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetNamespaceListRequest) String() string {
@@ -297,13 +297,13 @@ func (s GetNamespaceListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetNamespaceListRequest) SetStatus(v string) *GetNamespaceListRequest {
-	s.Status = &v
+func (s *GetNamespaceListRequest) SetAuthorize(v string) *GetNamespaceListRequest {
+	s.Authorize = &v
 	return s
 }
 
-func (s *GetNamespaceListRequest) SetAuthorize(v string) *GetNamespaceListRequest {
-	s.Authorize = &v
+func (s *GetNamespaceListRequest) SetStatus(v string) *GetNamespaceListRequest {
+	s.Status = &v
 	return s
 }
 
@@ -467,9 +467,9 @@ func (s *GetRepoBuildStatusResponse) SetHeaders(v map[string]*string) *GetRepoBu
 }
 
 type GetRepoListRequest struct {
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Page     *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRepoListRequest) String() string {
@@ -480,11 +480,6 @@ func (s GetRepoListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepoListRequest) SetStatus(v string) *GetRepoListRequest {
-	s.Status = &v
-	return s
-}
-
 func (s *GetRepoListRequest) SetPage(v int32) *GetRepoListRequest {
 	s.Page = &v
 	return s
@@ -492,6 +487,11 @@ func (s *GetRepoListRequest) SetPage(v int32) *GetRepoListRequest {
 
 func (s *GetRepoListRequest) SetPageSize(v int32) *GetRepoListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetRepoListRequest) SetStatus(v string) *GetRepoListRequest {
+	s.Status = &v
 	return s
 }
 
@@ -513,9 +513,9 @@ func (s *GetRepoListResponse) SetHeaders(v map[string]*string) *GetRepoListRespo
 }
 
 type GetRepoListByNamespaceRequest struct {
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Page     *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRepoListByNamespaceRequest) String() string {
@@ -526,11 +526,6 @@ func (s GetRepoListByNamespaceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepoListByNamespaceRequest) SetStatus(v string) *GetRepoListByNamespaceRequest {
-	s.Status = &v
-	return s
-}
-
 func (s *GetRepoListByNamespaceRequest) SetPage(v int32) *GetRepoListByNamespaceRequest {
 	s.Page = &v
 	return s
@@ -538,6 +533,11 @@ func (s *GetRepoListByNamespaceRequest) SetPage(v int32) *GetRepoListByNamespace
 
 func (s *GetRepoListByNamespaceRequest) SetPageSize(v int32) *GetRepoListByNamespaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetRepoListByNamespaceRequest) SetStatus(v string) *GetRepoListByNamespaceRequest {
+	s.Status = &v
 	return s
 }
 
@@ -559,14 +559,14 @@ func (s *GetRepoListByNamespaceResponse) SetHeaders(v map[string]*string) *GetRe
 }
 
 type GetRepoTagResponseBody struct {
-	ImageUpdate *int64  `json:"imageUpdate,omitempty" xml:"imageUpdate,omitempty"`
-	ImageId     *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	RequestId   *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Digest      *string `json:"digest,omitempty" xml:"digest,omitempty"`
-	ImageSize   *int64  `json:"imageSize,omitempty" xml:"imageSize,omitempty"`
-	Tag         *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	ImageCreate *int64  `json:"imageCreate,omitempty" xml:"imageCreate,omitempty"`
+	ImageId     *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
+	ImageSize   *int64  `json:"imageSize,omitempty" xml:"imageSize,omitempty"`
+	ImageUpdate *int64  `json:"imageUpdate,omitempty" xml:"imageUpdate,omitempty"`
+	RequestId   *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	Tag         *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s GetRepoTagResponseBody) String() string {
@@ -577,33 +577,8 @@ func (s GetRepoTagResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRepoTagResponseBody) SetImageUpdate(v int64) *GetRepoTagResponseBody {
-	s.ImageUpdate = &v
-	return s
-}
-
-func (s *GetRepoTagResponseBody) SetImageId(v string) *GetRepoTagResponseBody {
-	s.ImageId = &v
-	return s
-}
-
-func (s *GetRepoTagResponseBody) SetRequestId(v string) *GetRepoTagResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetRepoTagResponseBody) SetDigest(v string) *GetRepoTagResponseBody {
 	s.Digest = &v
-	return s
-}
-
-func (s *GetRepoTagResponseBody) SetImageSize(v int64) *GetRepoTagResponseBody {
-	s.ImageSize = &v
-	return s
-}
-
-func (s *GetRepoTagResponseBody) SetTag(v string) *GetRepoTagResponseBody {
-	s.Tag = &v
 	return s
 }
 
@@ -612,8 +587,33 @@ func (s *GetRepoTagResponseBody) SetImageCreate(v int64) *GetRepoTagResponseBody
 	return s
 }
 
+func (s *GetRepoTagResponseBody) SetImageId(v string) *GetRepoTagResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageSize(v int64) *GetRepoTagResponseBody {
+	s.ImageSize = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageUpdate(v int64) *GetRepoTagResponseBody {
+	s.ImageUpdate = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetRequestId(v string) *GetRepoTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *GetRepoTagResponseBody) SetStatus(v string) *GetRepoTagResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetTag(v string) *GetRepoTagResponseBody {
+	s.Tag = &v
 	return s
 }
 
@@ -637,46 +637,6 @@ func (s *GetRepoTagResponse) SetHeaders(v map[string]*string) *GetRepoTagRespons
 
 func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagResponse {
 	s.Body = v
-	return s
-}
-
-type GetRepoTagsRequest struct {
-	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s GetRepoTagsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagsRequest) SetPage(v int32) *GetRepoTagsRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *GetRepoTagsRequest) SetPageSize(v int32) *GetRepoTagsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type GetRepoTagsResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s GetRepoTagsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagsResponse) SetHeaders(v map[string]*string) *GetRepoTagsResponse {
-	s.Headers = v
 	return s
 }
 
@@ -760,6 +720,46 @@ func (s *GetRepoTagScanSummaryResponse) SetHeaders(v map[string]*string) *GetRep
 	return s
 }
 
+type GetRepoTagsRequest struct {
+	Page     *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetRepoTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagsRequest) SetPage(v int32) *GetRepoTagsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *GetRepoTagsRequest) SetPageSize(v int32) *GetRepoTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetRepoTagsResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s GetRepoTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagsResponse) SetHeaders(v map[string]*string) *GetRepoTagsResponse {
+	s.Headers = v
+	return s
+}
+
 type GetRepoWebhookResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -773,6 +773,23 @@ func (s GetRepoWebhookResponse) GoString() string {
 }
 
 func (s *GetRepoWebhookResponse) SetHeaders(v map[string]*string) *GetRepoWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+type GetResourceQuotaResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s GetResourceQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceQuotaResponse) SetHeaders(v map[string]*string) *GetResourceQuotaResponse {
 	s.Headers = v
 	return s
 }
@@ -956,11 +973,25 @@ func (client *Client) CancelRepoBuild(RepoNamespace *string, RepoName *string, B
 }
 
 func (client *Client) CancelRepoBuildWithOptions(RepoNamespace *string, RepoName *string, BuildId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelRepoBuildResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	BuildId = openapiutil.GetEncodeParam(BuildId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelRepoBuild"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/build/" + tea.StringValue(BuildId) + "/cancel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CancelRepoBuildResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelRepoBuild"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/build/{BuildId}/cancel"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -984,8 +1015,19 @@ func (client *Client) CreateNamespaceWithOptions(headers map[string]*string, run
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNamespace"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/namespace"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateNamespace"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/namespace"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1009,8 +1051,19 @@ func (client *Client) CreateRepoWithOptions(headers map[string]*string, runtime 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRepo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateRepo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/repos"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1031,11 +1084,24 @@ func (client *Client) CreateRepoBuildRule(RepoNamespace *string, RepoName *strin
 }
 
 func (client *Client) CreateRepoBuildRuleWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRepoBuildRule"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/rules"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateRepoBuildRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateRepoBuildRule"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/rules"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1056,11 +1122,24 @@ func (client *Client) CreateRepoWebhook(RepoNamespace *string, RepoName *string)
 }
 
 func (client *Client) CreateRepoWebhookWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepoWebhookResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRepoWebhook"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/webhooks"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateRepoWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateRepoWebhook"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/webhooks"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1084,8 +1163,19 @@ func (client *Client) CreateUserInfoWithOptions(headers map[string]*string, runt
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUserInfo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateUserInfoResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateUserInfo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/users"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1106,11 +1196,25 @@ func (client *Client) DeleteImage(RepoNamespace *string, RepoName *string, Tag *
 }
 
 func (client *Client) DeleteImageWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteImage"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1131,11 +1235,23 @@ func (client *Client) DeleteNamespace(Namespace *string) (_result *DeleteNamespa
 }
 
 func (client *Client) DeleteNamespaceWithOptions(Namespace *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+	Namespace = openapiutil.GetEncodeParam(Namespace)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNamespace"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/namespace/" + tea.StringValue(Namespace)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteNamespace"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/namespace/"+tea.StringValue(Namespace)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1156,11 +1272,24 @@ func (client *Client) DeleteRepo(RepoNamespace *string, RepoName *string) (_resu
 }
 
 func (client *Client) DeleteRepoWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepoResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteRepo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1181,11 +1310,25 @@ func (client *Client) DeleteRepoBuildRule(RepoNamespace *string, RepoName *strin
 }
 
 func (client *Client) DeleteRepoBuildRuleWithOptions(RepoNamespace *string, RepoName *string, BuildRuleId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepoBuildRuleResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	BuildRuleId = openapiutil.GetEncodeParam(BuildRuleId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepoBuildRule"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/rules/" + tea.StringValue(BuildRuleId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteRepoBuildRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteRepoBuildRule"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/rules/{BuildRuleId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1206,11 +1349,25 @@ func (client *Client) DeleteRepoWebhook(RepoNamespace *string, RepoName *string,
 }
 
 func (client *Client) DeleteRepoWebhookWithOptions(RepoNamespace *string, RepoName *string, WebhookId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRepoWebhookResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	WebhookId = openapiutil.GetEncodeParam(WebhookId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRepoWebhook"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/webhooks/" + tea.StringValue(WebhookId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteRepoWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteRepoWebhook"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/webhooks/{WebhookId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1234,8 +1391,19 @@ func (client *Client) GetAuthorizationTokenWithOptions(headers map[string]*strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthorizationToken"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tokens"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetAuthorizationTokenResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAuthorizationToken"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/tokens"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1256,11 +1424,25 @@ func (client *Client) GetImageLayer(RepoNamespace *string, RepoName *string, Tag
 }
 
 func (client *Client) GetImageLayerWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetImageLayerResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageLayer"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/layers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetImageLayerResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetImageLayer"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/layers"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1285,6 +1467,9 @@ func (client *Client) GetImageManifestWithOptions(RepoNamespace *string, RepoNam
 	if _err != nil {
 		return _result, _err
 	}
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SchemaVersion)) {
 		query["SchemaVersion"] = request.SchemaVersion
@@ -1294,8 +1479,19 @@ func (client *Client) GetImageManifestWithOptions(RepoNamespace *string, RepoNam
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageManifest"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/manifest"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetImageManifestResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetImageManifest"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/manifest"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1316,11 +1512,23 @@ func (client *Client) GetNamespace(Namespace *string) (_result *GetNamespaceResp
 }
 
 func (client *Client) GetNamespaceWithOptions(Namespace *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNamespaceResponse, _err error) {
+	Namespace = openapiutil.GetEncodeParam(Namespace)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNamespace"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/namespace/" + tea.StringValue(Namespace)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetNamespace"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/namespace/"+tea.StringValue(Namespace)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1346,20 +1554,31 @@ func (client *Client) GetNamespaceListWithOptions(request *GetNamespaceListReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Authorize)) {
 		query["Authorize"] = request.Authorize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNamespaceList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/namespace"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetNamespaceListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetNamespaceList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/namespace"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1393,8 +1612,19 @@ func (client *Client) GetRegionWithOptions(request *GetRegionRequest, headers ma
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegion"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRegionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRegion"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/regions"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1418,8 +1648,19 @@ func (client *Client) GetRegionListWithOptions(headers map[string]*string, runti
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegionList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRegionListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRegionList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/regions"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1440,11 +1681,24 @@ func (client *Client) GetRepo(RepoNamespace *string, RepoName *string) (_result 
 }
 
 func (client *Client) GetRepoWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1469,6 +1723,8 @@ func (client *Client) GetRepoBuildListWithOptions(RepoNamespace *string, RepoNam
 	if _err != nil {
 		return _result, _err
 	}
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
@@ -1482,8 +1738,19 @@ func (client *Client) GetRepoBuildListWithOptions(RepoNamespace *string, RepoNam
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoBuildList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/build"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoBuildListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoBuildList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/build"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1504,11 +1771,24 @@ func (client *Client) GetRepoBuildRuleList(RepoNamespace *string, RepoName *stri
 }
 
 func (client *Client) GetRepoBuildRuleListWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoBuildRuleListResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoBuildRuleList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/rules"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoBuildRuleListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoBuildRuleList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/rules"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1529,11 +1809,25 @@ func (client *Client) GetRepoBuildStatus(RepoNamespace *string, RepoName *string
 }
 
 func (client *Client) GetRepoBuildStatusWithOptions(RepoNamespace *string, RepoName *string, BuildId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoBuildStatusResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	BuildId = openapiutil.GetEncodeParam(BuildId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoBuildStatus"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/build/" + tea.StringValue(BuildId) + "/status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoBuildStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoBuildStatus"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/build/{BuildId}/status"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1559,10 +1853,6 @@ func (client *Client) GetRepoListWithOptions(request *GetRepoListRequest, header
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
 	}
@@ -1571,12 +1861,27 @@ func (client *Client) GetRepoListWithOptions(request *GetRepoListRequest, header
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1601,11 +1906,8 @@ func (client *Client) GetRepoListByNamespaceWithOptions(RepoNamespace *string, r
 	if _err != nil {
 		return _result, _err
 	}
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
 	}
@@ -1614,12 +1916,27 @@ func (client *Client) GetRepoListByNamespaceWithOptions(RepoNamespace *string, r
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoListByNamespace"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoListByNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoListByNamespace"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1640,50 +1957,25 @@ func (client *Client) GetRepoTag(RepoNamespace *string, RepoName *string, Tag *s
 }
 
 func (client *Client) GetRepoTagWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoTagResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTag"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoTagResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoTag"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRepoTags(RepoNamespace *string, RepoName *string, request *GetRepoTagsRequest) (_result *GetRepoTagsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRepoTagsResponse{}
-	_body, _err := client.GetRepoTagsWithOptions(RepoNamespace, RepoName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRepoTagsWithOptions(RepoNamespace *string, RepoName *string, request *GetRepoTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoTagsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetRepoTagsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoTags"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1708,6 +2000,9 @@ func (client *Client) GetRepoTagScanListWithOptions(RepoNamespace *string, RepoN
 	if _err != nil {
 		return _result, _err
 	}
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
@@ -1725,8 +2020,19 @@ func (client *Client) GetRepoTagScanListWithOptions(RepoNamespace *string, RepoN
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTagScanList"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/scanResult"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoTagScanListResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoTagScanList"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/scanResult"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1747,11 +2053,25 @@ func (client *Client) GetRepoTagScanStatus(RepoNamespace *string, RepoName *stri
 }
 
 func (client *Client) GetRepoTagScanStatusWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoTagScanStatusResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTagScanStatus"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/scanStatus"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoTagScanStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoTagScanStatus"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/scanStatus"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1772,11 +2092,77 @@ func (client *Client) GetRepoTagScanSummary(RepoNamespace *string, RepoName *str
 }
 
 func (client *Client) GetRepoTagScanSummaryWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoTagScanSummaryResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTagScanSummary"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/scanCount"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoTagScanSummaryResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoTagScanSummary"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/scanCount"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepoTags(RepoNamespace *string, RepoName *string, request *GetRepoTagsRequest) (_result *GetRepoTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRepoTagsResponse{}
+	_body, _err := client.GetRepoTagsWithOptions(RepoNamespace, RepoName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRepoTagsWithOptions(RepoNamespace *string, RepoName *string, request *GetRepoTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTags"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &GetRepoTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1797,11 +2183,61 @@ func (client *Client) GetRepoWebhook(RepoNamespace *string, RepoName *string) (_
 }
 
 func (client *Client) GetRepoWebhookWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepoWebhookResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoWebhook"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/webhooks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &GetRepoWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRepoWebhook"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/webhooks"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceQuota(ResourceName *string) (_result *GetResourceQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceQuotaResponse{}
+	_body, _err := client.GetResourceQuotaWithOptions(ResourceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceQuotaWithOptions(ResourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceQuotaResponse, _err error) {
+	ResourceName = openapiutil.GetEncodeParam(ResourceName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceQuota"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resource/" + tea.StringValue(ResourceName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &GetResourceQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1822,11 +2258,25 @@ func (client *Client) StartImageScan(RepoNamespace *string, RepoName *string, Ta
 }
 
 func (client *Client) StartImageScanWithOptions(RepoNamespace *string, RepoName *string, Tag *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartImageScanResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	Tag = openapiutil.GetEncodeParam(Tag)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartImageScan"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/tags/" + tea.StringValue(Tag) + "/scan"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &StartImageScanResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartImageScan"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/tags/{Tag}/scan"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1847,11 +2297,25 @@ func (client *Client) StartRepoBuildByRule(RepoNamespace *string, RepoName *stri
 }
 
 func (client *Client) StartRepoBuildByRuleWithOptions(RepoNamespace *string, RepoName *string, BuildRuleId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartRepoBuildByRuleResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	BuildRuleId = openapiutil.GetEncodeParam(BuildRuleId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRepoBuildByRule"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/rules/" + tea.StringValue(BuildRuleId) + "/build"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &StartRepoBuildByRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartRepoBuildByRule"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/rules/{BuildRuleId}/build"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1872,11 +2336,23 @@ func (client *Client) UpdateNamespace(Namespace *string) (_result *UpdateNamespa
 }
 
 func (client *Client) UpdateNamespaceWithOptions(Namespace *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+	Namespace = openapiutil.GetEncodeParam(Namespace)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNamespace"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/namespace/" + tea.StringValue(Namespace)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateNamespace"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/namespace/"+tea.StringValue(Namespace)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1897,11 +2373,24 @@ func (client *Client) UpdateRepo(RepoNamespace *string, RepoName *string) (_resu
 }
 
 func (client *Client) UpdateRepoWithOptions(RepoNamespace *string, RepoName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepoResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRepo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateRepoResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateRepo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1922,11 +2411,25 @@ func (client *Client) UpdateRepoBuildRule(RepoNamespace *string, RepoName *strin
 }
 
 func (client *Client) UpdateRepoBuildRuleWithOptions(RepoNamespace *string, RepoName *string, BuildRuleId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepoBuildRuleResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	BuildRuleId = openapiutil.GetEncodeParam(BuildRuleId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRepoBuildRule"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/rules/" + tea.StringValue(BuildRuleId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateRepoBuildRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateRepoBuildRule"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/rules/{BuildRuleId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1947,11 +2450,25 @@ func (client *Client) UpdateRepoWebhook(RepoNamespace *string, RepoName *string,
 }
 
 func (client *Client) UpdateRepoWebhookWithOptions(RepoNamespace *string, RepoName *string, WebhookId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepoWebhookResponse, _err error) {
+	RepoNamespace = openapiutil.GetEncodeParam(RepoNamespace)
+	RepoName = openapiutil.GetEncodeParam(RepoName)
+	WebhookId = openapiutil.GetEncodeParam(WebhookId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRepoWebhook"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repos/" + tea.StringValue(RepoNamespace) + "/" + tea.StringValue(RepoName) + "/webhooks/" + tea.StringValue(WebhookId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateRepoWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateRepoWebhook"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/repos/"+tea.StringValue(RepoNamespace)+"/{RepoName}/webhooks/{WebhookId}"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1975,8 +2492,19 @@ func (client *Client) UpdateUserInfoWithOptions(headers map[string]*string, runt
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserInfo"),
+		Version:     tea.String("2016-06-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UpdateUserInfoResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateUserInfo"), tea.String("2016-06-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/users"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
