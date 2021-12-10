@@ -1053,6 +1053,59 @@ func (s *VPCConfig) SetVpcId(v string) *VPCConfig {
 	return s
 }
 
+type CreateAliasHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateAliasHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliasHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliasHeaders) SetCommonHeaders(v map[string]*string) *CreateAliasHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcAccountId(v string) *CreateAliasHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcCodeChecksum(v string) *CreateAliasHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcDate(v string) *CreateAliasHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcInvocationType(v string) *CreateAliasHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcLogType(v string) *CreateAliasHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateAliasHeaders) SetXFcTraceId(v string) *CreateAliasHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type CreateAliasRequest struct {
 	// 额外版本权重
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
@@ -1165,6 +1218,59 @@ func (s *CreateAliasResponse) SetHeaders(v map[string]*string) *CreateAliasRespo
 
 func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasResponse {
 	s.Body = v
+	return s
+}
+
+type CreateCustomDomainHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateCustomDomainHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomDomainHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomDomainHeaders) SetCommonHeaders(v map[string]*string) *CreateCustomDomainHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcAccountId(v string) *CreateCustomDomainHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcCodeChecksum(v string) *CreateCustomDomainHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcDate(v string) *CreateCustomDomainHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcInvocationType(v string) *CreateCustomDomainHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcLogType(v string) *CreateCustomDomainHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateCustomDomainHeaders) SetXFcTraceId(v string) *CreateCustomDomainHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -1287,9 +1393,13 @@ func (s *CreateCustomDomainResponse) SetBody(v *CreateCustomDomainResponseBody) 
 }
 
 type CreateFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// code checksum
-	XFcCodeChecksum *string `json:"x-fc-code-checksum,omitempty" xml:"x-fc-code-checksum,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateFunctionHeaders) String() string {
@@ -1305,8 +1415,33 @@ func (s *CreateFunctionHeaders) SetCommonHeaders(v map[string]*string) *CreateFu
 	return s
 }
 
+func (s *CreateFunctionHeaders) SetXFcAccountId(v string) *CreateFunctionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
 func (s *CreateFunctionHeaders) SetXFcCodeChecksum(v string) *CreateFunctionHeaders {
 	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateFunctionHeaders) SetXFcDate(v string) *CreateFunctionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateFunctionHeaders) SetXFcInvocationType(v string) *CreateFunctionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateFunctionHeaders) SetXFcLogType(v string) *CreateFunctionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateFunctionHeaders) SetXFcTraceId(v string) *CreateFunctionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -1623,6 +1758,59 @@ func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateF
 	return s
 }
 
+type CreateLayerVersionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateLayerVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLayerVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLayerVersionHeaders) SetCommonHeaders(v map[string]*string) *CreateLayerVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcAccountId(v string) *CreateLayerVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcCodeChecksum(v string) *CreateLayerVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcDate(v string) *CreateLayerVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcInvocationType(v string) *CreateLayerVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcLogType(v string) *CreateLayerVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateLayerVersionHeaders) SetXFcTraceId(v string) *CreateLayerVersionHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type CreateLayerVersionRequest struct {
 	Code              *Code     `json:"Code,omitempty" xml:"Code,omitempty"`
 	CompatibleRuntime []*string `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
@@ -1743,6 +1931,59 @@ func (s *CreateLayerVersionResponse) SetHeaders(v map[string]*string) *CreateLay
 
 func (s *CreateLayerVersionResponse) SetBody(v *CreateLayerVersionResponseBody) *CreateLayerVersionResponse {
 	s.Body = v
+	return s
+}
+
+type CreateServiceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateServiceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceHeaders) SetCommonHeaders(v map[string]*string) *CreateServiceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcAccountId(v string) *CreateServiceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcCodeChecksum(v string) *CreateServiceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcDate(v string) *CreateServiceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcInvocationType(v string) *CreateServiceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcLogType(v string) *CreateServiceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateServiceHeaders) SetXFcTraceId(v string) *CreateServiceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -1916,6 +2157,59 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 	return s
 }
 
+type CreateTriggerHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateTriggerHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTriggerHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTriggerHeaders) SetCommonHeaders(v map[string]*string) *CreateTriggerHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcAccountId(v string) *CreateTriggerHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcCodeChecksum(v string) *CreateTriggerHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcDate(v string) *CreateTriggerHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcInvocationType(v string) *CreateTriggerHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcLogType(v string) *CreateTriggerHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateTriggerHeaders) SetXFcTraceId(v string) *CreateTriggerHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type CreateTriggerRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// event source，如OSS，使用该role去invoke function
@@ -2084,6 +2378,59 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 	return s
 }
 
+type CreateVpcBindingHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s CreateVpcBindingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVpcBindingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVpcBindingHeaders) SetCommonHeaders(v map[string]*string) *CreateVpcBindingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcAccountId(v string) *CreateVpcBindingHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcCodeChecksum(v string) *CreateVpcBindingHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcDate(v string) *CreateVpcBindingHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcInvocationType(v string) *CreateVpcBindingHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcLogType(v string) *CreateVpcBindingHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *CreateVpcBindingHeaders) SetXFcTraceId(v string) *CreateVpcBindingHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type CreateVpcBindingRequest struct {
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
@@ -2119,8 +2466,14 @@ func (s *CreateVpcBindingResponse) SetHeaders(v map[string]*string) *CreateVpcBi
 }
 
 type DeleteAliasHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteAliasHeaders) String() string {
@@ -2141,6 +2494,36 @@ func (s *DeleteAliasHeaders) SetIfMatch(v string) *DeleteAliasHeaders {
 	return s
 }
 
+func (s *DeleteAliasHeaders) SetXFcAccountId(v string) *DeleteAliasHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteAliasHeaders) SetXFcCodeChecksum(v string) *DeleteAliasHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteAliasHeaders) SetXFcDate(v string) *DeleteAliasHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteAliasHeaders) SetXFcInvocationType(v string) *DeleteAliasHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteAliasHeaders) SetXFcLogType(v string) *DeleteAliasHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteAliasHeaders) SetXFcTraceId(v string) *DeleteAliasHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteAliasResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2155,6 +2538,59 @@ func (s DeleteAliasResponse) GoString() string {
 
 func (s *DeleteAliasResponse) SetHeaders(v map[string]*string) *DeleteAliasResponse {
 	s.Headers = v
+	return s
+}
+
+type DeleteCustomDomainHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteCustomDomainHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomDomainHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomDomainHeaders) SetCommonHeaders(v map[string]*string) *DeleteCustomDomainHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcAccountId(v string) *DeleteCustomDomainHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcCodeChecksum(v string) *DeleteCustomDomainHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcDate(v string) *DeleteCustomDomainHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcInvocationType(v string) *DeleteCustomDomainHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcLogType(v string) *DeleteCustomDomainHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteCustomDomainHeaders) SetXFcTraceId(v string) *DeleteCustomDomainHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2178,7 +2614,13 @@ func (s *DeleteCustomDomainResponse) SetHeaders(v map[string]*string) *DeleteCus
 type DeleteFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionHeaders) String() string {
@@ -2199,6 +2641,36 @@ func (s *DeleteFunctionHeaders) SetIfMatch(v string) *DeleteFunctionHeaders {
 	return s
 }
 
+func (s *DeleteFunctionHeaders) SetXFcAccountId(v string) *DeleteFunctionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteFunctionHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteFunctionHeaders) SetXFcDate(v string) *DeleteFunctionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteFunctionHeaders) SetXFcInvocationType(v string) *DeleteFunctionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteFunctionHeaders) SetXFcLogType(v string) *DeleteFunctionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteFunctionHeaders) SetXFcTraceId(v string) *DeleteFunctionHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteFunctionResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2213,6 +2685,59 @@ func (s DeleteFunctionResponse) GoString() string {
 
 func (s *DeleteFunctionResponse) SetHeaders(v map[string]*string) *DeleteFunctionResponse {
 	s.Headers = v
+	return s
+}
+
+type DeleteFunctionAsyncInvokeConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteFunctionAsyncInvokeConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFunctionAsyncInvokeConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetCommonHeaders(v map[string]*string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2252,8 +2777,14 @@ func (s *DeleteFunctionAsyncInvokeConfigResponse) SetHeaders(v map[string]*strin
 }
 
 type DeleteFunctionOnDemandConfigHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionOnDemandConfigHeaders) String() string {
@@ -2271,6 +2802,36 @@ func (s *DeleteFunctionOnDemandConfigHeaders) SetCommonHeaders(v map[string]*str
 
 func (s *DeleteFunctionOnDemandConfigHeaders) SetIfMatch(v string) *DeleteFunctionOnDemandConfigHeaders {
 	s.IfMatch = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcDate(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *DeleteFunctionOnDemandConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2308,6 +2869,59 @@ func (s *DeleteFunctionOnDemandConfigResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+type DeleteLayerVersionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteLayerVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLayerVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLayerVersionHeaders) SetCommonHeaders(v map[string]*string) *DeleteLayerVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcAccountId(v string) *DeleteLayerVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcCodeChecksum(v string) *DeleteLayerVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcDate(v string) *DeleteLayerVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcInvocationType(v string) *DeleteLayerVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcLogType(v string) *DeleteLayerVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteLayerVersionHeaders) SetXFcTraceId(v string) *DeleteLayerVersionHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteLayerVersionResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2328,7 +2942,13 @@ func (s *DeleteLayerVersionResponse) SetHeaders(v map[string]*string) *DeleteLay
 type DeleteServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceHeaders) String() string {
@@ -2349,6 +2969,36 @@ func (s *DeleteServiceHeaders) SetIfMatch(v string) *DeleteServiceHeaders {
 	return s
 }
 
+func (s *DeleteServiceHeaders) SetXFcAccountId(v string) *DeleteServiceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteServiceHeaders) SetXFcCodeChecksum(v string) *DeleteServiceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteServiceHeaders) SetXFcDate(v string) *DeleteServiceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteServiceHeaders) SetXFcInvocationType(v string) *DeleteServiceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteServiceHeaders) SetXFcLogType(v string) *DeleteServiceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteServiceHeaders) SetXFcTraceId(v string) *DeleteServiceHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteServiceResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2363,6 +3013,59 @@ func (s DeleteServiceResponse) GoString() string {
 
 func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceResponse {
 	s.Headers = v
+	return s
+}
+
+type DeleteServiceVersionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteServiceVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceVersionHeaders) SetCommonHeaders(v map[string]*string) *DeleteServiceVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcAccountId(v string) *DeleteServiceVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcCodeChecksum(v string) *DeleteServiceVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcDate(v string) *DeleteServiceVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcInvocationType(v string) *DeleteServiceVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcLogType(v string) *DeleteServiceVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteServiceVersionHeaders) SetXFcTraceId(v string) *DeleteServiceVersionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2386,7 +3089,13 @@ func (s *DeleteServiceVersionResponse) SetHeaders(v map[string]*string) *DeleteS
 type DeleteTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteTriggerHeaders) String() string {
@@ -2407,6 +3116,36 @@ func (s *DeleteTriggerHeaders) SetIfMatch(v string) *DeleteTriggerHeaders {
 	return s
 }
 
+func (s *DeleteTriggerHeaders) SetXFcAccountId(v string) *DeleteTriggerHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteTriggerHeaders) SetXFcCodeChecksum(v string) *DeleteTriggerHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteTriggerHeaders) SetXFcDate(v string) *DeleteTriggerHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteTriggerHeaders) SetXFcInvocationType(v string) *DeleteTriggerHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteTriggerHeaders) SetXFcLogType(v string) *DeleteTriggerHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteTriggerHeaders) SetXFcTraceId(v string) *DeleteTriggerHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteTriggerResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2424,6 +3163,59 @@ func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerR
 	return s
 }
 
+type DeleteVpcBindingHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteVpcBindingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVpcBindingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVpcBindingHeaders) SetCommonHeaders(v map[string]*string) *DeleteVpcBindingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcAccountId(v string) *DeleteVpcBindingHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcCodeChecksum(v string) *DeleteVpcBindingHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcDate(v string) *DeleteVpcBindingHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcInvocationType(v string) *DeleteVpcBindingHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcLogType(v string) *DeleteVpcBindingHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeleteVpcBindingHeaders) SetXFcTraceId(v string) *DeleteVpcBindingHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type DeleteVpcBindingResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -2438,6 +3230,59 @@ func (s DeleteVpcBindingResponse) GoString() string {
 
 func (s *DeleteVpcBindingResponse) SetHeaders(v map[string]*string) *DeleteVpcBindingResponse {
 	s.Headers = v
+	return s
+}
+
+type DeregisterEventSourceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeregisterEventSourceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterEventSourceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterEventSourceHeaders) SetCommonHeaders(v map[string]*string) *DeregisterEventSourceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcAccountId(v string) *DeregisterEventSourceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcCodeChecksum(v string) *DeregisterEventSourceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcDate(v string) *DeregisterEventSourceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcInvocationType(v string) *DeregisterEventSourceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcLogType(v string) *DeregisterEventSourceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *DeregisterEventSourceHeaders) SetXFcTraceId(v string) *DeregisterEventSourceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2473,6 +3318,59 @@ func (s DeregisterEventSourceResponse) GoString() string {
 
 func (s *DeregisterEventSourceResponse) SetHeaders(v map[string]*string) *DeregisterEventSourceResponse {
 	s.Headers = v
+	return s
+}
+
+type GetAccountSettingsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetAccountSettingsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountSettingsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountSettingsHeaders) SetCommonHeaders(v map[string]*string) *GetAccountSettingsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcAccountId(v string) *GetAccountSettingsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcCodeChecksum(v string) *GetAccountSettingsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcDate(v string) *GetAccountSettingsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcInvocationType(v string) *GetAccountSettingsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcLogType(v string) *GetAccountSettingsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetAccountSettingsHeaders) SetXFcTraceId(v string) *GetAccountSettingsHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2514,6 +3412,59 @@ func (s *GetAccountSettingsResponse) SetHeaders(v map[string]*string) *GetAccoun
 
 func (s *GetAccountSettingsResponse) SetBody(v *GetAccountSettingsResponseBody) *GetAccountSettingsResponse {
 	s.Body = v
+	return s
+}
+
+type GetAliasHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetAliasHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAliasHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAliasHeaders) SetCommonHeaders(v map[string]*string) *GetAliasHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcAccountId(v string) *GetAliasHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcCodeChecksum(v string) *GetAliasHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcDate(v string) *GetAliasHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcInvocationType(v string) *GetAliasHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcLogType(v string) *GetAliasHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetAliasHeaders) SetXFcTraceId(v string) *GetAliasHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2590,6 +3541,59 @@ func (s *GetAliasResponse) SetHeaders(v map[string]*string) *GetAliasResponse {
 
 func (s *GetAliasResponse) SetBody(v *GetAliasResponseBody) *GetAliasResponse {
 	s.Body = v
+	return s
+}
+
+type GetCustomDomainHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetCustomDomainHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomDomainHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomDomainHeaders) SetCommonHeaders(v map[string]*string) *GetCustomDomainHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcAccountId(v string) *GetCustomDomainHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcCodeChecksum(v string) *GetCustomDomainHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcDate(v string) *GetCustomDomainHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcInvocationType(v string) *GetCustomDomainHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcLogType(v string) *GetCustomDomainHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetCustomDomainHeaders) SetXFcTraceId(v string) *GetCustomDomainHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2673,6 +3677,59 @@ func (s *GetCustomDomainResponse) SetHeaders(v map[string]*string) *GetCustomDom
 
 func (s *GetCustomDomainResponse) SetBody(v *GetCustomDomainResponseBody) *GetCustomDomainResponse {
 	s.Body = v
+	return s
+}
+
+type GetFunctionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetFunctionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionHeaders) SetCommonHeaders(v map[string]*string) *GetFunctionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcAccountId(v string) *GetFunctionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcCodeChecksum(v string) *GetFunctionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcDate(v string) *GetFunctionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcInvocationType(v string) *GetFunctionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcLogType(v string) *GetFunctionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetFunctionHeaders) SetXFcTraceId(v string) *GetFunctionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -2877,6 +3934,59 @@ func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionRe
 	return s
 }
 
+type GetFunctionAsyncInvokeConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetFunctionAsyncInvokeConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionAsyncInvokeConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetCommonHeaders(v map[string]*string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *GetFunctionAsyncInvokeConfigHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetFunctionAsyncInvokeConfigRequest struct {
 	// 限定符
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
@@ -2990,6 +4100,59 @@ func (s *GetFunctionAsyncInvokeConfigResponse) SetBody(v *GetFunctionAsyncInvoke
 	return s
 }
 
+type GetFunctionCodeHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetFunctionCodeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionCodeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionCodeHeaders) SetCommonHeaders(v map[string]*string) *GetFunctionCodeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcAccountId(v string) *GetFunctionCodeHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcCodeChecksum(v string) *GetFunctionCodeHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcDate(v string) *GetFunctionCodeHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcInvocationType(v string) *GetFunctionCodeHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcLogType(v string) *GetFunctionCodeHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetFunctionCodeHeaders) SetXFcTraceId(v string) *GetFunctionCodeHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetFunctionCodeRequest struct {
 	// service版本, 可以是versionId或者aliasName
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
@@ -3053,6 +4216,59 @@ func (s *GetFunctionCodeResponse) SetHeaders(v map[string]*string) *GetFunctionC
 
 func (s *GetFunctionCodeResponse) SetBody(v *GetFunctionCodeResponseBody) *GetFunctionCodeResponse {
 	s.Body = v
+	return s
+}
+
+type GetFunctionOnDemandConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetFunctionOnDemandConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionOnDemandConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetCommonHeaders(v map[string]*string) *GetFunctionOnDemandConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcDate(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *GetFunctionOnDemandConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3120,6 +4336,59 @@ func (s *GetFunctionOnDemandConfigResponse) SetBody(v *GetFunctionOnDemandConfig
 	return s
 }
 
+type GetLayerVersionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetLayerVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLayerVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLayerVersionHeaders) SetCommonHeaders(v map[string]*string) *GetLayerVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcAccountId(v string) *GetLayerVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcCodeChecksum(v string) *GetLayerVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcDate(v string) *GetLayerVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcInvocationType(v string) *GetLayerVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcLogType(v string) *GetLayerVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetLayerVersionHeaders) SetXFcTraceId(v string) *GetLayerVersionHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetLayerVersionResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *Layer             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3140,6 +4409,59 @@ func (s *GetLayerVersionResponse) SetHeaders(v map[string]*string) *GetLayerVers
 
 func (s *GetLayerVersionResponse) SetBody(v *Layer) *GetLayerVersionResponse {
 	s.Body = v
+	return s
+}
+
+type GetLayerVersionByArnHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetLayerVersionByArnHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLayerVersionByArnHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLayerVersionByArnHeaders) SetCommonHeaders(v map[string]*string) *GetLayerVersionByArnHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcAccountId(v string) *GetLayerVersionByArnHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcCodeChecksum(v string) *GetLayerVersionByArnHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcDate(v string) *GetLayerVersionByArnHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcInvocationType(v string) *GetLayerVersionByArnHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcLogType(v string) *GetLayerVersionByArnHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetLayerVersionByArnHeaders) SetXFcTraceId(v string) *GetLayerVersionByArnHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3237,6 +4559,59 @@ func (s *GetLayerVersionByArnResponse) SetBody(v *GetLayerVersionByArnResponseBo
 	return s
 }
 
+type GetProvisionConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetProvisionConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProvisionConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetProvisionConfigHeaders) SetCommonHeaders(v map[string]*string) *GetProvisionConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcAccountId(v string) *GetProvisionConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcCodeChecksum(v string) *GetProvisionConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcDate(v string) *GetProvisionConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcInvocationType(v string) *GetProvisionConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcLogType(v string) *GetProvisionConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetProvisionConfigHeaders) SetXFcTraceId(v string) *GetProvisionConfigHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetProvisionConfigRequest struct {
 	// 别名名称
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
@@ -3331,6 +4706,59 @@ func (s *GetProvisionConfigResponse) SetBody(v *GetProvisionConfigResponseBody) 
 	return s
 }
 
+type GetResourceTagsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetResourceTagsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceTagsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceTagsHeaders) SetCommonHeaders(v map[string]*string) *GetResourceTagsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcAccountId(v string) *GetResourceTagsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcCodeChecksum(v string) *GetResourceTagsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcDate(v string) *GetResourceTagsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcInvocationType(v string) *GetResourceTagsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcLogType(v string) *GetResourceTagsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetResourceTagsHeaders) SetXFcTraceId(v string) *GetResourceTagsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetResourceTagsRequest struct {
 	// Resource ARN 全称或者简称
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
@@ -3394,6 +4822,59 @@ func (s *GetResourceTagsResponse) SetHeaders(v map[string]*string) *GetResourceT
 
 func (s *GetResourceTagsResponse) SetBody(v *GetResourceTagsResponseBody) *GetResourceTagsResponse {
 	s.Body = v
+	return s
+}
+
+type GetServiceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetServiceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceHeaders) SetCommonHeaders(v map[string]*string) *GetServiceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcAccountId(v string) *GetServiceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcCodeChecksum(v string) *GetServiceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcDate(v string) *GetServiceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcInvocationType(v string) *GetServiceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcLogType(v string) *GetServiceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetServiceHeaders) SetXFcTraceId(v string) *GetServiceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3522,6 +5003,59 @@ func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceRespo
 	return s
 }
 
+type GetStatefulAsyncInvocationHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetStatefulAsyncInvocationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatefulAsyncInvocationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetCommonHeaders(v map[string]*string) *GetStatefulAsyncInvocationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcAccountId(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcCodeChecksum(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcDate(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcInvocationType(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcLogType(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetStatefulAsyncInvocationHeaders) SetXFcTraceId(v string) *GetStatefulAsyncInvocationHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type GetStatefulAsyncInvocationRequest struct {
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
@@ -3559,6 +5093,59 @@ func (s *GetStatefulAsyncInvocationResponse) SetHeaders(v map[string]*string) *G
 
 func (s *GetStatefulAsyncInvocationResponse) SetBody(v *StatefulAsyncInvocation) *GetStatefulAsyncInvocationResponse {
 	s.Body = v
+	return s
+}
+
+type GetTriggerHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s GetTriggerHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTriggerHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetTriggerHeaders) SetCommonHeaders(v map[string]*string) *GetTriggerHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcAccountId(v string) *GetTriggerHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcCodeChecksum(v string) *GetTriggerHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcDate(v string) *GetTriggerHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcInvocationType(v string) *GetTriggerHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcLogType(v string) *GetTriggerHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *GetTriggerHeaders) SetXFcTraceId(v string) *GetTriggerHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3672,13 +5259,16 @@ func (s *GetTriggerResponse) SetBody(v *GetTriggerResponseBody) *GetTriggerRespo
 }
 
 type InvokeFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// 调用方式:Sync或者Async，默认值：Sync
-	XFcInvocationType *string `json:"x-fc-invocation-type,omitempty" xml:"x-fc-invocation-type,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
 	// 请求返回日志类型, Tail 为返回函数日志最后 4KB 数据，None 或空值则返回不带有日志，默认为 None
-	XFcLogType                   *string `json:"x-fc-log-type,omitempty" xml:"x-fc-log-type,omitempty"`
-	XFcStatefulAsyncInvocationId *string `json:"x-fc-stateful-async-invocation-id,omitempty" xml:"x-fc-stateful-async-invocation-id,omitempty"`
+	XFcLogType                   *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcStatefulAsyncInvocationId *string `json:"X-Fc-Stateful-Async-Invocation-Id,omitempty" xml:"X-Fc-Stateful-Async-Invocation-Id,omitempty"`
+	XFcTraceId                   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s InvokeFunctionHeaders) String() string {
@@ -3699,6 +5289,16 @@ func (s *InvokeFunctionHeaders) SetXFcAccountId(v string) *InvokeFunctionHeaders
 	return s
 }
 
+func (s *InvokeFunctionHeaders) SetXFcCodeChecksum(v string) *InvokeFunctionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *InvokeFunctionHeaders) SetXFcDate(v string) *InvokeFunctionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
 func (s *InvokeFunctionHeaders) SetXFcInvocationType(v string) *InvokeFunctionHeaders {
 	s.XFcInvocationType = &v
 	return s
@@ -3711,6 +5311,11 @@ func (s *InvokeFunctionHeaders) SetXFcLogType(v string) *InvokeFunctionHeaders {
 
 func (s *InvokeFunctionHeaders) SetXFcStatefulAsyncInvocationId(v string) *InvokeFunctionHeaders {
 	s.XFcStatefulAsyncInvocationId = &v
+	return s
+}
+
+func (s *InvokeFunctionHeaders) SetXFcTraceId(v string) *InvokeFunctionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3759,6 +5364,59 @@ func (s *InvokeFunctionResponse) SetHeaders(v map[string]*string) *InvokeFunctio
 
 func (s *InvokeFunctionResponse) SetBody(v []byte) *InvokeFunctionResponse {
 	s.Body = v
+	return s
+}
+
+type ListAliasesHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListAliasesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAliasesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListAliasesHeaders) SetCommonHeaders(v map[string]*string) *ListAliasesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcAccountId(v string) *ListAliasesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcCodeChecksum(v string) *ListAliasesHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcDate(v string) *ListAliasesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcInvocationType(v string) *ListAliasesHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcLogType(v string) *ListAliasesHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListAliasesHeaders) SetXFcTraceId(v string) *ListAliasesHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -3902,6 +5560,59 @@ func (s *ListAliasesResponse) SetBody(v *ListAliasesResponseBody) *ListAliasesRe
 	return s
 }
 
+type ListCustomDomainsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListCustomDomainsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomDomainsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomDomainsHeaders) SetCommonHeaders(v map[string]*string) *ListCustomDomainsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcAccountId(v string) *ListCustomDomainsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcCodeChecksum(v string) *ListCustomDomainsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcDate(v string) *ListCustomDomainsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcInvocationType(v string) *ListCustomDomainsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcLogType(v string) *ListCustomDomainsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListCustomDomainsHeaders) SetXFcTraceId(v string) *ListCustomDomainsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListCustomDomainsRequest struct {
 	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -4042,6 +5753,59 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainsResponseBody) *L
 	return s
 }
 
+type ListEventSourcesHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListEventSourcesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventSourcesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventSourcesHeaders) SetCommonHeaders(v map[string]*string) *ListEventSourcesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcAccountId(v string) *ListEventSourcesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcCodeChecksum(v string) *ListEventSourcesHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcDate(v string) *ListEventSourcesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcInvocationType(v string) *ListEventSourcesHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcLogType(v string) *ListEventSourcesHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListEventSourcesHeaders) SetXFcTraceId(v string) *ListEventSourcesHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListEventSourcesRequest struct {
 	// 别名或版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
@@ -4123,6 +5887,59 @@ func (s *ListEventSourcesResponse) SetHeaders(v map[string]*string) *ListEventSo
 
 func (s *ListEventSourcesResponse) SetBody(v *ListEventSourcesResponseBody) *ListEventSourcesResponse {
 	s.Body = v
+	return s
+}
+
+type ListFunctionAsyncInvokeConfigsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListFunctionAsyncInvokeConfigsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionAsyncInvokeConfigsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetCommonHeaders(v map[string]*string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcAccountId(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcCodeChecksum(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcDate(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcInvocationType(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcLogType(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcTraceId(v string) *ListFunctionAsyncInvokeConfigsHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -4268,6 +6085,59 @@ func (s *ListFunctionAsyncInvokeConfigsResponse) SetHeaders(v map[string]*string
 
 func (s *ListFunctionAsyncInvokeConfigsResponse) SetBody(v *ListFunctionAsyncInvokeConfigsResponseBody) *ListFunctionAsyncInvokeConfigsResponse {
 	s.Body = v
+	return s
+}
+
+type ListFunctionsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListFunctionsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionsHeaders) SetCommonHeaders(v map[string]*string) *ListFunctionsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcAccountId(v string) *ListFunctionsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcCodeChecksum(v string) *ListFunctionsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcDate(v string) *ListFunctionsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcInvocationType(v string) *ListFunctionsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcLogType(v string) *ListFunctionsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListFunctionsHeaders) SetXFcTraceId(v string) *ListFunctionsHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -4629,6 +6499,59 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListLayerVersionsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListLayerVersionsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLayerVersionsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListLayerVersionsHeaders) SetCommonHeaders(v map[string]*string) *ListLayerVersionsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcAccountId(v string) *ListLayerVersionsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcCodeChecksum(v string) *ListLayerVersionsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcDate(v string) *ListLayerVersionsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcInvocationType(v string) *ListLayerVersionsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcLogType(v string) *ListLayerVersionsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListLayerVersionsHeaders) SetXFcTraceId(v string) *ListLayerVersionsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListLayerVersionsRequest struct {
 	// 本次读取的最大数据记录数量
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
@@ -4699,6 +6622,59 @@ func (s *ListLayerVersionsResponse) SetHeaders(v map[string]*string) *ListLayerV
 
 func (s *ListLayerVersionsResponse) SetBody(v *ListLayerVersionsResponseBody) *ListLayerVersionsResponse {
 	s.Body = v
+	return s
+}
+
+type ListLayersHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListLayersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLayersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListLayersHeaders) SetCommonHeaders(v map[string]*string) *ListLayersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcAccountId(v string) *ListLayersHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcCodeChecksum(v string) *ListLayersHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcDate(v string) *ListLayersHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcInvocationType(v string) *ListLayersHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcLogType(v string) *ListLayersHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListLayersHeaders) SetXFcTraceId(v string) *ListLayersHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -4789,6 +6765,59 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 	return s
 }
 
+type ListOnDemandConfigsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListOnDemandConfigsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOnDemandConfigsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListOnDemandConfigsHeaders) SetCommonHeaders(v map[string]*string) *ListOnDemandConfigsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcAccountId(v string) *ListOnDemandConfigsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcCodeChecksum(v string) *ListOnDemandConfigsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcDate(v string) *ListOnDemandConfigsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcInvocationType(v string) *ListOnDemandConfigsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcLogType(v string) *ListOnDemandConfigsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListOnDemandConfigsHeaders) SetXFcTraceId(v string) *ListOnDemandConfigsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListOnDemandConfigsRequest struct {
 	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
@@ -4873,6 +6902,59 @@ func (s *ListOnDemandConfigsResponse) SetHeaders(v map[string]*string) *ListOnDe
 
 func (s *ListOnDemandConfigsResponse) SetBody(v *ListOnDemandConfigsResponseBody) *ListOnDemandConfigsResponse {
 	s.Body = v
+	return s
+}
+
+type ListProvisionConfigsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListProvisionConfigsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProvisionConfigsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListProvisionConfigsHeaders) SetCommonHeaders(v map[string]*string) *ListProvisionConfigsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcAccountId(v string) *ListProvisionConfigsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcCodeChecksum(v string) *ListProvisionConfigsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcDate(v string) *ListProvisionConfigsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcInvocationType(v string) *ListProvisionConfigsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcLogType(v string) *ListProvisionConfigsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListProvisionConfigsHeaders) SetXFcTraceId(v string) *ListProvisionConfigsHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5016,6 +7098,59 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsResponseBo
 	return s
 }
 
+type ListReservedCapacitiesHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListReservedCapacitiesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReservedCapacitiesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListReservedCapacitiesHeaders) SetCommonHeaders(v map[string]*string) *ListReservedCapacitiesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcAccountId(v string) *ListReservedCapacitiesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcCodeChecksum(v string) *ListReservedCapacitiesHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcDate(v string) *ListReservedCapacitiesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcInvocationType(v string) *ListReservedCapacitiesHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcLogType(v string) *ListReservedCapacitiesHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListReservedCapacitiesHeaders) SetXFcTraceId(v string) *ListReservedCapacitiesHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListReservedCapacitiesRequest struct {
 	Limit     *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -5084,6 +7219,59 @@ func (s *ListReservedCapacitiesResponse) SetHeaders(v map[string]*string) *ListR
 
 func (s *ListReservedCapacitiesResponse) SetBody(v *ListReservedCapacitiesResponseBody) *ListReservedCapacitiesResponse {
 	s.Body = v
+	return s
+}
+
+type ListServiceVersionsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListServiceVersionsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceVersionsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceVersionsHeaders) SetCommonHeaders(v map[string]*string) *ListServiceVersionsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcAccountId(v string) *ListServiceVersionsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcCodeChecksum(v string) *ListServiceVersionsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcDate(v string) *ListServiceVersionsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcInvocationType(v string) *ListServiceVersionsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcLogType(v string) *ListServiceVersionsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListServiceVersionsHeaders) SetXFcTraceId(v string) *ListServiceVersionsHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5217,6 +7405,59 @@ func (s *ListServiceVersionsResponse) SetHeaders(v map[string]*string) *ListServ
 
 func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody) *ListServiceVersionsResponse {
 	s.Body = v
+	return s
+}
+
+type ListServicesHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListServicesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesHeaders) SetCommonHeaders(v map[string]*string) *ListServicesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcAccountId(v string) *ListServicesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcCodeChecksum(v string) *ListServicesHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcDate(v string) *ListServicesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcInvocationType(v string) *ListServicesHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcLogType(v string) *ListServicesHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListServicesHeaders) SetXFcTraceId(v string) *ListServicesHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5391,6 +7632,59 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 	return s
 }
 
+type ListStatefulAsyncInvocationsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListStatefulAsyncInvocationsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStatefulAsyncInvocationsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetCommonHeaders(v map[string]*string) *ListStatefulAsyncInvocationsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcAccountId(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcCodeChecksum(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcDate(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcInvocationType(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcLogType(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationsHeaders) SetXFcTraceId(v string) *ListStatefulAsyncInvocationsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListStatefulAsyncInvocationsRequest struct {
 	IncludePayload     *bool   `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
 	InvocationIdPrefix *string `json:"invocationIdPrefix,omitempty" xml:"invocationIdPrefix,omitempty"`
@@ -5502,6 +7796,59 @@ func (s *ListStatefulAsyncInvocationsResponse) SetBody(v *ListStatefulAsyncInvoc
 	return s
 }
 
+type ListTaggedResourcesHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListTaggedResourcesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaggedResourcesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaggedResourcesHeaders) SetCommonHeaders(v map[string]*string) *ListTaggedResourcesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcAccountId(v string) *ListTaggedResourcesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcCodeChecksum(v string) *ListTaggedResourcesHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcDate(v string) *ListTaggedResourcesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcInvocationType(v string) *ListTaggedResourcesHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcLogType(v string) *ListTaggedResourcesHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListTaggedResourcesHeaders) SetXFcTraceId(v string) *ListTaggedResourcesHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListTaggedResourcesRequest struct {
 	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -5568,6 +7915,59 @@ func (s *ListTaggedResourcesResponse) SetHeaders(v map[string]*string) *ListTagg
 
 func (s *ListTaggedResourcesResponse) SetBody(v *ListTaggedResourcesResponseBody) *ListTaggedResourcesResponse {
 	s.Body = v
+	return s
+}
+
+type ListTriggersHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListTriggersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTriggersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTriggersHeaders) SetCommonHeaders(v map[string]*string) *ListTriggersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcAccountId(v string) *ListTriggersHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcCodeChecksum(v string) *ListTriggersHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcDate(v string) *ListTriggersHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcInvocationType(v string) *ListTriggersHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcLogType(v string) *ListTriggersHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListTriggersHeaders) SetXFcTraceId(v string) *ListTriggersHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5744,6 +8144,59 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 	return s
 }
 
+type ListVpcBindingsHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListVpcBindingsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcBindingsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcBindingsHeaders) SetCommonHeaders(v map[string]*string) *ListVpcBindingsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcAccountId(v string) *ListVpcBindingsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcCodeChecksum(v string) *ListVpcBindingsHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcDate(v string) *ListVpcBindingsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcInvocationType(v string) *ListVpcBindingsHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcLogType(v string) *ListVpcBindingsHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *ListVpcBindingsHeaders) SetXFcTraceId(v string) *ListVpcBindingsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type ListVpcBindingsResponseBody struct {
 	VpcIds []*string `json:"vpcIds,omitempty" xml:"vpcIds,omitempty" type:"Repeated"`
 }
@@ -5784,6 +8237,59 @@ func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsResponseBody) *ListV
 	return s
 }
 
+type PermanentDeleteLayerVersionHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s PermanentDeleteLayerVersionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermanentDeleteLayerVersionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetCommonHeaders(v map[string]*string) *PermanentDeleteLayerVersionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcAccountId(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcCodeChecksum(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcDate(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcInvocationType(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcLogType(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PermanentDeleteLayerVersionHeaders) SetXFcTraceId(v string) *PermanentDeleteLayerVersionHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type PermanentDeleteLayerVersionResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -5798,6 +8304,59 @@ func (s PermanentDeleteLayerVersionResponse) GoString() string {
 
 func (s *PermanentDeleteLayerVersionResponse) SetHeaders(v map[string]*string) *PermanentDeleteLayerVersionResponse {
 	s.Headers = v
+	return s
+}
+
+type PublishLayerAsPublicHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s PublishLayerAsPublicHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishLayerAsPublicHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PublishLayerAsPublicHeaders) SetCommonHeaders(v map[string]*string) *PublishLayerAsPublicHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcAccountId(v string) *PublishLayerAsPublicHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcCodeChecksum(v string) *PublishLayerAsPublicHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcDate(v string) *PublishLayerAsPublicHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcInvocationType(v string) *PublishLayerAsPublicHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcLogType(v string) *PublishLayerAsPublicHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PublishLayerAsPublicHeaders) SetXFcTraceId(v string) *PublishLayerAsPublicHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5819,8 +8378,14 @@ func (s *PublishLayerAsPublicResponse) SetHeaders(v map[string]*string) *Publish
 }
 
 type PublishServiceVersionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PublishServiceVersionHeaders) String() string {
@@ -5838,6 +8403,36 @@ func (s *PublishServiceVersionHeaders) SetCommonHeaders(v map[string]*string) *P
 
 func (s *PublishServiceVersionHeaders) SetIfMatch(v string) *PublishServiceVersionHeaders {
 	s.IfMatch = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcAccountId(v string) *PublishServiceVersionHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcCodeChecksum(v string) *PublishServiceVersionHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcDate(v string) *PublishServiceVersionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcInvocationType(v string) *PublishServiceVersionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcLogType(v string) *PublishServiceVersionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PublishServiceVersionHeaders) SetXFcTraceId(v string) *PublishServiceVersionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -5918,6 +8513,59 @@ func (s *PublishServiceVersionResponse) SetHeaders(v map[string]*string) *Publis
 
 func (s *PublishServiceVersionResponse) SetBody(v *PublishServiceVersionResponseBody) *PublishServiceVersionResponse {
 	s.Body = v
+	return s
+}
+
+type PutFunctionAsyncInvokeConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s PutFunctionAsyncInvokeConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutFunctionAsyncInvokeConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetCommonHeaders(v map[string]*string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *PutFunctionAsyncInvokeConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6061,8 +8709,14 @@ func (s *PutFunctionAsyncInvokeConfigResponse) SetBody(v *PutFunctionAsyncInvoke
 }
 
 type PutFunctionOnDemandConfigHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PutFunctionOnDemandConfigHeaders) String() string {
@@ -6080,6 +8734,36 @@ func (s *PutFunctionOnDemandConfigHeaders) SetCommonHeaders(v map[string]*string
 
 func (s *PutFunctionOnDemandConfigHeaders) SetIfMatch(v string) *PutFunctionOnDemandConfigHeaders {
 	s.IfMatch = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcDate(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PutFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *PutFunctionOnDemandConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6149,6 +8833,59 @@ func (s *PutFunctionOnDemandConfigResponse) SetHeaders(v map[string]*string) *Pu
 
 func (s *PutFunctionOnDemandConfigResponse) SetBody(v *PutFunctionOnDemandConfigResponseBody) *PutFunctionOnDemandConfigResponse {
 	s.Body = v
+	return s
+}
+
+type PutProvisionConfigHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s PutProvisionConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutProvisionConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PutProvisionConfigHeaders) SetCommonHeaders(v map[string]*string) *PutProvisionConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcAccountId(v string) *PutProvisionConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcCodeChecksum(v string) *PutProvisionConfigHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcDate(v string) *PutProvisionConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcInvocationType(v string) *PutProvisionConfigHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcLogType(v string) *PutProvisionConfigHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *PutProvisionConfigHeaders) SetXFcTraceId(v string) *PutProvisionConfigHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6260,6 +8997,59 @@ func (s *PutProvisionConfigResponse) SetBody(v *PutProvisionConfigResponseBody) 
 	return s
 }
 
+type RegisterEventSourceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s RegisterEventSourceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterEventSourceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterEventSourceHeaders) SetCommonHeaders(v map[string]*string) *RegisterEventSourceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcAccountId(v string) *RegisterEventSourceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcCodeChecksum(v string) *RegisterEventSourceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcDate(v string) *RegisterEventSourceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcInvocationType(v string) *RegisterEventSourceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcLogType(v string) *RegisterEventSourceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *RegisterEventSourceHeaders) SetXFcTraceId(v string) *RegisterEventSourceHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type RegisterEventSourceRequest struct {
 	// 事件源资源标识符
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
@@ -6333,6 +9123,59 @@ func (s *RegisterEventSourceResponse) SetBody(v *RegisterEventSourceResponseBody
 	return s
 }
 
+type StopStatefulAsyncInvocationHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s StopStatefulAsyncInvocationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStatefulAsyncInvocationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetCommonHeaders(v map[string]*string) *StopStatefulAsyncInvocationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcAccountId(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcCodeChecksum(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcDate(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcInvocationType(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcLogType(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *StopStatefulAsyncInvocationHeaders) SetXFcTraceId(v string) *StopStatefulAsyncInvocationHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
 type StopStatefulAsyncInvocationRequest struct {
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
@@ -6364,6 +9207,59 @@ func (s StopStatefulAsyncInvocationResponse) GoString() string {
 
 func (s *StopStatefulAsyncInvocationResponse) SetHeaders(v map[string]*string) *StopStatefulAsyncInvocationResponse {
 	s.Headers = v
+	return s
+}
+
+type TagResourceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s TagResourceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourceHeaders) SetCommonHeaders(v map[string]*string) *TagResourceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcAccountId(v string) *TagResourceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcCodeChecksum(v string) *TagResourceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcDate(v string) *TagResourceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcInvocationType(v string) *TagResourceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcLogType(v string) *TagResourceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *TagResourceHeaders) SetXFcTraceId(v string) *TagResourceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6404,6 +9300,59 @@ func (s TagResourceResponse) GoString() string {
 
 func (s *TagResourceResponse) SetHeaders(v map[string]*string) *TagResourceResponse {
 	s.Headers = v
+	return s
+}
+
+type UntagResourceHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s UntagResourceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourceHeaders) SetCommonHeaders(v map[string]*string) *UntagResourceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcAccountId(v string) *UntagResourceHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcCodeChecksum(v string) *UntagResourceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcDate(v string) *UntagResourceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcInvocationType(v string) *UntagResourceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcLogType(v string) *UntagResourceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UntagResourceHeaders) SetXFcTraceId(v string) *UntagResourceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6457,8 +9406,14 @@ func (s *UntagResourceResponse) SetHeaders(v map[string]*string) *UntagResourceR
 }
 
 type UpdateAliasHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateAliasHeaders) String() string {
@@ -6476,6 +9431,36 @@ func (s *UpdateAliasHeaders) SetCommonHeaders(v map[string]*string) *UpdateAlias
 
 func (s *UpdateAliasHeaders) SetIfMatch(v string) *UpdateAliasHeaders {
 	s.IfMatch = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcAccountId(v string) *UpdateAliasHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcCodeChecksum(v string) *UpdateAliasHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcDate(v string) *UpdateAliasHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcInvocationType(v string) *UpdateAliasHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcLogType(v string) *UpdateAliasHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UpdateAliasHeaders) SetXFcTraceId(v string) *UpdateAliasHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6584,6 +9569,59 @@ func (s *UpdateAliasResponse) SetHeaders(v map[string]*string) *UpdateAliasRespo
 
 func (s *UpdateAliasResponse) SetBody(v *UpdateAliasResponseBody) *UpdateAliasResponse {
 	s.Body = v
+	return s
+}
+
+type UpdateCustomDomainHeaders struct {
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s UpdateCustomDomainHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomDomainHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomDomainHeaders) SetCommonHeaders(v map[string]*string) *UpdateCustomDomainHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcAccountId(v string) *UpdateCustomDomainHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcCodeChecksum(v string) *UpdateCustomDomainHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcDate(v string) *UpdateCustomDomainHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcInvocationType(v string) *UpdateCustomDomainHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcLogType(v string) *UpdateCustomDomainHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UpdateCustomDomainHeaders) SetXFcTraceId(v string) *UpdateCustomDomainHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -6701,10 +9739,13 @@ func (s *UpdateCustomDomainResponse) SetBody(v *UpdateCustomDomainResponseBody) 
 type UpdateFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// 代码校验
-	XFcCodeChecksum *string `json:"x-fc-code-checksum,omitempty" xml:"x-fc-code-checksum,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateFunctionHeaders) String() string {
@@ -6732,6 +9773,26 @@ func (s *UpdateFunctionHeaders) SetXFcAccountId(v string) *UpdateFunctionHeaders
 
 func (s *UpdateFunctionHeaders) SetXFcCodeChecksum(v string) *UpdateFunctionHeaders {
 	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UpdateFunctionHeaders) SetXFcDate(v string) *UpdateFunctionHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UpdateFunctionHeaders) SetXFcInvocationType(v string) *UpdateFunctionHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UpdateFunctionHeaders) SetXFcLogType(v string) *UpdateFunctionHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UpdateFunctionHeaders) SetXFcTraceId(v string) *UpdateFunctionHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -7039,8 +10100,13 @@ func (s *UpdateFunctionResponse) SetBody(v *UpdateFunctionResponseBody) *UpdateF
 type UpdateServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateServiceHeaders) String() string {
@@ -7063,6 +10129,31 @@ func (s *UpdateServiceHeaders) SetIfMatch(v string) *UpdateServiceHeaders {
 
 func (s *UpdateServiceHeaders) SetXFcAccountId(v string) *UpdateServiceHeaders {
 	s.XFcAccountId = &v
+	return s
+}
+
+func (s *UpdateServiceHeaders) SetXFcCodeChecksum(v string) *UpdateServiceHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UpdateServiceHeaders) SetXFcDate(v string) *UpdateServiceHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UpdateServiceHeaders) SetXFcInvocationType(v string) *UpdateServiceHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UpdateServiceHeaders) SetXFcLogType(v string) *UpdateServiceHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UpdateServiceHeaders) SetXFcTraceId(v string) *UpdateServiceHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -7232,8 +10323,13 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 type UpdateTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateTriggerHeaders) String() string {
@@ -7256,6 +10352,31 @@ func (s *UpdateTriggerHeaders) SetIfMatch(v string) *UpdateTriggerHeaders {
 
 func (s *UpdateTriggerHeaders) SetXFcAccountId(v string) *UpdateTriggerHeaders {
 	s.XFcAccountId = &v
+	return s
+}
+
+func (s *UpdateTriggerHeaders) SetXFcCodeChecksum(v string) *UpdateTriggerHeaders {
+	s.XFcCodeChecksum = &v
+	return s
+}
+
+func (s *UpdateTriggerHeaders) SetXFcDate(v string) *UpdateTriggerHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *UpdateTriggerHeaders) SetXFcInvocationType(v string) *UpdateTriggerHeaders {
+	s.XFcInvocationType = &v
+	return s
+}
+
+func (s *UpdateTriggerHeaders) SetXFcLogType(v string) *UpdateTriggerHeaders {
+	s.XFcLogType = &v
+	return s
+}
+
+func (s *UpdateTriggerHeaders) SetXFcTraceId(v string) *UpdateTriggerHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -7478,7 +10599,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 func (client *Client) CreateAlias(serviceName *string, request *CreateAliasRequest) (_result *CreateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateAliasHeaders{}
 	_result = &CreateAliasResponse{}
 	_body, _err := client.CreateAliasWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -7488,7 +10609,7 @@ func (client *Client) CreateAlias(serviceName *string, request *CreateAliasReque
 	return _result, _err
 }
 
-func (client *Client) CreateAliasWithOptions(serviceName *string, request *CreateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
+func (client *Client) CreateAliasWithOptions(serviceName *string, request *CreateAliasRequest, headers *CreateAliasHeaders, runtime *util.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7511,12 +10632,52 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 		body["versionId"] = request.VersionId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlias"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAliasResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7526,7 +10687,7 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 
 func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_result *CreateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateCustomDomainHeaders{}
 	_result = &CreateCustomDomainResponse{}
 	_body, _err := client.CreateCustomDomainWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -7536,7 +10697,7 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
+func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainRequest, headers *CreateCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7558,12 +10719,52 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 		body["routeConfig"] = request.RouteConfig
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomDomain"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/custom-domains"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateCustomDomainResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/custom-domains"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7667,16 +10868,47 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 		realHeaders = headers.CommonHeaders
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
 	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["x-fc-code-checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFunction"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateFunctionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7686,7 +10918,7 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayerVersionRequest) (_result *CreateLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateLayerVersionHeaders{}
 	_result = &CreateLayerVersionResponse{}
 	_body, _err := client.CreateLayerVersionWithOptions(layerName, request, headers, runtime)
 	if _err != nil {
@@ -7696,7 +10928,7 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 	return _result, _err
 }
 
-func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *CreateLayerVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLayerVersionResponse, _err error) {
+func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *CreateLayerVersionRequest, headers *CreateLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *CreateLayerVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7715,12 +10947,52 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 		body["description"] = request.Description
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLayerVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateLayerVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7730,7 +11002,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 
 func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateServiceHeaders{}
 	_result = &CreateServiceResponse{}
 	_body, _err := client.CreateServiceWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -7740,7 +11012,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
+func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers *CreateServiceHeaders, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7778,12 +11050,52 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		body["vpcConfig"] = request.VpcConfig
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateService"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7793,7 +11105,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 func (client *Client) CreateTrigger(serviceName *string, functionName *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateTriggerHeaders{}
 	_result = &CreateTriggerResponse{}
 	_body, _err := client.CreateTriggerWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -7803,7 +11115,7 @@ func (client *Client) CreateTrigger(serviceName *string, functionName *string, r
 	return _result, _err
 }
 
-func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName *string, request *CreateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
+func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName *string, request *CreateTriggerRequest, headers *CreateTriggerHeaders, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7839,12 +11151,52 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 		body["triggerType"] = request.TriggerType
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrigger"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7854,7 +11206,7 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 
 func (client *Client) CreateVpcBinding(serviceName *string, request *CreateVpcBindingRequest) (_result *CreateVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &CreateVpcBindingHeaders{}
 	_result = &CreateVpcBindingResponse{}
 	_body, _err := client.CreateVpcBindingWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -7864,7 +11216,7 @@ func (client *Client) CreateVpcBinding(serviceName *string, request *CreateVpcBi
 	return _result, _err
 }
 
-func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *CreateVpcBindingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVpcBindingResponse, _err error) {
+func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *CreateVpcBindingRequest, headers *CreateVpcBindingHeaders, runtime *util.RuntimeOptions) (_result *CreateVpcBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -7875,12 +11227,52 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 		body["vpcId"] = request.VpcId
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVpcBinding"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &CreateVpcBindingResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateVpcBinding"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7912,11 +11304,46 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlias"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteAliasResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7926,7 +11353,7 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 
 func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeleteCustomDomainHeaders{}
 	_result = &DeleteCustomDomainResponse{}
 	_body, _err := client.DeleteCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
@@ -7936,13 +11363,53 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 	return _result, _err
 }
 
-func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
+func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers *DeleteCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
 	domainName = openapiutil.GetEncodeParam(domainName)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomDomain"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteCustomDomainResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7974,11 +11441,46 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFunction"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteFunctionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7988,7 +11490,7 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 
 func (client *Client) DeleteFunctionAsyncInvokeConfig(serviceName *string, functionName *string, request *DeleteFunctionAsyncInvokeConfigRequest) (_result *DeleteFunctionAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeleteFunctionAsyncInvokeConfigHeaders{}
 	_result = &DeleteFunctionAsyncInvokeConfigResponse{}
 	_body, _err := client.DeleteFunctionAsyncInvokeConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -7998,7 +11500,7 @@ func (client *Client) DeleteFunctionAsyncInvokeConfig(serviceName *string, funct
 	return _result, _err
 }
 
-func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *DeleteFunctionAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionAsyncInvokeConfigResponse, _err error) {
+func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *DeleteFunctionAsyncInvokeConfigRequest, headers *DeleteFunctionAsyncInvokeConfigHeaders, runtime *util.RuntimeOptions) (_result *DeleteFunctionAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8010,12 +11512,52 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFunctionAsyncInvokeConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8056,12 +11598,47 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFunctionOnDemandConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteFunctionOnDemandConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8071,7 +11648,7 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 
 func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_result *DeleteLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeleteLayerVersionHeaders{}
 	_result = &DeleteLayerVersionResponse{}
 	_body, _err := client.DeleteLayerVersionWithOptions(layerName, version, headers, runtime)
 	if _err != nil {
@@ -8081,14 +11658,54 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 	return _result, _err
 }
 
-func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
+func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers *DeleteLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
 	layerName = openapiutil.GetEncodeParam(layerName)
 	version = openapiutil.GetEncodeParam(version)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLayerVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteLayerVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8119,11 +11736,46 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteService"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8133,7 +11785,7 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 
 func (client *Client) DeleteServiceVersion(serviceName *string, versionId *string) (_result *DeleteServiceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeleteServiceVersionHeaders{}
 	_result = &DeleteServiceVersionResponse{}
 	_body, _err := client.DeleteServiceVersionWithOptions(serviceName, versionId, headers, runtime)
 	if _err != nil {
@@ -8143,14 +11795,54 @@ func (client *Client) DeleteServiceVersion(serviceName *string, versionId *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceVersionResponse, _err error) {
+func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versionId *string, headers *DeleteServiceVersionHeaders, runtime *util.RuntimeOptions) (_result *DeleteServiceVersionResponse, _err error) {
 	serviceName = openapiutil.GetEncodeParam(serviceName)
 	versionId = openapiutil.GetEncodeParam(versionId)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions/" + tea.StringValue(versionId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteServiceVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteServiceVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions/"+tea.StringValue(versionId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8183,11 +11875,46 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrigger"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeleteTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8197,7 +11924,7 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 
 func (client *Client) DeleteVpcBinding(serviceName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeleteVpcBindingHeaders{}
 	_result = &DeleteVpcBindingResponse{}
 	_body, _err := client.DeleteVpcBindingWithOptions(serviceName, vpcId, headers, runtime)
 	if _err != nil {
@@ -8207,14 +11934,54 @@ func (client *Client) DeleteVpcBinding(serviceName *string, vpcId *string) (_res
 	return _result, _err
 }
 
-func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
+func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *string, headers *DeleteVpcBindingHeaders, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
 	serviceName = openapiutil.GetEncodeParam(serviceName)
 	vpcId = openapiutil.GetEncodeParam(vpcId)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVpcBinding"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings/" + tea.StringValue(vpcId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteVpcBindingResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteVpcBinding"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings/"+tea.StringValue(vpcId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8224,7 +11991,7 @@ func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *st
 
 func (client *Client) DeregisterEventSource(serviceName *string, functionName *string, sourceArn *string, request *DeregisterEventSourceRequest) (_result *DeregisterEventSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &DeregisterEventSourceHeaders{}
 	_result = &DeregisterEventSourceResponse{}
 	_body, _err := client.DeregisterEventSourceWithOptions(serviceName, functionName, sourceArn, request, headers, runtime)
 	if _err != nil {
@@ -8234,7 +12001,7 @@ func (client *Client) DeregisterEventSource(serviceName *string, functionName *s
 	return _result, _err
 }
 
-func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, functionName *string, sourceArn *string, request *DeregisterEventSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeregisterEventSourceResponse, _err error) {
+func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, functionName *string, sourceArn *string, request *DeregisterEventSourceRequest, headers *DeregisterEventSourceHeaders, runtime *util.RuntimeOptions) (_result *DeregisterEventSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8247,12 +12014,52 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeregisterEventSource"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources/" + tea.StringValue(sourceArn)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &DeregisterEventSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeregisterEventSource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources/"+tea.StringValue(sourceArn)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8262,7 +12069,7 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 
 func (client *Client) GetAccountSettings() (_result *GetAccountSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetAccountSettingsHeaders{}
 	_result = &GetAccountSettingsResponse{}
 	_body, _err := client.GetAccountSettingsWithOptions(headers, runtime)
 	if _err != nil {
@@ -8272,12 +12079,52 @@ func (client *Client) GetAccountSettings() (_result *GetAccountSettingsResponse,
 	return _result, _err
 }
 
-func (client *Client) GetAccountSettingsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAccountSettingsResponse, _err error) {
+func (client *Client) GetAccountSettingsWithOptions(headers *GetAccountSettingsHeaders, runtime *util.RuntimeOptions) (_result *GetAccountSettingsResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountSettings"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/account-settings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccountSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAccountSettings"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/account-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8287,7 +12134,7 @@ func (client *Client) GetAccountSettingsWithOptions(headers map[string]*string, 
 
 func (client *Client) GetAlias(serviceName *string, aliasName *string) (_result *GetAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetAliasHeaders{}
 	_result = &GetAliasResponse{}
 	_body, _err := client.GetAliasWithOptions(serviceName, aliasName, headers, runtime)
 	if _err != nil {
@@ -8297,14 +12144,54 @@ func (client *Client) GetAlias(serviceName *string, aliasName *string) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAliasResponse, _err error) {
+func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string, headers *GetAliasHeaders, runtime *util.RuntimeOptions) (_result *GetAliasResponse, _err error) {
 	serviceName = openapiutil.GetEncodeParam(serviceName)
 	aliasName = openapiutil.GetEncodeParam(aliasName)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlias"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAliasResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8314,7 +12201,7 @@ func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string
 
 func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetCustomDomainHeaders{}
 	_result = &GetCustomDomainResponse{}
 	_body, _err := client.GetCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
@@ -8324,13 +12211,53 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 	return _result, _err
 }
 
-func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
+func (client *Client) GetCustomDomainWithOptions(domainName *string, headers *GetCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
 	domainName = openapiutil.GetEncodeParam(domainName)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomDomain"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomDomainResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8340,7 +12267,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 
 func (client *Client) GetFunction(serviceName *string, functionName *string, request *GetFunctionRequest) (_result *GetFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetFunctionHeaders{}
 	_result = &GetFunctionResponse{}
 	_body, _err := client.GetFunctionWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8350,7 +12277,7 @@ func (client *Client) GetFunction(serviceName *string, functionName *string, req
 	return _result, _err
 }
 
-func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *string, request *GetFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResponse, _err error) {
+func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *string, request *GetFunctionRequest, headers *GetFunctionHeaders, runtime *util.RuntimeOptions) (_result *GetFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8362,12 +12289,52 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunction"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetFunctionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8377,7 +12344,7 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 
 func (client *Client) GetFunctionAsyncInvokeConfig(serviceName *string, functionName *string, request *GetFunctionAsyncInvokeConfigRequest) (_result *GetFunctionAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetFunctionAsyncInvokeConfigHeaders{}
 	_result = &GetFunctionAsyncInvokeConfigResponse{}
 	_body, _err := client.GetFunctionAsyncInvokeConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8387,7 +12354,7 @@ func (client *Client) GetFunctionAsyncInvokeConfig(serviceName *string, function
 	return _result, _err
 }
 
-func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *GetFunctionAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionAsyncInvokeConfigResponse, _err error) {
+func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *GetFunctionAsyncInvokeConfigRequest, headers *GetFunctionAsyncInvokeConfigHeaders, runtime *util.RuntimeOptions) (_result *GetFunctionAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8399,12 +12366,52 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunctionAsyncInvokeConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8414,7 +12421,7 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 
 func (client *Client) GetFunctionCode(serviceName *string, functionName *string, request *GetFunctionCodeRequest) (_result *GetFunctionCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetFunctionCodeHeaders{}
 	_result = &GetFunctionCodeResponse{}
 	_body, _err := client.GetFunctionCodeWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8424,7 +12431,7 @@ func (client *Client) GetFunctionCode(serviceName *string, functionName *string,
 	return _result, _err
 }
 
-func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionName *string, request *GetFunctionCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionCodeResponse, _err error) {
+func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionName *string, request *GetFunctionCodeRequest, headers *GetFunctionCodeHeaders, runtime *util.RuntimeOptions) (_result *GetFunctionCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8436,12 +12443,52 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunctionCode"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/code"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetFunctionCodeResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFunctionCode"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/code"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8451,7 +12498,7 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 
 func (client *Client) GetFunctionOnDemandConfig(serviceName *string, functionName *string, request *GetFunctionOnDemandConfigRequest) (_result *GetFunctionOnDemandConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetFunctionOnDemandConfigHeaders{}
 	_result = &GetFunctionOnDemandConfigResponse{}
 	_body, _err := client.GetFunctionOnDemandConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8461,7 +12508,7 @@ func (client *Client) GetFunctionOnDemandConfig(serviceName *string, functionNam
 	return _result, _err
 }
 
-func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, functionName *string, request *GetFunctionOnDemandConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionOnDemandConfigResponse, _err error) {
+func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, functionName *string, request *GetFunctionOnDemandConfigRequest, headers *GetFunctionOnDemandConfigHeaders, runtime *util.RuntimeOptions) (_result *GetFunctionOnDemandConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8473,12 +12520,52 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunctionOnDemandConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetFunctionOnDemandConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8488,7 +12575,7 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 
 func (client *Client) GetLayerVersion(layerName *string, version *string) (_result *GetLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetLayerVersionHeaders{}
 	_result = &GetLayerVersionResponse{}
 	_body, _err := client.GetLayerVersionWithOptions(layerName, version, headers, runtime)
 	if _err != nil {
@@ -8498,14 +12585,54 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 	return _result, _err
 }
 
-func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
+func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers *GetLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
 	layerName = openapiutil.GetEncodeParam(layerName)
 	version = openapiutil.GetEncodeParam(version)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLayerVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLayerVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8515,7 +12642,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 
 func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetLayerVersionByArnHeaders{}
 	_result = &GetLayerVersionByArnResponse{}
 	_body, _err := client.GetLayerVersionByArnWithOptions(arn, headers, runtime)
 	if _err != nil {
@@ -8525,13 +12652,53 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 	return _result, _err
 }
 
-func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
+func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers *GetLayerVersionByArnHeaders, runtime *util.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
 	arn = openapiutil.GetEncodeParam(arn)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLayerVersionByArn"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layerarn/" + tea.StringValue(arn)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLayerVersionByArnResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetLayerVersionByArn"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layerarn/"+tea.StringValue(arn)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8541,7 +12708,7 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 
 func (client *Client) GetProvisionConfig(serviceName *string, functionName *string, request *GetProvisionConfigRequest) (_result *GetProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetProvisionConfigHeaders{}
 	_result = &GetProvisionConfigResponse{}
 	_body, _err := client.GetProvisionConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8551,7 +12718,7 @@ func (client *Client) GetProvisionConfig(serviceName *string, functionName *stri
 	return _result, _err
 }
 
-func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functionName *string, request *GetProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProvisionConfigResponse, _err error) {
+func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functionName *string, request *GetProvisionConfigRequest, headers *GetProvisionConfigHeaders, runtime *util.RuntimeOptions) (_result *GetProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8563,12 +12730,52 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProvisionConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetProvisionConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProvisionConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/provision-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8578,7 +12785,7 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 
 func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result *GetResourceTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetResourceTagsHeaders{}
 	_result = &GetResourceTagsResponse{}
 	_body, _err := client.GetResourceTagsWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -8588,7 +12795,7 @@ func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceTagsResponse, _err error) {
+func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest, headers *GetResourceTagsHeaders, runtime *util.RuntimeOptions) (_result *GetResourceTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8598,12 +12805,52 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 		query["resourceArn"] = request.ResourceArn
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceTags"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/tag"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetResourceTagsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetResourceTags"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8613,7 +12860,7 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 
 func (client *Client) GetService(serviceName *string, request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetServiceHeaders{}
 	_result = &GetServiceResponse{}
 	_body, _err := client.GetServiceWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -8623,7 +12870,7 @@ func (client *Client) GetService(serviceName *string, request *GetServiceRequest
 	return _result, _err
 }
 
-func (client *Client) GetServiceWithOptions(serviceName *string, request *GetServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetServiceWithOptions(serviceName *string, request *GetServiceRequest, headers *GetServiceHeaders, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8634,12 +12881,52 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetService"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8649,7 +12936,7 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 
 func (client *Client) GetStatefulAsyncInvocation(serviceName *string, functionName *string, invocationId *string, request *GetStatefulAsyncInvocationRequest) (_result *GetStatefulAsyncInvocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetStatefulAsyncInvocationHeaders{}
 	_result = &GetStatefulAsyncInvocationResponse{}
 	_body, _err := client.GetStatefulAsyncInvocationWithOptions(serviceName, functionName, invocationId, request, headers, runtime)
 	if _err != nil {
@@ -8659,7 +12946,7 @@ func (client *Client) GetStatefulAsyncInvocation(serviceName *string, functionNa
 	return _result, _err
 }
 
-func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string, functionName *string, invocationId *string, request *GetStatefulAsyncInvocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetStatefulAsyncInvocationResponse, _err error) {
+func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string, functionName *string, invocationId *string, request *GetStatefulAsyncInvocationRequest, headers *GetStatefulAsyncInvocationHeaders, runtime *util.RuntimeOptions) (_result *GetStatefulAsyncInvocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8672,12 +12959,52 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStatefulAsyncInvocation"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetStatefulAsyncInvocationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetStatefulAsyncInvocation"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations/"+tea.StringValue(invocationId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8687,7 +13014,7 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 
 func (client *Client) GetTrigger(serviceName *string, functionName *string, triggerName *string) (_result *GetTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetTriggerHeaders{}
 	_result = &GetTriggerResponse{}
 	_body, _err := client.GetTriggerWithOptions(serviceName, functionName, triggerName, headers, runtime)
 	if _err != nil {
@@ -8697,15 +13024,55 @@ func (client *Client) GetTrigger(serviceName *string, functionName *string, trig
 	return _result, _err
 }
 
-func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
+func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *string, triggerName *string, headers *GetTriggerHeaders, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	serviceName = openapiutil.GetEncodeParam(serviceName)
 	functionName = openapiutil.GetEncodeParam(functionName)
 	triggerName = openapiutil.GetEncodeParam(triggerName)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrigger"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8746,16 +13113,28 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
 	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["x-fc-invocation-type"] = util.ToJSONString(headers.XFcInvocationType)
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["x-fc-log-type"] = util.ToJSONString(headers.XFcLogType)
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcStatefulAsyncInvocationId)) {
-		realHeaders["x-fc-stateful-async-invocation-id"] = util.ToJSONString(headers.XFcStatefulAsyncInvocationId)
+		realHeaders["X-Fc-Stateful-Async-Invocation-Id"] = util.ToJSONString(headers.XFcStatefulAsyncInvocationId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8763,8 +13142,19 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		Query:   openapiutil.Query(query),
 		Body:    request.Body,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("InvokeFunction"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/invocations"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("byte"),
+	}
 	_result = &InvokeFunctionResponse{}
-	_body, _err := client.DoROARequest(tea.String("InvokeFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/invocations"), tea.String("byte"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8774,7 +13164,7 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 
 func (client *Client) ListAliases(serviceName *string, request *ListAliasesRequest) (_result *ListAliasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListAliasesHeaders{}
 	_result = &ListAliasesResponse{}
 	_body, _err := client.ListAliasesWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -8784,7 +13174,7 @@ func (client *Client) ListAliases(serviceName *string, request *ListAliasesReque
 	return _result, _err
 }
 
-func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListAliasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
+func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListAliasesRequest, headers *ListAliasesHeaders, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8807,12 +13197,52 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAliases"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAliasesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAliases"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8822,7 +13252,7 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 
 func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_result *ListCustomDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListCustomDomainsHeaders{}
 	_result = &ListCustomDomainsResponse{}
 	_body, _err := client.ListCustomDomainsWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -8832,7 +13262,7 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
+func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsRequest, headers *ListCustomDomainsHeaders, runtime *util.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8854,12 +13284,52 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomDomains"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/custom-domains"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListCustomDomainsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListCustomDomains"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/custom-domains"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8869,7 +13339,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 
 func (client *Client) ListEventSources(serviceName *string, functionName *string, request *ListEventSourcesRequest) (_result *ListEventSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListEventSourcesHeaders{}
 	_result = &ListEventSourcesResponse{}
 	_body, _err := client.ListEventSourcesWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8879,7 +13349,7 @@ func (client *Client) ListEventSources(serviceName *string, functionName *string
 	return _result, _err
 }
 
-func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionName *string, request *ListEventSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEventSourcesResponse, _err error) {
+func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionName *string, request *ListEventSourcesRequest, headers *ListEventSourcesHeaders, runtime *util.RuntimeOptions) (_result *ListEventSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8891,12 +13361,52 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEventSources"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEventSourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEventSources"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8906,7 +13416,7 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 
 func (client *Client) ListFunctionAsyncInvokeConfigs(serviceName *string, functionName *string, request *ListFunctionAsyncInvokeConfigsRequest) (_result *ListFunctionAsyncInvokeConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListFunctionAsyncInvokeConfigsHeaders{}
 	_result = &ListFunctionAsyncInvokeConfigsResponse{}
 	_body, _err := client.ListFunctionAsyncInvokeConfigsWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -8916,7 +13426,7 @@ func (client *Client) ListFunctionAsyncInvokeConfigs(serviceName *string, functi
 	return _result, _err
 }
 
-func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *string, functionName *string, request *ListFunctionAsyncInvokeConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionAsyncInvokeConfigsResponse, _err error) {
+func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *string, functionName *string, request *ListFunctionAsyncInvokeConfigsRequest, headers *ListFunctionAsyncInvokeConfigsHeaders, runtime *util.RuntimeOptions) (_result *ListFunctionAsyncInvokeConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8932,12 +13442,52 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 		query["nextToken"] = request.NextToken
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFunctionAsyncInvokeConfigs"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListFunctionAsyncInvokeConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListFunctionAsyncInvokeConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-configs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8947,7 +13497,7 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 
 func (client *Client) ListFunctions(serviceName *string, request *ListFunctionsRequest) (_result *ListFunctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListFunctionsHeaders{}
 	_result = &ListFunctionsResponse{}
 	_body, _err := client.ListFunctionsWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -8957,7 +13507,7 @@ func (client *Client) ListFunctions(serviceName *string, request *ListFunctionsR
 	return _result, _err
 }
 
-func (client *Client) ListFunctionsWithOptions(serviceName *string, request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
+func (client *Client) ListFunctionsWithOptions(serviceName *string, request *ListFunctionsRequest, headers *ListFunctionsHeaders, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8984,12 +13534,52 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFunctions"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListFunctionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListFunctions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9042,8 +13632,19 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstances"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9053,7 +13654,7 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 
 func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVersionsRequest) (_result *ListLayerVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListLayerVersionsHeaders{}
 	_result = &ListLayerVersionsResponse{}
 	_body, _err := client.ListLayerVersionsWithOptions(layerName, request, headers, runtime)
 	if _err != nil {
@@ -9063,7 +13664,7 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 	return _result, _err
 }
 
-func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *ListLayerVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayerVersionsResponse, _err error) {
+func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *ListLayerVersionsRequest, headers *ListLayerVersionsHeaders, runtime *util.RuntimeOptions) (_result *ListLayerVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9078,12 +13679,52 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 		query["startVersion"] = request.StartVersion
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLayerVersions"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLayerVersionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLayerVersions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9093,7 +13734,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 
 func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListLayersHeaders{}
 	_result = &ListLayersResponse{}
 	_body, _err := client.ListLayersWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9103,7 +13744,7 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 	return _result, _err
 }
 
-func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayersResponse, _err error) {
+func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers *ListLayersHeaders, runtime *util.RuntimeOptions) (_result *ListLayersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9125,12 +13766,52 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLayers"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLayersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLayers"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/layers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9140,7 +13821,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 
 func (client *Client) ListOnDemandConfigs(request *ListOnDemandConfigsRequest) (_result *ListOnDemandConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListOnDemandConfigsHeaders{}
 	_result = &ListOnDemandConfigsResponse{}
 	_body, _err := client.ListOnDemandConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9150,7 +13831,7 @@ func (client *Client) ListOnDemandConfigs(request *ListOnDemandConfigsRequest) (
 	return _result, _err
 }
 
-func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOnDemandConfigsResponse, _err error) {
+func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfigsRequest, headers *ListOnDemandConfigsHeaders, runtime *util.RuntimeOptions) (_result *ListOnDemandConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9172,12 +13853,52 @@ func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfig
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOnDemandConfigs"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/on-demand-configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListOnDemandConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListOnDemandConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/on-demand-configs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9187,7 +13908,7 @@ func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfig
 
 func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest) (_result *ListProvisionConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListProvisionConfigsHeaders{}
 	_result = &ListProvisionConfigsResponse{}
 	_body, _err := client.ListProvisionConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9197,7 +13918,7 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 	return _result, _err
 }
 
-func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProvisionConfigsResponse, _err error) {
+func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConfigsRequest, headers *ListProvisionConfigsHeaders, runtime *util.RuntimeOptions) (_result *ListProvisionConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9219,12 +13940,52 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 		query["serviceName"] = request.ServiceName
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProvisionConfigs"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/provision-configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProvisionConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProvisionConfigs"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/provision-configs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9234,7 +13995,7 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 
 func (client *Client) ListReservedCapacities(request *ListReservedCapacitiesRequest) (_result *ListReservedCapacitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListReservedCapacitiesHeaders{}
 	_result = &ListReservedCapacitiesResponse{}
 	_body, _err := client.ListReservedCapacitiesWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9244,7 +14005,7 @@ func (client *Client) ListReservedCapacities(request *ListReservedCapacitiesRequ
 	return _result, _err
 }
 
-func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCapacitiesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListReservedCapacitiesResponse, _err error) {
+func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCapacitiesRequest, headers *ListReservedCapacitiesHeaders, runtime *util.RuntimeOptions) (_result *ListReservedCapacitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9258,12 +14019,52 @@ func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCap
 		query["nextToken"] = request.NextToken
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListReservedCapacities"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/reserved-capacities"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListReservedCapacitiesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListReservedCapacities"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/reserved-capacities"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9273,7 +14074,7 @@ func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCap
 
 func (client *Client) ListServiceVersions(serviceName *string, request *ListServiceVersionsRequest) (_result *ListServiceVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListServiceVersionsHeaders{}
 	_result = &ListServiceVersionsResponse{}
 	_body, _err := client.ListServiceVersionsWithOptions(serviceName, request, headers, runtime)
 	if _err != nil {
@@ -9283,7 +14084,7 @@ func (client *Client) ListServiceVersions(serviceName *string, request *ListServ
 	return _result, _err
 }
 
-func (client *Client) ListServiceVersionsWithOptions(serviceName *string, request *ListServiceVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceVersionsResponse, _err error) {
+func (client *Client) ListServiceVersionsWithOptions(serviceName *string, request *ListServiceVersionsRequest, headers *ListServiceVersionsHeaders, runtime *util.RuntimeOptions) (_result *ListServiceVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9306,12 +14107,52 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceVersions"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListServiceVersionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListServiceVersions"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9321,7 +14162,7 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 
 func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListServicesHeaders{}
 	_result = &ListServicesResponse{}
 	_body, _err := client.ListServicesWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9331,7 +14172,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
-func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
+func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers *ListServicesHeaders, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9353,12 +14194,52 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServices"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListServices"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9368,7 +14249,7 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 func (client *Client) ListStatefulAsyncInvocations(serviceName *string, functionName *string, request *ListStatefulAsyncInvocationsRequest) (_result *ListStatefulAsyncInvocationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListStatefulAsyncInvocationsHeaders{}
 	_result = &ListStatefulAsyncInvocationsResponse{}
 	_body, _err := client.ListStatefulAsyncInvocationsWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -9378,7 +14259,7 @@ func (client *Client) ListStatefulAsyncInvocations(serviceName *string, function
 	return _result, _err
 }
 
-func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *string, functionName *string, request *ListStatefulAsyncInvocationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListStatefulAsyncInvocationsResponse, _err error) {
+func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *string, functionName *string, request *ListStatefulAsyncInvocationsRequest, headers *ListStatefulAsyncInvocationsHeaders, runtime *util.RuntimeOptions) (_result *ListStatefulAsyncInvocationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9422,12 +14303,52 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 		query["status"] = request.Status
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStatefulAsyncInvocations"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListStatefulAsyncInvocationsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListStatefulAsyncInvocations"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9437,7 +14358,7 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 
 func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (_result *ListTaggedResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListTaggedResourcesHeaders{}
 	_result = &ListTaggedResourcesResponse{}
 	_body, _err := client.ListTaggedResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9447,7 +14368,7 @@ func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (
 	return _result, _err
 }
 
-func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTaggedResourcesResponse, _err error) {
+func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResourcesRequest, headers *ListTaggedResourcesHeaders, runtime *util.RuntimeOptions) (_result *ListTaggedResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9461,12 +14382,52 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 		query["nextToken"] = request.NextToken
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaggedResources"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTaggedResourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTaggedResources"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/tags"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9476,7 +14437,7 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 
 func (client *Client) ListTriggers(serviceName *string, functionName *string, request *ListTriggersRequest) (_result *ListTriggersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListTriggersHeaders{}
 	_result = &ListTriggersResponse{}
 	_body, _err := client.ListTriggersWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -9486,7 +14447,7 @@ func (client *Client) ListTriggers(serviceName *string, functionName *string, re
 	return _result, _err
 }
 
-func (client *Client) ListTriggersWithOptions(serviceName *string, functionName *string, request *ListTriggersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
+func (client *Client) ListTriggersWithOptions(serviceName *string, functionName *string, request *ListTriggersRequest, headers *ListTriggersHeaders, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9510,12 +14471,52 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 		query["startKey"] = request.StartKey
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTriggers"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTriggersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListTriggers"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9525,7 +14526,7 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 
 func (client *Client) ListVpcBindings(serviceName *string) (_result *ListVpcBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &ListVpcBindingsHeaders{}
 	_result = &ListVpcBindingsResponse{}
 	_body, _err := client.ListVpcBindingsWithOptions(serviceName, headers, runtime)
 	if _err != nil {
@@ -9535,13 +14536,53 @@ func (client *Client) ListVpcBindings(serviceName *string) (_result *ListVpcBind
 	return _result, _err
 }
 
-func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
+func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *ListVpcBindingsHeaders, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
 	serviceName = openapiutil.GetEncodeParam(serviceName)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVpcBindings"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcBindingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListVpcBindings"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/bindings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9551,7 +14592,7 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers ma
 
 func (client *Client) PermanentDeleteLayerVersion(userID *string, layerName *string, version *string) (_result *PermanentDeleteLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &PermanentDeleteLayerVersionHeaders{}
 	_result = &PermanentDeleteLayerVersionResponse{}
 	_body, _err := client.PermanentDeleteLayerVersionWithOptions(userID, layerName, version, headers, runtime)
 	if _err != nil {
@@ -9561,15 +14602,55 @@ func (client *Client) PermanentDeleteLayerVersion(userID *string, layerName *str
 	return _result, _err
 }
 
-func (client *Client) PermanentDeleteLayerVersionWithOptions(userID *string, layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PermanentDeleteLayerVersionResponse, _err error) {
+func (client *Client) PermanentDeleteLayerVersionWithOptions(userID *string, layerName *string, version *string, headers *PermanentDeleteLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *PermanentDeleteLayerVersionResponse, _err error) {
 	userID = openapiutil.GetEncodeParam(userID)
 	layerName = openapiutil.GetEncodeParam(layerName)
 	version = openapiutil.GetEncodeParam(version)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PermanentDeleteLayerVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/adminlayers/" + tea.StringValue(userID) + "/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &PermanentDeleteLayerVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("PermanentDeleteLayerVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/adminlayers/"+tea.StringValue(userID)+"/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9579,7 +14660,7 @@ func (client *Client) PermanentDeleteLayerVersionWithOptions(userID *string, lay
 
 func (client *Client) PublishLayerAsPublic(layerName *string, version *string) (_result *PublishLayerAsPublicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &PublishLayerAsPublicHeaders{}
 	_result = &PublishLayerAsPublicResponse{}
 	_body, _err := client.PublishLayerAsPublicWithOptions(layerName, version, headers, runtime)
 	if _err != nil {
@@ -9589,14 +14670,54 @@ func (client *Client) PublishLayerAsPublic(layerName *string, version *string) (
 	return _result, _err
 }
 
-func (client *Client) PublishLayerAsPublicWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishLayerAsPublicResponse, _err error) {
+func (client *Client) PublishLayerAsPublicWithOptions(layerName *string, version *string, headers *PublishLayerAsPublicHeaders, runtime *util.RuntimeOptions) (_result *PublishLayerAsPublicResponse, _err error) {
 	layerName = openapiutil.GetEncodeParam(layerName)
 	version = openapiutil.GetEncodeParam(version)
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishLayerAsPublic"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &PublishLayerAsPublicResponse{}
-	_body, _err := client.DoROARequest(tea.String("PublishLayerAsPublic"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/layers/"+tea.StringValue(layerName)+"/versions/"+tea.StringValue(version)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9636,12 +14757,47 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishServiceVersion"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PublishServiceVersionResponse{}
-	_body, _err := client.DoROARequest(tea.String("PublishServiceVersion"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/versions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9651,7 +14807,7 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 
 func (client *Client) PutFunctionAsyncInvokeConfig(serviceName *string, functionName *string, request *PutFunctionAsyncInvokeConfigRequest) (_result *PutFunctionAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &PutFunctionAsyncInvokeConfigHeaders{}
 	_result = &PutFunctionAsyncInvokeConfigResponse{}
 	_body, _err := client.PutFunctionAsyncInvokeConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -9661,7 +14817,7 @@ func (client *Client) PutFunctionAsyncInvokeConfig(serviceName *string, function
 	return _result, _err
 }
 
-func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *PutFunctionAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutFunctionAsyncInvokeConfigResponse, _err error) {
+func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *PutFunctionAsyncInvokeConfigRequest, headers *PutFunctionAsyncInvokeConfigHeaders, runtime *util.RuntimeOptions) (_result *PutFunctionAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9690,13 +14846,53 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		body["statefulInvocation"] = request.StatefulInvocation
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PutFunctionAsyncInvokeConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PutFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("PutFunctionAsyncInvokeConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/async-invoke-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9742,13 +14938,48 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PutFunctionOnDemandConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PutFunctionOnDemandConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("PutFunctionOnDemandConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/on-demand-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9758,7 +14989,7 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 
 func (client *Client) PutProvisionConfig(serviceName *string, functionName *string, request *PutProvisionConfigRequest) (_result *PutProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &PutProvisionConfigHeaders{}
 	_result = &PutProvisionConfigResponse{}
 	_body, _err := client.PutProvisionConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -9768,7 +14999,7 @@ func (client *Client) PutProvisionConfig(serviceName *string, functionName *stri
 	return _result, _err
 }
 
-func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functionName *string, request *PutProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProvisionConfigResponse, _err error) {
+func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functionName *string, request *PutProvisionConfigRequest, headers *PutProvisionConfigHeaders, runtime *util.RuntimeOptions) (_result *PutProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9793,13 +15024,53 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 		body["targetTrackingPolicies"] = request.TargetTrackingPolicies
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PutProvisionConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PutProvisionConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("PutProvisionConfig"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/provision-config"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9809,7 +15080,7 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 
 func (client *Client) RegisterEventSource(serviceName *string, functionName *string, request *RegisterEventSourceRequest) (_result *RegisterEventSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &RegisterEventSourceHeaders{}
 	_result = &RegisterEventSourceResponse{}
 	_body, _err := client.RegisterEventSourceWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
@@ -9819,7 +15090,7 @@ func (client *Client) RegisterEventSource(serviceName *string, functionName *str
 	return _result, _err
 }
 
-func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functionName *string, request *RegisterEventSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterEventSourceResponse, _err error) {
+func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functionName *string, request *RegisterEventSourceRequest, headers *RegisterEventSourceHeaders, runtime *util.RuntimeOptions) (_result *RegisterEventSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9836,13 +15107,53 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 		body["sourceArn"] = request.SourceArn
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterEventSource"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RegisterEventSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RegisterEventSource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/event-sources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9852,7 +15163,7 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 
 func (client *Client) StopStatefulAsyncInvocation(serviceName *string, functionName *string, invocationId *string, request *StopStatefulAsyncInvocationRequest) (_result *StopStatefulAsyncInvocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &StopStatefulAsyncInvocationHeaders{}
 	_result = &StopStatefulAsyncInvocationResponse{}
 	_body, _err := client.StopStatefulAsyncInvocationWithOptions(serviceName, functionName, invocationId, request, headers, runtime)
 	if _err != nil {
@@ -9862,7 +15173,7 @@ func (client *Client) StopStatefulAsyncInvocation(serviceName *string, functionN
 	return _result, _err
 }
 
-func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string, functionName *string, invocationId *string, request *StopStatefulAsyncInvocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopStatefulAsyncInvocationResponse, _err error) {
+func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string, functionName *string, invocationId *string, request *StopStatefulAsyncInvocationRequest, headers *StopStatefulAsyncInvocationHeaders, runtime *util.RuntimeOptions) (_result *StopStatefulAsyncInvocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9875,12 +15186,52 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 		query["qualifier"] = request.Qualifier
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopStatefulAsyncInvocation"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &StopStatefulAsyncInvocationResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopStatefulAsyncInvocation"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/stateful-async-invocations/"+tea.StringValue(invocationId)), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9890,7 +15241,7 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 
 func (client *Client) TagResource(request *TagResourceRequest) (_result *TagResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &TagResourceHeaders{}
 	_result = &TagResourceResponse{}
 	_body, _err := client.TagResourceWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9900,7 +15251,7 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 	return _result, _err
 }
 
-func (client *Client) TagResourceWithOptions(request *TagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourceResponse, _err error) {
+func (client *Client) TagResourceWithOptions(request *TagResourceRequest, headers *TagResourceHeaders, runtime *util.RuntimeOptions) (_result *TagResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9914,12 +15265,52 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 		body["tags"] = request.Tags
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResource"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/tag"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &TagResourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("TagResource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9929,7 +15320,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 
 func (client *Client) UntagResource(request *UntagResourceRequest) (_result *UntagResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &UntagResourceHeaders{}
 	_result = &UntagResourceResponse{}
 	_body, _err := client.UntagResourceWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -9939,7 +15330,7 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 	return _result, _err
 }
 
-func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourceResponse, _err error) {
+func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, headers *UntagResourceHeaders, runtime *util.RuntimeOptions) (_result *UntagResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -9957,12 +15348,52 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 		body["tagKeys"] = request.TagKeys
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResource"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/tag"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
 	_result = &UntagResourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UntagResource"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/2021-04-06/tag"), tea.String("none"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10011,12 +15442,47 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 		realHeaders["If-Match"] = util.ToJSONString(headers.IfMatch)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlias"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAliasResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateAlias"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/aliases/"+tea.StringValue(aliasName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10026,7 +15492,7 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 
 func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCustomDomainRequest) (_result *UpdateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &UpdateCustomDomainHeaders{}
 	_result = &UpdateCustomDomainResponse{}
 	_body, _err := client.UpdateCustomDomainWithOptions(domainName, request, headers, runtime)
 	if _err != nil {
@@ -10036,7 +15502,7 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 	return _result, _err
 }
 
-func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request *UpdateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
+func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request *UpdateCustomDomainRequest, headers *UpdateCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10055,12 +15521,52 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		body["routeConfig"] = request.RouteConfig
 	}
 
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
-		Headers: headers,
+		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomDomain"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateCustomDomainResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateCustomDomain"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/custom-domains/"+tea.StringValue(domainName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10170,15 +15676,42 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["x-fc-code-checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFunction"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateFunctionResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateFunction"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10246,12 +15779,43 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateService"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateService"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10309,12 +15873,43 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
+	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
+		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
+		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
+		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrigger"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateTriggerResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateTrigger"), tea.String("2021-04-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/2021-04-06/services/"+tea.StringValue(serviceName)+"/functions/"+tea.StringValue(functionName)+"/triggers/"+tea.StringValue(triggerName)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
