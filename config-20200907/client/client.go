@@ -898,111 +898,6 @@ func (s *CreateAggregateConfigRuleResponse) SetBody(v *CreateAggregateConfigRule
 	return s
 }
 
-type CreateAggregateRemediationRequest struct {
-	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-}
-
-func (s CreateAggregateRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAggregateRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAggregateRemediationRequest) SetAggregatorId(v string) *CreateAggregateRemediationRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetClientToken(v string) *CreateAggregateRemediationRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetConfigRuleId(v string) *CreateAggregateRemediationRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetInvokeType(v string) *CreateAggregateRemediationRequest {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetParams(v string) *CreateAggregateRemediationRequest {
-	s.Params = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetRemediationTemplateId(v string) *CreateAggregateRemediationRequest {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetRemediationType(v string) *CreateAggregateRemediationRequest {
-	s.RemediationType = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationRequest) SetSourceType(v string) *CreateAggregateRemediationRequest {
-	s.SourceType = &v
-	return s
-}
-
-type CreateAggregateRemediationResponseBody struct {
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateAggregateRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAggregateRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAggregateRemediationResponseBody) SetRemediationId(v string) *CreateAggregateRemediationResponseBody {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *CreateAggregateRemediationResponseBody) SetRequestId(v string) *CreateAggregateRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateAggregateRemediationResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAggregateRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAggregateRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAggregateRemediationResponse) SetHeaders(v map[string]*string) *CreateAggregateRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAggregateRemediationResponse) SetBody(v *CreateAggregateRemediationResponseBody) *CreateAggregateRemediationResponse {
-	s.Body = v
-	return s
-}
-
 type CreateAggregatorRequest struct {
 	AggregatorAccounts []*CreateAggregatorRequestAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
 	AggregatorName     *string                                      `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
@@ -1618,105 +1513,6 @@ func (s *CreateConfigRuleResponse) SetBody(v *CreateConfigRuleResponseBody) *Cre
 	return s
 }
 
-type CreateRemediationRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-}
-
-func (s CreateRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRemediationRequest) SetClientToken(v string) *CreateRemediationRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetConfigRuleId(v string) *CreateRemediationRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetInvokeType(v string) *CreateRemediationRequest {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetParams(v string) *CreateRemediationRequest {
-	s.Params = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetRemediationTemplateId(v string) *CreateRemediationRequest {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetRemediationType(v string) *CreateRemediationRequest {
-	s.RemediationType = &v
-	return s
-}
-
-func (s *CreateRemediationRequest) SetSourceType(v string) *CreateRemediationRequest {
-	s.SourceType = &v
-	return s
-}
-
-type CreateRemediationResponseBody struct {
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRemediationResponseBody) SetRemediationId(v string) *CreateRemediationResponseBody {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *CreateRemediationResponseBody) SetRequestId(v string) *CreateRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateRemediationResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRemediationResponse) SetHeaders(v map[string]*string) *CreateRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRemediationResponse) SetBody(v *CreateRemediationResponseBody) *CreateRemediationResponse {
-	s.Body = v
-	return s
-}
-
 type DeactiveAggregateConfigRulesRequest struct {
 	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
@@ -1945,6 +1741,7 @@ type DeleteAggregateCompliancePacksRequest struct {
 	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CompliancePackIds *string `json:"CompliancePackIds,omitempty" xml:"CompliancePackIds,omitempty"`
+	DeleteRule        *bool   `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksRequest) String() string {
@@ -1967,6 +1764,11 @@ func (s *DeleteAggregateCompliancePacksRequest) SetClientToken(v string) *Delete
 
 func (s *DeleteAggregateCompliancePacksRequest) SetCompliancePackIds(v string) *DeleteAggregateCompliancePacksRequest {
 	s.CompliancePackIds = &v
+	return s
+}
+
+func (s *DeleteAggregateCompliancePacksRequest) SetDeleteRule(v bool) *DeleteAggregateCompliancePacksRequest {
+	s.DeleteRule = &v
 	return s
 }
 
@@ -2177,104 +1979,6 @@ func (s *DeleteAggregateConfigRulesResponse) SetBody(v *DeleteAggregateConfigRul
 	return s
 }
 
-type DeleteAggregateRemediationsRequest struct {
-	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
-}
-
-func (s DeleteAggregateRemediationsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAggregateRemediationsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAggregateRemediationsRequest) SetAggregatorId(v string) *DeleteAggregateRemediationsRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *DeleteAggregateRemediationsRequest) SetRemediationIds(v string) *DeleteAggregateRemediationsRequest {
-	s.RemediationIds = &v
-	return s
-}
-
-type DeleteAggregateRemediationsResponseBody struct {
-	RemediationDeleteResults []*DeleteAggregateRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
-	RequestId                *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAggregateRemediationsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAggregateRemediationsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAggregateRemediationsResponseBody) SetRemediationDeleteResults(v []*DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) *DeleteAggregateRemediationsResponseBody {
-	s.RemediationDeleteResults = v
-	return s
-}
-
-func (s *DeleteAggregateRemediationsResponseBody) SetRequestId(v string) *DeleteAggregateRemediationsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAggregateRemediationsResponseBodyRemediationDeleteResults struct {
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetErrorMessage(v string) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetRemediationId(v string) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetSuccess(v bool) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
-	s.Success = &v
-	return s
-}
-
-type DeleteAggregateRemediationsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAggregateRemediationsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAggregateRemediationsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAggregateRemediationsResponse) SetHeaders(v map[string]*string) *DeleteAggregateRemediationsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAggregateRemediationsResponse) SetBody(v *DeleteAggregateRemediationsResponseBody) *DeleteAggregateRemediationsResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAggregatorsRequest struct {
 	AggregatorIds *string `json:"AggregatorIds,omitempty" xml:"AggregatorIds,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -2393,6 +2097,7 @@ func (s *DeleteAggregatorsResponse) SetBody(v *DeleteAggregatorsResponseBody) *D
 type DeleteCompliancePacksRequest struct {
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CompliancePackIds *string `json:"CompliancePackIds,omitempty" xml:"CompliancePackIds,omitempty"`
+	DeleteRule        *bool   `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
 }
 
 func (s DeleteCompliancePacksRequest) String() string {
@@ -2410,6 +2115,11 @@ func (s *DeleteCompliancePacksRequest) SetClientToken(v string) *DeleteComplianc
 
 func (s *DeleteCompliancePacksRequest) SetCompliancePackIds(v string) *DeleteCompliancePacksRequest {
 	s.CompliancePackIds = &v
+	return s
+}
+
+func (s *DeleteCompliancePacksRequest) SetDeleteRule(v bool) *DeleteCompliancePacksRequest {
+	s.DeleteRule = &v
 	return s
 }
 
@@ -2501,98 +2211,6 @@ func (s *DeleteCompliancePacksResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 func (s *DeleteCompliancePacksResponse) SetBody(v *DeleteCompliancePacksResponseBody) *DeleteCompliancePacksResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteRemediationsRequest struct {
-	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
-}
-
-func (s DeleteRemediationsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRemediationsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRemediationsRequest) SetRemediationIds(v string) *DeleteRemediationsRequest {
-	s.RemediationIds = &v
-	return s
-}
-
-type DeleteRemediationsResponseBody struct {
-	RemediationDeleteResults []*DeleteRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
-	RequestId                *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteRemediationsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRemediationsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRemediationsResponseBody) SetRemediationDeleteResults(v []*DeleteRemediationsResponseBodyRemediationDeleteResults) *DeleteRemediationsResponseBody {
-	s.RemediationDeleteResults = v
-	return s
-}
-
-func (s *DeleteRemediationsResponseBody) SetRequestId(v string) *DeleteRemediationsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteRemediationsResponseBodyRemediationDeleteResults struct {
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteRemediationsResponseBodyRemediationDeleteResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRemediationsResponseBodyRemediationDeleteResults) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetErrorMessage(v string) *DeleteRemediationsResponseBodyRemediationDeleteResults {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetRemediationId(v string) *DeleteRemediationsResponseBodyRemediationDeleteResults {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetSuccess(v bool) *DeleteRemediationsResponseBodyRemediationDeleteResults {
-	s.Success = &v
-	return s
-}
-
-type DeleteRemediationsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteRemediationsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRemediationsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRemediationsResponse) SetHeaders(v map[string]*string) *DeleteRemediationsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteRemediationsResponse) SetBody(v *DeleteRemediationsResponseBody) *DeleteRemediationsResponse {
 	s.Body = v
 	return s
 }
@@ -2977,81 +2595,6 @@ func (s *GenerateAggregateConfigRulesReportResponse) SetBody(v *GenerateAggregat
 	return s
 }
 
-type GenerateAggregateResourceInventoryRequest struct {
-	AccountIds    *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	Regions       *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-}
-
-func (s GenerateAggregateResourceInventoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateAggregateResourceInventoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateAggregateResourceInventoryRequest) SetAccountIds(v string) *GenerateAggregateResourceInventoryRequest {
-	s.AccountIds = &v
-	return s
-}
-
-func (s *GenerateAggregateResourceInventoryRequest) SetAggregatorId(v string) *GenerateAggregateResourceInventoryRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *GenerateAggregateResourceInventoryRequest) SetRegions(v string) *GenerateAggregateResourceInventoryRequest {
-	s.Regions = &v
-	return s
-}
-
-func (s *GenerateAggregateResourceInventoryRequest) SetResourceTypes(v string) *GenerateAggregateResourceInventoryRequest {
-	s.ResourceTypes = &v
-	return s
-}
-
-type GenerateAggregateResourceInventoryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GenerateAggregateResourceInventoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateAggregateResourceInventoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateAggregateResourceInventoryResponseBody) SetRequestId(v string) *GenerateAggregateResourceInventoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GenerateAggregateResourceInventoryResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateAggregateResourceInventoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateAggregateResourceInventoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateAggregateResourceInventoryResponse) SetHeaders(v map[string]*string) *GenerateAggregateResourceInventoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateAggregateResourceInventoryResponse) SetBody(v *GenerateAggregateResourceInventoryResponseBody) *GenerateAggregateResourceInventoryResponse {
-	s.Body = v
-	return s
-}
-
 type GenerateCompliancePackReportRequest struct {
 	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
@@ -3174,69 +2717,6 @@ func (s *GenerateConfigRulesReportResponse) SetHeaders(v map[string]*string) *Ge
 }
 
 func (s *GenerateConfigRulesReportResponse) SetBody(v *GenerateConfigRulesReportResponseBody) *GenerateConfigRulesReportResponse {
-	s.Body = v
-	return s
-}
-
-type GenerateResourceInventoryRequest struct {
-	Regions       *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-}
-
-func (s GenerateResourceInventoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateResourceInventoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateResourceInventoryRequest) SetRegions(v string) *GenerateResourceInventoryRequest {
-	s.Regions = &v
-	return s
-}
-
-func (s *GenerateResourceInventoryRequest) SetResourceTypes(v string) *GenerateResourceInventoryRequest {
-	s.ResourceTypes = &v
-	return s
-}
-
-type GenerateResourceInventoryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GenerateResourceInventoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateResourceInventoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateResourceInventoryResponseBody) SetRequestId(v string) *GenerateResourceInventoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GenerateResourceInventoryResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GenerateResourceInventoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GenerateResourceInventoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GenerateResourceInventoryResponse) SetHeaders(v map[string]*string) *GenerateResourceInventoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GenerateResourceInventoryResponse) SetBody(v *GenerateResourceInventoryResponseBody) *GenerateResourceInventoryResponse {
 	s.Body = v
 	return s
 }
@@ -5358,104 +4838,6 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponse) SetBody(v *GetAg
 	return s
 }
 
-type GetAggregateResourceInventoryRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-}
-
-func (s GetAggregateResourceInventoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAggregateResourceInventoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAggregateResourceInventoryRequest) SetAggregatorId(v string) *GetAggregateResourceInventoryRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-type GetAggregateResourceInventoryResponseBody struct {
-	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceInventory *GetAggregateResourceInventoryResponseBodyResourceInventory `json:"ResourceInventory,omitempty" xml:"ResourceInventory,omitempty" type:"Struct"`
-}
-
-func (s GetAggregateResourceInventoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAggregateResourceInventoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAggregateResourceInventoryResponseBody) SetRequestId(v string) *GetAggregateResourceInventoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetAggregateResourceInventoryResponseBody) SetResourceInventory(v *GetAggregateResourceInventoryResponseBodyResourceInventory) *GetAggregateResourceInventoryResponseBody {
-	s.ResourceInventory = v
-	return s
-}
-
-type GetAggregateResourceInventoryResponseBodyResourceInventory struct {
-	AccountId                     *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
-	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetAggregateResourceInventoryResponseBodyResourceInventory) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAggregateResourceInventoryResponseBodyResourceInventory) GoString() string {
-	return s.String()
-}
-
-func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetAccountId(v int64) *GetAggregateResourceInventoryResponseBodyResourceInventory {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetDownloadUrl(v string) *GetAggregateResourceInventoryResponseBodyResourceInventory {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetResourceInventoryGenerateTime(v int64) *GetAggregateResourceInventoryResponseBodyResourceInventory {
-	s.ResourceInventoryGenerateTime = &v
-	return s
-}
-
-func (s *GetAggregateResourceInventoryResponseBodyResourceInventory) SetStatus(v string) *GetAggregateResourceInventoryResponseBodyResourceInventory {
-	s.Status = &v
-	return s
-}
-
-type GetAggregateResourceInventoryResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAggregateResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAggregateResourceInventoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAggregateResourceInventoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAggregateResourceInventoryResponse) SetHeaders(v map[string]*string) *GetAggregateResourceInventoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAggregateResourceInventoryResponse) SetBody(v *GetAggregateResourceInventoryResponseBody) *GetAggregateResourceInventoryResponse {
-	s.Body = v
-	return s
-}
-
 type GetAggregatorRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 }
@@ -7451,83 +6833,280 @@ func (s *GetResourceConfigurationTimelineResponse) SetBody(v *GetResourceConfigu
 	return s
 }
 
-type GetResourceInventoryResponseBody struct {
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceInventory *GetResourceInventoryResponseBodyResourceInventory `json:"ResourceInventory,omitempty" xml:"ResourceInventory,omitempty" type:"Struct"`
+type IgnoreAggregateEvaluationResultsRequest struct {
+	AggregatorId *string                                             `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId *string                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Reason       *string                                             `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Resources    []*IgnoreAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
-func (s GetResourceInventoryResponseBody) String() string {
+func (s IgnoreAggregateEvaluationResultsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetResourceInventoryResponseBody) GoString() string {
+func (s IgnoreAggregateEvaluationResultsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceInventoryResponseBody) SetRequestId(v string) *GetResourceInventoryResponseBody {
+func (s *IgnoreAggregateEvaluationResultsRequest) SetAggregatorId(v string) *IgnoreAggregateEvaluationResultsRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequest) SetConfigRuleId(v string) *IgnoreAggregateEvaluationResultsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequest) SetReason(v string) *IgnoreAggregateEvaluationResultsRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequest) SetResources(v []*IgnoreAggregateEvaluationResultsRequestResources) *IgnoreAggregateEvaluationResultsRequest {
+	s.Resources = v
+	return s
+}
+
+type IgnoreAggregateEvaluationResultsRequestResources struct {
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s IgnoreAggregateEvaluationResultsRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreAggregateEvaluationResultsRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequestResources) SetRegion(v string) *IgnoreAggregateEvaluationResultsRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequestResources) SetResourceAccountId(v int64) *IgnoreAggregateEvaluationResultsRequestResources {
+	s.ResourceAccountId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequestResources) SetResourceId(v string) *IgnoreAggregateEvaluationResultsRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsRequestResources) SetResourceType(v string) *IgnoreAggregateEvaluationResultsRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+type IgnoreAggregateEvaluationResultsShrinkRequest struct {
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s IgnoreAggregateEvaluationResultsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreAggregateEvaluationResultsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreAggregateEvaluationResultsShrinkRequest) SetAggregatorId(v string) *IgnoreAggregateEvaluationResultsShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsShrinkRequest) SetConfigRuleId(v string) *IgnoreAggregateEvaluationResultsShrinkRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsShrinkRequest) SetReason(v string) *IgnoreAggregateEvaluationResultsShrinkRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *IgnoreAggregateEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *IgnoreAggregateEvaluationResultsShrinkRequest {
+	s.ResourcesShrink = &v
+	return s
+}
+
+type IgnoreAggregateEvaluationResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s IgnoreAggregateEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreAggregateEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreAggregateEvaluationResultsResponseBody) SetRequestId(v string) *IgnoreAggregateEvaluationResultsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetResourceInventoryResponseBody) SetResourceInventory(v *GetResourceInventoryResponseBodyResourceInventory) *GetResourceInventoryResponseBody {
-	s.ResourceInventory = v
-	return s
+type IgnoreAggregateEvaluationResultsResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *IgnoreAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type GetResourceInventoryResponseBodyResourceInventory struct {
-	AccountId                     *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DownloadUrl                   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	ResourceInventoryGenerateTime *int64  `json:"ResourceInventoryGenerateTime,omitempty" xml:"ResourceInventoryGenerateTime,omitempty"`
-	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetResourceInventoryResponseBodyResourceInventory) String() string {
+func (s IgnoreAggregateEvaluationResultsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetResourceInventoryResponseBodyResourceInventory) GoString() string {
+func (s IgnoreAggregateEvaluationResultsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetResourceInventoryResponseBodyResourceInventory) SetAccountId(v int64) *GetResourceInventoryResponseBodyResourceInventory {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetResourceInventoryResponseBodyResourceInventory) SetDownloadUrl(v string) *GetResourceInventoryResponseBodyResourceInventory {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *GetResourceInventoryResponseBodyResourceInventory) SetResourceInventoryGenerateTime(v int64) *GetResourceInventoryResponseBodyResourceInventory {
-	s.ResourceInventoryGenerateTime = &v
-	return s
-}
-
-func (s *GetResourceInventoryResponseBodyResourceInventory) SetStatus(v string) *GetResourceInventoryResponseBodyResourceInventory {
-	s.Status = &v
-	return s
-}
-
-type GetResourceInventoryResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResourceInventoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetResourceInventoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceInventoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceInventoryResponse) SetHeaders(v map[string]*string) *GetResourceInventoryResponse {
+func (s *IgnoreAggregateEvaluationResultsResponse) SetHeaders(v map[string]*string) *IgnoreAggregateEvaluationResultsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetResourceInventoryResponse) SetBody(v *GetResourceInventoryResponseBody) *GetResourceInventoryResponse {
+func (s *IgnoreAggregateEvaluationResultsResponse) SetBody(v *IgnoreAggregateEvaluationResultsResponseBody) *IgnoreAggregateEvaluationResultsResponse {
+	s.Body = v
+	return s
+}
+
+type IgnoreEvaluationResultsRequest struct {
+	ConfigRuleId *string                                    `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Reason       *string                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Resources    []*IgnoreEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s IgnoreEvaluationResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreEvaluationResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreEvaluationResultsRequest) SetConfigRuleId(v string) *IgnoreEvaluationResultsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsRequest) SetReason(v string) *IgnoreEvaluationResultsRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsRequest) SetResources(v []*IgnoreEvaluationResultsRequestResources) *IgnoreEvaluationResultsRequest {
+	s.Resources = v
+	return s
+}
+
+type IgnoreEvaluationResultsRequestResources struct {
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s IgnoreEvaluationResultsRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreEvaluationResultsRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreEvaluationResultsRequestResources) SetRegion(v string) *IgnoreEvaluationResultsRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsRequestResources) SetResourceAccountId(v int64) *IgnoreEvaluationResultsRequestResources {
+	s.ResourceAccountId = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsRequestResources) SetResourceId(v string) *IgnoreEvaluationResultsRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsRequestResources) SetResourceType(v string) *IgnoreEvaluationResultsRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+type IgnoreEvaluationResultsShrinkRequest struct {
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s IgnoreEvaluationResultsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreEvaluationResultsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreEvaluationResultsShrinkRequest) SetConfigRuleId(v string) *IgnoreEvaluationResultsShrinkRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsShrinkRequest) SetReason(v string) *IgnoreEvaluationResultsShrinkRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *IgnoreEvaluationResultsShrinkRequest {
+	s.ResourcesShrink = &v
+	return s
+}
+
+type IgnoreEvaluationResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s IgnoreEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreEvaluationResultsResponseBody) SetRequestId(v string) *IgnoreEvaluationResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type IgnoreEvaluationResultsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *IgnoreEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IgnoreEvaluationResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IgnoreEvaluationResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IgnoreEvaluationResultsResponse) SetHeaders(v map[string]*string) *IgnoreEvaluationResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IgnoreEvaluationResultsResponse) SetBody(v *IgnoreEvaluationResultsResponseBody) *IgnoreEvaluationResultsResponse {
 	s.Body = v
 	return s
 }
@@ -8277,158 +7856,6 @@ func (s *ListAggregateConfigRulesResponse) SetHeaders(v map[string]*string) *Lis
 }
 
 func (s *ListAggregateConfigRulesResponse) SetBody(v *ListAggregateConfigRulesResponseBody) *ListAggregateConfigRulesResponse {
-	s.Body = v
-	return s
-}
-
-type ListAggregateRemediationsRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
-}
-
-func (s ListAggregateRemediationsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAggregateRemediationsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListAggregateRemediationsRequest) SetAggregatorId(v string) *ListAggregateRemediationsRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsRequest) SetConfigRuleIds(v string) *ListAggregateRemediationsRequest {
-	s.ConfigRuleIds = &v
-	return s
-}
-
-type ListAggregateRemediationsResponseBody struct {
-	Remediations []*ListAggregateRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListAggregateRemediationsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAggregateRemediationsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListAggregateRemediationsResponseBody) SetRemediations(v []*ListAggregateRemediationsResponseBodyRemediations) *ListAggregateRemediationsResponseBody {
-	s.Remediations = v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBody) SetRequestId(v string) *ListAggregateRemediationsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListAggregateRemediationsResponseBodyRemediations struct {
-	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId                 *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
-	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	RemediationDynamicParams     *string `json:"RemediationDynamicParams,omitempty" xml:"RemediationDynamicParams,omitempty"`
-	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
-	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-}
-
-func (s ListAggregateRemediationsResponseBodyRemediations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAggregateRemediationsResponseBodyRemediations) GoString() string {
-	return s.String()
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetAccountId(v int64) *ListAggregateRemediationsResponseBodyRemediations {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetAggregatorId(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetConfigRuleId(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetInvokeType(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationId(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationTime(v int64) *ListAggregateRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationTime = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationType(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationType = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationDynamicParams(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.RemediationDynamicParams = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationId(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationSourceType(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.RemediationSourceType = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationTemplateId(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationType(v string) *ListAggregateRemediationsResponseBodyRemediations {
-	s.RemediationType = &v
-	return s
-}
-
-type ListAggregateRemediationsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListAggregateRemediationsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAggregateRemediationsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListAggregateRemediationsResponse) SetHeaders(v map[string]*string) *ListAggregateRemediationsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListAggregateRemediationsResponse) SetBody(v *ListAggregateRemediationsResponseBody) *ListAggregateRemediationsResponse {
 	s.Body = v
 	return s
 }
@@ -9500,146 +8927,6 @@ func (s *ListConfigRuleEvaluationResultsResponse) SetBody(v *ListConfigRuleEvalu
 	return s
 }
 
-type ListRemediationsRequest struct {
-	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
-}
-
-func (s ListRemediationsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRemediationsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRemediationsRequest) SetConfigRuleIds(v string) *ListRemediationsRequest {
-	s.ConfigRuleIds = &v
-	return s
-}
-
-type ListRemediationsResponseBody struct {
-	Remediations []*ListRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListRemediationsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRemediationsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRemediationsResponseBody) SetRemediations(v []*ListRemediationsResponseBodyRemediations) *ListRemediationsResponseBody {
-	s.Remediations = v
-	return s
-}
-
-func (s *ListRemediationsResponseBody) SetRequestId(v string) *ListRemediationsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListRemediationsResponseBodyRemediations struct {
-	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
-	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	RemediationDynamicParams     *string `json:"RemediationDynamicParams,omitempty" xml:"RemediationDynamicParams,omitempty"`
-	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
-	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-}
-
-func (s ListRemediationsResponseBodyRemediations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRemediationsResponseBodyRemediations) GoString() string {
-	return s.String()
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetAccountId(v int64) *ListRemediationsResponseBodyRemediations {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetConfigRuleId(v string) *ListRemediationsResponseBodyRemediations {
-	s.ConfigRuleId = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetInvokeType(v string) *ListRemediationsResponseBodyRemediations {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationId(v string) *ListRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationId = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationTime(v int64) *ListRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationTime = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationType(v string) *ListRemediationsResponseBodyRemediations {
-	s.LastSuccessfulInvocationType = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetRemediationDynamicParams(v string) *ListRemediationsResponseBodyRemediations {
-	s.RemediationDynamicParams = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetRemediationId(v string) *ListRemediationsResponseBodyRemediations {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetRemediationSourceType(v string) *ListRemediationsResponseBodyRemediations {
-	s.RemediationSourceType = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetRemediationTemplateId(v string) *ListRemediationsResponseBodyRemediations {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *ListRemediationsResponseBodyRemediations) SetRemediationType(v string) *ListRemediationsResponseBodyRemediations {
-	s.RemediationType = &v
-	return s
-}
-
-type ListRemediationsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRemediationsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRemediationsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRemediationsResponse) SetHeaders(v map[string]*string) *ListRemediationsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRemediationsResponse) SetBody(v *ListRemediationsResponseBody) *ListRemediationsResponse {
-	s.Body = v
-	return s
-}
-
 type ListResourceEvaluationResultsRequest struct {
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -9897,71 +9184,256 @@ func (s *ListResourceEvaluationResultsResponse) SetBody(v *ListResourceEvaluatio
 	return s
 }
 
-type ListResourceOwnerInAllAggregatorResponseBody struct {
-	AccountInAggregator []*ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator `json:"AccountInAggregator,omitempty" xml:"AccountInAggregator,omitempty" type:"Repeated"`
-	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+type RevertAggregateEvaluationResultsRequest struct {
+	AggregatorId *string                                             `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId *string                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Resources    []*RevertAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
-func (s ListResourceOwnerInAllAggregatorResponseBody) String() string {
+func (s RevertAggregateEvaluationResultsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListResourceOwnerInAllAggregatorResponseBody) GoString() string {
+func (s RevertAggregateEvaluationResultsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceOwnerInAllAggregatorResponseBody) SetAccountInAggregator(v []*ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator) *ListResourceOwnerInAllAggregatorResponseBody {
-	s.AccountInAggregator = v
+func (s *RevertAggregateEvaluationResultsRequest) SetAggregatorId(v string) *RevertAggregateEvaluationResultsRequest {
+	s.AggregatorId = &v
 	return s
 }
 
-func (s *ListResourceOwnerInAllAggregatorResponseBody) SetRequestId(v string) *ListResourceOwnerInAllAggregatorResponseBody {
+func (s *RevertAggregateEvaluationResultsRequest) SetConfigRuleId(v string) *RevertAggregateEvaluationResultsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsRequest) SetResources(v []*RevertAggregateEvaluationResultsRequestResources) *RevertAggregateEvaluationResultsRequest {
+	s.Resources = v
+	return s
+}
+
+type RevertAggregateEvaluationResultsRequestResources struct {
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s RevertAggregateEvaluationResultsRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertAggregateEvaluationResultsRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *RevertAggregateEvaluationResultsRequestResources) SetRegion(v string) *RevertAggregateEvaluationResultsRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsRequestResources) SetResourceAccountId(v int64) *RevertAggregateEvaluationResultsRequestResources {
+	s.ResourceAccountId = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsRequestResources) SetResourceId(v string) *RevertAggregateEvaluationResultsRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsRequestResources) SetResourceType(v string) *RevertAggregateEvaluationResultsRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+type RevertAggregateEvaluationResultsShrinkRequest struct {
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s RevertAggregateEvaluationResultsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertAggregateEvaluationResultsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevertAggregateEvaluationResultsShrinkRequest) SetAggregatorId(v string) *RevertAggregateEvaluationResultsShrinkRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsShrinkRequest) SetConfigRuleId(v string) *RevertAggregateEvaluationResultsShrinkRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *RevertAggregateEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *RevertAggregateEvaluationResultsShrinkRequest {
+	s.ResourcesShrink = &v
+	return s
+}
+
+type RevertAggregateEvaluationResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevertAggregateEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertAggregateEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevertAggregateEvaluationResultsResponseBody) SetRequestId(v string) *RevertAggregateEvaluationResultsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator struct {
-	AccountId   *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-}
-
-func (s ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator) SetAccountId(v int64) *ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator {
-	s.AccountId = &v
-	return s
-}
-
-func (s *ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator) SetAccountName(v string) *ListResourceOwnerInAllAggregatorResponseBodyAccountInAggregator {
-	s.AccountName = &v
-	return s
-}
-
-type ListResourceOwnerInAllAggregatorResponse struct {
+type RevertAggregateEvaluationResultsResponse struct {
 	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceOwnerInAllAggregatorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body    *RevertAggregateEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListResourceOwnerInAllAggregatorResponse) String() string {
+func (s RevertAggregateEvaluationResultsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListResourceOwnerInAllAggregatorResponse) GoString() string {
+func (s RevertAggregateEvaluationResultsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceOwnerInAllAggregatorResponse) SetHeaders(v map[string]*string) *ListResourceOwnerInAllAggregatorResponse {
+func (s *RevertAggregateEvaluationResultsResponse) SetHeaders(v map[string]*string) *RevertAggregateEvaluationResultsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListResourceOwnerInAllAggregatorResponse) SetBody(v *ListResourceOwnerInAllAggregatorResponseBody) *ListResourceOwnerInAllAggregatorResponse {
+func (s *RevertAggregateEvaluationResultsResponse) SetBody(v *RevertAggregateEvaluationResultsResponseBody) *RevertAggregateEvaluationResultsResponse {
+	s.Body = v
+	return s
+}
+
+type RevertEvaluationResultsRequest struct {
+	ConfigRuleId *string                                    `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	Resources    []*RevertEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s RevertEvaluationResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertEvaluationResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevertEvaluationResultsRequest) SetConfigRuleId(v string) *RevertEvaluationResultsRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *RevertEvaluationResultsRequest) SetResources(v []*RevertEvaluationResultsRequestResources) *RevertEvaluationResultsRequest {
+	s.Resources = v
+	return s
+}
+
+type RevertEvaluationResultsRequestResources struct {
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s RevertEvaluationResultsRequestResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertEvaluationResultsRequestResources) GoString() string {
+	return s.String()
+}
+
+func (s *RevertEvaluationResultsRequestResources) SetRegion(v string) *RevertEvaluationResultsRequestResources {
+	s.Region = &v
+	return s
+}
+
+func (s *RevertEvaluationResultsRequestResources) SetResourceAccountId(v int64) *RevertEvaluationResultsRequestResources {
+	s.ResourceAccountId = &v
+	return s
+}
+
+func (s *RevertEvaluationResultsRequestResources) SetResourceId(v string) *RevertEvaluationResultsRequestResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *RevertEvaluationResultsRequestResources) SetResourceType(v string) *RevertEvaluationResultsRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+type RevertEvaluationResultsShrinkRequest struct {
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+}
+
+func (s RevertEvaluationResultsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertEvaluationResultsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevertEvaluationResultsShrinkRequest) SetConfigRuleId(v string) *RevertEvaluationResultsShrinkRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *RevertEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *RevertEvaluationResultsShrinkRequest {
+	s.ResourcesShrink = &v
+	return s
+}
+
+type RevertEvaluationResultsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevertEvaluationResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertEvaluationResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevertEvaluationResultsResponseBody) SetRequestId(v string) *RevertEvaluationResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevertEvaluationResultsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RevertEvaluationResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevertEvaluationResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevertEvaluationResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevertEvaluationResultsResponse) SetHeaders(v map[string]*string) *RevertEvaluationResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevertEvaluationResultsResponse) SetBody(v *RevertEvaluationResultsResponseBody) *RevertEvaluationResultsResponse {
 	s.Body = v
 	return s
 }
@@ -10043,138 +9515,6 @@ func (s *StartAggregateConfigRuleEvaluationResponse) SetHeaders(v map[string]*st
 }
 
 func (s *StartAggregateConfigRuleEvaluationResponse) SetBody(v *StartAggregateConfigRuleEvaluationResponseBody) *StartAggregateConfigRuleEvaluationResponse {
-	s.Body = v
-	return s
-}
-
-type StartAggregateRemediationRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-}
-
-func (s StartAggregateRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartAggregateRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartAggregateRemediationRequest) SetAggregatorId(v string) *StartAggregateRemediationRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *StartAggregateRemediationRequest) SetConfigRuleId(v string) *StartAggregateRemediationRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-type StartAggregateRemediationResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartAggregateRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartAggregateRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartAggregateRemediationResponseBody) SetData(v bool) *StartAggregateRemediationResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *StartAggregateRemediationResponseBody) SetRequestId(v string) *StartAggregateRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartAggregateRemediationResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartAggregateRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartAggregateRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartAggregateRemediationResponse) SetHeaders(v map[string]*string) *StartAggregateRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartAggregateRemediationResponse) SetBody(v *StartAggregateRemediationResponseBody) *StartAggregateRemediationResponse {
-	s.Body = v
-	return s
-}
-
-type StartRemediationRequest struct {
-	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-}
-
-func (s StartRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartRemediationRequest) SetConfigRuleId(v string) *StartRemediationRequest {
-	s.ConfigRuleId = &v
-	return s
-}
-
-type StartRemediationResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartRemediationResponseBody) SetData(v bool) *StartRemediationResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *StartRemediationResponseBody) SetRequestId(v string) *StartRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartRemediationResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartRemediationResponse) SetHeaders(v map[string]*string) *StartRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *StartRemediationResponse {
 	s.Body = v
 	return s
 }
@@ -10645,105 +9985,6 @@ func (s *UpdateAggregateConfigRuleResponse) SetHeaders(v map[string]*string) *Up
 }
 
 func (s *UpdateAggregateConfigRuleResponse) SetBody(v *UpdateAggregateConfigRuleResponseBody) *UpdateAggregateConfigRuleResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAggregateRemediationRequest struct {
-	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-}
-
-func (s UpdateAggregateRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAggregateRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAggregateRemediationRequest) SetAggregatorId(v string) *UpdateAggregateRemediationRequest {
-	s.AggregatorId = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetInvokeType(v string) *UpdateAggregateRemediationRequest {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetParams(v string) *UpdateAggregateRemediationRequest {
-	s.Params = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetRemediationId(v string) *UpdateAggregateRemediationRequest {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetRemediationTemplateId(v string) *UpdateAggregateRemediationRequest {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetRemediationType(v string) *UpdateAggregateRemediationRequest {
-	s.RemediationType = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationRequest) SetSourceType(v string) *UpdateAggregateRemediationRequest {
-	s.SourceType = &v
-	return s
-}
-
-type UpdateAggregateRemediationResponseBody struct {
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAggregateRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAggregateRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAggregateRemediationResponseBody) SetRemediationId(v string) *UpdateAggregateRemediationResponseBody {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *UpdateAggregateRemediationResponseBody) SetRequestId(v string) *UpdateAggregateRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAggregateRemediationResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAggregateRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAggregateRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAggregateRemediationResponse) SetHeaders(v map[string]*string) *UpdateAggregateRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAggregateRemediationResponse) SetBody(v *UpdateAggregateRemediationResponseBody) *UpdateAggregateRemediationResponse {
 	s.Body = v
 	return s
 }
@@ -11351,99 +10592,6 @@ func (s *UpdateConfigRuleResponse) SetBody(v *UpdateConfigRuleResponseBody) *Upd
 	return s
 }
 
-type UpdateRemediationRequest struct {
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-}
-
-func (s UpdateRemediationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRemediationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRemediationRequest) SetInvokeType(v string) *UpdateRemediationRequest {
-	s.InvokeType = &v
-	return s
-}
-
-func (s *UpdateRemediationRequest) SetParams(v string) *UpdateRemediationRequest {
-	s.Params = &v
-	return s
-}
-
-func (s *UpdateRemediationRequest) SetRemediationId(v string) *UpdateRemediationRequest {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *UpdateRemediationRequest) SetRemediationTemplateId(v string) *UpdateRemediationRequest {
-	s.RemediationTemplateId = &v
-	return s
-}
-
-func (s *UpdateRemediationRequest) SetRemediationType(v string) *UpdateRemediationRequest {
-	s.RemediationType = &v
-	return s
-}
-
-func (s *UpdateRemediationRequest) SetSourceType(v string) *UpdateRemediationRequest {
-	s.SourceType = &v
-	return s
-}
-
-type UpdateRemediationResponseBody struct {
-	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateRemediationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRemediationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRemediationResponseBody) SetRemediationId(v string) *UpdateRemediationResponseBody {
-	s.RemediationId = &v
-	return s
-}
-
-func (s *UpdateRemediationResponseBody) SetRequestId(v string) *UpdateRemediationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateRemediationResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateRemediationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRemediationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRemediationResponse) SetHeaders(v map[string]*string) *UpdateRemediationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateRemediationResponse) SetBody(v *UpdateRemediationResponseBody) *UpdateRemediationResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -11500,11 +10648,26 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ActiveAggregateConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ActiveAggregateConfigRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ActiveAggregateConfigRules"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11528,11 +10691,27 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["CompliancePackId"] = request.CompliancePackId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachAggregateConfigRuleToCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachAggregateConfigRuleToCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11556,11 +10735,26 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CompliancePackId"] = request.CompliancePackId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachConfigRuleToCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachConfigRuleToCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachConfigRuleToCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11593,8 +10787,19 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAggregateCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAggregateCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAggregateCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11631,8 +10836,19 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAggregateConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAggregateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAggregateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11644,34 +10860,6 @@ func (client *Client) CreateAggregateConfigRule(request *CreateAggregateConfigRu
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregateConfigRuleResponse{}
 	_body, _err := client.CreateAggregateConfigRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateAggregateRemediationWithOptions(request *CreateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateAggregateRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAggregateRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAggregateRemediation(request *CreateAggregateRemediationRequest) (_result *CreateAggregateRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAggregateRemediationResponse{}
-	_body, _err := client.CreateAggregateRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11693,8 +10881,19 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAggregator"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAggregatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAggregator"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11727,8 +10926,19 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11765,8 +10975,19 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11785,44 +11006,31 @@ func (client *Client) CreateConfigRule(request *CreateConfigRuleRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CreateRemediationWithOptions(request *CreateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRemediation(request *CreateRemediationRequest) (_result *CreateRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRemediationResponse{}
-	_body, _err := client.CreateRemediationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeactiveAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeactiveAggregateConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeactiveAggregateConfigRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeactiveAggregateConfigRules"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11846,11 +11054,25 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeactiveConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeactiveConfigRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeactiveConfigRules"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11877,8 +11099,19 @@ func (client *Client) DeleteAggregateCompliancePacksWithOptions(request *DeleteA
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAggregateCompliancePacks"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteAggregateCompliancePacksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAggregateCompliancePacks"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11902,11 +11135,26 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAggregateConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAggregateConfigRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAggregateConfigRules"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11925,34 +11173,6 @@ func (client *Client) DeleteAggregateConfigRules(request *DeleteAggregateConfigR
 	return _result, _err
 }
 
-func (client *Client) DeleteAggregateRemediationsWithOptions(request *DeleteAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateRemediationsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteAggregateRemediationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAggregateRemediations"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemediationsRequest) (_result *DeleteAggregateRemediationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAggregateRemediationsResponse{}
-	_body, _err := client.DeleteAggregateRemediationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11961,8 +11181,19 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAggregators"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteAggregatorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAggregators"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11989,8 +11220,19 @@ func (client *Client) DeleteCompliancePacksWithOptions(request *DeleteCompliance
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCompliancePacks"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteCompliancePacksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCompliancePacks"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12009,44 +11251,32 @@ func (client *Client) DeleteCompliancePacks(request *DeleteCompliancePacksReques
 	return _result, _err
 }
 
-func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteRemediationsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteRemediationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRemediations"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteRemediations(request *DeleteRemediationsRequest) (_result *DeleteRemediationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteRemediationsResponse{}
-	_body, _err := client.DeleteRemediationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(request *DetachAggregateConfigRuleToCompliancePackRequest, runtime *util.RuntimeOptions) (_result *DetachAggregateConfigRuleToCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["CompliancePackId"] = request.CompliancePackId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachAggregateConfigRuleToCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachAggregateConfigRuleToCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12070,11 +11300,26 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CompliancePackId"] = request.CompliancePackId
+	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachConfigRuleToCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachConfigRuleToCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachConfigRuleToCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12101,8 +11346,19 @@ func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAggregateCompliancePackReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateAggregateCompliancePackReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateAggregateCompliancePackReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12129,8 +11385,19 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAggregateConfigRulesReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateAggregateConfigRulesReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateAggregateConfigRulesReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12149,34 +11416,6 @@ func (client *Client) GenerateAggregateConfigRulesReport(request *GenerateAggreg
 	return _result, _err
 }
 
-func (client *Client) GenerateAggregateResourceInventoryWithOptions(request *GenerateAggregateResourceInventoryRequest, runtime *util.RuntimeOptions) (_result *GenerateAggregateResourceInventoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GenerateAggregateResourceInventoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateAggregateResourceInventory"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GenerateAggregateResourceInventory(request *GenerateAggregateResourceInventoryRequest) (_result *GenerateAggregateResourceInventoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GenerateAggregateResourceInventoryResponse{}
-	_body, _err := client.GenerateAggregateResourceInventoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateCompliancePackReportRequest, runtime *util.RuntimeOptions) (_result *GenerateCompliancePackReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12185,8 +11424,19 @@ func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateC
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateCompliancePackReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateCompliancePackReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateCompliancePackReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12213,8 +11463,19 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateConfigRulesReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateConfigRulesReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateConfigRulesReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12233,34 +11494,6 @@ func (client *Client) GenerateConfigRulesReport(request *GenerateConfigRulesRepo
 	return _result, _err
 }
 
-func (client *Client) GenerateResourceInventoryWithOptions(request *GenerateResourceInventoryRequest, runtime *util.RuntimeOptions) (_result *GenerateResourceInventoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GenerateResourceInventoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateResourceInventory"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GenerateResourceInventory(request *GenerateResourceInventoryRequest) (_result *GenerateResourceInventoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GenerateResourceInventoryResponse{}
-	_body, _err := client.GenerateResourceInventoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *GetAggregateAccountComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateAccountComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12268,10 +11501,21 @@ func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *Ge
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateAccountComplianceByPack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateAccountComplianceByPackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateAccountComplianceByPack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12297,10 +11541,21 @@ func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregat
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12326,10 +11581,21 @@ func (client *Client) GetAggregateCompliancePackReportWithOptions(request *GetAg
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateCompliancePackReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateCompliancePackReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateCompliancePackReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12353,11 +11619,26 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["ConfigRuleId"] = request.ConfigRuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12383,10 +11664,21 @@ func (client *Client) GetAggregateConfigRuleComplianceByPackWithOptions(request 
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateConfigRuleComplianceByPack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleComplianceByPackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRuleComplianceByPack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12412,10 +11704,21 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateConfigRuleSummaryByRiskLevel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRuleSummaryByRiskLevel"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12441,10 +11744,21 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateConfigRulesReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRulesReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateConfigRulesReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12470,10 +11784,21 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceComplianceByConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceComplianceByConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12499,10 +11824,21 @@ func (client *Client) GetAggregateResourceComplianceByPackWithOptions(request *G
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceComplianceByPack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceByPackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceComplianceByPack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12528,10 +11864,21 @@ func (client *Client) GetAggregateResourceComplianceTimelineWithOptions(request 
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceComplianceTimeline"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceTimelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceComplianceTimeline"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12557,10 +11904,21 @@ func (client *Client) GetAggregateResourceConfigurationTimelineWithOptions(reque
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceConfigurationTimeline"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceConfigurationTimelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceConfigurationTimeline"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12586,10 +11944,21 @@ func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceCountsGroupByRegion"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceCountsGroupByRegionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceCountsGroupByRegion"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12615,10 +11984,21 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceCountsGroupByResourceType"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceCountsGroupByResourceType"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12637,34 +12017,6 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceType(request *Get
 	return _result, _err
 }
 
-func (client *Client) GetAggregateResourceInventoryWithOptions(request *GetAggregateResourceInventoryRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceInventoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetAggregateResourceInventoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregateResourceInventory"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAggregateResourceInventory(request *GetAggregateResourceInventoryRequest) (_result *GetAggregateResourceInventoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAggregateResourceInventoryResponse{}
-	_body, _err := client.GetAggregateResourceInventoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, runtime *util.RuntimeOptions) (_result *GetAggregatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12672,10 +12024,21 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregator"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAggregator"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12701,10 +12064,21 @@ func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12730,10 +12104,21 @@ func (client *Client) GetCompliancePackReportWithOptions(request *GetComplianceP
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCompliancePackReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCompliancePackReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCompliancePackReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12757,11 +12142,25 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConfigRuleId"] = request.ConfigRuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12787,10 +12186,21 @@ func (client *Client) GetConfigRuleComplianceByPackWithOptions(request *GetConfi
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfigRuleComplianceByPack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRuleComplianceByPackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfigRuleComplianceByPack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12811,8 +12221,19 @@ func (client *Client) GetConfigRuleComplianceByPack(request *GetConfigRuleCompli
 
 func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.RuntimeOptions) (_result *GetConfigRuleSummaryByRiskLevelResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfigRuleSummaryByRiskLevel"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetConfigRuleSummaryByRiskLevelResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfigRuleSummaryByRiskLevel"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12833,8 +12254,19 @@ func (client *Client) GetConfigRuleSummaryByRiskLevel() (_result *GetConfigRuleS
 
 func (client *Client) GetConfigRulesReportWithOptions(runtime *util.RuntimeOptions) (_result *GetConfigRulesReportResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfigRulesReport"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetConfigRulesReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfigRulesReport"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12860,10 +12292,21 @@ func (client *Client) GetDiscoveredResourceCountsGroupByRegionWithOptions(reques
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiscoveredResourceCountsGroupByRegion"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDiscoveredResourceCountsGroupByRegion"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12889,10 +12332,21 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceTypeWithOptions(
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiscoveredResourceCountsGroupByResourceType"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDiscoveredResourceCountsGroupByResourceType"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12918,10 +12372,21 @@ func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetR
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceComplianceByConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceByConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceComplianceByConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12947,10 +12412,21 @@ func (client *Client) GetResourceComplianceByPackWithOptions(request *GetResourc
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceComplianceByPack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceByPackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceComplianceByPack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12976,10 +12452,21 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceComplianceTimeline"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceTimelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceComplianceTimeline"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13005,10 +12492,21 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceConfigurationTimeline"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceConfigurationTimelineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceConfigurationTimeline"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13027,10 +12525,33 @@ func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfi
 	return _result, _err
 }
 
-func (client *Client) GetResourceInventoryWithOptions(runtime *util.RuntimeOptions) (_result *GetResourceInventoryResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &GetResourceInventoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceInventory"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+func (client *Client) IgnoreAggregateEvaluationResultsWithOptions(tmpReq *IgnoreAggregateEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *IgnoreAggregateEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &IgnoreAggregateEvaluationResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Resources)) {
+		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IgnoreAggregateEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IgnoreAggregateEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13038,10 +12559,55 @@ func (client *Client) GetResourceInventoryWithOptions(runtime *util.RuntimeOptio
 	return _result, _err
 }
 
-func (client *Client) GetResourceInventory() (_result *GetResourceInventoryResponse, _err error) {
+func (client *Client) IgnoreAggregateEvaluationResults(request *IgnoreAggregateEvaluationResultsRequest) (_result *IgnoreAggregateEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetResourceInventoryResponse{}
-	_body, _err := client.GetResourceInventoryWithOptions(runtime)
+	_result = &IgnoreAggregateEvaluationResultsResponse{}
+	_body, _err := client.IgnoreAggregateEvaluationResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IgnoreEvaluationResultsWithOptions(tmpReq *IgnoreEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *IgnoreEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &IgnoreEvaluationResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Resources)) {
+		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IgnoreEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IgnoreEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IgnoreEvaluationResults(request *IgnoreEvaluationResultsRequest) (_result *IgnoreEvaluationResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &IgnoreEvaluationResultsResponse{}
+	_body, _err := client.IgnoreEvaluationResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13056,10 +12622,21 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateCompliancePacks"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateCompliancePacksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregateCompliancePacks"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13085,10 +12662,21 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateConfigRuleEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregateConfigRuleEvaluationResults"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13114,10 +12702,21 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateConfigRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregateConfigRules"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13136,34 +12735,6 @@ func (client *Client) ListAggregateConfigRules(request *ListAggregateConfigRules
 	return _result, _err
 }
 
-func (client *Client) ListAggregateRemediationsWithOptions(request *ListAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateRemediationsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListAggregateRemediationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregateRemediations"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListAggregateRemediations(request *ListAggregateRemediationsRequest) (_result *ListAggregateRemediationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListAggregateRemediationsResponse{}
-	_body, _err := client.ListAggregateRemediationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request *ListAggregateResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13171,10 +12742,21 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateResourceEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateResourceEvaluationResultsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregateResourceEvaluationResults"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13200,10 +12782,21 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregators"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregatorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAggregators"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13229,10 +12822,21 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCompliancePackTemplates"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCompliancePackTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCompliancePackTemplates"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13258,10 +12862,21 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCompliancePacks"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCompliancePacksResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCompliancePacks"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13287,10 +12902,21 @@ func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListCo
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigRuleEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConfigRuleEvaluationResultsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConfigRuleEvaluationResults"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13309,34 +12935,6 @@ func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEva
 	return _result, _err
 }
 
-func (client *Client) ListRemediationsWithOptions(request *ListRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListRemediationsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListRemediationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRemediations"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRemediations(request *ListRemediationsRequest) (_result *ListRemediationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListRemediationsResponse{}
-	_body, _err := client.ListRemediationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13344,10 +12942,21 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceEvaluationResultsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResourceEvaluationResults"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13366,10 +12975,33 @@ func (client *Client) ListResourceEvaluationResults(request *ListResourceEvaluat
 	return _result, _err
 }
 
-func (client *Client) ListResourceOwnerInAllAggregatorWithOptions(runtime *util.RuntimeOptions) (_result *ListResourceOwnerInAllAggregatorResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &ListResourceOwnerInAllAggregatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResourceOwnerInAllAggregator"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *RevertAggregateEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *RevertAggregateEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RevertAggregateEvaluationResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Resources)) {
+		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevertAggregateEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevertAggregateEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13377,10 +13009,55 @@ func (client *Client) ListResourceOwnerInAllAggregatorWithOptions(runtime *util.
 	return _result, _err
 }
 
-func (client *Client) ListResourceOwnerInAllAggregator() (_result *ListResourceOwnerInAllAggregatorResponse, _err error) {
+func (client *Client) RevertAggregateEvaluationResults(request *RevertAggregateEvaluationResultsRequest) (_result *RevertAggregateEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListResourceOwnerInAllAggregatorResponse{}
-	_body, _err := client.ListResourceOwnerInAllAggregatorWithOptions(runtime)
+	_result = &RevertAggregateEvaluationResultsResponse{}
+	_body, _err := client.RevertAggregateEvaluationResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *RevertEvaluationResultsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RevertEvaluationResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Resources)) {
+		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevertEvaluationResults"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevertEvaluationResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevertEvaluationResults(request *RevertEvaluationResultsRequest) (_result *RevertEvaluationResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevertEvaluationResultsResponse{}
+	_body, _err := client.RevertEvaluationResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13393,11 +13070,28 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AggregatorId"] = request.AggregatorId
+	query["CompliancePackId"] = request.CompliancePackId
+	query["ConfigRuleId"] = request.ConfigRuleId
+	query["RevertEvaluation"] = request.RevertEvaluation
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAggregateConfigRuleEvaluation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartAggregateConfigRuleEvaluationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartAggregateConfigRuleEvaluation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13409,62 +13103,6 @@ func (client *Client) StartAggregateConfigRuleEvaluation(request *StartAggregate
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAggregateConfigRuleEvaluationResponse{}
 	_body, _err := client.StartAggregateConfigRuleEvaluationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartAggregateRemediationWithOptions(request *StartAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *StartAggregateRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartAggregateRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartAggregateRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartAggregateRemediation(request *StartAggregateRemediationRequest) (_result *StartAggregateRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartAggregateRemediationResponse{}
-	_body, _err := client.StartAggregateRemediationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartRemediationWithOptions(request *StartRemediationRequest, runtime *util.RuntimeOptions) (_result *StartRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartRemediation(request *StartRemediationRequest) (_result *StartRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartRemediationResponse{}
-	_body, _err := client.StartRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13486,8 +13124,19 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAggregateCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAggregateCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAggregateCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13524,8 +13173,19 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAggregateConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAggregateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAggregateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13537,34 +13197,6 @@ func (client *Client) UpdateAggregateConfigRule(request *UpdateAggregateConfigRu
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateConfigRuleResponse{}
 	_body, _err := client.UpdateAggregateConfigRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAggregateRemediationWithOptions(request *UpdateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateAggregateRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAggregateRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateAggregateRemediation(request *UpdateAggregateRemediationRequest) (_result *UpdateAggregateRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateAggregateRemediationResponse{}
-	_body, _err := client.UpdateAggregateRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13586,8 +13218,19 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAggregator"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAggregatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAggregator"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13620,8 +13263,19 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCompliancePack"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateCompliancePackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCompliancePack"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13658,8 +13312,19 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConfigRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateConfigRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateConfigRule"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13671,34 +13336,6 @@ func (client *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConfigRuleResponse{}
 	_body, _err := client.UpdateConfigRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateRemediationWithOptions(request *UpdateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateRemediationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateRemediationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRemediation"), tea.String("2020-09-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateRemediation(request *UpdateRemediationRequest) (_result *UpdateRemediationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateRemediationResponse{}
-	_body, _err := client.UpdateRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
