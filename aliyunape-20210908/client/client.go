@@ -7,9 +7,167 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type ApeInnerCommonApiRequest struct {
+	// appName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// channel
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// endTime
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// lat
+	Lat *string `json:"Lat,omitempty" xml:"Lat,omitempty"`
+	// lon
+	Lon *string `json:"Lon,omitempty" xml:"Lon,omitempty"`
+	// pageNum
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// pageSize
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// spCode
+	SpCode *string `json:"SpCode,omitempty" xml:"SpCode,omitempty"`
+	// startTime
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// station
+	Station *string `json:"Station,omitempty" xml:"Station,omitempty"`
+}
+
+func (s ApeInnerCommonApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeInnerCommonApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApeInnerCommonApiRequest) SetAppName(v string) *ApeInnerCommonApiRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetChannel(v string) *ApeInnerCommonApiRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetEndTime(v string) *ApeInnerCommonApiRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetLat(v string) *ApeInnerCommonApiRequest {
+	s.Lat = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetLon(v string) *ApeInnerCommonApiRequest {
+	s.Lon = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetPageNum(v int32) *ApeInnerCommonApiRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetPageSize(v int32) *ApeInnerCommonApiRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetSpCode(v string) *ApeInnerCommonApiRequest {
+	s.SpCode = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetStartTime(v string) *ApeInnerCommonApiRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiRequest) SetStation(v string) *ApeInnerCommonApiRequest {
+	s.Station = &v
+	return s
+}
+
+type ApeInnerCommonApiResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// rt
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ApeInnerCommonApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeInnerCommonApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetCode(v string) *ApeInnerCommonApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetData(v string) *ApeInnerCommonApiResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetMessage(v string) *ApeInnerCommonApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetRequestId(v string) *ApeInnerCommonApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetRt(v int64) *ApeInnerCommonApiResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponseBody) SetSuccess(v bool) *ApeInnerCommonApiResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApeInnerCommonApiResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApeInnerCommonApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApeInnerCommonApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeInnerCommonApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApeInnerCommonApiResponse) SetHeaders(v map[string]*string) *ApeInnerCommonApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApeInnerCommonApiResponse) SetBody(v *ApeInnerCommonApiResponseBody) *ApeInnerCommonApiResponse {
+	s.Body = v
+	return s
+}
 
 type HistoricalRequest struct {
 	// endTime
@@ -640,16 +798,75 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ApeInnerCommonApiWithOptions(request *ApeInnerCommonApiRequest, runtime *util.RuntimeOptions) (_result *ApeInnerCommonApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApeInnerCommonApi"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApeInnerCommonApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApeInnerCommonApi(request *ApeInnerCommonApiRequest) (_result *ApeInnerCommonApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApeInnerCommonApiResponse{}
+	_body, _err := client.ApeInnerCommonApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) HistoricalWithOptions(request *HistoricalRequest, runtime *util.RuntimeOptions) (_result *HistoricalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndTime"] = request.EndTime
+	query["OrderId"] = request.OrderId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
+	query["StartTime"] = request.StartTime
+	query["Station"] = request.Station
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Historical"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &HistoricalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Historical"), tea.String("2021-09-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -673,11 +890,27 @@ func (client *Client) StationDayWithOptions(request *StationDayRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["OrderId"] = request.OrderId
+	query["StartForecast"] = request.StartForecast
+	query["Station"] = request.Station
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StationDay"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StationDayResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StationDay"), tea.String("2021-09-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -701,11 +934,28 @@ func (client *Client) WeatherforecastWithOptions(request *WeatherforecastRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Lat"] = request.Lat
+	query["Lon"] = request.Lon
+	query["OrderId"] = request.OrderId
+	query["StartForecast"] = request.StartForecast
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Weatherforecast"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &WeatherforecastResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Weatherforecast"), tea.String("2021-09-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -729,11 +979,28 @@ func (client *Client) WeatherforecastTimeWithOptions(request *WeatherforecastTim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurHour"] = request.CurHour
+	query["Lat"] = request.Lat
+	query["Lon"] = request.Lon
+	query["OrderId"] = request.OrderId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WeatherforecastTime"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &WeatherforecastTimeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("WeatherforecastTime"), tea.String("2021-09-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -757,11 +1024,28 @@ func (client *Client) WeathermonitorWithOptions(request *WeathermonitorRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurHour"] = request.CurHour
+	query["OrderId"] = request.OrderId
+	query["PageNum"] = request.PageNum
+	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Weathermonitor"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &WeathermonitorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Weathermonitor"), tea.String("2021-09-08"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
