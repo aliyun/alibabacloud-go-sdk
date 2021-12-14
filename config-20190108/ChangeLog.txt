@@ -1,3 +1,6 @@
+2021-12-14 Version: v2.0.3
+- Support query resourceType.
+
 2021-12-13 Version: v2.0.2
 - Support query resourceType.
 
