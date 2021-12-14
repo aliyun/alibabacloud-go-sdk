@@ -7,16 +7,17 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateCertificateRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Certificate     *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateKey      *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 }
 
 func (s CreateCertificateRequest) String() string {
@@ -27,18 +28,8 @@ func (s CreateCertificateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCertificateRequest) SetDomain(v string) *CreateCertificateRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *CreateCertificateRequest) SetCertificate(v string) *CreateCertificateRequest {
 	s.Certificate = &v
-	return s
-}
-
-func (s *CreateCertificateRequest) SetPrivateKey(v string) *CreateCertificateRequest {
-	s.PrivateKey = &v
 	return s
 }
 
@@ -47,14 +38,24 @@ func (s *CreateCertificateRequest) SetCertificateName(v string) *CreateCertifica
 	return s
 }
 
+func (s *CreateCertificateRequest) SetDomain(v string) *CreateCertificateRequest {
+	s.Domain = &v
+	return s
+}
+
 func (s *CreateCertificateRequest) SetInstanceId(v string) *CreateCertificateRequest {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *CreateCertificateRequest) SetPrivateKey(v string) *CreateCertificateRequest {
+	s.PrivateKey = &v
+	return s
+}
+
 type CreateCertificateResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCertificateResponseBody) String() string {
@@ -65,13 +66,13 @@ func (s CreateCertificateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCertificateResponseBody) SetRequestId(v string) *CreateCertificateResponseBody {
-	s.RequestId = &v
+func (s *CreateCertificateResponseBody) SetCertificateId(v int64) *CreateCertificateResponseBody {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *CreateCertificateResponseBody) SetCertificateId(v int64) *CreateCertificateResponseBody {
-	s.CertificateId = &v
+func (s *CreateCertificateResponseBody) SetRequestId(v string) *CreateCertificateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -99,8 +100,8 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateCertificateByCertificateIdRequest struct {
-	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -112,13 +113,13 @@ func (s CreateCertificateByCertificateIdRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCertificateByCertificateIdRequest) SetDomain(v string) *CreateCertificateByCertificateIdRequest {
-	s.Domain = &v
+func (s *CreateCertificateByCertificateIdRequest) SetCertificateId(v int64) *CreateCertificateByCertificateIdRequest {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *CreateCertificateByCertificateIdRequest) SetCertificateId(v int64) *CreateCertificateByCertificateIdRequest {
-	s.CertificateId = &v
+func (s *CreateCertificateByCertificateIdRequest) SetDomain(v string) *CreateCertificateByCertificateIdRequest {
+	s.Domain = &v
 	return s
 }
 
@@ -128,8 +129,8 @@ func (s *CreateCertificateByCertificateIdRequest) SetInstanceId(v string) *Creat
 }
 
 type CreateCertificateByCertificateIdResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertificateId *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCertificateByCertificateIdResponseBody) String() string {
@@ -140,13 +141,13 @@ func (s CreateCertificateByCertificateIdResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateCertificateByCertificateIdResponseBody) SetRequestId(v string) *CreateCertificateByCertificateIdResponseBody {
-	s.RequestId = &v
+func (s *CreateCertificateByCertificateIdResponseBody) SetCertificateId(v int64) *CreateCertificateByCertificateIdResponseBody {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *CreateCertificateByCertificateIdResponseBody) SetCertificateId(v int64) *CreateCertificateByCertificateIdResponseBody {
-	s.CertificateId = &v
+func (s *CreateCertificateByCertificateIdResponseBody) SetRequestId(v string) *CreateCertificateByCertificateIdResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -174,27 +175,29 @@ func (s *CreateCertificateByCertificateIdResponse) SetBody(v *CreateCertificateB
 }
 
 type CreateDomainRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
-	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
 	AccessHeaderMode     *int32  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
 	AccessHeaders        *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
-	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
-	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
-	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
-	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	CloudNativeInstances *string `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty"`
+	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
+	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpFollowStatus       *int32  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
+	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SniHost              *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	SniStatus            *int32  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
+	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s CreateDomainRequest) String() string {
@@ -205,26 +208,6 @@ func (s CreateDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetDomain(v string) *CreateDomainRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetSourceIps(v string) *CreateDomainRequest {
-	s.SourceIps = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetIsAccessProduct(v int32) *CreateDomainRequest {
-	s.IsAccessProduct = &v
-	return s
-}
-
 func (s *CreateDomainRequest) SetAccessHeaderMode(v int32) *CreateDomainRequest {
 	s.AccessHeaderMode = &v
 	return s
@@ -232,66 +215,6 @@ func (s *CreateDomainRequest) SetAccessHeaderMode(v int32) *CreateDomainRequest 
 
 func (s *CreateDomainRequest) SetAccessHeaders(v string) *CreateDomainRequest {
 	s.AccessHeaders = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetLoadBalancing(v int32) *CreateDomainRequest {
-	s.LoadBalancing = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetLogHeaders(v string) *CreateDomainRequest {
-	s.LogHeaders = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetHttpPort(v string) *CreateDomainRequest {
-	s.HttpPort = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetHttpsPort(v string) *CreateDomainRequest {
-	s.HttpsPort = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetHttp2Port(v string) *CreateDomainRequest {
-	s.Http2Port = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetHttpToUserIp(v int32) *CreateDomainRequest {
-	s.HttpToUserIp = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetHttpsRedirect(v int32) *CreateDomainRequest {
-	s.HttpsRedirect = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetClusterType(v int32) *CreateDomainRequest {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetResourceGroupId(v string) *CreateDomainRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetConnectionTime(v int32) *CreateDomainRequest {
-	s.ConnectionTime = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetReadTime(v int32) *CreateDomainRequest {
-	s.ReadTime = &v
-	return s
-}
-
-func (s *CreateDomainRequest) SetWriteTime(v int32) *CreateDomainRequest {
-	s.WriteTime = &v
 	return s
 }
 
@@ -305,14 +228,104 @@ func (s *CreateDomainRequest) SetCloudNativeInstances(v string) *CreateDomainReq
 	return s
 }
 
+func (s *CreateDomainRequest) SetClusterType(v int32) *CreateDomainRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetConnectionTime(v int32) *CreateDomainRequest {
+	s.ConnectionTime = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetDomain(v string) *CreateDomainRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetHttp2Port(v string) *CreateDomainRequest {
+	s.Http2Port = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetHttpPort(v string) *CreateDomainRequest {
+	s.HttpPort = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetHttpToUserIp(v int32) *CreateDomainRequest {
+	s.HttpToUserIp = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetHttpsPort(v string) *CreateDomainRequest {
+	s.HttpsPort = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetHttpsRedirect(v int32) *CreateDomainRequest {
+	s.HttpsRedirect = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *CreateDomainRequest) SetIpFollowStatus(v int32) *CreateDomainRequest {
 	s.IpFollowStatus = &v
 	return s
 }
 
+func (s *CreateDomainRequest) SetIsAccessProduct(v int32) *CreateDomainRequest {
+	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetLoadBalancing(v int32) *CreateDomainRequest {
+	s.LoadBalancing = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetLogHeaders(v string) *CreateDomainRequest {
+	s.LogHeaders = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetReadTime(v int32) *CreateDomainRequest {
+	s.ReadTime = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetResourceGroupId(v string) *CreateDomainRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetSniHost(v string) *CreateDomainRequest {
+	s.SniHost = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetSniStatus(v int32) *CreateDomainRequest {
+	s.SniStatus = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetSourceIps(v string) *CreateDomainRequest {
+	s.SourceIps = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetWriteTime(v int32) *CreateDomainRequest {
+	s.WriteTime = &v
+	return s
+}
+
 type CreateDomainResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Cname     *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDomainResponseBody) String() string {
@@ -323,13 +336,13 @@ func (s CreateDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseBody {
-	s.RequestId = &v
+func (s *CreateDomainResponseBody) SetCname(v string) *CreateDomainResponseBody {
+	s.Cname = &v
 	return s
 }
 
-func (s *CreateDomainResponseBody) SetCname(v string) *CreateDomainResponseBody {
-	s.Cname = &v
+func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -357,10 +370,10 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateProtectionModuleRuleRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 }
 
 func (s CreateProtectionModuleRuleRequest) String() string {
@@ -371,23 +384,23 @@ func (s CreateProtectionModuleRuleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateProtectionModuleRuleRequest) SetDomain(v string) *CreateProtectionModuleRuleRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *CreateProtectionModuleRuleRequest) SetDefenseType(v string) *CreateProtectionModuleRuleRequest {
 	s.DefenseType = &v
 	return s
 }
 
-func (s *CreateProtectionModuleRuleRequest) SetRule(v string) *CreateProtectionModuleRuleRequest {
-	s.Rule = &v
+func (s *CreateProtectionModuleRuleRequest) SetDomain(v string) *CreateProtectionModuleRuleRequest {
+	s.Domain = &v
 	return s
 }
 
 func (s *CreateProtectionModuleRuleRequest) SetInstanceId(v string) *CreateProtectionModuleRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateProtectionModuleRuleRequest) SetRule(v string) *CreateProtectionModuleRuleRequest {
+	s.Rule = &v
 	return s
 }
 
@@ -432,8 +445,8 @@ func (s *CreateProtectionModuleRuleResponse) SetBody(v *CreateProtectionModuleRu
 }
 
 type DeleteDomainRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDomainRequest) String() string {
@@ -444,13 +457,13 @@ func (s DeleteDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
-	s.InstanceId = &v
+func (s *DeleteDomainRequest) SetDomain(v string) *DeleteDomainRequest {
+	s.Domain = &v
 	return s
 }
 
-func (s *DeleteDomainRequest) SetDomain(v string) *DeleteDomainRequest {
-	s.Domain = &v
+func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -558,10 +571,10 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteProtectionModuleRuleRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteProtectionModuleRuleRequest) String() string {
@@ -572,23 +585,23 @@ func (s DeleteProtectionModuleRuleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteProtectionModuleRuleRequest) SetDomain(v string) *DeleteProtectionModuleRuleRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *DeleteProtectionModuleRuleRequest) SetDefenseType(v string) *DeleteProtectionModuleRuleRequest {
 	s.DefenseType = &v
 	return s
 }
 
-func (s *DeleteProtectionModuleRuleRequest) SetRuleId(v int64) *DeleteProtectionModuleRuleRequest {
-	s.RuleId = &v
+func (s *DeleteProtectionModuleRuleRequest) SetDomain(v string) *DeleteProtectionModuleRuleRequest {
+	s.Domain = &v
 	return s
 }
 
 func (s *DeleteProtectionModuleRuleRequest) SetInstanceId(v string) *DeleteProtectionModuleRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteProtectionModuleRuleRequest) SetRuleId(v int64) *DeleteProtectionModuleRuleRequest {
+	s.RuleId = &v
 	return s
 }
 
@@ -632,121 +645,11 @@ func (s *DeleteProtectionModuleRuleResponse) SetBody(v *DeleteProtectionModuleRu
 	return s
 }
 
-type DescribeCertificatesRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-}
-
-func (s DescribeCertificatesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCertificatesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCertificatesRequest) SetInstanceId(v string) *DescribeCertificatesRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeCertificatesRequest) SetDomain(v string) *DescribeCertificatesRequest {
-	s.Domain = &v
-	return s
-}
-
-type DescribeCertificatesResponseBody struct {
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Certificates []*DescribeCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-}
-
-func (s DescribeCertificatesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCertificatesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCertificatesResponseBody) SetRequestId(v string) *DescribeCertificatesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCertificatesResponseBody) SetCertificates(v []*DescribeCertificatesResponseBodyCertificates) *DescribeCertificatesResponseBody {
-	s.Certificates = v
-	return s
-}
-
-type DescribeCertificatesResponseBodyCertificates struct {
-	CertificateName *string   `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	CommonName      *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Sans            []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
-	IsUsing         *bool     `json:"IsUsing,omitempty" xml:"IsUsing,omitempty"`
-	CertificateId   *int64    `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-}
-
-func (s DescribeCertificatesResponseBodyCertificates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCertificatesResponseBodyCertificates) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCertificatesResponseBodyCertificates) SetCertificateName(v string) *DescribeCertificatesResponseBodyCertificates {
-	s.CertificateName = &v
-	return s
-}
-
-func (s *DescribeCertificatesResponseBodyCertificates) SetCommonName(v string) *DescribeCertificatesResponseBodyCertificates {
-	s.CommonName = &v
-	return s
-}
-
-func (s *DescribeCertificatesResponseBodyCertificates) SetSans(v []*string) *DescribeCertificatesResponseBodyCertificates {
-	s.Sans = v
-	return s
-}
-
-func (s *DescribeCertificatesResponseBodyCertificates) SetIsUsing(v bool) *DescribeCertificatesResponseBodyCertificates {
-	s.IsUsing = &v
-	return s
-}
-
-func (s *DescribeCertificatesResponseBodyCertificates) SetCertificateId(v int64) *DescribeCertificatesResponseBodyCertificates {
-	s.CertificateId = &v
-	return s
-}
-
-type DescribeCertificatesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeCertificatesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCertificatesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCertificatesResponse) SetHeaders(v map[string]*string) *DescribeCertificatesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeCertificatesResponse) SetBody(v *DescribeCertificatesResponseBody) *DescribeCertificatesResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeCertMatchStatusRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 }
 
 func (s DescribeCertMatchStatusRequest) String() string {
@@ -757,18 +660,13 @@ func (s DescribeCertMatchStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCertMatchStatusRequest) SetDomain(v string) *DescribeCertMatchStatusRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *DescribeCertMatchStatusRequest) SetCertificate(v string) *DescribeCertMatchStatusRequest {
 	s.Certificate = &v
 	return s
 }
 
-func (s *DescribeCertMatchStatusRequest) SetPrivateKey(v string) *DescribeCertMatchStatusRequest {
-	s.PrivateKey = &v
+func (s *DescribeCertMatchStatusRequest) SetDomain(v string) *DescribeCertMatchStatusRequest {
+	s.Domain = &v
 	return s
 }
 
@@ -777,9 +675,14 @@ func (s *DescribeCertMatchStatusRequest) SetInstanceId(v string) *DescribeCertMa
 	return s
 }
 
+func (s *DescribeCertMatchStatusRequest) SetPrivateKey(v string) *DescribeCertMatchStatusRequest {
+	s.PrivateKey = &v
+	return s
+}
+
 type DescribeCertMatchStatusResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MatchStatus *bool   `json:"MatchStatus,omitempty" xml:"MatchStatus,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCertMatchStatusResponseBody) String() string {
@@ -790,13 +693,13 @@ func (s DescribeCertMatchStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCertMatchStatusResponseBody) SetRequestId(v string) *DescribeCertMatchStatusResponseBody {
-	s.RequestId = &v
+func (s *DescribeCertMatchStatusResponseBody) SetMatchStatus(v bool) *DescribeCertMatchStatusResponseBody {
+	s.MatchStatus = &v
 	return s
 }
 
-func (s *DescribeCertMatchStatusResponseBody) SetMatchStatus(v bool) *DescribeCertMatchStatusResponseBody {
-	s.MatchStatus = &v
+func (s *DescribeCertMatchStatusResponseBody) SetRequestId(v string) *DescribeCertMatchStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -823,9 +726,119 @@ func (s *DescribeCertMatchStatusResponse) SetBody(v *DescribeCertMatchStatusResp
 	return s
 }
 
-type DescribeDomainRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+type DescribeCertificatesRequest struct {
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCertificatesRequest) SetDomain(v string) *DescribeCertificatesRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeCertificatesRequest) SetInstanceId(v string) *DescribeCertificatesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeCertificatesResponseBody struct {
+	Certificates []*DescribeCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCertificatesResponseBody) SetCertificates(v []*DescribeCertificatesResponseBodyCertificates) *DescribeCertificatesResponseBody {
+	s.Certificates = v
+	return s
+}
+
+func (s *DescribeCertificatesResponseBody) SetRequestId(v string) *DescribeCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCertificatesResponseBodyCertificates struct {
+	CertificateId   *int64    `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	CertificateName *string   `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CommonName      *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	IsUsing         *bool     `json:"IsUsing,omitempty" xml:"IsUsing,omitempty"`
+	Sans            []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCertificatesResponseBodyCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCertificatesResponseBodyCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCertificatesResponseBodyCertificates) SetCertificateId(v int64) *DescribeCertificatesResponseBodyCertificates {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *DescribeCertificatesResponseBodyCertificates) SetCertificateName(v string) *DescribeCertificatesResponseBodyCertificates {
+	s.CertificateName = &v
+	return s
+}
+
+func (s *DescribeCertificatesResponseBodyCertificates) SetCommonName(v string) *DescribeCertificatesResponseBodyCertificates {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeCertificatesResponseBodyCertificates) SetIsUsing(v bool) *DescribeCertificatesResponseBodyCertificates {
+	s.IsUsing = &v
+	return s
+}
+
+func (s *DescribeCertificatesResponseBodyCertificates) SetSans(v []*string) *DescribeCertificatesResponseBodyCertificates {
+	s.Sans = v
+	return s
+}
+
+type DescribeCertificatesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCertificatesResponse) SetHeaders(v map[string]*string) *DescribeCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCertificatesResponse) SetBody(v *DescribeCertificatesResponseBody) *DescribeCertificatesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainRequest struct {
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeDomainRequest) String() string {
@@ -836,19 +849,19 @@ func (s DescribeDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainRequest) SetInstanceId(v string) *DescribeDomainRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeDomainRequest) SetDomain(v string) *DescribeDomainRequest {
 	s.Domain = &v
 	return s
 }
 
+func (s *DescribeDomainRequest) SetInstanceId(v string) *DescribeDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
 type DescribeDomainResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Domain    *DescribeDomainResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainResponseBody) String() string {
@@ -859,38 +872,40 @@ func (s DescribeDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainResponseBody) SetRequestId(v string) *DescribeDomainResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeDomainResponseBody) SetDomain(v *DescribeDomainResponseBodyDomain) *DescribeDomainResponseBody {
 	s.Domain = v
 	return s
 }
 
+func (s *DescribeDomainResponseBody) SetRequestId(v string) *DescribeDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeDomainResponseBodyDomain struct {
-	Http2Port            []*string                                               `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
-	CloudNativeInstances []*DescribeDomainResponseBodyDomainCloudNativeInstances `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty" type:"Repeated"`
-	HttpToUserIp         *int32                                                  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	HttpPort             []*string                                               `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
-	LogHeaders           []*DescribeDomainResponseBodyDomainLogHeaders           `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
-	IsAccessProduct      *int32                                                  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	AccessHeaders        []*string                                               `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty" type:"Repeated"`
 	AccessHeaderMode     *int32                                                  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
-	HttpsRedirect        *int32                                                  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	LoadBalancing        *int32                                                  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	IpFollowStatus       *int32                                                  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	AccessHeaders        []*string                                               `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty" type:"Repeated"`
 	AccessType           *string                                                 `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Version              *int64                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+	CloudNativeInstances []*DescribeDomainResponseBodyDomainCloudNativeInstances `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty" type:"Repeated"`
 	ClusterType          *int32                                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ReadTime             *int32                                                  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	WriteTime            *int32                                                  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
-	ResourceGroupId      *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Cname                *string                                                 `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	SourceIps            []*string                                               `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
 	ConnectionTime       *int32                                                  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	Http2Port            []*string                                               `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
+	HttpPort             []*string                                               `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
+	HttpToUserIp         *int32                                                  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
 	HttpsPort            []*string                                               `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
+	HttpsRedirect        *int32                                                  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	IpFollowStatus       *int32                                                  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	IsAccessProduct      *int32                                                  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	LoadBalancing        *int32                                                  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	LogHeaders           []*DescribeDomainResponseBodyDomainLogHeaders           `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	ReadTime             *int32                                                  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	ResourceGroupId      *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SniHost              *string                                                 `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	SniStatus            *int32                                                  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	SourceIps            []*string                                               `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
+	Version              *int64                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+	WriteTime            *int32                                                  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s DescribeDomainResponseBodyDomain) String() string {
@@ -901,33 +916,8 @@ func (s DescribeDomainResponseBodyDomain) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetHttp2Port(v []*string) *DescribeDomainResponseBodyDomain {
-	s.Http2Port = v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetCloudNativeInstances(v []*DescribeDomainResponseBodyDomainCloudNativeInstances) *DescribeDomainResponseBodyDomain {
-	s.CloudNativeInstances = v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetHttpToUserIp(v int32) *DescribeDomainResponseBodyDomain {
-	s.HttpToUserIp = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetHttpPort(v []*string) *DescribeDomainResponseBodyDomain {
-	s.HttpPort = v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetLogHeaders(v []*DescribeDomainResponseBodyDomainLogHeaders) *DescribeDomainResponseBodyDomain {
-	s.LogHeaders = v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetIsAccessProduct(v int32) *DescribeDomainResponseBodyDomain {
-	s.IsAccessProduct = &v
+func (s *DescribeDomainResponseBodyDomain) SetAccessHeaderMode(v int32) *DescribeDomainResponseBodyDomain {
+	s.AccessHeaderMode = &v
 	return s
 }
 
@@ -936,33 +926,13 @@ func (s *DescribeDomainResponseBodyDomain) SetAccessHeaders(v []*string) *Descri
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetAccessHeaderMode(v int32) *DescribeDomainResponseBodyDomain {
-	s.AccessHeaderMode = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetHttpsRedirect(v int32) *DescribeDomainResponseBodyDomain {
-	s.HttpsRedirect = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetLoadBalancing(v int32) *DescribeDomainResponseBodyDomain {
-	s.LoadBalancing = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetIpFollowStatus(v int32) *DescribeDomainResponseBodyDomain {
-	s.IpFollowStatus = &v
-	return s
-}
-
 func (s *DescribeDomainResponseBodyDomain) SetAccessType(v string) *DescribeDomainResponseBodyDomain {
 	s.AccessType = &v
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetVersion(v int64) *DescribeDomainResponseBodyDomain {
-	s.Version = &v
+func (s *DescribeDomainResponseBodyDomain) SetCloudNativeInstances(v []*DescribeDomainResponseBodyDomainCloudNativeInstances) *DescribeDomainResponseBodyDomain {
+	s.CloudNativeInstances = v
 	return s
 }
 
@@ -971,28 +941,8 @@ func (s *DescribeDomainResponseBodyDomain) SetClusterType(v int32) *DescribeDoma
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomain) SetReadTime(v int32) *DescribeDomainResponseBodyDomain {
-	s.ReadTime = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetWriteTime(v int32) *DescribeDomainResponseBodyDomain {
-	s.WriteTime = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetResourceGroupId(v string) *DescribeDomainResponseBodyDomain {
-	s.ResourceGroupId = &v
-	return s
-}
-
 func (s *DescribeDomainResponseBodyDomain) SetCname(v string) *DescribeDomainResponseBodyDomain {
 	s.Cname = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomain) SetSourceIps(v []*string) *DescribeDomainResponseBodyDomain {
-	s.SourceIps = v
 	return s
 }
 
@@ -1001,17 +951,92 @@ func (s *DescribeDomainResponseBodyDomain) SetConnectionTime(v int32) *DescribeD
 	return s
 }
 
+func (s *DescribeDomainResponseBodyDomain) SetHttp2Port(v []*string) *DescribeDomainResponseBodyDomain {
+	s.Http2Port = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetHttpPort(v []*string) *DescribeDomainResponseBodyDomain {
+	s.HttpPort = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetHttpToUserIp(v int32) *DescribeDomainResponseBodyDomain {
+	s.HttpToUserIp = &v
+	return s
+}
+
 func (s *DescribeDomainResponseBodyDomain) SetHttpsPort(v []*string) *DescribeDomainResponseBodyDomain {
 	s.HttpsPort = v
 	return s
 }
 
+func (s *DescribeDomainResponseBodyDomain) SetHttpsRedirect(v int32) *DescribeDomainResponseBodyDomain {
+	s.HttpsRedirect = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetIpFollowStatus(v int32) *DescribeDomainResponseBodyDomain {
+	s.IpFollowStatus = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetIsAccessProduct(v int32) *DescribeDomainResponseBodyDomain {
+	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetLoadBalancing(v int32) *DescribeDomainResponseBodyDomain {
+	s.LoadBalancing = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetLogHeaders(v []*DescribeDomainResponseBodyDomainLogHeaders) *DescribeDomainResponseBodyDomain {
+	s.LogHeaders = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetReadTime(v int32) *DescribeDomainResponseBodyDomain {
+	s.ReadTime = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetResourceGroupId(v string) *DescribeDomainResponseBodyDomain {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetSniHost(v string) *DescribeDomainResponseBodyDomain {
+	s.SniHost = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetSniStatus(v int32) *DescribeDomainResponseBodyDomain {
+	s.SniStatus = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetSourceIps(v []*string) *DescribeDomainResponseBodyDomain {
+	s.SourceIps = v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetVersion(v int64) *DescribeDomainResponseBodyDomain {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomain) SetWriteTime(v int32) *DescribeDomainResponseBodyDomain {
+	s.WriteTime = &v
+	return s
+}
+
 type DescribeDomainResponseBodyDomainCloudNativeInstances struct {
+	CloudNativeProductName *string                                                                    `json:"CloudNativeProductName,omitempty" xml:"CloudNativeProductName,omitempty"`
+	IPAddressList          *string                                                                    `json:"IPAddressList,omitempty" xml:"IPAddressList,omitempty"`
+	InstanceId             *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ProtocolPortConfigs    []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs `json:"ProtocolPortConfigs,omitempty" xml:"ProtocolPortConfigs,omitempty" type:"Repeated"`
 	RedirectionTypeName    *string                                                                    `json:"RedirectionTypeName,omitempty" xml:"RedirectionTypeName,omitempty"`
-	CloudNativeProductName *string                                                                    `json:"CloudNativeProductName,omitempty" xml:"CloudNativeProductName,omitempty"`
-	InstanceId             *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IPAddressList          *string                                                                    `json:"IPAddressList,omitempty" xml:"IPAddressList,omitempty"`
 }
 
 func (s DescribeDomainResponseBodyDomainCloudNativeInstances) String() string {
@@ -1020,6 +1045,21 @@ func (s DescribeDomainResponseBodyDomainCloudNativeInstances) String() string {
 
 func (s DescribeDomainResponseBodyDomainCloudNativeInstances) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetCloudNativeProductName(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
+	s.CloudNativeProductName = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetIPAddressList(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
+	s.IPAddressList = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetInstanceId(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetProtocolPortConfigs(v []*DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) *DescribeDomainResponseBodyDomainCloudNativeInstances {
@@ -1032,24 +1072,9 @@ func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetRedirectionTyp
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetCloudNativeProductName(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
-	s.CloudNativeProductName = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetInstanceId(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstances) SetIPAddressList(v string) *DescribeDomainResponseBodyDomainCloudNativeInstances {
-	s.IPAddressList = &v
-	return s
-}
-
 type DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs struct {
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	Ports    *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) String() string {
@@ -1060,13 +1085,13 @@ func (s DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs)
 	return s.String()
 }
 
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetProtocol(v string) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
-	s.Protocol = &v
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetPorts(v string) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
+	s.Ports = &v
 	return s
 }
 
-func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetPorts(v string) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
-	s.Ports = &v
+func (s *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs) SetProtocol(v string) *DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs {
+	s.Protocol = &v
 	return s
 }
 
@@ -1117,8 +1142,8 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 }
 
 type DescribeDomainAdvanceConfigsRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DomainList      *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1130,13 +1155,13 @@ func (s DescribeDomainAdvanceConfigsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainAdvanceConfigsRequest) SetInstanceId(v string) *DescribeDomainAdvanceConfigsRequest {
-	s.InstanceId = &v
+func (s *DescribeDomainAdvanceConfigsRequest) SetDomainList(v string) *DescribeDomainAdvanceConfigsRequest {
+	s.DomainList = &v
 	return s
 }
 
-func (s *DescribeDomainAdvanceConfigsRequest) SetDomainList(v string) *DescribeDomainAdvanceConfigsRequest {
-	s.DomainList = &v
+func (s *DescribeDomainAdvanceConfigsRequest) SetInstanceId(v string) *DescribeDomainAdvanceConfigsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1146,8 +1171,8 @@ func (s *DescribeDomainAdvanceConfigsRequest) SetResourceGroupId(v string) *Desc
 }
 
 type DescribeDomainAdvanceConfigsResponseBody struct {
-	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainConfigs []*DescribeDomainAdvanceConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponseBody) String() string {
@@ -1158,19 +1183,19 @@ func (s DescribeDomainAdvanceConfigsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBody) SetRequestId(v string) *DescribeDomainAdvanceConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeDomainAdvanceConfigsResponseBody) SetDomainConfigs(v []*DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) *DescribeDomainAdvanceConfigsResponseBody {
 	s.DomainConfigs = v
 	return s
 }
 
+func (s *DescribeDomainAdvanceConfigsResponseBody) SetRequestId(v string) *DescribeDomainAdvanceConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeDomainAdvanceConfigsResponseBodyDomainConfigs struct {
-	Profile *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 	Domain  *string                                                       `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Profile *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) String() string {
@@ -1181,29 +1206,29 @@ func (s DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) GoString() string
 	return s.String()
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) SetProfile(v *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs {
-	s.Profile = v
-	return s
-}
-
 func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) SetDomain(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs {
 	s.Domain = &v
 	return s
 }
 
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs) SetProfile(v *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigs {
+	s.Profile = v
+	return s
+}
+
 type DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile struct {
-	Http2Port          *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
-	Ipv6Status         *int32  `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
-	HttpPort           *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	GSLBStatus         *string `json:"GSLBStatus,omitempty" xml:"GSLBStatus,omitempty"`
-	Rs                 *string `json:"Rs,omitempty" xml:"Rs,omitempty"`
-	VipServiceStatus   *int32  `json:"VipServiceStatus,omitempty" xml:"VipServiceStatus,omitempty"`
-	ClusterType        *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ExclusiveVipStatus *int32  `json:"ExclusiveVipStatus,omitempty" xml:"ExclusiveVipStatus,omitempty"`
-	Cname              *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	CertStatus         *int32  `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
-	HttpsPort          *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	ResolvedType       *int32  `json:"ResolvedType,omitempty" xml:"ResolvedType,omitempty"`
+	CertStatus         *int32    `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
+	ClusterType        *int32    `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Cname              *string   `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	ExclusiveVipStatus *int32    `json:"ExclusiveVipStatus,omitempty" xml:"ExclusiveVipStatus,omitempty"`
+	GSLBStatus         *string   `json:"GSLBStatus,omitempty" xml:"GSLBStatus,omitempty"`
+	Http2Port          []*int32  `json:"Http2Port,omitempty" xml:"Http2Port,omitempty" type:"Repeated"`
+	HttpPort           []*int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty" type:"Repeated"`
+	HttpsPort          []*int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty" type:"Repeated"`
+	Ipv6Status         *int32    `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	ResolvedType       *int32    `json:"ResolvedType,omitempty" xml:"ResolvedType,omitempty"`
+	Rs                 []*string `json:"Rs,omitempty" xml:"Rs,omitempty" type:"Repeated"`
+	VipServiceStatus   *int32    `json:"VipServiceStatus,omitempty" xml:"VipServiceStatus,omitempty"`
 }
 
 func (s DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) String() string {
@@ -1214,33 +1239,8 @@ func (s DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) GoString()
 	return s.String()
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttp2Port(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.Http2Port = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetIpv6Status(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.Ipv6Status = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttpPort(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.HttpPort = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetGSLBStatus(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.GSLBStatus = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetRs(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.Rs = &v
-	return s
-}
-
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetVipServiceStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.VipServiceStatus = &v
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetCertStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.CertStatus = &v
 	return s
 }
 
@@ -1249,28 +1249,53 @@ func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetCluste
 	return s
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetExclusiveVipStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.ExclusiveVipStatus = &v
-	return s
-}
-
 func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetCname(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
 	s.Cname = &v
 	return s
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetCertStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.CertStatus = &v
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetExclusiveVipStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.ExclusiveVipStatus = &v
 	return s
 }
 
-func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttpsPort(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
-	s.HttpsPort = &v
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetGSLBStatus(v string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.GSLBStatus = &v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttp2Port(v []*int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.Http2Port = v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttpPort(v []*int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.HttpPort = v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetHttpsPort(v []*int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.HttpsPort = v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetIpv6Status(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.Ipv6Status = &v
 	return s
 }
 
 func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetResolvedType(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
 	s.ResolvedType = &v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetRs(v []*string) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.Rs = v
+	return s
+}
+
+func (s *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile) SetVipServiceStatus(v int32) *DescribeDomainAdvanceConfigsResponseBodyDomainConfigsProfile {
+	s.VipServiceStatus = &v
 	return s
 }
 
@@ -1298,10 +1323,10 @@ func (s *DescribeDomainAdvanceConfigsResponse) SetBody(v *DescribeDomainAdvanceC
 }
 
 type DescribeDomainBasicConfigsRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	DomainKey            *string `json:"DomainKey,omitempty" xml:"DomainKey,omitempty"`
 	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	CloudNativeProductId *int32  `json:"CloudNativeProductId,omitempty" xml:"CloudNativeProductId,omitempty"`
+	DomainKey            *string `json:"DomainKey,omitempty" xml:"DomainKey,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1315,8 +1340,13 @@ func (s DescribeDomainBasicConfigsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainBasicConfigsRequest) SetInstanceId(v string) *DescribeDomainBasicConfigsRequest {
-	s.InstanceId = &v
+func (s *DescribeDomainBasicConfigsRequest) SetAccessType(v string) *DescribeDomainBasicConfigsRequest {
+	s.AccessType = &v
+	return s
+}
+
+func (s *DescribeDomainBasicConfigsRequest) SetCloudNativeProductId(v int32) *DescribeDomainBasicConfigsRequest {
+	s.CloudNativeProductId = &v
 	return s
 }
 
@@ -1325,13 +1355,8 @@ func (s *DescribeDomainBasicConfigsRequest) SetDomainKey(v string) *DescribeDoma
 	return s
 }
 
-func (s *DescribeDomainBasicConfigsRequest) SetAccessType(v string) *DescribeDomainBasicConfigsRequest {
-	s.AccessType = &v
-	return s
-}
-
-func (s *DescribeDomainBasicConfigsRequest) SetCloudNativeProductId(v int32) *DescribeDomainBasicConfigsRequest {
-	s.CloudNativeProductId = &v
+func (s *DescribeDomainBasicConfigsRequest) SetInstanceId(v string) *DescribeDomainBasicConfigsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1351,9 +1376,9 @@ func (s *DescribeDomainBasicConfigsRequest) SetResourceGroupId(v string) *Descri
 }
 
 type DescribeDomainBasicConfigsResponseBody struct {
-	TotalCount    *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainConfigs []*DescribeDomainBasicConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsResponseBody) String() string {
@@ -1364,8 +1389,8 @@ func (s DescribeDomainBasicConfigsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainBasicConfigsResponseBody) SetTotalCount(v int32) *DescribeDomainBasicConfigsResponseBody {
-	s.TotalCount = &v
+func (s *DescribeDomainBasicConfigsResponseBody) SetDomainConfigs(v []*DescribeDomainBasicConfigsResponseBodyDomainConfigs) *DescribeDomainBasicConfigsResponseBody {
+	s.DomainConfigs = v
 	return s
 }
 
@@ -1374,22 +1399,22 @@ func (s *DescribeDomainBasicConfigsResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeDomainBasicConfigsResponseBody) SetDomainConfigs(v []*DescribeDomainBasicConfigsResponseBodyDomainConfigs) *DescribeDomainBasicConfigsResponseBody {
-	s.DomainConfigs = v
+func (s *DescribeDomainBasicConfigsResponseBody) SetTotalCount(v int32) *DescribeDomainBasicConfigsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeDomainBasicConfigsResponseBodyDomainConfigs struct {
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	AclStatus  *int32  `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	CcMode     *int32  `json:"CcMode,omitempty" xml:"CcMode,omitempty"`
 	CcStatus   *int32  `json:"CcStatus,omitempty" xml:"CcStatus,omitempty"`
-	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Version    *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
-	AclStatus  *int32  `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	WafStatus  *int32  `json:"WafStatus,omitempty" xml:"WafStatus,omitempty"`
 	WafMode    *int32  `json:"WafMode,omitempty" xml:"WafMode,omitempty"`
+	WafStatus  *int32  `json:"WafStatus,omitempty" xml:"WafStatus,omitempty"`
 }
 
 func (s DescribeDomainBasicConfigsResponseBodyDomainConfigs) String() string {
@@ -1400,18 +1425,13 @@ func (s DescribeDomainBasicConfigsResponseBodyDomainConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetStatus(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.Status = &v
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetAccessType(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.AccessType = &v
 	return s
 }
 
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetDomain(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetOwner(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.Owner = &v
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetAclStatus(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.AclStatus = &v
 	return s
 }
 
@@ -1425,8 +1445,18 @@ func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetCcStatus(v int3
 	return s
 }
 
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetAccessType(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.AccessType = &v
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetDomain(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetOwner(v string) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetStatus(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.Status = &v
 	return s
 }
 
@@ -1435,18 +1465,13 @@ func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetVersion(v int64
 	return s
 }
 
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetAclStatus(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.AclStatus = &v
+func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetWafMode(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
+	s.WafMode = &v
 	return s
 }
 
 func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetWafStatus(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
 	s.WafStatus = &v
-	return s
-}
-
-func (s *DescribeDomainBasicConfigsResponseBodyDomainConfigs) SetWafMode(v int32) *DescribeDomainBasicConfigsResponseBodyDomainConfigs {
-	s.WafMode = &v
 	return s
 }
 
@@ -1474,13 +1499,13 @@ func (s *DescribeDomainBasicConfigsResponse) SetBody(v *DescribeDomainBasicConfi
 }
 
 type DescribeDomainListRequest struct {
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	DomainName      *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSub           *int32    `json:"IsSub,omitempty" xml:"IsSub,omitempty"`
 	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	IsSub           *int32    `json:"IsSub,omitempty" xml:"IsSub,omitempty"`
-	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDomainListRequest) String() string {
@@ -1491,8 +1516,13 @@ func (s DescribeDomainListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomainListRequest {
-	s.ResourceGroupId = &v
+func (s *DescribeDomainListRequest) SetDomainName(v string) *DescribeDomainListRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDomainListRequest) SetDomainNames(v []*string) *DescribeDomainListRequest {
+	s.DomainNames = v
 	return s
 }
 
@@ -1501,8 +1531,8 @@ func (s *DescribeDomainListRequest) SetInstanceId(v string) *DescribeDomainListR
 	return s
 }
 
-func (s *DescribeDomainListRequest) SetDomainName(v string) *DescribeDomainListRequest {
-	s.DomainName = &v
+func (s *DescribeDomainListRequest) SetIsSub(v int32) *DescribeDomainListRequest {
+	s.IsSub = &v
 	return s
 }
 
@@ -1516,20 +1546,15 @@ func (s *DescribeDomainListRequest) SetPageSize(v int32) *DescribeDomainListRequ
 	return s
 }
 
-func (s *DescribeDomainListRequest) SetIsSub(v int32) *DescribeDomainListRequest {
-	s.IsSub = &v
-	return s
-}
-
-func (s *DescribeDomainListRequest) SetDomainNames(v []*string) *DescribeDomainListRequest {
-	s.DomainNames = v
+func (s *DescribeDomainListRequest) SetResourceGroupId(v string) *DescribeDomainListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeDomainListResponseBody struct {
-	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainListResponseBody) String() string {
@@ -1540,8 +1565,8 @@ func (s DescribeDomainListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainListResponseBody) SetTotalCount(v int32) *DescribeDomainListResponseBody {
-	s.TotalCount = &v
+func (s *DescribeDomainListResponseBody) SetDomainNames(v []*string) *DescribeDomainListResponseBody {
+	s.DomainNames = v
 	return s
 }
 
@@ -1550,8 +1575,8 @@ func (s *DescribeDomainListResponseBody) SetRequestId(v string) *DescribeDomainL
 	return s
 }
 
-func (s *DescribeDomainListResponseBody) SetDomainNames(v []*string) *DescribeDomainListResponseBody {
-	s.DomainNames = v
+func (s *DescribeDomainListResponseBody) SetTotalCount(v int32) *DescribeDomainListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1602,8 +1627,8 @@ func (s *DescribeDomainNamesRequest) SetResourceGroupId(v string) *DescribeDomai
 }
 
 type DescribeDomainNamesResponseBody struct {
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainNamesResponseBody) String() string {
@@ -1614,13 +1639,13 @@ func (s DescribeDomainNamesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainNamesResponseBody) SetRequestId(v string) *DescribeDomainNamesResponseBody {
-	s.RequestId = &v
+func (s *DescribeDomainNamesResponseBody) SetDomainNames(v []*string) *DescribeDomainNamesResponseBody {
+	s.DomainNames = v
 	return s
 }
 
-func (s *DescribeDomainNamesResponseBody) SetDomainNames(v []*string) *DescribeDomainNamesResponseBody {
-	s.DomainNames = v
+func (s *DescribeDomainNamesResponseBody) SetRequestId(v string) *DescribeDomainNamesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1671,8 +1696,8 @@ func (s *DescribeDomainRuleGroupRequest) SetInstanceId(v string) *DescribeDomain
 }
 
 type DescribeDomainRuleGroupResponseBody struct {
-	RuleGroupId *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleGroupId *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
 }
 
 func (s DescribeDomainRuleGroupResponseBody) String() string {
@@ -1683,13 +1708,13 @@ func (s DescribeDomainRuleGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainRuleGroupResponseBody) SetRuleGroupId(v int64) *DescribeDomainRuleGroupResponseBody {
-	s.RuleGroupId = &v
+func (s *DescribeDomainRuleGroupResponseBody) SetRequestId(v string) *DescribeDomainRuleGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDomainRuleGroupResponseBody) SetRequestId(v string) *DescribeDomainRuleGroupResponseBody {
-	s.RequestId = &v
+func (s *DescribeDomainRuleGroupResponseBody) SetRuleGroupId(v int64) *DescribeDomainRuleGroupResponseBody {
+	s.RuleGroupId = &v
 	return s
 }
 
@@ -1740,8 +1765,8 @@ func (s *DescribeInstanceInfoRequest) SetResourceGroupId(v string) *DescribeInst
 }
 
 type DescribeInstanceInfoResponseBody struct {
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceInfo *DescribeInstanceInfoResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceInfoResponseBody) String() string {
@@ -1752,27 +1777,27 @@ func (s DescribeInstanceInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceInfoResponseBody) SetRequestId(v string) *DescribeInstanceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeInstanceInfoResponseBody) SetInstanceInfo(v *DescribeInstanceInfoResponseBodyInstanceInfo) *DescribeInstanceInfoResponseBody {
 	s.InstanceInfo = v
 	return s
 }
 
+func (s *DescribeInstanceInfoResponseBody) SetRequestId(v string) *DescribeInstanceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeInstanceInfoResponseBodyInstanceInfo struct {
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	EndDate          *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	RemainDay        *int32  `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	PayType          *int32  `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	InDebt           *int32  `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PayType          *int32  `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RemainDay        *int32  `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	Trial            *int32  `json:"Trial,omitempty" xml:"Trial,omitempty"`
+	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceInfoResponseBodyInstanceInfo) String() string {
@@ -1783,33 +1808,8 @@ func (s DescribeInstanceInfoResponseBodyInstanceInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetStatus(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
-	s.Status = &v
-	return s
-}
-
 func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetEndDate(v int64) *DescribeInstanceInfoResponseBodyInstanceInfo {
 	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetVersion(v string) *DescribeInstanceInfoResponseBodyInstanceInfo {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetRemainDay(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
-	s.RemainDay = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetRegion(v string) *DescribeInstanceInfoResponseBodyInstanceInfo {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetPayType(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
-	s.PayType = &v
 	return s
 }
 
@@ -1823,6 +1823,26 @@ func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetInstanceId(v string) *
 	return s
 }
 
+func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetPayType(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetRegion(v string) *DescribeInstanceInfoResponseBodyInstanceInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetRemainDay(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
+	s.RemainDay = &v
+	return s
+}
+
+func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetStatus(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
+	s.Status = &v
+	return s
+}
+
 func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetSubscriptionType(v string) *DescribeInstanceInfoResponseBodyInstanceInfo {
 	s.SubscriptionType = &v
 	return s
@@ -1830,6 +1850,11 @@ func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetSubscriptionType(v str
 
 func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetTrial(v int32) *DescribeInstanceInfoResponseBodyInstanceInfo {
 	s.Trial = &v
+	return s
+}
+
+func (s *DescribeInstanceInfoResponseBodyInstanceInfo) SetVersion(v string) *DescribeInstanceInfoResponseBodyInstanceInfo {
+	s.Version = &v
 	return s
 }
 
@@ -1852,146 +1877,6 @@ func (s *DescribeInstanceInfoResponse) SetHeaders(v map[string]*string) *Describ
 }
 
 func (s *DescribeInstanceInfoResponse) SetBody(v *DescribeInstanceInfoResponseBody) *DescribeInstanceInfoResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeInstanceInfosRequest struct {
-	InstanceSource  *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s DescribeInstanceInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceInfosRequest) SetInstanceSource(v string) *DescribeInstanceInfosRequest {
-	s.InstanceSource = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosRequest) SetInstanceId(v string) *DescribeInstanceInfosRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosRequest) SetResourceGroupId(v string) *DescribeInstanceInfosRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type DescribeInstanceInfosResponseBody struct {
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceInfos []*DescribeInstanceInfosResponseBodyInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
-}
-
-func (s DescribeInstanceInfosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceInfosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceInfosResponseBody) SetRequestId(v string) *DescribeInstanceInfosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBody) SetInstanceInfos(v []*DescribeInstanceInfosResponseBodyInstanceInfos) *DescribeInstanceInfosResponseBody {
-	s.InstanceInfos = v
-	return s
-}
-
-type DescribeInstanceInfosResponseBodyInstanceInfos struct {
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	EndDate          *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	RemainDay        *int32  `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	PayType          *int32  `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	InDebt           *int32  `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Trial            *int32  `json:"Trial,omitempty" xml:"Trial,omitempty"`
-}
-
-func (s DescribeInstanceInfosResponseBodyInstanceInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceInfosResponseBodyInstanceInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetStatus(v int32) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetEndDate(v int64) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.EndDate = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetRemainDay(v int32) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.RemainDay = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetRegion(v string) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetPayType(v int32) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetInDebt(v int32) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.InDebt = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetInstanceId(v string) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetSubscriptionType(v string) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.SubscriptionType = &v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponseBodyInstanceInfos) SetTrial(v int32) *DescribeInstanceInfosResponseBodyInstanceInfos {
-	s.Trial = &v
-	return s
-}
-
-type DescribeInstanceInfosResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeInstanceInfosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceInfosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceInfosResponse) SetHeaders(v map[string]*string) *DescribeInstanceInfosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeInstanceInfosResponse) SetBody(v *DescribeInstanceInfosResponseBody) *DescribeInstanceInfosResponse {
 	s.Body = v
 	return s
 }
@@ -2020,11 +1905,11 @@ func (s *DescribeInstanceSpecInfoRequest) SetResourceGroupId(v string) *Describe
 }
 
 type DescribeInstanceSpecInfoResponseBody struct {
+	ExpireTime        *int64                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId        *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSpecInfos []*DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos `json:"InstanceSpecInfos,omitempty" xml:"InstanceSpecInfos,omitempty" type:"Repeated"`
 	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceId        *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Version           *string                                                  `json:"Version,omitempty" xml:"Version,omitempty"`
-	ExpireTime        *int64                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 }
 
 func (s DescribeInstanceSpecInfoResponseBody) String() string {
@@ -2033,6 +1918,16 @@ func (s DescribeInstanceSpecInfoResponseBody) String() string {
 
 func (s DescribeInstanceSpecInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSpecInfoResponseBody) SetExpireTime(v int64) *DescribeInstanceSpecInfoResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstanceSpecInfoResponseBody) SetInstanceId(v string) *DescribeInstanceSpecInfoResponseBody {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeInstanceSpecInfoResponseBody) SetInstanceSpecInfos(v []*DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) *DescribeInstanceSpecInfoResponseBody {
@@ -2045,24 +1940,14 @@ func (s *DescribeInstanceSpecInfoResponseBody) SetRequestId(v string) *DescribeI
 	return s
 }
 
-func (s *DescribeInstanceSpecInfoResponseBody) SetInstanceId(v string) *DescribeInstanceSpecInfoResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *DescribeInstanceSpecInfoResponseBody) SetVersion(v string) *DescribeInstanceSpecInfoResponseBody {
 	s.Version = &v
 	return s
 }
 
-func (s *DescribeInstanceSpecInfoResponseBody) SetExpireTime(v int64) *DescribeInstanceSpecInfoResponseBody {
-	s.ExpireTime = &v
-	return s
-}
-
 type DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) String() string {
@@ -2073,13 +1958,13 @@ func (s DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) GoString() string
 	return s.String()
 }
 
-func (s *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) SetValue(v string) *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos {
-	s.Value = &v
+func (s *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) SetCode(v string) *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos {
+	s.Code = &v
 	return s
 }
 
-func (s *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) SetCode(v string) *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos {
-	s.Code = &v
+func (s *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos) SetValue(v string) *DescribeInstanceSpecInfoResponseBodyInstanceSpecInfos {
+	s.Value = &v
 	return s
 }
 
@@ -2107,12 +1992,12 @@ func (s *DescribeInstanceSpecInfoResponse) SetBody(v *DescribeInstanceSpecInfoRe
 }
 
 type DescribeLogServiceStatusRequest struct {
+	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
 	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	DomainNames     []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeLogServiceStatusRequest) String() string {
@@ -2123,18 +2008,13 @@ func (s DescribeLogServiceStatusRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeLogServiceStatusRequest) SetDomainNames(v []*string) *DescribeLogServiceStatusRequest {
+	s.DomainNames = v
+	return s
+}
+
 func (s *DescribeLogServiceStatusRequest) SetInstanceId(v string) *DescribeLogServiceStatusRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeLogServiceStatusRequest) SetRegion(v string) *DescribeLogServiceStatusRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeLogServiceStatusRequest) SetResourceGroupId(v string) *DescribeLogServiceStatusRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2148,15 +2028,20 @@ func (s *DescribeLogServiceStatusRequest) SetPageSize(v int32) *DescribeLogServi
 	return s
 }
 
-func (s *DescribeLogServiceStatusRequest) SetDomainNames(v []*string) *DescribeLogServiceStatusRequest {
-	s.DomainNames = v
+func (s *DescribeLogServiceStatusRequest) SetRegion(v string) *DescribeLogServiceStatusRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeLogServiceStatusRequest) SetResourceGroupId(v string) *DescribeLogServiceStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
 type DescribeLogServiceStatusResponseBody struct {
-	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DomainStatus []*DescribeLogServiceStatusResponseBodyDomainStatus `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty" type:"Repeated"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLogServiceStatusResponseBody) String() string {
@@ -2167,8 +2052,8 @@ func (s DescribeLogServiceStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLogServiceStatusResponseBody) SetTotalCount(v int32) *DescribeLogServiceStatusResponseBody {
-	s.TotalCount = &v
+func (s *DescribeLogServiceStatusResponseBody) SetDomainStatus(v []*DescribeLogServiceStatusResponseBodyDomainStatus) *DescribeLogServiceStatusResponseBody {
+	s.DomainStatus = v
 	return s
 }
 
@@ -2177,8 +2062,8 @@ func (s *DescribeLogServiceStatusResponseBody) SetRequestId(v string) *DescribeL
 	return s
 }
 
-func (s *DescribeLogServiceStatusResponseBody) SetDomainStatus(v []*DescribeLogServiceStatusResponseBodyDomainStatus) *DescribeLogServiceStatusResponseBody {
-	s.DomainStatus = v
+func (s *DescribeLogServiceStatusResponseBody) SetTotalCount(v int32) *DescribeLogServiceStatusResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2229,8 +2114,6 @@ func (s *DescribeLogServiceStatusResponse) SetBody(v *DescribeLogServiceStatusRe
 }
 
 type DescribeProtectionModuleCodeConfigRequest struct {
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	CodeType        *int32  `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
 	CodeValue       *int32  `json:"CodeValue,omitempty" xml:"CodeValue,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2243,16 +2126,6 @@ func (s DescribeProtectionModuleCodeConfigRequest) String() string {
 
 func (s DescribeProtectionModuleCodeConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeProtectionModuleCodeConfigRequest) SetSourceIp(v string) *DescribeProtectionModuleCodeConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleCodeConfigRequest) SetLang(v string) *DescribeProtectionModuleCodeConfigRequest {
-	s.Lang = &v
-	return s
 }
 
 func (s *DescribeProtectionModuleCodeConfigRequest) SetCodeType(v int32) *DescribeProtectionModuleCodeConfigRequest {
@@ -2276,8 +2149,8 @@ func (s *DescribeProtectionModuleCodeConfigRequest) SetResourceGroupId(v string)
 }
 
 type DescribeProtectionModuleCodeConfigResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CodeConfigs *string `json:"CodeConfigs,omitempty" xml:"CodeConfigs,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProtectionModuleCodeConfigResponseBody) String() string {
@@ -2288,13 +2161,13 @@ func (s DescribeProtectionModuleCodeConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProtectionModuleCodeConfigResponseBody) SetRequestId(v string) *DescribeProtectionModuleCodeConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeProtectionModuleCodeConfigResponseBody) SetCodeConfigs(v string) *DescribeProtectionModuleCodeConfigResponseBody {
+	s.CodeConfigs = &v
 	return s
 }
 
-func (s *DescribeProtectionModuleCodeConfigResponseBody) SetCodeConfigs(v string) *DescribeProtectionModuleCodeConfigResponseBody {
-	s.CodeConfigs = &v
+func (s *DescribeProtectionModuleCodeConfigResponseBody) SetRequestId(v string) *DescribeProtectionModuleCodeConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2321,101 +2194,14 @@ func (s *DescribeProtectionModuleCodeConfigResponse) SetBody(v *DescribeProtecti
 	return s
 }
 
-type DescribeProtectionModuleModeRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	DefenseType     *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s DescribeProtectionModuleModeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeProtectionModuleModeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetDomain(v string) *DescribeProtectionModuleModeRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetDefenseType(v string) *DescribeProtectionModuleModeRequest {
-	s.DefenseType = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetInstanceId(v string) *DescribeProtectionModuleModeRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeRequest) SetResourceGroupId(v string) *DescribeProtectionModuleModeRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type DescribeProtectionModuleModeResponseBody struct {
-	LearnStatus *int32  `json:"LearnStatus,omitempty" xml:"LearnStatus,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-}
-
-func (s DescribeProtectionModuleModeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeProtectionModuleModeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeProtectionModuleModeResponseBody) SetLearnStatus(v int32) *DescribeProtectionModuleModeResponseBody {
-	s.LearnStatus = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeResponseBody) SetRequestId(v string) *DescribeProtectionModuleModeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeResponseBody) SetMode(v int32) *DescribeProtectionModuleModeResponseBody {
-	s.Mode = &v
-	return s
-}
-
-type DescribeProtectionModuleModeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProtectionModuleModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeProtectionModuleModeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeProtectionModuleModeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeProtectionModuleModeResponse) SetHeaders(v map[string]*string) *DescribeProtectionModuleModeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeProtectionModuleModeResponse) SetBody(v *DescribeProtectionModuleModeResponseBody) *DescribeProtectionModuleModeResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeProtectionModuleRulesRequest struct {
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType     *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2427,13 +2213,8 @@ func (s DescribeProtectionModuleRulesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProtectionModuleRulesRequest) SetPageSize(v int32) *DescribeProtectionModuleRulesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleRulesRequest) SetPageNumber(v int32) *DescribeProtectionModuleRulesRequest {
-	s.PageNumber = &v
+func (s *DescribeProtectionModuleRulesRequest) SetDefenseType(v string) *DescribeProtectionModuleRulesRequest {
+	s.DefenseType = &v
 	return s
 }
 
@@ -2442,13 +2223,8 @@ func (s *DescribeProtectionModuleRulesRequest) SetDomain(v string) *DescribeProt
 	return s
 }
 
-func (s *DescribeProtectionModuleRulesRequest) SetDefenseType(v string) *DescribeProtectionModuleRulesRequest {
-	s.DefenseType = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleRulesRequest) SetQuery(v string) *DescribeProtectionModuleRulesRequest {
-	s.Query = &v
+func (s *DescribeProtectionModuleRulesRequest) SetInstanceId(v string) *DescribeProtectionModuleRulesRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2457,8 +2233,18 @@ func (s *DescribeProtectionModuleRulesRequest) SetLang(v string) *DescribeProtec
 	return s
 }
 
-func (s *DescribeProtectionModuleRulesRequest) SetInstanceId(v string) *DescribeProtectionModuleRulesRequest {
-	s.InstanceId = &v
+func (s *DescribeProtectionModuleRulesRequest) SetPageNumber(v int32) *DescribeProtectionModuleRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleRulesRequest) SetPageSize(v int32) *DescribeProtectionModuleRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProtectionModuleRulesRequest) SetQuery(v string) *DescribeProtectionModuleRulesRequest {
+	s.Query = &v
 	return s
 }
 
@@ -2468,9 +2254,9 @@ func (s *DescribeProtectionModuleRulesRequest) SetResourceGroupId(v string) *Des
 }
 
 type DescribeProtectionModuleRulesResponseBody struct {
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Rules      []*DescribeProtectionModuleRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponseBody) String() string {
@@ -2479,11 +2265,6 @@ func (s DescribeProtectionModuleRulesResponseBody) String() string {
 
 func (s DescribeProtectionModuleRulesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeProtectionModuleRulesResponseBody) SetTotalCount(v int32) *DescribeProtectionModuleRulesResponseBody {
-	s.TotalCount = &v
-	return s
 }
 
 func (s *DescribeProtectionModuleRulesResponseBody) SetRequestId(v string) *DescribeProtectionModuleRulesResponseBody {
@@ -2496,12 +2277,17 @@ func (s *DescribeProtectionModuleRulesResponseBody) SetRules(v []*DescribeProtec
 	return s
 }
 
+func (s *DescribeProtectionModuleRulesResponseBody) SetTotalCount(v int32) *DescribeProtectionModuleRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type DescribeProtectionModuleRulesResponseBodyRules struct {
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RuleId  *int64                 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Status  *int64                 `json:"Status,omitempty" xml:"Status,omitempty"`
 	Time    *int64                 `json:"Time,omitempty" xml:"Time,omitempty"`
 	Version *int64                 `json:"Version,omitempty" xml:"Version,omitempty"`
-	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RuleId  *int64                 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeProtectionModuleRulesResponseBodyRules) String() string {
@@ -2510,6 +2296,16 @@ func (s DescribeProtectionModuleRulesResponseBodyRules) String() string {
 
 func (s DescribeProtectionModuleRulesResponseBodyRules) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeProtectionModuleRulesResponseBodyRules) SetContent(v map[string]interface{}) *DescribeProtectionModuleRulesResponseBodyRules {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeProtectionModuleRulesResponseBodyRules) SetRuleId(v int64) *DescribeProtectionModuleRulesResponseBodyRules {
+	s.RuleId = &v
+	return s
 }
 
 func (s *DescribeProtectionModuleRulesResponseBodyRules) SetStatus(v int64) *DescribeProtectionModuleRulesResponseBodyRules {
@@ -2524,16 +2320,6 @@ func (s *DescribeProtectionModuleRulesResponseBodyRules) SetTime(v int64) *Descr
 
 func (s *DescribeProtectionModuleRulesResponseBodyRules) SetVersion(v int64) *DescribeProtectionModuleRulesResponseBodyRules {
 	s.Version = &v
-	return s
-}
-
-func (s *DescribeProtectionModuleRulesResponseBodyRules) SetContent(v map[string]interface{}) *DescribeProtectionModuleRulesResponseBodyRules {
-	s.Content = v
-	return s
-}
-
-func (s *DescribeProtectionModuleRulesResponseBodyRules) SetRuleId(v int64) *DescribeProtectionModuleRulesResponseBodyRules {
-	s.RuleId = &v
 	return s
 }
 
@@ -2561,8 +2347,8 @@ func (s *DescribeProtectionModuleRulesResponse) SetBody(v *DescribeProtectionMod
 }
 
 type DescribeProtectionModuleStatusRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2574,13 +2360,13 @@ func (s DescribeProtectionModuleStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProtectionModuleStatusRequest) SetDomain(v string) *DescribeProtectionModuleStatusRequest {
-	s.Domain = &v
+func (s *DescribeProtectionModuleStatusRequest) SetDefenseType(v string) *DescribeProtectionModuleStatusRequest {
+	s.DefenseType = &v
 	return s
 }
 
-func (s *DescribeProtectionModuleStatusRequest) SetDefenseType(v string) *DescribeProtectionModuleStatusRequest {
-	s.DefenseType = &v
+func (s *DescribeProtectionModuleStatusRequest) SetDomain(v string) *DescribeProtectionModuleStatusRequest {
+	s.Domain = &v
 	return s
 }
 
@@ -2590,8 +2376,8 @@ func (s *DescribeProtectionModuleStatusRequest) SetInstanceId(v string) *Describ
 }
 
 type DescribeProtectionModuleStatusResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeProtectionModuleStatusResponseBody) String() string {
@@ -2602,13 +2388,13 @@ func (s DescribeProtectionModuleStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProtectionModuleStatusResponseBody) SetRequestId(v string) *DescribeProtectionModuleStatusResponseBody {
-	s.RequestId = &v
+func (s *DescribeProtectionModuleStatusResponseBody) SetModuleStatus(v int32) *DescribeProtectionModuleStatusResponseBody {
+	s.ModuleStatus = &v
 	return s
 }
 
-func (s *DescribeProtectionModuleStatusResponseBody) SetModuleStatus(v int32) *DescribeProtectionModuleStatusResponseBody {
-	s.ModuleStatus = &v
+func (s *DescribeProtectionModuleStatusResponseBody) SetRequestId(v string) *DescribeProtectionModuleStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2659,9 +2445,9 @@ func (s *DescribeWafSourceIpSegmentRequest) SetResourceGroupId(v string) *Descri
 }
 
 type DescribeWafSourceIpSegmentResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IpV6s     *string `json:"IpV6s,omitempty" xml:"IpV6s,omitempty"`
 	Ips       *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeWafSourceIpSegmentResponseBody) String() string {
@@ -2672,11 +2458,6 @@ func (s DescribeWafSourceIpSegmentResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeWafSourceIpSegmentResponseBody) SetRequestId(v string) *DescribeWafSourceIpSegmentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeWafSourceIpSegmentResponseBody) SetIpV6s(v string) *DescribeWafSourceIpSegmentResponseBody {
 	s.IpV6s = &v
 	return s
@@ -2684,6 +2465,11 @@ func (s *DescribeWafSourceIpSegmentResponseBody) SetIpV6s(v string) *DescribeWaf
 
 func (s *DescribeWafSourceIpSegmentResponseBody) SetIps(v string) *DescribeWafSourceIpSegmentResponseBody {
 	s.Ips = &v
+	return s
+}
+
+func (s *DescribeWafSourceIpSegmentResponseBody) SetRequestId(v string) *DescribeWafSourceIpSegmentResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2711,24 +2497,28 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 }
 
 type ModifyDomainRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
-	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
-	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
-	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
-	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
-	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
-	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
-	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
-	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
-	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
+	AccessHeaderMode     *int32  `json:"AccessHeaderMode,omitempty" xml:"AccessHeaderMode,omitempty"`
+	AccessHeaders        *string `json:"AccessHeaders,omitempty" xml:"AccessHeaders,omitempty"`
 	AccessType           *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	CloudNativeInstances *string `json:"CloudNativeInstances,omitempty" xml:"CloudNativeInstances,omitempty"`
+	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ConnectionTime       *int32  `json:"ConnectionTime,omitempty" xml:"ConnectionTime,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Http2Port            *string `json:"Http2Port,omitempty" xml:"Http2Port,omitempty"`
+	HttpPort             *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	HttpToUserIp         *int32  `json:"HttpToUserIp,omitempty" xml:"HttpToUserIp,omitempty"`
+	HttpsPort            *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	HttpsRedirect        *int32  `json:"HttpsRedirect,omitempty" xml:"HttpsRedirect,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpFollowStatus       *int32  `json:"IpFollowStatus,omitempty" xml:"IpFollowStatus,omitempty"`
+	IsAccessProduct      *int32  `json:"IsAccessProduct,omitempty" xml:"IsAccessProduct,omitempty"`
+	LoadBalancing        *int32  `json:"LoadBalancing,omitempty" xml:"LoadBalancing,omitempty"`
+	LogHeaders           *string `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty"`
+	ReadTime             *int32  `json:"ReadTime,omitempty" xml:"ReadTime,omitempty"`
+	SniHost              *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	SniStatus            *int32  `json:"SniStatus,omitempty" xml:"SniStatus,omitempty"`
+	SourceIps            *string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty"`
+	WriteTime            *int32  `json:"WriteTime,omitempty" xml:"WriteTime,omitempty"`
 }
 
 func (s ModifyDomainRequest) String() string {
@@ -2739,78 +2529,13 @@ func (s ModifyDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDomainRequest) SetInstanceId(v string) *ModifyDomainRequest {
-	s.InstanceId = &v
+func (s *ModifyDomainRequest) SetAccessHeaderMode(v int32) *ModifyDomainRequest {
+	s.AccessHeaderMode = &v
 	return s
 }
 
-func (s *ModifyDomainRequest) SetDomain(v string) *ModifyDomainRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetSourceIps(v string) *ModifyDomainRequest {
-	s.SourceIps = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetLoadBalancing(v int32) *ModifyDomainRequest {
-	s.LoadBalancing = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetHttpPort(v string) *ModifyDomainRequest {
-	s.HttpPort = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetHttpsPort(v string) *ModifyDomainRequest {
-	s.HttpsPort = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetHttp2Port(v string) *ModifyDomainRequest {
-	s.Http2Port = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetHttpsRedirect(v int32) *ModifyDomainRequest {
-	s.HttpsRedirect = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetHttpToUserIp(v int32) *ModifyDomainRequest {
-	s.HttpToUserIp = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetIsAccessProduct(v int32) *ModifyDomainRequest {
-	s.IsAccessProduct = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetLogHeaders(v string) *ModifyDomainRequest {
-	s.LogHeaders = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetClusterType(v int32) *ModifyDomainRequest {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetConnectionTime(v int32) *ModifyDomainRequest {
-	s.ConnectionTime = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetReadTime(v int32) *ModifyDomainRequest {
-	s.ReadTime = &v
-	return s
-}
-
-func (s *ModifyDomainRequest) SetWriteTime(v int32) *ModifyDomainRequest {
-	s.WriteTime = &v
+func (s *ModifyDomainRequest) SetAccessHeaders(v string) *ModifyDomainRequest {
+	s.AccessHeaders = &v
 	return s
 }
 
@@ -2824,8 +2549,93 @@ func (s *ModifyDomainRequest) SetCloudNativeInstances(v string) *ModifyDomainReq
 	return s
 }
 
+func (s *ModifyDomainRequest) SetClusterType(v int32) *ModifyDomainRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetConnectionTime(v int32) *ModifyDomainRequest {
+	s.ConnectionTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetDomain(v string) *ModifyDomainRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttp2Port(v string) *ModifyDomainRequest {
+	s.Http2Port = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpPort(v string) *ModifyDomainRequest {
+	s.HttpPort = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpToUserIp(v int32) *ModifyDomainRequest {
+	s.HttpToUserIp = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpsPort(v string) *ModifyDomainRequest {
+	s.HttpsPort = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetHttpsRedirect(v int32) *ModifyDomainRequest {
+	s.HttpsRedirect = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetInstanceId(v string) *ModifyDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ModifyDomainRequest) SetIpFollowStatus(v int32) *ModifyDomainRequest {
 	s.IpFollowStatus = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetIsAccessProduct(v int32) *ModifyDomainRequest {
+	s.IsAccessProduct = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetLoadBalancing(v int32) *ModifyDomainRequest {
+	s.LoadBalancing = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetLogHeaders(v string) *ModifyDomainRequest {
+	s.LogHeaders = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetReadTime(v int32) *ModifyDomainRequest {
+	s.ReadTime = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetSniHost(v string) *ModifyDomainRequest {
+	s.SniHost = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetSniStatus(v int32) *ModifyDomainRequest {
+	s.SniStatus = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetSourceIps(v string) *ModifyDomainRequest {
+	s.SourceIps = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetWriteTime(v int32) *ModifyDomainRequest {
+	s.WriteTime = &v
 	return s
 }
 
@@ -2870,9 +2680,9 @@ func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomai
 }
 
 type ModifyDomainIpv6StatusRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ModifyDomainIpv6StatusRequest) String() string {
@@ -2883,11 +2693,6 @@ func (s ModifyDomainIpv6StatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDomainIpv6StatusRequest) SetInstanceId(v string) *ModifyDomainIpv6StatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ModifyDomainIpv6StatusRequest) SetDomain(v string) *ModifyDomainIpv6StatusRequest {
 	s.Domain = &v
 	return s
@@ -2895,6 +2700,11 @@ func (s *ModifyDomainIpv6StatusRequest) SetDomain(v string) *ModifyDomainIpv6Sta
 
 func (s *ModifyDomainIpv6StatusRequest) SetEnabled(v string) *ModifyDomainIpv6StatusRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyDomainIpv6StatusRequest) SetInstanceId(v string) *ModifyDomainIpv6StatusRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2939,9 +2749,9 @@ func (s *ModifyDomainIpv6StatusResponse) SetBody(v *ModifyDomainIpv6StatusRespon
 }
 
 type ModifyLogRetrievalStatusRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ModifyLogRetrievalStatusRequest) String() string {
@@ -2952,11 +2762,6 @@ func (s ModifyLogRetrievalStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyLogRetrievalStatusRequest) SetInstanceId(v string) *ModifyLogRetrievalStatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ModifyLogRetrievalStatusRequest) SetDomain(v string) *ModifyLogRetrievalStatusRequest {
 	s.Domain = &v
 	return s
@@ -2964,6 +2769,11 @@ func (s *ModifyLogRetrievalStatusRequest) SetDomain(v string) *ModifyLogRetrieva
 
 func (s *ModifyLogRetrievalStatusRequest) SetEnabled(v int32) *ModifyLogRetrievalStatusRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyLogRetrievalStatusRequest) SetInstanceId(v string) *ModifyLogRetrievalStatusRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3008,9 +2818,9 @@ func (s *ModifyLogRetrievalStatusResponse) SetBody(v *ModifyLogRetrievalStatusRe
 }
 
 type ModifyLogServiceStatusRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ModifyLogServiceStatusRequest) String() string {
@@ -3021,11 +2831,6 @@ func (s ModifyLogServiceStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyLogServiceStatusRequest) SetInstanceId(v string) *ModifyLogServiceStatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ModifyLogServiceStatusRequest) SetDomain(v string) *ModifyLogServiceStatusRequest {
 	s.Domain = &v
 	return s
@@ -3033,6 +2838,11 @@ func (s *ModifyLogServiceStatusRequest) SetDomain(v string) *ModifyLogServiceSta
 
 func (s *ModifyLogServiceStatusRequest) SetEnabled(v int32) *ModifyLogServiceStatusRequest {
 	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyLogServiceStatusRequest) SetInstanceId(v string) *ModifyLogServiceStatusRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3077,10 +2887,10 @@ func (s *ModifyLogServiceStatusResponse) SetBody(v *ModifyLogServiceStatusRespon
 }
 
 type ModifyProtectionModuleModeRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s ModifyProtectionModuleModeRequest) String() string {
@@ -3091,23 +2901,23 @@ func (s ModifyProtectionModuleModeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyProtectionModuleModeRequest) SetDomain(v string) *ModifyProtectionModuleModeRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *ModifyProtectionModuleModeRequest) SetDefenseType(v string) *ModifyProtectionModuleModeRequest {
 	s.DefenseType = &v
 	return s
 }
 
-func (s *ModifyProtectionModuleModeRequest) SetMode(v int32) *ModifyProtectionModuleModeRequest {
-	s.Mode = &v
+func (s *ModifyProtectionModuleModeRequest) SetDomain(v string) *ModifyProtectionModuleModeRequest {
+	s.Domain = &v
 	return s
 }
 
 func (s *ModifyProtectionModuleModeRequest) SetInstanceId(v string) *ModifyProtectionModuleModeRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleModeRequest) SetMode(v int32) *ModifyProtectionModuleModeRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -3152,12 +2962,12 @@ func (s *ModifyProtectionModuleModeResponse) SetBody(v *ModifyProtectionModuleMo
 }
 
 type ModifyProtectionModuleRuleRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
 	Rule        *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ModifyProtectionModuleRuleRequest) String() string {
@@ -3168,13 +2978,23 @@ func (s ModifyProtectionModuleRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyProtectionModuleRuleRequest) SetDefenseType(v string) *ModifyProtectionModuleRuleRequest {
+	s.DefenseType = &v
+	return s
+}
+
 func (s *ModifyProtectionModuleRuleRequest) SetDomain(v string) *ModifyProtectionModuleRuleRequest {
 	s.Domain = &v
 	return s
 }
 
-func (s *ModifyProtectionModuleRuleRequest) SetDefenseType(v string) *ModifyProtectionModuleRuleRequest {
-	s.DefenseType = &v
+func (s *ModifyProtectionModuleRuleRequest) SetInstanceId(v string) *ModifyProtectionModuleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleRuleRequest) SetLockVersion(v int64) *ModifyProtectionModuleRuleRequest {
+	s.LockVersion = &v
 	return s
 }
 
@@ -3185,16 +3005,6 @@ func (s *ModifyProtectionModuleRuleRequest) SetRule(v string) *ModifyProtectionM
 
 func (s *ModifyProtectionModuleRuleRequest) SetRuleId(v int64) *ModifyProtectionModuleRuleRequest {
 	s.RuleId = &v
-	return s
-}
-
-func (s *ModifyProtectionModuleRuleRequest) SetLockVersion(v int64) *ModifyProtectionModuleRuleRequest {
-	s.LockVersion = &v
-	return s
-}
-
-func (s *ModifyProtectionModuleRuleRequest) SetInstanceId(v string) *ModifyProtectionModuleRuleRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -3239,10 +3049,10 @@ func (s *ModifyProtectionModuleRuleResponse) SetBody(v *ModifyProtectionModuleRu
 }
 
 type ModifyProtectionModuleStatusRequest struct {
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModuleStatus *int32  `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
 }
 
 func (s ModifyProtectionModuleStatusRequest) String() string {
@@ -3253,23 +3063,23 @@ func (s ModifyProtectionModuleStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyProtectionModuleStatusRequest) SetDomain(v string) *ModifyProtectionModuleStatusRequest {
-	s.Domain = &v
-	return s
-}
-
 func (s *ModifyProtectionModuleStatusRequest) SetDefenseType(v string) *ModifyProtectionModuleStatusRequest {
 	s.DefenseType = &v
 	return s
 }
 
-func (s *ModifyProtectionModuleStatusRequest) SetModuleStatus(v int32) *ModifyProtectionModuleStatusRequest {
-	s.ModuleStatus = &v
+func (s *ModifyProtectionModuleStatusRequest) SetDomain(v string) *ModifyProtectionModuleStatusRequest {
+	s.Domain = &v
 	return s
 }
 
 func (s *ModifyProtectionModuleStatusRequest) SetInstanceId(v string) *ModifyProtectionModuleStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyProtectionModuleStatusRequest) SetModuleStatus(v int32) *ModifyProtectionModuleStatusRequest {
+	s.ModuleStatus = &v
 	return s
 }
 
@@ -3314,10 +3124,10 @@ func (s *ModifyProtectionModuleStatusResponse) SetBody(v *ModifyProtectionModule
 }
 
 type ModifyProtectionRuleCacheStatusRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s ModifyProtectionRuleCacheStatusRequest) String() string {
@@ -3328,23 +3138,23 @@ func (s ModifyProtectionRuleCacheStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyProtectionRuleCacheStatusRequest) SetDomain(v string) *ModifyProtectionRuleCacheStatusRequest {
-	s.Domain = &v
-	return s
-}
-
-func (s *ModifyProtectionRuleCacheStatusRequest) SetRuleId(v int64) *ModifyProtectionRuleCacheStatusRequest {
-	s.RuleId = &v
-	return s
-}
-
 func (s *ModifyProtectionRuleCacheStatusRequest) SetDefenseType(v string) *ModifyProtectionRuleCacheStatusRequest {
 	s.DefenseType = &v
 	return s
 }
 
+func (s *ModifyProtectionRuleCacheStatusRequest) SetDomain(v string) *ModifyProtectionRuleCacheStatusRequest {
+	s.Domain = &v
+	return s
+}
+
 func (s *ModifyProtectionRuleCacheStatusRequest) SetInstanceId(v string) *ModifyProtectionRuleCacheStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyProtectionRuleCacheStatusRequest) SetRuleId(v int64) *ModifyProtectionRuleCacheStatusRequest {
+	s.RuleId = &v
 	return s
 }
 
@@ -3389,12 +3199,12 @@ func (s *ModifyProtectionRuleCacheStatusResponse) SetBody(v *ModifyProtectionRul
 }
 
 type ModifyProtectionRuleStatusRequest struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
 	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleStatus  *int32  `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	LockVersion *int64  `json:"LockVersion,omitempty" xml:"LockVersion,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ModifyProtectionRuleStatusRequest) String() string {
@@ -3405,13 +3215,23 @@ func (s ModifyProtectionRuleStatusRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyProtectionRuleStatusRequest) SetDefenseType(v string) *ModifyProtectionRuleStatusRequest {
+	s.DefenseType = &v
+	return s
+}
+
 func (s *ModifyProtectionRuleStatusRequest) SetDomain(v string) *ModifyProtectionRuleStatusRequest {
 	s.Domain = &v
 	return s
 }
 
-func (s *ModifyProtectionRuleStatusRequest) SetDefenseType(v string) *ModifyProtectionRuleStatusRequest {
-	s.DefenseType = &v
+func (s *ModifyProtectionRuleStatusRequest) SetInstanceId(v string) *ModifyProtectionRuleStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyProtectionRuleStatusRequest) SetLockVersion(v int64) *ModifyProtectionRuleStatusRequest {
+	s.LockVersion = &v
 	return s
 }
 
@@ -3422,16 +3242,6 @@ func (s *ModifyProtectionRuleStatusRequest) SetRuleId(v int64) *ModifyProtection
 
 func (s *ModifyProtectionRuleStatusRequest) SetRuleStatus(v int32) *ModifyProtectionRuleStatusRequest {
 	s.RuleStatus = &v
-	return s
-}
-
-func (s *ModifyProtectionRuleStatusRequest) SetLockVersion(v int64) *ModifyProtectionRuleStatusRequest {
-	s.LockVersion = &v
-	return s
-}
-
-func (s *ModifyProtectionRuleStatusRequest) SetInstanceId(v string) *ModifyProtectionRuleStatusRequest {
-	s.InstanceId = &v
 	return s
 }
 
@@ -3475,12 +3285,87 @@ func (s *ModifyProtectionRuleStatusResponse) SetBody(v *ModifyProtectionRuleStat
 	return s
 }
 
+type MoveResourceGroupRequest struct {
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s MoveResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupRequest) SetRegionId(v string) *MoveResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceGroupId(v string) *MoveResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type MoveResourceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveResourceGroupResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponse) SetHeaders(v map[string]*string) *MoveResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *MoveResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type SetDomainRuleGroupRequest struct {
 	Domains         *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	RuleGroupId     *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
-	WafVersion      *int64  `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RuleGroupId     *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	WafVersion      *int64  `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
 }
 
 func (s SetDomainRuleGroupRequest) String() string {
@@ -3496,16 +3381,6 @@ func (s *SetDomainRuleGroupRequest) SetDomains(v string) *SetDomainRuleGroupRequ
 	return s
 }
 
-func (s *SetDomainRuleGroupRequest) SetRuleGroupId(v int64) *SetDomainRuleGroupRequest {
-	s.RuleGroupId = &v
-	return s
-}
-
-func (s *SetDomainRuleGroupRequest) SetWafVersion(v int64) *SetDomainRuleGroupRequest {
-	s.WafVersion = &v
-	return s
-}
-
 func (s *SetDomainRuleGroupRequest) SetInstanceId(v string) *SetDomainRuleGroupRequest {
 	s.InstanceId = &v
 	return s
@@ -3513,6 +3388,16 @@ func (s *SetDomainRuleGroupRequest) SetInstanceId(v string) *SetDomainRuleGroupR
 
 func (s *SetDomainRuleGroupRequest) SetResourceGroupId(v string) *SetDomainRuleGroupRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *SetDomainRuleGroupRequest) SetRuleGroupId(v int64) *SetDomainRuleGroupRequest {
+	s.RuleGroupId = &v
+	return s
+}
+
+func (s *SetDomainRuleGroupRequest) SetWafVersion(v int64) *SetDomainRuleGroupRequest {
+	s.WafVersion = &v
 	return s
 }
 
@@ -3634,11 +3519,29 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Certificate"] = request.Certificate
+	query["CertificateName"] = request.CertificateName
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["PrivateKey"] = request.PrivateKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCertificate"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCertificate"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3662,11 +3565,27 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CertificateId"] = request.CertificateId
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCertificateByCertificateId"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateByCertificateIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCertificateByCertificateId"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3690,11 +3609,47 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccessHeaderMode"] = request.AccessHeaderMode
+	query["AccessHeaders"] = request.AccessHeaders
+	query["AccessType"] = request.AccessType
+	query["CloudNativeInstances"] = request.CloudNativeInstances
+	query["ClusterType"] = request.ClusterType
+	query["ConnectionTime"] = request.ConnectionTime
+	query["Domain"] = request.Domain
+	query["Http2Port"] = request.Http2Port
+	query["HttpPort"] = request.HttpPort
+	query["HttpToUserIp"] = request.HttpToUserIp
+	query["HttpsPort"] = request.HttpsPort
+	query["HttpsRedirect"] = request.HttpsRedirect
+	query["InstanceId"] = request.InstanceId
+	query["IpFollowStatus"] = request.IpFollowStatus
+	query["IsAccessProduct"] = request.IsAccessProduct
+	query["LoadBalancing"] = request.LoadBalancing
+	query["LogHeaders"] = request.LogHeaders
+	query["ReadTime"] = request.ReadTime
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["SniHost"] = request.SniHost
+	query["SniStatus"] = request.SniStatus
+	query["SourceIps"] = request.SourceIps
+	query["WriteTime"] = request.WriteTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDomain"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDomain"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3718,11 +3673,28 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["Rule"] = request.Rule
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProtectionModuleRule"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProtectionModuleRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateProtectionModuleRule"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3746,11 +3718,26 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDomain"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDomain"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3774,11 +3761,26 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3802,11 +3804,28 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProtectionModuleRule"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProtectionModuleRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteProtectionModuleRule"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3825,44 +3844,33 @@ func (client *Client) DeleteProtectionModuleRule(request *DeleteProtectionModule
 	return _result, _err
 }
 
-func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertificatesRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificatesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeCertificatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCertificates"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeCertificates(request *DescribeCertificatesRequest) (_result *DescribeCertificatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCertificatesResponse{}
-	_body, _err := client.DescribeCertificatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMatchStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCertMatchStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Certificate"] = request.Certificate
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["PrivateKey"] = request.PrivateKey
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCertMatchStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertMatchStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCertMatchStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3881,16 +3889,74 @@ func (client *Client) DescribeCertMatchStatus(request *DescribeCertMatchStatusRe
 	return _result, _err
 }
 
+func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertificatesRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCertificates"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCertificates(request *DescribeCertificatesRequest) (_result *DescribeCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCertificatesResponse{}
+	_body, _err := client.DescribeCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomain"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomain"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3914,11 +3980,27 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainList"] = request.DomainList
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainAdvanceConfigs"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainAdvanceConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainAdvanceConfigs"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3942,11 +4024,31 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccessType"] = request.AccessType
+	query["CloudNativeProductId"] = request.CloudNativeProductId
+	query["DomainKey"] = request.DomainKey
+	query["InstanceId"] = request.InstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainBasicConfigs"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainBasicConfigsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainBasicConfigs"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3970,11 +4072,31 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["DomainNames"] = request.DomainNames
+	query["InstanceId"] = request.InstanceId
+	query["IsSub"] = request.IsSub
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainList"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainList"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3998,11 +4120,26 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainNames"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainNamesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainNames"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4026,11 +4163,26 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainRuleGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRuleGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainRuleGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4054,11 +4206,26 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceInfo"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceInfo"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4077,44 +4244,31 @@ func (client *Client) DescribeInstanceInfo(request *DescribeInstanceInfoRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeInstanceInfosWithOptions(request *DescribeInstanceInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeInstanceInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceInfos"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeInstanceInfos(request *DescribeInstanceInfosRequest) (_result *DescribeInstanceInfosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstanceInfosResponse{}
-	_body, _err := client.DescribeInstanceInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInstanceSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSpecInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSpecInfo"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSpecInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceSpecInfo"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4138,11 +4292,30 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DomainNames"] = request.DomainNames
+	query["InstanceId"] = request.InstanceId
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["Region"] = request.Region
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogServiceStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeLogServiceStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeLogServiceStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4166,11 +4339,28 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CodeType"] = request.CodeType
+	query["CodeValue"] = request.CodeValue
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProtectionModuleCodeConfig"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleCodeConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeProtectionModuleCodeConfig"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4189,44 +4379,37 @@ func (client *Client) DescribeProtectionModuleCodeConfig(request *DescribeProtec
 	return _result, _err
 }
 
-func (client *Client) DescribeProtectionModuleModeWithOptions(request *DescribeProtectionModuleModeRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleModeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeProtectionModuleModeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeProtectionModuleMode"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeProtectionModuleMode(request *DescribeProtectionModuleModeRequest) (_result *DescribeProtectionModuleModeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeProtectionModuleModeResponse{}
-	_body, _err := client.DescribeProtectionModuleModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeProtectionModuleRulesWithOptions(request *DescribeProtectionModuleRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeProtectionModuleRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["Lang"] = request.Lang
+	query["PageNumber"] = request.PageNumber
+	query["PageSize"] = request.PageSize
+	query["Query"] = request.Query
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProtectionModuleRules"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeProtectionModuleRules"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4250,11 +4433,27 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProtectionModuleStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeProtectionModuleStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4278,11 +4477,26 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWafSourceIpSegment"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWafSourceIpSegmentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWafSourceIpSegment"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4306,11 +4520,47 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccessHeaderMode"] = request.AccessHeaderMode
+	query["AccessHeaders"] = request.AccessHeaders
+	query["AccessType"] = request.AccessType
+	query["CloudNativeInstances"] = request.CloudNativeInstances
+	query["ClusterType"] = request.ClusterType
+	query["ConnectionTime"] = request.ConnectionTime
+	query["Domain"] = request.Domain
+	query["Http2Port"] = request.Http2Port
+	query["HttpPort"] = request.HttpPort
+	query["HttpToUserIp"] = request.HttpToUserIp
+	query["HttpsPort"] = request.HttpsPort
+	query["HttpsRedirect"] = request.HttpsRedirect
+	query["InstanceId"] = request.InstanceId
+	query["InstanceId"] = request.InstanceId
+	query["IpFollowStatus"] = request.IpFollowStatus
+	query["IsAccessProduct"] = request.IsAccessProduct
+	query["LoadBalancing"] = request.LoadBalancing
+	query["LogHeaders"] = request.LogHeaders
+	query["ReadTime"] = request.ReadTime
+	query["SniHost"] = request.SniHost
+	query["SniStatus"] = request.SniStatus
+	query["SourceIps"] = request.SourceIps
+	query["WriteTime"] = request.WriteTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDomain"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDomain"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4334,11 +4584,27 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["Enabled"] = request.Enabled
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDomainIpv6Status"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDomainIpv6StatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDomainIpv6Status"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4362,11 +4628,27 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["Enabled"] = request.Enabled
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLogRetrievalStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLogRetrievalStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyLogRetrievalStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4390,11 +4672,27 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domain"] = request.Domain
+	query["Enabled"] = request.Enabled
+	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLogServiceStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLogServiceStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyLogServiceStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4418,11 +4716,28 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["Mode"] = request.Mode
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProtectionModuleMode"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleModeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyProtectionModuleMode"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4446,11 +4761,30 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["LockVersion"] = request.LockVersion
+	query["Rule"] = request.Rule
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProtectionModuleRule"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyProtectionModuleRule"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4474,11 +4808,28 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["ModuleStatus"] = request.ModuleStatus
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProtectionModuleStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyProtectionModuleStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4502,11 +4853,28 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProtectionRuleCacheStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionRuleCacheStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyProtectionRuleCacheStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4530,11 +4898,30 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["DefenseType"] = request.DefenseType
+	query["Domain"] = request.Domain
+	query["InstanceId"] = request.InstanceId
+	query["LockVersion"] = request.LockVersion
+	query["RuleId"] = request.RuleId
+	query["RuleStatus"] = request.RuleStatus
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyProtectionRuleStatus"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionRuleStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyProtectionRuleStatus"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4553,16 +4940,78 @@ func (client *Client) ModifyProtectionRuleStatus(request *ModifyProtectionRuleSt
 	return _result, _err
 }
 
+func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["ResourceId"] = request.ResourceId
+	query["ResourceType"] = request.ResourceType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupRequest, runtime *util.RuntimeOptions) (_result *SetDomainRuleGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Domains"] = request.Domains
+	query["InstanceId"] = request.InstanceId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	query["RuleGroupId"] = request.RuleGroupId
+	query["WafVersion"] = request.WafVersion
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDomainRuleGroup"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainRuleGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDomainRuleGroup"), tea.String("2019-09-10"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
