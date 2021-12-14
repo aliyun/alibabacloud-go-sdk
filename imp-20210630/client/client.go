@@ -17,6 +17,8 @@ type AddMemberRequest struct {
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// 邀请者用户ID
 	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 被邀请用户ID
 	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
 }
@@ -36,6 +38,11 @@ func (s *AddMemberRequest) SetConferenceId(v string) *AddMemberRequest {
 
 func (s *AddMemberRequest) SetFromUserId(v string) *AddMemberRequest {
 	s.FromUserId = &v
+	return s
+}
+
+func (s *AddMemberRequest) SetRegionId(v string) *AddMemberRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -90,6 +97,8 @@ type AgreeLinkMicRequest struct {
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// 同意者用户ID
 	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 被同意用户ID
 	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
 }
@@ -109,6 +118,11 @@ func (s *AgreeLinkMicRequest) SetConferenceId(v string) *AgreeLinkMicRequest {
 
 func (s *AgreeLinkMicRequest) SetFromUserId(v string) *AgreeLinkMicRequest {
 	s.FromUserId = &v
+	return s
+}
+
+func (s *AgreeLinkMicRequest) SetRegionId(v string) *AgreeLinkMicRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -161,6 +175,8 @@ func (s *AgreeLinkMicResponse) SetBody(v *AgreeLinkMicResponseBody) *AgreeLinkMi
 type ApplyLinkMicRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 申请连麦用户
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -175,6 +191,11 @@ func (s ApplyLinkMicRequest) GoString() string {
 
 func (s *ApplyLinkMicRequest) SetConferenceId(v string) *ApplyLinkMicRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *ApplyLinkMicRequest) SetRegionId(v string) *ApplyLinkMicRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -233,6 +254,8 @@ type AttachStandardRoomHttpsCertificateRequest struct {
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" xml:"CertificatePublicKey,omitempty"`
 	// 使用证书的确切域名
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AttachStandardRoomHttpsCertificateRequest) String() string {
@@ -260,6 +283,11 @@ func (s *AttachStandardRoomHttpsCertificateRequest) SetCertificatePublicKey(v st
 
 func (s *AttachStandardRoomHttpsCertificateRequest) SetDomainName(v string) *AttachStandardRoomHttpsCertificateRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *AttachStandardRoomHttpsCertificateRequest) SetRegionId(v string) *AttachStandardRoomHttpsCertificateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -331,7 +359,8 @@ func (s *AttachStandardRoomHttpsCertificateResponse) SetBody(v *AttachStandardRo
 
 type BanAllCommentRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 用户在房间内的唯一标识
@@ -348,6 +377,11 @@ func (s BanAllCommentRequest) GoString() string {
 
 func (s *BanAllCommentRequest) SetAppId(v string) *BanAllCommentRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *BanAllCommentRequest) SetRegionId(v string) *BanAllCommentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -416,6 +450,7 @@ type BanCommentRequest struct {
 	BanCommentTime *int64 `json:"BanCommentTime,omitempty" xml:"BanCommentTime,omitempty"`
 	// 被禁言的用户在房间内的唯一标识
 	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 用户在房间内的唯一标识
@@ -442,6 +477,11 @@ func (s *BanCommentRequest) SetBanCommentTime(v int64) *BanCommentRequest {
 
 func (s *BanCommentRequest) SetBanCommentUser(v string) *BanCommentRequest {
 	s.BanCommentUser = &v
+	return s
+}
+
+func (s *BanCommentRequest) SetRegionId(v string) *BanCommentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -506,6 +546,8 @@ func (s *BanCommentResponse) SetBody(v *BanCommentResponseBody) *BanCommentRespo
 type CancelApplyLinkMicRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 申请连麦用户
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -520,6 +562,11 @@ func (s CancelApplyLinkMicRequest) GoString() string {
 
 func (s *CancelApplyLinkMicRequest) SetConferenceId(v string) *CancelApplyLinkMicRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *CancelApplyLinkMicRequest) SetRegionId(v string) *CancelApplyLinkMicRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -571,7 +618,8 @@ func (s *CancelApplyLinkMicResponse) SetBody(v *CancelApplyLinkMicResponseBody) 
 
 type CancelBanAllCommentRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 用户在房间内的唯一标识
@@ -588,6 +636,11 @@ func (s CancelBanAllCommentRequest) GoString() string {
 
 func (s *CancelBanAllCommentRequest) SetAppId(v string) *CancelBanAllCommentRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *CancelBanAllCommentRequest) SetRegionId(v string) *CancelBanAllCommentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -654,6 +707,7 @@ type CancelBanCommentRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 取消禁言的用户唯一标识
 	BanCommentUser *string `json:"BanCommentUser,omitempty" xml:"BanCommentUser,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 用户在房间内的唯一标识
@@ -675,6 +729,11 @@ func (s *CancelBanCommentRequest) SetAppId(v string) *CancelBanCommentRequest {
 
 func (s *CancelBanCommentRequest) SetBanCommentUser(v string) *CancelBanCommentRequest {
 	s.BanCommentUser = &v
+	return s
+}
+
+func (s *CancelBanCommentRequest) SetRegionId(v string) *CancelBanCommentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -741,6 +800,8 @@ type CreateAppRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// 模板ID
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -758,6 +819,11 @@ func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetAppTemplateId(v string) *CreateAppRequest {
 	s.AppTemplateId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -834,6 +900,8 @@ type CreateAppTemplateRequest struct {
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
 	// 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
 	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
@@ -861,6 +929,11 @@ func (s *CreateAppTemplateRequest) SetIntegrationMode(v string) *CreateAppTempla
 	return s
 }
 
+func (s *CreateAppTemplateRequest) SetRegionId(v string) *CreateAppTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateAppTemplateRequest) SetScene(v string) *CreateAppTemplateRequest {
 	s.Scene = &v
 	return s
@@ -873,6 +946,8 @@ type CreateAppTemplateShrinkRequest struct {
 	ComponentListShrink *string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty"`
 	// 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
 	IntegrationMode *string `json:"IntegrationMode,omitempty" xml:"IntegrationMode,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 应用模板场景，电商business，课堂classroom
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
@@ -897,6 +972,11 @@ func (s *CreateAppTemplateShrinkRequest) SetComponentListShrink(v string) *Creat
 
 func (s *CreateAppTemplateShrinkRequest) SetIntegrationMode(v string) *CreateAppTemplateShrinkRequest {
 	s.IntegrationMode = &v
+	return s
+}
+
+func (s *CreateAppTemplateShrinkRequest) SetRegionId(v string) *CreateAppTemplateShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -978,6 +1058,7 @@ type CreateClassRequest struct {
 	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
 	// 创建人用户ID。
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 课堂标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -1002,6 +1083,11 @@ func (s *CreateClassRequest) SetCreateNickname(v string) *CreateClassRequest {
 
 func (s *CreateClassRequest) SetCreateUserId(v string) *CreateClassRequest {
 	s.CreateUserId = &v
+	return s
+}
+
+func (s *CreateClassRequest) SetRegionId(v string) *CreateClassRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1141,7 +1227,8 @@ func (s *CreateClassResponse) SetBody(v *CreateClassResponseBody) *CreateClassRe
 
 type CreateConferenceRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 会议标题，支持中英文，最大长度256位。
@@ -1160,6 +1247,11 @@ func (s CreateConferenceRequest) GoString() string {
 
 func (s *CreateConferenceRequest) SetAppId(v string) *CreateConferenceRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateConferenceRequest) SetRegionId(v string) *CreateConferenceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1253,7 +1345,8 @@ type CreateLiveRequest struct {
 	// 直播简介，支持中英文，最大长度2048位。
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	// 直播资源的唯一标识ID，缺省时系统自动生成36位随机uuid字符串。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 直播标题，支持中英文，最大长度256位。
@@ -1292,6 +1385,11 @@ func (s *CreateLiveRequest) SetIntroduction(v string) *CreateLiveRequest {
 
 func (s *CreateLiveRequest) SetLiveId(v string) *CreateLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *CreateLiveRequest) SetRegionId(v string) *CreateLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1387,7 +1485,8 @@ type CreateLiveRoomRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 标题，支持中英文，最大长度32位。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// 操作人ID。
@@ -1432,6 +1531,11 @@ func (s *CreateLiveRoomRequest) SetNotice(v string) *CreateLiveRoomRequest {
 	return s
 }
 
+func (s *CreateLiveRoomRequest) SetRegionId(v string) *CreateLiveRoomRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateLiveRoomRequest) SetTitle(v string) *CreateLiveRoomRequest {
 	s.Title = &v
 	return s
@@ -1454,7 +1558,8 @@ type CreateLiveRoomShrinkRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 标题，支持中英文，最大长度32位。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// 操作人ID。
@@ -1496,6 +1601,11 @@ func (s *CreateLiveRoomShrinkRequest) SetExtensionShrink(v string) *CreateLiveRo
 
 func (s *CreateLiveRoomShrinkRequest) SetNotice(v string) *CreateLiveRoomShrinkRequest {
 	s.Notice = &v
+	return s
+}
+
+func (s *CreateLiveRoomShrinkRequest) SetRegionId(v string) *CreateLiveRoomShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1750,7 +1860,8 @@ type CreateRoomRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房主用户id，仅支持英文和数字，最大长度36位。
@@ -1784,6 +1895,11 @@ func (s *CreateRoomRequest) SetNotice(v string) *CreateRoomRequest {
 	return s
 }
 
+func (s *CreateRoomRequest) SetRegionId(v string) *CreateRoomRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateRoomRequest) SetRoomId(v string) *CreateRoomRequest {
 	s.RoomId = &v
 	return s
@@ -1810,7 +1926,8 @@ type CreateRoomShrinkRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房主用户id，仅支持英文和数字，最大长度36位。
@@ -1841,6 +1958,11 @@ func (s *CreateRoomShrinkRequest) SetExtensionShrink(v string) *CreateRoomShrink
 
 func (s *CreateRoomShrinkRequest) SetNotice(v string) *CreateRoomShrinkRequest {
 	s.Notice = &v
+	return s
+}
+
+func (s *CreateRoomShrinkRequest) SetRegionId(v string) *CreateRoomShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1933,6 +2055,8 @@ func (s *CreateRoomResponse) SetBody(v *CreateRoomResponseBody) *CreateRoomRespo
 type DeleteAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteAppRequest) String() string {
@@ -1945,6 +2069,11 @@ func (s DeleteAppRequest) GoString() string {
 
 func (s *DeleteAppRequest) SetAppId(v string) *DeleteAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppRequest) SetRegionId(v string) *DeleteAppRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1992,6 +2121,8 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 type DeleteAppTemplateRequest struct {
 	// 模板唯一标识
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteAppTemplateRequest) String() string {
@@ -2004,6 +2135,11 @@ func (s DeleteAppTemplateRequest) GoString() string {
 
 func (s *DeleteAppTemplateRequest) SetAppTemplateId(v string) *DeleteAppTemplateRequest {
 	s.AppTemplateId = &v
+	return s
+}
+
+func (s *DeleteAppTemplateRequest) SetRegionId(v string) *DeleteAppTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2052,7 +2188,8 @@ type DeleteClassRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 课堂唯一标识。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ClassId  *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -2072,6 +2209,11 @@ func (s *DeleteClassRequest) SetAppId(v string) *DeleteClassRequest {
 
 func (s *DeleteClassRequest) SetClassId(v string) *DeleteClassRequest {
 	s.ClassId = &v
+	return s
+}
+
+func (s *DeleteClassRequest) SetRegionId(v string) *DeleteClassRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2126,6 +2268,7 @@ type DeleteCommentRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 需要删除的弹幕id列表
 	CommentIdList []*string `json:"CommentIdList,omitempty" xml:"CommentIdList,omitempty" type:"Repeated"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 直播间唯一标识，在调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 删除的操作人ID。
@@ -2147,6 +2290,11 @@ func (s *DeleteCommentRequest) SetAppId(v string) *DeleteCommentRequest {
 
 func (s *DeleteCommentRequest) SetCommentIdList(v []*string) *DeleteCommentRequest {
 	s.CommentIdList = v
+	return s
+}
+
+func (s *DeleteCommentRequest) SetRegionId(v string) *DeleteCommentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2231,6 +2379,7 @@ type DeleteConferenceRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 会议资源的唯一标识ID
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36位
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 创建会议用户ID
@@ -2252,6 +2401,11 @@ func (s *DeleteConferenceRequest) SetAppId(v string) *DeleteConferenceRequest {
 
 func (s *DeleteConferenceRequest) SetConferenceId(v string) *DeleteConferenceRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *DeleteConferenceRequest) SetRegionId(v string) *DeleteConferenceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2308,7 +2462,8 @@ func (s *DeleteConferenceResponse) SetBody(v *DeleteConferenceResponseBody) *Del
 
 type DeleteLiveRequest struct {
 	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteLiveRequest) String() string {
@@ -2321,6 +2476,11 @@ func (s DeleteLiveRequest) GoString() string {
 
 func (s *DeleteLiveRequest) SetLiveId(v string) *DeleteLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *DeleteLiveRequest) SetRegionId(v string) *DeleteLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2369,7 +2529,8 @@ type DeleteLiveRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作人ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -2389,6 +2550,11 @@ func (s *DeleteLiveRoomRequest) SetAppId(v string) *DeleteLiveRoomRequest {
 
 func (s *DeleteLiveRoomRequest) SetLiveId(v string) *DeleteLiveRoomRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *DeleteLiveRoomRequest) SetRegionId(v string) *DeleteLiveRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2440,7 +2606,8 @@ func (s *DeleteLiveRoomResponse) SetBody(v *DeleteLiveRoomResponseBody) *DeleteL
 
 type DeleteRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
@@ -2455,6 +2622,11 @@ func (s DeleteRoomRequest) GoString() string {
 
 func (s *DeleteRoomRequest) SetAppId(v string) *DeleteRoomRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteRoomRequest) SetRegionId(v string) *DeleteRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2507,6 +2679,8 @@ func (s *DeleteRoomResponse) SetBody(v *DeleteRoomResponseBody) *DeleteRoomRespo
 type GetAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAppRequest) String() string {
@@ -2519,6 +2693,11 @@ func (s GetAppRequest) GoString() string {
 
 func (s *GetAppRequest) SetAppId(v string) *GetAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetAppRequest) SetRegionId(v string) *GetAppRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2654,6 +2833,8 @@ func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 type GetAppTemplateRequest struct {
 	// 应用模板唯一标识
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAppTemplateRequest) String() string {
@@ -2666,6 +2847,11 @@ func (s GetAppTemplateRequest) GoString() string {
 
 func (s *GetAppTemplateRequest) SetAppTemplateId(v string) *GetAppTemplateRequest {
 	s.AppTemplateId = &v
+	return s
+}
+
+func (s *GetAppTemplateRequest) SetRegionId(v string) *GetAppTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2829,6 +3015,8 @@ type GetAuthTokenRequest struct {
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	// 终端设备ID
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 用户UserId,在AppId下单独唯一
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -2853,6 +3041,11 @@ func (s *GetAuthTokenRequest) SetAppKey(v string) *GetAuthTokenRequest {
 
 func (s *GetAuthTokenRequest) SetDeviceId(v string) *GetAuthTokenRequest {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *GetAuthTokenRequest) SetRegionId(v string) *GetAuthTokenRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2944,7 +3137,8 @@ type GetClassDetailRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 课堂唯一标识，由调用CreateClass返回。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ClassId  *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作人用户ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -2964,6 +3158,11 @@ func (s *GetClassDetailRequest) SetAppId(v string) *GetClassDetailRequest {
 
 func (s *GetClassDetailRequest) SetClassId(v string) *GetClassDetailRequest {
 	s.ClassId = &v
+	return s
+}
+
+func (s *GetClassDetailRequest) SetRegionId(v string) *GetClassDetailRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3118,6 +3317,8 @@ func (s *GetClassDetailResponse) SetBody(v *GetClassDetailResponseBody) *GetClas
 type GetConferenceRequest struct {
 	// 会议资源唯一标识。
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConferenceRequest) String() string {
@@ -3130,6 +3331,11 @@ func (s GetConferenceRequest) GoString() string {
 
 func (s *GetConferenceRequest) SetConferenceId(v string) *GetConferenceRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *GetConferenceRequest) SetRegionId(v string) *GetConferenceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3251,6 +3457,8 @@ func (s *GetConferenceResponse) SetBody(v *GetConferenceResponseBody) *GetConfer
 type GetDomainOwnerVerifyContentRequest struct {
 	// 直播域名
 	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetDomainOwnerVerifyContentRequest) String() string {
@@ -3263,6 +3471,11 @@ func (s GetDomainOwnerVerifyContentRequest) GoString() string {
 
 func (s *GetDomainOwnerVerifyContentRequest) SetLiveDomainName(v string) *GetDomainOwnerVerifyContentRequest {
 	s.LiveDomainName = &v
+	return s
+}
+
+func (s *GetDomainOwnerVerifyContentRequest) SetRegionId(v string) *GetDomainOwnerVerifyContentRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3332,6 +3545,24 @@ func (s *GetDomainOwnerVerifyContentResponse) SetBody(v *GetDomainOwnerVerifyCon
 	return s
 }
 
+type GetImpProductStatusRequest struct {
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetImpProductStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImpProductStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImpProductStatusRequest) SetRegionId(v string) *GetImpProductStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetImpProductStatusResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3382,7 +3613,8 @@ func (s *GetImpProductStatusResponse) SetBody(v *GetImpProductStatusResponseBody
 
 type GetLiveRequest struct {
 	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveRequest) String() string {
@@ -3395,6 +3627,11 @@ func (s GetLiveRequest) GoString() string {
 
 func (s *GetLiveRequest) SetLiveId(v string) *GetLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRequest) SetRegionId(v string) *GetLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3667,6 +3904,8 @@ type GetLiveDomainStatusRequest struct {
 	LiveDomainList []*string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty" type:"Repeated"`
 	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
 	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveDomainStatusRequest) String() string {
@@ -3692,6 +3931,11 @@ func (s *GetLiveDomainStatusRequest) SetLiveDomainType(v string) *GetLiveDomainS
 	return s
 }
 
+func (s *GetLiveDomainStatusRequest) SetRegionId(v string) *GetLiveDomainStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetLiveDomainStatusShrinkRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3699,6 +3943,8 @@ type GetLiveDomainStatusShrinkRequest struct {
 	LiveDomainListShrink *string `json:"LiveDomainList,omitempty" xml:"LiveDomainList,omitempty"`
 	// 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
 	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveDomainStatusShrinkRequest) String() string {
@@ -3721,6 +3967,11 @@ func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainListShrink(v string) *Ge
 
 func (s *GetLiveDomainStatusShrinkRequest) SetLiveDomainType(v string) *GetLiveDomainStatusShrinkRequest {
 	s.LiveDomainType = &v
+	return s
+}
+
+func (s *GetLiveDomainStatusShrinkRequest) SetRegionId(v string) *GetLiveDomainStatusShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3826,7 +4077,8 @@ type GetLiveRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveRoomRequest) String() string {
@@ -3844,6 +4096,11 @@ func (s *GetLiveRoomRequest) SetAppId(v string) *GetLiveRoomRequest {
 
 func (s *GetLiveRoomRequest) SetLiveId(v string) *GetLiveRoomRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomRequest) SetRegionId(v string) *GetLiveRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4135,7 +4392,8 @@ type GetLiveRoomStatisticsRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveRoomStatisticsRequest) String() string {
@@ -4153,6 +4411,11 @@ func (s *GetLiveRoomStatisticsRequest) SetAppId(v string) *GetLiveRoomStatistics
 
 func (s *GetLiveRoomStatisticsRequest) SetLiveId(v string) *GetLiveRoomStatisticsRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *GetLiveRoomStatisticsRequest) SetRegionId(v string) *GetLiveRoomStatisticsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4294,6 +4557,7 @@ type GetLiveRoomUserStatisticsRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetLiveRoomUserStatisticsRequest) String() string {
@@ -4321,6 +4585,11 @@ func (s *GetLiveRoomUserStatisticsRequest) SetPageNumber(v string) *GetLiveRoomU
 
 func (s *GetLiveRoomUserStatisticsRequest) SetPageSize(v string) *GetLiveRoomUserStatisticsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsRequest) SetRegionId(v string) *GetLiveRoomUserStatisticsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4445,7 +4714,8 @@ func (s *GetLiveRoomUserStatisticsResponse) SetBody(v *GetLiveRoomUserStatistics
 
 type GetRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
@@ -4460,6 +4730,11 @@ func (s GetRoomRequest) GoString() string {
 
 func (s *GetRoomRequest) SetAppId(v string) *GetRoomRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetRoomRequest) SetRegionId(v string) *GetRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4671,6 +4946,8 @@ func (s *GetRoomResponse) SetBody(v *GetRoomResponseBody) *GetRoomResponse {
 type GetStandardRoomHttpsCertificateRequest struct {
 	// 证书ID
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetStandardRoomHttpsCertificateRequest) String() string {
@@ -4683,6 +4960,11 @@ func (s GetStandardRoomHttpsCertificateRequest) GoString() string {
 
 func (s *GetStandardRoomHttpsCertificateRequest) SetCertificateId(v string) *GetStandardRoomHttpsCertificateRequest {
 	s.CertificateId = &v
+	return s
+}
+
+func (s *GetStandardRoomHttpsCertificateRequest) SetRegionId(v string) *GetStandardRoomHttpsCertificateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4784,6 +5066,8 @@ type GetStandardRoomJumpUrlRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// 平台：win, mac, android, ios, web
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 用户UserId,在AppId下单独唯一
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// 用户昵称
@@ -4820,6 +5104,11 @@ func (s *GetStandardRoomJumpUrlRequest) SetBizType(v string) *GetStandardRoomJum
 
 func (s *GetStandardRoomJumpUrlRequest) SetPlatform(v string) *GetStandardRoomJumpUrlRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *GetStandardRoomJumpUrlRequest) SetRegionId(v string) *GetStandardRoomJumpUrlRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4903,6 +5192,8 @@ type ListAppTemplatesRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，参数为空默认显示个数为10。
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAppTemplatesRequest) String() string {
@@ -4920,6 +5211,11 @@ func (s *ListAppTemplatesRequest) SetPageNumber(v string) *ListAppTemplatesReque
 
 func (s *ListAppTemplatesRequest) SetPageSize(v string) *ListAppTemplatesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppTemplatesRequest) SetRegionId(v string) *ListAppTemplatesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5123,6 +5419,8 @@ type ListApplyLinkMicUsersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大显示个数为100。
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListApplyLinkMicUsersRequest) String() string {
@@ -5145,6 +5443,11 @@ func (s *ListApplyLinkMicUsersRequest) SetPageNumber(v int32) *ListApplyLinkMicU
 
 func (s *ListApplyLinkMicUsersRequest) SetPageSize(v int32) *ListApplyLinkMicUsersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplyLinkMicUsersRequest) SetRegionId(v string) *ListApplyLinkMicUsersRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5242,6 +5545,8 @@ type ListAppsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，参数为空默认显示个数为10。
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 应用状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -5266,6 +5571,11 @@ func (s *ListAppsRequest) SetPageNumber(v int32) *ListAppsRequest {
 
 func (s *ListAppsRequest) SetPageSize(v int32) *ListAppsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetRegionId(v string) *ListAppsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5448,7 +5758,8 @@ type ListClassesRequest struct {
 	// 查询页码，从1开始，传空默认查询第1页。
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 课程状态，0-未开课 1-上课中 2-已下课，不传则返回所有课程。
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -5473,6 +5784,11 @@ func (s *ListClassesRequest) SetPageNumber(v int32) *ListClassesRequest {
 
 func (s *ListClassesRequest) SetPageSize(v int32) *ListClassesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListClassesRequest) SetRegionId(v string) *ListClassesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5669,7 +5985,8 @@ type ListCommentsRequest struct {
 	// 查询弹幕消息列表的分页页数。应该从1开始，每次分页拉取时递增。
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// 查询弹幕消息列表的分页大小。最小不得小于1，最大不得超过100。如果超过100，会被截断为前100条。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间的唯一标识，在调用CreateRoom时返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 查询弹幕消息列表的排序方式。取值仅限0和1，其中0表示按照弹幕消息创建时间递增的顺序拉取，1表示按照弹幕消息创建时间递减的时间拉取。
@@ -5698,6 +6015,11 @@ func (s *ListCommentsRequest) SetPageNum(v int32) *ListCommentsRequest {
 
 func (s *ListCommentsRequest) SetPageSize(v int32) *ListCommentsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCommentsRequest) SetRegionId(v string) *ListCommentsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5875,6 +6197,8 @@ type ListComponentsRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 应用模板唯一标识
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListComponentsRequest) String() string {
@@ -5892,6 +6216,11 @@ func (s *ListComponentsRequest) SetAppId(v string) *ListComponentsRequest {
 
 func (s *ListComponentsRequest) SetAppTemplateId(v string) *ListComponentsRequest {
 	s.AppTemplateId = &v
+	return s
+}
+
+func (s *ListComponentsRequest) SetRegionId(v string) *ListComponentsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6150,6 +6479,8 @@ type ListConferenceUsersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大显示个数为100。
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListConferenceUsersRequest) String() string {
@@ -6172,6 +6503,11 @@ func (s *ListConferenceUsersRequest) SetPageNumber(v int32) *ListConferenceUsers
 
 func (s *ListConferenceUsersRequest) SetPageSize(v int32) *ListConferenceUsersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListConferenceUsersRequest) SetRegionId(v string) *ListConferenceUsersRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6293,7 +6629,8 @@ type ListLiveRoomsRequest struct {
 	// 查询页码，从1开始，传空默认查询第1页。
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 直播状态，0-在播 1-下播，不传则返回所有直播。
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -6318,6 +6655,11 @@ func (s *ListLiveRoomsRequest) SetPageNumber(v int32) *ListLiveRoomsRequest {
 
 func (s *ListLiveRoomsRequest) SetPageSize(v int32) *ListLiveRoomsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListLiveRoomsRequest) SetRegionId(v string) *ListLiveRoomsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6527,6 +6869,7 @@ type ListLiveRoomsByIdRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID列表。
 	LiveIdList []*string `json:"LiveIdList,omitempty" xml:"LiveIdList,omitempty" type:"Repeated"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListLiveRoomsByIdRequest) String() string {
@@ -6547,11 +6890,17 @@ func (s *ListLiveRoomsByIdRequest) SetLiveIdList(v []*string) *ListLiveRoomsById
 	return s
 }
 
+func (s *ListLiveRoomsByIdRequest) SetRegionId(v string) *ListLiveRoomsByIdRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ListLiveRoomsByIdShrinkRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID列表。
 	LiveIdListShrink *string `json:"LiveIdList,omitempty" xml:"LiveIdList,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListLiveRoomsByIdShrinkRequest) String() string {
@@ -6569,6 +6918,11 @@ func (s *ListLiveRoomsByIdShrinkRequest) SetAppId(v string) *ListLiveRoomsByIdSh
 
 func (s *ListLiveRoomsByIdShrinkRequest) SetLiveIdListShrink(v string) *ListLiveRoomsByIdShrinkRequest {
 	s.LiveIdListShrink = &v
+	return s
+}
+
+func (s *ListLiveRoomsByIdShrinkRequest) SetRegionId(v string) *ListLiveRoomsByIdShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6751,7 +7105,8 @@ type ListRoomLivesRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 拉取在这个时间戳之前创建的直播，单位毫秒，不传则默认拉取最新创建的。
-	QueryTimestamp *int64 `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
+	QueryTimestamp *int64  `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36个字符。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
@@ -6780,6 +7135,11 @@ func (s *ListRoomLivesRequest) SetQueryTimestamp(v int64) *ListRoomLivesRequest 
 	return s
 }
 
+func (s *ListRoomLivesRequest) SetRegionId(v string) *ListRoomLivesRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListRoomLivesRequest) SetRoomId(v string) *ListRoomLivesRequest {
 	s.RoomId = &v
 	return s
@@ -6804,7 +7164,8 @@ type ListRoomLivesShrinkRequest struct {
 	// 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 拉取在这个时间戳之前创建的直播，单位毫秒，不传则默认拉取最新创建的。
-	QueryTimestamp *int64 `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
+	QueryTimestamp *int64  `json:"QueryTimestamp,omitempty" xml:"QueryTimestamp,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36个字符。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
@@ -6830,6 +7191,11 @@ func (s *ListRoomLivesShrinkRequest) SetAppId(v string) *ListRoomLivesShrinkRequ
 
 func (s *ListRoomLivesShrinkRequest) SetQueryTimestamp(v int64) *ListRoomLivesShrinkRequest {
 	s.QueryTimestamp = &v
+	return s
+}
+
+func (s *ListRoomLivesShrinkRequest) SetRegionId(v string) *ListRoomLivesShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7021,13 +7387,178 @@ func (s *ListRoomLivesResponse) SetBody(v *ListRoomLivesResponseBody) *ListRoomL
 	return s
 }
 
+type ListRoomUsersRequest struct {
+	// 应用唯一标识，由6位小写字母、数字组成。
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 查询页码，从1开始，传空默认查询第1页。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 房间ID，最大长度36个字符。
+	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+}
+
+func (s ListRoomUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomUsersRequest) SetAppId(v string) *ListRoomUsersRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListRoomUsersRequest) SetPageNumber(v int32) *ListRoomUsersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoomUsersRequest) SetPageSize(v int32) *ListRoomUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoomUsersRequest) SetRegionId(v string) *ListRoomUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListRoomUsersRequest) SetRoomId(v string) *ListRoomUsersRequest {
+	s.RoomId = &v
+	return s
+}
+
+type ListRoomUsersResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API请求的返回结果结构体。
+	Result *ListRoomUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s ListRoomUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomUsersResponseBody) SetRequestId(v string) *ListRoomUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRoomUsersResponseBody) SetResult(v *ListRoomUsersResponseBodyResult) *ListRoomUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListRoomUsersResponseBodyResult struct {
+	// 是否还有下一页用户列表。
+	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// 该房间的用户总页数。
+	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
+	// 房间用户列表信息。
+	RoomUserList []*ListRoomUsersResponseBodyResultRoomUserList `json:"RoomUserList,omitempty" xml:"RoomUserList,omitempty" type:"Repeated"`
+	// 该房间的用户总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRoomUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomUsersResponseBodyResult) SetHasMore(v bool) *ListRoomUsersResponseBodyResult {
+	s.HasMore = &v
+	return s
+}
+
+func (s *ListRoomUsersResponseBodyResult) SetPageTotal(v int32) *ListRoomUsersResponseBodyResult {
+	s.PageTotal = &v
+	return s
+}
+
+func (s *ListRoomUsersResponseBodyResult) SetRoomUserList(v []*ListRoomUsersResponseBodyResultRoomUserList) *ListRoomUsersResponseBodyResult {
+	s.RoomUserList = v
+	return s
+}
+
+func (s *ListRoomUsersResponseBodyResult) SetTotalCount(v int32) *ListRoomUsersResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRoomUsersResponseBodyResultRoomUserList struct {
+	// 用户拓展字段。
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 用户昵称。
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// 用户唯一标识。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListRoomUsersResponseBodyResultRoomUserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomUsersResponseBodyResultRoomUserList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomUsersResponseBodyResultRoomUserList) SetExtension(v map[string]*string) *ListRoomUsersResponseBodyResultRoomUserList {
+	s.Extension = v
+	return s
+}
+
+func (s *ListRoomUsersResponseBodyResultRoomUserList) SetNick(v string) *ListRoomUsersResponseBodyResultRoomUserList {
+	s.Nick = &v
+	return s
+}
+
+func (s *ListRoomUsersResponseBodyResultRoomUserList) SetUserId(v string) *ListRoomUsersResponseBodyResultRoomUserList {
+	s.UserId = &v
+	return s
+}
+
+type ListRoomUsersResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRoomUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRoomUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoomUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoomUsersResponse) SetHeaders(v map[string]*string) *ListRoomUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoomUsersResponse) SetBody(v *ListRoomUsersResponseBody) *ListRoomUsersResponse {
+	s.Body = v
+	return s
+}
+
 type ListRoomsRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 查询页码，从1开始，传空默认查询第1页。
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页显示个数，最大支持50，参数为空默认显示个数为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListRoomsRequest) String() string {
@@ -7050,6 +7581,11 @@ func (s *ListRoomsRequest) SetPageNumber(v int32) *ListRoomsRequest {
 
 func (s *ListRoomsRequest) SetPageSize(v int32) *ListRoomsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoomsRequest) SetRegionId(v string) *ListRoomsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7269,7 +7805,8 @@ func (s *ListRoomsResponse) SetBody(v *ListRoomsResponseBody) *ListRoomsResponse
 
 type PublishLiveRequest struct {
 	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 当前用户Id
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -7284,6 +7821,11 @@ func (s PublishLiveRequest) GoString() string {
 
 func (s *PublishLiveRequest) SetLiveId(v string) *PublishLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *PublishLiveRequest) SetRegionId(v string) *PublishLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7389,7 +7931,8 @@ type PublishLiveRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作人ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -7409,6 +7952,11 @@ func (s *PublishLiveRoomRequest) SetAppId(v string) *PublishLiveRoomRequest {
 
 func (s *PublishLiveRoomRequest) SetLiveId(v string) *PublishLiveRoomRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *PublishLiveRoomRequest) SetRegionId(v string) *PublishLiveRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7502,6 +8050,8 @@ type RejectLinkMicRequest struct {
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// 同意者用户ID
 	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 被同意用户ID
 	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
 }
@@ -7521,6 +8071,11 @@ func (s *RejectLinkMicRequest) SetConferenceId(v string) *RejectLinkMicRequest {
 
 func (s *RejectLinkMicRequest) SetFromUserId(v string) *RejectLinkMicRequest {
 	s.FromUserId = &v
+	return s
+}
+
+func (s *RejectLinkMicRequest) SetRegionId(v string) *RejectLinkMicRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7575,6 +8130,8 @@ type RemoveMemberRequest struct {
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// 邀请者用户ID
 	FromUserId *string `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 被邀请用户ID
 	ToUserId *string `json:"ToUserId,omitempty" xml:"ToUserId,omitempty"`
 }
@@ -7594,6 +8151,11 @@ func (s *RemoveMemberRequest) SetConferenceId(v string) *RemoveMemberRequest {
 
 func (s *RemoveMemberRequest) SetFromUserId(v string) *RemoveMemberRequest {
 	s.FromUserId = &v
+	return s
+}
+
+func (s *RemoveMemberRequest) SetRegionId(v string) *RemoveMemberRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7650,6 +8212,7 @@ type SendCommentRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 扩展字段，服务端仅做透传。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	RegionId  *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 直播间唯一标识，在调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 弹幕发送者的用户ID，最大长度不超过32个字节。
@@ -7681,6 +8244,11 @@ func (s *SendCommentRequest) SetExtension(v map[string]*string) *SendCommentRequ
 	return s
 }
 
+func (s *SendCommentRequest) SetRegionId(v string) *SendCommentRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *SendCommentRequest) SetRoomId(v string) *SendCommentRequest {
 	s.RoomId = &v
 	return s
@@ -7703,6 +8271,7 @@ type SendCommentShrinkRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 扩展字段，服务端仅做透传。
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 直播间唯一标识，在调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 弹幕发送者的用户ID，最大长度不超过32个字节。
@@ -7731,6 +8300,11 @@ func (s *SendCommentShrinkRequest) SetContent(v string) *SendCommentShrinkReques
 
 func (s *SendCommentShrinkRequest) SetExtensionShrink(v string) *SendCommentShrinkRequest {
 	s.ExtensionShrink = &v
+	return s
+}
+
+func (s *SendCommentShrinkRequest) SetRegionId(v string) *SendCommentShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7872,7 +8446,8 @@ type SendCustomMessageToAllRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 消息体内容。
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Body     *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
@@ -7892,6 +8467,11 @@ func (s *SendCustomMessageToAllRequest) SetAppId(v string) *SendCustomMessageToA
 
 func (s *SendCustomMessageToAllRequest) SetBody(v string) *SendCustomMessageToAllRequest {
 	s.Body = &v
+	return s
+}
+
+func (s *SendCustomMessageToAllRequest) SetRegionId(v string) *SendCustomMessageToAllRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7973,6 +8553,7 @@ type SendCustomMessageToUsersRequest struct {
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// 消息指定的接收人ID列表。
 	ReceiverList []*string `json:"ReceiverList,omitempty" xml:"ReceiverList,omitempty" type:"Repeated"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识，由调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
@@ -7997,6 +8578,11 @@ func (s *SendCustomMessageToUsersRequest) SetBody(v string) *SendCustomMessageTo
 
 func (s *SendCustomMessageToUsersRequest) SetReceiverList(v []*string) *SendCustomMessageToUsersRequest {
 	s.ReceiverList = v
+	return s
+}
+
+func (s *SendCustomMessageToUsersRequest) SetRegionId(v string) *SendCustomMessageToUsersRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8075,7 +8661,8 @@ type StopClassRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 课堂唯一标识。
-	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	ClassId  *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作者用户ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -8095,6 +8682,11 @@ func (s *StopClassRequest) SetAppId(v string) *StopClassRequest {
 
 func (s *StopClassRequest) SetClassId(v string) *StopClassRequest {
 	s.ClassId = &v
+	return s
+}
+
+func (s *StopClassRequest) SetRegionId(v string) *StopClassRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8148,7 +8740,8 @@ type StopLiveRequest struct {
 	// 租户名
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间ID，最大长度36位
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 创建直播用户ID
@@ -8170,6 +8763,11 @@ func (s *StopLiveRequest) SetAppId(v string) *StopLiveRequest {
 
 func (s *StopLiveRequest) SetLiveId(v string) *StopLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *StopLiveRequest) SetRegionId(v string) *StopLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8228,7 +8826,8 @@ type StopLiveRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 直播ID。
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 操作人ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -8248,6 +8847,11 @@ func (s *StopLiveRoomRequest) SetAppId(v string) *StopLiveRoomRequest {
 
 func (s *StopLiveRoomRequest) SetLiveId(v string) *StopLiveRoomRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *StopLiveRoomRequest) SetRegionId(v string) *StopLiveRoomRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8304,6 +8908,8 @@ type UpdateAppRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// 应用状态
 	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppRequest) String() string {
@@ -8326,6 +8932,11 @@ func (s *UpdateAppRequest) SetAppName(v string) *UpdateAppRequest {
 
 func (s *UpdateAppRequest) SetAppStatus(v string) *UpdateAppRequest {
 	s.AppStatus = &v
+	return s
+}
+
+func (s *UpdateAppRequest) SetRegionId(v string) *UpdateAppRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8377,6 +8988,8 @@ type UpdateAppTemplateRequest struct {
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 组件列表
 	ComponentList []*string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Repeated"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppTemplateRequest) String() string {
@@ -8402,6 +9015,11 @@ func (s *UpdateAppTemplateRequest) SetComponentList(v []*string) *UpdateAppTempl
 	return s
 }
 
+func (s *UpdateAppTemplateRequest) SetRegionId(v string) *UpdateAppTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
 type UpdateAppTemplateShrinkRequest struct {
 	// 应用模板唯一标识
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
@@ -8409,6 +9027,8 @@ type UpdateAppTemplateShrinkRequest struct {
 	AppTemplateName *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	// 组件列表
 	ComponentListShrink *string `json:"ComponentList,omitempty" xml:"ComponentList,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppTemplateShrinkRequest) String() string {
@@ -8431,6 +9051,11 @@ func (s *UpdateAppTemplateShrinkRequest) SetAppTemplateName(v string) *UpdateApp
 
 func (s *UpdateAppTemplateShrinkRequest) SetComponentListShrink(v string) *UpdateAppTemplateShrinkRequest {
 	s.ComponentListShrink = &v
+	return s
+}
+
+func (s *UpdateAppTemplateShrinkRequest) SetRegionId(v string) *UpdateAppTemplateShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8480,6 +9105,8 @@ type UpdateAppTemplateConfigRequest struct {
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
 	// 更新配置
 	ConfigList []*UpdateAppTemplateConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppTemplateConfigRequest) String() string {
@@ -8497,6 +9124,11 @@ func (s *UpdateAppTemplateConfigRequest) SetAppTemplateId(v string) *UpdateAppTe
 
 func (s *UpdateAppTemplateConfigRequest) SetConfigList(v []*UpdateAppTemplateConfigRequestConfigList) *UpdateAppTemplateConfigRequest {
 	s.ConfigList = v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigRequest) SetRegionId(v string) *UpdateAppTemplateConfigRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8528,6 +9160,8 @@ type UpdateAppTemplateConfigShrinkRequest struct {
 	AppTemplateId *string `json:"AppTemplateId,omitempty" xml:"AppTemplateId,omitempty"`
 	// 更新配置
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateAppTemplateConfigShrinkRequest) String() string {
@@ -8545,6 +9179,11 @@ func (s *UpdateAppTemplateConfigShrinkRequest) SetAppTemplateId(v string) *Updat
 
 func (s *UpdateAppTemplateConfigShrinkRequest) SetConfigListShrink(v string) *UpdateAppTemplateConfigShrinkRequest {
 	s.ConfigListShrink = &v
+	return s
+}
+
+func (s *UpdateAppTemplateConfigShrinkRequest) SetRegionId(v string) *UpdateAppTemplateConfigShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8648,6 +9287,7 @@ type UpdateClassRequest struct {
 	CreateNickname *string `json:"CreateNickname,omitempty" xml:"CreateNickname,omitempty"`
 	// 创建人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
 	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 课堂标题，1~32个字符。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -8677,6 +9317,11 @@ func (s *UpdateClassRequest) SetCreateNickname(v string) *UpdateClassRequest {
 
 func (s *UpdateClassRequest) SetCreateUserId(v string) *UpdateClassRequest {
 	s.CreateUserId = &v
+	return s
+}
+
+func (s *UpdateClassRequest) SetRegionId(v string) *UpdateClassRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8729,6 +9374,8 @@ func (s *UpdateClassResponse) SetBody(v *UpdateClassResponseBody) *UpdateClassRe
 type UpdateConferenceRequest struct {
 	// 会议唯一标识
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 会议标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -8743,6 +9390,11 @@ func (s UpdateConferenceRequest) GoString() string {
 
 func (s *UpdateConferenceRequest) SetConferenceId(v string) *UpdateConferenceRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *UpdateConferenceRequest) SetRegionId(v string) *UpdateConferenceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8796,7 +9448,8 @@ type UpdateLiveRequest struct {
 	// 直播简介，支持中英文，最大长度2048位
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	// 直播资源的唯一标识ID
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId   *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 直播标题，支持中英文，最大长度256位
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -8816,6 +9469,11 @@ func (s *UpdateLiveRequest) SetIntroduction(v string) *UpdateLiveRequest {
 
 func (s *UpdateLiveRequest) SetLiveId(v string) *UpdateLiveRequest {
 	s.LiveId = &v
+	return s
+}
+
+func (s *UpdateLiveRequest) SetRegionId(v string) *UpdateLiveRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8879,7 +9537,8 @@ type UpdateLiveRoomRequest struct {
 	// 直播ID。
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 标题，支持中英文，最大长度32位。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// 操作人ID。
@@ -8929,6 +9588,11 @@ func (s *UpdateLiveRoomRequest) SetNotice(v string) *UpdateLiveRoomRequest {
 	return s
 }
 
+func (s *UpdateLiveRoomRequest) SetRegionId(v string) *UpdateLiveRoomRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *UpdateLiveRoomRequest) SetTitle(v string) *UpdateLiveRoomRequest {
 	s.Title = &v
 	return s
@@ -8953,7 +9617,8 @@ type UpdateLiveRoomShrinkRequest struct {
 	// 直播ID。
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// 公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 标题，支持中英文，最大长度32位。
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// 操作人ID。
@@ -9000,6 +9665,11 @@ func (s *UpdateLiveRoomShrinkRequest) SetLiveId(v string) *UpdateLiveRoomShrinkR
 
 func (s *UpdateLiveRoomShrinkRequest) SetNotice(v string) *UpdateLiveRoomShrinkRequest {
 	s.Notice = &v
+	return s
+}
+
+func (s *UpdateLiveRoomShrinkRequest) SetRegionId(v string) *UpdateLiveRoomShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9060,7 +9730,8 @@ type UpdateRoomRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房主用户id，仅支持英文和数字，最大长度36位。
@@ -9092,6 +9763,11 @@ func (s *UpdateRoomRequest) SetNotice(v string) *UpdateRoomRequest {
 	return s
 }
 
+func (s *UpdateRoomRequest) SetRegionId(v string) *UpdateRoomRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *UpdateRoomRequest) SetRoomId(v string) *UpdateRoomRequest {
 	s.RoomId = &v
 	return s
@@ -9113,7 +9789,8 @@ type UpdateRoomShrinkRequest struct {
 	// 拓展字段，按需传递，需要额外记录的房间属性。
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 房间公告，支持中英文，最大长度256位。
-	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	Notice   *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 房间唯一标识。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 房主用户id，仅支持英文和数字，最大长度36位。
@@ -9142,6 +9819,11 @@ func (s *UpdateRoomShrinkRequest) SetExtensionShrink(v string) *UpdateRoomShrink
 
 func (s *UpdateRoomShrinkRequest) SetNotice(v string) *UpdateRoomShrinkRequest {
 	s.Notice = &v
+	return s
+}
+
+func (s *UpdateRoomShrinkRequest) SetRegionId(v string) *UpdateRoomShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9204,6 +9886,8 @@ func (s *UpdateRoomResponse) SetBody(v *UpdateRoomResponseBody) *UpdateRoomRespo
 type VerifyDomainOwnerRequest struct {
 	// 直播域名
 	LiveDomainName *string `json:"LiveDomainName,omitempty" xml:"LiveDomainName,omitempty"`
+	// 地域
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VerifyDomainOwnerRequest) String() string {
@@ -9216,6 +9900,11 @@ func (s VerifyDomainOwnerRequest) GoString() string {
 
 func (s *VerifyDomainOwnerRequest) SetLiveDomainName(v string) *VerifyDomainOwnerRequest {
 	s.LiveDomainName = &v
+	return s
+}
+
+func (s *VerifyDomainOwnerRequest) SetRegionId(v string) *VerifyDomainOwnerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9322,8 +10011,19 @@ func (client *Client) AddMemberWithOptions(request *AddMemberRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMember"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AddMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddMember"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9350,8 +10050,19 @@ func (client *Client) AgreeLinkMicWithOptions(request *AgreeLinkMicRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AgreeLinkMic"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AgreeLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AgreeLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9378,8 +10089,19 @@ func (client *Client) ApplyLinkMicWithOptions(request *ApplyLinkMicRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyLinkMic"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ApplyLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9406,8 +10128,19 @@ func (client *Client) AttachStandardRoomHttpsCertificateWithOptions(request *Att
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachStandardRoomHttpsCertificate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AttachStandardRoomHttpsCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachStandardRoomHttpsCertificate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9434,8 +10167,19 @@ func (client *Client) BanAllCommentWithOptions(request *BanAllCommentRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("BanAllComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &BanAllCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9462,8 +10206,19 @@ func (client *Client) BanCommentWithOptions(request *BanCommentRequest, runtime 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("BanComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &BanCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9490,8 +10245,19 @@ func (client *Client) CancelApplyLinkMicWithOptions(request *CancelApplyLinkMicR
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelApplyLinkMic"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelApplyLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelApplyLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9518,8 +10284,19 @@ func (client *Client) CancelBanAllCommentWithOptions(request *CancelBanAllCommen
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelBanAllComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelBanAllCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelBanAllComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9546,8 +10323,19 @@ func (client *Client) CancelBanCommentWithOptions(request *CancelBanCommentReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelBanComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelBanCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelBanComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9574,8 +10362,19 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApp"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9608,8 +10407,19 @@ func (client *Client) CreateAppTemplateWithOptions(tmpReq *CreateAppTemplateRequ
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppTemplate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9636,8 +10446,19 @@ func (client *Client) CreateClassWithOptions(request *CreateClassRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClass"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateClassResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateClass"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9664,8 +10485,19 @@ func (client *Client) CreateConferenceWithOptions(request *CreateConferenceReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConference"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9692,8 +10524,19 @@ func (client *Client) CreateLiveWithOptions(request *CreateLiveRequest, runtime 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9726,8 +10569,19 @@ func (client *Client) CreateLiveRoomWithOptions(tmpReq *CreateLiveRoomRequest, r
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9760,8 +10614,19 @@ func (client *Client) CreateRoomWithOptions(tmpReq *CreateRoomRequest, runtime *
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9788,8 +10653,19 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApp"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9816,8 +10692,19 @@ func (client *Client) DeleteAppTemplateWithOptions(request *DeleteAppTemplateReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppTemplate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9844,8 +10731,19 @@ func (client *Client) DeleteClassWithOptions(request *DeleteClassRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClass"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteClassResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteClass"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9872,8 +10770,19 @@ func (client *Client) DeleteCommentWithOptions(request *DeleteCommentRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9900,8 +10809,19 @@ func (client *Client) DeleteConferenceWithOptions(request *DeleteConferenceReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConference"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9928,8 +10848,19 @@ func (client *Client) DeleteLiveWithOptions(request *DeleteLiveRequest, runtime 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9956,8 +10887,19 @@ func (client *Client) DeleteLiveRoomWithOptions(request *DeleteLiveRoomRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9984,8 +10926,19 @@ func (client *Client) DeleteRoomWithOptions(request *DeleteRoomRequest, runtime 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10012,8 +10965,19 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApp"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10040,8 +11004,19 @@ func (client *Client) GetAppTemplateWithOptions(request *GetAppTemplateRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppTemplate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10068,8 +11043,19 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthToken"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAuthTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAuthToken"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10096,8 +11082,19 @@ func (client *Client) GetClassDetailWithOptions(request *GetClassDetailRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClassDetail"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetClassDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetClassDetail"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10124,8 +11121,19 @@ func (client *Client) GetConferenceWithOptions(request *GetConferenceRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConference"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10152,8 +11160,19 @@ func (client *Client) GetDomainOwnerVerifyContentWithOptions(request *GetDomainO
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDomainOwnerVerifyContent"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetDomainOwnerVerifyContentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDomainOwnerVerifyContent"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10172,10 +11191,27 @@ func (client *Client) GetDomainOwnerVerifyContent(request *GetDomainOwnerVerifyC
 	return _result, _err
 }
 
-func (client *Client) GetImpProductStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetImpProductStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) GetImpProductStatusWithOptions(request *GetImpProductStatusRequest, runtime *util.RuntimeOptions) (_result *GetImpProductStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImpProductStatus"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetImpProductStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetImpProductStatus"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10183,10 +11219,10 @@ func (client *Client) GetImpProductStatusWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
-func (client *Client) GetImpProductStatus() (_result *GetImpProductStatusResponse, _err error) {
+func (client *Client) GetImpProductStatus(request *GetImpProductStatusRequest) (_result *GetImpProductStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImpProductStatusResponse{}
-	_body, _err := client.GetImpProductStatusWithOptions(runtime)
+	_body, _err := client.GetImpProductStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10202,8 +11238,19 @@ func (client *Client) GetLiveWithOptions(request *GetLiveRequest, runtime *util.
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10236,8 +11283,19 @@ func (client *Client) GetLiveDomainStatusWithOptions(tmpReq *GetLiveDomainStatus
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveDomainStatus"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetLiveDomainStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveDomainStatus"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10264,8 +11322,19 @@ func (client *Client) GetLiveRoomWithOptions(request *GetLiveRoomRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10292,8 +11361,19 @@ func (client *Client) GetLiveRoomStatisticsWithOptions(request *GetLiveRoomStati
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveRoomStatistics"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetLiveRoomStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoomStatistics"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10320,8 +11400,19 @@ func (client *Client) GetLiveRoomUserStatisticsWithOptions(request *GetLiveRoomU
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLiveRoomUserStatistics"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetLiveRoomUserStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLiveRoomUserStatistics"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10348,8 +11439,19 @@ func (client *Client) GetRoomWithOptions(request *GetRoomRequest, runtime *util.
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10376,8 +11478,19 @@ func (client *Client) GetStandardRoomHttpsCertificateWithOptions(request *GetSta
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStandardRoomHttpsCertificate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetStandardRoomHttpsCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStandardRoomHttpsCertificate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10404,8 +11517,19 @@ func (client *Client) GetStandardRoomJumpUrlWithOptions(request *GetStandardRoom
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStandardRoomJumpUrl"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetStandardRoomJumpUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStandardRoomJumpUrl"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10432,8 +11556,19 @@ func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAppTemplates"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAppTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAppTemplates"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10460,8 +11595,19 @@ func (client *Client) ListApplyLinkMicUsersWithOptions(request *ListApplyLinkMic
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplyLinkMicUsers"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListApplyLinkMicUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListApplyLinkMicUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10488,8 +11634,19 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *uti
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApps"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAppsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListApps"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10516,8 +11673,19 @@ func (client *Client) ListClassesWithOptions(request *ListClassesRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClasses"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListClassesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListClasses"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10544,8 +11712,19 @@ func (client *Client) ListCommentsWithOptions(request *ListCommentsRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListComments"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListCommentsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListComments"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10572,8 +11751,19 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListComponents"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListComponentsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListComponents"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10600,8 +11790,19 @@ func (client *Client) ListConferenceUsersWithOptions(request *ListConferenceUser
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConferenceUsers"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListConferenceUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConferenceUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10628,8 +11829,19 @@ func (client *Client) ListLiveRoomsWithOptions(request *ListLiveRoomsRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveRooms"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLiveRoomsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListLiveRooms"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10662,8 +11874,19 @@ func (client *Client) ListLiveRoomsByIdWithOptions(tmpReq *ListLiveRoomsByIdRequ
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLiveRoomsById"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLiveRoomsByIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListLiveRoomsById"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10696,8 +11919,19 @@ func (client *Client) ListRoomLivesWithOptions(tmpReq *ListRoomLivesRequest, run
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoomLives"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListRoomLivesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRoomLives"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10716,6 +11950,45 @@ func (client *Client) ListRoomLives(request *ListRoomLivesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListRoomUsersWithOptions(request *ListRoomUsersRequest, runtime *util.RuntimeOptions) (_result *ListRoomUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Body: util.ToMap(request),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoomUsers"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRoomUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRoomUsers(request *ListRoomUsersRequest) (_result *ListRoomUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoomUsersResponse{}
+	_body, _err := client.ListRoomUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListRoomsWithOptions(request *ListRoomsRequest, runtime *util.RuntimeOptions) (_result *ListRoomsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10724,8 +11997,19 @@ func (client *Client) ListRoomsWithOptions(request *ListRoomsRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRooms"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListRoomsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRooms"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10752,8 +12036,19 @@ func (client *Client) PublishLiveWithOptions(request *PublishLiveRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PublishLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10780,8 +12075,19 @@ func (client *Client) PublishLiveRoomWithOptions(request *PublishLiveRoomRequest
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PublishLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10808,8 +12114,19 @@ func (client *Client) RejectLinkMicWithOptions(request *RejectLinkMicRequest, ru
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectLinkMic"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RejectLinkMicResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RejectLinkMic"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10836,8 +12153,19 @@ func (client *Client) RemoveMemberWithOptions(request *RemoveMemberRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveMember"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RemoveMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveMember"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10870,8 +12198,19 @@ func (client *Client) SendCommentWithOptions(tmpReq *SendCommentRequest, runtime
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("SendComment"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SendCommentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendComment"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10898,8 +12237,19 @@ func (client *Client) SendCustomMessageToAllWithOptions(request *SendCustomMessa
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("SendCustomMessageToAll"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SendCustomMessageToAllResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToAll"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10926,8 +12276,19 @@ func (client *Client) SendCustomMessageToUsersWithOptions(request *SendCustomMes
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("SendCustomMessageToUsers"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SendCustomMessageToUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendCustomMessageToUsers"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10954,8 +12315,19 @@ func (client *Client) StopClassWithOptions(request *StopClassRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopClass"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopClassResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopClass"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10982,8 +12354,19 @@ func (client *Client) StopLiveWithOptions(request *StopLiveRequest, runtime *uti
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11010,8 +12393,19 @@ func (client *Client) StopLiveRoomWithOptions(request *StopLiveRoomRequest, runt
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11038,8 +12432,19 @@ func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *u
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApp"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateApp"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11072,8 +12477,19 @@ func (client *Client) UpdateAppTemplateWithOptions(tmpReq *UpdateAppTemplateRequ
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppTemplate"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAppTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAppTemplate"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11106,8 +12522,19 @@ func (client *Client) UpdateAppTemplateConfigWithOptions(tmpReq *UpdateAppTempla
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppTemplateConfig"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateAppTemplateConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAppTemplateConfig"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11134,8 +12561,19 @@ func (client *Client) UpdateClassWithOptions(request *UpdateClassRequest, runtim
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClass"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateClassResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateClass"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11162,8 +12600,19 @@ func (client *Client) UpdateConferenceWithOptions(request *UpdateConferenceReque
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConference"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateConferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateConference"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11190,8 +12639,19 @@ func (client *Client) UpdateLiveWithOptions(request *UpdateLiveRequest, runtime 
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLive"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateLive"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11224,8 +12684,19 @@ func (client *Client) UpdateLiveRoomWithOptions(tmpReq *UpdateLiveRoomRequest, r
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLiveRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateLiveRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateLiveRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11258,8 +12729,19 @@ func (client *Client) UpdateRoomWithOptions(tmpReq *UpdateRoomRequest, runtime *
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRoom"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateRoomResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRoom"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11286,8 +12768,19 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	req := &openapi.OpenApiRequest{
 		Body: util.ToMap(request),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyDomainOwner"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &VerifyDomainOwnerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyDomainOwner"), tea.String("2021-06-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
