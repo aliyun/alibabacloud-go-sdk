@@ -3251,9 +3251,10 @@ func (s *GetFeatureDetailsResponseBodyTerraform) SetSupportedVersions(v []*GetFe
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes struct {
-	CustomTag    []*string `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
-	EstimateCost []*string `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
-	SystemTag    []*string `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+	CustomTag     []*string `json:"CustomTag,omitempty" xml:"CustomTag,omitempty" type:"Repeated"`
+	EstimateCost  []*string `json:"EstimateCost,omitempty" xml:"EstimateCost,omitempty" type:"Repeated"`
+	ResourceGroup []*string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
+	SystemTag     []*string `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
 }
 
 func (s GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) String() string {
@@ -3271,6 +3272,11 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetCustom
 
 func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetEstimateCost(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
 	s.EstimateCost = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetResourceGroup(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes {
+	s.ResourceGroup = v
 	return s
 }
 
@@ -3372,11 +3378,12 @@ func (s *GetResourceTypeRequest) SetResourceType(v string) *GetResourceTypeReque
 }
 
 type GetResourceTypeResponseBody struct {
-	Attributes            map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Properties            map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceType          *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SupportDriftDetection *bool                  `json:"SupportDriftDetection,omitempty" xml:"SupportDriftDetection,omitempty"`
+	Attributes              map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Properties              map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequestId               *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType            *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SupportDriftDetection   *bool                  `json:"SupportDriftDetection,omitempty" xml:"SupportDriftDetection,omitempty"`
+	SupportScratchDetection *bool                  `json:"SupportScratchDetection,omitempty" xml:"SupportScratchDetection,omitempty"`
 }
 
 func (s GetResourceTypeResponseBody) String() string {
@@ -3409,6 +3416,11 @@ func (s *GetResourceTypeResponseBody) SetResourceType(v string) *GetResourceType
 
 func (s *GetResourceTypeResponseBody) SetSupportDriftDetection(v bool) *GetResourceTypeResponseBody {
 	s.SupportDriftDetection = &v
+	return s
+}
+
+func (s *GetResourceTypeResponseBody) SetSupportScratchDetection(v bool) *GetResourceTypeResponseBody {
+	s.SupportScratchDetection = &v
 	return s
 }
 
@@ -5460,13 +5472,14 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateEstimateCostRequest struct {
-	ClientToken     *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Parameters      []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RegionId        *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateBody    *string                                     `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId      *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL     *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion *string                                     `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	ClientToken       *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters        []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId          *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateBody      *string                                     `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId        *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId *string                                     `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateURL       *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion   *string                                     `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s GetTemplateEstimateCostRequest) String() string {
@@ -5499,6 +5512,11 @@ func (s *GetTemplateEstimateCostRequest) SetTemplateBody(v string) *GetTemplateE
 
 func (s *GetTemplateEstimateCostRequest) SetTemplateId(v string) *GetTemplateEstimateCostRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTemplateEstimateCostRequest) SetTemplateScratchId(v string) *GetTemplateEstimateCostRequest {
+	s.TemplateScratchId = &v
 	return s
 }
 
@@ -9200,19 +9218,20 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	ClientToken      *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisableRollback  *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	Parallelism      *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Parameters       []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RegionId         *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackName        *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackPolicyBody  *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackPolicyURL   *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TemplateBody     *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId       *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL      *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion  *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TimeoutInMinutes *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	ClientToken       *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableRollback   *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Parallelism       *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters        []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId          *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackName         *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody   *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL    *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody      *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId        *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId *string                          `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateURL       *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion   *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes  *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s PreviewStackRequest) String() string {
@@ -9270,6 +9289,11 @@ func (s *PreviewStackRequest) SetTemplateBody(v string) *PreviewStackRequest {
 
 func (s *PreviewStackRequest) SetTemplateId(v string) *PreviewStackRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateScratchId(v string) *PreviewStackRequest {
+	s.TemplateScratchId = &v
 	return s
 }
 
@@ -11594,7 +11618,6 @@ func (client *Client) CancelUpdateStackWithOptions(request *CancelUpdateStackReq
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelUpdateStack"),
@@ -11604,7 +11627,7 @@ func (client *Client) CancelUpdateStackWithOptions(request *CancelUpdateStackReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelUpdateStackResponse{}
@@ -11647,7 +11670,6 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ContinueCreateStack"),
@@ -11657,7 +11679,7 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ContinueCreateStackResponse{}
@@ -11713,7 +11735,6 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 	query["UsePreviousParameters"] = request.UsePreviousParameters
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChangeSet"),
@@ -11723,7 +11744,7 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateChangeSetResponse{}
@@ -11774,7 +11795,6 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStack"),
@@ -11784,7 +11804,7 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackResponse{}
@@ -11835,7 +11855,6 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStackGroup"),
@@ -11845,7 +11864,7 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackGroupResponse{}
@@ -11905,7 +11924,6 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStackInstances"),
@@ -11915,7 +11933,7 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStackInstancesResponse{}
@@ -11951,7 +11969,6 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	query["TemplateURL"] = request.TemplateURL
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTemplate"),
@@ -11961,7 +11978,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTemplateResponse{}
@@ -12020,7 +12037,6 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 	query["TemplateScratchType"] = request.TemplateScratchType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTemplateScratch"),
@@ -12030,7 +12046,7 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTemplateScratchResponse{}
@@ -12063,7 +12079,6 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChangeSet"),
@@ -12073,7 +12088,7 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChangeSetResponse{}
@@ -12109,7 +12124,6 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStack"),
@@ -12119,7 +12133,7 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackResponse{}
@@ -12152,7 +12166,6 @@ func (client *Client) DeleteStackGroupWithOptions(request *DeleteStackGroupReque
 	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStackGroup"),
@@ -12162,7 +12175,7 @@ func (client *Client) DeleteStackGroupWithOptions(request *DeleteStackGroupReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackGroupResponse{}
@@ -12220,7 +12233,6 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStackInstances"),
@@ -12230,7 +12242,7 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStackInstancesResponse{}
@@ -12262,7 +12274,6 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTemplate"),
@@ -12272,7 +12283,7 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
@@ -12305,7 +12316,6 @@ func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateSc
 	query["TemplateScratchId"] = request.TemplateScratchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTemplateScratch"),
@@ -12315,7 +12325,7 @@ func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateSc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateScratchResponse{}
@@ -12347,7 +12357,6 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	query["AcceptLanguage"] = request.AcceptLanguage
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -12357,7 +12366,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -12392,7 +12401,6 @@ func (client *Client) DetectStackDriftWithOptions(request *DetectStackDriftReque
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectStackDrift"),
@@ -12402,7 +12410,7 @@ func (client *Client) DetectStackDriftWithOptions(request *DetectStackDriftReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackDriftResponse{}
@@ -12443,7 +12451,6 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectStackGroupDrift"),
@@ -12453,7 +12460,7 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackGroupDriftResponse{}
@@ -12488,7 +12495,6 @@ func (client *Client) DetectStackResourceDriftWithOptions(request *DetectStackRe
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectStackResourceDrift"),
@@ -12498,7 +12504,7 @@ func (client *Client) DetectStackResourceDriftWithOptions(request *DetectStackRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetectStackResourceDriftResponse{}
@@ -12532,7 +12538,6 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExecuteChangeSet"),
@@ -12542,7 +12547,7 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteChangeSetResponse{}
@@ -12576,7 +12581,6 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 	query["TemplateScratchId"] = request.TemplateScratchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateTemplateByScratch"),
@@ -12586,7 +12590,7 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateTemplateByScratchResponse{}
@@ -12621,7 +12625,6 @@ func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplat
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateTemplatePolicy"),
@@ -12631,7 +12634,7 @@ func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateTemplatePolicyResponse{}
@@ -12665,7 +12668,6 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 	query["ShowTemplate"] = request.ShowTemplate
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetChangeSet"),
@@ -12675,7 +12677,7 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetChangeSetResponse{}
@@ -12708,7 +12710,6 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFeatureDetails"),
@@ -12718,7 +12719,7 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFeatureDetailsResponse{}
@@ -12750,7 +12751,6 @@ func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResourceType"),
@@ -12760,7 +12760,7 @@ func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceTypeResponse{}
@@ -12792,7 +12792,6 @@ func (client *Client) GetResourceTypeTemplateWithOptions(request *GetResourceTyp
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResourceTypeTemplate"),
@@ -12802,7 +12801,7 @@ func (client *Client) GetResourceTypeTemplateWithOptions(request *GetResourceTyp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceTypeTemplateResponse{}
@@ -12840,7 +12839,6 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetServiceProvisions"),
@@ -12850,7 +12848,7 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceProvisionsResponse{}
@@ -12886,7 +12884,6 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStack"),
@@ -12896,7 +12893,7 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackResponse{}
@@ -12929,7 +12926,6 @@ func (client *Client) GetStackDriftDetectionStatusWithOptions(request *GetStackD
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackDriftDetectionStatus"),
@@ -12939,7 +12935,7 @@ func (client *Client) GetStackDriftDetectionStatusWithOptions(request *GetStackD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackDriftDetectionStatusResponse{}
@@ -12973,7 +12969,6 @@ func (client *Client) GetStackGroupWithOptions(request *GetStackGroupRequest, ru
 	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackGroup"),
@@ -12983,7 +12978,7 @@ func (client *Client) GetStackGroupWithOptions(request *GetStackGroupRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackGroupResponse{}
@@ -13016,7 +13011,6 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackGroupOperation"),
@@ -13026,7 +13020,7 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackGroupOperationResponse{}
@@ -13061,7 +13055,6 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 	query["StackInstanceRegionId"] = request.StackInstanceRegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackInstance"),
@@ -13071,7 +13064,7 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackInstanceResponse{}
@@ -13104,7 +13097,6 @@ func (client *Client) GetStackPolicyWithOptions(request *GetStackPolicyRequest, 
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackPolicy"),
@@ -13114,7 +13106,7 @@ func (client *Client) GetStackPolicyWithOptions(request *GetStackPolicyRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackPolicyResponse{}
@@ -13150,7 +13142,6 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStackResource"),
@@ -13160,7 +13151,7 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStackResourceResponse{}
@@ -13199,7 +13190,6 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplate"),
@@ -13209,7 +13199,7 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
@@ -13243,11 +13233,11 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 	query["RegionId"] = request.RegionId
 	query["TemplateBody"] = request.TemplateBody
 	query["TemplateId"] = request.TemplateId
+	query["TemplateScratchId"] = request.TemplateScratchId
 	query["TemplateURL"] = request.TemplateURL
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateEstimateCost"),
@@ -13257,7 +13247,7 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateEstimateCostResponse{}
@@ -13302,7 +13292,6 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateParameterConstraints"),
@@ -13312,7 +13301,7 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateParameterConstraintsResponse{}
@@ -13346,7 +13335,6 @@ func (client *Client) GetTemplateScratchWithOptions(request *GetTemplateScratchR
 	query["TemplateScratchId"] = request.TemplateScratchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateScratch"),
@@ -13356,7 +13344,7 @@ func (client *Client) GetTemplateScratchWithOptions(request *GetTemplateScratchR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateScratchResponse{}
@@ -13395,7 +13383,6 @@ func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryR
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplateSummary"),
@@ -13405,7 +13392,7 @@ func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateSummaryResponse{}
@@ -13444,7 +13431,6 @@ func (client *Client) ListChangeSetsWithOptions(request *ListChangeSetsRequest, 
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChangeSets"),
@@ -13454,7 +13440,7 @@ func (client *Client) ListChangeSetsWithOptions(request *ListChangeSetsRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChangeSetsResponse{}
@@ -13487,7 +13473,7 @@ func (client *Client) ListResourceTypesWithOptions(runtime *util.RuntimeOptions)
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceTypesResponse{}
@@ -13525,7 +13511,6 @@ func (client *Client) ListStackEventsWithOptions(request *ListStackEventsRequest
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackEvents"),
@@ -13535,7 +13520,7 @@ func (client *Client) ListStackEventsWithOptions(request *ListStackEventsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackEventsResponse{}
@@ -13570,7 +13555,6 @@ func (client *Client) ListStackGroupOperationResultsWithOptions(request *ListSta
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackGroupOperationResults"),
@@ -13580,7 +13564,7 @@ func (client *Client) ListStackGroupOperationResultsWithOptions(request *ListSta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupOperationResultsResponse{}
@@ -13615,7 +13599,6 @@ func (client *Client) ListStackGroupOperationsWithOptions(request *ListStackGrou
 	query["StackGroupName"] = request.StackGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackGroupOperations"),
@@ -13625,7 +13608,7 @@ func (client *Client) ListStackGroupOperationsWithOptions(request *ListStackGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupOperationsResponse{}
@@ -13661,7 +13644,6 @@ func (client *Client) ListStackGroupsWithOptions(request *ListStackGroupsRequest
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackGroups"),
@@ -13671,7 +13653,7 @@ func (client *Client) ListStackGroupsWithOptions(request *ListStackGroupsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackGroupsResponse{}
@@ -13708,7 +13690,6 @@ func (client *Client) ListStackInstancesWithOptions(request *ListStackInstancesR
 	query["StackInstanceRegionId"] = request.StackInstanceRegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackInstances"),
@@ -13718,7 +13699,7 @@ func (client *Client) ListStackInstancesWithOptions(request *ListStackInstancesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackInstancesResponse{}
@@ -13756,7 +13737,6 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackOperationRisks"),
@@ -13766,7 +13746,7 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackOperationRisksResponse{}
@@ -13802,7 +13782,6 @@ func (client *Client) ListStackResourceDriftsWithOptions(request *ListStackResou
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackResourceDrifts"),
@@ -13812,7 +13791,7 @@ func (client *Client) ListStackResourceDriftsWithOptions(request *ListStackResou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackResourceDriftsResponse{}
@@ -13845,7 +13824,6 @@ func (client *Client) ListStackResourcesWithOptions(request *ListStackResourcesR
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStackResources"),
@@ -13855,7 +13833,7 @@ func (client *Client) ListStackResourcesWithOptions(request *ListStackResourcesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStackResourcesResponse{}
@@ -13897,7 +13875,6 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListStacks"),
@@ -13907,7 +13884,7 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStacksResponse{}
@@ -13941,7 +13918,6 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagKeys"),
@@ -13951,7 +13927,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
@@ -13987,7 +13963,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -13997,7 +13972,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -14032,7 +14007,6 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagValues"),
@@ -14042,7 +14016,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
@@ -14079,7 +14053,6 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 	query["TemplateScratchType"] = request.TemplateScratchType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTemplateScratches"),
@@ -14089,7 +14062,7 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplateScratchesResponse{}
@@ -14123,7 +14096,6 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTemplateVersions"),
@@ -14133,7 +14105,7 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplateVersionsResponse{}
@@ -14170,7 +14142,6 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTemplates"),
@@ -14180,7 +14151,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
@@ -14215,7 +14186,6 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MoveResourceGroup"),
@@ -14225,7 +14195,7 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
@@ -14264,12 +14234,12 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 	query["StackPolicyURL"] = request.StackPolicyURL
 	query["TemplateBody"] = request.TemplateBody
 	query["TemplateId"] = request.TemplateId
+	query["TemplateScratchId"] = request.TemplateScratchId
 	query["TemplateURL"] = request.TemplateURL
 	query["TemplateVersion"] = request.TemplateVersion
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PreviewStack"),
@@ -14279,7 +14249,7 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PreviewStackResponse{}
@@ -14313,7 +14283,6 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 	query["StackId"] = request.StackId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDeletionProtection"),
@@ -14323,7 +14292,7 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDeletionProtectionResponse{}
@@ -14358,7 +14327,6 @@ func (client *Client) SetStackPolicyWithOptions(request *SetStackPolicyRequest, 
 	query["StackPolicyURL"] = request.StackPolicyURL
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetStackPolicy"),
@@ -14368,7 +14336,7 @@ func (client *Client) SetStackPolicyWithOptions(request *SetStackPolicyRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetStackPolicyResponse{}
@@ -14404,7 +14372,6 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 	query["VersionOption"] = request.VersionOption
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetTemplatePermission"),
@@ -14414,7 +14381,7 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetTemplatePermissionResponse{}
@@ -14451,7 +14418,6 @@ func (client *Client) SignalResourceWithOptions(request *SignalResourceRequest, 
 	query["UniqueId"] = request.UniqueId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SignalResource"),
@@ -14461,7 +14427,7 @@ func (client *Client) SignalResourceWithOptions(request *SignalResourceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SignalResourceResponse{}
@@ -14494,7 +14460,6 @@ func (client *Client) StopStackGroupOperationWithOptions(request *StopStackGroup
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopStackGroupOperation"),
@@ -14504,7 +14469,7 @@ func (client *Client) StopStackGroupOperationWithOptions(request *StopStackGroup
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopStackGroupOperationResponse{}
@@ -14539,7 +14504,6 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -14549,7 +14513,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -14585,7 +14549,6 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -14595,7 +14558,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
@@ -14645,7 +14608,6 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 	query["UsePreviousParameters"] = request.UsePreviousParameters
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStack"),
@@ -14655,7 +14617,7 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackResponse{}
@@ -14726,7 +14688,6 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStackGroup"),
@@ -14736,7 +14697,7 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackGroupResponse{}
@@ -14795,7 +14756,6 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStackInstances"),
@@ -14805,7 +14765,7 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackInstancesResponse{}
@@ -14842,7 +14802,6 @@ func (client *Client) UpdateStackTemplateByResourcesWithOptions(request *UpdateS
 	query["TemplateFormat"] = request.TemplateFormat
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStackTemplateByResources"),
@@ -14852,7 +14811,7 @@ func (client *Client) UpdateStackTemplateByResourcesWithOptions(request *UpdateS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStackTemplateByResourcesResponse{}
@@ -14888,7 +14847,6 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 	query["TemplateURL"] = request.TemplateURL
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
@@ -14898,7 +14856,7 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
@@ -14957,7 +14915,6 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 	query["TemplateScratchId"] = request.TemplateScratchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplateScratch"),
@@ -14967,7 +14924,7 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateScratchResponse{}
@@ -15003,7 +14960,6 @@ func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateReque
 	query["ValidationOption"] = request.ValidationOption
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateTemplate"),
@@ -15013,7 +14969,7 @@ func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateTemplateResponse{}
