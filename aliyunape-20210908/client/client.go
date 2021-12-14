@@ -97,7 +97,7 @@ type ApeInnerCommonApiResponseBody struct {
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
@@ -121,8 +121,8 @@ func (s *ApeInnerCommonApiResponseBody) SetCode(v string) *ApeInnerCommonApiResp
 	return s
 }
 
-func (s *ApeInnerCommonApiResponseBody) SetData(v string) *ApeInnerCommonApiResponseBody {
-	s.Data = &v
+func (s *ApeInnerCommonApiResponseBody) SetData(v []map[string]interface{}) *ApeInnerCommonApiResponseBody {
+	s.Data = v
 	return s
 }
 
