@@ -1,3 +1,6 @@
+2021-12-15 Version: v2.0.1
+- Cloudgame Go OpenAPI.
+
 2021-03-11 Version: v1.0.3
 - Add Out Account Query Support.
 
