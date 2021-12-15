@@ -5455,7 +5455,9 @@ type RecognizeVideoCharacterResponseBodyData struct {
 	// 视频帧的集合，空信息的帧不列出。
 	Frames []*RecognizeVideoCharacterResponseBodyDataFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
 	Height *int64                                           `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width  *int64                                           `json:"Width,omitempty" xml:"Width,omitempty"`
+	// 对应的输入OSS文件 (格式oss://{bucketName}/{object})
+	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	Width     *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeVideoCharacterResponseBodyData) String() string {
@@ -5473,6 +5475,11 @@ func (s *RecognizeVideoCharacterResponseBodyData) SetFrames(v []*RecognizeVideoC
 
 func (s *RecognizeVideoCharacterResponseBodyData) SetHeight(v int64) *RecognizeVideoCharacterResponseBodyData {
 	s.Height = &v
+	return s
+}
+
+func (s *RecognizeVideoCharacterResponseBodyData) SetInputFile(v string) *RecognizeVideoCharacterResponseBodyData {
+	s.InputFile = &v
 	return s
 }
 
@@ -5778,11 +5785,27 @@ func (client *Client) DetectCardScreenshotWithOptions(request *DetectCardScreens
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectCardScreenshot"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectCardScreenshotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectCardScreenshot"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5912,11 +5935,27 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncJobResult"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5940,11 +5979,27 @@ func (client *Client) RecognizeAccountPageWithOptions(request *RecognizeAccountP
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeAccountPage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeAccountPageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeAccountPage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6074,11 +6129,27 @@ func (client *Client) RecognizeBankCardWithOptions(request *RecognizeBankCardReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBankCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBankCardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBankCard"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6208,11 +6279,27 @@ func (client *Client) RecognizeBusinessCardWithOptions(request *RecognizeBusines
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBusinessCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBusinessCardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBusinessCard"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6342,11 +6429,27 @@ func (client *Client) RecognizeBusinessLicenseWithOptions(request *RecognizeBusi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeBusinessLicense"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeBusinessLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeBusinessLicense"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6476,11 +6579,35 @@ func (client *Client) RecognizeCharacterWithOptions(request *RecognizeCharacterR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinHeight)) {
+		body["MinHeight"] = request.MinHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputProbability)) {
+		body["OutputProbability"] = request.OutputProbability
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCharacter"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeCharacterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeCharacter"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6610,11 +6737,27 @@ func (client *Client) RecognizeChinapassportWithOptions(request *RecognizeChinap
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeChinapassport"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeChinapassportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeChinapassport"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6744,11 +6887,31 @@ func (client *Client) RecognizeDriverLicenseWithOptions(request *RecognizeDriver
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Side)) {
+		body["Side"] = request.Side
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeDriverLicense"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeDriverLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeDriverLicense"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6878,11 +7041,31 @@ func (client *Client) RecognizeDrivingLicenseWithOptions(request *RecognizeDrivi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Side)) {
+		body["Side"] = request.Side
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeDrivingLicense"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeDrivingLicenseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeDrivingLicense"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7012,11 +7195,31 @@ func (client *Client) RecognizeIdentityCardWithOptions(request *RecognizeIdentit
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Side)) {
+		body["Side"] = request.Side
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeIdentityCardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeIdentityCard"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7146,11 +7349,27 @@ func (client *Client) RecognizeLicensePlateWithOptions(request *RecognizeLicense
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeLicensePlate"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeLicensePlateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeLicensePlate"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7280,11 +7499,27 @@ func (client *Client) RecognizePassportMRZWithOptions(request *RecognizePassport
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizePassportMRZ"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizePassportMRZResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizePassportMRZ"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7414,11 +7649,27 @@ func (client *Client) RecognizePdfWithOptions(request *RecognizePdfRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileURL)) {
+		body["FileURL"] = request.FileURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizePdf"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizePdfResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizePdf"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7548,11 +7799,27 @@ func (client *Client) RecognizePoiNameWithOptions(request *RecognizePoiNameReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizePoiName"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizePoiNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizePoiName"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7682,11 +7949,27 @@ func (client *Client) RecognizeQrCodeWithOptions(request *RecognizeQrCodeRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		body["Tasks"] = request.Tasks
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeQrCode"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeQrCodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeQrCode"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7710,11 +7993,27 @@ func (client *Client) RecognizeQuotaInvoiceWithOptions(request *RecognizeQuotaIn
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeQuotaInvoice"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeQuotaInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeQuotaInvoice"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7844,11 +8143,27 @@ func (client *Client) RecognizeStampWithOptions(request *RecognizeStampRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeStamp"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeStampResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeStamp"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7978,11 +8293,47 @@ func (client *Client) RecognizeTableWithOptions(request *RecognizeTableRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssureDirection)) {
+		body["AssureDirection"] = request.AssureDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HasLine)) {
+		body["HasLine"] = request.HasLine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["OutputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipDetection)) {
+		body["SkipDetection"] = request.SkipDetection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseFinanceModel)) {
+		body["UseFinanceModel"] = request.UseFinanceModel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTable"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTable"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8112,11 +8463,27 @@ func (client *Client) RecognizeTakeoutOrderWithOptions(request *RecognizeTakeout
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTakeoutOrder"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTakeoutOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTakeoutOrder"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8246,11 +8613,27 @@ func (client *Client) RecognizeTaxiInvoiceWithOptions(request *RecognizeTaxiInvo
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTaxiInvoice"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTaxiInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTaxiInvoice"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8380,11 +8763,27 @@ func (client *Client) RecognizeTicketInvoiceWithOptions(request *RecognizeTicket
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTicketInvoice"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTicketInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTicketInvoice"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8514,11 +8913,27 @@ func (client *Client) RecognizeTrainTicketWithOptions(request *RecognizeTrainTic
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTrainTicket"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeTrainTicketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeTrainTicket"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8648,11 +9063,31 @@ func (client *Client) RecognizeVATInvoiceWithOptions(request *RecognizeVATInvoic
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileURL)) {
+		body["FileURL"] = request.FileURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVATInvoice"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVATInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVATInvoice"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8782,11 +9217,24 @@ func (client *Client) RecognizeVINCodeWithOptions(request *RecognizeVINCodeReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ImageURL"] = request.ImageURL
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVINCode"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVINCodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVINCode"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8916,11 +9364,27 @@ func (client *Client) RecognizeVerificationcodeWithOptions(request *RecognizeVer
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVerificationcode"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVerificationcodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVerificationcode"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9050,11 +9514,27 @@ func (client *Client) RecognizeVideoCharacterWithOptions(request *RecognizeVideo
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoURL)) {
+		body["VideoURL"] = request.VideoURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVideoCharacter"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVideoCharacterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVideoCharacter"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9078,11 +9558,35 @@ func (client *Client) TrimDocumentWithOptions(request *TrimDocumentRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileURL)) {
+		body["FileURL"] = request.FileURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		body["OutputType"] = request.OutputType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TrimDocument"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TrimDocumentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TrimDocument"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
