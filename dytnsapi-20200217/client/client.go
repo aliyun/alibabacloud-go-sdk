@@ -138,7 +138,7 @@ type DescribePhoneNumberAnalysisRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	NumberType           *int64  `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
+	NumberType           *int32  `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Rate                 *int64  `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -168,7 +168,7 @@ func (s *DescribePhoneNumberAnalysisRequest) SetMask(v string) *DescribePhoneNum
 	return s
 }
 
-func (s *DescribePhoneNumberAnalysisRequest) SetNumberType(v int64) *DescribePhoneNumberAnalysisRequest {
+func (s *DescribePhoneNumberAnalysisRequest) SetNumberType(v int32) *DescribePhoneNumberAnalysisRequest {
 	s.NumberType = &v
 	return s
 }
@@ -735,7 +735,6 @@ func (client *Client) DescribeEmptyNumberDetectWithOptions(request *DescribeEmpt
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeEmptyNumberDetect"),
@@ -745,7 +744,7 @@ func (client *Client) DescribeEmptyNumberDetectWithOptions(request *DescribeEmpt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEmptyNumberDetectResponse{}
@@ -784,7 +783,6 @@ func (client *Client) DescribePhoneNumberAnalysisWithOptions(request *DescribePh
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePhoneNumberAnalysis"),
@@ -794,7 +792,7 @@ func (client *Client) DescribePhoneNumberAnalysisWithOptions(request *DescribePh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePhoneNumberAnalysisResponse{}
@@ -829,7 +827,6 @@ func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribeP
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePhoneNumberAttribute"),
@@ -839,7 +836,7 @@ func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribeP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePhoneNumberAttributeResponse{}
@@ -875,7 +872,6 @@ func (client *Client) DescribePhoneNumberResaleWithOptions(request *DescribePhon
 	query["Since"] = request.Since
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePhoneNumberResale"),
@@ -885,7 +881,7 @@ func (client *Client) DescribePhoneNumberResaleWithOptions(request *DescribePhon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePhoneNumberResaleResponse{}
@@ -920,7 +916,6 @@ func (client *Client) DescribePhoneNumberStatusWithOptions(request *DescribePhon
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePhoneNumberStatus"),
@@ -930,7 +925,7 @@ func (client *Client) DescribePhoneNumberStatusWithOptions(request *DescribePhon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePhoneNumberStatusResponse{}
@@ -963,7 +958,7 @@ func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("none"),
 	}
 	_result = &PvrCallbackFCUResponse{}
