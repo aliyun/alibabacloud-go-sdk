@@ -1,3 +1,7 @@
+2021-12-15 Version: v4.0.0
+- Support multi region.
+- Add Score parameter.
+
 2021-05-20 Version: v3.1.2
 - Generated golang 2020-12-14 for ImageSearch.
 
