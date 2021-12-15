@@ -12,6 +12,189 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateFlowTagRequest struct {
+	Color          *string `json:"color,omitempty" xml:"color,omitempty"`
+	FlowTagGroupId *int64  `json:"flowTagGroupId,omitempty" xml:"flowTagGroupId,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateFlowTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagRequest) SetColor(v string) *CreateFlowTagRequest {
+	s.Color = &v
+	return s
+}
+
+func (s *CreateFlowTagRequest) SetFlowTagGroupId(v int64) *CreateFlowTagRequest {
+	s.FlowTagGroupId = &v
+	return s
+}
+
+func (s *CreateFlowTagRequest) SetName(v string) *CreateFlowTagRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateFlowTagResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateFlowTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagResponseBody) SetErrorCode(v string) *CreateFlowTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFlowTagResponseBody) SetErrorMessage(v string) *CreateFlowTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFlowTagResponseBody) SetId(v int64) *CreateFlowTagResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateFlowTagResponseBody) SetRequestId(v string) *CreateFlowTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowTagResponseBody) SetSuccess(v bool) *CreateFlowTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFlowTagResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFlowTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFlowTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagResponse) SetHeaders(v map[string]*string) *CreateFlowTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowTagResponse) SetBody(v *CreateFlowTagResponseBody) *CreateFlowTagResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFlowTagGroupRequest struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateFlowTagGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagGroupRequest) SetName(v string) *CreateFlowTagGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateFlowTagGroupResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 标签分类
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateFlowTagGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagGroupResponseBody) SetErrorCode(v string) *CreateFlowTagGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFlowTagGroupResponseBody) SetErrorMessage(v string) *CreateFlowTagGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFlowTagGroupResponseBody) SetId(v int64) *CreateFlowTagGroupResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateFlowTagGroupResponseBody) SetRequestId(v string) *CreateFlowTagGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowTagGroupResponseBody) SetSuccess(v bool) *CreateFlowTagGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFlowTagGroupResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFlowTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFlowTagGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowTagGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowTagGroupResponse) SetHeaders(v map[string]*string) *CreateFlowTagGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowTagGroupResponse) SetBody(v *CreateFlowTagGroupResponseBody) *CreateFlowTagGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateHostGroupRequest struct {
 	AliyunRegion        *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
 	EcsLabelKey         *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
@@ -619,6 +802,130 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 	return s
 }
 
+type DeleteFlowTagResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteFlowTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowTagResponseBody) SetErrorCode(v string) *DeleteFlowTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteFlowTagResponseBody) SetErrorMessage(v string) *DeleteFlowTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteFlowTagResponseBody) SetRequestId(v string) *DeleteFlowTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFlowTagResponseBody) SetSuccess(v bool) *DeleteFlowTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFlowTagResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteFlowTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFlowTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowTagResponse) SetHeaders(v map[string]*string) *DeleteFlowTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowTagResponse) SetBody(v *DeleteFlowTagResponseBody) *DeleteFlowTagResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFlowTagGroupResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteFlowTagGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowTagGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowTagGroupResponseBody) SetErrorCode(v string) *DeleteFlowTagGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteFlowTagGroupResponseBody) SetErrorMessage(v string) *DeleteFlowTagGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteFlowTagGroupResponseBody) SetRequestId(v string) *DeleteFlowTagGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFlowTagGroupResponseBody) SetSuccess(v bool) *DeleteFlowTagGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFlowTagGroupResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteFlowTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFlowTagGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowTagGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowTagGroupResponse) SetHeaders(v map[string]*string) *DeleteFlowTagGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowTagGroupResponse) SetBody(v *DeleteFlowTagGroupResponseBody) *DeleteFlowTagGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHostGroupResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -925,6 +1232,156 @@ func (s *FrozenWorkspaceResponse) SetHeaders(v map[string]*string) *FrozenWorksp
 }
 
 func (s *FrozenWorkspaceResponse) SetBody(v *FrozenWorkspaceResponseBody) *FrozenWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetFlowTagGroupResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	FlowTagGroup *GetFlowTagGroupResponseBodyFlowTagGroup `json:"flowTagGroup,omitempty" xml:"flowTagGroup,omitempty" type:"Struct"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetFlowTagGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowTagGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowTagGroupResponseBody) SetErrorCode(v string) *GetFlowTagGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBody) SetErrorMessage(v string) *GetFlowTagGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBody) SetFlowTagGroup(v *GetFlowTagGroupResponseBodyFlowTagGroup) *GetFlowTagGroupResponseBody {
+	s.FlowTagGroup = v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBody) SetRequestId(v string) *GetFlowTagGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBody) SetSuccess(v bool) *GetFlowTagGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFlowTagGroupResponseBodyFlowTagGroup struct {
+	CreatorAccountId *string                                               `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	FlowTagList      []*GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList `json:"flowTagList,omitempty" xml:"flowTagList,omitempty" type:"Repeated"`
+	Id               *int64                                                `json:"id,omitempty" xml:"id,omitempty"`
+	ModiferAccountId *string                                               `json:"modiferAccountId,omitempty" xml:"modiferAccountId,omitempty"`
+	Name             *string                                               `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetFlowTagGroupResponseBodyFlowTagGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowTagGroupResponseBodyFlowTagGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroup) SetCreatorAccountId(v string) *GetFlowTagGroupResponseBodyFlowTagGroup {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroup) SetFlowTagList(v []*GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) *GetFlowTagGroupResponseBodyFlowTagGroup {
+	s.FlowTagList = v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroup) SetId(v int64) *GetFlowTagGroupResponseBodyFlowTagGroup {
+	s.Id = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroup) SetModiferAccountId(v string) *GetFlowTagGroupResponseBodyFlowTagGroup {
+	s.ModiferAccountId = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroup) SetName(v string) *GetFlowTagGroupResponseBodyFlowTagGroup {
+	s.Name = &v
+	return s
+}
+
+type GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList struct {
+	Color            *string `json:"color,omitempty" xml:"color,omitempty"`
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	ModiferAccountId *string `json:"modiferAccountId,omitempty" xml:"modiferAccountId,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) SetColor(v string) *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList {
+	s.Color = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) SetCreatorAccountId(v string) *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) SetId(v int64) *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) SetModiferAccountId(v string) *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList {
+	s.ModiferAccountId = &v
+	return s
+}
+
+func (s *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList) SetName(v string) *GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList {
+	s.Name = &v
+	return s
+}
+
+type GetFlowTagGroupResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFlowTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFlowTagGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowTagGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowTagGroupResponse) SetHeaders(v map[string]*string) *GetFlowTagGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFlowTagGroupResponse) SetBody(v *GetFlowTagGroupResponseBody) *GetFlowTagGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2105,6 +2562,226 @@ func (s *GetPipelineRunResponse) SetBody(v *GetPipelineRunResponseBody) *GetPipe
 	return s
 }
 
+type GetProjectInfoResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 项目信息
+	Project   *GetProjectInfoResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProjectInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectInfoResponseBody) SetErrorCode(v string) *GetProjectInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBody) SetErrorMessage(v string) *GetProjectInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBody) SetProject(v *GetProjectInfoResponseBodyProject) *GetProjectInfoResponseBody {
+	s.Project = v
+	return s
+}
+
+func (s *GetProjectInfoResponseBody) SetRequestId(v string) *GetProjectInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBody) SetSuccess(v bool) *GetProjectInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProjectInfoResponseBodyProject struct {
+	Category               *string `json:"category,omitempty" xml:"category,omitempty"`
+	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	CustomCode             *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Icon                   *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	IconBig                *string `json:"iconBig,omitempty" xml:"iconBig,omitempty"`
+	IconGroup              *string `json:"iconGroup,omitempty" xml:"iconGroup,omitempty"`
+	IconSmall              *string `json:"iconSmall,omitempty" xml:"iconSmall,omitempty"`
+	Id                     *string `json:"id,omitempty" xml:"id,omitempty"`
+	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	IdentifierPath         *string `json:"identifierPath,omitempty" xml:"identifierPath,omitempty"`
+	LogicalStatus          *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	Modifier               *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
+	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
+	ParentIdentifier       *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	StatusIdentifier       *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	StatusStageIdentifier  *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	SubType                *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	TypeIdentifier         *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+}
+
+func (s GetProjectInfoResponseBodyProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectInfoResponseBodyProject) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetCategory(v string) *GetProjectInfoResponseBodyProject {
+	s.Category = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetCategoryIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetCreator(v string) *GetProjectInfoResponseBodyProject {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetCustomCode(v string) *GetProjectInfoResponseBodyProject {
+	s.CustomCode = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetDescription(v string) *GetProjectInfoResponseBodyProject {
+	s.Description = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetGmtCreate(v int64) *GetProjectInfoResponseBodyProject {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetGmtModified(v int64) *GetProjectInfoResponseBodyProject {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIcon(v string) *GetProjectInfoResponseBodyProject {
+	s.Icon = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIconBig(v string) *GetProjectInfoResponseBodyProject {
+	s.IconBig = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIconGroup(v string) *GetProjectInfoResponseBodyProject {
+	s.IconGroup = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIconSmall(v string) *GetProjectInfoResponseBodyProject {
+	s.IconSmall = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetId(v string) *GetProjectInfoResponseBodyProject {
+	s.Id = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetIdentifierPath(v string) *GetProjectInfoResponseBodyProject {
+	s.IdentifierPath = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetLogicalStatus(v string) *GetProjectInfoResponseBodyProject {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetModifier(v string) *GetProjectInfoResponseBodyProject {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetName(v string) *GetProjectInfoResponseBodyProject {
+	s.Name = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetOrganizationIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.OrganizationIdentifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetParentIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetScope(v string) *GetProjectInfoResponseBodyProject {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetStatusIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetStatusStageIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetSubType(v string) *GetProjectInfoResponseBodyProject {
+	s.SubType = &v
+	return s
+}
+
+func (s *GetProjectInfoResponseBodyProject) SetTypeIdentifier(v string) *GetProjectInfoResponseBodyProject {
+	s.TypeIdentifier = &v
+	return s
+}
+
+type GetProjectInfoResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProjectInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectInfoResponse) SetHeaders(v map[string]*string) *GetProjectInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectInfoResponse) SetBody(v *GetProjectInfoResponseBody) *GetProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetVMDeployOrderResponseBody struct {
 	// 部署单
 	DeployOrder *GetVMDeployOrderResponseBodyDeployOrder `json:"deployOrder,omitempty" xml:"deployOrder,omitempty" type:"Struct"`
@@ -2757,6 +3434,114 @@ func (s *GetWorkspaceResponse) SetHeaders(v map[string]*string) *GetWorkspaceRes
 }
 
 func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type ListFlowTagGroupsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 标签分类
+	FlowTagGroups []*ListFlowTagGroupsResponseBodyFlowTagGroups `json:"flowTagGroups,omitempty" xml:"flowTagGroups,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListFlowTagGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowTagGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowTagGroupsResponseBody) SetErrorCode(v string) *ListFlowTagGroupsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBody) SetErrorMessage(v string) *ListFlowTagGroupsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBody) SetFlowTagGroups(v []*ListFlowTagGroupsResponseBodyFlowTagGroups) *ListFlowTagGroupsResponseBody {
+	s.FlowTagGroups = v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBody) SetRequestId(v string) *ListFlowTagGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBody) SetSuccess(v bool) *ListFlowTagGroupsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFlowTagGroupsResponseBodyFlowTagGroups struct {
+	// 创建人
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	// 标签分类id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 修改人
+	ModiferAccountId *string `json:"modiferAccountId,omitempty" xml:"modiferAccountId,omitempty"`
+	// 标签分类名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListFlowTagGroupsResponseBodyFlowTagGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowTagGroupsResponseBodyFlowTagGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowTagGroupsResponseBodyFlowTagGroups) SetCreatorAccountId(v string) *ListFlowTagGroupsResponseBodyFlowTagGroups {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBodyFlowTagGroups) SetId(v int64) *ListFlowTagGroupsResponseBodyFlowTagGroups {
+	s.Id = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBodyFlowTagGroups) SetModiferAccountId(v string) *ListFlowTagGroupsResponseBodyFlowTagGroups {
+	s.ModiferAccountId = &v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponseBodyFlowTagGroups) SetName(v string) *ListFlowTagGroupsResponseBodyFlowTagGroups {
+	s.Name = &v
+	return s
+}
+
+type ListFlowTagGroupsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFlowTagGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFlowTagGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowTagGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowTagGroupsResponse) SetHeaders(v map[string]*string) *ListFlowTagGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlowTagGroupsResponse) SetBody(v *ListFlowTagGroupsResponseBody) *ListFlowTagGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -3691,6 +4476,272 @@ func (s *ListPipelinesResponse) SetHeaders(v map[string]*string) *ListPipelinesR
 }
 
 func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipelinesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectMembersRequest struct {
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+}
+
+func (s ListProjectMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersRequest) SetTargetType(v string) *ListProjectMembersRequest {
+	s.TargetType = &v
+	return s
+}
+
+type ListProjectMembersResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// member信息
+	Members []*ListProjectMembersResponseBodyMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListProjectMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBody) SetErrorCode(v string) *ListProjectMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBody) SetErrorMsg(v string) *ListProjectMembersResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBody) SetMembers(v []*ListProjectMembersResponseBodyMembers) *ListProjectMembersResponseBody {
+	s.Members = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBody) SetRequestId(v string) *ListProjectMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBody) SetSuccess(v bool) *ListProjectMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyMembers struct {
+	// 登陆账号
+	Account *string `json:"account,omitempty" xml:"account,omitempty"`
+	// 用户头像
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// 钉钉id
+	DingTalkId *string `json:"dingTalkId,omitempty" xml:"dingTalkId,omitempty"`
+	// 展示名
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 展示昵称
+	DisplayNickName *string `json:"displayNickName,omitempty" xml:"displayNickName,omitempty"`
+	// 展示真名
+	DisplayRealName *string `json:"displayRealName,omitempty" xml:"displayRealName,omitempty"`
+	// 部门信息
+	Division *ListProjectMembersResponseBodyMembersDivision `json:"division,omitempty" xml:"division,omitempty" type:"Struct"`
+	// 邮箱
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// 性别
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// 用户唯一 标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 手机号
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// 英文名
+	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
+	// 昵称
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// 昵称拼音
+	NickNamePinyin *string `json:"nickNamePinyin,omitempty" xml:"nickNamePinyin,omitempty"`
+	// 企业信息
+	OrganizationUserInfo *ListProjectMembersResponseBodyMembersOrganizationUserInfo `json:"organizationUserInfo,omitempty" xml:"organizationUserInfo,omitempty" type:"Struct"`
+	// 真名
+	RealName *string `json:"realName,omitempty" xml:"realName,omitempty"`
+	// 真名拼音
+	RealNamePinyin *string `json:"realNamePinyin,omitempty" xml:"realNamePinyin,omitempty"`
+	// 用户类型
+	Stamp *string `json:"stamp,omitempty" xml:"stamp,omitempty"`
+	// 角色id
+	TbRoleId *string `json:"tbRoleId,omitempty" xml:"tbRoleId,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyMembers) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetAccount(v string) *ListProjectMembersResponseBodyMembers {
+	s.Account = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetAvatar(v string) *ListProjectMembersResponseBodyMembers {
+	s.Avatar = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetDingTalkId(v string) *ListProjectMembersResponseBodyMembers {
+	s.DingTalkId = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetDisplayName(v string) *ListProjectMembersResponseBodyMembers {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetDisplayNickName(v string) *ListProjectMembersResponseBodyMembers {
+	s.DisplayNickName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetDisplayRealName(v string) *ListProjectMembersResponseBodyMembers {
+	s.DisplayRealName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetDivision(v *ListProjectMembersResponseBodyMembersDivision) *ListProjectMembersResponseBodyMembers {
+	s.Division = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetEmail(v string) *ListProjectMembersResponseBodyMembers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetGender(v string) *ListProjectMembersResponseBodyMembers {
+	s.Gender = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetIdentifier(v string) *ListProjectMembersResponseBodyMembers {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetMobile(v string) *ListProjectMembersResponseBodyMembers {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetNameEn(v string) *ListProjectMembersResponseBodyMembers {
+	s.NameEn = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetNickName(v string) *ListProjectMembersResponseBodyMembers {
+	s.NickName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetNickNamePinyin(v string) *ListProjectMembersResponseBodyMembers {
+	s.NickNamePinyin = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetOrganizationUserInfo(v *ListProjectMembersResponseBodyMembersOrganizationUserInfo) *ListProjectMembersResponseBodyMembers {
+	s.OrganizationUserInfo = v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetRealName(v string) *ListProjectMembersResponseBodyMembers {
+	s.RealName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetRealNamePinyin(v string) *ListProjectMembersResponseBodyMembers {
+	s.RealNamePinyin = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetStamp(v string) *ListProjectMembersResponseBodyMembers {
+	s.Stamp = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyMembers) SetTbRoleId(v string) *ListProjectMembersResponseBodyMembers {
+	s.TbRoleId = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyMembersDivision struct {
+	// 部门唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyMembersDivision) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyMembersDivision) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyMembersDivision) SetIdentifier(v string) *ListProjectMembersResponseBodyMembersDivision {
+	s.Identifier = &v
+	return s
+}
+
+type ListProjectMembersResponseBodyMembersOrganizationUserInfo struct {
+	// 企业唯一标识符
+	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
+}
+
+func (s ListProjectMembersResponseBodyMembersOrganizationUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponseBodyMembersOrganizationUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponseBodyMembersOrganizationUserInfo) SetOrganizationIdentifier(v string) *ListProjectMembersResponseBodyMembersOrganizationUserInfo {
+	s.OrganizationIdentifier = &v
+	return s
+}
+
+type ListProjectMembersResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectMembersResponse) SetHeaders(v map[string]*string) *ListProjectMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) *ListProjectMembersResponse {
 	s.Body = v
 	return s
 }
@@ -5481,6 +6532,176 @@ func (s *StopVMDeployOrderResponse) SetBody(v *StopVMDeployOrderResponseBody) *S
 	return s
 }
 
+type UpdateFlowTagRequest struct {
+	Color          *string `json:"color,omitempty" xml:"color,omitempty"`
+	FlowTagGroupId *int64  `json:"flowTagGroupId,omitempty" xml:"flowTagGroupId,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateFlowTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagRequest) SetColor(v string) *UpdateFlowTagRequest {
+	s.Color = &v
+	return s
+}
+
+func (s *UpdateFlowTagRequest) SetFlowTagGroupId(v int64) *UpdateFlowTagRequest {
+	s.FlowTagGroupId = &v
+	return s
+}
+
+func (s *UpdateFlowTagRequest) SetName(v string) *UpdateFlowTagRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateFlowTagResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateFlowTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagResponseBody) SetErrorCode(v string) *UpdateFlowTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateFlowTagResponseBody) SetErrorMessage(v string) *UpdateFlowTagResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateFlowTagResponseBody) SetRequestId(v string) *UpdateFlowTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFlowTagResponseBody) SetSuccess(v bool) *UpdateFlowTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFlowTagResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateFlowTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFlowTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagResponse) SetHeaders(v map[string]*string) *UpdateFlowTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFlowTagResponse) SetBody(v *UpdateFlowTagResponseBody) *UpdateFlowTagResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFlowTagGroupRequest struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateFlowTagGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagGroupRequest) SetName(v string) *UpdateFlowTagGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateFlowTagGroupResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateFlowTagGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagGroupResponseBody) SetErrorCode(v string) *UpdateFlowTagGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateFlowTagGroupResponseBody) SetErrorMessage(v string) *UpdateFlowTagGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateFlowTagGroupResponseBody) SetRequestId(v string) *UpdateFlowTagGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFlowTagGroupResponseBody) SetSuccess(v bool) *UpdateFlowTagGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFlowTagGroupResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateFlowTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFlowTagGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowTagGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowTagGroupResponse) SetHeaders(v map[string]*string) *UpdateFlowTagGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFlowTagGroupResponse) SetBody(v *UpdateFlowTagGroupResponseBody) *UpdateFlowTagGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateHostGroupRequest struct {
 	AliyunRegion        *string `json:"aliyunRegion,omitempty" xml:"aliyunRegion,omitempty"`
 	EcsLabelKey         *string `json:"ecsLabelKey,omitempty" xml:"ecsLabelKey,omitempty"`
@@ -5607,6 +6828,97 @@ func (s *UpdateHostGroupResponse) SetHeaders(v map[string]*string) *UpdateHostGr
 }
 
 func (s *UpdateHostGroupResponse) SetBody(v *UpdateHostGroupResponseBody) *UpdateHostGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePipelineBaseInfoRequest struct {
+	EnvId        *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
+	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	TagList      *string `json:"tagList,omitempty" xml:"tagList,omitempty"`
+}
+
+func (s UpdatePipelineBaseInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineBaseInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineBaseInfoRequest) SetEnvId(v int64) *UpdatePipelineBaseInfoRequest {
+	s.EnvId = &v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoRequest) SetPipelineName(v string) *UpdatePipelineBaseInfoRequest {
+	s.PipelineName = &v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoRequest) SetTagList(v string) *UpdatePipelineBaseInfoRequest {
+	s.TagList = &v
+	return s
+}
+
+type UpdatePipelineBaseInfoResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdatePipelineBaseInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineBaseInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineBaseInfoResponseBody) SetErrorCode(v string) *UpdatePipelineBaseInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoResponseBody) SetErrorMessage(v string) *UpdatePipelineBaseInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoResponseBody) SetRequestId(v string) *UpdatePipelineBaseInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoResponseBody) SetSuccess(v bool) *UpdatePipelineBaseInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePipelineBaseInfoResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdatePipelineBaseInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePipelineBaseInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePipelineBaseInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePipelineBaseInfoResponse) SetHeaders(v map[string]*string) *UpdatePipelineBaseInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePipelineBaseInfoResponse) SetBody(v *UpdatePipelineBaseInfoResponseBody) *UpdatePipelineBaseInfoResponse {
 	s.Body = v
 	return s
 }
@@ -5829,6 +7141,108 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFlowTag(organizationId *string, request *CreateFlowTagRequest) (_result *CreateFlowTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFlowTagResponse{}
+	_body, _err := client.CreateFlowTagWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFlowTagWithOptions(organizationId *string, request *CreateFlowTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFlowTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Color)) {
+		query["color"] = request.Color
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowTagGroupId)) {
+		query["flowTagGroupId"] = request.FlowTagGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFlowTagGroup(organizationId *string, request *CreateFlowTagGroupRequest) (_result *CreateFlowTagGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFlowTagGroupResponse{}
+	_body, _err := client.CreateFlowTagGroupWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFlowTagGroupWithOptions(organizationId *string, request *CreateFlowTagGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFlowTagGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowTagGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowTagGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -6134,6 +7548,82 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 	return _result, _err
 }
 
+func (client *Client) DeleteFlowTag(organizationId *string, id *string) (_result *DeleteFlowTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFlowTagResponse{}
+	_body, _err := client.DeleteFlowTagWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFlowTagWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFlowTagResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFlowTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags/" + tea.StringValue(id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFlowTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFlowTagGroup(organizationId *string, id *string) (_result *DeleteFlowTagGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFlowTagGroupResponse{}
+	_body, _err := client.DeleteFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFlowTagGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFlowTagGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFlowTagGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFlowTagGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteHostGroup(organizationId *string, id *string) (_result *DeleteHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6325,6 +7815,44 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 	return _result, _err
 }
 
+func (client *Client) GetFlowTagGroup(organizationId *string, id *string) (_result *GetFlowTagGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFlowTagGroupResponse{}
+	_body, _err := client.GetFlowTagGroupWithOptions(organizationId, id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFlowTagGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFlowTagGroupResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFlowTagGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFlowTagGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetHostGroup(organizationId *string, id *string) (_result *GetHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6478,6 +8006,44 @@ func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipeline
 	return _result, _err
 }
 
+func (client *Client) GetProjectInfo(organizationId *string, projectId *string) (_result *GetProjectInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProjectInfoResponse{}
+	_body, _err := client.GetProjectInfoWithOptions(organizationId, projectId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectInfoResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	projectId = openapiutil.GetEncodeParam(projectId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/project/" + tea.StringValue(projectId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetVMDeployOrder(organizationId *string, pipelineId *string, deployOrderId *string) (_result *GetVMDeployOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6584,6 +8150,43 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[s
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFlowTagGroups(organizationId *string) (_result *ListFlowTagGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFlowTagGroupsResponse{}
+	_body, _err := client.ListFlowTagGroupsWithOptions(organizationId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFlowTagGroupsWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFlowTagGroupsResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlowTagGroups"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlowTagGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6889,6 +8492,54 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPipelinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectMembers(organizationId *string, projectId *string, request *ListProjectMembersRequest) (_result *ListProjectMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectMembersResponse{}
+	_body, _err := client.ListProjectMembersWithOptions(organizationId, projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectMembersWithOptions(organizationId *string, projectId *string, request *ListProjectMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	projectId = openapiutil.GetEncodeParam(projectId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["targetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectMembers"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/listMembers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectMembersResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7709,6 +9360,110 @@ func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipel
 	return _result, _err
 }
 
+func (client *Client) UpdateFlowTag(organizationId *string, id *string, request *UpdateFlowTagRequest) (_result *UpdateFlowTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFlowTagResponse{}
+	_body, _err := client.UpdateFlowTagWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFlowTagWithOptions(organizationId *string, id *string, request *UpdateFlowTagRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFlowTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Color)) {
+		query["color"] = request.Color
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowTagGroupId)) {
+		query["flowTagGroupId"] = request.FlowTagGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFlowTag"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags/" + tea.StringValue(id)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFlowTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFlowTagGroup(organizationId *string, id *string, request *UpdateFlowTagGroupRequest) (_result *UpdateFlowTagGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFlowTagGroupResponse{}
+	_body, _err := client.UpdateFlowTagGroupWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFlowTagGroupWithOptions(organizationId *string, id *string, request *UpdateFlowTagGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFlowTagGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	id = openapiutil.GetEncodeParam(id)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFlowTagGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFlowTagGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateHostGroup(organizationId *string, id *string, request *UpdateHostGroupRequest) (_result *UpdateHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7785,6 +9540,62 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateHostGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineBaseInfo(organizationId *string, pipelineId *string, request *UpdatePipelineBaseInfoRequest) (_result *UpdatePipelineBaseInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePipelineBaseInfoResponse{}
+	_body, _err := client.UpdatePipelineBaseInfoWithOptions(organizationId, pipelineId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePipelineBaseInfoWithOptions(organizationId *string, pipelineId *string, request *UpdatePipelineBaseInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineBaseInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
+		query["envId"] = request.EnvId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineName)) {
+		query["pipelineName"] = request.PipelineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagList)) {
+		query["tagList"] = request.TagList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePipelineBaseInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/baseInfo"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePipelineBaseInfoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
