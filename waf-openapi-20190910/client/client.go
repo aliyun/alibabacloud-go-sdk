@@ -3527,7 +3527,6 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 	query["PrivateKey"] = request.PrivateKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCertificate"),
@@ -3537,7 +3536,7 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateResponse{}
@@ -3571,7 +3570,6 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCertificateByCertificateId"),
@@ -3581,7 +3579,7 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateByCertificateIdResponse{}
@@ -3635,7 +3633,6 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 	query["WriteTime"] = request.WriteTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDomain"),
@@ -3645,7 +3642,7 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDomainResponse{}
@@ -3680,7 +3677,6 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 	query["Rule"] = request.Rule
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateProtectionModuleRule"),
@@ -3690,7 +3686,7 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProtectionModuleRuleResponse{}
@@ -3723,7 +3719,6 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDomain"),
@@ -3733,7 +3728,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDomainResponse{}
@@ -3766,7 +3761,6 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteInstance"),
@@ -3776,7 +3770,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
@@ -3811,7 +3805,6 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProtectionModuleRule"),
@@ -3821,7 +3814,7 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProtectionModuleRuleResponse{}
@@ -3856,7 +3849,6 @@ func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMa
 	query["PrivateKey"] = request.PrivateKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCertMatchStatus"),
@@ -3866,7 +3858,7 @@ func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertMatchStatusResponse{}
@@ -3899,7 +3891,6 @@ func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertifica
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCertificates"),
@@ -3909,7 +3900,7 @@ func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertifica
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertificatesResponse{}
@@ -3942,7 +3933,6 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomain"),
@@ -3952,7 +3942,7 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainResponse{}
@@ -3986,7 +3976,6 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainAdvanceConfigs"),
@@ -3996,7 +3985,7 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainAdvanceConfigsResponse{}
@@ -4034,7 +4023,6 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainBasicConfigs"),
@@ -4044,7 +4032,7 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainBasicConfigsResponse{}
@@ -4082,7 +4070,6 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainList"),
@@ -4092,7 +4079,7 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainListResponse{}
@@ -4125,7 +4112,6 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainNames"),
@@ -4135,7 +4121,7 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainNamesResponse{}
@@ -4168,7 +4154,6 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRuleGroup"),
@@ -4178,7 +4163,7 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRuleGroupResponse{}
@@ -4211,7 +4196,6 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceInfo"),
@@ -4221,7 +4205,7 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceInfoResponse{}
@@ -4254,7 +4238,6 @@ func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInsta
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceSpecInfo"),
@@ -4264,7 +4247,7 @@ func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInsta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSpecInfoResponse{}
@@ -4301,7 +4284,6 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeLogServiceStatus"),
@@ -4311,7 +4293,7 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeLogServiceStatusResponse{}
@@ -4346,7 +4328,6 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeProtectionModuleCodeConfig"),
@@ -4356,7 +4337,7 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleCodeConfigResponse{}
@@ -4395,7 +4376,6 @@ func (client *Client) DescribeProtectionModuleRulesWithOptions(request *Describe
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeProtectionModuleRules"),
@@ -4405,7 +4385,7 @@ func (client *Client) DescribeProtectionModuleRulesWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleRulesResponse{}
@@ -4439,7 +4419,6 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeProtectionModuleStatus"),
@@ -4449,7 +4428,7 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeProtectionModuleStatusResponse{}
@@ -4482,7 +4461,6 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeWafSourceIpSegment"),
@@ -4492,7 +4470,7 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWafSourceIpSegmentResponse{}
@@ -4546,7 +4524,6 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 	query["WriteTime"] = request.WriteTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDomain"),
@@ -4556,7 +4533,7 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDomainResponse{}
@@ -4590,7 +4567,6 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDomainIpv6Status"),
@@ -4600,7 +4576,7 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDomainIpv6StatusResponse{}
@@ -4634,7 +4610,6 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyLogRetrievalStatus"),
@@ -4644,7 +4619,7 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLogRetrievalStatusResponse{}
@@ -4678,7 +4653,6 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyLogServiceStatus"),
@@ -4688,7 +4662,7 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLogServiceStatusResponse{}
@@ -4723,7 +4697,6 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 	query["Mode"] = request.Mode
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyProtectionModuleMode"),
@@ -4733,7 +4706,7 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleModeResponse{}
@@ -4770,7 +4743,6 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyProtectionModuleRule"),
@@ -4780,7 +4752,7 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleRuleResponse{}
@@ -4815,7 +4787,6 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 	query["ModuleStatus"] = request.ModuleStatus
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyProtectionModuleStatus"),
@@ -4825,7 +4796,7 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionModuleStatusResponse{}
@@ -4860,7 +4831,6 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyProtectionRuleCacheStatus"),
@@ -4870,7 +4840,7 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionRuleCacheStatusResponse{}
@@ -4907,7 +4877,6 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 	query["RuleStatus"] = request.RuleStatus
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyProtectionRuleStatus"),
@@ -4917,7 +4886,7 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyProtectionRuleStatusResponse{}
@@ -4951,7 +4920,6 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MoveResourceGroup"),
@@ -4961,7 +4929,7 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
@@ -4997,7 +4965,6 @@ func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupR
 	query["WafVersion"] = request.WafVersion
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomainRuleGroup"),
@@ -5007,7 +4974,7 @@ func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainRuleGroupResponse{}
