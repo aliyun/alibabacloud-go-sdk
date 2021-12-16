@@ -22,6 +22,7 @@ type CompareFaceVerifyRequest struct {
 	Crop                         *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	OuterOrderNo                 *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProductCode                  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SceneId                      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SourceCertifyId              *string `json:"SourceCertifyId,omitempty" xml:"SourceCertifyId,omitempty"`
 	SourceFaceContrastPicture    *string `json:"SourceFaceContrastPicture,omitempty" xml:"SourceFaceContrastPicture,omitempty"`
@@ -55,6 +56,11 @@ func (s *CompareFaceVerifyRequest) SetOuterOrderNo(v string) *CompareFaceVerifyR
 
 func (s *CompareFaceVerifyRequest) SetProductCode(v string) *CompareFaceVerifyRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *CompareFaceVerifyRequest) SetRegionId(v string) *CompareFaceVerifyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -339,6 +345,7 @@ type ContrastFaceVerifyRequest struct {
 	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -431,6 +438,11 @@ func (s *ContrastFaceVerifyRequest) SetProductCode(v string) *ContrastFaceVerify
 	return s
 }
 
+func (s *ContrastFaceVerifyRequest) SetRegionId(v string) *ContrastFaceVerifyRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ContrastFaceVerifyRequest) SetSceneId(v int64) *ContrastFaceVerifyRequest {
 	s.SceneId = &v
 	return s
@@ -458,6 +470,7 @@ type ContrastFaceVerifyAdvanceRequest struct {
 	OssObjectName          *string   `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo           *string   `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProductCode            *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SceneId                *int64    `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -547,6 +560,11 @@ func (s *ContrastFaceVerifyAdvanceRequest) SetOuterOrderNo(v string) *ContrastFa
 
 func (s *ContrastFaceVerifyAdvanceRequest) SetProductCode(v string) *ContrastFaceVerifyAdvanceRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *ContrastFaceVerifyAdvanceRequest) SetRegionId(v string) *ContrastFaceVerifyAdvanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -921,6 +939,7 @@ func (s *CreateVerifySDKRequest) SetPlatform(v string) *CreateVerifySDKRequest {
 
 type CreateVerifySDKResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SdkUrl    *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -934,6 +953,11 @@ func (s CreateVerifySDKResponseBody) GoString() string {
 
 func (s *CreateVerifySDKResponseBody) SetRequestId(v string) *CreateVerifySDKResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVerifySDKResponseBody) SetSdkUrl(v string) *CreateVerifySDKResponseBody {
+	s.SdkUrl = &v
 	return s
 }
 
@@ -1978,6 +2002,7 @@ func (s *DescribeFaceUsageResponse) SetBody(v *DescribeFaceUsageResponseBody) *D
 type DescribeFaceVerifyRequest struct {
 	CertifyId         *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	PictureReturnType *string `json:"PictureReturnType,omitempty" xml:"PictureReturnType,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SceneId           *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
@@ -1996,6 +2021,11 @@ func (s *DescribeFaceVerifyRequest) SetCertifyId(v string) *DescribeFaceVerifyRe
 
 func (s *DescribeFaceVerifyRequest) SetPictureReturnType(v string) *DescribeFaceVerifyRequest {
 	s.PictureReturnType = &v
+	return s
+}
+
+func (s *DescribeFaceVerifyRequest) SetRegionId(v string) *DescribeFaceVerifyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4081,6 +4111,7 @@ func (s *DescribeWhitelistSettingResponse) SetBody(v *DescribeWhitelistSettingRe
 type DetectFaceAttributesRequest struct {
 	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	MaterialValue *string `json:"MaterialValue,omitempty" xml:"MaterialValue,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetectFaceAttributesRequest) String() string {
@@ -4098,6 +4129,11 @@ func (s *DetectFaceAttributesRequest) SetBizType(v string) *DetectFaceAttributes
 
 func (s *DetectFaceAttributesRequest) SetMaterialValue(v string) *DetectFaceAttributesRequest {
 	s.MaterialValue = &v
+	return s
+}
+
+func (s *DetectFaceAttributesRequest) SetRegionId(v string) *DetectFaceAttributesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4392,6 +4428,7 @@ type InitDeviceRequest struct {
 	OuterOrderNo     *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProduceNode      *string `json:"ProduceNode,omitempty" xml:"ProduceNode,omitempty"`
 	ProductName      *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UaToken          *string `json:"UaToken,omitempty" xml:"UaToken,omitempty"`
 	WebUmidToken     *string `json:"WebUmidToken,omitempty" xml:"WebUmidToken,omitempty"`
 }
@@ -4456,6 +4493,11 @@ func (s *InitDeviceRequest) SetProduceNode(v string) *InitDeviceRequest {
 
 func (s *InitDeviceRequest) SetProductName(v string) *InitDeviceRequest {
 	s.ProductName = &v
+	return s
+}
+
+func (s *InitDeviceRequest) SetRegionId(v string) *InitDeviceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4647,6 +4689,7 @@ type InitFaceVerifyRequest struct {
 	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReturnUrl              *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -4747,6 +4790,11 @@ func (s *InitFaceVerifyRequest) SetOuterOrderNo(v string) *InitFaceVerifyRequest
 
 func (s *InitFaceVerifyRequest) SetProductCode(v string) *InitFaceVerifyRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetRegionId(v string) *InitFaceVerifyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4859,6 +4907,7 @@ type LivenessFaceVerifyRequest struct {
 	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
 	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -4928,6 +4977,11 @@ func (s *LivenessFaceVerifyRequest) SetOuterOrderNo(v string) *LivenessFaceVerif
 
 func (s *LivenessFaceVerifyRequest) SetProductCode(v string) *LivenessFaceVerifyRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *LivenessFaceVerifyRequest) SetRegionId(v string) *LivenessFaceVerifyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5418,6 +5472,7 @@ type VerifyDeviceRequest struct {
 	CertifyId   *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
 	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s VerifyDeviceRequest) String() string {
@@ -5450,6 +5505,11 @@ func (s *VerifyDeviceRequest) SetDeviceToken(v string) *VerifyDeviceRequest {
 
 func (s *VerifyDeviceRequest) SetExtInfo(v string) *VerifyDeviceRequest {
 	s.ExtInfo = &v
+	return s
+}
+
+func (s *VerifyDeviceRequest) SetRegionId(v string) *VerifyDeviceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5566,6 +5626,7 @@ type VerifyMaterialRequest struct {
 	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
 	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5609,6 +5670,11 @@ func (s *VerifyMaterialRequest) SetIdCardNumber(v string) *VerifyMaterialRequest
 
 func (s *VerifyMaterialRequest) SetName(v string) *VerifyMaterialRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *VerifyMaterialRequest) SetRegionId(v string) *VerifyMaterialRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5863,11 +5929,79 @@ func (client *Client) CompareFaceVerifyWithOptions(request *CompareFaceVerifyReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderNo)) {
+		body["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCertifyId)) {
+		body["SourceCertifyId"] = request.SourceCertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFaceContrastPicture)) {
+		body["SourceFaceContrastPicture"] = request.SourceFaceContrastPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFaceContrastPictureUrl)) {
+		body["SourceFaceContrastPictureUrl"] = request.SourceFaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceOssBucketName)) {
+		body["SourceOssBucketName"] = request.SourceOssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceOssObjectName)) {
+		body["SourceOssObjectName"] = request.SourceOssObjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetCertifyId)) {
+		body["TargetCertifyId"] = request.TargetCertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFaceContrastPicture)) {
+		body["TargetFaceContrastPicture"] = request.TargetFaceContrastPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFaceContrastPictureUrl)) {
+		body["TargetFaceContrastPictureUrl"] = request.TargetFaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetOssBucketName)) {
+		body["TargetOssBucketName"] = request.TargetOssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetOssObjectName)) {
+		body["TargetOssObjectName"] = request.TargetOssObjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CompareFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompareFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5891,11 +6025,39 @@ func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceImageType)) {
+		body["SourceImageType"] = request.SourceImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceImageValue)) {
+		body["SourceImageValue"] = request.SourceImageValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageType)) {
+		body["TargetImageType"] = request.TargetImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageValue)) {
+		body["TargetImageValue"] = request.TargetImageValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareFaces"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CompareFacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompareFaces"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5919,11 +6081,94 @@ func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Model"] = request.Model
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		body["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNo)) {
+		body["CertNo"] = request.CertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		body["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		body["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceToken)) {
+		body["DeviceToken"] = request.DeviceToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastFile)) {
+		body["FaceContrastFile"] = request.FaceContrastFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPicture)) {
+		body["FaceContrastPicture"] = request.FaceContrastPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPictureUrl)) {
+		body["FaceContrastPictureUrl"] = request.FaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		body["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		body["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		body["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssObjectName)) {
+		body["OssObjectName"] = request.OssObjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderNo)) {
+		body["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContrastFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ContrastFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ContrastFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6053,11 +6298,27 @@ func (client *Client) CreateAuthKeyWithOptions(request *CreateAuthKeyRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthYears"] = request.AuthYears
+	query["BizType"] = request.BizType
+	query["Test"] = request.Test
+	query["UserDeviceId"] = request.UserDeviceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAuthKey"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAuthKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAuthKey"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6081,11 +6342,27 @@ func (client *Client) CreateFaceConfigWithOptions(request *CreateFaceConfigReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizName"] = request.BizName
+	query["BizType"] = request.BizType
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFaceConfig"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6109,11 +6386,27 @@ func (client *Client) CreateRPSDKWithOptions(request *CreateRPSDKRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppUrl"] = request.AppUrl
+	query["Lang"] = request.Lang
+	query["Platform"] = request.Platform
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRPSDK"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRPSDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRPSDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6137,11 +6430,25 @@ func (client *Client) CreateVerifySDKWithOptions(request *CreateVerifySDKRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppUrl"] = request.AppUrl
+	query["Platform"] = request.Platform
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVerifySDK"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVerifySDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVerifySDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6165,11 +6472,29 @@ func (client *Client) CreateVerifySettingWithOptions(request *CreateVerifySettin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizName"] = request.BizName
+	query["BizType"] = request.BizType
+	query["GuideStep"] = request.GuideStep
+	query["PrivacyStep"] = request.PrivacyStep
+	query["ResultStep"] = request.ResultStep
+	query["Solution"] = request.Solution
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVerifySetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6193,11 +6518,29 @@ func (client *Client) CreateWhitelistWithOptions(request *CreateWhitelistRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
+	query["IdCardNum"] = request.IdCardNum
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
+	query["ValidDay"] = request.ValidDay
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWhitelist"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6221,11 +6564,30 @@ func (client *Client) CreateWhitelistSettingWithOptions(request *CreateWhitelist
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CertNo"] = request.CertNo
+	query["CertifyId"] = request.CertifyId
+	query["Lang"] = request.Lang
+	query["SceneId"] = request.SceneId
+	query["ServiceCode"] = request.ServiceCode
+	query["SourceIp"] = request.SourceIp
+	query["ValidDay"] = request.ValidDay
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWhitelistSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateWhitelistSettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateWhitelistSetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6249,11 +6611,26 @@ func (client *Client) DeleteWhitelistWithOptions(request *DeleteWhitelistRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Ids"] = request.Ids
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWhitelist"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6277,11 +6654,27 @@ func (client *Client) DeleteWhitelistSettingWithOptions(request *DeleteWhitelist
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Ids"] = request.Ids
+	query["Lang"] = request.Lang
+	query["ServiceCode"] = request.ServiceCode
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWhitelistSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWhitelistSettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteWhitelistSetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6305,11 +6698,26 @@ func (client *Client) DescribeAppInfoWithOptions(request *DescribeAppInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CurrentPage"] = request.CurrentPage
+	query["PageSize"] = request.PageSize
+	query["Platform"] = request.Platform
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppInfo"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAppInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6333,11 +6741,30 @@ func (client *Client) DescribeDeviceInfoWithOptions(request *DescribeDeviceInfoR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["CurrentPage"] = request.CurrentPage
+	query["DeviceId"] = request.DeviceId
+	query["ExpiredEndDay"] = request.ExpiredEndDay
+	query["ExpiredStartDay"] = request.ExpiredStartDay
+	query["PageSize"] = request.PageSize
+	query["UserDeviceId"] = request.UserDeviceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeviceInfo"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeviceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDeviceInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6361,11 +6788,25 @@ func (client *Client) DescribeFaceConfigWithOptions(request *DescribeFaceConfigR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFaceConfig"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6389,11 +6830,25 @@ func (client *Client) DescribeFaceUsageWithOptions(request *DescribeFaceUsageReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["EndDate"] = request.EndDate
+	query["StartDate"] = request.StartDate
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFaceUsage"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeFaceUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceUsage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6417,11 +6872,26 @@ func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CertifyId"] = request.CertifyId
+	query["PictureReturnType"] = request.PictureReturnType
+	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6442,8 +6912,19 @@ func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_r
 
 func (client *Client) DescribeOssUploadTokenWithOptions(runtime *util.RuntimeOptions) (_result *DescribeOssUploadTokenResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOssUploadToken"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeOssUploadTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeOssUploadToken"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6467,11 +6948,26 @@ func (client *Client) DescribeRPSDKWithOptions(request *DescribeRPSDKRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRPSDK"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRPSDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRPSDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6495,11 +6991,25 @@ func (client *Client) DescribeSdkUrlWithOptions(request *DescribeSdkUrlRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Debug"] = request.Debug
+	query["Id"] = request.Id
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSdkUrl"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSdkUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSdkUrl"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6523,11 +7033,24 @@ func (client *Client) DescribeUpdatePackageResultWithOptions(request *DescribeUp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUpdatePackageResult"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUpdatePackageResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUpdatePackageResult"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6551,11 +7074,24 @@ func (client *Client) DescribeUploadInfoWithOptions(request *DescribeUploadInfoR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Biz"] = request.Biz
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUploadInfo"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUploadInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUploadInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6576,8 +7112,19 @@ func (client *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (_r
 
 func (client *Client) DescribeUserStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserStatus"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserStatus"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6601,11 +7148,33 @@ func (client *Client) DescribeVerifyRecordsWithOptions(request *DescribeVerifyRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
+	query["CurrentPage"] = request.CurrentPage
+	query["EndDate"] = request.EndDate
+	query["IdCardNum"] = request.IdCardNum
+	query["PageSize"] = request.PageSize
+	query["QueryId"] = request.QueryId
+	query["StartDate"] = request.StartDate
+	query["StatusList"] = request.StatusList
+	query["TotalCount"] = request.TotalCount
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyRecords"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyRecords"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6629,11 +7198,25 @@ func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyResult"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyResult"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6657,11 +7240,24 @@ func (client *Client) DescribeVerifySDKWithOptions(request *DescribeVerifySDKReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifySDK"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifySDKResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifySDK"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6682,8 +7278,19 @@ func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_res
 
 func (client *Client) DescribeVerifySettingWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVerifySettingResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifySetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6707,11 +7314,38 @@ func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyToke
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
+	query["CallbackSeed"] = request.CallbackSeed
+	query["CallbackUrl"] = request.CallbackUrl
+	query["FaceRetainedImageUrl"] = request.FaceRetainedImageUrl
+	query["FailedRedirectUrl"] = request.FailedRedirectUrl
+	query["IdCardBackImageUrl"] = request.IdCardBackImageUrl
+	query["IdCardFrontImageUrl"] = request.IdCardFrontImageUrl
+	query["IdCardNumber"] = request.IdCardNumber
+	query["Name"] = request.Name
+	query["PassedRedirectUrl"] = request.PassedRedirectUrl
+	query["UserId"] = request.UserId
+	query["UserIp"] = request.UserIp
+	query["UserPhoneNumber"] = request.UserPhoneNumber
+	query["UserRegistTime"] = request.UserRegistTime
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyToken"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyToken"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6735,11 +7369,26 @@ func (client *Client) DescribeVerifyUsageWithOptions(request *DescribeVerifyUsag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["EndDate"] = request.EndDate
+	query["StartDate"] = request.StartDate
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyUsage"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyUsage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6763,11 +7412,33 @@ func (client *Client) DescribeWhitelistWithOptions(request *DescribeWhitelistReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
+	query["CurrentPage"] = request.CurrentPage
+	query["IdCardNum"] = request.IdCardNum
+	query["Lang"] = request.Lang
+	query["PageSize"] = request.PageSize
+	query["SourceIp"] = request.SourceIp
+	query["Valid"] = request.Valid
+	query["ValidEndDate"] = request.ValidEndDate
+	query["ValidStartDate"] = request.ValidStartDate
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWhitelist"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWhitelist"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6791,11 +7462,34 @@ func (client *Client) DescribeWhitelistSettingWithOptions(request *DescribeWhite
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CertNo"] = request.CertNo
+	query["CertifyId"] = request.CertifyId
+	query["CurrentPage"] = request.CurrentPage
+	query["Lang"] = request.Lang
+	query["PageSize"] = request.PageSize
+	query["SceneId"] = request.SceneId
+	query["ServiceCode"] = request.ServiceCode
+	query["SourceIp"] = request.SourceIp
+	query["Status"] = request.Status
+	query["ValidEndDate"] = request.ValidEndDate
+	query["ValidStartDate"] = request.ValidStartDate
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWhitelistSetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWhitelistSettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWhitelistSetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6819,11 +7513,31 @@ func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttribu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaterialValue)) {
+		body["MaterialValue"] = request.MaterialValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectFaceAttributes"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectFaceAttributesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectFaceAttributes"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6847,11 +7561,44 @@ func (client *Client) InitDeviceWithOptions(request *InitDeviceRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppVersion"] = request.AppVersion
+	query["BizData"] = request.BizData
+	query["CertifyId"] = request.CertifyId
+	query["CertifyPrincipal"] = request.CertifyPrincipal
+	query["Channel"] = request.Channel
+	query["DeviceToken"] = request.DeviceToken
+	query["Merchant"] = request.Merchant
+	query["MetaInfo"] = request.MetaInfo
+	query["OuterOrderNo"] = request.OuterOrderNo
+	query["ProduceNode"] = request.ProduceNode
+	query["ProductName"] = request.ProductName
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UaToken)) {
+		body["UaToken"] = request.UaToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebUmidToken)) {
+		body["WebUmidToken"] = request.WebUmidToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitDevice"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &InitDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitDevice"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6875,11 +7622,55 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["CallbackToken"] = request.CallbackToken
+	query["CallbackUrl"] = request.CallbackUrl
+	query["CertName"] = request.CertName
+	query["CertNo"] = request.CertNo
+	query["CertType"] = request.CertType
+	query["CertifyId"] = request.CertifyId
+	query["CertifyUrlType"] = request.CertifyUrlType
+	query["FaceContrastPictureUrl"] = request.FaceContrastPictureUrl
+	query["Ip"] = request.Ip
+	query["MetaInfo"] = request.MetaInfo
+	query["Mobile"] = request.Mobile
+	query["OssBucketName"] = request.OssBucketName
+	query["OssObjectName"] = request.OssObjectName
+	query["OuterOrderNo"] = request.OuterOrderNo
+	query["ProductCode"] = request.ProductCode
+	query["ReturnUrl"] = request.ReturnUrl
+	query["SceneId"] = request.SceneId
+	query["UserId"] = request.UserId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPicture)) {
+		body["FaceContrastPicture"] = request.FaceContrastPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &InitFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6903,11 +7694,78 @@ func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Model"] = request.Model
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		body["CertifyId"] = request.CertifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceToken)) {
+		body["DeviceToken"] = request.DeviceToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPicture)) {
+		body["FaceContrastPicture"] = request.FaceContrastPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceContrastPictureUrl)) {
+		body["FaceContrastPictureUrl"] = request.FaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		body["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		body["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		body["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssObjectName)) {
+		body["OssObjectName"] = request.OssObjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderNo)) {
+		body["OuterOrderNo"] = request.OuterOrderNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LivenessFaceVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &LivenessFaceVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LivenessFaceVerify"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6931,11 +7789,28 @@ func (client *Client) ModifyDeviceInfoWithOptions(request *ModifyDeviceInfoReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizType"] = request.BizType
+	query["DeviceId"] = request.DeviceId
+	query["Duration"] = request.Duration
+	query["ExpiredDay"] = request.ExpiredDay
+	query["UserDeviceId"] = request.UserDeviceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDeviceInfo"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDeviceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDeviceInfo"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6959,11 +7834,27 @@ func (client *Client) UpdateAppPackageWithOptions(request *UpdateAppPackageReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Debug"] = request.Debug
+	query["Id"] = request.Id
+	query["PackageUrl"] = request.PackageUrl
+	query["Platform"] = request.Platform
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppPackage"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAppPackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAppPackage"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6987,11 +7878,27 @@ func (client *Client) UpdateFaceConfigWithOptions(request *UpdateFaceConfigReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizName"] = request.BizName
+	query["BizType"] = request.BizType
+	query["Lang"] = request.Lang
+	query["SourceIp"] = request.SourceIp
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFaceConfig"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateFaceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateFaceConfig"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7015,11 +7922,29 @@ func (client *Client) UpdateVerifySettingWithOptions(request *UpdateVerifySettin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizName"] = request.BizName
+	query["BizType"] = request.BizType
+	query["GuideStep"] = request.GuideStep
+	query["PrivacyStep"] = request.PrivacyStep
+	query["ResultStep"] = request.ResultStep
+	query["Solution"] = request.Solution
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVerifySetting"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVerifySettingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateVerifySetting"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7043,11 +7968,36 @@ func (client *Client) VerifyDeviceWithOptions(request *VerifyDeviceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AppVersion"] = request.AppVersion
+	query["CertifyData"] = request.CertifyData
+	query["CertifyId"] = request.CertifyId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceToken)) {
+		body["DeviceToken"] = request.DeviceToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		body["ExtInfo"] = request.ExtInfo
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyDevice"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyDevice"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7071,11 +8021,31 @@ func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["BizId"] = request.BizId
+	query["BizType"] = request.BizType
+	query["FaceImageUrl"] = request.FaceImageUrl
+	query["IdCardBackImageUrl"] = request.IdCardBackImageUrl
+	query["IdCardFrontImageUrl"] = request.IdCardFrontImageUrl
+	query["IdCardNumber"] = request.IdCardNumber
+	query["Name"] = request.Name
+	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyMaterial"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyMaterialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyMaterial"), tea.String("2019-03-07"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
