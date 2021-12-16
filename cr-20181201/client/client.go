@@ -15,6 +15,7 @@ import (
 type CancelArtifactBuildTaskRequest struct {
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelArtifactBuildTaskRequest) String() string {
@@ -32,6 +33,11 @@ func (s *CancelArtifactBuildTaskRequest) SetBuildTaskId(v string) *CancelArtifac
 
 func (s *CancelArtifactBuildTaskRequest) SetInstanceId(v string) *CancelArtifactBuildTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CancelArtifactBuildTaskRequest) SetRegionId(v string) *CancelArtifactBuildTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -90,6 +96,7 @@ func (s *CancelArtifactBuildTaskResponse) SetBody(v *CancelArtifactBuildTaskResp
 type CancelRepoBuildRecordRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -108,6 +115,11 @@ func (s *CancelRepoBuildRecordRequest) SetBuildRecordId(v string) *CancelRepoBui
 
 func (s *CancelRepoBuildRecordRequest) SetInstanceId(v string) *CancelRepoBuildRecordRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CancelRepoBuildRecordRequest) SetRegionId(v string) *CancelRepoBuildRecordRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -171,6 +183,7 @@ func (s *CancelRepoBuildRecordResponse) SetBody(v *CancelRepoBuildRecordResponse
 type CreateBuildRecordByRuleRequest struct {
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -189,6 +202,11 @@ func (s *CreateBuildRecordByRuleRequest) SetBuildRuleId(v string) *CreateBuildRe
 
 func (s *CreateBuildRecordByRuleRequest) SetInstanceId(v string) *CreateBuildRecordByRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBuildRecordByRuleRequest) SetRegionId(v string) *CreateBuildRecordByRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -260,6 +278,7 @@ type CreateChainRequest struct {
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -289,6 +308,11 @@ func (s *CreateChainRequest) SetInstanceId(v string) *CreateChainRequest {
 
 func (s *CreateChainRequest) SetName(v string) *CreateChainRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateChainRequest) SetRegionId(v string) *CreateChainRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -365,6 +389,7 @@ type CreateChartNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateChartNamespaceRequest) String() string {
@@ -392,6 +417,11 @@ func (s *CreateChartNamespaceRequest) SetInstanceId(v string) *CreateChartNamesp
 
 func (s *CreateChartNamespaceRequest) SetNamespaceName(v string) *CreateChartNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateChartNamespaceRequest) SetRegionId(v string) *CreateChartNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -449,6 +479,7 @@ func (s *CreateChartNamespaceResponse) SetBody(v *CreateChartNamespaceResponseBo
 
 type CreateChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -465,6 +496,11 @@ func (s CreateChartRepositoryRequest) GoString() string {
 
 func (s *CreateChartRepositoryRequest) SetInstanceId(v string) *CreateChartRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateChartRepositoryRequest) SetRegionId(v string) *CreateChartRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -552,6 +588,7 @@ type CreateInstanceEndpointAclPolicyRequest struct {
 	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstanceEndpointAclPolicyRequest) String() string {
@@ -584,6 +621,11 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetInstanceId(v string) *Create
 
 func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *CreateInstanceEndpointAclPolicyRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *CreateInstanceEndpointAclPolicyRequest) SetRegionId(v string) *CreateInstanceEndpointAclPolicyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -642,6 +684,7 @@ func (s *CreateInstanceEndpointAclPolicyResponse) SetBody(v *CreateInstanceEndpo
 type CreateInstanceVpcEndpointLinkedVpcRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
@@ -661,6 +704,11 @@ func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetInstanceId(v string) *Cre
 
 func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *CreateInstanceVpcEndpointLinkedVpcRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetRegionId(v string) *CreateInstanceVpcEndpointLinkedVpcRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -731,6 +779,7 @@ type CreateNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -758,6 +807,11 @@ func (s *CreateNamespaceRequest) SetInstanceId(v string) *CreateNamespaceRequest
 
 func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -820,6 +874,7 @@ type CreateRepoBuildRuleRequest struct {
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PushName           *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	PushType           *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -858,6 +913,11 @@ func (s *CreateRepoBuildRuleRequest) SetPushName(v string) *CreateRepoBuildRuleR
 
 func (s *CreateRepoBuildRuleRequest) SetPushType(v string) *CreateRepoBuildRuleRequest {
 	s.PushType = &v
+	return s
+}
+
+func (s *CreateRepoBuildRuleRequest) SetRegionId(v string) *CreateRepoBuildRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -932,6 +992,7 @@ type CreateRepoSourceCodeRepoRequest struct {
 	DisableCacheBuild     *bool   `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OverseaBuild          *bool   `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -975,6 +1036,11 @@ func (s *CreateRepoSourceCodeRepoRequest) SetInstanceId(v string) *CreateRepoSou
 
 func (s *CreateRepoSourceCodeRepoRequest) SetOverseaBuild(v bool) *CreateRepoSourceCodeRepoRequest {
 	s.OverseaBuild = &v
+	return s
+}
+
+func (s *CreateRepoSourceCodeRepoRequest) SetRegionId(v string) *CreateRepoSourceCodeRepoRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1038,6 +1104,7 @@ func (s *CreateRepoSourceCodeRepoResponse) SetBody(v *CreateRepoSourceCodeRepoRe
 type CreateRepoSyncRuleRequest struct {
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName            *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	SyncRuleName        *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	SyncScope           *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
@@ -1065,6 +1132,11 @@ func (s *CreateRepoSyncRuleRequest) SetInstanceId(v string) *CreateRepoSyncRuleR
 
 func (s *CreateRepoSyncRuleRequest) SetNamespaceName(v string) *CreateRepoSyncRuleRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateRepoSyncRuleRequest) SetRegionId(v string) *CreateRepoSyncRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1179,6 +1251,7 @@ func (s *CreateRepoSyncRuleResponse) SetBody(v *CreateRepoSyncRuleResponseBody) 
 type CreateRepoSyncTaskRequest struct {
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Override         *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId           *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
@@ -1204,6 +1277,11 @@ func (s *CreateRepoSyncTaskRequest) SetInstanceId(v string) *CreateRepoSyncTaskR
 
 func (s *CreateRepoSyncTaskRequest) SetOverride(v bool) *CreateRepoSyncTaskRequest {
 	s.Override = &v
+	return s
+}
+
+func (s *CreateRepoSyncTaskRequest) SetRegionId(v string) *CreateRepoSyncTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1307,6 +1385,7 @@ func (s *CreateRepoSyncTaskResponse) SetBody(v *CreateRepoSyncTaskResponseBody) 
 
 type CreateRepoSyncTaskByRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -1322,6 +1401,11 @@ func (s CreateRepoSyncTaskByRuleRequest) GoString() string {
 
 func (s *CreateRepoSyncTaskByRuleRequest) SetInstanceId(v string) *CreateRepoSyncTaskByRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoSyncTaskByRuleRequest) SetRegionId(v string) *CreateRepoSyncTaskByRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1402,6 +1486,7 @@ type CreateRepoTagRequest struct {
 	FromTag       *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	ToTag         *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
 }
@@ -1426,6 +1511,11 @@ func (s *CreateRepoTagRequest) SetInstanceId(v string) *CreateRepoTagRequest {
 
 func (s *CreateRepoTagRequest) SetNamespaceName(v string) *CreateRepoTagRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateRepoTagRequest) SetRegionId(v string) *CreateRepoTagRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1494,6 +1584,7 @@ func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRep
 type CreateRepoTagScanTaskRequest struct {
 	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -1514,6 +1605,11 @@ func (s *CreateRepoTagScanTaskRequest) SetDigest(v string) *CreateRepoTagScanTas
 
 func (s *CreateRepoTagScanTaskRequest) SetInstanceId(v string) *CreateRepoTagScanTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoTagScanTaskRequest) SetRegionId(v string) *CreateRepoTagScanTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1586,6 +1682,7 @@ func (s *CreateRepoTagScanTaskResponse) SetBody(v *CreateRepoTagScanTaskResponse
 
 type CreateRepoTriggerRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 	TriggerTag  *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
@@ -1603,6 +1700,11 @@ func (s CreateRepoTriggerRequest) GoString() string {
 
 func (s *CreateRepoTriggerRequest) SetInstanceId(v string) *CreateRepoTriggerRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoTriggerRequest) SetRegionId(v string) *CreateRepoTriggerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1692,6 +1794,7 @@ func (s *CreateRepoTriggerResponse) SetBody(v *CreateRepoTriggerResponseBody) *C
 type CreateRepositoryRequest struct {
 	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -1714,6 +1817,11 @@ func (s *CreateRepositoryRequest) SetDetail(v string) *CreateRepositoryRequest {
 
 func (s *CreateRepositoryRequest) SetInstanceId(v string) *CreateRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetRegionId(v string) *CreateRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1803,6 +1911,7 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 type DeleteChainRequest struct {
 	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChainRequest) String() string {
@@ -1820,6 +1929,11 @@ func (s *DeleteChainRequest) SetChainId(v string) *DeleteChainRequest {
 
 func (s *DeleteChainRequest) SetInstanceId(v string) *DeleteChainRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteChainRequest) SetRegionId(v string) *DeleteChainRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1878,6 +1992,7 @@ func (s *DeleteChainResponse) SetBody(v *DeleteChainResponseBody) *DeleteChainRe
 type DeleteChartNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChartNamespaceRequest) String() string {
@@ -1895,6 +2010,11 @@ func (s *DeleteChartNamespaceRequest) SetInstanceId(v string) *DeleteChartNamesp
 
 func (s *DeleteChartNamespaceRequest) SetNamespaceName(v string) *DeleteChartNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *DeleteChartNamespaceRequest) SetRegionId(v string) *DeleteChartNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1953,6 +2073,7 @@ func (s *DeleteChartNamespaceResponse) SetBody(v *DeleteChartNamespaceResponseBo
 type DeleteChartReleaseRequest struct {
 	Chart             *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Release           *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
@@ -1973,6 +2094,11 @@ func (s *DeleteChartReleaseRequest) SetChart(v string) *DeleteChartReleaseReques
 
 func (s *DeleteChartReleaseRequest) SetInstanceId(v string) *DeleteChartReleaseRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteChartReleaseRequest) SetRegionId(v string) *DeleteChartReleaseRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2045,6 +2171,7 @@ func (s *DeleteChartReleaseResponse) SetBody(v *DeleteChartReleaseResponseBody) 
 
 type DeleteChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -2059,6 +2186,11 @@ func (s DeleteChartRepositoryRequest) GoString() string {
 
 func (s *DeleteChartRepositoryRequest) SetInstanceId(v string) *DeleteChartRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteChartRepositoryRequest) SetRegionId(v string) *DeleteChartRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2126,6 +2258,7 @@ func (s *DeleteChartRepositoryResponse) SetBody(v *DeleteChartRepositoryResponse
 
 type DeleteEventCenterRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -2139,6 +2272,11 @@ func (s DeleteEventCenterRuleRequest) GoString() string {
 
 func (s *DeleteEventCenterRuleRequest) SetInstanceId(v string) *DeleteEventCenterRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteEventCenterRuleRequest) SetRegionId(v string) *DeleteEventCenterRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2199,6 +2337,7 @@ type DeleteInstanceEndpointAclPolicyRequest struct {
 	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteInstanceEndpointAclPolicyRequest) String() string {
@@ -2226,6 +2365,11 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetInstanceId(v string) *Delete
 
 func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *DeleteInstanceEndpointAclPolicyRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *DeleteInstanceEndpointAclPolicyRequest) SetRegionId(v string) *DeleteInstanceEndpointAclPolicyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2284,6 +2428,7 @@ func (s *DeleteInstanceEndpointAclPolicyResponse) SetBody(v *DeleteInstanceEndpo
 type DeleteInstanceVpcEndpointLinkedVpcRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
@@ -2303,6 +2448,11 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetInstanceId(v string) *Del
 
 func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *DeleteInstanceVpcEndpointLinkedVpcRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetRegionId(v string) *DeleteInstanceVpcEndpointLinkedVpcRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2371,6 +2521,7 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponse) SetBody(v *DeleteInstanceVp
 type DeleteNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteNamespaceRequest) String() string {
@@ -2388,6 +2539,11 @@ func (s *DeleteNamespaceRequest) SetInstanceId(v string) *DeleteNamespaceRequest
 
 func (s *DeleteNamespaceRequest) SetNamespaceName(v string) *DeleteNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2446,6 +2602,7 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 type DeleteRepoBuildRuleRequest struct {
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -2464,6 +2621,11 @@ func (s *DeleteRepoBuildRuleRequest) SetBuildRuleId(v string) *DeleteRepoBuildRu
 
 func (s *DeleteRepoBuildRuleRequest) SetInstanceId(v string) *DeleteRepoBuildRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRepoBuildRuleRequest) SetRegionId(v string) *DeleteRepoBuildRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2526,6 +2688,7 @@ func (s *DeleteRepoBuildRuleResponse) SetBody(v *DeleteRepoBuildRuleResponseBody
 
 type DeleteRepoSyncRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 }
 
@@ -2539,6 +2702,11 @@ func (s DeleteRepoSyncRuleRequest) GoString() string {
 
 func (s *DeleteRepoSyncRuleRequest) SetInstanceId(v string) *DeleteRepoSyncRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRepoSyncRuleRequest) SetRegionId(v string) *DeleteRepoSyncRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2601,6 +2769,7 @@ func (s *DeleteRepoSyncRuleResponse) SetBody(v *DeleteRepoSyncRuleResponseBody) 
 
 type DeleteRepoTagRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -2615,6 +2784,11 @@ func (s DeleteRepoTagRequest) GoString() string {
 
 func (s *DeleteRepoTagRequest) SetInstanceId(v string) *DeleteRepoTagRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRepoTagRequest) SetRegionId(v string) *DeleteRepoTagRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2682,6 +2856,7 @@ func (s *DeleteRepoTagResponse) SetBody(v *DeleteRepoTagResponseBody) *DeleteRep
 
 type DeleteRepoTriggerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerId  *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
@@ -2696,6 +2871,11 @@ func (s DeleteRepoTriggerRequest) GoString() string {
 
 func (s *DeleteRepoTriggerRequest) SetInstanceId(v string) *DeleteRepoTriggerRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRepoTriggerRequest) SetRegionId(v string) *DeleteRepoTriggerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2763,6 +2943,7 @@ func (s *DeleteRepoTriggerResponse) SetBody(v *DeleteRepoTriggerResponseBody) *D
 
 type DeleteRepositoryRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -2776,6 +2957,11 @@ func (s DeleteRepositoryRequest) GoString() string {
 
 func (s *DeleteRepositoryRequest) SetInstanceId(v string) *DeleteRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRepositoryRequest) SetRegionId(v string) *DeleteRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -2839,6 +3025,7 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 type GetArtifactBuildTaskRequest struct {
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetArtifactBuildTaskRequest) String() string {
@@ -2856,6 +3043,11 @@ func (s *GetArtifactBuildTaskRequest) SetBuildTaskId(v string) *GetArtifactBuild
 
 func (s *GetArtifactBuildTaskRequest) SetInstanceId(v string) *GetArtifactBuildTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskRequest) SetRegionId(v string) *GetArtifactBuildTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3019,6 +3211,7 @@ func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBo
 
 type GetAuthorizationTokenRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAuthorizationTokenRequest) String() string {
@@ -3031,6 +3224,11 @@ func (s GetAuthorizationTokenRequest) GoString() string {
 
 func (s *GetAuthorizationTokenRequest) SetInstanceId(v string) *GetAuthorizationTokenRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAuthorizationTokenRequest) SetRegionId(v string) *GetAuthorizationTokenRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3107,6 +3305,7 @@ func (s *GetAuthorizationTokenResponse) SetBody(v *GetAuthorizationTokenResponse
 type GetChainRequest struct {
 	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetChainRequest) String() string {
@@ -3124,6 +3323,11 @@ func (s *GetChainRequest) SetChainId(v string) *GetChainRequest {
 
 func (s *GetChainRequest) SetInstanceId(v string) *GetChainRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetChainRequest) SetRegionId(v string) *GetChainRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3433,6 +3637,7 @@ func (s *GetChainResponse) SetBody(v *GetChainResponseBody) *GetChainResponse {
 type GetChartNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetChartNamespaceRequest) String() string {
@@ -3450,6 +3655,11 @@ func (s *GetChartNamespaceRequest) SetInstanceId(v string) *GetChartNamespaceReq
 
 func (s *GetChartNamespaceRequest) SetNamespaceName(v string) *GetChartNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetChartNamespaceRequest) SetRegionId(v string) *GetChartNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3543,6 +3753,7 @@ func (s *GetChartNamespaceResponse) SetBody(v *GetChartNamespaceResponseBody) *G
 
 type GetChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -3557,6 +3768,11 @@ func (s GetChartRepositoryRequest) GoString() string {
 
 func (s *GetChartRepositoryRequest) SetInstanceId(v string) *GetChartRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetChartRepositoryRequest) SetRegionId(v string) *GetChartRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3678,6 +3894,7 @@ func (s *GetChartRepositoryResponse) SetBody(v *GetChartRepositoryResponseBody) 
 
 type GetInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceRequest) String() string {
@@ -3690,6 +3907,11 @@ func (s GetInstanceRequest) GoString() string {
 
 func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceRequest) SetRegionId(v string) *GetInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3781,6 +4003,23 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 	return s
 }
 
+type GetInstanceCountRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetInstanceCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceCountRequest) SetRegionId(v string) *GetInstanceCountRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetInstanceCountResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
@@ -3843,6 +4082,7 @@ type GetInstanceEndpointRequest struct {
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceEndpointRequest) String() string {
@@ -3865,6 +4105,11 @@ func (s *GetInstanceEndpointRequest) SetInstanceId(v string) *GetInstanceEndpoin
 
 func (s *GetInstanceEndpointRequest) SetModuleName(v string) *GetInstanceEndpointRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *GetInstanceEndpointRequest) SetRegionId(v string) *GetInstanceEndpointRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3998,6 +4243,7 @@ func (s *GetInstanceEndpointResponse) SetBody(v *GetInstanceEndpointResponseBody
 
 type GetInstanceUsageRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceUsageRequest) String() string {
@@ -4010,6 +4256,11 @@ func (s GetInstanceUsageRequest) GoString() string {
 
 func (s *GetInstanceUsageRequest) SetInstanceId(v string) *GetInstanceUsageRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceUsageRequest) SetRegionId(v string) *GetInstanceUsageRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4116,6 +4367,7 @@ func (s *GetInstanceUsageResponse) SetBody(v *GetInstanceUsageResponseBody) *Get
 type GetInstanceVpcEndpointRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointRequest) String() string {
@@ -4133,6 +4385,11 @@ func (s *GetInstanceVpcEndpointRequest) SetInstanceId(v string) *GetInstanceVpcE
 
 func (s *GetInstanceVpcEndpointRequest) SetModuleName(v string) *GetInstanceVpcEndpointRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *GetInstanceVpcEndpointRequest) SetRegionId(v string) *GetInstanceVpcEndpointRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4251,6 +4508,7 @@ type GetNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetNamespaceRequest) String() string {
@@ -4273,6 +4531,11 @@ func (s *GetNamespaceRequest) SetNamespaceId(v string) *GetNamespaceRequest {
 
 func (s *GetNamespaceRequest) SetNamespaceName(v string) *GetNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetNamespaceRequest) SetRegionId(v string) *GetNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4367,6 +4630,7 @@ func (s *GetNamespaceResponse) SetBody(v *GetNamespaceResponseBody) *GetNamespac
 type GetRepoBuildRecordRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetRepoBuildRecordRequest) String() string {
@@ -4384,6 +4648,11 @@ func (s *GetRepoBuildRecordRequest) SetBuildRecordId(v string) *GetRepoBuildReco
 
 func (s *GetRepoBuildRecordRequest) SetInstanceId(v string) *GetRepoBuildRecordRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoBuildRecordRequest) SetRegionId(v string) *GetRepoBuildRecordRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4501,6 +4770,7 @@ func (s *GetRepoBuildRecordResponse) SetBody(v *GetRepoBuildRecordResponseBody) 
 type GetRepoBuildRecordStatusRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -4519,6 +4789,11 @@ func (s *GetRepoBuildRecordStatusRequest) SetBuildRecordId(v string) *GetRepoBui
 
 func (s *GetRepoBuildRecordStatusRequest) SetInstanceId(v string) *GetRepoBuildRecordStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoBuildRecordStatusRequest) SetRegionId(v string) *GetRepoBuildRecordStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4587,6 +4862,7 @@ func (s *GetRepoBuildRecordStatusResponse) SetBody(v *GetRepoBuildRecordStatusRe
 
 type GetRepoSourceCodeRepoRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -4600,6 +4876,11 @@ func (s GetRepoSourceCodeRepoRequest) GoString() string {
 
 func (s *GetRepoSourceCodeRepoRequest) SetInstanceId(v string) *GetRepoSourceCodeRepoRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoSourceCodeRepoRequest) SetRegionId(v string) *GetRepoSourceCodeRepoRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4710,6 +4991,7 @@ func (s *GetRepoSourceCodeRepoResponse) SetBody(v *GetRepoSourceCodeRepoResponse
 
 type GetRepoSyncTaskRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -4723,6 +5005,11 @@ func (s GetRepoSyncTaskRequest) GoString() string {
 
 func (s *GetRepoSyncTaskRequest) SetInstanceId(v string) *GetRepoSyncTaskRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskRequest) SetRegionId(v string) *GetRepoSyncTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4972,9 +5259,139 @@ func (s *GetRepoSyncTaskResponse) SetBody(v *GetRepoSyncTaskResponseBody) *GetRe
 	return s
 }
 
+type GetRepoTagRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetRepoTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagRequest) SetInstanceId(v string) *GetRepoTagRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoTagRequest) SetRegionId(v string) *GetRepoTagRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetRepoTagRequest) SetRepoId(v string) *GetRepoTagRequest {
+	s.RepoId = &v
+	return s
+}
+
+func (s *GetRepoTagRequest) SetTag(v string) *GetRepoTagRequest {
+	s.Tag = &v
+	return s
+}
+
+type GetRepoTagResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	ImageCreate *int64  `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
+	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageSize   *int64  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ImageUpdate *int64  `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
+	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetRepoTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagResponseBody) SetCode(v string) *GetRepoTagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetDigest(v string) *GetRepoTagResponseBody {
+	s.Digest = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageCreate(v int64) *GetRepoTagResponseBody {
+	s.ImageCreate = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageId(v string) *GetRepoTagResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageSize(v int64) *GetRepoTagResponseBody {
+	s.ImageSize = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetImageUpdate(v int64) *GetRepoTagResponseBody {
+	s.ImageUpdate = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetIsSuccess(v bool) *GetRepoTagResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetRequestId(v string) *GetRepoTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetStatus(v string) *GetRepoTagResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetRepoTagResponseBody) SetTag(v string) *GetRepoTagResponseBody {
+	s.Tag = &v
+	return s
+}
+
+type GetRepoTagResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRepoTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepoTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepoTagResponse) SetHeaders(v map[string]*string) *GetRepoTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagResponse {
+	s.Body = v
+	return s
+}
+
 type GetRepoTagLayersRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -4994,6 +5411,11 @@ func (s *GetRepoTagLayersRequest) SetDigest(v string) *GetRepoTagLayersRequest {
 
 func (s *GetRepoTagLayersRequest) SetInstanceId(v string) *GetRepoTagLayersRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoTagLayersRequest) SetRegionId(v string) *GetRepoTagLayersRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5108,6 +5530,7 @@ func (s *GetRepoTagLayersResponse) SetBody(v *GetRepoTagLayersResponseBody) *Get
 
 type GetRepoTagManifestRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	SchemaVersion *int32  `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
 	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5123,6 +5546,11 @@ func (s GetRepoTagManifestRequest) GoString() string {
 
 func (s *GetRepoTagManifestRequest) SetInstanceId(v string) *GetRepoTagManifestRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoTagManifestRequest) SetRegionId(v string) *GetRepoTagManifestRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5394,6 +5822,7 @@ func (s *GetRepoTagManifestResponse) SetBody(v *GetRepoTagManifestResponseBody) 
 type GetRepoTagScanStatusRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5414,6 +5843,11 @@ func (s *GetRepoTagScanStatusRequest) SetDigest(v string) *GetRepoTagScanStatusR
 
 func (s *GetRepoTagScanStatusRequest) SetInstanceId(v string) *GetRepoTagScanStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoTagScanStatusRequest) SetRegionId(v string) *GetRepoTagScanStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5499,6 +5933,7 @@ func (s *GetRepoTagScanStatusResponse) SetBody(v *GetRepoTagScanStatusResponseBo
 type GetRepoTagScanSummaryRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5519,6 +5954,11 @@ func (s *GetRepoTagScanSummaryRequest) SetDigest(v string) *GetRepoTagScanSummar
 
 func (s *GetRepoTagScanSummaryRequest) SetInstanceId(v string) *GetRepoTagScanSummaryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepoTagScanSummaryRequest) SetRegionId(v string) *GetRepoTagScanSummaryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5621,6 +6061,7 @@ func (s *GetRepoTagScanSummaryResponse) SetBody(v *GetRepoTagScanSummaryResponse
 
 type GetRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
@@ -5636,6 +6077,11 @@ func (s GetRepositoryRequest) GoString() string {
 
 func (s *GetRepositoryRequest) SetInstanceId(v string) *GetRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRepositoryRequest) SetRegionId(v string) *GetRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5783,6 +6229,7 @@ type ListArtifactBuildTaskLogRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Page        *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogRequest) String() string {
@@ -5810,6 +6257,11 @@ func (s *ListArtifactBuildTaskLogRequest) SetPage(v int32) *ListArtifactBuildTas
 
 func (s *ListArtifactBuildTaskLogRequest) SetPageSize(v int32) *ListArtifactBuildTaskLogRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListArtifactBuildTaskLogRequest) SetRegionId(v string) *ListArtifactBuildTaskLogRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5904,6 +6356,7 @@ type ListChainRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -5928,6 +6381,11 @@ func (s *ListChainRequest) SetPageNo(v int32) *ListChainRequest {
 
 func (s *ListChainRequest) SetPageSize(v int32) *ListChainRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChainRequest) SetRegionId(v string) *ListChainRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6080,6 +6538,7 @@ type ListChainInstanceRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -6104,6 +6563,11 @@ func (s *ListChainInstanceRequest) SetPageNo(v int32) *ListChainInstanceRequest 
 
 func (s *ListChainInstanceRequest) SetPageSize(v int32) *ListChainInstanceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChainInstanceRequest) SetRegionId(v string) *ListChainInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6293,6 +6757,7 @@ type ListChartNamespaceRequest struct {
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListChartNamespaceRequest) String() string {
@@ -6325,6 +6790,11 @@ func (s *ListChartNamespaceRequest) SetPageNo(v int32) *ListChartNamespaceReques
 
 func (s *ListChartNamespaceRequest) SetPageSize(v int32) *ListChartNamespaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartNamespaceRequest) SetRegionId(v string) *ListChartNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6456,6 +6926,7 @@ type ListChartReleaseRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -6485,6 +6956,11 @@ func (s *ListChartReleaseRequest) SetPageNo(v int32) *ListChartReleaseRequest {
 
 func (s *ListChartReleaseRequest) SetPageSize(v int32) *ListChartReleaseRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartReleaseRequest) SetRegionId(v string) *ListChartReleaseRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6631,6 +7107,7 @@ type ListChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
@@ -6656,6 +7133,11 @@ func (s *ListChartRepositoryRequest) SetPageNo(v int32) *ListChartRepositoryRequ
 
 func (s *ListChartRepositoryRequest) SetPageSize(v int32) *ListChartRepositoryRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartRepositoryRequest) SetRegionId(v string) *ListChartRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6820,6 +7302,7 @@ type ListEventCenterRecordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -6848,6 +7331,11 @@ func (s *ListEventCenterRecordRequest) SetPageNo(v int32) *ListEventCenterRecord
 
 func (s *ListEventCenterRecordRequest) SetPageSize(v int32) *ListEventCenterRecordRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEventCenterRecordRequest) SetRegionId(v string) *ListEventCenterRecordRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7126,6 +7614,7 @@ type ListInstanceRequest struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	PageNo         *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -7153,6 +7642,11 @@ func (s *ListInstanceRequest) SetPageNo(v int32) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetPageSize(v int32) *ListInstanceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetRegionId(v string) *ListInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7288,6 +7782,7 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 type ListInstanceEndpointRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceEndpointRequest) String() string {
@@ -7305,6 +7800,11 @@ func (s *ListInstanceEndpointRequest) SetInstanceId(v string) *ListInstanceEndpo
 
 func (s *ListInstanceEndpointRequest) SetModuleName(v string) *ListInstanceEndpointRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *ListInstanceEndpointRequest) SetRegionId(v string) *ListInstanceEndpointRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7477,7 +7977,8 @@ func (s *ListInstanceEndpointResponse) SetBody(v *ListInstanceEndpointResponseBo
 }
 
 type ListInstanceRegionRequest struct {
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceRegionRequest) String() string {
@@ -7490,6 +7991,11 @@ func (s ListInstanceRegionRequest) GoString() string {
 
 func (s *ListInstanceRegionRequest) SetLang(v string) *ListInstanceRegionRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListInstanceRegionRequest) SetRegionId(v string) *ListInstanceRegionRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7580,6 +8086,7 @@ type ListNamespaceRequest struct {
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListNamespaceRequest) String() string {
@@ -7612,6 +8119,11 @@ func (s *ListNamespaceRequest) SetPageNo(v int32) *ListNamespaceRequest {
 
 func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespaceRequest) SetRegionId(v string) *ListNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7742,6 +8254,7 @@ type ListRepoBuildRecordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -7765,6 +8278,11 @@ func (s *ListRepoBuildRecordRequest) SetPageNo(v int32) *ListRepoBuildRecordRequ
 
 func (s *ListRepoBuildRecordRequest) SetPageSize(v int32) *ListRepoBuildRecordRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordRequest) SetRegionId(v string) *ListRepoBuildRecordRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7929,6 +8447,7 @@ type ListRepoBuildRecordLogRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Offset        *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -7952,6 +8471,11 @@ func (s *ListRepoBuildRecordLogRequest) SetInstanceId(v string) *ListRepoBuildRe
 
 func (s *ListRepoBuildRecordLogRequest) SetOffset(v int32) *ListRepoBuildRecordLogRequest {
 	s.Offset = &v
+	return s
+}
+
+func (s *ListRepoBuildRecordLogRequest) SetRegionId(v string) *ListRepoBuildRecordLogRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8069,6 +8593,7 @@ type ListRepoBuildRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -8092,6 +8617,11 @@ func (s *ListRepoBuildRuleRequest) SetPageNo(v int32) *ListRepoBuildRuleRequest 
 
 func (s *ListRepoBuildRuleRequest) SetPageSize(v int32) *ListRepoBuildRuleRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoBuildRuleRequest) SetRegionId(v string) *ListRepoBuildRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8240,6 +8770,7 @@ type ListRepoSyncRuleRequest struct {
 	NamespaceName    *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	PageNo           *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName         *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	TargetRegionId   *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
@@ -8270,6 +8801,11 @@ func (s *ListRepoSyncRuleRequest) SetPageNo(v int32) *ListRepoSyncRuleRequest {
 
 func (s *ListRepoSyncRuleRequest) SetPageSize(v int32) *ListRepoSyncRuleRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleRequest) SetRegionId(v string) *ListRepoSyncRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8481,6 +9017,7 @@ type ListRepoSyncTaskRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	SyncRecordId      *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
@@ -8507,6 +9044,11 @@ func (s *ListRepoSyncTaskRequest) SetPageNo(v int32) *ListRepoSyncTaskRequest {
 
 func (s *ListRepoSyncTaskRequest) SetPageSize(v int32) *ListRepoSyncTaskRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskRequest) SetRegionId(v string) *ListRepoSyncTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8763,6 +9305,7 @@ type ListRepoTagRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -8786,6 +9329,11 @@ func (s *ListRepoTagRequest) SetPageNo(v int32) *ListRepoTagRequest {
 
 func (s *ListRepoTagRequest) SetPageSize(v int32) *ListRepoTagRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoTagRequest) SetRegionId(v string) *ListRepoTagRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8928,6 +9476,7 @@ type ListRepoTagScanResultRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
@@ -8959,6 +9508,11 @@ func (s *ListRepoTagScanResultRequest) SetPageNo(v int32) *ListRepoTagScanResult
 
 func (s *ListRepoTagScanResultRequest) SetPageSize(v int32) *ListRepoTagScanResultRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultRequest) SetRegionId(v string) *ListRepoTagScanResultRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9131,6 +9685,7 @@ func (s *ListRepoTagScanResultResponse) SetBody(v *ListRepoTagScanResultResponse
 
 type ListRepoTriggerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -9144,6 +9699,11 @@ func (s ListRepoTriggerRequest) GoString() string {
 
 func (s *ListRepoTriggerRequest) SetInstanceId(v string) *ListRepoTriggerRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRepoTriggerRequest) SetRegionId(v string) *ListRepoTriggerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9261,6 +9821,7 @@ type ListRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
@@ -9286,6 +9847,11 @@ func (s *ListRepositoryRequest) SetPageNo(v int32) *ListRepositoryRequest {
 
 func (s *ListRepositoryRequest) SetPageSize(v int32) *ListRepositoryRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRepositoryRequest) SetRegionId(v string) *ListRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9460,6 +10026,7 @@ func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRep
 type ResetLoginPasswordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResetLoginPasswordRequest) String() string {
@@ -9477,6 +10044,11 @@ func (s *ResetLoginPasswordRequest) SetInstanceId(v string) *ResetLoginPasswordR
 
 func (s *ResetLoginPasswordRequest) SetPassword(v string) *ResetLoginPasswordRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *ResetLoginPasswordRequest) SetRegionId(v string) *ResetLoginPasswordRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9538,6 +10110,7 @@ type UpdateChainRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateChainRequest) String() string {
@@ -9570,6 +10143,11 @@ func (s *UpdateChainRequest) SetInstanceId(v string) *UpdateChainRequest {
 
 func (s *UpdateChainRequest) SetName(v string) *UpdateChainRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateChainRequest) SetRegionId(v string) *UpdateChainRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9630,6 +10208,7 @@ type UpdateChartNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateChartNamespaceRequest) String() string {
@@ -9657,6 +10236,11 @@ func (s *UpdateChartNamespaceRequest) SetInstanceId(v string) *UpdateChartNamesp
 
 func (s *UpdateChartNamespaceRequest) SetNamespaceName(v string) *UpdateChartNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *UpdateChartNamespaceRequest) SetRegionId(v string) *UpdateChartNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9714,6 +10298,7 @@ func (s *UpdateChartNamespaceResponse) SetBody(v *UpdateChartNamespaceResponseBo
 
 type UpdateChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -9730,6 +10315,11 @@ func (s UpdateChartRepositoryRequest) GoString() string {
 
 func (s *UpdateChartRepositoryRequest) SetInstanceId(v string) *UpdateChartRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateChartRepositoryRequest) SetRegionId(v string) *UpdateChartRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -9812,6 +10402,7 @@ type UpdateEventCenterRuleRequest struct {
 	EventType            *string   `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespaces           []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoNames            []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
 	RepoTagFilterPattern *string   `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	RuleId               *string   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -9856,6 +10447,11 @@ func (s *UpdateEventCenterRuleRequest) SetNamespaces(v []*string) *UpdateEventCe
 	return s
 }
 
+func (s *UpdateEventCenterRuleRequest) SetRegionId(v string) *UpdateEventCenterRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *UpdateEventCenterRuleRequest) SetRepoNames(v []*string) *UpdateEventCenterRuleRequest {
 	s.RepoNames = v
 	return s
@@ -9883,6 +10479,7 @@ type UpdateEventCenterRuleShrinkRequest struct {
 	EventType            *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespacesShrink     *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoNamesShrink      *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	RuleId               *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -9924,6 +10521,11 @@ func (s *UpdateEventCenterRuleShrinkRequest) SetInstanceId(v string) *UpdateEven
 
 func (s *UpdateEventCenterRuleShrinkRequest) SetNamespacesShrink(v string) *UpdateEventCenterRuleShrinkRequest {
 	s.NamespacesShrink = &v
+	return s
+}
+
+func (s *UpdateEventCenterRuleShrinkRequest) SetRegionId(v string) *UpdateEventCenterRuleShrinkRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10005,6 +10607,7 @@ type UpdateInstanceEndpointStatusRequest struct {
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateInstanceEndpointStatusRequest) String() string {
@@ -10032,6 +10635,11 @@ func (s *UpdateInstanceEndpointStatusRequest) SetInstanceId(v string) *UpdateIns
 
 func (s *UpdateInstanceEndpointStatusRequest) SetModuleName(v string) *UpdateInstanceEndpointStatusRequest {
 	s.ModuleName = &v
+	return s
+}
+
+func (s *UpdateInstanceEndpointStatusRequest) SetRegionId(v string) *UpdateInstanceEndpointStatusRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10092,6 +10700,7 @@ type UpdateNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateNamespaceRequest) String() string {
@@ -10119,6 +10728,11 @@ func (s *UpdateNamespaceRequest) SetInstanceId(v string) *UpdateNamespaceRequest
 
 func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *UpdateNamespaceRequest) SetRegionId(v string) *UpdateNamespaceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10183,6 +10797,7 @@ type UpdateRepoBuildRuleRequest struct {
 	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10231,6 +10846,11 @@ func (s *UpdateRepoBuildRuleRequest) SetPushName(v string) *UpdateRepoBuildRuleR
 
 func (s *UpdateRepoBuildRuleRequest) SetPushType(v string) *UpdateRepoBuildRuleRequest {
 	s.PushType = &v
+	return s
+}
+
+func (s *UpdateRepoBuildRuleRequest) SetRegionId(v string) *UpdateRepoBuildRuleRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10306,6 +10926,7 @@ type UpdateRepoSourceCodeRepoRequest struct {
 	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10354,6 +10975,11 @@ func (s *UpdateRepoSourceCodeRepoRequest) SetInstanceId(v string) *UpdateRepoSou
 
 func (s *UpdateRepoSourceCodeRepoRequest) SetOverseaBuild(v string) *UpdateRepoSourceCodeRepoRequest {
 	s.OverseaBuild = &v
+	return s
+}
+
+func (s *UpdateRepoSourceCodeRepoRequest) SetRegionId(v string) *UpdateRepoSourceCodeRepoRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10416,6 +11042,7 @@ func (s *UpdateRepoSourceCodeRepoResponse) SetBody(v *UpdateRepoSourceCodeRepoRe
 
 type UpdateRepoTriggerRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerId   *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
@@ -10434,6 +11061,11 @@ func (s UpdateRepoTriggerRequest) GoString() string {
 
 func (s *UpdateRepoTriggerRequest) SetInstanceId(v string) *UpdateRepoTriggerRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRepoTriggerRequest) SetRegionId(v string) *UpdateRepoTriggerRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10522,6 +11154,7 @@ func (s *UpdateRepoTriggerResponse) SetBody(v *UpdateRepoTriggerResponseBody) *U
 type UpdateRepositoryRequest struct {
 	Detail          *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId          *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoType        *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	Summary         *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
@@ -10543,6 +11176,11 @@ func (s *UpdateRepositoryRequest) SetDetail(v string) *UpdateRepositoryRequest {
 
 func (s *UpdateRepositoryRequest) SetInstanceId(v string) *UpdateRepositoryRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRepositoryRequest) SetRegionId(v string) *UpdateRepositoryRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -10675,7 +11313,6 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelArtifactBuildTask"),
@@ -10685,7 +11322,7 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelArtifactBuildTaskResponse{}
@@ -10719,7 +11356,6 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelRepoBuildRecord"),
@@ -10729,7 +11365,7 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelRepoBuildRecordResponse{}
@@ -10763,7 +11399,6 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateBuildRecordByRule"),
@@ -10773,7 +11408,7 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBuildRecordByRuleResponse{}
@@ -10810,7 +11445,6 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChain"),
@@ -10820,7 +11454,7 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateChainResponse{}
@@ -10855,7 +11489,6 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChartNamespace"),
@@ -10865,7 +11498,7 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateChartNamespaceResponse{}
@@ -10901,7 +11534,6 @@ func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepos
 	query["Summary"] = request.Summary
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChartRepository"),
@@ -10911,7 +11543,7 @@ func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepos
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateChartRepositoryResponse{}
@@ -10947,7 +11579,6 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInstanceEndpointAclPolicy"),
@@ -10957,7 +11588,7 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceEndpointAclPolicyResponse{}
@@ -10992,7 +11623,6 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 	query["VswitchId"] = request.VswitchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInstanceVpcEndpointLinkedVpc"),
@@ -11002,7 +11632,7 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
@@ -11037,7 +11667,6 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateNamespace"),
@@ -11047,7 +11676,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateNamespaceResponse{}
@@ -11085,7 +11714,6 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoBuildRule"),
@@ -11095,7 +11723,7 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoBuildRuleResponse{}
@@ -11134,7 +11762,6 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoSourceCodeRepo"),
@@ -11144,7 +11771,7 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoSourceCodeRepoResponse{}
@@ -11187,7 +11814,6 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 	query["TargetUserId"] = request.TargetUserId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoSyncRule"),
@@ -11197,7 +11823,7 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoSyncRuleResponse{}
@@ -11238,7 +11864,6 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 	query["TargetUserId"] = request.TargetUserId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoSyncTask"),
@@ -11248,7 +11873,7 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoSyncTaskResponse{}
@@ -11283,7 +11908,6 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoSyncTaskByRule"),
@@ -11293,7 +11917,7 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoSyncTaskByRuleResponse{}
@@ -11329,7 +11953,6 @@ func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, ru
 	query["ToTag"] = request.ToTag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoTag"),
@@ -11339,7 +11962,7 @@ func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoTagResponse{}
@@ -11375,7 +11998,6 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoTagScanTask"),
@@ -11385,7 +12007,7 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoTagScanTaskResponse{}
@@ -11422,7 +12044,6 @@ func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerReq
 	query["TriggerUrl"] = request.TriggerUrl
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepoTrigger"),
@@ -11432,7 +12053,7 @@ func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepoTriggerResponse{}
@@ -11470,7 +12091,6 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 	query["TagImmutability"] = request.TagImmutability
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepository"),
@@ -11480,7 +12100,7 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRepositoryResponse{}
@@ -11513,7 +12133,6 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChain"),
@@ -11523,7 +12142,7 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChainResponse{}
@@ -11556,7 +12175,6 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChartNamespace"),
@@ -11566,7 +12184,7 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChartNamespaceResponse{}
@@ -11602,7 +12220,6 @@ func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseR
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChartRelease"),
@@ -11612,7 +12229,7 @@ func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChartReleaseResponse{}
@@ -11646,7 +12263,6 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChartRepository"),
@@ -11656,7 +12272,7 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChartRepositoryResponse{}
@@ -11689,7 +12305,6 @@ func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCente
 	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteEventCenterRule"),
@@ -11699,7 +12314,7 @@ func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCente
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEventCenterRuleResponse{}
@@ -11734,7 +12349,6 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteInstanceEndpointAclPolicy"),
@@ -11744,7 +12358,7 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceEndpointAclPolicyResponse{}
@@ -11779,7 +12393,6 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *Del
 	query["VswitchId"] = request.VswitchId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteInstanceVpcEndpointLinkedVpc"),
@@ -11789,7 +12402,7 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *Del
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
@@ -11822,7 +12435,6 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteNamespace"),
@@ -11832,7 +12444,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteNamespaceResponse{}
@@ -11866,7 +12478,6 @@ func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRul
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRepoBuildRule"),
@@ -11876,7 +12487,7 @@ func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRepoBuildRuleResponse{}
@@ -11909,7 +12520,6 @@ func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleR
 	query["SyncRuleId"] = request.SyncRuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRepoSyncRule"),
@@ -11919,7 +12529,7 @@ func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRepoSyncRuleResponse{}
@@ -11953,7 +12563,6 @@ func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, ru
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRepoTag"),
@@ -11963,7 +12572,7 @@ func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRepoTagResponse{}
@@ -11997,7 +12606,6 @@ func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerReq
 	query["TriggerId"] = request.TriggerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRepoTrigger"),
@@ -12007,7 +12615,7 @@ func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRepoTriggerResponse{}
@@ -12040,7 +12648,6 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRepository"),
@@ -12050,7 +12657,7 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRepositoryResponse{}
@@ -12090,7 +12697,7 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetArtifactBuildTaskResponse{}
@@ -12122,7 +12729,6 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAuthorizationToken"),
@@ -12132,7 +12738,7 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAuthorizationTokenResponse{}
@@ -12165,7 +12771,6 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *uti
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetChain"),
@@ -12175,7 +12780,7 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetChainResponse{}
@@ -12208,7 +12813,6 @@ func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceReq
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetChartNamespace"),
@@ -12218,7 +12822,7 @@ func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetChartNamespaceResponse{}
@@ -12252,7 +12856,6 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetChartRepository"),
@@ -12262,7 +12865,7 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetChartRepositoryResponse{}
@@ -12294,7 +12897,6 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstance"),
@@ -12304,7 +12906,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceResponse{}
@@ -12327,7 +12929,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
-func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
+func (client *Client) GetInstanceCountWithOptions(request *GetInstanceCountRequest, runtime *util.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceCount"),
@@ -12337,7 +12943,7 @@ func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceCountResponse{}
@@ -12349,10 +12955,10 @@ func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
-func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _err error) {
+func (client *Client) GetInstanceCount(request *GetInstanceCountRequest) (_result *GetInstanceCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceCountResponse{}
-	_body, _err := client.GetInstanceCountWithOptions(runtime)
+	_body, _err := client.GetInstanceCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12371,7 +12977,6 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceEndpoint"),
@@ -12381,7 +12986,7 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceEndpointResponse{}
@@ -12413,7 +13018,6 @@ func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageReque
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceUsage"),
@@ -12423,7 +13027,7 @@ func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceUsageResponse{}
@@ -12456,7 +13060,6 @@ func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcE
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceVpcEndpoint"),
@@ -12466,7 +13069,7 @@ func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceVpcEndpointResponse{}
@@ -12500,7 +13103,6 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNamespace"),
@@ -12510,7 +13112,7 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNamespaceResponse{}
@@ -12543,7 +13145,6 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoBuildRecord"),
@@ -12553,7 +13154,7 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoBuildRecordResponse{}
@@ -12587,7 +13188,6 @@ func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildR
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoBuildRecordStatus"),
@@ -12597,7 +13197,7 @@ func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoBuildRecordStatusResponse{}
@@ -12630,7 +13230,6 @@ func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCod
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoSourceCodeRepo"),
@@ -12640,7 +13239,7 @@ func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCod
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoSourceCodeRepoResponse{}
@@ -12673,7 +13272,6 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 	query["SyncTaskId"] = request.SyncTaskId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoSyncTask"),
@@ -12683,7 +13281,7 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoSyncTaskResponse{}
@@ -12706,6 +13304,46 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepoTag"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRepoTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRepoTagResponse{}
+	_body, _err := client.GetRepoTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRepoTagLayersWithOptions(request *GetRepoTagLayersRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagLayersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12718,7 +13356,6 @@ func (client *Client) GetRepoTagLayersWithOptions(request *GetRepoTagLayersReque
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoTagLayers"),
@@ -12728,7 +13365,7 @@ func (client *Client) GetRepoTagLayersWithOptions(request *GetRepoTagLayersReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoTagLayersResponse{}
@@ -12763,7 +13400,6 @@ func (client *Client) GetRepoTagManifestWithOptions(request *GetRepoTagManifestR
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoTagManifest"),
@@ -12773,7 +13409,7 @@ func (client *Client) GetRepoTagManifestWithOptions(request *GetRepoTagManifestR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoTagManifestResponse{}
@@ -12809,7 +13445,6 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoTagScanStatus"),
@@ -12819,7 +13454,7 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoTagScanStatusResponse{}
@@ -12855,7 +13490,6 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepoTagScanSummary"),
@@ -12865,7 +13499,7 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepoTagScanSummaryResponse{}
@@ -12900,7 +13534,6 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRepository"),
@@ -12910,7 +13543,7 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRepositoryResponse{}
@@ -12950,7 +13583,7 @@ func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactB
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListArtifactBuildTaskLogResponse{}
@@ -12986,7 +13619,6 @@ func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *u
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChain"),
@@ -12996,7 +13628,7 @@ func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChainResponse{}
@@ -13032,7 +13664,6 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChainInstance"),
@@ -13042,7 +13673,7 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChainInstanceResponse{}
@@ -13078,7 +13709,6 @@ func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceR
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChartNamespace"),
@@ -13088,7 +13718,7 @@ func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChartNamespaceResponse{}
@@ -13125,7 +13755,6 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 	query["RepoNamespaceName"] = request.RepoNamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChartRelease"),
@@ -13135,7 +13764,7 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChartReleaseResponse{}
@@ -13172,7 +13801,6 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 	query["RepoStatus"] = request.RepoStatus
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListChartRepository"),
@@ -13182,7 +13810,7 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListChartRepositoryResponse{}
@@ -13222,7 +13850,7 @@ func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEventCenterRecordResponse{}
@@ -13262,7 +13890,7 @@ func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCente
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEventCenterRuleNameResponse{}
@@ -13297,7 +13925,6 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstance"),
@@ -13307,7 +13934,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceResponse{}
@@ -13340,7 +13967,6 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstanceEndpoint"),
@@ -13350,7 +13976,7 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceEndpointResponse{}
@@ -13382,7 +14008,6 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 	query["Lang"] = request.Lang
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstanceRegion"),
@@ -13392,7 +14017,7 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceRegionResponse{}
@@ -13428,7 +14053,6 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNamespace"),
@@ -13438,7 +14062,7 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNamespaceResponse{}
@@ -13473,7 +14097,6 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoBuildRecord"),
@@ -13483,7 +14106,7 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoBuildRecordResponse{}
@@ -13518,7 +14141,6 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoBuildRecordLog"),
@@ -13528,7 +14150,7 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoBuildRecordLogResponse{}
@@ -13563,7 +14185,6 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoBuildRule"),
@@ -13573,7 +14194,7 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoBuildRuleResponse{}
@@ -13611,7 +14232,6 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 	query["TargetRegionId"] = request.TargetRegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoSyncRule"),
@@ -13621,7 +14241,7 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoSyncRuleResponse{}
@@ -13659,7 +14279,6 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoSyncTask"),
@@ -13669,7 +14288,7 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoSyncTaskResponse{}
@@ -13704,7 +14323,6 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoTag"),
@@ -13714,7 +14332,7 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoTagResponse{}
@@ -13753,7 +14371,6 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoTagScanResult"),
@@ -13763,7 +14380,7 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoTagScanResultResponse{}
@@ -13796,7 +14413,6 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepoTrigger"),
@@ -13806,7 +14422,7 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepoTriggerResponse{}
@@ -13843,7 +14459,6 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 	query["RepoStatus"] = request.RepoStatus
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRepository"),
@@ -13853,7 +14468,7 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRepositoryResponse{}
@@ -13886,7 +14501,6 @@ func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordR
 	query["Password"] = request.Password
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetLoginPassword"),
@@ -13896,7 +14510,7 @@ func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetLoginPasswordResponse{}
@@ -13932,7 +14546,6 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 	query["Name"] = request.Name
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateChain"),
@@ -13942,7 +14555,7 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateChainResponse{}
@@ -13977,7 +14590,6 @@ func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamesp
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateChartNamespace"),
@@ -13987,7 +14599,7 @@ func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamesp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateChartNamespaceResponse{}
@@ -14023,7 +14635,6 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 	query["Summary"] = request.Summary
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateChartRepository"),
@@ -14033,7 +14644,7 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateChartRepositoryResponse{}
@@ -14084,7 +14695,6 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 	query["RuleName"] = request.RuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEventCenterRule"),
@@ -14094,7 +14704,7 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEventCenterRuleResponse{}
@@ -14129,7 +14739,6 @@ func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateIns
 	query["ModuleName"] = request.ModuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateInstanceEndpointStatus"),
@@ -14139,7 +14748,7 @@ func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateIns
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateInstanceEndpointStatusResponse{}
@@ -14174,7 +14783,6 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 	query["NamespaceName"] = request.NamespaceName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNamespace"),
@@ -14184,7 +14792,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateNamespaceResponse{}
@@ -14224,7 +14832,6 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRepoBuildRule"),
@@ -14234,7 +14841,7 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRepoBuildRuleResponse{}
@@ -14274,7 +14881,6 @@ func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSou
 	query["RepoId"] = request.RepoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRepoSourceCodeRepo"),
@@ -14284,7 +14890,7 @@ func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRepoSourceCodeRepoResponse{}
@@ -14322,7 +14928,6 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 	query["TriggerUrl"] = request.TriggerUrl
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRepoTrigger"),
@@ -14332,7 +14937,7 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRepoTriggerResponse{}
@@ -14369,7 +14974,6 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 	query["TagImmutability"] = request.TagImmutability
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRepository"),
@@ -14379,7 +14983,7 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRepositoryResponse{}
