@@ -246,6 +246,7 @@ func (s *AssociateAnycastEipAddressResponse) SetBody(v *AssociateAnycastEipAddre
 type DescribeAnycastEipAddressRequest struct {
 	AnycastId      *string `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s DescribeAnycastEipAddressRequest) String() string {
@@ -263,6 +264,11 @@ func (s *DescribeAnycastEipAddressRequest) SetAnycastId(v string) *DescribeAnyca
 
 func (s *DescribeAnycastEipAddressRequest) SetBindInstanceId(v string) *DescribeAnycastEipAddressRequest {
 	s.BindInstanceId = &v
+	return s
+}
+
+func (s *DescribeAnycastEipAddressRequest) SetIp(v string) *DescribeAnycastEipAddressRequest {
+	s.Ip = &v
 	return s
 }
 
@@ -1402,7 +1408,6 @@ func (client *Client) AllocateAnycastEipAddressWithOptions(request *AllocateAnyc
 	query["ServiceLocation"] = request.ServiceLocation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AllocateAnycastEipAddress"),
@@ -1412,7 +1417,7 @@ func (client *Client) AllocateAnycastEipAddressWithOptions(request *AllocateAnyc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AllocateAnycastEipAddressResponse{}
@@ -1452,7 +1457,6 @@ func (client *Client) AssociateAnycastEipAddressWithOptions(request *AssociateAn
 	query["PrivateIpAddress"] = request.PrivateIpAddress
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AssociateAnycastEipAddress"),
@@ -1462,7 +1466,7 @@ func (client *Client) AssociateAnycastEipAddressWithOptions(request *AssociateAn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAnycastEipAddressResponse{}
@@ -1493,9 +1497,9 @@ func (client *Client) DescribeAnycastEipAddressWithOptions(request *DescribeAnyc
 	query := map[string]interface{}{}
 	query["AnycastId"] = request.AnycastId
 	query["BindInstanceId"] = request.BindInstanceId
+	query["Ip"] = request.Ip
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAnycastEipAddress"),
@@ -1505,7 +1509,7 @@ func (client *Client) DescribeAnycastEipAddressWithOptions(request *DescribeAnyc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAnycastEipAddressResponse{}
@@ -1537,7 +1541,6 @@ func (client *Client) DescribeAnycastPopLocationsWithOptions(request *DescribeAn
 	query["ServiceLocation"] = request.ServiceLocation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAnycastPopLocations"),
@@ -1547,7 +1550,7 @@ func (client *Client) DescribeAnycastPopLocationsWithOptions(request *DescribeAn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAnycastPopLocationsResponse{}
@@ -1579,7 +1582,6 @@ func (client *Client) DescribeAnycastServerRegionsWithOptions(request *DescribeA
 	query["ServiceLocation"] = request.ServiceLocation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAnycastServerRegions"),
@@ -1589,7 +1591,7 @@ func (client *Client) DescribeAnycastServerRegionsWithOptions(request *DescribeA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAnycastServerRegionsResponse{}
@@ -1631,7 +1633,6 @@ func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEip
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAnycastEipAddresses"),
@@ -1641,7 +1642,7 @@ func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEip
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAnycastEipAddressesResponse{}
@@ -1675,7 +1676,6 @@ func (client *Client) ModifyAnycastEipAddressAttributeWithOptions(request *Modif
 	query["Name"] = request.Name
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyAnycastEipAddressAttribute"),
@@ -1685,7 +1685,7 @@ func (client *Client) ModifyAnycastEipAddressAttributeWithOptions(request *Modif
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAnycastEipAddressAttributeResponse{}
@@ -1718,7 +1718,6 @@ func (client *Client) ModifyAnycastEipAddressSpecWithOptions(request *ModifyAnyc
 	query["Bandwidth"] = request.Bandwidth
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyAnycastEipAddressSpec"),
@@ -1728,7 +1727,7 @@ func (client *Client) ModifyAnycastEipAddressSpecWithOptions(request *ModifyAnyc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAnycastEipAddressSpecResponse{}
@@ -1761,7 +1760,6 @@ func (client *Client) ReleaseAnycastEipAddressWithOptions(request *ReleaseAnycas
 	query["ClientToken"] = request.ClientToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReleaseAnycastEipAddress"),
@@ -1771,7 +1769,7 @@ func (client *Client) ReleaseAnycastEipAddressWithOptions(request *ReleaseAnycas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseAnycastEipAddressResponse{}
@@ -1809,7 +1807,6 @@ func (client *Client) UnassociateAnycastEipAddressWithOptions(request *Unassocia
 	query["PrivateIpAddress"] = request.PrivateIpAddress
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnassociateAnycastEipAddress"),
@@ -1819,7 +1816,7 @@ func (client *Client) UnassociateAnycastEipAddressWithOptions(request *Unassocia
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnassociateAnycastEipAddressResponse{}
@@ -1857,7 +1854,6 @@ func (client *Client) UpdateAnycastEipAddressAssociationsWithOptions(request *Up
 	query["PopLocationDeleteList"] = request.PopLocationDeleteList
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAnycastEipAddressAssociations"),
@@ -1867,7 +1863,7 @@ func (client *Client) UpdateAnycastEipAddressAssociationsWithOptions(request *Up
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAnycastEipAddressAssociationsResponse{}
