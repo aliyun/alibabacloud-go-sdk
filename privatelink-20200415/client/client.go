@@ -406,6 +406,7 @@ type CreateVpcEndpointRequest struct {
 	EndpointDescription       *string                         `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	EndpointName              *string                         `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	EndpointType              *string                         `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	ProtectedEnabled          *bool                           `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
 	RegionId                  *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId           []*string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
 	ServiceId                 *string                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
@@ -445,6 +446,11 @@ func (s *CreateVpcEndpointRequest) SetEndpointName(v string) *CreateVpcEndpointR
 
 func (s *CreateVpcEndpointRequest) SetEndpointType(v string) *CreateVpcEndpointRequest {
 	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetProtectedEnabled(v bool) *CreateVpcEndpointRequest {
+	s.ProtectedEnabled = &v
 	return s
 }
 
@@ -3770,7 +3776,6 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddUserToVpcEndpointService"),
@@ -3780,7 +3785,7 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddUserToVpcEndpointServiceResponse{}
@@ -3819,7 +3824,6 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 	query["ip"] = request.Ip
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddZoneToVpcEndpoint"),
@@ -3829,7 +3833,7 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddZoneToVpcEndpointResponse{}
@@ -3867,7 +3871,6 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachResourceToVpcEndpointService"),
@@ -3877,7 +3880,7 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachResourceToVpcEndpointServiceResponse{}
@@ -3914,7 +3917,6 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 	query["SecurityGroupId"] = request.SecurityGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachSecurityGroupToVpcEndpoint"),
@@ -3924,7 +3926,7 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachSecurityGroupToVpcEndpointResponse{}
@@ -3957,7 +3959,7 @@ func (client *Client) CheckProductOpenWithOptions(runtime *util.RuntimeOptions) 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckProductOpenResponse{}
@@ -3991,6 +3993,7 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 	query["EndpointDescription"] = request.EndpointDescription
 	query["EndpointName"] = request.EndpointName
 	query["EndpointType"] = request.EndpointType
+	query["ProtectedEnabled"] = request.ProtectedEnabled
 	query["RegionId"] = request.RegionId
 	query["RegionId"] = request.RegionId
 	query["SecurityGroupId"] = request.SecurityGroupId
@@ -4001,7 +4004,6 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 	query["ZonePrivateIpAddressCount"] = request.ZonePrivateIpAddressCount
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateVpcEndpoint"),
@@ -4011,7 +4013,7 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVpcEndpointResponse{}
@@ -4052,7 +4054,6 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateVpcEndpointService"),
@@ -4062,7 +4063,7 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVpcEndpointServiceResponse{}
@@ -4098,7 +4099,6 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVpcEndpoint"),
@@ -4108,7 +4108,7 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVpcEndpointResponse{}
@@ -4144,7 +4144,6 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVpcEndpointService"),
@@ -4154,7 +4153,7 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVpcEndpointServiceResponse{}
@@ -4187,7 +4186,6 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -4197,7 +4195,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -4230,7 +4228,6 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeZones"),
@@ -4240,7 +4237,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
@@ -4278,7 +4275,6 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachResourceFromVpcEndpointService"),
@@ -4288,7 +4284,7 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachResourceFromVpcEndpointServiceResponse{}
@@ -4325,7 +4321,6 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 	query["SecurityGroupId"] = request.SecurityGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachSecurityGroupFromVpcEndpoint"),
@@ -4335,7 +4330,7 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachSecurityGroupFromVpcEndpointResponse{}
@@ -4372,7 +4367,6 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableVpcEndpointConnection"),
@@ -4382,7 +4376,7 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableVpcEndpointConnectionResponse{}
@@ -4420,7 +4414,6 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableVpcEndpointConnection"),
@@ -4430,7 +4423,7 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableVpcEndpointConnectionResponse{}
@@ -4464,7 +4457,6 @@ func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpoint
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVpcEndpointAttribute"),
@@ -4474,7 +4466,7 @@ func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpoint
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVpcEndpointAttributeResponse{}
@@ -4508,7 +4500,6 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVpcEndpointServiceAttribute"),
@@ -4518,7 +4509,7 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVpcEndpointServiceAttributeResponse{}
@@ -4558,7 +4549,6 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointConnections"),
@@ -4568,7 +4558,7 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointConnectionsResponse{}
@@ -4604,7 +4594,6 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointSecurityGroups"),
@@ -4614,7 +4603,7 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointSecurityGroupsResponse{}
@@ -4650,7 +4639,6 @@ func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVp
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointServiceResources"),
@@ -4660,7 +4648,7 @@ func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointServiceResourcesResponse{}
@@ -4697,7 +4685,6 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointServiceUsers"),
@@ -4707,7 +4694,7 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointServiceUsersResponse{}
@@ -4749,7 +4736,6 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointServices"),
@@ -4759,7 +4745,7 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointServicesResponse{}
@@ -4797,7 +4783,6 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 	query["ServiceType"] = request.ServiceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointServicesByEndUser"),
@@ -4807,7 +4792,7 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointServicesByEndUserResponse{}
@@ -4843,7 +4828,6 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpointZones"),
@@ -4853,7 +4837,7 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointZonesResponse{}
@@ -4895,7 +4879,6 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 	query["VpcId"] = request.VpcId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVpcEndpoints"),
@@ -4905,7 +4888,7 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcEndpointsResponse{}
@@ -4937,7 +4920,6 @@ func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLink
 	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OpenPrivateLinkService"),
@@ -4947,7 +4929,7 @@ func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLink
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OpenPrivateLinkServiceResponse{}
@@ -4984,7 +4966,6 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 	query["UserId"] = request.UserId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveUserFromVpcEndpointService"),
@@ -4994,7 +4975,7 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUserFromVpcEndpointServiceResponse{}
@@ -5031,7 +5012,6 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveZoneFromVpcEndpoint"),
@@ -5041,7 +5021,7 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveZoneFromVpcEndpointResponse{}
@@ -5079,7 +5059,6 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVpcEndpointAttribute"),
@@ -5089,7 +5068,7 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVpcEndpointAttributeResponse{}
@@ -5127,7 +5106,6 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVpcEndpointConnectionAttribute"),
@@ -5137,7 +5115,7 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVpcEndpointConnectionAttributeResponse{}
@@ -5177,7 +5155,6 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVpcEndpointServiceAttribute"),
@@ -5187,7 +5164,7 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVpcEndpointServiceAttributeResponse{}
