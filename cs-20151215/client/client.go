@@ -1403,6 +1403,8 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 节点标签。
 	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 自定义节点名称
+	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// 容器运行时。
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本。
@@ -1433,6 +1435,11 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) SetCpuPolicy(v string) *C
 
 func (s *CreateClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tag) *CreateClusterNodePoolRequestKubernetesConfig {
 	s.Labels = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetNodeNameMode(v string) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.NodeNameMode = &v
 	return s
 }
 
@@ -1568,6 +1575,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 数据盘配置。
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 部署集ID。
+	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
 	// 自定义镜像。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 操作系统镜像类型，和platform二选一
@@ -1649,6 +1658,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v b
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisk) *CreateClusterNodePoolRequestScalingGroup {
 	s.DataDisks = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetDeploymentsetId(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.DeploymentsetId = &v
 	return s
 }
 
@@ -2276,40 +2290,6 @@ func (s *CreateTriggerResponse) SetHeaders(v map[string]*string) *CreateTriggerR
 
 func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTriggerResponse {
 	s.Body = v
-	return s
-}
-
-type DeleteAlertContactResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s DeleteAlertContactResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAlertContactResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAlertContactResponse) SetHeaders(v map[string]*string) *DeleteAlertContactResponse {
-	s.Headers = v
-	return s
-}
-
-type DeleteAlertContactGroupResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s DeleteAlertContactGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAlertContactGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAlertContactGroupResponse) SetHeaders(v map[string]*string) *DeleteAlertContactGroupResponse {
-	s.Headers = v
 	return s
 }
 
@@ -3732,6 +3712,8 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// 节点标签。
 	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 自定义节点名称
+	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// 容器运行时
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本。
@@ -3762,6 +3744,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetCpuPolicy
 
 func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetLabels(v []*Tag) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
 	s.Labels = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetNodeNameMode(v string) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
+	s.NodeNameMode = &v
 	return s
 }
 
@@ -3932,6 +3919,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 数据盘配置。
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 部署集ID。
+	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
 	// 自定义镜像ID。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型。
@@ -4015,6 +4004,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetCompensateWit
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDataDisks(v []*DataDisk) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.DataDisks = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDeploymentsetId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.DeploymentsetId = &v
 	return s
 }
 
@@ -4503,6 +4497,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig struct {
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
 	// ECS标签
 	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// 自定义节点名称
+	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// 容器运行时
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 容器运行时版本
@@ -4533,6 +4529,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetCpuPo
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetLabels(v []*Tag) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
 	s.Labels = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetNodeNameMode(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
+	s.NodeNameMode = &v
 	return s
 }
 
@@ -4703,6 +4704,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 数据盘配置
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 部署集ID。
+	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
 	// 镜像ID
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型
@@ -4786,6 +4789,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetCompensat
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDataDisks(v []*DataDisk) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.DataDisks = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDeploymentsetId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.DeploymentsetId = &v
 	return s
 }
 
@@ -6931,6 +6939,8 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// 地域ID。
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 运行时。
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 }
 
 func (s DescribeKubernetesVersionMetadataRequest) String() string {
@@ -6958,6 +6968,11 @@ func (s *DescribeKubernetesVersionMetadataRequest) SetProfile(v string) *Describ
 
 func (s *DescribeKubernetesVersionMetadataRequest) SetRegion(v string) *DescribeKubernetesVersionMetadataRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetRuntime(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.Runtime = &v
 	return s
 }
 
@@ -10946,23 +10961,6 @@ func (s *ScaleOutClusterResponse) SetBody(v *ScaleOutClusterResponseBody) *Scale
 	return s
 }
 
-type StartAlertResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s StartAlertResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartAlertResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartAlertResponse) SetHeaders(v map[string]*string) *StartAlertResponse {
-	s.Headers = v
-	return s
-}
-
 type StartWorkflowRequest struct {
 	// bam文件输出名称。
 	MappingBamOutFilename *string `json:"mapping_bam_out_filename,omitempty" xml:"mapping_bam_out_filename,omitempty"`
@@ -11145,23 +11143,6 @@ func (s *StartWorkflowResponse) SetHeaders(v map[string]*string) *StartWorkflowR
 
 func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
 	s.Body = v
-	return s
-}
-
-type StopAlertResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s StopAlertResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopAlertResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StopAlertResponse) SetHeaders(v map[string]*string) *StopAlertResponse {
-	s.Headers = v
 	return s
 }
 
@@ -11382,23 +11363,6 @@ func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResource
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
-	return s
-}
-
-type UpdateContactGroupForAlertResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s UpdateContactGroupForAlertResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateContactGroupForAlertResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateContactGroupForAlertResponse) SetHeaders(v map[string]*string) *UpdateContactGroupForAlertResponse {
-	s.Headers = v
 	return s
 }
 
@@ -12690,78 +12654,6 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAlertContact"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/alert/contacts"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAlertContactGroup"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/alert/contact_groups"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteAlertContactGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14321,6 +14213,10 @@ func (client *Client) DescribeKubernetesVersionMetadataWithOptions(request *Desc
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
+		query["runtime"] = request.Runtime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16126,43 +16022,6 @@ func (client *Client) ScaleOutClusterWithOptions(ClusterId *string, request *Sca
 	return _result, _err
 }
 
-func (client *Client) StartAlert(ClusterId *string) (_result *StartAlertResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartAlertResponse{}
-	_body, _err := client.StartAlertWithOptions(ClusterId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StartAlert"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/start"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &StartAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *StartWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16273,43 +16132,6 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StopAlert(ClusterId *string) (_result *StopAlertResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopAlertResponse{}
-	_body, _err := client.StopAlertWithOptions(ClusterId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("StopAlert"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/stop"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &StopAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16472,43 +16294,6 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateContactGroupForAlertResponse{}
-	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContactGroupForAlertResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateContactGroupForAlert"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/contact_groups"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateContactGroupForAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
