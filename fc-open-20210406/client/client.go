@@ -9362,7 +9362,7 @@ type UntagResourceRequest struct {
 	// 目前只能给 top level 资源 service 进行标签的相关操作, ARN 可以是类似 services/foo 或者 acs:fc:cn-shanghai:123456789:services/foo
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	// tag key 值列表， 最大为 20，当 all=false， length 至少为 1. 当 length 大于 1 时， 可以忽略 all 值
-	TagKeys []*string `json:"tagKeys	,omitempty" xml:"tagKeys	,omitempty" type:"Repeated"`
+	TagKeys []*string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourceRequest) String() string {
@@ -15345,7 +15345,7 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
-		body["tagKeys	"] = request.TagKeys
+		body["tagKeys"] = request.TagKeys
 	}
 
 	realHeaders := make(map[string]*string)
