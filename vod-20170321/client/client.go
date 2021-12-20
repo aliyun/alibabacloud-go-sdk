@@ -21432,8 +21432,10 @@ func (s *UploadStreamByURLRequest) SetUserData(v string) *UploadStreamByURLReque
 }
 
 type UploadStreamByURLResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StreamJobId *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceURL     *string `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
+	StreamFileURL *string `json:"StreamFileURL,omitempty" xml:"StreamFileURL,omitempty"`
+	StreamJobId   *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
 }
 
 func (s UploadStreamByURLResponseBody) String() string {
@@ -21446,6 +21448,16 @@ func (s UploadStreamByURLResponseBody) GoString() string {
 
 func (s *UploadStreamByURLResponseBody) SetRequestId(v string) *UploadStreamByURLResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UploadStreamByURLResponseBody) SetSourceURL(v string) *UploadStreamByURLResponseBody {
+	s.SourceURL = &v
+	return s
+}
+
+func (s *UploadStreamByURLResponseBody) SetStreamFileURL(v string) *UploadStreamByURLResponseBody {
+	s.StreamFileURL = &v
 	return s
 }
 
@@ -21660,7 +21672,6 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddAITemplate"),
@@ -21670,7 +21681,7 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddAITemplateResponse{}
@@ -21704,7 +21715,6 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddCategory"),
@@ -21714,7 +21724,7 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddCategoryResponse{}
@@ -21754,7 +21764,6 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddEditingProject"),
@@ -21764,7 +21773,7 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddEditingProjectResponse{}
@@ -21799,7 +21808,6 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 	query["TranscodeTemplateList"] = request.TranscodeTemplateList
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTranscodeTemplateGroup"),
@@ -21809,7 +21817,7 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTranscodeTemplateGroupResponse{}
@@ -21848,7 +21856,6 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 	query["TopLevelDomain"] = request.TopLevelDomain
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddVodDomain"),
@@ -21858,7 +21865,7 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddVodDomainResponse{}
@@ -21893,7 +21900,6 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddVodTemplate"),
@@ -21903,7 +21909,7 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddVodTemplateResponse{}
@@ -21939,7 +21945,6 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 	query["WatermarkConfig"] = request.WatermarkConfig
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddWatermark"),
@@ -21949,7 +21954,7 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddWatermarkResponse{}
@@ -21984,7 +21989,6 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 	query["PolicyNames"] = request.PolicyNames
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachAppPolicyToIdentity"),
@@ -21994,7 +21998,7 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachAppPolicyToIdentityResponse{}
@@ -22030,7 +22034,6 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchSetVodDomainConfigs"),
@@ -22040,7 +22043,7 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchSetVodDomainConfigsResponse{}
@@ -22074,7 +22077,6 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchStartVodDomain"),
@@ -22084,7 +22086,7 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStartVodDomainResponse{}
@@ -22118,7 +22120,6 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchStopVodDomain"),
@@ -22128,7 +22129,7 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStopVodDomainResponse{}
@@ -22161,7 +22162,6 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 	query["UploadUrls"] = request.UploadUrls
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelUrlUploadJobs"),
@@ -22171,7 +22171,7 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelUrlUploadJobsResponse{}
@@ -22204,7 +22204,6 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 	query["Description"] = request.Description
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAppInfo"),
@@ -22214,7 +22213,7 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAppInfoResponse{}
@@ -22246,7 +22245,6 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 	query["AuditContent"] = request.AuditContent
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAudit"),
@@ -22256,7 +22254,7 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAuditResponse{}
@@ -22298,7 +22296,6 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUploadAttachedMedia"),
@@ -22308,7 +22305,7 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadAttachedMediaResponse{}
@@ -22348,7 +22345,6 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUploadImage"),
@@ -22358,7 +22354,7 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadImageResponse{}
@@ -22401,7 +22397,6 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUploadVideo"),
@@ -22411,7 +22406,7 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUploadVideoResponse{}
@@ -22451,7 +22446,7 @@ func (client *Client) CreateVodRealTimeLogDeliveryWithOptions(request *CreateVod
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVodRealTimeLogDeliveryResponse{}
@@ -22483,7 +22478,6 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 	query["AIImageInfoIds"] = request.AIImageInfoIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAIImageInfos"),
@@ -22493,7 +22487,7 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAIImageInfosResponse{}
@@ -22525,7 +22519,6 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAITemplate"),
@@ -22535,7 +22528,7 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAITemplateResponse{}
@@ -22567,7 +22560,6 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAppInfo"),
@@ -22577,7 +22569,7 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAppInfoResponse{}
@@ -22609,7 +22601,6 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAttachedMedia"),
@@ -22619,7 +22610,7 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAttachedMediaResponse{}
@@ -22651,7 +22642,6 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 	query["CateId"] = request.CateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCategory"),
@@ -22661,7 +22651,7 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCategoryResponse{}
@@ -22694,7 +22684,6 @@ func (client *Client) DeleteDynamicImageWithOptions(request *DeleteDynamicImageR
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDynamicImage"),
@@ -22704,7 +22693,7 @@ func (client *Client) DeleteDynamicImageWithOptions(request *DeleteDynamicImageR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDynamicImageResponse{}
@@ -22740,7 +22729,6 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteEditingProject"),
@@ -22750,7 +22738,7 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectResponse{}
@@ -22786,7 +22774,6 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteImage"),
@@ -22796,7 +22783,7 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageResponse{}
@@ -22829,7 +22816,6 @@ func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCal
 	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMessageCallback"),
@@ -22839,7 +22825,7 @@ func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCal
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMessageCallbackResponse{}
@@ -22872,7 +22858,6 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMezzanines"),
@@ -22882,7 +22867,7 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMezzaninesResponse{}
@@ -22916,7 +22901,6 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMultipartUpload"),
@@ -22926,7 +22910,7 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMultipartUploadResponse{}
@@ -22959,7 +22943,6 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStream"),
@@ -22969,7 +22952,7 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStreamResponse{}
@@ -23003,7 +22986,6 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 	query["TranscodeTemplateIds"] = request.TranscodeTemplateIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTranscodeTemplateGroup"),
@@ -23013,7 +22995,7 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTranscodeTemplateGroupResponse{}
@@ -23045,7 +23027,6 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVideo"),
@@ -23055,7 +23036,7 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVideoResponse{}
@@ -23090,7 +23071,6 @@ func (client *Client) DeleteVodDomainWithOptions(request *DeleteVodDomainRequest
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVodDomain"),
@@ -23100,7 +23080,7 @@ func (client *Client) DeleteVodDomainWithOptions(request *DeleteVodDomainRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodDomainResponse{}
@@ -23140,7 +23120,7 @@ func (client *Client) DeleteVodRealtimeLogDeliveryWithOptions(request *DeleteVod
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodRealtimeLogDeliveryResponse{}
@@ -23175,7 +23155,6 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVodSpecificConfig"),
@@ -23185,7 +23164,7 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodSpecificConfigResponse{}
@@ -23217,7 +23196,6 @@ func (client *Client) DeleteVodTemplateWithOptions(request *DeleteVodTemplateReq
 	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteVodTemplate"),
@@ -23227,7 +23205,7 @@ func (client *Client) DeleteVodTemplateWithOptions(request *DeleteVodTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVodTemplateResponse{}
@@ -23259,7 +23237,6 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteWatermark"),
@@ -23269,7 +23246,7 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWatermarkResponse{}
@@ -23304,7 +23281,6 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePlayTopVideos"),
@@ -23314,7 +23290,7 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayTopVideosResponse{}
@@ -23348,7 +23324,6 @@ func (client *Client) DescribePlayUserAvgWithOptions(request *DescribePlayUserAv
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePlayUserAvg"),
@@ -23358,7 +23333,7 @@ func (client *Client) DescribePlayUserAvgWithOptions(request *DescribePlayUserAv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayUserAvgResponse{}
@@ -23392,7 +23367,6 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePlayUserTotal"),
@@ -23402,7 +23376,7 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayUserTotalResponse{}
@@ -23437,7 +23411,6 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePlayVideoStatis"),
@@ -23447,7 +23420,7 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePlayVideoStatisResponse{}
@@ -23483,7 +23456,6 @@ func (client *Client) DescribeVodAIDataWithOptions(request *DescribeVodAIDataReq
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodAIData"),
@@ -23493,7 +23465,7 @@ func (client *Client) DescribeVodAIDataWithOptions(request *DescribeVodAIDataReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodAIDataResponse{}
@@ -23527,7 +23499,6 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodCertificateList"),
@@ -23537,7 +23508,7 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodCertificateListResponse{}
@@ -23575,7 +23546,6 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainBpsData"),
@@ -23585,7 +23555,7 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainBpsDataResponse{}
@@ -23618,7 +23588,6 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainCertificateInfo"),
@@ -23628,7 +23597,7 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainCertificateInfoResponse{}
@@ -23663,7 +23632,6 @@ func (client *Client) DescribeVodDomainConfigsWithOptions(request *DescribeVodDo
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainConfigs"),
@@ -23673,7 +23641,7 @@ func (client *Client) DescribeVodDomainConfigsWithOptions(request *DescribeVodDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainConfigsResponse{}
@@ -23707,7 +23675,6 @@ func (client *Client) DescribeVodDomainDetailWithOptions(request *DescribeVodDom
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainDetail"),
@@ -23717,7 +23684,7 @@ func (client *Client) DescribeVodDomainDetailWithOptions(request *DescribeVodDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainDetailResponse{}
@@ -23754,7 +23721,6 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainLog"),
@@ -23764,7 +23730,7 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainLogResponse{}
@@ -23804,7 +23770,7 @@ func (client *Client) DescribeVodDomainRealtimeLogDeliveryWithOptions(request *D
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainRealtimeLogDeliveryResponse{}
@@ -23840,7 +23806,6 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainSrcBpsData"),
@@ -23850,7 +23815,7 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainSrcBpsDataResponse{}
@@ -23888,7 +23853,6 @@ func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeV
 	query["StartTime"] = request.StartTime
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainTrafficData"),
@@ -23898,7 +23862,7 @@ func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainTrafficDataResponse{}
@@ -23936,7 +23900,6 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodDomainUsageData"),
@@ -23946,7 +23909,7 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodDomainUsageDataResponse{}
@@ -23979,7 +23942,6 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodRefreshQuota"),
@@ -23989,7 +23951,7 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodRefreshQuotaResponse{}
@@ -24031,7 +23993,6 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodRefreshTasks"),
@@ -24041,7 +24002,7 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodRefreshTasksResponse{}
@@ -24078,7 +24039,6 @@ func (client *Client) DescribeVodStorageDataWithOptions(request *DescribeVodStor
 	query["StorageType"] = request.StorageType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodStorageData"),
@@ -24088,7 +24048,7 @@ func (client *Client) DescribeVodStorageDataWithOptions(request *DescribeVodStor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodStorageDataResponse{}
@@ -24123,7 +24083,6 @@ func (client *Client) DescribeVodTagResourcesWithOptions(request *DescribeVodTag
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodTagResources"),
@@ -24133,7 +24092,7 @@ func (client *Client) DescribeVodTagResourcesWithOptions(request *DescribeVodTag
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodTagResourcesResponse{}
@@ -24171,7 +24130,6 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 	query["Storage"] = request.Storage
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodTranscodeData"),
@@ -24181,7 +24139,7 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodTranscodeDataResponse{}
@@ -24220,7 +24178,6 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodUserDomains"),
@@ -24230,7 +24187,7 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodUserDomainsResponse{}
@@ -24262,7 +24219,6 @@ func (client *Client) DescribeVodUserTagsWithOptions(request *DescribeVodUserTag
 	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodUserTags"),
@@ -24272,7 +24228,7 @@ func (client *Client) DescribeVodUserTagsWithOptions(request *DescribeVodUserTag
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodUserTagsResponse{}
@@ -24305,7 +24261,6 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 	query["OwnerId"] = request.OwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVodVerifyContent"),
@@ -24315,7 +24270,7 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVodVerifyContentResponse{}
@@ -24350,7 +24305,6 @@ func (client *Client) DetachAppPolicyFromIdentityWithOptions(request *DetachAppP
 	query["PolicyNames"] = request.PolicyNames
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachAppPolicyFromIdentity"),
@@ -24360,7 +24314,7 @@ func (client *Client) DetachAppPolicyFromIdentityWithOptions(request *DetachAppP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachAppPolicyFromIdentityResponse{}
@@ -24400,7 +24354,7 @@ func (client *Client) DisableVodRealtimeLogDeliveryWithOptions(request *DisableV
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableVodRealtimeLogDeliveryResponse{}
@@ -24440,7 +24394,7 @@ func (client *Client) EnableVodRealtimeLogDeliveryWithOptions(request *EnableVod
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableVodRealtimeLogDeliveryResponse{}
@@ -24476,7 +24430,6 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAIImageJobs"),
@@ -24486,7 +24439,7 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIImageJobsResponse{}
@@ -24518,7 +24471,6 @@ func (client *Client) GetAIMediaAuditJobWithOptions(request *GetAIMediaAuditJobR
 	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAIMediaAuditJob"),
@@ -24528,7 +24480,7 @@ func (client *Client) GetAIMediaAuditJobWithOptions(request *GetAIMediaAuditJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIMediaAuditJobResponse{}
@@ -24560,7 +24512,6 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAITemplate"),
@@ -24570,7 +24521,7 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAITemplateResponse{}
@@ -24606,7 +24557,6 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAIVideoTagResult"),
@@ -24616,7 +24566,7 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAIVideoTagResultResponse{}
@@ -24648,7 +24598,6 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 	query["AppIds"] = request.AppIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAppInfos"),
@@ -24658,7 +24607,7 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppInfosResponse{}
@@ -24692,7 +24641,6 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAttachedMediaInfo"),
@@ -24702,7 +24650,7 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAttachedMediaInfoResponse{}
@@ -24737,7 +24685,6 @@ func (client *Client) GetAuditHistoryWithOptions(request *GetAuditHistoryRequest
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAuditHistory"),
@@ -24747,7 +24694,7 @@ func (client *Client) GetAuditHistoryWithOptions(request *GetAuditHistoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAuditHistoryResponse{}
@@ -24783,7 +24730,6 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetCategories"),
@@ -24793,7 +24739,7 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCategoriesResponse{}
@@ -24825,7 +24771,6 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDefaultAITemplate"),
@@ -24835,7 +24780,7 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDefaultAITemplateResponse{}
@@ -24871,7 +24816,6 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetEditingProject"),
@@ -24881,7 +24825,7 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectResponse{}
@@ -24919,7 +24863,6 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetEditingProjectMaterials"),
@@ -24929,7 +24872,7 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectMaterialsResponse{}
@@ -24963,7 +24906,6 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetImageInfo"),
@@ -24973,7 +24915,7 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageInfoResponse{}
@@ -25010,7 +24952,6 @@ func (client *Client) GetMediaAuditAudioResultDetailWithOptions(request *GetMedi
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaAuditAudioResultDetail"),
@@ -25020,7 +24961,7 @@ func (client *Client) GetMediaAuditAudioResultDetailWithOptions(request *GetMedi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditAudioResultDetailResponse{}
@@ -25052,7 +24993,6 @@ func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResul
 	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaAuditResult"),
@@ -25062,7 +25002,7 @@ func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultResponse{}
@@ -25095,7 +25035,6 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 	query["PageNo"] = request.PageNo
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaAuditResultDetail"),
@@ -25105,7 +25044,7 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultDetailResponse{}
@@ -25137,7 +25076,6 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaAuditResultTimeline"),
@@ -25147,7 +25085,7 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaAuditResultTimelineResponse{}
@@ -25183,7 +25121,6 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaDNAResult"),
@@ -25193,7 +25130,7 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaDNAResultResponse{}
@@ -25226,7 +25163,6 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMessageCallback"),
@@ -25236,7 +25172,7 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMessageCallbackResponse{}
@@ -25271,7 +25207,6 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMezzanineInfo"),
@@ -25281,7 +25216,7 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMezzanineInfoResponse{}
@@ -25322,7 +25257,6 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPlayInfo"),
@@ -25332,7 +25266,7 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPlayInfoResponse{}
@@ -25364,7 +25298,6 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTranscodeSummary"),
@@ -25374,7 +25307,7 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeSummaryResponse{}
@@ -25406,7 +25339,6 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 	query["TranscodeTaskId"] = request.TranscodeTaskId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTranscodeTask"),
@@ -25416,7 +25348,7 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeTaskResponse{}
@@ -25448,7 +25380,6 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTranscodeTemplateGroup"),
@@ -25458,7 +25389,7 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranscodeTemplateGroupResponse{}
@@ -25491,7 +25422,6 @@ func (client *Client) GetURLUploadInfosWithOptions(request *GetURLUploadInfosReq
 	query["UploadURLs"] = request.UploadURLs
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetURLUploadInfos"),
@@ -25501,7 +25431,7 @@ func (client *Client) GetURLUploadInfosWithOptions(request *GetURLUploadInfosReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetURLUploadInfosResponse{}
@@ -25534,7 +25464,6 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 	query["MediaType"] = request.MediaType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetUploadDetails"),
@@ -25544,7 +25473,7 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetUploadDetailsResponse{}
@@ -25576,7 +25505,6 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVideoInfo"),
@@ -25586,7 +25514,7 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoInfoResponse{}
@@ -25618,7 +25546,6 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 	query["VideoIds"] = request.VideoIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVideoInfos"),
@@ -25628,7 +25555,7 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoInfosResponse{}
@@ -25667,7 +25594,6 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 	query["StorageLocation"] = request.StorageLocation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVideoList"),
@@ -25677,7 +25603,7 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoListResponse{}
@@ -25711,7 +25637,6 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVideoPlayAuth"),
@@ -25721,7 +25646,7 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVideoPlayAuthResponse{}
@@ -25753,7 +25678,6 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetVodTemplate"),
@@ -25763,7 +25687,7 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVodTemplateResponse{}
@@ -25795,7 +25719,6 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetWatermark"),
@@ -25805,7 +25728,7 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWatermarkResponse{}
@@ -25837,7 +25760,6 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAIImageInfo"),
@@ -25847,7 +25769,7 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAIImageInfoResponse{}
@@ -25883,7 +25805,6 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAIJob"),
@@ -25893,7 +25814,7 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAIJobResponse{}
@@ -25925,7 +25846,6 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAITemplate"),
@@ -25935,7 +25855,7 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAITemplateResponse{}
@@ -25969,7 +25889,6 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAppInfo"),
@@ -25979,7 +25898,7 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppInfoResponse{}
@@ -26013,7 +25932,6 @@ func (client *Client) ListAppPoliciesForIdentityWithOptions(request *ListAppPoli
 	query["IdentityType"] = request.IdentityType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAppPoliciesForIdentity"),
@@ -26023,7 +25941,7 @@ func (client *Client) ListAppPoliciesForIdentityWithOptions(request *ListAppPoli
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppPoliciesForIdentityResponse{}
@@ -26055,7 +25973,6 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 	query["SecurityGroupName"] = request.SecurityGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAuditSecurityIp"),
@@ -26065,7 +25982,7 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuditSecurityIpResponse{}
@@ -26097,7 +26014,6 @@ func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageReque
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDynamicImage"),
@@ -26107,7 +26023,7 @@ func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDynamicImageResponse{}
@@ -26146,7 +26062,6 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 	query["StreamName"] = request.StreamName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListLiveRecordVideo"),
@@ -26156,7 +26071,7 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListLiveRecordVideoResponse{}
@@ -26192,7 +26107,6 @@ func (client *Client) ListMediaDNADeleteJobWithOptions(request *ListMediaDNADele
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMediaDNADeleteJob"),
@@ -26202,7 +26116,7 @@ func (client *Client) ListMediaDNADeleteJobWithOptions(request *ListMediaDNADele
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaDNADeleteJobResponse{}
@@ -26238,7 +26152,6 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSnapshots"),
@@ -26248,7 +26161,7 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSnapshotsResponse{}
@@ -26284,7 +26197,6 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTranscodeTask"),
@@ -26294,7 +26206,7 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTranscodeTaskResponse{}
@@ -26326,7 +26238,6 @@ func (client *Client) ListTranscodeTemplateGroupWithOptions(request *ListTransco
 	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTranscodeTemplateGroup"),
@@ -26336,7 +26247,7 @@ func (client *Client) ListTranscodeTemplateGroupWithOptions(request *ListTransco
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTranscodeTemplateGroupResponse{}
@@ -26376,7 +26287,7 @@ func (client *Client) ListVodRealtimeLogDeliveryDomainsWithOptions(request *List
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodRealtimeLogDeliveryDomainsResponse{}
@@ -26416,7 +26327,7 @@ func (client *Client) ListVodRealtimeLogDeliveryInfosWithOptions(request *ListVo
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodRealtimeLogDeliveryInfosResponse{}
@@ -26449,7 +26360,6 @@ func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListVodTemplate"),
@@ -26459,7 +26369,7 @@ func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVodTemplateResponse{}
@@ -26491,7 +26401,6 @@ func (client *Client) ListWatermarkWithOptions(request *ListWatermarkRequest, ru
 	query["AppId"] = request.AppId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListWatermark"),
@@ -26501,7 +26410,7 @@ func (client *Client) ListWatermarkWithOptions(request *ListWatermarkRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListWatermarkResponse{}
@@ -26535,7 +26444,6 @@ func (client *Client) MoveAppResourceWithOptions(request *MoveAppResourceRequest
 	query["TargetAppId"] = request.TargetAppId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MoveAppResource"),
@@ -26545,7 +26453,7 @@ func (client *Client) MoveAppResourceWithOptions(request *MoveAppResourceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &MoveAppResourceResponse{}
@@ -26579,7 +26487,6 @@ func (client *Client) PreloadVodObjectCachesWithOptions(request *PreloadVodObjec
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PreloadVodObjectCaches"),
@@ -26589,7 +26496,7 @@ func (client *Client) PreloadVodObjectCachesWithOptions(request *PreloadVodObjec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PreloadVodObjectCachesResponse{}
@@ -26631,7 +26538,6 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ProduceEditingProjectVideo"),
@@ -26641,7 +26547,7 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ProduceEditingProjectVideoResponse{}
@@ -26676,7 +26582,6 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshUploadVideo"),
@@ -26686,7 +26591,7 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshUploadVideoResponse{}
@@ -26721,7 +26626,6 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshVodObjectCaches"),
@@ -26731,7 +26635,7 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshVodObjectCachesResponse{}
@@ -26766,7 +26670,6 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RegisterMedia"),
@@ -26776,7 +26679,7 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaResponse{}
@@ -26818,7 +26721,6 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchEditingProject"),
@@ -26828,7 +26730,7 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchEditingProjectResponse{}
@@ -26866,7 +26768,6 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 	query["SortBy"] = request.SortBy
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchMedia"),
@@ -26876,7 +26777,7 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchMediaResponse{}
@@ -26910,7 +26811,6 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 	query["SecurityGroupName"] = request.SecurityGroupName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetAuditSecurityIp"),
@@ -26920,7 +26820,7 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetAuditSecurityIpResponse{}
@@ -26958,7 +26858,6 @@ func (client *Client) SetCrossdomainContentWithOptions(request *SetCrossdomainCo
 	query["StorageLocation"] = request.StorageLocation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetCrossdomainContent"),
@@ -26968,7 +26867,7 @@ func (client *Client) SetCrossdomainContentWithOptions(request *SetCrossdomainCo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetCrossdomainContentResponse{}
@@ -27000,7 +26899,6 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDefaultAITemplate"),
@@ -27010,7 +26908,7 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultAITemplateResponse{}
@@ -27042,7 +26940,6 @@ func (client *Client) SetDefaultTranscodeTemplateGroupWithOptions(request *SetDe
 	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDefaultTranscodeTemplateGroup"),
@@ -27052,7 +26949,7 @@ func (client *Client) SetDefaultTranscodeTemplateGroupWithOptions(request *SetDe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultTranscodeTemplateGroupResponse{}
@@ -27084,7 +26981,6 @@ func (client *Client) SetDefaultWatermarkWithOptions(request *SetDefaultWatermar
 	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDefaultWatermark"),
@@ -27094,7 +26990,7 @@ func (client *Client) SetDefaultWatermarkWithOptions(request *SetDefaultWatermar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultWatermarkResponse{}
@@ -27131,7 +27027,6 @@ func (client *Client) SetEditingProjectMaterialsWithOptions(request *SetEditingP
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetEditingProjectMaterials"),
@@ -27141,7 +27036,7 @@ func (client *Client) SetEditingProjectMaterialsWithOptions(request *SetEditingP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetEditingProjectMaterialsResponse{}
@@ -27181,7 +27076,6 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 	query["OwnerAccount"] = request.OwnerAccount
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetMessageCallback"),
@@ -27191,7 +27085,7 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetMessageCallbackResponse{}
@@ -27229,7 +27123,6 @@ func (client *Client) SetVodDomainCertificateWithOptions(request *SetVodDomainCe
 	query["SecurityToken"] = request.SecurityToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetVodDomainCertificate"),
@@ -27239,7 +27132,7 @@ func (client *Client) SetVodDomainCertificateWithOptions(request *SetVodDomainCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetVodDomainCertificateResponse{}
@@ -27277,7 +27170,6 @@ func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAud
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAIImageAuditJob"),
@@ -27287,7 +27179,7 @@ func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAud
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIImageAuditJobResponse{}
@@ -27326,7 +27218,6 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAIImageJob"),
@@ -27336,7 +27227,7 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIImageJobResponse{}
@@ -27375,7 +27266,6 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAIJob"),
@@ -27385,7 +27275,7 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIJobResponse{}
@@ -27421,7 +27311,6 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAIMediaAuditJob"),
@@ -27431,7 +27320,7 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAIMediaAuditJobResponse{}
@@ -27465,7 +27354,6 @@ func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicIma
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitDynamicImageJob"),
@@ -27475,7 +27363,7 @@ func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicIma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitDynamicImageJobResponse{}
@@ -27519,7 +27407,6 @@ func (client *Client) SubmitLiveEditingWithOptions(request *SubmitLiveEditingReq
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitLiveEditing"),
@@ -27529,7 +27416,7 @@ func (client *Client) SubmitLiveEditingWithOptions(request *SubmitLiveEditingReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitLiveEditingResponse{}
@@ -27565,7 +27452,6 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaDNADeleteJob"),
@@ -27575,7 +27461,7 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaDNADeleteJobResponse{}
@@ -27608,7 +27494,6 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitPreprocessJobs"),
@@ -27618,7 +27503,7 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPreprocessJobsResponse{}
@@ -27658,7 +27543,6 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 	query["Width"] = request.Width
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSnapshotJob"),
@@ -27668,7 +27552,7 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSnapshotJobResponse{}
@@ -27706,7 +27590,6 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitTranscodeJobs"),
@@ -27716,7 +27599,7 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitTranscodeJobsResponse{}
@@ -27749,7 +27632,6 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitWorkflowJob"),
@@ -27759,7 +27641,7 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitWorkflowJobResponse{}
@@ -27794,7 +27676,6 @@ func (client *Client) TagVodResourcesWithOptions(request *TagVodResourcesRequest
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagVodResources"),
@@ -27804,7 +27685,7 @@ func (client *Client) TagVodResourcesWithOptions(request *TagVodResourcesRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagVodResourcesResponse{}
@@ -27840,7 +27721,6 @@ func (client *Client) UnTagVodResourcesWithOptions(request *UnTagVodResourcesReq
 	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnTagVodResources"),
@@ -27850,7 +27730,7 @@ func (client *Client) UnTagVodResourcesWithOptions(request *UnTagVodResourcesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnTagVodResourcesResponse{}
@@ -27884,7 +27764,6 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 	query["TemplateName"] = request.TemplateName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAITemplate"),
@@ -27894,7 +27773,7 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAITemplateResponse{}
@@ -27929,7 +27808,6 @@ func (client *Client) UpdateAppInfoWithOptions(request *UpdateAppInfoRequest, ru
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAppInfo"),
@@ -27939,7 +27817,7 @@ func (client *Client) UpdateAppInfoWithOptions(request *UpdateAppInfoRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAppInfoResponse{}
@@ -27971,7 +27849,6 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAttachedMediaInfos"),
@@ -27981,7 +27858,7 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAttachedMediaInfosResponse{}
@@ -28014,7 +27891,6 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 	query["CateName"] = request.CateName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCategory"),
@@ -28024,7 +27900,7 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCategoryResponse{}
@@ -28064,7 +27940,6 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEditingProject"),
@@ -28074,7 +27949,7 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEditingProjectResponse{}
@@ -28106,7 +27981,6 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateImageInfos"),
@@ -28116,7 +27990,7 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateImageInfosResponse{}
@@ -28149,7 +28023,6 @@ func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoReque
 	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateStreamInfo"),
@@ -28159,7 +28032,7 @@ func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateStreamInfoResponse{}
@@ -28194,7 +28067,6 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 	query["TranscodeTemplateList"] = request.TranscodeTemplateList
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTranscodeTemplateGroup"),
@@ -28204,7 +28076,7 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTranscodeTemplateGroupResponse{}
@@ -28241,7 +28113,6 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 	query["VideoId"] = request.VideoId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVideoInfo"),
@@ -28251,7 +28122,7 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVideoInfoResponse{}
@@ -28283,7 +28154,6 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 	query["UpdateContent"] = request.UpdateContent
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVideoInfos"),
@@ -28293,7 +28163,7 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVideoInfosResponse{}
@@ -28329,7 +28199,6 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 	query["TopLevelDomain"] = request.TopLevelDomain
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVodDomain"),
@@ -28339,7 +28208,7 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVodDomainResponse{}
@@ -28373,7 +28242,6 @@ func (client *Client) UpdateVodTemplateWithOptions(request *UpdateVodTemplateReq
 	query["VodTemplateId"] = request.VodTemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateVodTemplate"),
@@ -28383,7 +28251,7 @@ func (client *Client) UpdateVodTemplateWithOptions(request *UpdateVodTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVodTemplateResponse{}
@@ -28417,7 +28285,6 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 	query["WatermarkId"] = request.WatermarkId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateWatermark"),
@@ -28427,7 +28294,7 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWatermarkResponse{}
@@ -28465,7 +28332,6 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 	query["WorkflowId"] = request.WorkflowId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadMediaByURL"),
@@ -28475,7 +28341,7 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadMediaByURLResponse{}
@@ -28512,7 +28378,6 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadStreamByURL"),
@@ -28522,7 +28387,7 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadStreamByURLResponse{}
@@ -28556,7 +28421,6 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 	query["VerifyType"] = request.VerifyType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("VerifyVodDomainOwner"),
@@ -28566,7 +28430,7 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyVodDomainOwnerResponse{}
