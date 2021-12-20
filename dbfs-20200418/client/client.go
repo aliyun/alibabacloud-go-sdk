@@ -2196,242 +2196,6 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 	return s
 }
 
-type ListTaskRequest struct {
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SortKey     *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-}
-
-func (s ListTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskRequest) SetFilterKey(v string) *ListTaskRequest {
-	s.FilterKey = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetFilterValue(v string) *ListTaskRequest {
-	s.FilterValue = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetPageNumber(v int32) *ListTaskRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetPageSize(v int32) *ListTaskRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetRegionId(v string) *ListTaskRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetSortKey(v string) *ListTaskRequest {
-	s.SortKey = &v
-	return s
-}
-
-func (s *ListTaskRequest) SetSortType(v string) *ListTaskRequest {
-	s.SortType = &v
-	return s
-}
-
-type ListTaskResponseBody struct {
-	PageNumber *int32                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      []*ListTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int32                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskResponseBody) SetPageNumber(v int32) *ListTaskResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListTaskResponseBody) SetPageSize(v int32) *ListTaskResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTaskResponseBody) SetRequestId(v string) *ListTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTaskResponseBody) SetTasks(v []*ListTaskResponseBodyTasks) *ListTaskResponseBody {
-	s.Tasks = v
-	return s
-}
-
-func (s *ListTaskResponseBody) SetTotalCount(v int32) *ListTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListTaskResponseBodyTasks struct {
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompletionTime          *string `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	CreatedTime             *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Id                      *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MaxRetry                *int32  `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	NextExecutionTime       *string `json:"NextExecutionTime,omitempty" xml:"NextExecutionTime,omitempty"`
-	Priority                *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	TaskAdder               *string `json:"TaskAdder,omitempty" xml:"TaskAdder,omitempty"`
-	TaskErrorReason         *string `json:"TaskErrorReason,omitempty" xml:"TaskErrorReason,omitempty"`
-	TaskExecutionCounts     *int32  `json:"TaskExecutionCounts,omitempty" xml:"TaskExecutionCounts,omitempty"`
-	TaskName                *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskOwner               *string `json:"TaskOwner,omitempty" xml:"TaskOwner,omitempty"`
-	TaskProgress            *int32  `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	TaskProgressDescription *string `json:"TaskProgressDescription,omitempty" xml:"TaskProgressDescription,omitempty"`
-	TaskRunner              *string `json:"TaskRunner,omitempty" xml:"TaskRunner,omitempty"`
-	TaskStatus              *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskStatusCode          *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
-	TaskType                *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListTaskResponseBodyTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskResponseBodyTasks) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskResponseBodyTasks) SetClientToken(v string) *ListTaskResponseBodyTasks {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetCompletionTime(v string) *ListTaskResponseBodyTasks {
-	s.CompletionTime = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetCreatedTime(v string) *ListTaskResponseBodyTasks {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetId(v int32) *ListTaskResponseBodyTasks {
-	s.Id = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetMaxRetry(v int32) *ListTaskResponseBodyTasks {
-	s.MaxRetry = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetNextExecutionTime(v string) *ListTaskResponseBodyTasks {
-	s.NextExecutionTime = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetPriority(v string) *ListTaskResponseBodyTasks {
-	s.Priority = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskAdder(v string) *ListTaskResponseBodyTasks {
-	s.TaskAdder = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskErrorReason(v string) *ListTaskResponseBodyTasks {
-	s.TaskErrorReason = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskExecutionCounts(v int32) *ListTaskResponseBodyTasks {
-	s.TaskExecutionCounts = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskName(v string) *ListTaskResponseBodyTasks {
-	s.TaskName = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskOwner(v string) *ListTaskResponseBodyTasks {
-	s.TaskOwner = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskProgress(v int32) *ListTaskResponseBodyTasks {
-	s.TaskProgress = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskProgressDescription(v string) *ListTaskResponseBodyTasks {
-	s.TaskProgressDescription = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskRunner(v string) *ListTaskResponseBodyTasks {
-	s.TaskRunner = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskStatus(v string) *ListTaskResponseBodyTasks {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskStatusCode(v int32) *ListTaskResponseBodyTasks {
-	s.TaskStatusCode = &v
-	return s
-}
-
-func (s *ListTaskResponseBodyTasks) SetTaskType(v string) *ListTaskResponseBodyTasks {
-	s.TaskType = &v
-	return s
-}
-
-type ListTaskResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskResponse) SetHeaders(v map[string]*string) *ListTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTaskResponse) SetBody(v *ListTaskResponseBody) *ListTaskResponse {
-	s.Body = v
-	return s
-}
-
 type RenameDbfsRequest struct {
 	FsId     *string `json:"FsId,omitempty" xml:"FsId,omitempty"`
 	FsName   *string `json:"FsName,omitempty" xml:"FsName,omitempty"`
@@ -2708,75 +2472,6 @@ func (s *TagDbfsResponse) SetBody(v *TagDbfsResponseBody) *TagDbfsResponse {
 	return s
 }
 
-type UpdateTaskRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskIds      *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	TaskProgress *int32  `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-}
-
-func (s UpdateTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskRequest) SetRegionId(v string) *UpdateTaskRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateTaskRequest) SetTaskIds(v string) *UpdateTaskRequest {
-	s.TaskIds = &v
-	return s
-}
-
-func (s *UpdateTaskRequest) SetTaskProgress(v int32) *UpdateTaskRequest {
-	s.TaskProgress = &v
-	return s
-}
-
-type UpdateTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskResponseBody) SetRequestId(v string) *UpdateTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateTaskResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateTaskResponse) SetHeaders(v map[string]*string) *UpdateTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateTaskResponse) SetBody(v *UpdateTaskResponseBody) *UpdateTaskResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -2875,7 +2570,6 @@ func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runt
 	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTagsBatch"),
@@ -2885,7 +2579,7 @@ func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTagsBatchResponse{}
@@ -2922,7 +2616,6 @@ func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime 
 	query["ServerUrl"] = request.ServerUrl
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachDbfs"),
@@ -2932,7 +2625,7 @@ func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachDbfsResponse{}
@@ -2978,7 +2671,6 @@ func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime 
 	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDbfs"),
@@ -2988,7 +2680,7 @@ func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDbfsResponse{}
@@ -3021,7 +2713,6 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateServiceLinkedRole"),
@@ -3031,7 +2722,7 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
@@ -3068,7 +2759,6 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 	query["SnapshotName"] = request.SnapshotName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSnapshot"),
@@ -3078,7 +2768,7 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSnapshotResponse{}
@@ -3111,7 +2801,6 @@ func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime 
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDbfs"),
@@ -3121,7 +2810,7 @@ func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDbfsResponse{}
@@ -3155,7 +2844,6 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 	query["SnapshotId"] = request.SnapshotId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSnapshot"),
@@ -3165,7 +2853,7 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSnapshotResponse{}
@@ -3199,7 +2887,6 @@ func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest
 	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTagsBatch"),
@@ -3209,7 +2896,7 @@ func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTagsBatchResponse{}
@@ -3243,7 +2930,6 @@ func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbf
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDbfsSpecifications"),
@@ -3253,7 +2939,7 @@ func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbfsSpecificationsResponse{}
@@ -3285,7 +2971,6 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceTypes"),
@@ -3295,7 +2980,7 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceTypesResponse{}
@@ -3329,7 +3014,6 @@ func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime 
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachDbfs"),
@@ -3339,7 +3023,7 @@ func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachDbfsResponse{}
@@ -3372,7 +3056,6 @@ func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDbfs"),
@@ -3382,7 +3065,7 @@ func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDbfsResponse{}
@@ -3414,7 +3097,6 @@ func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedR
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetServiceLinkedRole"),
@@ -3424,7 +3106,7 @@ func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceLinkedRoleResponse{}
@@ -3463,7 +3145,6 @@ func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *uti
 	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDbfs"),
@@ -3473,7 +3154,7 @@ func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsResponse{}
@@ -3505,7 +3186,6 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDbfsAttachableEcsInstances"),
@@ -3515,7 +3195,7 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsAttachableEcsInstancesResponse{}
@@ -3548,7 +3228,6 @@ func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsA
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDbfsAttachedEcsInstances"),
@@ -3558,7 +3237,7 @@ func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDbfsAttachedEcsInstancesResponse{}
@@ -3601,7 +3280,6 @@ func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runt
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSnapshot"),
@@ -3611,7 +3289,7 @@ func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSnapshotResponse{}
@@ -3643,7 +3321,6 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagKeys"),
@@ -3653,7 +3330,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
@@ -3686,7 +3363,6 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagValues"),
@@ -3696,7 +3372,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
@@ -3719,54 +3395,6 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListTaskWithOptions(request *ListTaskRequest, runtime *util.RuntimeOptions) (_result *ListTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["FilterKey"] = request.FilterKey
-	query["FilterValue"] = request.FilterValue
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SortKey"] = request.SortKey
-	query["SortType"] = request.SortType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTask"),
-		Version:     tea.String("2020-04-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTaskResponse{}
-	_body, _err := client.ListTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime *util.RuntimeOptions) (_result *RenameDbfsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3778,7 +3406,6 @@ func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime 
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RenameDbfs"),
@@ -3788,7 +3415,7 @@ func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RenameDbfsResponse{}
@@ -3822,7 +3449,6 @@ func (client *Client) ResetDbfsWithOptions(request *ResetDbfsRequest, runtime *u
 	query["SnapshotId"] = request.SnapshotId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetDbfs"),
@@ -3832,7 +3458,7 @@ func (client *Client) ResetDbfsWithOptions(request *ResetDbfsRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetDbfsResponse{}
@@ -3866,7 +3492,6 @@ func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime 
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResizeDbfs"),
@@ -3876,7 +3501,7 @@ func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeDbfsResponse{}
@@ -3910,7 +3535,6 @@ func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.
 	query["Tags"] = request.Tags
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagDbfs"),
@@ -3920,7 +3544,7 @@ func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagDbfsResponse{}
@@ -3936,50 +3560,6 @@ func (client *Client) TagDbfs(request *TagDbfsRequest) (_result *TagDbfsResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &TagDbfsResponse{}
 	_body, _err := client.TagDbfsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateTaskWithOptions(request *UpdateTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["TaskIds"] = request.TaskIds
-	query["TaskProgress"] = request.TaskProgress
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateTask"),
-		Version:     tea.String("2020-04-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateTask(request *UpdateTaskRequest) (_result *UpdateTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateTaskResponse{}
-	_body, _err := client.UpdateTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
