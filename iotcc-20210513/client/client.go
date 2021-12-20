@@ -7,9 +7,178 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type AddCidrToConnectionPoolRequest struct {
+	Cidrs               []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
+	ClientToken         *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConnectionPoolId    *string   `json:"ConnectionPoolId,omitempty" xml:"ConnectionPoolId,omitempty"`
+	DryRun              *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddCidrToConnectionPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCidrToConnectionPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetCidrs(v []*string) *AddCidrToConnectionPoolRequest {
+	s.Cidrs = v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetClientToken(v string) *AddCidrToConnectionPoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetConnectionPoolId(v string) *AddCidrToConnectionPoolRequest {
+	s.ConnectionPoolId = &v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetDryRun(v bool) *AddCidrToConnectionPoolRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetIoTCloudConnectorId(v string) *AddCidrToConnectionPoolRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolRequest) SetRegionId(v string) *AddCidrToConnectionPoolRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddCidrToConnectionPoolResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddCidrToConnectionPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCidrToConnectionPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCidrToConnectionPoolResponseBody) SetRequestId(v string) *AddCidrToConnectionPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddCidrToConnectionPoolResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddCidrToConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddCidrToConnectionPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCidrToConnectionPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCidrToConnectionPoolResponse) SetHeaders(v map[string]*string) *AddCidrToConnectionPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolResponse) SetBody(v *AddCidrToConnectionPoolResponseBody) *AddCidrToConnectionPoolResponse {
+	s.Body = v
+	return s
+}
+
+type AddIoTCloudConnectorToGroupRequest struct {
+	ClientToken              *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IoTCloudConnectorId      []*string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty" type:"Repeated"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddIoTCloudConnectorToGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddIoTCloudConnectorToGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddIoTCloudConnectorToGroupRequest) SetClientToken(v string) *AddIoTCloudConnectorToGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupRequest) SetDryRun(v bool) *AddIoTCloudConnectorToGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupRequest) SetIoTCloudConnectorGroupId(v string) *AddIoTCloudConnectorToGroupRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupRequest) SetIoTCloudConnectorId(v []*string) *AddIoTCloudConnectorToGroupRequest {
+	s.IoTCloudConnectorId = v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupRequest) SetRegionId(v string) *AddIoTCloudConnectorToGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddIoTCloudConnectorToGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddIoTCloudConnectorToGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddIoTCloudConnectorToGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddIoTCloudConnectorToGroupResponseBody) SetRequestId(v string) *AddIoTCloudConnectorToGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddIoTCloudConnectorToGroupResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddIoTCloudConnectorToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddIoTCloudConnectorToGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddIoTCloudConnectorToGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddIoTCloudConnectorToGroupResponse) SetHeaders(v map[string]*string) *AddIoTCloudConnectorToGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupResponse) SetBody(v *AddIoTCloudConnectorToGroupResponseBody) *AddIoTCloudConnectorToGroupResponse {
+	s.Body = v
+	return s
+}
 
 type AssociateIpWithConnectionPoolRequest struct {
 	ClientToken         *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -413,6 +582,129 @@ func (s *CreateConnectionPoolResponse) SetBody(v *CreateConnectionPoolResponseBo
 	return s
 }
 
+type CreateGroupAuthorizationRuleRequest struct {
+	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
+	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
+}
+
+func (s CreateGroupAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetAuthorizationRuleDescription(v string) *CreateGroupAuthorizationRuleRequest {
+	s.AuthorizationRuleDescription = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetAuthorizationRuleName(v string) *CreateGroupAuthorizationRuleRequest {
+	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetClientToken(v string) *CreateGroupAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDestination(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDestinationType(v string) *CreateGroupAuthorizationRuleRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDryRun(v bool) *CreateGroupAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetIoTCloudConnectorGroupId(v string) *CreateGroupAuthorizationRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetPolicy(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetRegionId(v string) *CreateGroupAuthorizationRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetSourceCidrs(v []*string) *CreateGroupAuthorizationRuleRequest {
+	s.SourceCidrs = v
+	return s
+}
+
+type CreateGroupAuthorizationRuleResponseBody struct {
+	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGroupAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleResponseBody) SetAuthorizationRuleId(v string) *CreateGroupAuthorizationRuleResponseBody {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponseBody) SetIoTCloudConnectorGroupId(v string) *CreateGroupAuthorizationRuleResponseBody {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponseBody) SetRequestId(v string) *CreateGroupAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGroupAuthorizationRuleResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *CreateGroupAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetBody(v *CreateGroupAuthorizationRuleResponseBody) *CreateGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIoTCloudConnectorRequest struct {
 	APN                          *string `json:"APN,omitempty" xml:"APN,omitempty"`
 	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -520,6 +812,93 @@ func (s *CreateIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *Crea
 }
 
 func (s *CreateIoTCloudConnectorResponse) SetBody(v *CreateIoTCloudConnectorResponseBody) *CreateIoTCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIoTCloudConnectorGroupRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateIoTCloudConnectorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetClientToken(v string) *CreateIoTCloudConnectorGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetDescription(v string) *CreateIoTCloudConnectorGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetDryRun(v bool) *CreateIoTCloudConnectorGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetName(v string) *CreateIoTCloudConnectorGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetRegionId(v string) *CreateIoTCloudConnectorGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateIoTCloudConnectorGroupResponseBody struct {
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIoTCloudConnectorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorGroupResponseBody) SetIoTCloudConnectorGroupId(v string) *CreateIoTCloudConnectorGroupResponseBody {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupResponseBody) SetRequestId(v string) *CreateIoTCloudConnectorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIoTCloudConnectorGroupResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIoTCloudConnectorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *CreateIoTCloudConnectorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupResponse) SetBody(v *CreateIoTCloudConnectorGroupResponseBody) *CreateIoTCloudConnectorGroupResponse {
 	s.Body = v
 	return s
 }
@@ -890,6 +1269,87 @@ func (s *DeleteConnectionPoolResponse) SetBody(v *DeleteConnectionPoolResponseBo
 	return s
 }
 
+type DeleteGroupAuthorizationRuleRequest struct {
+	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteGroupAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetAuthorizationRuleId(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetClientToken(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetDryRun(v bool) *DeleteGroupAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetIoTCloudConnectorGroupId(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetRegionId(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteGroupAuthorizationRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGroupAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleResponseBody) SetRequestId(v string) *DeleteGroupAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGroupAuthorizationRuleResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetBody(v *DeleteGroupAuthorizationRuleResponseBody) *DeleteGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIoTCloudConnectorRequest struct {
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -961,6 +1421,81 @@ func (s *DeleteIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *Dele
 }
 
 func (s *DeleteIoTCloudConnectorResponse) SetBody(v *DeleteIoTCloudConnectorResponseBody) *DeleteIoTCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIoTCloudConnectorGroupRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteIoTCloudConnectorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnectorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnectorGroupRequest) SetClientToken(v string) *DeleteIoTCloudConnectorGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnectorGroupRequest) SetDryRun(v bool) *DeleteIoTCloudConnectorGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnectorGroupRequest) SetIoTCloudConnectorGroupId(v string) *DeleteIoTCloudConnectorGroupRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnectorGroupRequest) SetRegionId(v string) *DeleteIoTCloudConnectorGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteIoTCloudConnectorGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIoTCloudConnectorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnectorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnectorGroupResponseBody) SetRequestId(v string) *DeleteIoTCloudConnectorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIoTCloudConnectorGroupResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIoTCloudConnectorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnectorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *DeleteIoTCloudConnectorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIoTCloudConnectorGroupResponse) SetBody(v *DeleteIoTCloudConnectorGroupResponseBody) *DeleteIoTCloudConnectorGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2178,6 +2713,164 @@ func (s *ListAuthorizationRulesResponse) SetBody(v *ListAuthorizationRulesRespon
 	return s
 }
 
+type ListConnectionPoolAllIpsRequest struct {
+	ConnectionPoolId    *string `json:"ConnectionPoolId,omitempty" xml:"ConnectionPoolId,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	Ip                  *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListConnectionPoolAllIpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionPoolAllIpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetConnectionPoolId(v string) *ListConnectionPoolAllIpsRequest {
+	s.ConnectionPoolId = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetIoTCloudConnectorId(v string) *ListConnectionPoolAllIpsRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetIp(v string) *ListConnectionPoolAllIpsRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetMaxResults(v int32) *ListConnectionPoolAllIpsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetNextToken(v string) *ListConnectionPoolAllIpsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetRegionId(v string) *ListConnectionPoolAllIpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsRequest) SetType(v string) *ListConnectionPoolAllIpsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListConnectionPoolAllIpsResponseBody struct {
+	ConnectionPoolIps []*ListConnectionPoolAllIpsResponseBodyConnectionPoolIps `json:"ConnectionPoolIps,omitempty" xml:"ConnectionPoolIps,omitempty" type:"Repeated"`
+	MaxResults        *int32                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string                                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConnectionPoolAllIpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionPoolAllIpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionPoolAllIpsResponseBody) SetConnectionPoolIps(v []*ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) *ListConnectionPoolAllIpsResponseBody {
+	s.ConnectionPoolIps = v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBody) SetMaxResults(v int32) *ListConnectionPoolAllIpsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBody) SetNextToken(v string) *ListConnectionPoolAllIpsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBody) SetRequestId(v string) *ListConnectionPoolAllIpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBody) SetTotalCount(v int32) *ListConnectionPoolAllIpsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConnectionPoolAllIpsResponseBodyConnectionPoolIps struct {
+	ConnectionPoolId *string `json:"ConnectionPoolId,omitempty" xml:"ConnectionPoolId,omitempty"`
+	Ip               *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpNum            *int64  `json:"IpNum,omitempty" xml:"IpNum,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetConnectionPoolId(v string) *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps {
+	s.ConnectionPoolId = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetIp(v string) *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetIpNum(v int64) *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps {
+	s.IpNum = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetStatus(v string) *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps {
+	s.Status = &v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetType(v string) *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps {
+	s.Type = &v
+	return s
+}
+
+type ListConnectionPoolAllIpsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListConnectionPoolAllIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConnectionPoolAllIpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionPoolAllIpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionPoolAllIpsResponse) SetHeaders(v map[string]*string) *ListConnectionPoolAllIpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponse) SetBody(v *ListConnectionPoolAllIpsResponseBody) *ListConnectionPoolAllIpsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConnectionPoolIpsRequest struct {
 	ConnectionPoolId    *string `json:"ConnectionPoolId,omitempty" xml:"ConnectionPoolId,omitempty"`
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
@@ -2482,6 +3175,206 @@ func (s *ListConnectionPoolsResponse) SetBody(v *ListConnectionPoolsResponseBody
 	return s
 }
 
+type ListGroupAuthorizationRulesRequest struct {
+	AuthorizationRuleIds     []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
+	AuthorizationRuleName    []*string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty" type:"Repeated"`
+	AuthorizationRuleStatus  []*string `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty" type:"Repeated"`
+	Destination              []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	DestinationType          []*string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Policy                   []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListGroupAuthorizationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetAuthorizationRuleIds(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.AuthorizationRuleIds = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetAuthorizationRuleName(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.AuthorizationRuleName = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetAuthorizationRuleStatus(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.AuthorizationRuleStatus = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDestination(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.Destination = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDestinationType(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.DestinationType = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetIoTCloudConnectorGroupId(v string) *ListGroupAuthorizationRulesRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetMaxResults(v int32) *ListGroupAuthorizationRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetNextToken(v string) *ListGroupAuthorizationRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetPolicy(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetRegionId(v string) *ListGroupAuthorizationRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponseBody struct {
+	GroupAuthorizationRules []*ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules `json:"GroupAuthorizationRules,omitempty" xml:"GroupAuthorizationRules,omitempty" type:"Repeated"`
+	MaxResults              *int32                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId               *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *int32                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupAuthorizationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetGroupAuthorizationRules(v []*ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) *ListGroupAuthorizationRulesResponseBody {
+	s.GroupAuthorizationRules = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetMaxResults(v int32) *ListGroupAuthorizationRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetNextToken(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetRequestId(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetTotalCount(v int32) *ListGroupAuthorizationRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
+	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
+	AuthorizationRuleId          *string   `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	AuthorizationRuleStatus      *string   `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty"`
+	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
+}
+
+func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetAuthorizationRuleDescription(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.AuthorizationRuleDescription = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetAuthorizationRuleId(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetAuthorizationRuleName(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetAuthorizationRuleStatus(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.AuthorizationRuleStatus = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestination(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestinationType(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetIoTCloudConnectorGroupId(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetPolicy(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Policy = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetSourceCidrs(v []*string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.SourceCidrs = v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGroupAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupAuthorizationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetHeaders(v map[string]*string) *ListGroupAuthorizationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetBody(v *ListGroupAuthorizationRulesResponseBody) *ListGroupAuthorizationRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListIoTCloudConnectorAvailableZonesRequest struct {
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2557,12 +3450,212 @@ func (s *ListIoTCloudConnectorAvailableZonesResponse) SetBody(v *ListIoTCloudCon
 	return s
 }
 
+type ListIoTCloudConnectorGroupsRequest struct {
+	IoTCloudConnectorGroupIds    []*string `json:"IoTCloudConnectorGroupIds,omitempty" xml:"IoTCloudConnectorGroupIds,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupName   []*string `json:"IoTCloudConnectorGroupName,omitempty" xml:"IoTCloudConnectorGroupName,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupStatus []*string `json:"IoTCloudConnectorGroupStatus,omitempty" xml:"IoTCloudConnectorGroupStatus,omitempty" type:"Repeated"`
+	MaxResults                   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListIoTCloudConnectorGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetIoTCloudConnectorGroupIds(v []*string) *ListIoTCloudConnectorGroupsRequest {
+	s.IoTCloudConnectorGroupIds = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetIoTCloudConnectorGroupName(v []*string) *ListIoTCloudConnectorGroupsRequest {
+	s.IoTCloudConnectorGroupName = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetIoTCloudConnectorGroupStatus(v []*string) *ListIoTCloudConnectorGroupsRequest {
+	s.IoTCloudConnectorGroupStatus = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetMaxResults(v int32) *ListIoTCloudConnectorGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetNextToken(v string) *ListIoTCloudConnectorGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetRegionId(v string) *ListIoTCloudConnectorGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListIoTCloudConnectorGroupsResponseBody struct {
+	IoTCloudConnectorGroups []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups `json:"IoTCloudConnectorGroups,omitempty" xml:"IoTCloudConnectorGroups,omitempty" type:"Repeated"`
+	MaxResults              *int32                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId               *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *int32                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBody) SetIoTCloudConnectorGroups(v []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) *ListIoTCloudConnectorGroupsResponseBody {
+	s.IoTCloudConnectorGroups = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBody) SetMaxResults(v int32) *ListIoTCloudConnectorGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBody) SetNextToken(v string) *ListIoTCloudConnectorGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBody) SetRequestId(v string) *ListIoTCloudConnectorGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBody) SetTotalCount(v int32) *ListIoTCloudConnectorGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups struct {
+	CreateTime                   *int64                                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                  *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	IoTCloudConnectorGroupId     *string                                                                             `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IoTCloudConnectorGroupStatus *string                                                                             `json:"IoTCloudConnectorGroupStatus,omitempty" xml:"IoTCloudConnectorGroupStatus,omitempty"`
+	IoTCloudConnectors           []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors `json:"IoTCloudConnectors,omitempty" xml:"IoTCloudConnectors,omitempty" type:"Repeated"`
+	Name                         *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetCreateTime(v int64) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetDescription(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetIoTCloudConnectorGroupId(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetIoTCloudConnectorGroupStatus(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.IoTCloudConnectorGroupStatus = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetIoTCloudConnectors(v []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.IoTCloudConnectors = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetName(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.Name = &v
+	return s
+}
+
+type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors struct {
+	CreateTime                   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IoTCloudConnectorDescription *string `json:"IoTCloudConnectorDescription,omitempty" xml:"IoTCloudConnectorDescription,omitempty"`
+	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	IoTCloudConnectorName        *string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
+	IoTCloudConnectorStatus      *string `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty"`
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetCreateTime(v int64) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetIoTCloudConnectorDescription(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.IoTCloudConnectorDescription = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetIoTCloudConnectorId(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetIoTCloudConnectorName(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.IoTCloudConnectorName = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetIoTCloudConnectorStatus(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.IoTCloudConnectorStatus = &v
+	return s
+}
+
+type ListIoTCloudConnectorGroupsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListIoTCloudConnectorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIoTCloudConnectorGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCloudConnectorGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCloudConnectorGroupsResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponse) SetBody(v *ListIoTCloudConnectorGroupsResponseBody) *ListIoTCloudConnectorGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListIoTCloudConnectorsRequest struct {
 	APN                     []*string `json:"APN,omitempty" xml:"APN,omitempty" type:"Repeated"`
 	ISP                     []*string `json:"ISP,omitempty" xml:"ISP,omitempty" type:"Repeated"`
 	IoTCloudConnectorIds    []*string `json:"IoTCloudConnectorIds,omitempty" xml:"IoTCloudConnectorIds,omitempty" type:"Repeated"`
 	IoTCloudConnectorName   []*string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty" type:"Repeated"`
 	IoTCloudConnectorStatus []*string `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty" type:"Repeated"`
+	IsInGroup               *bool     `json:"IsInGroup,omitempty" xml:"IsInGroup,omitempty"`
 	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2599,6 +3692,11 @@ func (s *ListIoTCloudConnectorsRequest) SetIoTCloudConnectorName(v []*string) *L
 
 func (s *ListIoTCloudConnectorsRequest) SetIoTCloudConnectorStatus(v []*string) *ListIoTCloudConnectorsRequest {
 	s.IoTCloudConnectorStatus = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsRequest) SetIsInGroup(v bool) *ListIoTCloudConnectorsRequest {
+	s.IsInGroup = &v
 	return s
 }
 
@@ -2669,6 +3767,7 @@ type ListIoTCloudConnectorsResponseBodyIoTCloudConnectors struct {
 	ISP                             *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	IoTCloudConnectorBusinessStatus *string   `json:"IoTCloudConnectorBusinessStatus,omitempty" xml:"IoTCloudConnectorBusinessStatus,omitempty"`
 	IoTCloudConnectorDescription    *string   `json:"IoTCloudConnectorDescription,omitempty" xml:"IoTCloudConnectorDescription,omitempty"`
+	IoTCloudConnectorGroupId        *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	IoTCloudConnectorId             *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	IoTCloudConnectorName           *string   `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
 	IoTCloudConnectorStatus         *string   `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty"`
@@ -2709,6 +3808,11 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetIoTCloudConnec
 
 func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetIoTCloudConnectorDescription(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
 	s.IoTCloudConnectorDescription = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetIoTCloudConnectorGroupId(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.IoTCloudConnectorGroupId = &v
 	return s
 }
 
@@ -3276,6 +4380,87 @@ func (s *OpenIoTCloudConnectorServiceResponse) SetBody(v *OpenIoTCloudConnectorS
 	return s
 }
 
+type RemoveIoTCloudConnectorFromGroupRequest struct {
+	ClientToken              *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IoTCloudConnectorId      []*string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty" type:"Repeated"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RemoveIoTCloudConnectorFromGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIoTCloudConnectorFromGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupRequest) SetClientToken(v string) *RemoveIoTCloudConnectorFromGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupRequest) SetDryRun(v bool) *RemoveIoTCloudConnectorFromGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupRequest) SetIoTCloudConnectorGroupId(v string) *RemoveIoTCloudConnectorFromGroupRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupRequest) SetIoTCloudConnectorId(v []*string) *RemoveIoTCloudConnectorFromGroupRequest {
+	s.IoTCloudConnectorId = v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupRequest) SetRegionId(v string) *RemoveIoTCloudConnectorFromGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RemoveIoTCloudConnectorFromGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveIoTCloudConnectorFromGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIoTCloudConnectorFromGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupResponseBody) SetRequestId(v string) *RemoveIoTCloudConnectorFromGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveIoTCloudConnectorFromGroupResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RemoveIoTCloudConnectorFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveIoTCloudConnectorFromGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIoTCloudConnectorFromGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupResponse) SetHeaders(v map[string]*string) *RemoveIoTCloudConnectorFromGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupResponse) SetBody(v *RemoveIoTCloudConnectorFromGroupResponseBody) *RemoveIoTCloudConnectorFromGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAuthorizationRuleAttributeRequest struct {
 	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
 	AuthorizationRuleId          *string   `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
@@ -3498,6 +4683,135 @@ func (s *UpdateConnectionPoolAttributeResponse) SetBody(v *UpdateConnectionPoolA
 	return s
 }
 
+type UpdateGroupAuthorizationRuleAttributeRequest struct {
+	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
+	AuthorizationRuleId          *string   `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	ClientToken                  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Destination                  *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType              *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DryRun                       *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetAuthorizationRuleDescription(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.AuthorizationRuleDescription = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetAuthorizationRuleId(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetAuthorizationRuleName(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetClientToken(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDestination(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDestinationType(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetDryRun(v bool) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetIoTCloudConnectorGroupId(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetPolicy(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetRegionId(v string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeRequest) SetSourceCidrs(v []*string) *UpdateGroupAuthorizationRuleAttributeRequest {
+	s.SourceCidrs = v
+	return s
+}
+
+type UpdateGroupAuthorizationRuleAttributeResponseBody struct {
+	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponseBody) SetAuthorizationRuleId(v string) *UpdateGroupAuthorizationRuleAttributeResponseBody {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponseBody) SetIoTCloudConnectorGroupId(v string) *UpdateGroupAuthorizationRuleAttributeResponseBody {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponseBody) SetRequestId(v string) *UpdateGroupAuthorizationRuleAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupAuthorizationRuleAttributeResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGroupAuthorizationRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateGroupAuthorizationRuleAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetBody(v *UpdateGroupAuthorizationRuleAttributeResponseBody) *UpdateGroupAuthorizationRuleAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIoTCloudConnectorAttributeRequest struct {
 	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -3593,6 +4907,93 @@ func (s *UpdateIoTCloudConnectorAttributeResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *UpdateIoTCloudConnectorAttributeResponse) SetBody(v *UpdateIoTCloudConnectorAttributeResponseBody) *UpdateIoTCloudConnectorAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIoTCloudConnectorGroupAttributeRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetClientToken(v string) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetDescription(v string) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetDryRun(v bool) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetIoTCloudConnectorGroupId(v string) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetName(v string) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeRequest) SetRegionId(v string) *UpdateIoTCloudConnectorGroupAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateIoTCloudConnectorGroupAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeResponseBody) SetRequestId(v string) *UpdateIoTCloudConnectorGroupAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIoTCloudConnectorGroupAttributeResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateIoTCloudConnectorGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIoTCloudConnectorGroupAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetHeaders(v map[string]*string) *UpdateIoTCloudConnectorGroupAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetBody(v *UpdateIoTCloudConnectorGroupAttributeResponseBody) *UpdateIoTCloudConnectorGroupAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -3836,16 +5237,126 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddCidrToConnectionPoolWithOptions(request *AddCidrToConnectionPoolRequest, runtime *util.RuntimeOptions) (_result *AddCidrToConnectionPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["Cidrs"] = request.Cidrs
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCidrToConnectionPool"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCidrToConnectionPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCidrToConnectionPool(request *AddCidrToConnectionPoolRequest) (_result *AddCidrToConnectionPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCidrToConnectionPoolResponse{}
+	_body, _err := client.AddCidrToConnectionPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddIoTCloudConnectorToGroupWithOptions(request *AddIoTCloudConnectorToGroupRequest, runtime *util.RuntimeOptions) (_result *AddIoTCloudConnectorToGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddIoTCloudConnectorToGroup"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddIoTCloudConnectorToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddIoTCloudConnectorToGroup(request *AddIoTCloudConnectorToGroupRequest) (_result *AddIoTCloudConnectorToGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddIoTCloudConnectorToGroupResponse{}
+	_body, _err := client.AddIoTCloudConnectorToGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AssociateIpWithConnectionPoolWithOptions(request *AssociateIpWithConnectionPoolRequest, runtime *util.RuntimeOptions) (_result *AssociateIpWithConnectionPoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Ips"] = request.Ips
+	query["IpsFilePath"] = request.IpsFilePath
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateIpWithConnectionPool"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateIpWithConnectionPoolResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateIpWithConnectionPool"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3869,11 +5380,29 @@ func (client *Client) AssociateVSwitchWithIoTCloudConnectorWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["VSwitchList"] = request.VSwitchList
+	query["VpcId"] = request.VpcId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateVSwitchWithIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateVSwitchWithIoTCloudConnectorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssociateVSwitchWithIoTCloudConnector"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3897,11 +5426,33 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["ClientToken"] = request.ClientToken
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
+	query["SourceCidrs"] = request.SourceCidrs
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAuthorizationRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAuthorizationRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAuthorizationRule"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3925,11 +5476,31 @@ func (client *Client) CreateConnectionPoolWithOptions(request *CreateConnectionP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Cidrs"] = request.Cidrs
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
+	query["ConnectionPoolName"] = request.ConnectionPoolName
+	query["Count"] = request.Count
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConnectionPool"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateConnectionPoolResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateConnectionPool"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3948,16 +5519,87 @@ func (client *Client) CreateConnectionPool(request *CreateConnectionPoolRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGroupAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["ClientToken"] = request.ClientToken
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
+	query["SourceCidrs"] = request.SourceCidrs
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroupAuthorizationRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGroupAuthorizationRule(request *CreateGroupAuthorizationRuleRequest) (_result *CreateGroupAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGroupAuthorizationRuleResponse{}
+	_body, _err := client.CreateGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateIoTCloudConnectorWithOptions(request *CreateIoTCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *CreateIoTCloudConnectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["APN"] = request.APN
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["ISP"] = request.ISP
+	query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
+	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	query["RegionId"] = request.RegionId
+	query["ResourceUid"] = request.ResourceUid
+	query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIoTCloudConnectorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateIoTCloudConnector"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3976,16 +5618,79 @@ func (client *Client) CreateIoTCloudConnector(request *CreateIoTCloudConnectorRe
 	return _result, _err
 }
 
+func (client *Client) CreateIoTCloudConnectorGroupWithOptions(request *CreateIoTCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *CreateIoTCloudConnectorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["DryRun"] = request.DryRun
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIoTCloudConnectorGroup"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIoTCloudConnectorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIoTCloudConnectorGroup(request *CreateIoTCloudConnectorGroupRequest) (_result *CreateIoTCloudConnectorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIoTCloudConnectorGroupResponse{}
+	_body, _err := client.CreateIoTCloudConnectorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceDescription"] = request.ServiceDescription
+	query["ServiceName"] = request.ServiceName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateService"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4009,11 +5714,32 @@ func (client *Client) CreateServiceEntryWithOptions(request *CreateServiceEntryR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceEntryDescription"] = request.ServiceEntryDescription
+	query["ServiceEntryName"] = request.ServiceEntryName
+	query["ServiceId"] = request.ServiceId
+	query["Target"] = request.Target
+	query["TargetType"] = request.TargetType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceEntry"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceEntryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceEntry"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4037,11 +5763,28 @@ func (client *Client) DeleteAuthorizationRuleWithOptions(request *DeleteAuthoriz
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAuthorizationRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAuthorizationRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAuthorizationRule"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4065,11 +5808,28 @@ func (client *Client) DeleteConnectionPoolWithOptions(request *DeleteConnectionP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConnectionPool"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteConnectionPoolResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteConnectionPool"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4088,16 +5848,77 @@ func (client *Client) DeleteConnectionPool(request *DeleteConnectionPoolRequest)
 	return _result, _err
 }
 
+func (client *Client) DeleteGroupAuthorizationRuleWithOptions(request *DeleteGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroupAuthorizationRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupAuthorizationRule(request *DeleteGroupAuthorizationRuleRequest) (_result *DeleteGroupAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGroupAuthorizationRuleResponse{}
+	_body, _err := client.DeleteGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteIoTCloudConnectorWithOptions(request *DeleteIoTCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *DeleteIoTCloudConnectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIoTCloudConnectorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIoTCloudConnector"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4116,16 +5937,77 @@ func (client *Client) DeleteIoTCloudConnector(request *DeleteIoTCloudConnectorRe
 	return _result, _err
 }
 
+func (client *Client) DeleteIoTCloudConnectorGroupWithOptions(request *DeleteIoTCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteIoTCloudConnectorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIoTCloudConnectorGroup"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIoTCloudConnectorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIoTCloudConnectorGroup(request *DeleteIoTCloudConnectorGroupRequest) (_result *DeleteIoTCloudConnectorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIoTCloudConnectorGroupResponse{}
+	_body, _err := client.DeleteIoTCloudConnectorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteService"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4149,11 +6031,29 @@ func (client *Client) DeleteServiceEntryWithOptions(request *DeleteServiceEntryR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceEntryId"] = request.ServiceEntryId
+	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceEntry"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceEntryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceEntry"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4177,11 +6077,27 @@ func (client *Client) DisableIoTCloudConnectorAccessLogWithOptions(request *Disa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableIoTCloudConnectorAccessLog"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableIoTCloudConnectorAccessLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableIoTCloudConnectorAccessLog"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4205,11 +6121,30 @@ func (client *Client) DissociateIpFromConnectionPoolWithOptions(request *Dissoci
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Ips"] = request.Ips
+	query["IpsFilePath"] = request.IpsFilePath
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateIpFromConnectionPool"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateIpFromConnectionPoolResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateIpFromConnectionPool"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4233,11 +6168,27 @@ func (client *Client) DissociateVSwitchFromIoTCloudConnectorWithOptions(request 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateVSwitchFromIoTCloudConnector"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateVSwitchFromIoTCloudConnectorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DissociateVSwitchFromIoTCloudConnector"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4261,11 +6212,29 @@ func (client *Client) EnableIoTCloudConnectorAccessLogWithOptions(request *Enabl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AccessLogSlsLogStore"] = request.AccessLogSlsLogStore
+	query["AccessLogSlsProject"] = request.AccessLogSlsProject
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableIoTCloudConnectorAccessLog"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableIoTCloudConnectorAccessLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableIoTCloudConnectorAccessLog"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4289,11 +6258,27 @@ func (client *Client) GetConnectionPoolIpOperationResultWithOptions(request *Get
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["QueryRequestId"] = request.QueryRequestId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConnectionPoolIpOperationResult"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConnectionPoolIpOperationResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConnectionPoolIpOperationResult"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4317,11 +6302,27 @@ func (client *Client) GetIoTCloudConnectorAccessLogWithOptions(request *GetIoTCl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIoTCloudConnectorAccessLog"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetIoTCloudConnectorAccessLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetIoTCloudConnectorAccessLog"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4345,11 +6346,29 @@ func (client *Client) GetStsInfoAndOssPathWithOptions(request *GetStsInfoAndOssP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["DryRun"] = request.DryRun
+	query["FileName"] = request.FileName
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStsInfoAndOssPath"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetStsInfoAndOssPathResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetStsInfoAndOssPath"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4373,11 +6392,25 @@ func (client *Client) GrantVirtualBorderRouterWithOptions(request *GrantVirtualB
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
+	query["VirtualBorderRouterId"] = request.VirtualBorderRouterId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantVirtualBorderRouter"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GrantVirtualBorderRouterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GrantVirtualBorderRouter"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4401,11 +6434,28 @@ func (client *Client) ListAPNsWithOptions(request *ListAPNsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["APN"] = request.APN
+	query["ISP"] = request.ISP
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAPNs"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAPNsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAPNs"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4429,11 +6479,33 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizationRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuthorizationRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAuthorizationRules"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4452,16 +6524,81 @@ func (client *Client) ListAuthorizationRules(request *ListAuthorizationRulesRequ
 	return _result, _err
 }
 
+func (client *Client) ListConnectionPoolAllIpsWithOptions(request *ListConnectionPoolAllIpsRequest, runtime *util.RuntimeOptions) (_result *ListConnectionPoolAllIpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Ip"] = request.Ip
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["Type"] = request.Type
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnectionPoolAllIps"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConnectionPoolAllIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConnectionPoolAllIps(request *ListConnectionPoolAllIpsRequest) (_result *ListConnectionPoolAllIpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConnectionPoolAllIpsResponse{}
+	_body, _err := client.ListConnectionPoolAllIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConnectionPoolIpsWithOptions(request *ListConnectionPoolIpsRequest, runtime *util.RuntimeOptions) (_result *ListConnectionPoolIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Ip"] = request.Ip
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnectionPoolIps"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConnectionPoolIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConnectionPoolIps"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4485,11 +6622,30 @@ func (client *Client) ListConnectionPoolsWithOptions(request *ListConnectionPool
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ConnectionPoolIds"] = request.ConnectionPoolIds
+	query["ConnectionPoolName"] = request.ConnectionPoolName
+	query["ConnectionPoolStatus"] = request.ConnectionPoolStatus
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnectionPools"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConnectionPoolsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConnectionPools"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4508,16 +6664,80 @@ func (client *Client) ListConnectionPools(request *ListConnectionPoolsRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupAuthorizationRulesRequest, runtime *util.RuntimeOptions) (_result *ListGroupAuthorizationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupAuthorizationRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupAuthorizationRules(request *ListGroupAuthorizationRulesRequest) (_result *ListGroupAuthorizationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupAuthorizationRulesResponse{}
+	_body, _err := client.ListGroupAuthorizationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListIoTCloudConnectorAvailableZonesWithOptions(request *ListIoTCloudConnectorAvailableZonesRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorAvailableZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIoTCloudConnectorAvailableZones"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListIoTCloudConnectorAvailableZonesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListIoTCloudConnectorAvailableZones"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4536,16 +6756,84 @@ func (client *Client) ListIoTCloudConnectorAvailableZones(request *ListIoTCloudC
 	return _result, _err
 }
 
+func (client *Client) ListIoTCloudConnectorGroupsWithOptions(request *ListIoTCloudConnectorGroupsRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["IoTCloudConnectorGroupIds"] = request.IoTCloudConnectorGroupIds
+	query["IoTCloudConnectorGroupName"] = request.IoTCloudConnectorGroupName
+	query["IoTCloudConnectorGroupStatus"] = request.IoTCloudConnectorGroupStatus
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIoTCloudConnectorGroups"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIoTCloudConnectorGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIoTCloudConnectorGroups(request *ListIoTCloudConnectorGroupsRequest) (_result *ListIoTCloudConnectorGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIoTCloudConnectorGroupsResponse{}
+	_body, _err := client.ListIoTCloudConnectorGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListIoTCloudConnectorsWithOptions(request *ListIoTCloudConnectorsRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["APN"] = request.APN
+	query["ISP"] = request.ISP
+	query["IoTCloudConnectorIds"] = request.IoTCloudConnectorIds
+	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	query["IoTCloudConnectorStatus"] = request.IoTCloudConnectorStatus
+	query["IsInGroup"] = request.IsInGroup
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["VpcId"] = request.VpcId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIoTCloudConnectors"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListIoTCloudConnectorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListIoTCloudConnectors"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4569,11 +6857,25 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AcceptLanguage"] = request.AcceptLanguage
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRegions"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRegions"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4597,11 +6899,30 @@ func (client *Client) ListServiceWithOptions(request *ListServiceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ResourceStatuses"] = request.ResourceStatuses
+	query["ServiceIds"] = request.ServiceIds
+	query["ServiceNames"] = request.ServiceNames
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListService"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4625,11 +6946,33 @@ func (client *Client) ListServiceEntriesWithOptions(request *ListServiceEntriesR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["RegionId"] = request.RegionId
+	query["ServiceEntryIds"] = request.ServiceEntryIds
+	query["ServiceEntryName"] = request.ServiceEntryName
+	query["ServiceEntryStatus"] = request.ServiceEntryStatus
+	query["ServiceId"] = request.ServiceId
+	query["Target"] = request.Target
+	query["TargetType"] = request.TargetType
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceEntries"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceEntriesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListServiceEntries"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4653,11 +6996,24 @@ func (client *Client) OpenIoTCloudConnectorServiceWithOptions(request *OpenIoTCl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenIoTCloudConnectorService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OpenIoTCloudConnectorServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpenIoTCloudConnectorService"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4676,16 +7032,84 @@ func (client *Client) OpenIoTCloudConnectorService(request *OpenIoTCloudConnecto
 	return _result, _err
 }
 
+func (client *Client) RemoveIoTCloudConnectorFromGroupWithOptions(request *RemoveIoTCloudConnectorFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveIoTCloudConnectorFromGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveIoTCloudConnectorFromGroup"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveIoTCloudConnectorFromGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveIoTCloudConnectorFromGroup(request *RemoveIoTCloudConnectorFromGroupRequest) (_result *RemoveIoTCloudConnectorFromGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveIoTCloudConnectorFromGroupResponse{}
+	_body, _err := client.RemoveIoTCloudConnectorFromGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateAuthorizationRuleAttributeWithOptions(request *UpdateAuthorizationRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateAuthorizationRuleAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["ClientToken"] = request.ClientToken
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
+	query["SourceCidrs"] = request.SourceCidrs
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAuthorizationRuleAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAuthorizationRuleAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAuthorizationRuleAttribute"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4709,11 +7133,32 @@ func (client *Client) UpdateConnectionPoolAttributeWithOptions(request *UpdateCo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["Cidrs"] = request.Cidrs
+	query["ClientToken"] = request.ClientToken
+	query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
+	query["ConnectionPoolId"] = request.ConnectionPoolId
+	query["ConnectionPoolName"] = request.ConnectionPoolName
+	query["Count"] = request.Count
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConnectionPoolAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateConnectionPoolAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateConnectionPoolAttribute"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4732,16 +7177,86 @@ func (client *Client) UpdateConnectionPoolAttribute(request *UpdateConnectionPoo
 	return _result, _err
 }
 
+func (client *Client) UpdateGroupAuthorizationRuleAttributeWithOptions(request *UpdateGroupAuthorizationRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupAuthorizationRuleAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	query["ClientToken"] = request.ClientToken
+	query["Destination"] = request.Destination
+	query["DestinationType"] = request.DestinationType
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["Policy"] = request.Policy
+	query["RegionId"] = request.RegionId
+	query["SourceCidrs"] = request.SourceCidrs
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupAuthorizationRuleAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupAuthorizationRuleAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupAuthorizationRuleAttribute(request *UpdateGroupAuthorizationRuleAttributeRequest) (_result *UpdateGroupAuthorizationRuleAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGroupAuthorizationRuleAttributeResponse{}
+	_body, _err := client.UpdateGroupAuthorizationRuleAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateIoTCloudConnectorAttributeWithOptions(request *UpdateIoTCloudConnectorAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateIoTCloudConnectorAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	query["RegionId"] = request.RegionId
+	query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIoTCloudConnectorAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIoTCloudConnectorAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIoTCloudConnectorAttribute"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4760,16 +7275,81 @@ func (client *Client) UpdateIoTCloudConnectorAttribute(request *UpdateIoTCloudCo
 	return _result, _err
 }
 
+func (client *Client) UpdateIoTCloudConnectorGroupAttributeWithOptions(request *UpdateIoTCloudConnectorGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateIoTCloudConnectorGroupAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	query["Name"] = request.Name
+	query["RegionId"] = request.RegionId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIoTCloudConnectorGroupAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIoTCloudConnectorGroupAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIoTCloudConnectorGroupAttribute(request *UpdateIoTCloudConnectorGroupAttributeRequest) (_result *UpdateIoTCloudConnectorGroupAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIoTCloudConnectorGroupAttributeResponse{}
+	_body, _err := client.UpdateIoTCloudConnectorGroupAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateServiceAttributeWithOptions(request *UpdateServiceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceDescription"] = request.ServiceDescription
+	query["ServiceId"] = request.ServiceId
+	query["ServiceName"] = request.ServiceName
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateServiceAttribute"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4793,11 +7373,31 @@ func (client *Client) UpdateServiceEntryAttributeWithOptions(request *UpdateServ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	query["RegionId"] = request.RegionId
+	query["ServiceEntryDescription"] = request.ServiceEntryDescription
+	query["ServiceEntryId"] = request.ServiceEntryId
+	query["ServiceEntryName"] = request.ServiceEntryName
+	query["ServiceId"] = request.ServiceId
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceEntryAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceEntryAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateServiceEntryAttribute"), tea.String("2021-05-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
