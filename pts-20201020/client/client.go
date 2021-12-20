@@ -4927,6 +4927,8 @@ type SaveEnvRequestEnv struct {
 	EnvName *string `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
 	// 环境依赖的文件
 	Files []*SaveEnvRequestEnvFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// jmeter插件的环境标签
+	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
 	// jmeter属性
 	Properties []*SaveEnvRequestEnvProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
@@ -4951,6 +4953,11 @@ func (s *SaveEnvRequestEnv) SetEnvName(v string) *SaveEnvRequestEnv {
 
 func (s *SaveEnvRequestEnv) SetFiles(v []*SaveEnvRequestEnvFiles) *SaveEnvRequestEnv {
 	s.Files = v
+	return s
+}
+
+func (s *SaveEnvRequestEnv) SetJmeterPluginLabel(v string) *SaveEnvRequestEnv {
+	s.JmeterPluginLabel = &v
 	return s
 }
 
@@ -5142,6 +5149,8 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	IsVpcTest *bool `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
 	// Jmeter属性
 	JMeterProperties []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
+	// jmeter插件的环境标签
+	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
 	// 预热时间
 	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
 	// region的id，VPC压测时配置
@@ -5214,6 +5223,11 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetIsVpcTest(v bool) *SaveOp
 
 func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetJMeterProperties(v []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties) *SaveOpenJMeterSceneRequestOpenJMeterScene {
 	s.JMeterProperties = v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetJmeterPluginLabel(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.JmeterPluginLabel = &v
 	return s
 }
 
