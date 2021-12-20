@@ -15345,7 +15345,7 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
-		body["tagKeys"] = request.TagKeys
+		body["tagKeys	"] = request.TagKeys
 	}
 
 	realHeaders := make(map[string]*string)
