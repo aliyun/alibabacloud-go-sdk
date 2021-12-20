@@ -990,6 +990,8 @@ type GetJMeterSceneRunningDataResponseBodyRunningData struct {
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	// 是否生成了报告
 	HasReport *bool `json:"HasReport,omitempty" xml:"HasReport,omitempty"`
+	// 压测计划持续时间，单位s
+	HoldFor *int32 `json:"HoldFor,omitempty" xml:"HoldFor,omitempty"`
 	// 是否是调试
 	IsDebugging *bool `json:"IsDebugging,omitempty" xml:"IsDebugging,omitempty"`
 	// 每一个采样器的状态
@@ -1000,6 +1002,8 @@ type GetJMeterSceneRunningDataResponseBodyRunningData struct {
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	// 当前所处阶段
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// 压测计划开始时间戳，单位ms
+	StartTimeTS *int64 `json:"StartTimeTS,omitempty" xml:"StartTimeTS,omitempty"`
 	// 状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 目前消耗的vum
@@ -1039,6 +1043,11 @@ func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetHasReport(v bool) 
 	return s
 }
 
+func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetHoldFor(v int32) *GetJMeterSceneRunningDataResponseBodyRunningData {
+	s.HoldFor = &v
+	return s
+}
+
 func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetIsDebugging(v bool) *GetJMeterSceneRunningDataResponseBodyRunningData {
 	s.IsDebugging = &v
 	return s
@@ -1061,6 +1070,11 @@ func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetSceneName(v string
 
 func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetStageName(v string) *GetJMeterSceneRunningDataResponseBodyRunningData {
 	s.StageName = &v
+	return s
+}
+
+func (s *GetJMeterSceneRunningDataResponseBodyRunningData) SetStartTimeTS(v int64) *GetJMeterSceneRunningDataResponseBodyRunningData {
+	s.StartTimeTS = &v
 	return s
 }
 
@@ -4913,8 +4927,6 @@ type SaveEnvRequestEnv struct {
 	EnvName *string `json:"EnvName,omitempty" xml:"EnvName,omitempty"`
 	// 环境依赖的文件
 	Files []*SaveEnvRequestEnvFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// jmeter插件的环境标签
-	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
 	// jmeter属性
 	Properties []*SaveEnvRequestEnvProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 }
@@ -4939,11 +4951,6 @@ func (s *SaveEnvRequestEnv) SetEnvName(v string) *SaveEnvRequestEnv {
 
 func (s *SaveEnvRequestEnv) SetFiles(v []*SaveEnvRequestEnvFiles) *SaveEnvRequestEnv {
 	s.Files = v
-	return s
-}
-
-func (s *SaveEnvRequestEnv) SetJmeterPluginLabel(v string) *SaveEnvRequestEnv {
-	s.JmeterPluginLabel = &v
 	return s
 }
 
@@ -5135,8 +5142,6 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	IsVpcTest *bool `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
 	// Jmeter属性
 	JMeterProperties []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
-	// jmeter插件的环境标签
-	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
 	// 预热时间
 	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
 	// region的id，VPC压测时配置
@@ -5209,11 +5214,6 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetIsVpcTest(v bool) *SaveOp
 
 func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetJMeterProperties(v []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties) *SaveOpenJMeterSceneRequestOpenJMeterScene {
 	s.JMeterProperties = v
-	return s
-}
-
-func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetJmeterPluginLabel(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
-	s.JmeterPluginLabel = &v
 	return s
 }
 
@@ -6328,7 +6328,6 @@ func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, 
 	query["Scene"] = request.Scene
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePtsScene"),
@@ -6338,7 +6337,7 @@ func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePtsSceneResponse{}
@@ -6371,7 +6370,6 @@ func (client *Client) CreatePtsSceneBaseLineFromReportWithOptions(request *Creat
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePtsSceneBaseLineFromReport"),
@@ -6381,7 +6379,7 @@ func (client *Client) CreatePtsSceneBaseLineFromReportWithOptions(request *Creat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePtsSceneBaseLineFromReportResponse{}
@@ -6413,7 +6411,6 @@ func (client *Client) DeletePtsSceneWithOptions(request *DeletePtsSceneRequest, 
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePtsScene"),
@@ -6423,7 +6420,7 @@ func (client *Client) DeletePtsSceneWithOptions(request *DeletePtsSceneRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePtsSceneResponse{}
@@ -6455,7 +6452,6 @@ func (client *Client) DeletePtsSceneBaseLineWithOptions(request *DeletePtsSceneB
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePtsSceneBaseLine"),
@@ -6465,7 +6461,7 @@ func (client *Client) DeletePtsSceneBaseLineWithOptions(request *DeletePtsSceneB
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePtsSceneBaseLineResponse{}
@@ -6503,7 +6499,6 @@ func (client *Client) DeletePtsScenesWithOptions(tmpReq *DeletePtsScenesRequest,
 	query["SceneIds"] = request.SceneIdsShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePtsScenes"),
@@ -6513,7 +6508,7 @@ func (client *Client) DeletePtsScenesWithOptions(tmpReq *DeletePtsScenesRequest,
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePtsScenesResponse{}
@@ -6553,7 +6548,6 @@ func (client *Client) GetJMeterLogsWithOptions(request *GetJMeterLogsRequest, ru
 	query["Thread"] = request.Thread
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJMeterLogs"),
@@ -6563,7 +6557,7 @@ func (client *Client) GetJMeterLogsWithOptions(request *GetJMeterLogsRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJMeterLogsResponse{}
@@ -6598,7 +6592,6 @@ func (client *Client) GetJMeterSampleMetricsWithOptions(request *GetJMeterSample
 	query["SamplerId"] = request.SamplerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJMeterSampleMetrics"),
@@ -6608,7 +6601,7 @@ func (client *Client) GetJMeterSampleMetricsWithOptions(request *GetJMeterSample
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJMeterSampleMetricsResponse{}
@@ -6652,7 +6645,6 @@ func (client *Client) GetJMeterSamplingLogsWithOptions(request *GetJMeterSamplin
 	query["Thread"] = request.Thread
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJMeterSamplingLogs"),
@@ -6662,7 +6654,7 @@ func (client *Client) GetJMeterSamplingLogsWithOptions(request *GetJMeterSamplin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJMeterSamplingLogsResponse{}
@@ -6694,7 +6686,6 @@ func (client *Client) GetJMeterSceneRunningDataWithOptions(request *GetJMeterSce
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJMeterSceneRunningData"),
@@ -6704,7 +6695,7 @@ func (client *Client) GetJMeterSceneRunningDataWithOptions(request *GetJMeterSce
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJMeterSceneRunningDataResponse{}
@@ -6736,7 +6727,6 @@ func (client *Client) GetOpenJMeterSceneWithOptions(request *GetOpenJMeterSceneR
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetOpenJMeterScene"),
@@ -6746,7 +6736,7 @@ func (client *Client) GetOpenJMeterSceneWithOptions(request *GetOpenJMeterSceneR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOpenJMeterSceneResponse{}
@@ -6779,7 +6769,6 @@ func (client *Client) GetPtsReportDetailsWithOptions(request *GetPtsReportDetail
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsReportDetails"),
@@ -6789,7 +6778,7 @@ func (client *Client) GetPtsReportDetailsWithOptions(request *GetPtsReportDetail
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsReportDetailsResponse{}
@@ -6823,7 +6812,6 @@ func (client *Client) GetPtsReportsBySceneIdWithOptions(request *GetPtsReportsBy
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsReportsBySceneId"),
@@ -6833,7 +6821,7 @@ func (client *Client) GetPtsReportsBySceneIdWithOptions(request *GetPtsReportsBy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsReportsBySceneIdResponse{}
@@ -6865,7 +6853,6 @@ func (client *Client) GetPtsSceneWithOptions(request *GetPtsSceneRequest, runtim
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsScene"),
@@ -6875,7 +6862,7 @@ func (client *Client) GetPtsSceneWithOptions(request *GetPtsSceneRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsSceneResponse{}
@@ -6907,7 +6894,6 @@ func (client *Client) GetPtsSceneBaseLineWithOptions(request *GetPtsSceneBaseLin
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsSceneBaseLine"),
@@ -6917,7 +6903,7 @@ func (client *Client) GetPtsSceneBaseLineWithOptions(request *GetPtsSceneBaseLin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsSceneBaseLineResponse{}
@@ -6950,7 +6936,6 @@ func (client *Client) GetPtsSceneRunningDataWithOptions(request *GetPtsSceneRunn
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsSceneRunningData"),
@@ -6960,7 +6945,7 @@ func (client *Client) GetPtsSceneRunningDataWithOptions(request *GetPtsSceneRunn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsSceneRunningDataResponse{}
@@ -6992,7 +6977,6 @@ func (client *Client) GetPtsSceneRunningStatusWithOptions(request *GetPtsSceneRu
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPtsSceneRunningStatus"),
@@ -7002,7 +6986,7 @@ func (client *Client) GetPtsSceneRunningStatusWithOptions(request *GetPtsSceneRu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPtsSceneRunningStatusResponse{}
@@ -7037,7 +7021,6 @@ func (client *Client) ListEnvsWithOptions(request *ListEnvsRequest, runtime *uti
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListEnvs"),
@@ -7047,7 +7030,7 @@ func (client *Client) ListEnvsWithOptions(request *ListEnvsRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEnvsResponse{}
@@ -7085,7 +7068,6 @@ func (client *Client) ListJMeterReportsWithOptions(request *ListJMeterReportsReq
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListJMeterReports"),
@@ -7095,7 +7077,7 @@ func (client *Client) ListJMeterReportsWithOptions(request *ListJMeterReportsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListJMeterReportsResponse{}
@@ -7130,7 +7112,6 @@ func (client *Client) ListOpenJMeterScenesWithOptions(request *ListOpenJMeterSce
 	query["SceneName"] = request.SceneName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListOpenJMeterScenes"),
@@ -7140,7 +7121,7 @@ func (client *Client) ListOpenJMeterScenesWithOptions(request *ListOpenJMeterSce
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListOpenJMeterScenesResponse{}
@@ -7174,7 +7155,6 @@ func (client *Client) ListPtsSceneWithOptions(request *ListPtsSceneRequest, runt
 	query["PageSize"] = request.PageSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPtsScene"),
@@ -7184,7 +7164,7 @@ func (client *Client) ListPtsSceneWithOptions(request *ListPtsSceneRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPtsSceneResponse{}
@@ -7216,7 +7196,6 @@ func (client *Client) ModifyPtsSceneWithOptions(request *ModifyPtsSceneRequest, 
 	query["Scene"] = request.Scene
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyPtsScene"),
@@ -7226,7 +7205,7 @@ func (client *Client) ModifyPtsSceneWithOptions(request *ModifyPtsSceneRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPtsSceneResponse{}
@@ -7258,7 +7237,6 @@ func (client *Client) RemoveEnvWithOptions(request *RemoveEnvRequest, runtime *u
 	query["EnvId"] = request.EnvId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveEnv"),
@@ -7268,7 +7246,7 @@ func (client *Client) RemoveEnvWithOptions(request *RemoveEnvRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveEnvResponse{}
@@ -7300,7 +7278,6 @@ func (client *Client) RemoveOpenJMeterSceneWithOptions(request *RemoveOpenJMeter
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveOpenJMeterScene"),
@@ -7310,7 +7287,7 @@ func (client *Client) RemoveOpenJMeterSceneWithOptions(request *RemoveOpenJMeter
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveOpenJMeterSceneResponse{}
@@ -7348,7 +7325,6 @@ func (client *Client) SaveEnvWithOptions(tmpReq *SaveEnvRequest, runtime *util.R
 	query["Env"] = request.EnvShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SaveEnv"),
@@ -7358,7 +7334,7 @@ func (client *Client) SaveEnvWithOptions(tmpReq *SaveEnvRequest, runtime *util.R
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SaveEnvResponse{}
@@ -7396,7 +7372,6 @@ func (client *Client) SaveOpenJMeterSceneWithOptions(tmpReq *SaveOpenJMeterScene
 	query["OpenJMeterScene"] = request.OpenJMeterSceneShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SaveOpenJMeterScene"),
@@ -7406,7 +7381,7 @@ func (client *Client) SaveOpenJMeterSceneWithOptions(tmpReq *SaveOpenJMeterScene
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SaveOpenJMeterSceneResponse{}
@@ -7438,7 +7413,6 @@ func (client *Client) StartDebugPtsSceneWithOptions(request *StartDebugPtsSceneR
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartDebugPtsScene"),
@@ -7448,7 +7422,7 @@ func (client *Client) StartDebugPtsSceneWithOptions(request *StartDebugPtsSceneR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartDebugPtsSceneResponse{}
@@ -7480,7 +7454,6 @@ func (client *Client) StartDebuggingJMeterSceneWithOptions(request *StartDebuggi
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartDebuggingJMeterScene"),
@@ -7490,7 +7463,7 @@ func (client *Client) StartDebuggingJMeterSceneWithOptions(request *StartDebuggi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartDebuggingJMeterSceneResponse{}
@@ -7522,7 +7495,6 @@ func (client *Client) StartPtsSceneWithOptions(request *StartPtsSceneRequest, ru
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartPtsScene"),
@@ -7532,7 +7504,7 @@ func (client *Client) StartPtsSceneWithOptions(request *StartPtsSceneRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartPtsSceneResponse{}
@@ -7564,7 +7536,6 @@ func (client *Client) StartTestingJMeterSceneWithOptions(request *StartTestingJM
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartTestingJMeterScene"),
@@ -7574,7 +7545,7 @@ func (client *Client) StartTestingJMeterSceneWithOptions(request *StartTestingJM
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartTestingJMeterSceneResponse{}
@@ -7607,7 +7578,6 @@ func (client *Client) StopDebugPtsSceneWithOptions(request *StopDebugPtsSceneReq
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopDebugPtsScene"),
@@ -7617,7 +7587,7 @@ func (client *Client) StopDebugPtsSceneWithOptions(request *StopDebugPtsSceneReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopDebugPtsSceneResponse{}
@@ -7649,7 +7619,6 @@ func (client *Client) StopDebuggingJMeterSceneWithOptions(request *StopDebugging
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopDebuggingJMeterScene"),
@@ -7659,7 +7628,7 @@ func (client *Client) StopDebuggingJMeterSceneWithOptions(request *StopDebugging
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopDebuggingJMeterSceneResponse{}
@@ -7691,7 +7660,6 @@ func (client *Client) StopPtsSceneWithOptions(request *StopPtsSceneRequest, runt
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopPtsScene"),
@@ -7701,7 +7669,7 @@ func (client *Client) StopPtsSceneWithOptions(request *StopPtsSceneRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopPtsSceneResponse{}
@@ -7733,7 +7701,6 @@ func (client *Client) StopTestingJMeterSceneWithOptions(request *StopTestingJMet
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopTestingJMeterScene"),
@@ -7743,7 +7710,7 @@ func (client *Client) StopTestingJMeterSceneWithOptions(request *StopTestingJMet
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopTestingJMeterSceneResponse{}
@@ -7787,7 +7754,6 @@ func (client *Client) UpdatePtsSceneBaseLineWithOptions(tmpReq *UpdatePtsSceneBa
 	query["SceneId"] = request.SceneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePtsSceneBaseLine"),
@@ -7797,7 +7763,7 @@ func (client *Client) UpdatePtsSceneBaseLineWithOptions(tmpReq *UpdatePtsSceneBa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePtsSceneBaseLineResponse{}
