@@ -499,26 +499,27 @@ func (s *CreateChangeSetResponse) SetBody(v *CreateChangeSetResponseBody) *Creat
 }
 
 type CreateStackRequest struct {
-	ClientToken        *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateOption       *string                         `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
-	DeletionProtection *string                         `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DisableRollback    *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	NotificationURLs   []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
-	Parallelism        *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Parameters         []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RamRoleName        *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	RegionId           *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StackName          *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackPolicyBody    *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackPolicyURL     *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	Tags               []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody       *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId         *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateScratchId  *string                         `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateURL        *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion    *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TimeoutInMinutes   *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	ClientToken             *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateOption            *string                         `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
+	DeletionProtection      *string                         `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DisableRollback         *bool                           `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	NotificationURLs        []*string                       `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
+	Parallelism             *int64                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters              []*CreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RamRoleName             *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RegionId                *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StackName               *string                         `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody         *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL          *string                         `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	Tags                    []*CreateStackRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody            *string                         `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId              *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId       *string                         `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId *string                         `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL             *string                         `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion         *string                         `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes        *int64                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateStackRequest) String() string {
@@ -611,6 +612,11 @@ func (s *CreateStackRequest) SetTemplateId(v string) *CreateStackRequest {
 
 func (s *CreateStackRequest) SetTemplateScratchId(v string) *CreateStackRequest {
 	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetTemplateScratchRegionId(v string) *CreateStackRequest {
+	s.TemplateScratchRegionId = &v
 	return s
 }
 
@@ -5416,6 +5422,7 @@ func (s *GetTemplateResponseBody) SetUpdateTime(v string) *GetTemplateResponseBo
 type GetTemplateResponseBodyPermissions struct {
 	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ShareOption     *string `json:"ShareOption,omitempty" xml:"ShareOption,omitempty"`
+	ShareSource     *string `json:"ShareSource,omitempty" xml:"ShareSource,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	VersionOption   *string `json:"VersionOption,omitempty" xml:"VersionOption,omitempty"`
 }
@@ -5435,6 +5442,11 @@ func (s *GetTemplateResponseBodyPermissions) SetAccountId(v string) *GetTemplate
 
 func (s *GetTemplateResponseBodyPermissions) SetShareOption(v string) *GetTemplateResponseBodyPermissions {
 	s.ShareOption = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyPermissions) SetShareSource(v string) *GetTemplateResponseBodyPermissions {
+	s.ShareSource = &v
 	return s
 }
 
@@ -5472,14 +5484,15 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateEstimateCostRequest struct {
-	ClientToken       *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Parameters        []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RegionId          *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TemplateBody      *string                                     `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId        *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateScratchId *string                                     `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateURL       *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion   *string                                     `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	ClientToken             *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Parameters              []*GetTemplateEstimateCostRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId                *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateBody            *string                                     `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId              *string                                     `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId       *string                                     `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId *string                                     `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL             *string                                     `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion         *string                                     `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s GetTemplateEstimateCostRequest) String() string {
@@ -5517,6 +5530,11 @@ func (s *GetTemplateEstimateCostRequest) SetTemplateId(v string) *GetTemplateEst
 
 func (s *GetTemplateEstimateCostRequest) SetTemplateScratchId(v string) *GetTemplateEstimateCostRequest {
 	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *GetTemplateEstimateCostRequest) SetTemplateScratchRegionId(v string) *GetTemplateEstimateCostRequest {
+	s.TemplateScratchRegionId = &v
 	return s
 }
 
@@ -5917,6 +5935,7 @@ type GetTemplateScratchResponseBodyTemplateScratch struct {
 	SourceResourceGroup  *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup    `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	SourceResources      []*GetTemplateScratchResponseBodyTemplateScratchSourceResources      `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	SourceTag            *GetTemplateScratchResponseBodyTemplateScratchSourceTag              `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
+	StackProvision       *GetTemplateScratchResponseBodyTemplateScratchStackProvision         `json:"StackProvision,omitempty" xml:"StackProvision,omitempty" type:"Struct"`
 	Stacks               []*GetTemplateScratchResponseBodyTemplateScratchStacks               `json:"Stacks,omitempty" xml:"Stacks,omitempty" type:"Repeated"`
 	Status               *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusReason         *string                                                              `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
@@ -5971,6 +5990,11 @@ func (s *GetTemplateScratchResponseBodyTemplateScratch) SetSourceResources(v []*
 
 func (s *GetTemplateScratchResponseBodyTemplateScratch) SetSourceTag(v *GetTemplateScratchResponseBodyTemplateScratchSourceTag) *GetTemplateScratchResponseBodyTemplateScratch {
 	s.SourceTag = v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratch) SetStackProvision(v *GetTemplateScratchResponseBodyTemplateScratchStackProvision) *GetTemplateScratchResponseBodyTemplateScratch {
+	s.StackProvision = v
 	return s
 }
 
@@ -6101,9 +6125,33 @@ func (s *GetTemplateScratchResponseBodyTemplateScratchSourceTag) SetResourceType
 	return s
 }
 
+type GetTemplateScratchResponseBodyTemplateScratchStackProvision struct {
+	Creatable  *bool `json:"Creatable,omitempty" xml:"Creatable,omitempty"`
+	Importable *bool `json:"Importable,omitempty" xml:"Importable,omitempty"`
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchStackProvision) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateScratchResponseBodyTemplateScratchStackProvision) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchStackProvision) SetCreatable(v bool) *GetTemplateScratchResponseBodyTemplateScratchStackProvision {
+	s.Creatable = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchStackProvision) SetImportable(v bool) *GetTemplateScratchResponseBodyTemplateScratchStackProvision {
+	s.Importable = &v
+	return s
+}
+
 type GetTemplateScratchResponseBodyTemplateScratchStacks struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackId  *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId   *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	UsageType *string `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
 }
 
 func (s GetTemplateScratchResponseBodyTemplateScratchStacks) String() string {
@@ -6121,6 +6169,11 @@ func (s *GetTemplateScratchResponseBodyTemplateScratchStacks) SetRegionId(v stri
 
 func (s *GetTemplateScratchResponseBodyTemplateScratchStacks) SetStackId(v string) *GetTemplateScratchResponseBodyTemplateScratchStacks {
 	s.StackId = &v
+	return s
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchStacks) SetUsageType(v string) *GetTemplateScratchResponseBodyTemplateScratchStacks {
+	s.UsageType = &v
 	return s
 }
 
@@ -9218,20 +9271,21 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type PreviewStackRequest struct {
-	ClientToken       *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisableRollback   *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	Parallelism       *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Parameters        []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RegionId          *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StackName         *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	StackPolicyBody   *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
-	StackPolicyURL    *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TemplateBody      *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateId        *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateScratchId *string                          `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	TemplateURL       *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	TemplateVersion   *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	TimeoutInMinutes  *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	ClientToken             *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableRollback         *bool                            `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
+	Parallelism             *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Parameters              []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RegionId                *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackName               *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
+	StackPolicyBody         *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
+	StackPolicyURL          *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TemplateBody            *string                          `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId              *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId       *string                          `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateScratchRegionId *string                          `json:"TemplateScratchRegionId,omitempty" xml:"TemplateScratchRegionId,omitempty"`
+	TemplateURL             *string                          `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion         *string                          `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	TimeoutInMinutes        *int64                           `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s PreviewStackRequest) String() string {
@@ -9294,6 +9348,11 @@ func (s *PreviewStackRequest) SetTemplateId(v string) *PreviewStackRequest {
 
 func (s *PreviewStackRequest) SetTemplateScratchId(v string) *PreviewStackRequest {
 	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTemplateScratchRegionId(v string) *PreviewStackRequest {
+	s.TemplateScratchRegionId = &v
 	return s
 }
 
@@ -11790,6 +11849,7 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 	query["TemplateBody"] = request.TemplateBody
 	query["TemplateId"] = request.TemplateId
 	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
 	query["TemplateURL"] = request.TemplateURL
 	query["TemplateVersion"] = request.TemplateVersion
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
@@ -13234,6 +13294,7 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 	query["TemplateBody"] = request.TemplateBody
 	query["TemplateId"] = request.TemplateId
 	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
 	query["TemplateURL"] = request.TemplateURL
 	query["TemplateVersion"] = request.TemplateVersion
 	req := &openapi.OpenApiRequest{
@@ -14235,6 +14296,7 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 	query["TemplateBody"] = request.TemplateBody
 	query["TemplateId"] = request.TemplateId
 	query["TemplateScratchId"] = request.TemplateScratchId
+	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
 	query["TemplateURL"] = request.TemplateURL
 	query["TemplateVersion"] = request.TemplateVersion
 	query["TimeoutInMinutes"] = request.TimeoutInMinutes
