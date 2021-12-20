@@ -195,13 +195,56 @@ func (s *Disk) SetType(v string) *Disk {
 	return s
 }
 
+type ExportPort struct {
+	// 目标IP 段
+	CidrIP *string `json:"cidrIP,omitempty" xml:"cidrIP,omitempty"`
+	// 端口范围，格式：start/end
+	PortRange *string `json:"portRange,omitempty" xml:"portRange,omitempty"`
+	// 协议
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// 为true，则代表deny
+	Unallowed *bool `json:"unallowed,omitempty" xml:"unallowed,omitempty"`
+}
+
+func (s ExportPort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportPort) GoString() string {
+	return s.String()
+}
+
+func (s *ExportPort) SetCidrIP(v string) *ExportPort {
+	s.CidrIP = &v
+	return s
+}
+
+func (s *ExportPort) SetPortRange(v string) *ExportPort {
+	s.PortRange = &v
+	return s
+}
+
+func (s *ExportPort) SetProtocol(v string) *ExportPort {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ExportPort) SetUnallowed(v bool) *ExportPort {
+	s.Unallowed = &v
+	return s
+}
+
 type FoundationVersion struct {
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// documents
 	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
+	// 底座功能列表
+	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
 	// name，目前仅能是 “ADP 底座“
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 打包工具
+	PackageTools []*FoundationVersionPackageTools `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
 	// platforms
 	Platforms []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
 	// status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
@@ -232,8 +275,18 @@ func (s *FoundationVersion) SetDocuments(v string) *FoundationVersion {
 	return s
 }
 
+func (s *FoundationVersion) SetFeatures(v []*string) *FoundationVersion {
+	s.Features = v
+	return s
+}
+
 func (s *FoundationVersion) SetName(v string) *FoundationVersion {
 	s.Name = &v
+	return s
+}
+
+func (s *FoundationVersion) SetPackageTools(v []*FoundationVersionPackageTools) *FoundationVersion {
+	s.PackageTools = v
 	return s
 }
 
@@ -258,6 +311,31 @@ func (s *FoundationVersion) SetUid(v string) *FoundationVersion {
 }
 
 func (s *FoundationVersion) SetVersion(v string) *FoundationVersion {
+	s.Version = &v
+	return s
+}
+
+type FoundationVersionPackageTools struct {
+	// 工具名
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 工具版本
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s FoundationVersionPackageTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoundationVersionPackageTools) GoString() string {
+	return s.String()
+}
+
+func (s *FoundationVersionPackageTools) SetName(v string) *FoundationVersionPackageTools {
+	s.Name = &v
+	return s
+}
+
+func (s *FoundationVersionPackageTools) SetVersion(v string) *FoundationVersionPackageTools {
 	s.Version = &v
 	return s
 }
@@ -952,6 +1030,191 @@ func (s *ProductComponentRelationDetail) SetVersion(v string) *ProductComponentR
 	return s
 }
 
+type Resource struct {
+	// cpu
+	Cpu *ResourceCpu `json:"cpu,omitempty" xml:"cpu,omitempty" type:"Struct"`
+	// 实例hostname
+	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	// 资源分组名
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 镜像
+	Image *ResourceImage `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
+	// 实例类型
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// memory
+	Memory *ResourceMemory `json:"memory,omitempty" xml:"memory,omitempty" type:"Struct"`
+	// 需要开放的端口
+	Ports []*ExportPort `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// 公网IP 需求
+	PublicIP *ResourcePublicIP `json:"publicIP,omitempty" xml:"publicIP,omitempty" type:"Struct"`
+	// 数量
+	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// 存储需求
+	Storage []*ResourceStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Repeated"`
+}
+
+func (s Resource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Resource) GoString() string {
+	return s.String()
+}
+
+func (s *Resource) SetCpu(v *ResourceCpu) *Resource {
+	s.Cpu = v
+	return s
+}
+
+func (s *Resource) SetHostname(v string) *Resource {
+	s.Hostname = &v
+	return s
+}
+
+func (s *Resource) SetIdentifier(v string) *Resource {
+	s.Identifier = &v
+	return s
+}
+
+func (s *Resource) SetImage(v *ResourceImage) *Resource {
+	s.Image = v
+	return s
+}
+
+func (s *Resource) SetInstanceType(v string) *Resource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *Resource) SetMemory(v *ResourceMemory) *Resource {
+	s.Memory = v
+	return s
+}
+
+func (s *Resource) SetPorts(v []*ExportPort) *Resource {
+	s.Ports = v
+	return s
+}
+
+func (s *Resource) SetPublicIP(v *ResourcePublicIP) *Resource {
+	s.PublicIP = v
+	return s
+}
+
+func (s *Resource) SetReplica(v int32) *Resource {
+	s.Replica = &v
+	return s
+}
+
+func (s *Resource) SetStorage(v []*ResourceStorage) *Resource {
+	s.Storage = v
+	return s
+}
+
+type ResourceCpu struct {
+	// 需要的数量
+	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s ResourceCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceCpu) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceCpu) SetRequired(v int32) *ResourceCpu {
+	s.Required = &v
+	return s
+}
+
+type ResourceImage struct {
+	// image id
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 名称正则
+	NameRegex *string `json:"nameRegex,omitempty" xml:"nameRegex,omitempty"`
+}
+
+func (s ResourceImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceImage) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceImage) SetId(v string) *ResourceImage {
+	s.Id = &v
+	return s
+}
+
+func (s *ResourceImage) SetNameRegex(v string) *ResourceImage {
+	s.NameRegex = &v
+	return s
+}
+
+type ResourceMemory struct {
+	// 需要的内存，单位 G
+	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s ResourceMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceMemory) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceMemory) SetRequired(v int32) *ResourceMemory {
+	s.Required = &v
+	return s
+}
+
+type ResourcePublicIP struct {
+	// 带宽
+	Bandwidth *int32 `json:"bandwidth,omitempty" xml:"bandwidth,omitempty"`
+	// 需要的数量
+	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s ResourcePublicIP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourcePublicIP) GoString() string {
+	return s.String()
+}
+
+func (s *ResourcePublicIP) SetBandwidth(v int32) *ResourcePublicIP {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *ResourcePublicIP) SetRequired(v int32) *ResourcePublicIP {
+	s.Required = &v
+	return s
+}
+
+type ResourceStorage struct {
+	// 磁盘大小
+	Required *int32 `json:"required,omitempty" xml:"required,omitempty"`
+}
+
+func (s ResourceStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceStorage) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceStorage) SetRequired(v int32) *ResourceStorage {
+	s.Required = &v
+	return s
+}
+
 type AddEnvironmentNodesRequest struct {
 	// 保留业务分区
 	ApplicationDisk *string                               `json:"applicationDisk,omitempty" xml:"applicationDisk,omitempty"`
@@ -1389,6 +1652,72 @@ func (s *AddProductVersionConfigResponse) SetBody(v *AddProductVersionConfigResp
 	return s
 }
 
+type AuthorizeProductVersionRequest struct {
+	// 被授权者uid
+	Grantee *string `json:"grantee,omitempty" xml:"grantee,omitempty"`
+}
+
+func (s AuthorizeProductVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeProductVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeProductVersionRequest) SetGrantee(v string) *AuthorizeProductVersionRequest {
+	s.Grantee = &v
+	return s
+}
+
+type AuthorizeProductVersionResponseBody struct {
+	// 错误码
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 错误信息
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s AuthorizeProductVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeProductVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeProductVersionResponseBody) SetCode(v string) *AuthorizeProductVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AuthorizeProductVersionResponseBody) SetMsg(v string) *AuthorizeProductVersionResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type AuthorizeProductVersionResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AuthorizeProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AuthorizeProductVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeProductVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeProductVersionResponse) SetHeaders(v map[string]*string) *AuthorizeProductVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthorizeProductVersionResponse) SetBody(v *AuthorizeProductVersionResponseBody) *AuthorizeProductVersionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEnvironmentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	ClientToken   *string            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -1419,8 +1748,9 @@ type CreateEnvironmentRequest struct {
 	Platform          *CreateEnvironmentRequestPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
 	ProductVersionUID *string                           `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 	// 环境类型
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
-	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	VendorConfig *string `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
+	VendorType   *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s CreateEnvironmentRequest) String() string {
@@ -1458,6 +1788,11 @@ func (s *CreateEnvironmentRequest) SetProductVersionUID(v string) *CreateEnviron
 
 func (s *CreateEnvironmentRequest) SetType(v string) *CreateEnvironmentRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetVendorConfig(v string) *CreateEnvironmentRequest {
+	s.VendorConfig = &v
 	return s
 }
 
@@ -1560,6 +1895,98 @@ func (s *CreateEnvironmentResponse) SetHeaders(v map[string]*string) *CreateEnvi
 }
 
 func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFoundationReferenceRequest struct {
+	ClusterConfig        *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	FoundationVersionUID *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+}
+
+func (s CreateFoundationReferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceRequest) SetClusterConfig(v string) *CreateFoundationReferenceRequest {
+	s.ClusterConfig = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceRequest) SetFoundationVersionUID(v string) *CreateFoundationReferenceRequest {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+type CreateFoundationReferenceResponseBody struct {
+	Code *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateFoundationReferenceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                    `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s CreateFoundationReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceResponseBody) SetCode(v string) *CreateFoundationReferenceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFoundationReferenceResponseBody) SetData(v *CreateFoundationReferenceResponseBodyData) *CreateFoundationReferenceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateFoundationReferenceResponseBody) SetMsg(v string) *CreateFoundationReferenceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type CreateFoundationReferenceResponseBodyData struct {
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateFoundationReferenceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceResponseBodyData) SetUid(v string) *CreateFoundationReferenceResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateFoundationReferenceResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFoundationReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFoundationReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFoundationReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFoundationReferenceResponse) SetHeaders(v map[string]*string) *CreateFoundationReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFoundationReferenceResponse) SetBody(v *CreateFoundationReferenceResponseBody) *CreateFoundationReferenceResponse {
 	s.Body = v
 	return s
 }
@@ -2083,6 +2510,52 @@ func (s *DeleteEnvironmentNodeResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 func (s *DeleteEnvironmentNodeResponse) SetBody(v *DeleteEnvironmentNodeResponseBody) *DeleteEnvironmentNodeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnvironmentProductVersionResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s DeleteEnvironmentProductVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentProductVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentProductVersionResponseBody) SetCode(v string) *DeleteEnvironmentProductVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEnvironmentProductVersionResponseBody) SetMsg(v string) *DeleteEnvironmentProductVersionResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type DeleteEnvironmentProductVersionResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteEnvironmentProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnvironmentProductVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnvironmentProductVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnvironmentProductVersionResponse) SetHeaders(v map[string]*string) *DeleteEnvironmentProductVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnvironmentProductVersionResponse) SetBody(v *DeleteEnvironmentProductVersionResponseBody) *DeleteEnvironmentProductVersionResponse {
 	s.Body = v
 	return s
 }
@@ -2731,6 +3204,8 @@ type GetEnvironmentResponseBodyData struct {
 	ClusterId            *string                                 `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 	CreatedAt            *string                                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	Description          *string                                 `json:"description,omitempty" xml:"description,omitempty"`
+	FoundationVersion    *string                                 `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
+	FoundationVersionUID *string                                 `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
 	InstanceList         []*InstanceInfo                         `json:"instanceList,omitempty" xml:"instanceList,omitempty" type:"Repeated"`
 	InstanceStatus       *string                                 `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
 	Location             *string                                 `json:"location,omitempty" xml:"location,omitempty"`
@@ -2765,6 +3240,16 @@ func (s *GetEnvironmentResponseBodyData) SetCreatedAt(v string) *GetEnvironmentR
 
 func (s *GetEnvironmentResponseBodyData) SetDescription(v string) *GetEnvironmentResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetFoundationVersion(v string) *GetEnvironmentResponseBodyData {
+	s.FoundationVersion = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetFoundationVersionUID(v string) *GetEnvironmentResponseBodyData {
+	s.FoundationVersionUID = &v
 	return s
 }
 
@@ -3155,6 +3640,177 @@ func (s *GetEnvironmentNodeResponse) SetHeaders(v map[string]*string) *GetEnviro
 }
 
 func (s *GetEnvironmentNodeResponse) SetBody(v *GetEnvironmentNodeResponseBody) *GetEnvironmentNodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetFoundationComponentReferenceResponseBody struct {
+	Code *string                                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetFoundationComponentReferenceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Msg  *string                                            `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetFoundationComponentReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationComponentReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationComponentReferenceResponseBody) SetCode(v string) *GetFoundationComponentReferenceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBody) SetData(v []*GetFoundationComponentReferenceResponseBodyData) *GetFoundationComponentReferenceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBody) SetMsg(v string) *GetFoundationComponentReferenceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetFoundationComponentReferenceResponseBodyData struct {
+	AppVersion                        *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	ComponentDescription              *string `json:"componentDescription,omitempty" xml:"componentDescription,omitempty"`
+	ComponentName                     *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentReferenceUID             *string `json:"componentReferenceUID,omitempty" xml:"componentReferenceUID,omitempty"`
+	ComponentUID                      *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	ComponentVersionDescription       *string `json:"componentVersionDescription,omitempty" xml:"componentVersionDescription,omitempty"`
+	ComponentVersionUID               *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	Enable                            *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Namespace                         *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationValues               *string `json:"orchestrationValues,omitempty" xml:"orchestrationValues,omitempty"`
+	ParentComponent                   *bool   `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	ParentComponentVersionRelationUID *string `json:"parentComponentVersionRelationUID,omitempty" xml:"parentComponentVersionRelationUID,omitempty"`
+	ParentComponentVersionUID         *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	ReleaseName                       *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	Resources                         *string `json:"resources,omitempty" xml:"resources,omitempty"`
+	Sequence                          *int32  `json:"sequence,omitempty" xml:"sequence,omitempty"`
+	Values                            *string `json:"values,omitempty" xml:"values,omitempty"`
+	Version                           *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetFoundationComponentReferenceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationComponentReferenceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetAppVersion(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentDescription(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentDescription = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentName(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentReferenceUID(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentReferenceUID = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentUID(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentUID = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentVersionDescription(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentVersionDescription = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetComponentVersionUID(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetEnable(v bool) *GetFoundationComponentReferenceResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetNamespace(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetOrchestrationValues(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.OrchestrationValues = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetParentComponent(v bool) *GetFoundationComponentReferenceResponseBodyData {
+	s.ParentComponent = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetParentComponentVersionRelationUID(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ParentComponentVersionRelationUID = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetParentComponentVersionUID(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ParentComponentVersionUID = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetReleaseName(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetResources(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.Resources = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetSequence(v int32) *GetFoundationComponentReferenceResponseBodyData {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetValues(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.Values = &v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponseBodyData) SetVersion(v string) *GetFoundationComponentReferenceResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetFoundationComponentReferenceResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFoundationComponentReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFoundationComponentReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationComponentReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationComponentReferenceResponse) SetHeaders(v map[string]*string) *GetFoundationComponentReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFoundationComponentReferenceResponse) SetBody(v *GetFoundationComponentReferenceResponseBody) *GetFoundationComponentReferenceResponse {
 	s.Body = v
 	return s
 }
@@ -3991,7 +4647,7 @@ func (s *GetProductVersionPackageResponse) SetBody(v *GetProductVersionPackageRe
 }
 
 type GetWorkflowStatusRequest struct {
-	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
+	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy","UnbindProductVersion"]
 	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
 	// xuid，根据场景传递env_uid/package_uid/deploy_uid
 	Xuid *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
@@ -4989,11 +5645,13 @@ func (s *ListEnvironmentTunnelsResponse) SetBody(v *ListEnvironmentTunnelsRespon
 
 type ListEnvironmentsRequest struct {
 	ClusterUID     *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	FoundationType *string `json:"foundationType,omitempty" xml:"foundationType,omitempty"`
 	Fuzzy          *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
 	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
 	PageNum        *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
 	VendorType     *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
@@ -5007,6 +5665,11 @@ func (s ListEnvironmentsRequest) GoString() string {
 
 func (s *ListEnvironmentsRequest) SetClusterUID(v string) *ListEnvironmentsRequest {
 	s.ClusterUID = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetFoundationType(v string) *ListEnvironmentsRequest {
+	s.FoundationType = &v
 	return s
 }
 
@@ -5032,6 +5695,11 @@ func (s *ListEnvironmentsRequest) SetPageNum(v int32) *ListEnvironmentsRequest {
 
 func (s *ListEnvironmentsRequest) SetPageSize(v int32) *ListEnvironmentsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetType(v string) *ListEnvironmentsRequest {
+	s.Type = &v
 	return s
 }
 
@@ -6260,6 +6928,139 @@ func (s *ListProductInstanceConfigsResponse) SetBody(v *ListProductInstanceConfi
 	return s
 }
 
+type ListProductInstancesRequest struct {
+	EnvUID            *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	PageNum           *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize          *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s ListProductInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesRequest) SetEnvUID(v string) *ListProductInstancesRequest {
+	s.EnvUID = &v
+	return s
+}
+
+func (s *ListProductInstancesRequest) SetPageNum(v string) *ListProductInstancesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductInstancesRequest) SetPageSize(v string) *ListProductInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductInstancesRequest) SetProductVersionUID(v string) *ListProductInstancesRequest {
+	s.ProductVersionUID = &v
+	return s
+}
+
+type ListProductInstancesResponseBody struct {
+	Data *ListProductInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s ListProductInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesResponseBody) SetData(v *ListProductInstancesResponseBodyData) *ListProductInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+type ListProductInstancesResponseBodyData struct {
+	List []*ListProductInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s ListProductInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesResponseBodyData) SetList(v []*ListProductInstancesResponseBodyDataList) *ListProductInstancesResponseBodyData {
+	s.List = v
+	return s
+}
+
+type ListProductInstancesResponseBodyDataList struct {
+	ProductName       *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductVersion    *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+	Uid               *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListProductInstancesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetProductName(v string) *ListProductInstancesResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetProductVersion(v string) *ListProductInstancesResponseBodyDataList {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetProductVersionUID(v string) *ListProductInstancesResponseBodyDataList {
+	s.ProductVersionUID = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetStatus(v string) *ListProductInstancesResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetUid(v string) *ListProductInstancesResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type ListProductInstancesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProductInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProductInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductInstancesResponse) SetHeaders(v map[string]*string) *ListProductInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProductInstancesResponse) SetBody(v *ListProductInstancesResponseBody) *ListProductInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListProductVersionConfigsRequest struct {
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
@@ -6933,6 +7734,7 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 }
 
 type ListWorkflowTaskLogsRequest struct {
+	FilterValues []*string `json:"filterValues,omitempty" xml:"filterValues,omitempty" type:"Repeated"`
 	// log 的顺序，positive 代表最新的数据在最后，reverse 代表最新的数据在最前
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
 	PageNum   *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
@@ -6949,6 +7751,11 @@ func (s ListWorkflowTaskLogsRequest) String() string {
 
 func (s ListWorkflowTaskLogsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsRequest) SetFilterValues(v []*string) *ListWorkflowTaskLogsRequest {
+	s.FilterValues = v
+	return s
 }
 
 func (s *ListWorkflowTaskLogsRequest) SetOrderType(v string) *ListWorkflowTaskLogsRequest {
@@ -6972,6 +7779,56 @@ func (s *ListWorkflowTaskLogsRequest) SetWorkflowType(v string) *ListWorkflowTas
 }
 
 func (s *ListWorkflowTaskLogsRequest) SetXuid(v string) *ListWorkflowTaskLogsRequest {
+	s.Xuid = &v
+	return s
+}
+
+type ListWorkflowTaskLogsShrinkRequest struct {
+	FilterValuesShrink *string `json:"filterValues,omitempty" xml:"filterValues,omitempty"`
+	// log 的顺序，positive 代表最新的数据在最后，reverse 代表最新的数据在最前
+	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
+	PageNum   *int64  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// 每一页的行数，最大值 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// ENUM:["CreateCluster","DeleteCluster","Pack","Deploy"]
+	WorkflowType *string `json:"workflowType,omitempty" xml:"workflowType,omitempty"`
+	Xuid         *string `json:"xuid,omitempty" xml:"xuid,omitempty"`
+}
+
+func (s ListWorkflowTaskLogsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkflowTaskLogsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetFilterValuesShrink(v string) *ListWorkflowTaskLogsShrinkRequest {
+	s.FilterValuesShrink = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetOrderType(v string) *ListWorkflowTaskLogsShrinkRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetPageNum(v int64) *ListWorkflowTaskLogsShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetPageSize(v int64) *ListWorkflowTaskLogsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetWorkflowType(v string) *ListWorkflowTaskLogsShrinkRequest {
+	s.WorkflowType = &v
+	return s
+}
+
+func (s *ListWorkflowTaskLogsShrinkRequest) SetXuid(v string) *ListWorkflowTaskLogsShrinkRequest {
 	s.Xuid = &v
 	return s
 }
@@ -7367,6 +8224,52 @@ func (s *PutProductInstanceConfigResponse) SetBody(v *PutProductInstanceConfigRe
 	return s
 }
 
+type SetEnvironmentFoundationReferenceResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s SetEnvironmentFoundationReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEnvironmentFoundationReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetEnvironmentFoundationReferenceResponseBody) SetCode(v string) *SetEnvironmentFoundationReferenceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetEnvironmentFoundationReferenceResponseBody) SetMsg(v string) *SetEnvironmentFoundationReferenceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type SetEnvironmentFoundationReferenceResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetEnvironmentFoundationReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetEnvironmentFoundationReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetEnvironmentFoundationReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetEnvironmentFoundationReferenceResponse) SetHeaders(v map[string]*string) *SetEnvironmentFoundationReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetEnvironmentFoundationReferenceResponse) SetBody(v *SetEnvironmentFoundationReferenceResponseBody) *SetEnvironmentFoundationReferenceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateEnvironmentRequest struct {
 	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
 	Location     *string `json:"location,omitempty" xml:"location,omitempty"`
@@ -7639,6 +8542,75 @@ func (s *UpdateEnvironmentProductVersionResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *UpdateEnvironmentProductVersionResponse) SetBody(v *UpdateEnvironmentProductVersionResponseBody) *UpdateEnvironmentProductVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFoundationComponentReferenceRequest struct {
+	ComponentOrchestrationValues *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	Enable                       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s UpdateFoundationComponentReferenceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFoundationComponentReferenceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFoundationComponentReferenceRequest) SetComponentOrchestrationValues(v string) *UpdateFoundationComponentReferenceRequest {
+	s.ComponentOrchestrationValues = &v
+	return s
+}
+
+func (s *UpdateFoundationComponentReferenceRequest) SetEnable(v bool) *UpdateFoundationComponentReferenceRequest {
+	s.Enable = &v
+	return s
+}
+
+type UpdateFoundationComponentReferenceResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s UpdateFoundationComponentReferenceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFoundationComponentReferenceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFoundationComponentReferenceResponseBody) SetCode(v string) *UpdateFoundationComponentReferenceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFoundationComponentReferenceResponseBody) SetMsg(v string) *UpdateFoundationComponentReferenceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type UpdateFoundationComponentReferenceResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateFoundationComponentReferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFoundationComponentReferenceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFoundationComponentReferenceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFoundationComponentReferenceResponse) SetHeaders(v map[string]*string) *UpdateFoundationComponentReferenceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFoundationComponentReferenceResponse) SetBody(v *UpdateFoundationComponentReferenceResponseBody) *UpdateFoundationComponentReferenceResponse {
 	s.Body = v
 	return s
 }
@@ -8431,6 +9403,53 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 	return _result, _err
 }
 
+func (client *Client) AuthorizeProductVersion(uid *string, request *AuthorizeProductVersionRequest) (_result *AuthorizeProductVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AuthorizeProductVersionResponse{}
+	_body, _err := client.AuthorizeProductVersionWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AuthorizeProductVersionWithOptions(uid *string, request *AuthorizeProductVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthorizeProductVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grantee)) {
+		body["grantee"] = request.Grantee
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthorizeProductVersion"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/authorizations"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthorizeProductVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateEnvironmentHeaders{}
@@ -8473,6 +9492,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		body["type"] = request.Type
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VendorConfig)) {
+		body["vendorConfig"] = request.VendorConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VendorType)) {
 		body["vendorType"] = request.VendorType
 	}
@@ -8502,6 +9525,56 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFoundationReference(request *CreateFoundationReferenceRequest) (_result *CreateFoundationReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFoundationReferenceResponse{}
+	_body, _err := client.CreateFoundationReferenceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFoundationReferenceWithOptions(request *CreateFoundationReferenceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFoundationReferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterConfig)) {
+		body["clusterConfig"] = request.ClusterConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FoundationVersionUID)) {
+		body["foundationVersionUID"] = request.FoundationVersionUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFoundationReference"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/foundation-references"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFoundationReferenceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8811,6 +9884,44 @@ func (client *Client) DeleteEnvironmentNodeWithOptions(uid *string, nodeUID *str
 	return _result, _err
 }
 
+func (client *Client) DeleteEnvironmentProductVersion(uid *string, productVersionUID *string) (_result *DeleteEnvironmentProductVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEnvironmentProductVersionResponse{}
+	_body, _err := client.DeleteEnvironmentProductVersionWithOptions(uid, productVersionUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnvironmentProductVersionWithOptions(uid *string, productVersionUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEnvironmentProductVersionResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	productVersionUID = openapiutil.GetEncodeParam(productVersionUID)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnvironmentProductVersion"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/product-versions/" + tea.StringValue(productVersionUID)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnvironmentProductVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteProduct(uid *string) (_result *DeleteProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8958,7 +10069,7 @@ func (client *Client) DeleteProductVersionWithOptions(uid *string, headers map[s
 		Action:      tea.String("DeleteProductVersion"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/products/" + tea.StringValue(uid) + "/versions"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -9204,6 +10315,44 @@ func (client *Client) GetEnvironmentNodeWithOptions(uid *string, nodeUID *string
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEnvironmentNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFoundationComponentReference(componentReferenceUID *string, uid *string) (_result *GetFoundationComponentReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFoundationComponentReferenceResponse{}
+	_body, _err := client.GetFoundationComponentReferenceWithOptions(componentReferenceUID, uid, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFoundationComponentReferenceWithOptions(componentReferenceUID *string, uid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFoundationComponentReferenceResponse, _err error) {
+	componentReferenceUID = openapiutil.GetEncodeParam(componentReferenceUID)
+	uid = openapiutil.GetEncodeParam(uid)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFoundationComponentReference"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid) + "/components/" + tea.StringValue(componentReferenceUID)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFoundationComponentReferenceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9873,6 +11022,10 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		query["clusterUID"] = request.ClusterUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FoundationType)) {
+		query["foundationType"] = request.FoundationType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
 		query["fuzzy"] = request.Fuzzy
 	}
@@ -9891,6 +11044,10 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VendorType)) {
@@ -10296,6 +11453,64 @@ func (client *Client) ListProductInstanceConfigsWithOptions(request *ListProduct
 	return _result, _err
 }
 
+func (client *Client) ListProductInstances(request *ListProductInstancesRequest) (_result *ListProductInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProductInstancesResponse{}
+	_body, _err := client.ListProductInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProductInstancesWithOptions(request *ListProductInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvUID)) {
+		query["envUID"] = request.EnvUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
+		query["productVersionUID"] = request.ProductVersionUID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProductInstances"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/product-instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProductInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListProductVersionConfigs(uid *string, request *ListProductVersionConfigsRequest) (_result *ListProductVersionConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10505,14 +11720,24 @@ func (client *Client) ListWorkflowTaskLogs(stepName *string, taskName *string, r
 	return _result, _err
 }
 
-func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName *string, request *ListWorkflowTaskLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkflowTaskLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListWorkflowTaskLogsWithOptions(stepName *string, taskName *string, tmpReq *ListWorkflowTaskLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkflowTaskLogsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
 	stepName = openapiutil.GetEncodeParam(stepName)
 	taskName = openapiutil.GetEncodeParam(taskName)
+	request := &ListWorkflowTaskLogsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterValues)) {
+		request.FilterValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterValues, tea.String("filterValues"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterValuesShrink)) {
+		query["filterValues"] = request.FilterValuesShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
 		query["orderType"] = request.OrderType
 	}
@@ -10698,6 +11923,44 @@ func (client *Client) PutProductInstanceConfigWithOptions(request *PutProductIns
 	return _result, _err
 }
 
+func (client *Client) SetEnvironmentFoundationReference(uid *string, foundationReferenceUID *string) (_result *SetEnvironmentFoundationReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetEnvironmentFoundationReferenceResponse{}
+	_body, _err := client.SetEnvironmentFoundationReferenceWithOptions(uid, foundationReferenceUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetEnvironmentFoundationReferenceWithOptions(uid *string, foundationReferenceUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetEnvironmentFoundationReferenceResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	foundationReferenceUID = openapiutil.GetEncodeParam(foundationReferenceUID)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetEnvironmentFoundationReference"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/foundation-references/" + tea.StringValue(foundationReferenceUID)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetEnvironmentFoundationReferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateEnvironment(uid *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10868,6 +12131,58 @@ func (client *Client) UpdateEnvironmentProductVersionWithOptions(uid *string, re
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEnvironmentProductVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFoundationComponentReference(uid *string, componentReferenceUID *string, request *UpdateFoundationComponentReferenceRequest) (_result *UpdateFoundationComponentReferenceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFoundationComponentReferenceResponse{}
+	_body, _err := client.UpdateFoundationComponentReferenceWithOptions(uid, componentReferenceUID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFoundationComponentReferenceWithOptions(uid *string, componentReferenceUID *string, request *UpdateFoundationComponentReferenceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFoundationComponentReferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	componentReferenceUID = openapiutil.GetEncodeParam(componentReferenceUID)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentOrchestrationValues)) {
+		body["componentOrchestrationValues"] = request.ComponentOrchestrationValues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFoundationComponentReference"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/foundation-references/" + tea.StringValue(uid) + "/components/" + tea.StringValue(componentReferenceUID)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFoundationComponentReferenceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
