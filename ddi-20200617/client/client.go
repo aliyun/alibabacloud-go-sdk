@@ -697,6 +697,299 @@ func (s *CreateClusterV2Response) SetBody(v *CreateClusterV2ResponseBody) *Creat
 	return s
 }
 
+type CreateFlowJobRequest struct {
+	Adhoc           *bool                               `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	AlertConf       *string                             `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	ClientToken     *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterId       *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CustomVariables *string                             `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvConf         *string                             `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	FailAct         *string                             `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	Mode            *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf     *string                             `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParamConf       *string                             `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Params          *string                             `json:"Params,omitempty" xml:"Params,omitempty"`
+	ParentCategory  *string                             `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
+	ProjectId       *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceList    []*CreateFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	RetryPolicy     *string                             `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	RunConf         *string                             `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	Type            *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFlowJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowJobRequest) SetAdhoc(v bool) *CreateFlowJobRequest {
+	s.Adhoc = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetAlertConf(v string) *CreateFlowJobRequest {
+	s.AlertConf = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetClientToken(v string) *CreateFlowJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetClusterId(v string) *CreateFlowJobRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetCustomVariables(v string) *CreateFlowJobRequest {
+	s.CustomVariables = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetDescription(v string) *CreateFlowJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetEnvConf(v string) *CreateFlowJobRequest {
+	s.EnvConf = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetFailAct(v string) *CreateFlowJobRequest {
+	s.FailAct = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetMode(v string) *CreateFlowJobRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetMonitorConf(v string) *CreateFlowJobRequest {
+	s.MonitorConf = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetName(v string) *CreateFlowJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetParamConf(v string) *CreateFlowJobRequest {
+	s.ParamConf = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetParams(v string) *CreateFlowJobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetParentCategory(v string) *CreateFlowJobRequest {
+	s.ParentCategory = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetProjectId(v string) *CreateFlowJobRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetRegionId(v string) *CreateFlowJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetResourceList(v []*CreateFlowJobRequestResourceList) *CreateFlowJobRequest {
+	s.ResourceList = v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetRetryPolicy(v string) *CreateFlowJobRequest {
+	s.RetryPolicy = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetRunConf(v string) *CreateFlowJobRequest {
+	s.RunConf = &v
+	return s
+}
+
+func (s *CreateFlowJobRequest) SetType(v string) *CreateFlowJobRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateFlowJobRequestResourceList struct {
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s CreateFlowJobRequestResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowJobRequestResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowJobRequestResourceList) SetAlias(v string) *CreateFlowJobRequestResourceList {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateFlowJobRequestResourceList) SetPath(v string) *CreateFlowJobRequestResourceList {
+	s.Path = &v
+	return s
+}
+
+type CreateFlowJobResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFlowJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowJobResponseBody) SetId(v string) *CreateFlowJobResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateFlowJobResponseBody) SetRequestId(v string) *CreateFlowJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFlowJobResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFlowJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFlowJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowJobResponse) SetHeaders(v map[string]*string) *CreateFlowJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowJobResponse) SetBody(v *CreateFlowJobResponseBody) *CreateFlowJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFlowProjectRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s CreateFlowProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowProjectRequest) SetClientToken(v string) *CreateFlowProjectRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateFlowProjectRequest) SetDescription(v string) *CreateFlowProjectRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateFlowProjectRequest) SetName(v string) *CreateFlowProjectRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFlowProjectRequest) SetProductType(v string) *CreateFlowProjectRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *CreateFlowProjectRequest) SetRegionId(v string) *CreateFlowProjectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateFlowProjectRequest) SetResourceGroupId(v string) *CreateFlowProjectRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type CreateFlowProjectResponseBody struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFlowProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowProjectResponseBody) SetId(v string) *CreateFlowProjectResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateFlowProjectResponseBody) SetRequestId(v string) *CreateFlowProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFlowProjectResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFlowProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFlowProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowProjectResponse) SetHeaders(v map[string]*string) *CreateFlowProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowProjectResponse) SetBody(v *CreateFlowProjectResponseBody) *CreateFlowProjectResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterV2Request struct {
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2210,6 +2503,134 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 	return s
 }
 
+type ListMainVersionsRequest struct {
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListMainVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMainVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMainVersionsRequest) SetRegionId(v string) *ListMainVersionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListMainVersionsRequest) SetResourceGroupId(v string) *ListMainVersionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListMainVersionsRequest) SetResourceOwnerId(v int64) *ListMainVersionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListMainVersionsResponseBody struct {
+	MainVersionList []*ListMainVersionsResponseBodyMainVersionList `json:"MainVersionList,omitempty" xml:"MainVersionList,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMainVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMainVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMainVersionsResponseBody) SetMainVersionList(v []*ListMainVersionsResponseBodyMainVersionList) *ListMainVersionsResponseBody {
+	s.MainVersionList = v
+	return s
+}
+
+func (s *ListMainVersionsResponseBody) SetRequestId(v string) *ListMainVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMainVersionsResponseBodyMainVersionList struct {
+	ClusterTypeInfoList []*ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList `json:"ClusterTypeInfoList,omitempty" xml:"ClusterTypeInfoList,omitempty" type:"Repeated"`
+	ExtraInfo           *string                                                           `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	MainVersionName     *string                                                           `json:"MainVersionName,omitempty" xml:"MainVersionName,omitempty"`
+	RegionId            *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListMainVersionsResponseBodyMainVersionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMainVersionsResponseBodyMainVersionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMainVersionsResponseBodyMainVersionList) SetClusterTypeInfoList(v []*ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList) *ListMainVersionsResponseBodyMainVersionList {
+	s.ClusterTypeInfoList = v
+	return s
+}
+
+func (s *ListMainVersionsResponseBodyMainVersionList) SetExtraInfo(v string) *ListMainVersionsResponseBodyMainVersionList {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *ListMainVersionsResponseBodyMainVersionList) SetMainVersionName(v string) *ListMainVersionsResponseBodyMainVersionList {
+	s.MainVersionName = &v
+	return s
+}
+
+func (s *ListMainVersionsResponseBodyMainVersionList) SetRegionId(v string) *ListMainVersionsResponseBodyMainVersionList {
+	s.RegionId = &v
+	return s
+}
+
+type ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList struct {
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+}
+
+func (s ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList) SetClusterType(v string) *ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList {
+	s.ClusterType = &v
+	return s
+}
+
+type ListMainVersionsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMainVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMainVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMainVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMainVersionsResponse) SetHeaders(v map[string]*string) *ListMainVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMainVersionsResponse) SetBody(v *ListMainVersionsResponseBody) *ListMainVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseClusterRequest struct {
 	ForceRelease    *bool   `json:"ForceRelease,omitempty" xml:"ForceRelease,omitempty"`
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -2403,7 +2824,6 @@ func (client *Client) CreateClusterV2WithOptions(request *CreateClusterV2Request
 	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateClusterV2"),
@@ -2413,7 +2833,7 @@ func (client *Client) CreateClusterV2WithOptions(request *CreateClusterV2Request
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClusterV2Response{}
@@ -2436,6 +2856,112 @@ func (client *Client) CreateClusterV2(request *CreateClusterV2Request) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateFlowJobWithOptions(request *CreateFlowJobRequest, runtime *util.RuntimeOptions) (_result *CreateFlowJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["Adhoc"] = request.Adhoc
+	query["AlertConf"] = request.AlertConf
+	query["ClientToken"] = request.ClientToken
+	query["ClusterId"] = request.ClusterId
+	query["CustomVariables"] = request.CustomVariables
+	query["Description"] = request.Description
+	query["EnvConf"] = request.EnvConf
+	query["FailAct"] = request.FailAct
+	query["Mode"] = request.Mode
+	query["MonitorConf"] = request.MonitorConf
+	query["Name"] = request.Name
+	query["ParamConf"] = request.ParamConf
+	query["Params"] = request.Params
+	query["ParentCategory"] = request.ParentCategory
+	query["ProjectId"] = request.ProjectId
+	query["RegionId"] = request.RegionId
+	query["ResourceList"] = request.ResourceList
+	query["RetryPolicy"] = request.RetryPolicy
+	query["RunConf"] = request.RunConf
+	query["Type"] = request.Type
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowJob"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFlowJob(request *CreateFlowJobRequest) (_result *CreateFlowJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFlowJobResponse{}
+	_body, _err := client.CreateFlowJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFlowProjectWithOptions(request *CreateFlowProjectRequest, runtime *util.RuntimeOptions) (_result *CreateFlowProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClientToken"] = request.ClientToken
+	query["Description"] = request.Description
+	query["Name"] = request.Name
+	query["ProductType"] = request.ProductType
+	query["RegionId"] = request.RegionId
+	query["ResourceGroupId"] = request.ResourceGroupId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowProject"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFlowProject(request *CreateFlowProjectRequest) (_result *CreateFlowProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFlowProjectResponse{}
+	_body, _err := client.CreateFlowProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterV2WithOptions(request *DescribeClusterV2Request, runtime *util.RuntimeOptions) (_result *DescribeClusterV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2447,7 +2973,6 @@ func (client *Client) DescribeClusterV2WithOptions(request *DescribeClusterV2Req
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterV2"),
@@ -2457,7 +2982,7 @@ func (client *Client) DescribeClusterV2WithOptions(request *DescribeClusterV2Req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterV2Response{}
@@ -2503,7 +3028,6 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListClusters"),
@@ -2513,7 +3037,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClustersResponse{}
@@ -2536,6 +3060,46 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	return _result, _err
 }
 
+func (client *Client) ListMainVersionsWithOptions(request *ListMainVersionsRequest, runtime *util.RuntimeOptions) (_result *ListMainVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMainVersions"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMainVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMainVersions(request *ListMainVersionsRequest) (_result *ListMainVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMainVersionsResponse{}
+	_body, _err := client.ListMainVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReleaseClusterWithOptions(request *ReleaseClusterRequest, runtime *util.RuntimeOptions) (_result *ReleaseClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2548,7 +3112,6 @@ func (client *Client) ReleaseClusterWithOptions(request *ReleaseClusterRequest, 
 	query["ResourceOwnerId"] = request.ResourceOwnerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReleaseCluster"),
@@ -2558,7 +3121,7 @@ func (client *Client) ReleaseClusterWithOptions(request *ReleaseClusterRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseClusterResponse{}
