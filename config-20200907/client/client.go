@@ -10653,7 +10653,6 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ActiveAggregateConfigRules"),
@@ -10663,7 +10662,7 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActiveAggregateConfigRulesResponse{}
@@ -10697,7 +10696,6 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachAggregateConfigRuleToCompliancePack"),
@@ -10707,7 +10705,7 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
@@ -10740,7 +10738,6 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachConfigRuleToCompliancePack"),
@@ -10750,7 +10747,7 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachConfigRuleToCompliancePackResponse{}
@@ -10784,8 +10781,37 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackName)) {
+		body["CompliancePackName"] = request.CompliancePackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackTemplateId)) {
+		body["CompliancePackTemplateId"] = request.CompliancePackTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRulesShrink)) {
+		body["ConfigRules"] = request.ConfigRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregateCompliancePack"),
@@ -10833,8 +10859,73 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		body["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleTriggerTypes)) {
+		body["ConfigRuleTriggerTypes"] = request.ConfigRuleTriggerTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
+		body["InputParameters"] = request.InputParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumExecutionFrequency)) {
+		body["MaximumExecutionFrequency"] = request.MaximumExecutionFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
+		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdentifier)) {
+		body["SourceIdentifier"] = request.SourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceOwner)) {
+		body["SourceOwner"] = request.SourceOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregateConfigRule"),
@@ -10878,8 +10969,29 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 		request.AggregatorAccountsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AggregatorAccounts, tea.String("AggregatorAccounts"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorAccountsShrink)) {
+		body["AggregatorAccounts"] = request.AggregatorAccountsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AggregatorName)) {
+		body["AggregatorName"] = request.AggregatorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AggregatorType)) {
+		body["AggregatorType"] = request.AggregatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAggregator"),
@@ -10923,8 +11035,33 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackName)) {
+		body["CompliancePackName"] = request.CompliancePackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackTemplateId)) {
+		body["CompliancePackTemplateId"] = request.CompliancePackTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRulesShrink)) {
+		body["ConfigRules"] = request.ConfigRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCompliancePack"),
@@ -10972,8 +11109,69 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		body["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleTriggerTypes)) {
+		body["ConfigRuleTriggerTypes"] = request.ConfigRuleTriggerTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
+		body["InputParameters"] = request.InputParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumExecutionFrequency)) {
+		body["MaximumExecutionFrequency"] = request.MaximumExecutionFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
+		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdentifier)) {
+		body["SourceIdentifier"] = request.SourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceOwner)) {
+		body["SourceOwner"] = request.SourceOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateConfigRule"),
@@ -11016,7 +11214,6 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeactiveAggregateConfigRules"),
@@ -11026,7 +11223,7 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeactiveAggregateConfigRulesResponse{}
@@ -11058,7 +11255,6 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeactiveConfigRules"),
@@ -11068,7 +11264,7 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeactiveConfigRulesResponse{}
@@ -11096,8 +11292,25 @@ func (client *Client) DeleteAggregateCompliancePacksWithOptions(request *DeleteA
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackIds)) {
+		body["CompliancePackIds"] = request.CompliancePackIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteRule)) {
+		body["DeleteRule"] = request.DeleteRule
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAggregateCompliancePacks"),
@@ -11140,7 +11353,6 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAggregateConfigRules"),
@@ -11150,7 +11362,7 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAggregateConfigRulesResponse{}
@@ -11178,8 +11390,17 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorIds)) {
+		body["AggregatorIds"] = request.AggregatorIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAggregators"),
@@ -11217,8 +11438,21 @@ func (client *Client) DeleteCompliancePacksWithOptions(request *DeleteCompliance
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackIds)) {
+		body["CompliancePackIds"] = request.CompliancePackIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteRule)) {
+		body["DeleteRule"] = request.DeleteRule
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCompliancePacks"),
@@ -11262,7 +11496,6 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(reque
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachAggregateConfigRuleToCompliancePack"),
@@ -11272,7 +11505,7 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(reque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
@@ -11305,7 +11538,6 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 	query["ConfigRuleIds"] = request.ConfigRuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachConfigRuleToCompliancePack"),
@@ -11315,7 +11547,7 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachConfigRuleToCompliancePackResponse{}
@@ -11343,8 +11575,21 @@ func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		body["CompliancePackId"] = request.CompliancePackId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateAggregateCompliancePackReport"),
@@ -11382,8 +11627,17 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateAggregateConfigRulesReport"),
@@ -11421,8 +11675,17 @@ func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateC
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		body["CompliancePackId"] = request.CompliancePackId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateCompliancePackReport"),
@@ -11460,8 +11723,13 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateConfigRulesReport"),
@@ -11511,7 +11779,7 @@ func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *Ge
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateAccountComplianceByPackResponse{}
@@ -11551,7 +11819,7 @@ func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregat
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateCompliancePackResponse{}
@@ -11591,7 +11859,7 @@ func (client *Client) GetAggregateCompliancePackReportWithOptions(request *GetAg
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateCompliancePackReportResponse{}
@@ -11624,7 +11892,6 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 	query["ConfigRuleId"] = request.ConfigRuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAggregateConfigRule"),
@@ -11634,7 +11901,7 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleResponse{}
@@ -11674,7 +11941,7 @@ func (client *Client) GetAggregateConfigRuleComplianceByPackWithOptions(request 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleComplianceByPackResponse{}
@@ -11714,7 +11981,7 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
@@ -11754,7 +12021,7 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateConfigRulesReportResponse{}
@@ -11794,7 +12061,7 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
@@ -11834,7 +12101,7 @@ func (client *Client) GetAggregateResourceComplianceByPackWithOptions(request *G
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceByPackResponse{}
@@ -11874,7 +12141,7 @@ func (client *Client) GetAggregateResourceComplianceTimelineWithOptions(request 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceComplianceTimelineResponse{}
@@ -11914,7 +12181,7 @@ func (client *Client) GetAggregateResourceConfigurationTimelineWithOptions(reque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceConfigurationTimelineResponse{}
@@ -11954,7 +12221,7 @@ func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceCountsGroupByRegionResponse{}
@@ -11994,7 +12261,7 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
@@ -12034,7 +12301,7 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregatorResponse{}
@@ -12074,7 +12341,7 @@ func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCompliancePackResponse{}
@@ -12114,7 +12381,7 @@ func (client *Client) GetCompliancePackReportWithOptions(request *GetComplianceP
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCompliancePackReportResponse{}
@@ -12146,7 +12413,6 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 	query["ConfigRuleId"] = request.ConfigRuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetConfigRule"),
@@ -12156,7 +12422,7 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRuleResponse{}
@@ -12196,7 +12462,7 @@ func (client *Client) GetConfigRuleComplianceByPackWithOptions(request *GetConfi
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRuleComplianceByPackResponse{}
@@ -12229,7 +12495,7 @@ func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.R
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRuleSummaryByRiskLevelResponse{}
@@ -12262,7 +12528,7 @@ func (client *Client) GetConfigRulesReportWithOptions(runtime *util.RuntimeOptio
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigRulesReportResponse{}
@@ -12302,7 +12568,7 @@ func (client *Client) GetDiscoveredResourceCountsGroupByRegionWithOptions(reques
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
@@ -12342,7 +12608,7 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceTypeWithOptions(
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
@@ -12382,7 +12648,7 @@ func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceByConfigRuleResponse{}
@@ -12422,7 +12688,7 @@ func (client *Client) GetResourceComplianceByPackWithOptions(request *GetResourc
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceByPackResponse{}
@@ -12462,7 +12728,7 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceTimelineResponse{}
@@ -12502,7 +12768,7 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceConfigurationTimelineResponse{}
@@ -12536,8 +12802,25 @@ func (client *Client) IgnoreAggregateEvaluationResultsWithOptions(tmpReq *Ignore
 		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcesShrink)) {
+		body["Resources"] = request.ResourcesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("IgnoreAggregateEvaluationResults"),
@@ -12581,8 +12864,21 @@ func (client *Client) IgnoreEvaluationResultsWithOptions(tmpReq *IgnoreEvaluatio
 		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcesShrink)) {
+		body["Resources"] = request.ResourcesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("IgnoreEvaluationResults"),
@@ -12632,7 +12928,7 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateCompliancePacksResponse{}
@@ -12672,7 +12968,7 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
@@ -12712,7 +13008,7 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateConfigRulesResponse{}
@@ -12752,7 +13048,7 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateResourceEvaluationResultsResponse{}
@@ -12792,7 +13088,7 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregatorsResponse{}
@@ -12832,7 +13128,7 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCompliancePackTemplatesResponse{}
@@ -12872,7 +13168,7 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCompliancePacksResponse{}
@@ -12912,7 +13208,7 @@ func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListCo
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListConfigRuleEvaluationResultsResponse{}
@@ -12952,7 +13248,7 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceEvaluationResultsResponse{}
@@ -12986,8 +13282,21 @@ func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *Revert
 		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcesShrink)) {
+		body["Resources"] = request.ResourcesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RevertAggregateEvaluationResults"),
@@ -13031,8 +13340,17 @@ func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluatio
 		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, tea.String("Resources"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcesShrink)) {
+		body["Resources"] = request.ResourcesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RevertEvaluationResults"),
@@ -13077,7 +13395,6 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 	query["RevertEvaluation"] = request.RevertEvaluation
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartAggregateConfigRuleEvaluation"),
@@ -13087,7 +13404,7 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartAggregateConfigRuleEvaluationResponse{}
@@ -13121,8 +13438,37 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		body["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackName)) {
+		body["CompliancePackName"] = request.CompliancePackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRulesShrink)) {
+		body["ConfigRules"] = request.ConfigRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregateCompliancePack"),
@@ -13170,8 +13516,69 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		body["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleTriggerTypes)) {
+		body["ConfigRuleTriggerTypes"] = request.ConfigRuleTriggerTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
+		body["InputParameters"] = request.InputParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumExecutionFrequency)) {
+		body["MaximumExecutionFrequency"] = request.MaximumExecutionFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
+		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregateConfigRule"),
@@ -13215,8 +13622,29 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 		request.AggregatorAccountsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AggregatorAccounts, tea.String("AggregatorAccounts"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorAccountsShrink)) {
+		body["AggregatorAccounts"] = request.AggregatorAccountsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AggregatorName)) {
+		body["AggregatorName"] = request.AggregatorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAggregator"),
@@ -13260,8 +13688,33 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 		request.ConfigRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigRules, tea.String("ConfigRules"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		body["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackName)) {
+		body["CompliancePackName"] = request.CompliancePackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRulesShrink)) {
+		body["ConfigRules"] = request.ConfigRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCompliancePack"),
@@ -13309,8 +13762,65 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 		request.ResourceTypesScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTypesScope, tea.String("ResourceTypesScope"), tea.String("simple"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		body["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleTriggerTypes)) {
+		body["ConfigRuleTriggerTypes"] = request.ConfigRuleTriggerTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
+		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
+		body["InputParameters"] = request.InputParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumExecutionFrequency)) {
+		body["MaximumExecutionFrequency"] = request.MaximumExecutionFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
+		body["RegionIdsScope"] = request.RegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
+		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
+		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
+		body["TagKeyScope"] = request.TagKeyScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValueScope)) {
+		body["TagValueScope"] = request.TagValueScope
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateConfigRule"),
