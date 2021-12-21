@@ -1,3 +1,6 @@
+2021-12-21 Version: v1.1.0
+- For Prod.
+
 2021-08-18 Version: v1.0.0
 - For Prod.
 
