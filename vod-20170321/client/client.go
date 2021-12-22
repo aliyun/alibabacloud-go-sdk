@@ -5242,6 +5242,163 @@ func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBps
 	return s
 }
 
+type DescribeVodDomainSrcTrafficDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainSrcTrafficDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcTrafficDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcTrafficDataRequest) SetDomainName(v string) *DescribeVodDomainSrcTrafficDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataRequest) SetEndTime(v string) *DescribeVodDomainSrcTrafficDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataRequest) SetInterval(v string) *DescribeVodDomainSrcTrafficDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataRequest) SetOwnerId(v int64) *DescribeVodDomainSrcTrafficDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataRequest) SetStartTime(v string) *DescribeVodDomainSrcTrafficDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainSrcTrafficDataResponseBody struct {
+	DataInterval              *string                                                               `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                *string                                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
+	StartTime                 *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetDataInterval(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetDomainName(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetEndTime(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetRequestId(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetSrcTrafficDataPerInterval(v *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.SrcTrafficDataPerInterval = v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetStartTime(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval struct {
+	DataModule []*DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) SetDataModule(v []*DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
+	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetHttpsValue(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
+	s.HttpsValue = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetValue(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainSrcTrafficDataResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVodDomainSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainSrcTrafficDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainSrcTrafficDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainSrcTrafficDataResponse) SetBody(v *DescribeVodDomainSrcTrafficDataResponseBody) *DescribeVodDomainSrcTrafficDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodDomainTrafficDataRequest struct {
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -21432,10 +21589,10 @@ func (s *UploadStreamByURLRequest) SetUserData(v string) *UploadStreamByURLReque
 }
 
 type UploadStreamByURLResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceURL     *string `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
-	StreamFileURL *string `json:"StreamFileURL,omitempty" xml:"StreamFileURL,omitempty"`
-	StreamJobId   *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
+	FileURL     *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceURL   *string `json:"SourceURL,omitempty" xml:"SourceURL,omitempty"`
+	StreamJobId *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
 }
 
 func (s UploadStreamByURLResponseBody) String() string {
@@ -21446,6 +21603,11 @@ func (s UploadStreamByURLResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UploadStreamByURLResponseBody) SetFileURL(v string) *UploadStreamByURLResponseBody {
+	s.FileURL = &v
+	return s
+}
+
 func (s *UploadStreamByURLResponseBody) SetRequestId(v string) *UploadStreamByURLResponseBody {
 	s.RequestId = &v
 	return s
@@ -21453,11 +21615,6 @@ func (s *UploadStreamByURLResponseBody) SetRequestId(v string) *UploadStreamByUR
 
 func (s *UploadStreamByURLResponseBody) SetSourceURL(v string) *UploadStreamByURLResponseBody {
 	s.SourceURL = &v
-	return s
-}
-
-func (s *UploadStreamByURLResponseBody) SetStreamFileURL(v string) *UploadStreamByURLResponseBody {
-	s.StreamFileURL = &v
 	return s
 }
 
@@ -23831,6 +23988,51 @@ func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcB
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcBpsDataResponse{}
 	_body, _err := client.DescribeVodDomainSrcBpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *DescribeVodDomainSrcTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["DomainName"] = request.DomainName
+	query["EndTime"] = request.EndTime
+	query["Interval"] = request.Interval
+	query["OwnerId"] = request.OwnerId
+	query["StartTime"] = request.StartTime
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainSrcTrafficData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainSrcTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomainSrcTrafficDataRequest) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainSrcTrafficDataResponse{}
+	_body, _err := client.DescribeVodDomainSrcTrafficDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
