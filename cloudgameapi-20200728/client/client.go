@@ -1580,6 +1580,133 @@ func (s *GetGameCcuResponse) SetBody(v *GetGameCcuResponseBody) *GetGameCcuRespo
 	return s
 }
 
+type GetGameStatusRequest struct {
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s GetGameStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGameStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGameStatusRequest) SetGameSession(v string) *GetGameStatusRequest {
+	s.GameSession = &v
+	return s
+}
+
+type GetGameStatusResponseBody struct {
+	Data      *GetGameStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetGameStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGameStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGameStatusResponseBody) SetData(v *GetGameStatusResponseBodyData) *GetGameStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGameStatusResponseBody) SetRequestId(v string) *GetGameStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGameStatusResponseBodyData struct {
+	GameId       *string                                      `json:"GameId,omitempty" xml:"GameId,omitempty"`
+	GameSession  *string                                      `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	GameStartAt  *int64                                       `json:"GameStartAt,omitempty" xml:"GameStartAt,omitempty"`
+	PlayingCount *int32                                       `json:"PlayingCount,omitempty" xml:"PlayingCount,omitempty"`
+	PlayingUsers []*GetGameStatusResponseBodyDataPlayingUsers `json:"PlayingUsers,omitempty" xml:"PlayingUsers,omitempty" type:"Repeated"`
+}
+
+func (s GetGameStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGameStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGameStatusResponseBodyData) SetGameId(v string) *GetGameStatusResponseBodyData {
+	s.GameId = &v
+	return s
+}
+
+func (s *GetGameStatusResponseBodyData) SetGameSession(v string) *GetGameStatusResponseBodyData {
+	s.GameSession = &v
+	return s
+}
+
+func (s *GetGameStatusResponseBodyData) SetGameStartAt(v int64) *GetGameStatusResponseBodyData {
+	s.GameStartAt = &v
+	return s
+}
+
+func (s *GetGameStatusResponseBodyData) SetPlayingCount(v int32) *GetGameStatusResponseBodyData {
+	s.PlayingCount = &v
+	return s
+}
+
+func (s *GetGameStatusResponseBodyData) SetPlayingUsers(v []*GetGameStatusResponseBodyDataPlayingUsers) *GetGameStatusResponseBodyData {
+	s.PlayingUsers = v
+	return s
+}
+
+type GetGameStatusResponseBodyDataPlayingUsers struct {
+	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	StartPlayTime *int64  `json:"StartPlayTime,omitempty" xml:"StartPlayTime,omitempty"`
+}
+
+func (s GetGameStatusResponseBodyDataPlayingUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGameStatusResponseBodyDataPlayingUsers) GoString() string {
+	return s.String()
+}
+
+func (s *GetGameStatusResponseBodyDataPlayingUsers) SetAccountId(v string) *GetGameStatusResponseBodyDataPlayingUsers {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetGameStatusResponseBodyDataPlayingUsers) SetStartPlayTime(v int64) *GetGameStatusResponseBodyDataPlayingUsers {
+	s.StartPlayTime = &v
+	return s
+}
+
+type GetGameStatusResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGameStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGameStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGameStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGameStatusResponse) SetHeaders(v map[string]*string) *GetGameStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGameStatusResponse) SetBody(v *GetGameStatusResponseBody) *GetGameStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetGameStockRequest struct {
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	GameId    *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
@@ -2494,6 +2621,75 @@ func (s *GetStopGameTokenResponse) SetHeaders(v map[string]*string) *GetStopGame
 }
 
 func (s *GetStopGameTokenResponse) SetBody(v *GetStopGameTokenResponseBody) *GetStopGameTokenResponse {
+	s.Body = v
+	return s
+}
+
+type KickPlayerRequest struct {
+	GameSession     *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	KickedAccountId *string `json:"KickedAccountId,omitempty" xml:"KickedAccountId,omitempty"`
+}
+
+func (s KickPlayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KickPlayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *KickPlayerRequest) SetGameSession(v string) *KickPlayerRequest {
+	s.GameSession = &v
+	return s
+}
+
+func (s *KickPlayerRequest) SetKickedAccountId(v string) *KickPlayerRequest {
+	s.KickedAccountId = &v
+	return s
+}
+
+type KickPlayerResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s KickPlayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KickPlayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *KickPlayerResponseBody) SetData(v bool) *KickPlayerResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *KickPlayerResponseBody) SetRequestId(v string) *KickPlayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type KickPlayerResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *KickPlayerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s KickPlayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KickPlayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *KickPlayerResponse) SetHeaders(v map[string]*string) *KickPlayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *KickPlayerResponse) SetBody(v *KickPlayerResponseBody) *KickPlayerResponse {
 	s.Body = v
 	return s
 }
@@ -6243,6 +6439,47 @@ func (client *Client) GetGameCcu(request *GetGameCcuRequest) (_result *GetGameCc
 	return _result, _err
 }
 
+func (client *Client) GetGameStatusWithOptions(request *GetGameStatusRequest, runtime *util.RuntimeOptions) (_result *GetGameStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["GameSession"] = request.GameSession
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGameStatus"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGameStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGameStatus(request *GetGameStatusRequest) (_result *GetGameStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGameStatusResponse{}
+	_body, _err := client.GetGameStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetGameStockWithOptions(request *GetGameStockRequest, runtime *util.RuntimeOptions) (_result *GetGameStockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6571,6 +6808,48 @@ func (client *Client) GetStopGameToken(request *GetStopGameTokenRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetStopGameTokenResponse{}
 	_body, _err := client.GetStopGameTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) KickPlayerWithOptions(request *KickPlayerRequest, runtime *util.RuntimeOptions) (_result *KickPlayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["GameSession"] = request.GameSession
+	query["KickedAccountId"] = request.KickedAccountId
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KickPlayer"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &KickPlayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) KickPlayer(request *KickPlayerRequest) (_result *KickPlayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &KickPlayerResponse{}
+	_body, _err := client.KickPlayerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,6 @@
+2021-12-22 Version: v2.0.1
+- Netease.
+
 2021-12-15 Version: v2.0.1
 - Cloudgame Go OpenAPI.
 
