@@ -120,8 +120,10 @@ func (s *CreateCertificateWithExtensionRequest) SetState(v string) *CreateCertif
 }
 
 type CreateCertificateWithExtensionResponseBody struct {
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCertificateWithExtensionResponseBody) String() string {
@@ -130,6 +132,16 @@ func (s CreateCertificateWithExtensionResponseBody) String() string {
 
 func (s CreateCertificateWithExtensionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCertificateWithExtensionResponseBody) SetCertificate(v string) *CreateCertificateWithExtensionResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateCertificateWithExtensionResponseBody) SetCertificateChain(v string) *CreateCertificateWithExtensionResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateCertificateWithExtensionResponseBody) SetIdentifier(v string) *CreateCertificateWithExtensionResponseBody {
@@ -225,6 +237,7 @@ func (s *CreateClientCertificateRequest) SetSanValue(v string) *CreateClientCert
 }
 
 type CreateClientCertificateResponseBody struct {
+	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
 	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -238,6 +251,11 @@ func (s CreateClientCertificateResponseBody) String() string {
 
 func (s CreateClientCertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateClientCertificateResponseBody) SetCertificateChain(v string) *CreateClientCertificateResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateClientCertificateResponseBody) SetIdentifier(v string) *CreateClientCertificateResponseBody {
@@ -342,6 +360,7 @@ func (s *CreateClientCertificateWithCsrRequest) SetSanValue(v string) *CreateCli
 }
 
 type CreateClientCertificateWithCsrResponseBody struct {
+	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
 	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -355,6 +374,11 @@ func (s CreateClientCertificateWithCsrResponseBody) String() string {
 
 func (s CreateClientCertificateWithCsrResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateClientCertificateWithCsrResponseBody) SetCertificateChain(v string) *CreateClientCertificateWithCsrResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateClientCertificateWithCsrResponseBody) SetIdentifier(v string) *CreateClientCertificateWithCsrResponseBody {
@@ -522,8 +546,10 @@ func (s *CreateRootCACertificateRequest) SetYears(v int32) *CreateRootCACertific
 }
 
 type CreateRootCACertificateResponseBody struct {
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRootCACertificateResponseBody) String() string {
@@ -532,6 +558,16 @@ func (s CreateRootCACertificateResponseBody) String() string {
 
 func (s CreateRootCACertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRootCACertificateResponseBody) SetCertificate(v string) *CreateRootCACertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateRootCACertificateResponseBody) SetCertificateChain(v string) *CreateRootCACertificateResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateRootCACertificateResponseBody) SetIdentifier(v string) *CreateRootCACertificateResponseBody {
@@ -621,6 +657,7 @@ func (s *CreateServerCertificateRequest) SetParentIdentifier(v string) *CreateSe
 }
 
 type CreateServerCertificateResponseBody struct {
+	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
 	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -634,6 +671,11 @@ func (s CreateServerCertificateResponseBody) String() string {
 
 func (s CreateServerCertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServerCertificateResponseBody) SetCertificateChain(v string) *CreateServerCertificateResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateServerCertificateResponseBody) SetIdentifier(v string) *CreateServerCertificateResponseBody {
@@ -732,6 +774,7 @@ func (s *CreateServerCertificateWithCsrRequest) SetParentIdentifier(v string) *C
 }
 
 type CreateServerCertificateWithCsrResponseBody struct {
+	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
 	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -745,6 +788,11 @@ func (s CreateServerCertificateWithCsrResponseBody) String() string {
 
 func (s CreateServerCertificateWithCsrResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServerCertificateWithCsrResponseBody) SetCertificateChain(v string) *CreateServerCertificateWithCsrResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateServerCertificateWithCsrResponseBody) SetIdentifier(v string) *CreateServerCertificateWithCsrResponseBody {
@@ -861,8 +909,10 @@ func (s *CreateSubCACertificateRequest) SetYears(v int32) *CreateSubCACertificat
 }
 
 type CreateSubCACertificateResponseBody struct {
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSubCACertificateResponseBody) String() string {
@@ -871,6 +921,16 @@ func (s CreateSubCACertificateResponseBody) String() string {
 
 func (s CreateSubCACertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSubCACertificateResponseBody) SetCertificate(v string) *CreateSubCACertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateSubCACertificateResponseBody) SetCertificateChain(v string) *CreateSubCACertificateResponseBody {
+	s.CertificateChain = &v
+	return s
 }
 
 func (s *CreateSubCACertificateResponseBody) SetIdentifier(v string) *CreateSubCACertificateResponseBody {
@@ -2963,7 +3023,6 @@ func (client *Client) CreateCertificateWithExtensionWithOptions(request *CreateC
 	query["State"] = request.State
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCertificateWithExtension"),
@@ -2973,7 +3032,7 @@ func (client *Client) CreateCertificateWithExtensionWithOptions(request *CreateC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateWithExtensionResponse{}
@@ -3012,7 +3071,6 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 	query["SanValue"] = request.SanValue
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateClientCertificate"),
@@ -3022,7 +3080,7 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClientCertificateResponse{}
@@ -3060,7 +3118,6 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 	query["SanValue"] = request.SanValue
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateClientCertificateWithCsr"),
@@ -3070,7 +3127,7 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClientCertificateWithCsrResponse{}
@@ -3102,7 +3159,6 @@ func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRe
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRevokeClientCertificate"),
@@ -3112,7 +3168,7 @@ func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRevokeClientCertificateResponse{}
@@ -3151,7 +3207,6 @@ func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACe
 	query["Years"] = request.Years
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRootCACertificate"),
@@ -3161,7 +3216,7 @@ func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRootCACertificateResponse{}
@@ -3199,7 +3254,6 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 	query["ParentIdentifier"] = request.ParentIdentifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateServerCertificate"),
@@ -3209,7 +3263,7 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServerCertificateResponse{}
@@ -3246,7 +3300,6 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 	query["ParentIdentifier"] = request.ParentIdentifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateServerCertificateWithCsr"),
@@ -3256,7 +3309,7 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServerCertificateWithCsrResponse{}
@@ -3296,7 +3349,6 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 	query["Years"] = request.Years
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSubCACertificate"),
@@ -3306,7 +3358,7 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSubCACertificateResponse{}
@@ -3338,7 +3390,6 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteClientCertificate"),
@@ -3348,7 +3399,7 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteClientCertificateResponse{}
@@ -3380,7 +3431,6 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCACertificate"),
@@ -3390,7 +3440,7 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCACertificateResponse{}
@@ -3423,7 +3473,7 @@ func (client *Client) DescribeCACertificateCountWithOptions(runtime *util.Runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCACertificateCountResponse{}
@@ -3456,7 +3506,6 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 	query["ShowSize"] = request.ShowSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCACertificateList"),
@@ -3466,7 +3515,7 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCACertificateListResponse{}
@@ -3499,7 +3548,6 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCertificatePrivateKey"),
@@ -3509,7 +3557,7 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertificatePrivateKeyResponse{}
@@ -3541,7 +3589,6 @@ func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClie
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClientCertificate"),
@@ -3551,7 +3598,7 @@ func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClie
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClientCertificateResponse{}
@@ -3583,7 +3630,6 @@ func (client *Client) DescribeClientCertificateForSerialNumberWithOptions(reques
 	query["SerialNumber"] = request.SerialNumber
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClientCertificateForSerialNumber"),
@@ -3593,7 +3639,7 @@ func (client *Client) DescribeClientCertificateForSerialNumberWithOptions(reques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClientCertificateForSerialNumberResponse{}
@@ -3625,7 +3671,6 @@ func (client *Client) DescribeClientCertificateStatusWithOptions(request *Descri
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClientCertificateStatus"),
@@ -3635,7 +3680,7 @@ func (client *Client) DescribeClientCertificateStatusWithOptions(request *Descri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClientCertificateStatusResponse{}
@@ -3667,7 +3712,6 @@ func (client *Client) DescribeClientCertificateStatusForSerialNumberWithOptions(
 	query["SerialNumber"] = request.SerialNumber
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClientCertificateStatusForSerialNumber"),
@@ -3677,7 +3721,7 @@ func (client *Client) DescribeClientCertificateStatusForSerialNumberWithOptions(
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClientCertificateStatusForSerialNumberResponse{}
@@ -3709,7 +3753,6 @@ func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatu
 	query["InstanceId"] = request.InstanceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetCAInstanceStatus"),
@@ -3719,7 +3762,7 @@ func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCAInstanceStatusResponse{}
@@ -3751,7 +3794,6 @@ func (client *Client) ListCACertificateLogWithOptions(request *ListCACertificate
 	query["Identifier"] = request.Identifier
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListCACertificateLog"),
@@ -3761,7 +3803,7 @@ func (client *Client) ListCACertificateLogWithOptions(request *ListCACertificate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCACertificateLogResponse{}
@@ -3794,7 +3836,6 @@ func (client *Client) ListClientCertificateWithOptions(request *ListClientCertif
 	query["ShowSize"] = request.ShowSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListClientCertificate"),
@@ -3804,7 +3845,7 @@ func (client *Client) ListClientCertificateWithOptions(request *ListClientCertif
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClientCertificateResponse{}
@@ -3837,7 +3878,6 @@ func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertif
 	query["ShowSize"] = request.ShowSize
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRevokeCertificate"),
@@ -3847,7 +3887,7 @@ func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertif
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRevokeCertificateResponse{}
@@ -3880,7 +3920,6 @@ func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACert
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCACertificateStatus"),
@@ -3890,7 +3929,7 @@ func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACert
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCACertificateStatusResponse{}
