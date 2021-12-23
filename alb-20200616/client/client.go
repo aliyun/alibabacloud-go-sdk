@@ -11626,6 +11626,132 @@ func (s *UpdateListenerLogConfigResponse) SetBody(v *UpdateListenerLogConfigResp
 	return s
 }
 
+type UpdateLoadBalancerAddressTypeConfigRequest struct {
+	// 目标网络类型
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// 幂等标识
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// 实例id
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// 可用区及交换机映射列表
+	ZoneMappings []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetAddressType(v string) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetClientToken(v string) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetDryRun(v string) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetLoadBalancerId(v string) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequest) SetZoneMappings(v []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) *UpdateLoadBalancerAddressTypeConfigRequest {
+	s.ZoneMappings = v
+	return s
+}
+
+type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
+	// 弹性公网IP
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// 交换机标识
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// 可用区
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetAllocationId(v string) *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetVSwitchId(v string) *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetZoneId(v string) *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateLoadBalancerAddressTypeConfigResponseBody struct {
+	// 异步任务id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetJobId(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigResponseBody) SetRequestId(v string) *UpdateLoadBalancerAddressTypeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLoadBalancerAddressTypeConfigResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateLoadBalancerAddressTypeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoadBalancerAddressTypeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetHeaders(v map[string]*string) *UpdateLoadBalancerAddressTypeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetBody(v *UpdateLoadBalancerAddressTypeConfigResponseBody) *UpdateLoadBalancerAddressTypeConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLoadBalancerAttributeRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -13895,7 +14021,6 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddEntriesToAcl"),
@@ -13905,7 +14030,7 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddEntriesToAclResponse{}
@@ -13940,7 +14065,6 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 	query["Servers"] = request.Servers
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddServersToServerGroup"),
@@ -13950,7 +14074,7 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddServersToServerGroupResponse{}
@@ -13985,7 +14109,6 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *
 	query["ServerGroupId"] = request.ServerGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ApplyHealthCheckTemplateToServerGroup"),
@@ -13995,7 +14118,7 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyHealthCheckTemplateToServerGroupResponse{}
@@ -14031,7 +14154,6 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AssociateAclsWithListener"),
@@ -14041,7 +14163,7 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAclsWithListenerResponse{}
@@ -14076,7 +14198,6 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AssociateAdditionalCertificatesWithListener"),
@@ -14086,7 +14207,7 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
@@ -14122,7 +14243,6 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachCommonBandwidthPackageToLoadBalancer"),
@@ -14132,7 +14252,7 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
@@ -14167,7 +14287,6 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAcl"),
@@ -14177,7 +14296,7 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAclResponse{}
@@ -14222,7 +14341,6 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 	query["UnhealthyThreshold"] = request.UnhealthyThreshold
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateHealthCheckTemplate"),
@@ -14232,7 +14350,7 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateHealthCheckTemplateResponse{}
@@ -14280,7 +14398,6 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 	query["XForwardedForConfig"] = request.XForwardedForConfig
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateListener"),
@@ -14290,7 +14407,7 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateListenerResponse{}
@@ -14333,7 +14450,6 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 	query["ZoneMappings"] = request.ZoneMappings
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateLoadBalancer"),
@@ -14343,7 +14459,7 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLoadBalancerResponse{}
@@ -14381,7 +14497,6 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 	query["RuleName"] = request.RuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRule"),
@@ -14391,7 +14506,7 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRuleResponse{}
@@ -14426,7 +14541,6 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 	query["Rules"] = request.Rules
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRules"),
@@ -14436,7 +14550,7 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRulesResponse{}
@@ -14473,7 +14587,6 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 	query["TLSVersions"] = request.TLSVersions
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSecurityPolicy"),
@@ -14483,7 +14596,7 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSecurityPolicyResponse{}
@@ -14524,7 +14637,6 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 	query["VpcId"] = request.VpcId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateServerGroup"),
@@ -14534,7 +14646,7 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServerGroupResponse{}
@@ -14568,7 +14680,6 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAcl"),
@@ -14578,7 +14689,7 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAclResponse{}
@@ -14612,7 +14723,6 @@ func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealt
 	query["HealthCheckTemplateIds"] = request.HealthCheckTemplateIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteHealthCheckTemplates"),
@@ -14622,7 +14732,7 @@ func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteHealthCheckTemplatesResponse{}
@@ -14656,7 +14766,6 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteListener"),
@@ -14666,7 +14775,7 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteListenerResponse{}
@@ -14700,7 +14809,6 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 	query["LoadBalancerId"] = request.LoadBalancerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteLoadBalancer"),
@@ -14710,7 +14818,7 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLoadBalancerResponse{}
@@ -14744,7 +14852,6 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 	query["RuleId"] = request.RuleId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRule"),
@@ -14754,7 +14861,7 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRuleResponse{}
@@ -14788,7 +14895,6 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 	query["RuleIds"] = request.RuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRules"),
@@ -14798,7 +14904,7 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRulesResponse{}
@@ -14832,7 +14938,6 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 	query["SecurityPolicyId"] = request.SecurityPolicyId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSecurityPolicy"),
@@ -14842,7 +14947,7 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSecurityPolicyResponse{}
@@ -14876,7 +14981,6 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 	query["ServerGroupId"] = request.ServerGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteServerGroup"),
@@ -14886,7 +14990,7 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServerGroupResponse{}
@@ -14918,7 +15022,6 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	query["AcceptLanguage"] = request.AcceptLanguage
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -14928,7 +15031,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -14961,7 +15064,7 @@ func (client *Client) DescribeZonesWithOptions(runtime *util.RuntimeOptions) (_r
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
@@ -14997,7 +15100,6 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 	query["RegionId"] = request.RegionId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetachCommonBandwidthPackageFromLoadBalancer"),
@@ -15007,7 +15109,7 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
@@ -15041,7 +15143,6 @@ func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDelet
 	query["ResourceId"] = request.ResourceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableDeletionProtection"),
@@ -15051,7 +15152,7 @@ func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDelet
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableDeletionProtectionResponse{}
@@ -15085,7 +15186,6 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 	query["LoadBalancerId"] = request.LoadBalancerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableLoadBalancerAccessLog"),
@@ -15095,7 +15195,7 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableLoadBalancerAccessLogResponse{}
@@ -15130,7 +15230,6 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DissociateAclsFromListener"),
@@ -15140,7 +15239,7 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAclsFromListenerResponse{}
@@ -15175,7 +15274,6 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DissociateAdditionalCertificatesFromListener"),
@@ -15185,7 +15283,7 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DissociateAdditionalCertificatesFromListenerResponse{}
@@ -15219,7 +15317,6 @@ func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletio
 	query["ResourceId"] = request.ResourceId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableDeletionProtection"),
@@ -15229,7 +15326,7 @@ func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletio
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableDeletionProtectionResponse{}
@@ -15265,7 +15362,6 @@ func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoad
 	query["LogStore"] = request.LogStore
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableLoadBalancerAccessLog"),
@@ -15275,7 +15371,7 @@ func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoad
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableLoadBalancerAccessLogResponse{}
@@ -15307,7 +15403,6 @@ func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHea
 	query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetHealthCheckTemplateAttribute"),
@@ -15317,7 +15412,7 @@ func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHea
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHealthCheckTemplateAttributeResponse{}
@@ -15349,7 +15444,6 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetListenerAttribute"),
@@ -15359,7 +15453,7 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetListenerAttributeResponse{}
@@ -15394,7 +15488,6 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetListenerHealthStatus"),
@@ -15404,7 +15497,7 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetListenerHealthStatusResponse{}
@@ -15436,7 +15529,6 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 	query["LoadBalancerId"] = request.LoadBalancerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetLoadBalancerAttribute"),
@@ -15446,7 +15538,7 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLoadBalancerAttributeResponse{}
@@ -15480,7 +15572,6 @@ func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, 
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAclEntries"),
@@ -15490,7 +15581,7 @@ func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAclEntriesResponse{}
@@ -15522,7 +15613,6 @@ func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsReque
 	query["AclIds"] = request.AclIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAclRelations"),
@@ -15532,7 +15622,7 @@ func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAclRelationsResponse{}
@@ -15568,7 +15658,6 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 	query["ResourceGroupId"] = request.ResourceGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAcls"),
@@ -15578,7 +15667,7 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAclsResponse{}
@@ -15617,7 +15706,6 @@ func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runt
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAsynJobs"),
@@ -15627,7 +15715,7 @@ func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAsynJobsResponse{}
@@ -15662,7 +15750,6 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListHealthCheckTemplates"),
@@ -15672,7 +15759,7 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListHealthCheckTemplatesResponse{}
@@ -15707,7 +15794,6 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListListenerCertificates"),
@@ -15717,7 +15803,7 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenerCertificatesResponse{}
@@ -15753,7 +15839,6 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListListeners"),
@@ -15763,7 +15848,7 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListListenersResponse{}
@@ -15806,7 +15891,6 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 	query["ZoneId"] = request.ZoneId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListLoadBalancers"),
@@ -15816,7 +15900,7 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListLoadBalancersResponse{}
@@ -15852,7 +15936,6 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 	query["RuleIds"] = request.RuleIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRules"),
@@ -15862,7 +15945,7 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRulesResponse{}
@@ -15898,7 +15981,6 @@ func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPolic
 	query["SecurityPolicyNames"] = request.SecurityPolicyNames
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSecurityPolicies"),
@@ -15908,7 +15990,7 @@ func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPolic
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSecurityPoliciesResponse{}
@@ -15940,7 +16022,6 @@ func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecuri
 	query["SecurityPolicyIds"] = request.SecurityPolicyIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSecurityPolicyRelations"),
@@ -15950,7 +16031,7 @@ func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecuri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSecurityPolicyRelationsResponse{}
@@ -15986,7 +16067,6 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListServerGroupServers"),
@@ -15996,7 +16076,7 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServerGroupServersResponse{}
@@ -16034,7 +16114,6 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 	query["VpcId"] = request.VpcId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListServerGroups"),
@@ -16044,7 +16123,7 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServerGroupsResponse{}
@@ -16077,7 +16156,7 @@ func (client *Client) ListSystemSecurityPoliciesWithOptions(runtime *util.Runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSystemSecurityPoliciesResponse{}
@@ -16113,7 +16192,6 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagKeys"),
@@ -16123,7 +16201,7 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
@@ -16159,7 +16237,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -16169,7 +16246,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -16205,7 +16282,6 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagValues"),
@@ -16215,7 +16291,7 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
@@ -16249,7 +16325,6 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	query["ResourceType"] = request.ResourceType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MoveResourceGroup"),
@@ -16259,7 +16334,7 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
@@ -16294,7 +16369,6 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 	query["Entries"] = request.Entries
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveEntriesFromAcl"),
@@ -16304,7 +16378,7 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveEntriesFromAclResponse{}
@@ -16339,7 +16413,6 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 	query["Servers"] = request.Servers
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveServersFromServerGroup"),
@@ -16349,7 +16422,7 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveServersFromServerGroupResponse{}
@@ -16385,7 +16458,6 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 	query["ServerGroupId"] = request.ServerGroupId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReplaceServersInServerGroup"),
@@ -16395,7 +16467,7 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReplaceServersInServerGroupResponse{}
@@ -16429,7 +16501,6 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartListener"),
@@ -16439,7 +16510,7 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartListenerResponse{}
@@ -16473,7 +16544,6 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopListener"),
@@ -16483,7 +16553,7 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopListenerResponse{}
@@ -16517,7 +16587,6 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	query["Tag"] = request.Tag
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -16527,7 +16596,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -16562,7 +16631,6 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	query["TagKey"] = request.TagKey
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnTagResources"),
@@ -16572,7 +16640,7 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnTagResourcesResponse{}
@@ -16607,7 +16675,6 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 	query["DryRun"] = request.DryRun
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAclAttribute"),
@@ -16617,7 +16684,7 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAclAttributeResponse{}
@@ -16663,7 +16730,6 @@ func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *Upd
 	query["UnhealthyThreshold"] = request.UnhealthyThreshold
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateHealthCheckTemplateAttribute"),
@@ -16673,7 +16739,7 @@ func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *Upd
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateHealthCheckTemplateAttributeResponse{}
@@ -16719,7 +16785,6 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 	query["XForwardedForConfig"] = request.XForwardedForConfig
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateListenerAttribute"),
@@ -16729,7 +16794,7 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateListenerAttributeResponse{}
@@ -16765,7 +16830,6 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 	query["ListenerId"] = request.ListenerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateListenerLogConfig"),
@@ -16775,7 +16839,7 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateListenerLogConfigResponse{}
@@ -16798,6 +16862,51 @@ func (client *Client) UpdateListenerLogConfig(request *UpdateListenerLogConfigRe
 	return _result, _err
 }
 
+func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *UpdateLoadBalancerAddressTypeConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerAddressTypeConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AddressType"] = request.AddressType
+	query["ClientToken"] = request.ClientToken
+	query["DryRun"] = request.DryRun
+	query["LoadBalancerId"] = request.LoadBalancerId
+	query["ZoneMappings"] = request.ZoneMappings
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLoadBalancerAddressTypeConfig"),
+		Version:     tea.String("2020-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLoadBalancerAddressTypeConfig(request *UpdateLoadBalancerAddressTypeConfigRequest) (_result *UpdateLoadBalancerAddressTypeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
+	_body, _err := client.UpdateLoadBalancerAddressTypeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16811,7 +16920,6 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 	query["ModificationProtectionConfig"] = request.ModificationProtectionConfig
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateLoadBalancerAttribute"),
@@ -16821,7 +16929,7 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLoadBalancerAttributeResponse{}
@@ -16856,7 +16964,6 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 	query["LoadBalancerId"] = request.LoadBalancerId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateLoadBalancerEdition"),
@@ -16866,7 +16973,7 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLoadBalancerEditionResponse{}
@@ -16901,7 +17008,6 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 	query["ZoneMappings"] = request.ZoneMappings
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateLoadBalancerZones"),
@@ -16911,7 +17017,7 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLoadBalancerZonesResponse{}
@@ -16949,7 +17055,6 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 	query["RuleName"] = request.RuleName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRuleAttribute"),
@@ -16959,7 +17064,7 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRuleAttributeResponse{}
@@ -16993,7 +17098,6 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 	query["Rules"] = request.Rules
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRulesAttribute"),
@@ -17003,7 +17107,7 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRulesAttributeResponse{}
@@ -17040,7 +17144,6 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 	query["TLSVersions"] = request.TLSVersions
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSecurityPolicyAttribute"),
@@ -17050,7 +17153,7 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSecurityPolicyAttributeResponse{}
@@ -17088,7 +17191,6 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 	query["StickySessionConfig"] = request.StickySessionConfig
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateServerGroupAttribute"),
@@ -17098,7 +17200,7 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServerGroupAttributeResponse{}
@@ -17133,7 +17235,6 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 	query["Servers"] = request.Servers
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateServerGroupServersAttribute"),
@@ -17143,7 +17244,7 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServerGroupServersAttributeResponse{}
