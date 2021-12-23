@@ -358,6 +358,88 @@ func (s *Boundary) SetWidth(v int64) *Boundary {
 	return s
 }
 
+type ClusterForReq struct {
+	// Cover
+	Cover *ClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// CustomId
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// CustomLabels
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ObjectId
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+}
+
+func (s ClusterForReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterForReq) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterForReq) SetCover(v *ClusterForReqCover) *ClusterForReq {
+	s.Cover = v
+	return s
+}
+
+func (s *ClusterForReq) SetCustomId(v string) *ClusterForReq {
+	s.CustomId = &v
+	return s
+}
+
+func (s *ClusterForReq) SetCustomLabels(v map[string]interface{}) *ClusterForReq {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *ClusterForReq) SetName(v string) *ClusterForReq {
+	s.Name = &v
+	return s
+}
+
+func (s *ClusterForReq) SetObjectId(v string) *ClusterForReq {
+	s.ObjectId = &v
+	return s
+}
+
+type ClusterForReqCover struct {
+	// Figures
+	Figures []*ClusterForReqCoverFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+}
+
+func (s ClusterForReqCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterForReqCover) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterForReqCover) SetFigures(v []*ClusterForReqCoverFigures) *ClusterForReqCover {
+	s.Figures = v
+	return s
+}
+
+type ClusterForReqCoverFigures struct {
+	// FigureId
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+}
+
+func (s ClusterForReqCoverFigures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterForReqCoverFigures) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterForReqCoverFigures) SetFigureId(v string) *ClusterForReqCoverFigures {
+	s.FigureId = &v
+	return s
+}
+
 type CroppingSuggestion struct {
 	// AspectRatio
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
@@ -704,6 +786,335 @@ func (s *Face) SetRightEyeConfidence(v float32) *Face {
 	return s
 }
 
+type Figure struct {
+	// Age
+	Age *int64 `json:"Age,omitempty" xml:"Age,omitempty"`
+	// AgeSD
+	AgeSD *float32 `json:"AgeSD,omitempty" xml:"AgeSD,omitempty"`
+	// Attractive
+	Attractive *float32 `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
+	// Beard
+	Beard *string `json:"Beard,omitempty" xml:"Beard,omitempty"`
+	// BeardConfidence
+	BeardConfidence *float32 `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
+	// Boundary
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// Emotion
+	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	// EmotionConfidence
+	EmotionConfidence *float32 `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
+	// FaceQuality
+	FaceQuality *float32 `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	// FigureClusterConfidence
+	FigureClusterConfidence *float32 `json:"FigureClusterConfidence,omitempty" xml:"FigureClusterConfidence,omitempty"`
+	// FigureClusterId
+	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
+	// FigureConfidence
+	FigureConfidence *float32 `json:"FigureConfidence,omitempty" xml:"FigureConfidence,omitempty"`
+	// FigureId
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	// FigureType
+	FigureType *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+	// Gender
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// GenderConfidence
+	GenderConfidence *float32 `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
+	// Glasses
+	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	// GlassesConfidence
+	GlassesConfidence *float32 `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
+	// Hat
+	Hat *string `json:"Hat,omitempty" xml:"Hat,omitempty"`
+	// HatConfidence
+	HatConfidence *float32  `json:"HatConfidence,omitempty" xml:"HatConfidence,omitempty"`
+	HeadPose      *HeadPose `json:"HeadPose,omitempty" xml:"HeadPose,omitempty"`
+	// Mask
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// MaskConfidence
+	MaskConfidence *float32 `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
+	// Mouth
+	Mouth *string `json:"Mouth,omitempty" xml:"Mouth,omitempty"`
+	// MouthConfidence
+	MouthConfidence *float32 `json:"MouthConfidence,omitempty" xml:"MouthConfidence,omitempty"`
+	// Sharpness
+	Sharpness *float32 `json:"Sharpness,omitempty" xml:"Sharpness,omitempty"`
+}
+
+func (s Figure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Figure) GoString() string {
+	return s.String()
+}
+
+func (s *Figure) SetAge(v int64) *Figure {
+	s.Age = &v
+	return s
+}
+
+func (s *Figure) SetAgeSD(v float32) *Figure {
+	s.AgeSD = &v
+	return s
+}
+
+func (s *Figure) SetAttractive(v float32) *Figure {
+	s.Attractive = &v
+	return s
+}
+
+func (s *Figure) SetBeard(v string) *Figure {
+	s.Beard = &v
+	return s
+}
+
+func (s *Figure) SetBeardConfidence(v float32) *Figure {
+	s.BeardConfidence = &v
+	return s
+}
+
+func (s *Figure) SetBoundary(v *Boundary) *Figure {
+	s.Boundary = v
+	return s
+}
+
+func (s *Figure) SetEmotion(v string) *Figure {
+	s.Emotion = &v
+	return s
+}
+
+func (s *Figure) SetEmotionConfidence(v float32) *Figure {
+	s.EmotionConfidence = &v
+	return s
+}
+
+func (s *Figure) SetFaceQuality(v float32) *Figure {
+	s.FaceQuality = &v
+	return s
+}
+
+func (s *Figure) SetFigureClusterConfidence(v float32) *Figure {
+	s.FigureClusterConfidence = &v
+	return s
+}
+
+func (s *Figure) SetFigureClusterId(v string) *Figure {
+	s.FigureClusterId = &v
+	return s
+}
+
+func (s *Figure) SetFigureConfidence(v float32) *Figure {
+	s.FigureConfidence = &v
+	return s
+}
+
+func (s *Figure) SetFigureId(v string) *Figure {
+	s.FigureId = &v
+	return s
+}
+
+func (s *Figure) SetFigureType(v string) *Figure {
+	s.FigureType = &v
+	return s
+}
+
+func (s *Figure) SetGender(v string) *Figure {
+	s.Gender = &v
+	return s
+}
+
+func (s *Figure) SetGenderConfidence(v float32) *Figure {
+	s.GenderConfidence = &v
+	return s
+}
+
+func (s *Figure) SetGlasses(v string) *Figure {
+	s.Glasses = &v
+	return s
+}
+
+func (s *Figure) SetGlassesConfidence(v float32) *Figure {
+	s.GlassesConfidence = &v
+	return s
+}
+
+func (s *Figure) SetHat(v string) *Figure {
+	s.Hat = &v
+	return s
+}
+
+func (s *Figure) SetHatConfidence(v float32) *Figure {
+	s.HatConfidence = &v
+	return s
+}
+
+func (s *Figure) SetHeadPose(v *HeadPose) *Figure {
+	s.HeadPose = v
+	return s
+}
+
+func (s *Figure) SetMask(v string) *Figure {
+	s.Mask = &v
+	return s
+}
+
+func (s *Figure) SetMaskConfidence(v float32) *Figure {
+	s.MaskConfidence = &v
+	return s
+}
+
+func (s *Figure) SetMouth(v string) *Figure {
+	s.Mouth = &v
+	return s
+}
+
+func (s *Figure) SetMouthConfidence(v float32) *Figure {
+	s.MouthConfidence = &v
+	return s
+}
+
+func (s *Figure) SetSharpness(v float32) *Figure {
+	s.Sharpness = &v
+	return s
+}
+
+type FigureCluster struct {
+	// AverageAge
+	AverageAge *float32 `json:"AverageAge,omitempty" xml:"AverageAge,omitempty"`
+	// Cover
+	Cover *File `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// CreateTime
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// CustomId
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// CustomLabels
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// DatasetName
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// FaceCount
+	FaceCount *int64 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	// Gender
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// ImageCount
+	ImageCount *int64 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	// MaxAge
+	MaxAge *float32 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+	// MinAge
+	MinAge *float32 `json:"MinAge,omitempty" xml:"MinAge,omitempty"`
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ObjectId
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// ObjectType
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// OwnerId
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// ProjectName
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// UpdateTime
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Version
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s FigureCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FigureCluster) GoString() string {
+	return s.String()
+}
+
+func (s *FigureCluster) SetAverageAge(v float32) *FigureCluster {
+	s.AverageAge = &v
+	return s
+}
+
+func (s *FigureCluster) SetCover(v *File) *FigureCluster {
+	s.Cover = v
+	return s
+}
+
+func (s *FigureCluster) SetCreateTime(v string) *FigureCluster {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *FigureCluster) SetCustomId(v string) *FigureCluster {
+	s.CustomId = &v
+	return s
+}
+
+func (s *FigureCluster) SetCustomLabels(v map[string]interface{}) *FigureCluster {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *FigureCluster) SetDatasetName(v string) *FigureCluster {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *FigureCluster) SetFaceCount(v int64) *FigureCluster {
+	s.FaceCount = &v
+	return s
+}
+
+func (s *FigureCluster) SetGender(v string) *FigureCluster {
+	s.Gender = &v
+	return s
+}
+
+func (s *FigureCluster) SetImageCount(v int64) *FigureCluster {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *FigureCluster) SetMaxAge(v float32) *FigureCluster {
+	s.MaxAge = &v
+	return s
+}
+
+func (s *FigureCluster) SetMinAge(v float32) *FigureCluster {
+	s.MinAge = &v
+	return s
+}
+
+func (s *FigureCluster) SetName(v string) *FigureCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *FigureCluster) SetObjectId(v string) *FigureCluster {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *FigureCluster) SetObjectType(v string) *FigureCluster {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *FigureCluster) SetOwnerId(v string) *FigureCluster {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FigureCluster) SetProjectName(v string) *FigureCluster {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *FigureCluster) SetUpdateTime(v string) *FigureCluster {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *FigureCluster) SetVersion(v string) *FigureCluster {
+	s.Version = &v
+	return s
+}
+
 type File struct {
 	// AccessControlAllowOrigin
 	AccessControlAllowOrigin *string `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
@@ -723,10 +1134,6 @@ type File struct {
 	AudioCovers []*Image `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
 	// AudioDuration
 	AudioDuration *float32 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	// AudioEmbeddingsFloat32
-	AudioEmbeddingsFloat32 []*float32 `json:"AudioEmbeddingsFloat32,omitempty" xml:"AudioEmbeddingsFloat32,omitempty" type:"Repeated"`
-	// AudioEmbeddingsInt8
-	AudioEmbeddingsInt8 []*int32 `json:"AudioEmbeddingsInt8,omitempty" xml:"AudioEmbeddingsInt8,omitempty" type:"Repeated"`
 	// AudioLanguage
 	AudioLanguage *string `json:"AudioLanguage,omitempty" xml:"AudioLanguage,omitempty"`
 	// AudioStreams
@@ -759,20 +1166,16 @@ type File struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// DocumentContent
 	DocumentContent *string `json:"DocumentContent,omitempty" xml:"DocumentContent,omitempty"`
-	// DocumentEmbeddingsFloat32
-	DocumentEmbeddingsFloat32 []*float32 `json:"DocumentEmbeddingsFloat32,omitempty" xml:"DocumentEmbeddingsFloat32,omitempty" type:"Repeated"`
-	// DocumentEmbeddingsInt8
-	DocumentEmbeddingsInt8 []*int32 `json:"DocumentEmbeddingsInt8,omitempty" xml:"DocumentEmbeddingsInt8,omitempty" type:"Repeated"`
 	// DocumentLanguage
 	DocumentLanguage *string `json:"DocumentLanguage,omitempty" xml:"DocumentLanguage,omitempty"`
 	// ETag
 	ETag *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
 	// EXIF
 	EXIF *string `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
-	// FaceCount
-	FaceCount *int64 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
-	// Faces
-	Faces []*Face `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	// FigureCount
+	FigureCount *int64 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
+	// Figures
+	Figures []*Figure `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 	// FileAccessTime
 	FileAccessTime *string `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
 	// FileCreateTime
@@ -783,10 +1186,6 @@ type File struct {
 	FileModifiedTime *string `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
 	// Filename
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// ImageEmbeddingsFloat32
-	ImageEmbeddingsFloat32 []*float32 `json:"ImageEmbeddingsFloat32,omitempty" xml:"ImageEmbeddingsFloat32,omitempty" type:"Repeated"`
-	// ImageEmbeddingsInt8
-	ImageEmbeddingsInt8 []*int32 `json:"ImageEmbeddingsInt8,omitempty" xml:"ImageEmbeddingsInt8,omitempty" type:"Repeated"`
 	// ImageHeight
 	ImageHeight *int64      `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	ImageScore  *ImageScore `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
@@ -800,16 +1199,22 @@ type File struct {
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// OCRContents
 	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
+	// OSSCRC64
+	OSSCRC64 *string `json:"OSSCRC64,omitempty" xml:"OSSCRC64,omitempty"`
 	// OSSDeleteMarker
 	OSSDeleteMarker *string `json:"OSSDeleteMarker,omitempty" xml:"OSSDeleteMarker,omitempty"`
 	// OSSExpiration
 	OSSExpiration *string `json:"OSSExpiration,omitempty" xml:"OSSExpiration,omitempty"`
 	// OSSObjectType
 	OSSObjectType *string `json:"OSSObjectType,omitempty" xml:"OSSObjectType,omitempty"`
+	// OSSStorageClass
+	OSSStorageClass *string `json:"OSSStorageClass,omitempty" xml:"OSSStorageClass,omitempty"`
 	// OSSTagging
 	OSSTagging map[string]interface{} `json:"OSSTagging,omitempty" xml:"OSSTagging,omitempty"`
 	// OSSTaggingCount
 	OSSTaggingCount *int64 `json:"OSSTaggingCount,omitempty" xml:"OSSTaggingCount,omitempty"`
+	// OSSURI
+	OSSURI *string `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
 	// OSSUserMeta
 	OSSUserMeta map[string]interface{} `json:"OSSUserMeta,omitempty" xml:"OSSUserMeta,omitempty"`
 	// OSSVersionId
@@ -842,8 +1247,6 @@ type File struct {
 	ServerSideEncryptionKeyId *string `json:"ServerSideEncryptionKeyId,omitempty" xml:"ServerSideEncryptionKeyId,omitempty"`
 	// Size
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// StorageClass
-	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// Subtitles
 	Subtitles []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	// Timezone
@@ -860,10 +1263,6 @@ type File struct {
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
 	// VideoDuration
 	VideoDuration *float32 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
-	// VideoEmbeddingsFloat32
-	VideoEmbeddingsFloat32 []*float32 `json:"VideoEmbeddingsFloat32,omitempty" xml:"VideoEmbeddingsFloat32,omitempty" type:"Repeated"`
-	// VideoEmbeddingsInt8
-	VideoEmbeddingsInt8 []*int32 `json:"VideoEmbeddingsInt8,omitempty" xml:"VideoEmbeddingsInt8,omitempty" type:"Repeated"`
 	// VideoHeight
 	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
 	// VideoStartTime
@@ -926,16 +1325,6 @@ func (s *File) SetAudioCovers(v []*Image) *File {
 
 func (s *File) SetAudioDuration(v float32) *File {
 	s.AudioDuration = &v
-	return s
-}
-
-func (s *File) SetAudioEmbeddingsFloat32(v []*float32) *File {
-	s.AudioEmbeddingsFloat32 = v
-	return s
-}
-
-func (s *File) SetAudioEmbeddingsInt8(v []*int32) *File {
-	s.AudioEmbeddingsInt8 = v
 	return s
 }
 
@@ -1019,16 +1408,6 @@ func (s *File) SetDocumentContent(v string) *File {
 	return s
 }
 
-func (s *File) SetDocumentEmbeddingsFloat32(v []*float32) *File {
-	s.DocumentEmbeddingsFloat32 = v
-	return s
-}
-
-func (s *File) SetDocumentEmbeddingsInt8(v []*int32) *File {
-	s.DocumentEmbeddingsInt8 = v
-	return s
-}
-
 func (s *File) SetDocumentLanguage(v string) *File {
 	s.DocumentLanguage = &v
 	return s
@@ -1044,13 +1423,13 @@ func (s *File) SetEXIF(v string) *File {
 	return s
 }
 
-func (s *File) SetFaceCount(v int64) *File {
-	s.FaceCount = &v
+func (s *File) SetFigureCount(v int64) *File {
+	s.FigureCount = &v
 	return s
 }
 
-func (s *File) SetFaces(v []*Face) *File {
-	s.Faces = v
+func (s *File) SetFigures(v []*Figure) *File {
+	s.Figures = v
 	return s
 }
 
@@ -1076,16 +1455,6 @@ func (s *File) SetFileModifiedTime(v string) *File {
 
 func (s *File) SetFilename(v string) *File {
 	s.Filename = &v
-	return s
-}
-
-func (s *File) SetImageEmbeddingsFloat32(v []*float32) *File {
-	s.ImageEmbeddingsFloat32 = v
-	return s
-}
-
-func (s *File) SetImageEmbeddingsInt8(v []*int32) *File {
-	s.ImageEmbeddingsInt8 = v
 	return s
 }
 
@@ -1124,6 +1493,11 @@ func (s *File) SetOCRContents(v []*OCRContents) *File {
 	return s
 }
 
+func (s *File) SetOSSCRC64(v string) *File {
+	s.OSSCRC64 = &v
+	return s
+}
+
 func (s *File) SetOSSDeleteMarker(v string) *File {
 	s.OSSDeleteMarker = &v
 	return s
@@ -1139,6 +1513,11 @@ func (s *File) SetOSSObjectType(v string) *File {
 	return s
 }
 
+func (s *File) SetOSSStorageClass(v string) *File {
+	s.OSSStorageClass = &v
+	return s
+}
+
 func (s *File) SetOSSTagging(v map[string]interface{}) *File {
 	s.OSSTagging = v
 	return s
@@ -1146,6 +1525,11 @@ func (s *File) SetOSSTagging(v map[string]interface{}) *File {
 
 func (s *File) SetOSSTaggingCount(v int64) *File {
 	s.OSSTaggingCount = &v
+	return s
+}
+
+func (s *File) SetOSSURI(v string) *File {
+	s.OSSURI = &v
 	return s
 }
 
@@ -1229,11 +1613,6 @@ func (s *File) SetSize(v int64) *File {
 	return s
 }
 
-func (s *File) SetStorageClass(v string) *File {
-	s.StorageClass = &v
-	return s
-}
-
 func (s *File) SetSubtitles(v []*SubtitleStream) *File {
 	s.Subtitles = v
 	return s
@@ -1274,16 +1653,6 @@ func (s *File) SetVideoDuration(v float32) *File {
 	return s
 }
 
-func (s *File) SetVideoEmbeddingsFloat32(v []*float32) *File {
-	s.VideoEmbeddingsFloat32 = v
-	return s
-}
-
-func (s *File) SetVideoEmbeddingsInt8(v []*int32) *File {
-	s.VideoEmbeddingsInt8 = v
-	return s
-}
-
 func (s *File) SetVideoHeight(v int64) *File {
 	s.VideoHeight = &v
 	return s
@@ -1310,12 +1679,18 @@ func (s *File) SetVideoWidth(v int64) *File {
 }
 
 type FileForReq struct {
+	// ContentType
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// CustomId
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	// CustomLabels
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// Figures
+	Figures []*FileForReqFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 	// FileHash
 	FileHash *string `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	// MediaType
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// OSSURI
 	OSSURI *string `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
 	// URI
@@ -1330,6 +1705,11 @@ func (s FileForReq) GoString() string {
 	return s.String()
 }
 
+func (s *FileForReq) SetContentType(v string) *FileForReq {
+	s.ContentType = &v
+	return s
+}
+
 func (s *FileForReq) SetCustomId(v string) *FileForReq {
 	s.CustomId = &v
 	return s
@@ -1340,8 +1720,18 @@ func (s *FileForReq) SetCustomLabels(v map[string]interface{}) *FileForReq {
 	return s
 }
 
+func (s *FileForReq) SetFigures(v []*FileForReqFigures) *FileForReq {
+	s.Figures = v
+	return s
+}
+
 func (s *FileForReq) SetFileHash(v string) *FileForReq {
 	s.FileHash = &v
+	return s
+}
+
+func (s *FileForReq) SetMediaType(v string) *FileForReq {
+	s.MediaType = &v
 	return s
 }
 
@@ -1352,6 +1742,38 @@ func (s *FileForReq) SetOSSURI(v string) *FileForReq {
 
 func (s *FileForReq) SetURI(v string) *FileForReq {
 	s.URI = &v
+	return s
+}
+
+type FileForReqFigures struct {
+	// FigureClusterId
+	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
+	// FigureId
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	// FigureType
+	FigureType *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+}
+
+func (s FileForReqFigures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileForReqFigures) GoString() string {
+	return s.String()
+}
+
+func (s *FileForReqFigures) SetFigureClusterId(v string) *FileForReqFigures {
+	s.FigureClusterId = &v
+	return s
+}
+
+func (s *FileForReqFigures) SetFigureId(v string) *FileForReqFigures {
+	s.FigureId = &v
+	return s
+}
+
+func (s *FileForReqFigures) SetFigureType(v string) *FileForReqFigures {
+	s.FigureType = &v
 	return s
 }
 
@@ -1483,6 +1905,8 @@ func (s *KeyValuePair) SetValue(v string) *KeyValuePair {
 }
 
 type Label struct {
+	// CentricScore
+	CentricScore *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	// LabelConfidence
 	LabelConfidence *float32 `json:"LabelConfidence,omitempty" xml:"LabelConfidence,omitempty"`
 	// LabelLevel
@@ -1491,6 +1915,8 @@ type Label struct {
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
 	// Language
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// ParentLabelName
+	ParentLabelName *string `json:"ParentLabelName,omitempty" xml:"ParentLabelName,omitempty"`
 }
 
 func (s Label) String() string {
@@ -1499,6 +1925,11 @@ func (s Label) String() string {
 
 func (s Label) GoString() string {
 	return s.String()
+}
+
+func (s *Label) SetCentricScore(v float32) *Label {
+	s.CentricScore = &v
+	return s
 }
 
 func (s *Label) SetLabelConfidence(v float32) *Label {
@@ -1518,6 +1949,11 @@ func (s *Label) SetLabelName(v string) *Label {
 
 func (s *Label) SetLanguage(v string) *Label {
 	s.Language = &v
+	return s
+}
+
+func (s *Label) SetParentLabelName(v string) *Label {
+	s.ParentLabelName = &v
 	return s
 }
 
@@ -1557,73 +1993,6 @@ func (s *OCRContents) SetContents(v string) *OCRContents {
 
 func (s *OCRContents) SetLanguage(v string) *OCRContents {
 	s.Language = &v
-	return s
-}
-
-type OfficeConversionTask struct {
-	// 任务创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务解释时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Status 解释
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 任务开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 任务 id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 转换页数
-	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// 用户自定义内容
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s OfficeConversionTask) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfficeConversionTask) GoString() string {
-	return s.String()
-}
-
-func (s *OfficeConversionTask) SetCreateTime(v string) *OfficeConversionTask {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetEndTime(v string) *OfficeConversionTask {
-	s.EndTime = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetReason(v string) *OfficeConversionTask {
-	s.Reason = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetStartTime(v string) *OfficeConversionTask {
-	s.StartTime = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetStatus(v string) *OfficeConversionTask {
-	s.Status = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetTaskId(v string) *OfficeConversionTask {
-	s.TaskId = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetTotalPages(v int64) *OfficeConversionTask {
-	s.TotalPages = &v
-	return s
-}
-
-func (s *OfficeConversionTask) SetUserData(v string) *OfficeConversionTask {
-	s.UserData = &v
 	return s
 }
 
@@ -1843,6 +2212,73 @@ func (s *SubtitleStream) SetIndex(v int64) *SubtitleStream {
 
 func (s *SubtitleStream) SetLanguage(v string) *SubtitleStream {
 	s.Language = &v
+	return s
+}
+
+type TaskInfo struct {
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 任务状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// 用户自定义信息
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s TaskInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TaskInfo) SetCode(v string) *TaskInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *TaskInfo) SetEndTime(v string) *TaskInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TaskInfo) SetMessage(v string) *TaskInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *TaskInfo) SetStartTime(v string) *TaskInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TaskInfo) SetStatus(v string) *TaskInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *TaskInfo) SetTaskId(v string) *TaskInfo {
+	s.TaskId = &v
+	return s
+}
+
+func (s *TaskInfo) SetTaskType(v string) *TaskInfo {
+	s.TaskType = &v
+	return s
+}
+
+func (s *TaskInfo) SetUserData(v string) *TaskInfo {
+	s.UserData = &v
 	return s
 }
 
@@ -2157,11 +2593,9 @@ func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
 }
 
 type BatchDeleteFileMetaRequest struct {
-	DatasetName     *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyEndpoint  *string   `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string   `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIs            []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URIs        []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
 }
 
 func (s BatchDeleteFileMetaRequest) String() string {
@@ -2177,16 +2611,6 @@ func (s *BatchDeleteFileMetaRequest) SetDatasetName(v string) *BatchDeleteFileMe
 	return s
 }
 
-func (s *BatchDeleteFileMetaRequest) SetNotifyEndpoint(v string) *BatchDeleteFileMetaRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaRequest) SetNotifyTopicName(v string) *BatchDeleteFileMetaRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *BatchDeleteFileMetaRequest) SetProjectName(v string) *BatchDeleteFileMetaRequest {
 	s.ProjectName = &v
 	return s
@@ -2198,11 +2622,9 @@ func (s *BatchDeleteFileMetaRequest) SetURIs(v []*string) *BatchDeleteFileMetaRe
 }
 
 type BatchDeleteFileMetaShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URIsShrink      *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URIsShrink  *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
 }
 
 func (s BatchDeleteFileMetaShrinkRequest) String() string {
@@ -2218,16 +2640,6 @@ func (s *BatchDeleteFileMetaShrinkRequest) SetDatasetName(v string) *BatchDelete
 	return s
 }
 
-func (s *BatchDeleteFileMetaShrinkRequest) SetNotifyEndpoint(v string) *BatchDeleteFileMetaShrinkRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *BatchDeleteFileMetaShrinkRequest) SetNotifyTopicName(v string) *BatchDeleteFileMetaShrinkRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *BatchDeleteFileMetaShrinkRequest) SetProjectName(v string) *BatchDeleteFileMetaShrinkRequest {
 	s.ProjectName = &v
 	return s
@@ -2239,7 +2651,6 @@ func (s *BatchDeleteFileMetaShrinkRequest) SetURIsShrink(v string) *BatchDeleteF
 }
 
 type BatchDeleteFileMetaResponseBody struct {
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2250,11 +2661,6 @@ func (s BatchDeleteFileMetaResponseBody) String() string {
 
 func (s BatchDeleteFileMetaResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *BatchDeleteFileMetaResponseBody) SetEventId(v string) *BatchDeleteFileMetaResponseBody {
-	s.EventId = &v
-	return s
 }
 
 func (s *BatchDeleteFileMetaResponseBody) SetRequestId(v string) *BatchDeleteFileMetaResponseBody {
@@ -2520,11 +2926,9 @@ func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) 
 }
 
 type BatchUpdateFileMetaRequest struct {
-	DatasetName     *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files           []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	NotifyEndpoint  *string       `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string       `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	ProjectName *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchUpdateFileMetaRequest) String() string {
@@ -2545,27 +2949,15 @@ func (s *BatchUpdateFileMetaRequest) SetFiles(v []*FileForReq) *BatchUpdateFileM
 	return s
 }
 
-func (s *BatchUpdateFileMetaRequest) SetNotifyEndpoint(v string) *BatchUpdateFileMetaRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaRequest) SetNotifyTopicName(v string) *BatchUpdateFileMetaRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *BatchUpdateFileMetaRequest) SetProjectName(v string) *BatchUpdateFileMetaRequest {
 	s.ProjectName = &v
 	return s
 }
 
 type BatchUpdateFileMetaShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FilesShrink     *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchUpdateFileMetaShrinkRequest) String() string {
@@ -2586,23 +2978,13 @@ func (s *BatchUpdateFileMetaShrinkRequest) SetFilesShrink(v string) *BatchUpdate
 	return s
 }
 
-func (s *BatchUpdateFileMetaShrinkRequest) SetNotifyEndpoint(v string) *BatchUpdateFileMetaShrinkRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *BatchUpdateFileMetaShrinkRequest) SetNotifyTopicName(v string) *BatchUpdateFileMetaShrinkRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *BatchUpdateFileMetaShrinkRequest) SetProjectName(v string) *BatchUpdateFileMetaShrinkRequest {
 	s.ProjectName = &v
 	return s
 }
 
 type BatchUpdateFileMetaResponseBody struct {
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Files []*BatchUpdateFileMetaResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2615,13 +2997,42 @@ func (s BatchUpdateFileMetaResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *BatchUpdateFileMetaResponseBody) SetEventId(v string) *BatchUpdateFileMetaResponseBody {
-	s.EventId = &v
+func (s *BatchUpdateFileMetaResponseBody) SetFiles(v []*BatchUpdateFileMetaResponseBodyFiles) *BatchUpdateFileMetaResponseBody {
+	s.Files = v
 	return s
 }
 
 func (s *BatchUpdateFileMetaResponseBody) SetRequestId(v string) *BatchUpdateFileMetaResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type BatchUpdateFileMetaResponseBodyFiles struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	URI     *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s BatchUpdateFileMetaResponseBodyFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFileMetaResponseBodyFiles) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFileMetaResponseBodyFiles) SetMessage(v string) *BatchUpdateFileMetaResponseBodyFiles {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaResponseBodyFiles) SetSuccess(v bool) *BatchUpdateFileMetaResponseBodyFiles {
+	s.Success = &v
+	return s
+}
+
+func (s *BatchUpdateFileMetaResponseBodyFiles) SetURI(v string) *BatchUpdateFileMetaResponseBodyFiles {
+	s.URI = &v
 	return s
 }
 
@@ -2644,6 +3055,100 @@ func (s *BatchUpdateFileMetaResponse) SetHeaders(v map[string]*string) *BatchUpd
 }
 
 func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody) *BatchUpdateFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type ClusterFiguresRequest struct {
+	CustomMessage       *string `json:"CustomMessage,omitempty" xml:"CustomMessage,omitempty"`
+	DatasetName         *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureType          *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+	NotifyTopicEndpoint *string `json:"NotifyTopicEndpoint,omitempty" xml:"NotifyTopicEndpoint,omitempty"`
+	NotifyTopicName     *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ClusterFiguresRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterFiguresRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterFiguresRequest) SetCustomMessage(v string) *ClusterFiguresRequest {
+	s.CustomMessage = &v
+	return s
+}
+
+func (s *ClusterFiguresRequest) SetDatasetName(v string) *ClusterFiguresRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ClusterFiguresRequest) SetFigureType(v string) *ClusterFiguresRequest {
+	s.FigureType = &v
+	return s
+}
+
+func (s *ClusterFiguresRequest) SetNotifyTopicEndpoint(v string) *ClusterFiguresRequest {
+	s.NotifyTopicEndpoint = &v
+	return s
+}
+
+func (s *ClusterFiguresRequest) SetNotifyTopicName(v string) *ClusterFiguresRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *ClusterFiguresRequest) SetProjectName(v string) *ClusterFiguresRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type ClusterFiguresResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ClusterFiguresResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterFiguresResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterFiguresResponseBody) SetRequestId(v string) *ClusterFiguresResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClusterFiguresResponseBody) SetTaskId(v string) *ClusterFiguresResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ClusterFiguresResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ClusterFiguresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClusterFiguresResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClusterFiguresResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClusterFiguresResponse) SetHeaders(v map[string]*string) *ClusterFiguresResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClusterFiguresResponse) SetBody(v *ClusterFiguresResponseBody) *ClusterFiguresResponse {
 	s.Body = v
 	return s
 }
@@ -2848,210 +3353,145 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 	return s
 }
 
-type CreateOfficeConversionTaskRequest struct {
-	// 结束转换页，如果是 excel 需要指定 SheetIndex
-	EndPage *string `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
-	// 表格转图片参数，只返回表格的第一张图片，图片包含的行数列数是自动切割的结果。必须在LongPic为true的情况下才有效。默认为false
-	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
-	// 表格转图片，所有行输出到一张图片
-	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
-	// 表格转图片，所有列输出到一张图片
-	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
-	// 水平放置纸张，默认 false
-	IsHorizontal *bool `json:"IsHorizontal,omitempty" xml:"IsHorizontal,omitempty"`
-	// 转图片，合成一个一张产长图，最多20张图片，默认 false
-	LongPic *bool `json:"LongPic,omitempty" xml:"LongPic,omitempty"`
-	// mns 消息地址
-	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	// mns 消息 topic
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	// 纸张大小 A4, A2, A0，默认 A4
-	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
-	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+type CreateDetectVideoLabelsTaskRequest struct {
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 转化质量0~100
-	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	// 缩放大小 20~200，默认100，小于100缩放，大于100放大
-	Scale *int64 `json:"Scale,omitempty" xml:"Scale,omitempty"`
-	// excel 转换 sheet 的数量，默认转换所有
-	SheetCount *string `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
-	// excel 标签页，从 1 开始
-	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
-	// 显示批注
-	ShowComments *bool   `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
-	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceUri    *string `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	// 开始转换页，如果是 excel 需要指定 SheetIndex
-	StartPage  *string `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TargetUri  *string `json:"TargetUri,omitempty" xml:"TargetUri,omitempty"`
-	// 用户自定义信息，此信息将在 Task 中回传
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// UserData
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
-func (s CreateOfficeConversionTaskRequest) String() string {
+func (s CreateDetectVideoLabelsTaskRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateOfficeConversionTaskRequest) GoString() string {
+func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOfficeConversionTaskRequest) SetEndPage(v string) *CreateOfficeConversionTaskRequest {
-	s.EndPage = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetFirstPage(v bool) *CreateOfficeConversionTaskRequest {
-	s.FirstPage = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetFitToHeight(v bool) *CreateOfficeConversionTaskRequest {
-	s.FitToHeight = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetFitToWidth(v bool) *CreateOfficeConversionTaskRequest {
-	s.FitToWidth = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetIsHorizontal(v bool) *CreateOfficeConversionTaskRequest {
-	s.IsHorizontal = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetLongPic(v bool) *CreateOfficeConversionTaskRequest {
-	s.LongPic = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetNotifyEndpoint(v string) *CreateOfficeConversionTaskRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetNotifyTopicName(v string) *CreateOfficeConversionTaskRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetPaperSize(v string) *CreateOfficeConversionTaskRequest {
-	s.PaperSize = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetPassword(v string) *CreateOfficeConversionTaskRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetProjectName(v string) *CreateOfficeConversionTaskRequest {
+func (s *CreateDetectVideoLabelsTaskRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskRequest {
 	s.ProjectName = &v
 	return s
 }
 
-func (s *CreateOfficeConversionTaskRequest) SetQuality(v int64) *CreateOfficeConversionTaskRequest {
-	s.Quality = &v
+func (s *CreateDetectVideoLabelsTaskRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.SourceURI = &v
 	return s
 }
 
-func (s *CreateOfficeConversionTaskRequest) SetScale(v int64) *CreateOfficeConversionTaskRequest {
-	s.Scale = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetSheetCount(v string) *CreateOfficeConversionTaskRequest {
-	s.SheetCount = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetSheetIndex(v int64) *CreateOfficeConversionTaskRequest {
-	s.SheetIndex = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetShowComments(v bool) *CreateOfficeConversionTaskRequest {
-	s.ShowComments = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetSourceType(v string) *CreateOfficeConversionTaskRequest {
-	s.SourceType = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetSourceUri(v string) *CreateOfficeConversionTaskRequest {
-	s.SourceUri = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetStartPage(v string) *CreateOfficeConversionTaskRequest {
-	s.StartPage = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetTargetType(v string) *CreateOfficeConversionTaskRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetTargetUri(v string) *CreateOfficeConversionTaskRequest {
-	s.TargetUri = &v
-	return s
-}
-
-func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeConversionTaskRequest {
+func (s *CreateDetectVideoLabelsTaskRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskRequest {
 	s.UserData = &v
 	return s
 }
 
-type CreateOfficeConversionTaskResponseBody struct {
-	// 请求 id
+type CreateDetectVideoLabelsTaskResponseBody struct {
+	// 任务错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 事件Id
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// 任务错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 请求唯一Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务 id
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 任务运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 任务唯一ID
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// 用户自定义信息
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
-func (s CreateOfficeConversionTaskResponseBody) String() string {
+func (s CreateDetectVideoLabelsTaskResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateOfficeConversionTaskResponseBody) GoString() string {
+func (s CreateDetectVideoLabelsTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOfficeConversionTaskResponseBody) SetRequestId(v string) *CreateOfficeConversionTaskResponseBody {
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetCode(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetEndTime(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetEventId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetMessage(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetProjectName(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetRequestId(v string) *CreateDetectVideoLabelsTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateOfficeConversionTaskResponseBody) SetTaskId(v string) *CreateOfficeConversionTaskResponseBody {
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetStartTime(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetStatus(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetTaskId(v string) *CreateDetectVideoLabelsTaskResponseBody {
 	s.TaskId = &v
 	return s
 }
 
-type CreateOfficeConversionTaskResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetTaskType(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.TaskType = &v
+	return s
 }
 
-func (s CreateOfficeConversionTaskResponse) String() string {
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetUserData(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDetectVideoLabelsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDetectVideoLabelsTaskResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateOfficeConversionTaskResponse) GoString() string {
+func (s CreateDetectVideoLabelsTaskResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CreateOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *CreateOfficeConversionTaskResponse {
+func (s *CreateDetectVideoLabelsTaskResponse) SetHeaders(v map[string]*string) *CreateDetectVideoLabelsTaskResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CreateOfficeConversionTaskResponse) SetBody(v *CreateOfficeConversionTaskResponseBody) *CreateOfficeConversionTaskResponse {
+func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3323,11 +3763,9 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteFileMetaRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI             *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s DeleteFileMetaRequest) String() string {
@@ -3343,16 +3781,6 @@ func (s *DeleteFileMetaRequest) SetDatasetName(v string) *DeleteFileMetaRequest 
 	return s
 }
 
-func (s *DeleteFileMetaRequest) SetNotifyEndpoint(v string) *DeleteFileMetaRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *DeleteFileMetaRequest) SetNotifyTopicName(v string) *DeleteFileMetaRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *DeleteFileMetaRequest) SetProjectName(v string) *DeleteFileMetaRequest {
 	s.ProjectName = &v
 	return s
@@ -3364,7 +3792,6 @@ func (s *DeleteFileMetaRequest) SetURI(v string) *DeleteFileMetaRequest {
 }
 
 type DeleteFileMetaResponseBody struct {
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3375,11 +3802,6 @@ func (s DeleteFileMetaResponseBody) String() string {
 
 func (s DeleteFileMetaResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteFileMetaResponseBody) SetEventId(v string) *DeleteFileMetaResponseBody {
-	s.EventId = &v
-	return s
 }
 
 func (s *DeleteFileMetaResponseBody) SetRequestId(v string) *DeleteFileMetaResponseBody {
@@ -3800,6 +4222,232 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 	return s
 }
 
+type GetDetectVideoLabelsResultRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// TaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// TaskType
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetDetectVideoLabelsResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectVideoLabelsResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectVideoLabelsResultRequest) SetProjectName(v string) *GetDetectVideoLabelsResultRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultRequest) SetTaskId(v string) *GetDetectVideoLabelsResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultRequest) SetTaskType(v string) *GetDetectVideoLabelsResultRequest {
+	s.TaskType = &v
+	return s
+}
+
+type GetDetectVideoLabelsResultResponseBody struct {
+	// 任务错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 事件Id
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// 标签列表
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// 任务错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 请求唯一Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 任务运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// 用户自定义信息
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetDetectVideoLabelsResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectVideoLabelsResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetCode(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetEndTime(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetEventId(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetLabels(v []*Label) *GetDetectVideoLabelsResultResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetMessage(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetProjectName(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetRequestId(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetStartTime(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetStatus(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetTaskId(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetTaskType(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponseBody) SetUserData(v string) *GetDetectVideoLabelsResultResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type GetDetectVideoLabelsResultResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDetectVideoLabelsResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDetectVideoLabelsResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectVideoLabelsResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectVideoLabelsResultResponse) SetHeaders(v map[string]*string) *GetDetectVideoLabelsResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDetectVideoLabelsResultResponse) SetBody(v *GetDetectVideoLabelsResultResponseBody) *GetDetectVideoLabelsResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetFigureClusterRequest struct {
+	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s GetFigureClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFigureClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFigureClusterRequest) SetDatasetName(v string) *GetFigureClusterRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetFigureClusterRequest) SetFigureClusterId(v string) *GetFigureClusterRequest {
+	s.FigureClusterId = &v
+	return s
+}
+
+func (s *GetFigureClusterRequest) SetProjectName(v string) *GetFigureClusterRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type GetFigureClusterResponseBody struct {
+	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFigureClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFigureClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFigureClusterResponseBody) SetFigureCluster(v *FigureCluster) *GetFigureClusterResponseBody {
+	s.FigureCluster = v
+	return s
+}
+
+func (s *GetFigureClusterResponseBody) SetRequestId(v string) *GetFigureClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFigureClusterResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFigureClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFigureClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFigureClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFigureClusterResponse) SetHeaders(v map[string]*string) *GetFigureClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFigureClusterResponse) SetBody(v *GetFigureClusterResponseBody) *GetFigureClusterResponse {
+	s.Body = v
+	return s
+}
+
 type GetFileMetaRequest struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -3948,77 +4596,6 @@ func (s *GetFileSignedURIResponse) SetBody(v *GetFileSignedURIResponseBody) *Get
 	return s
 }
 
-type GetOfficeConversionTaskRequest struct {
-	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// 任务 id
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetOfficeConversionTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficeConversionTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficeConversionTaskRequest) SetProjectName(v string) *GetOfficeConversionTaskRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetOfficeConversionTaskRequest) SetTaskId(v string) *GetOfficeConversionTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetOfficeConversionTaskResponseBody struct {
-	OfficeConversionTask *OfficeConversionTask `json:"OfficeConversionTask,omitempty" xml:"OfficeConversionTask,omitempty"`
-	RequestId            *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetOfficeConversionTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficeConversionTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetOfficeConversionTask(v *OfficeConversionTask) *GetOfficeConversionTaskResponseBody {
-	s.OfficeConversionTask = v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponseBody) SetRequestId(v string) *GetOfficeConversionTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetOfficeConversionTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetOfficeConversionTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficeConversionTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *GetOfficeConversionTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOfficeConversionTaskResponse) SetBody(v *GetOfficeConversionTaskResponseBody) *GetOfficeConversionTaskResponse {
-	s.Body = v
-	return s
-}
-
 type GetProjectRequest struct {
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -4087,6 +4664,149 @@ func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectRespons
 }
 
 func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskRequest struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// TaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// TaskType
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskRequest) SetProjectName(v string) *GetTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskRequest) SetTaskType(v string) *GetTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type GetTaskResponseBody struct {
+	// 任务错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 事件Id
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// 任务错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 请求唯一Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 任务运行状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// 用户自定义信息
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBody) SetCode(v string) *GetTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetEndTime(v string) *GetTaskResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetEventId(v string) *GetTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetMessage(v string) *GetTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetProjectName(v string) *GetTaskResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetRequestId(v string) *GetTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetStartTime(v string) *GetTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetStatus(v string) *GetTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTaskId(v string) *GetTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTaskType(v string) *GetTaskResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetUserData(v string) *GetTaskResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type GetTaskResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4709,86 +5429,108 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 	return s
 }
 
-type ListOfficeConversionTaskRequest struct {
-	// 最大结果数
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下一条记录开始标记
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 项目名称
+type ListFigureClustersRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
-func (s ListOfficeConversionTaskRequest) String() string {
+func (s ListFigureClustersRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListOfficeConversionTaskRequest) GoString() string {
+func (s ListFigureClustersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfficeConversionTaskRequest) SetMaxResults(v int64) *ListOfficeConversionTaskRequest {
+func (s *ListFigureClustersRequest) SetDatasetName(v string) *ListFigureClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListFigureClustersRequest) SetLabels(v string) *ListFigureClustersRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListFigureClustersRequest) SetMaxResults(v int64) *ListFigureClustersRequest {
 	s.MaxResults = &v
 	return s
 }
 
-func (s *ListOfficeConversionTaskRequest) SetNextToken(v string) *ListOfficeConversionTaskRequest {
+func (s *ListFigureClustersRequest) SetNextToken(v string) *ListFigureClustersRequest {
 	s.NextToken = &v
 	return s
 }
 
-func (s *ListOfficeConversionTaskRequest) SetProjectName(v string) *ListOfficeConversionTaskRequest {
+func (s *ListFigureClustersRequest) SetOrder(v string) *ListFigureClustersRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListFigureClustersRequest) SetProjectName(v string) *ListFigureClustersRequest {
 	s.ProjectName = &v
 	return s
 }
 
-type ListOfficeConversionTaskResponseBody struct {
-	NextToken             *string                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeConversionTasks []*OfficeConversionTask `json:"OfficeConversionTasks,omitempty" xml:"OfficeConversionTasks,omitempty" type:"Repeated"`
-	RequestId             *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+func (s *ListFigureClustersRequest) SetSort(v string) *ListFigureClustersRequest {
+	s.Sort = &v
+	return s
 }
 
-func (s ListOfficeConversionTaskResponseBody) String() string {
+type ListFigureClustersResponseBody struct {
+	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
+	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFigureClustersResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListOfficeConversionTaskResponseBody) GoString() string {
+func (s ListFigureClustersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfficeConversionTaskResponseBody) SetNextToken(v string) *ListOfficeConversionTaskResponseBody {
+func (s *ListFigureClustersResponseBody) SetFigureClusters(v []*FigureCluster) *ListFigureClustersResponseBody {
+	s.FigureClusters = v
+	return s
+}
+
+func (s *ListFigureClustersResponseBody) SetNextToken(v string) *ListFigureClustersResponseBody {
 	s.NextToken = &v
 	return s
 }
 
-func (s *ListOfficeConversionTaskResponseBody) SetOfficeConversionTasks(v []*OfficeConversionTask) *ListOfficeConversionTaskResponseBody {
-	s.OfficeConversionTasks = v
-	return s
-}
-
-func (s *ListOfficeConversionTaskResponseBody) SetRequestId(v string) *ListOfficeConversionTaskResponseBody {
+func (s *ListFigureClustersResponseBody) SetRequestId(v string) *ListFigureClustersResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ListOfficeConversionTaskResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ListFigureClustersResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFigureClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListOfficeConversionTaskResponse) String() string {
+func (s ListFigureClustersResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListOfficeConversionTaskResponse) GoString() string {
+func (s ListFigureClustersResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *ListOfficeConversionTaskResponse {
+func (s *ListFigureClustersResponse) SetHeaders(v map[string]*string) *ListFigureClustersResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListOfficeConversionTaskResponse) SetBody(v *ListOfficeConversionTaskResponseBody) *ListOfficeConversionTaskResponse {
+func (s *ListFigureClustersResponse) SetBody(v *ListFigureClustersResponseBody) *ListFigureClustersResponse {
 	s.Body = v
 	return s
 }
@@ -4876,6 +5618,220 @@ func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsRes
 }
 
 func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTasksRequest struct {
+	// MaxResults
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// NextToken
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// TaskType
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksRequest) SetMaxResults(v int64) *ListTasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetNextToken(v string) *ListTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetProjectName(v string) *ListTasksRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+type ListTasksResponseBody struct {
+	// 最大结果数量
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 翻页标记
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 请求唯一Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务信息
+	Tasks []*TaskInfo `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s ListTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponseBody) SetMaxResults(v string) *ListTasksResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTasksResponseBody) SetNextToken(v string) *ListTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTasksResponseBody) SetProjectName(v string) *ListTasksResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListTasksResponseBody) SetRequestId(v string) *ListTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTasksResponseBody) SetTasks(v []*TaskInfo) *ListTasksResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type ListTasksResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksResponse) SetHeaders(v map[string]*string) *ListTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse {
+	s.Body = v
+	return s
+}
+
+type MergeFigureClustersRequest struct {
+	ClusterIdFrom       *string `json:"ClusterIdFrom,omitempty" xml:"ClusterIdFrom,omitempty"`
+	ClusterIdTo         *string `json:"ClusterIdTo,omitempty" xml:"ClusterIdTo,omitempty"`
+	CustomMessage       *string `json:"CustomMessage,omitempty" xml:"CustomMessage,omitempty"`
+	DatasetName         *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureType          *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
+	NotifyTopicEndpoint *string `json:"NotifyTopicEndpoint,omitempty" xml:"NotifyTopicEndpoint,omitempty"`
+	NotifyTopicName     *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s MergeFigureClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeFigureClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MergeFigureClustersRequest) SetClusterIdFrom(v string) *MergeFigureClustersRequest {
+	s.ClusterIdFrom = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetClusterIdTo(v string) *MergeFigureClustersRequest {
+	s.ClusterIdTo = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetCustomMessage(v string) *MergeFigureClustersRequest {
+	s.CustomMessage = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetDatasetName(v string) *MergeFigureClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetFigureType(v string) *MergeFigureClustersRequest {
+	s.FigureType = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetNotifyTopicEndpoint(v string) *MergeFigureClustersRequest {
+	s.NotifyTopicEndpoint = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetNotifyTopicName(v string) *MergeFigureClustersRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *MergeFigureClustersRequest) SetProjectName(v string) *MergeFigureClustersRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type MergeFigureClustersResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s MergeFigureClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeFigureClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MergeFigureClustersResponseBody) SetRequestId(v string) *MergeFigureClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MergeFigureClustersResponseBody) SetTaskId(v string) *MergeFigureClustersResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type MergeFigureClustersResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MergeFigureClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MergeFigureClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeFigureClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MergeFigureClustersResponse) SetHeaders(v map[string]*string) *MergeFigureClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MergeFigureClustersResponse) SetBody(v *MergeFigureClustersResponseBody) *MergeFigureClustersResponse {
 	s.Body = v
 	return s
 }
@@ -5097,6 +6053,178 @@ func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBin
 	return s
 }
 
+type SemanticQueryRequest struct {
+	// Dataset 名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 本次读取的最大数据记录数量
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 需要搜索的内容，使用自然语言描述
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s SemanticQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryRequest) SetDatasetName(v string) *SemanticQueryRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SemanticQueryRequest) SetMaxResults(v int32) *SemanticQueryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *SemanticQueryRequest) SetNextToken(v string) *SemanticQueryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *SemanticQueryRequest) SetProjectName(v string) *SemanticQueryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
+	s.Query = &v
+	return s
+}
+
+type SemanticQueryResponseBody struct {
+	// 聚合字段的字段名
+	Aggregations []*SemanticQueryResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
+	// 文件列表
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 本次请求的唯一 Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SemanticQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryResponseBody) SetAggregations(v []*SemanticQueryResponseBodyAggregations) *SemanticQueryResponseBody {
+	s.Aggregations = v
+	return s
+}
+
+func (s *SemanticQueryResponseBody) SetFiles(v []*File) *SemanticQueryResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *SemanticQueryResponseBody) SetNextToken(v string) *SemanticQueryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *SemanticQueryResponseBody) SetRequestId(v string) *SemanticQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SemanticQueryResponseBodyAggregations struct {
+	// 聚合字段名
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// 分组聚合的结果
+	Groups []*SemanticQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// 聚合字段的聚合操作符
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// 聚合的统计结果
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SemanticQueryResponseBodyAggregations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryResponseBodyAggregations) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryResponseBodyAggregations) SetField(v string) *SemanticQueryResponseBodyAggregations {
+	s.Field = &v
+	return s
+}
+
+func (s *SemanticQueryResponseBodyAggregations) SetGroups(v []*SemanticQueryResponseBodyAggregationsGroups) *SemanticQueryResponseBodyAggregations {
+	s.Groups = v
+	return s
+}
+
+func (s *SemanticQueryResponseBodyAggregations) SetOperation(v string) *SemanticQueryResponseBodyAggregations {
+	s.Operation = &v
+	return s
+}
+
+func (s *SemanticQueryResponseBodyAggregations) SetValue(v float32) *SemanticQueryResponseBodyAggregations {
+	s.Value = &v
+	return s
+}
+
+type SemanticQueryResponseBodyAggregationsGroups struct {
+	// 分组聚合的计数
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// 分组聚合的值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SemanticQueryResponseBodyAggregationsGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryResponseBodyAggregationsGroups) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryResponseBodyAggregationsGroups) SetCount(v int64) *SemanticQueryResponseBodyAggregationsGroups {
+	s.Count = &v
+	return s
+}
+
+func (s *SemanticQueryResponseBodyAggregationsGroups) SetValue(v string) *SemanticQueryResponseBodyAggregationsGroups {
+	s.Value = &v
+	return s
+}
+
+type SemanticQueryResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SemanticQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SemanticQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryResponse) SetHeaders(v map[string]*string) *SemanticQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SemanticQueryResponse) SetBody(v *SemanticQueryResponseBody) *SemanticQueryResponse {
+	s.Body = v
+	return s
+}
+
 type SimpleQueryRequest struct {
 	// 聚合字段
 	Aggregations []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
@@ -5296,12 +6424,12 @@ func (s *SimpleQueryResponseBody) SetRequestId(v string) *SimpleQueryResponseBod
 type SimpleQueryResponseBodyAggregations struct {
 	// 聚合字段名
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// 分组聚合的结果
+	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// 聚合字段的聚合操作符
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// 聚合的统计结果
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 分组聚合的结果
-	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 }
 
 func (s SimpleQueryResponseBodyAggregations) String() string {
@@ -5317,6 +6445,11 @@ func (s *SimpleQueryResponseBodyAggregations) SetField(v string) *SimpleQueryRes
 	return s
 }
 
+func (s *SimpleQueryResponseBodyAggregations) SetGroups(v []*SimpleQueryResponseBodyAggregationsGroups) *SimpleQueryResponseBodyAggregations {
+	s.Groups = v
+	return s
+}
+
 func (s *SimpleQueryResponseBodyAggregations) SetOperation(v string) *SimpleQueryResponseBodyAggregations {
 	s.Operation = &v
 	return s
@@ -5327,16 +6460,11 @@ func (s *SimpleQueryResponseBodyAggregations) SetValue(v float32) *SimpleQueryRe
 	return s
 }
 
-func (s *SimpleQueryResponseBodyAggregations) SetGroups(v []*SimpleQueryResponseBodyAggregationsGroups) *SimpleQueryResponseBodyAggregations {
-	s.Groups = v
-	return s
-}
-
 type SimpleQueryResponseBodyAggregationsGroups struct {
-	// 分组聚合的值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// 分组聚合的计数
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// 分组聚合的值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SimpleQueryResponseBodyAggregationsGroups) String() string {
@@ -5347,13 +6475,13 @@ func (s SimpleQueryResponseBodyAggregationsGroups) GoString() string {
 	return s.String()
 }
 
-func (s *SimpleQueryResponseBodyAggregationsGroups) SetValue(v string) *SimpleQueryResponseBodyAggregationsGroups {
-	s.Value = &v
+func (s *SimpleQueryResponseBodyAggregationsGroups) SetCount(v int64) *SimpleQueryResponseBodyAggregationsGroups {
+	s.Count = &v
 	return s
 }
 
-func (s *SimpleQueryResponseBodyAggregationsGroups) SetCount(v int64) *SimpleQueryResponseBodyAggregationsGroups {
-	s.Count = &v
+func (s *SimpleQueryResponseBodyAggregationsGroups) SetValue(v string) *SimpleQueryResponseBodyAggregationsGroups {
+	s.Value = &v
 	return s
 }
 
@@ -5577,12 +6705,109 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 	return s
 }
 
+type UpdateFigureClusterRequest struct {
+	DatasetName   *string        `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	ProjectName   *string        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s UpdateFigureClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFigureClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFigureClusterRequest) SetDatasetName(v string) *UpdateFigureClusterRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateFigureClusterRequest) SetFigureCluster(v *FigureCluster) *UpdateFigureClusterRequest {
+	s.FigureCluster = v
+	return s
+}
+
+func (s *UpdateFigureClusterRequest) SetProjectName(v string) *UpdateFigureClusterRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type UpdateFigureClusterShrinkRequest struct {
+	DatasetName         *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterShrink *string `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s UpdateFigureClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFigureClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFigureClusterShrinkRequest) SetDatasetName(v string) *UpdateFigureClusterShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateFigureClusterShrinkRequest) SetFigureClusterShrink(v string) *UpdateFigureClusterShrinkRequest {
+	s.FigureClusterShrink = &v
+	return s
+}
+
+func (s *UpdateFigureClusterShrinkRequest) SetProjectName(v string) *UpdateFigureClusterShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type UpdateFigureClusterResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateFigureClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFigureClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFigureClusterResponseBody) SetRequestId(v string) *UpdateFigureClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFigureClusterResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateFigureClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFigureClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFigureClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFigureClusterResponse) SetHeaders(v map[string]*string) *UpdateFigureClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFigureClusterResponse) SetBody(v *UpdateFigureClusterResponseBody) *UpdateFigureClusterResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFileMetaRequest struct {
-	DatasetName     *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	File            *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
-	NotifyEndpoint  *string     `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string     `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	File        *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
+	ProjectName *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFileMetaRequest) String() string {
@@ -5603,27 +6828,15 @@ func (s *UpdateFileMetaRequest) SetFile(v *FileForReq) *UpdateFileMetaRequest {
 	return s
 }
 
-func (s *UpdateFileMetaRequest) SetNotifyEndpoint(v string) *UpdateFileMetaRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetNotifyTopicName(v string) *UpdateFileMetaRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *UpdateFileMetaRequest) SetProjectName(v string) *UpdateFileMetaRequest {
 	s.ProjectName = &v
 	return s
 }
 
 type UpdateFileMetaShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FileShrink      *string `json:"File,omitempty" xml:"File,omitempty"`
-	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FileShrink  *string `json:"File,omitempty" xml:"File,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFileMetaShrinkRequest) String() string {
@@ -5644,23 +6857,12 @@ func (s *UpdateFileMetaShrinkRequest) SetFileShrink(v string) *UpdateFileMetaShr
 	return s
 }
 
-func (s *UpdateFileMetaShrinkRequest) SetNotifyEndpoint(v string) *UpdateFileMetaShrinkRequest {
-	s.NotifyEndpoint = &v
-	return s
-}
-
-func (s *UpdateFileMetaShrinkRequest) SetNotifyTopicName(v string) *UpdateFileMetaShrinkRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
 func (s *UpdateFileMetaShrinkRequest) SetProjectName(v string) *UpdateFileMetaShrinkRequest {
 	s.ProjectName = &v
 	return s
 }
 
 type UpdateFileMetaResponseBody struct {
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5671,11 +6873,6 @@ func (s UpdateFileMetaResponseBody) String() string {
 
 func (s UpdateFileMetaResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateFileMetaResponseBody) SetEventId(v string) *UpdateFileMetaResponseBody {
-	s.EventId = &v
-	return s
 }
 
 func (s *UpdateFileMetaResponseBody) SetRequestId(v string) *UpdateFileMetaResponseBody {
@@ -5911,13 +7108,10 @@ func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMeta
 
 	query := map[string]interface{}{}
 	query["DatasetName"] = request.DatasetName
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
 	query["ProjectName"] = request.ProjectName
 	query["URIs"] = request.URIsShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchDeleteFileMeta"),
@@ -5927,7 +7121,7 @@ func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMeta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchDeleteFileMetaResponse{}
@@ -5967,7 +7161,6 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 	query["URIs"] = request.URIsShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchGetFileMeta"),
@@ -5977,7 +7170,7 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchGetFileMetaResponse{}
@@ -6019,7 +7212,6 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchIndexFileMeta"),
@@ -6029,7 +7221,7 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchIndexFileMetaResponse{}
@@ -6066,12 +7258,9 @@ func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMeta
 	query := map[string]interface{}{}
 	query["DatasetName"] = request.DatasetName
 	query["Files"] = request.FilesShrink
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchUpdateFileMeta"),
@@ -6081,7 +7270,7 @@ func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMeta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchUpdateFileMetaResponse{}
@@ -6104,6 +7293,52 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 	return _result, _err
 }
 
+func (client *Client) ClusterFiguresWithOptions(request *ClusterFiguresRequest, runtime *util.RuntimeOptions) (_result *ClusterFiguresResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["CustomMessage"] = request.CustomMessage
+	query["DatasetName"] = request.DatasetName
+	query["FigureType"] = request.FigureType
+	query["NotifyTopicEndpoint"] = request.NotifyTopicEndpoint
+	query["NotifyTopicName"] = request.NotifyTopicName
+	query["ProjectName"] = request.ProjectName
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClusterFigures"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClusterFiguresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClusterFigures(request *ClusterFiguresRequest) (_result *ClusterFiguresResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClusterFiguresResponse{}
+	_body, _err := client.ClusterFiguresWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6115,7 +7350,6 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateBinding"),
@@ -6125,7 +7359,7 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBindingResponse{}
@@ -6165,7 +7399,6 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataset"),
@@ -6175,7 +7408,7 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDatasetResponse{}
@@ -6198,50 +7431,30 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateOfficeConversionTaskWithOptions(request *CreateOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateOfficeConversionTaskResponse, _err error) {
+func (client *Client) CreateDetectVideoLabelsTaskWithOptions(request *CreateDetectVideoLabelsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndPage"] = request.EndPage
-	query["FirstPage"] = request.FirstPage
-	query["FitToHeight"] = request.FitToHeight
-	query["FitToWidth"] = request.FitToWidth
-	query["IsHorizontal"] = request.IsHorizontal
-	query["LongPic"] = request.LongPic
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["PaperSize"] = request.PaperSize
-	query["Password"] = request.Password
 	query["ProjectName"] = request.ProjectName
-	query["Quality"] = request.Quality
-	query["Scale"] = request.Scale
-	query["SheetCount"] = request.SheetCount
-	query["SheetIndex"] = request.SheetIndex
-	query["ShowComments"] = request.ShowComments
-	query["SourceType"] = request.SourceType
-	query["SourceUri"] = request.SourceUri
-	query["StartPage"] = request.StartPage
-	query["TargetType"] = request.TargetType
-	query["TargetUri"] = request.TargetUri
+	query["SourceURI"] = request.SourceURI
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("CreateOfficeConversionTask"),
+		Action:      tea.String("CreateDetectVideoLabelsTask"),
 		Version:     tea.String("2020-09-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOfficeConversionTaskResponse{}
+	_result = &CreateDetectVideoLabelsTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6250,10 +7463,10 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(request *CreateOffic
 	return _result, _err
 }
 
-func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversionTaskRequest) (_result *CreateOfficeConversionTaskResponse, _err error) {
+func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabelsTaskRequest) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CreateOfficeConversionTaskResponse{}
-	_body, _err := client.CreateOfficeConversionTaskWithOptions(request, runtime)
+	_result = &CreateDetectVideoLabelsTaskResponse{}
+	_body, _err := client.CreateDetectVideoLabelsTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6281,7 +7494,6 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateProject"),
@@ -6291,7 +7503,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
@@ -6325,7 +7537,6 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBinding"),
@@ -6335,7 +7546,7 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBindingResponse{}
@@ -6368,7 +7579,6 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDataset"),
@@ -6378,7 +7588,7 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDatasetResponse{}
@@ -6408,13 +7618,10 @@ func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, 
 	}
 	query := map[string]interface{}{}
 	query["DatasetName"] = request.DatasetName
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
 	query["ProjectName"] = request.ProjectName
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFileMeta"),
@@ -6424,7 +7631,7 @@ func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFileMetaResponse{}
@@ -6456,7 +7663,6 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProject"),
@@ -6466,7 +7672,7 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProjectResponse{}
@@ -6500,7 +7706,6 @@ func (client *Client) DetectImageLabelsWithOptions(request *DetectImageLabelsReq
 	query["Threshold"] = request.Threshold
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectImageLabels"),
@@ -6510,7 +7715,7 @@ func (client *Client) DetectImageLabelsWithOptions(request *DetectImageLabelsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetectImageLabelsResponse{}
@@ -6546,7 +7751,6 @@ func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime 
 	query["Query"] = request.Query
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FuzzyQuery"),
@@ -6556,7 +7760,7 @@ func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &FuzzyQueryResponse{}
@@ -6590,7 +7794,6 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBinding"),
@@ -6600,7 +7803,7 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetBindingResponse{}
@@ -6634,7 +7837,6 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 	query["WithStatistics"] = request.WithStatistics
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataset"),
@@ -6644,7 +7846,7 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDatasetResponse{}
@@ -6667,6 +7869,92 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 	return _result, _err
 }
 
+func (client *Client) GetDetectVideoLabelsResultWithOptions(request *GetDetectVideoLabelsResultRequest, runtime *util.RuntimeOptions) (_result *GetDetectVideoLabelsResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ProjectName"] = request.ProjectName
+	query["TaskId"] = request.TaskId
+	query["TaskType"] = request.TaskType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDetectVideoLabelsResult"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDetectVideoLabelsResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDetectVideoLabelsResult(request *GetDetectVideoLabelsResultRequest) (_result *GetDetectVideoLabelsResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDetectVideoLabelsResultResponse{}
+	_body, _err := client.GetDetectVideoLabelsResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFigureClusterWithOptions(request *GetFigureClusterRequest, runtime *util.RuntimeOptions) (_result *GetFigureClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["DatasetName"] = request.DatasetName
+	query["FigureClusterId"] = request.FigureClusterId
+	query["ProjectName"] = request.ProjectName
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFigureCluster"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFigureClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFigureCluster(request *GetFigureClusterRequest) (_result *GetFigureClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFigureClusterResponse{}
+	_body, _err := client.GetFigureClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6678,7 +7966,6 @@ func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtim
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFileMeta"),
@@ -6688,7 +7975,7 @@ func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFileMetaResponse{}
@@ -6721,7 +8008,6 @@ func (client *Client) GetFileSignedURIWithOptions(request *GetFileSignedURIReque
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFileSignedURI"),
@@ -6731,7 +8017,7 @@ func (client *Client) GetFileSignedURIWithOptions(request *GetFileSignedURIReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFileSignedURIResponse{}
@@ -6754,49 +8040,6 @@ func (client *Client) GetFileSignedURI(request *GetFileSignedURIRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) GetOfficeConversionTaskWithOptions(request *GetOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *GetOfficeConversionTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["TaskId"] = request.TaskId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetOfficeConversionTask"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetOfficeConversionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetOfficeConversionTask(request *GetOfficeConversionTaskRequest) (_result *GetOfficeConversionTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetOfficeConversionTaskResponse{}
-	_body, _err := client.GetOfficeConversionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6807,7 +8050,6 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 	query["WithStatistics"] = request.WithStatistics
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -6817,7 +8059,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectResponse{}
@@ -6833,6 +8075,49 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	runtime := &util.RuntimeOptions{}
 	_result = &GetProjectResponse{}
 	_body, _err := client.GetProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ProjectName"] = request.ProjectName
+	query["TaskId"] = request.TaskId
+	query["TaskType"] = request.TaskType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6881,7 +8166,6 @@ func (client *Client) GetWebofficeURLWithOptions(tmpReq *GetWebofficeURLRequest,
 	query["Watermark"] = request.WatermarkShrink
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetWebofficeURL"),
@@ -6891,7 +8175,7 @@ func (client *Client) GetWebofficeURLWithOptions(tmpReq *GetWebofficeURLRequest,
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWebofficeURLResponse{}
@@ -6933,7 +8217,6 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("IndexFileMeta"),
@@ -6943,7 +8226,7 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &IndexFileMetaResponse{}
@@ -6978,7 +8261,6 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListBindings"),
@@ -6988,7 +8270,7 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListBindingsResponse{}
@@ -7023,7 +8305,6 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDatasets"),
@@ -7033,7 +8314,7 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDatasetsResponse{}
@@ -7056,31 +8337,34 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 	return _result, _err
 }
 
-func (client *Client) ListOfficeConversionTaskWithOptions(request *ListOfficeConversionTaskRequest, runtime *util.RuntimeOptions) (_result *ListOfficeConversionTaskResponse, _err error) {
+func (client *Client) ListFigureClustersWithOptions(request *ListFigureClustersRequest, runtime *util.RuntimeOptions) (_result *ListFigureClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	query["DatasetName"] = request.DatasetName
+	query["Labels"] = request.Labels
 	query["MaxResults"] = request.MaxResults
 	query["NextToken"] = request.NextToken
+	query["Order"] = request.Order
 	query["ProjectName"] = request.ProjectName
+	query["Sort"] = request.Sort
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListOfficeConversionTask"),
+		Action:      tea.String("ListFigureClusters"),
 		Version:     tea.String("2020-09-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOfficeConversionTaskResponse{}
+	_result = &ListFigureClustersResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7089,10 +8373,10 @@ func (client *Client) ListOfficeConversionTaskWithOptions(request *ListOfficeCon
 	return _result, _err
 }
 
-func (client *Client) ListOfficeConversionTask(request *ListOfficeConversionTaskRequest) (_result *ListOfficeConversionTaskResponse, _err error) {
+func (client *Client) ListFigureClusters(request *ListFigureClustersRequest) (_result *ListFigureClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListOfficeConversionTaskResponse{}
-	_body, _err := client.ListOfficeConversionTaskWithOptions(request, runtime)
+	_result = &ListFigureClustersResponse{}
+	_body, _err := client.ListFigureClustersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7111,7 +8395,6 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 	query["Prefix"] = request.Prefix
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProjects"),
@@ -7121,7 +8404,7 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectsResponse{}
@@ -7137,6 +8420,98 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProjectsResponse{}
 	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["ProjectName"] = request.ProjectName
+	query["TaskType"] = request.TaskType
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTasks"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTasksResponse{}
+	_body, _err := client.ListTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MergeFigureClustersWithOptions(request *MergeFigureClustersRequest, runtime *util.RuntimeOptions) (_result *MergeFigureClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["ClusterIdFrom"] = request.ClusterIdFrom
+	query["ClusterIdTo"] = request.ClusterIdTo
+	query["CustomMessage"] = request.CustomMessage
+	query["DatasetName"] = request.DatasetName
+	query["FigureType"] = request.FigureType
+	query["NotifyTopicEndpoint"] = request.NotifyTopicEndpoint
+	query["NotifyTopicName"] = request.NotifyTopicName
+	query["ProjectName"] = request.ProjectName
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MergeFigureClusters"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MergeFigureClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MergeFigureClusters(request *MergeFigureClustersRequest) (_result *MergeFigureClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MergeFigureClustersResponse{}
+	_body, _err := client.MergeFigureClustersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7162,7 +8537,6 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 	query["RefreshToken"] = request.RefreshToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshWebofficeToken"),
@@ -7172,7 +8546,7 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshWebofficeTokenResponse{}
@@ -7206,7 +8580,6 @@ func (client *Client) ResumeBindingWithOptions(request *ResumeBindingRequest, ru
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResumeBinding"),
@@ -7216,7 +8589,7 @@ func (client *Client) ResumeBindingWithOptions(request *ResumeBindingRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResumeBindingResponse{}
@@ -7232,6 +8605,51 @@ func (client *Client) ResumeBinding(request *ResumeBindingRequest) (_result *Res
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeBindingResponse{}
 	_body, _err := client.ResumeBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SemanticQueryWithOptions(request *SemanticQueryRequest, runtime *util.RuntimeOptions) (_result *SemanticQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["DatasetName"] = request.DatasetName
+	query["MaxResults"] = request.MaxResults
+	query["NextToken"] = request.NextToken
+	query["ProjectName"] = request.ProjectName
+	query["Query"] = request.Query
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SemanticQuery"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SemanticQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SemanticQuery(request *SemanticQueryRequest) (_result *SemanticQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SemanticQueryResponse{}
+	_body, _err := client.SemanticQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7265,7 +8683,6 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 	query["Sort"] = request.Sort
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SimpleQuery"),
@@ -7275,7 +8692,7 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SimpleQueryResponse{}
@@ -7310,7 +8727,6 @@ func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtim
 	query["URI"] = request.URI
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopBinding"),
@@ -7320,7 +8736,7 @@ func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopBindingResponse{}
@@ -7360,7 +8776,6 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDataset"),
@@ -7370,7 +8785,7 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDatasetResponse{}
@@ -7393,6 +8808,55 @@ func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *Upd
 	return _result, _err
 }
 
+func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateFigureClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateFigureClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FigureCluster))) {
+		request.FigureClusterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FigureCluster), tea.String("FigureCluster"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	query["DatasetName"] = request.DatasetName
+	query["FigureCluster"] = request.FigureClusterShrink
+	query["ProjectName"] = request.ProjectName
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFigureCluster"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFigureClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFigureCluster(request *UpdateFigureClusterRequest) (_result *UpdateFigureClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFigureClusterResponse{}
+	_body, _err := client.UpdateFigureClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, runtime *util.RuntimeOptions) (_result *UpdateFileMetaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7407,12 +8871,9 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 	query := map[string]interface{}{}
 	query["DatasetName"] = request.DatasetName
 	query["File"] = request.FileShrink
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
 	query["ProjectName"] = request.ProjectName
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFileMeta"),
@@ -7422,7 +8883,7 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateFileMetaResponse{}
@@ -7465,7 +8926,6 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateProject"),
@@ -7475,7 +8935,7 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateProjectResponse{}
