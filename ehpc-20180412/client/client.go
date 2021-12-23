@@ -313,35 +313,36 @@ func (s *AddLocalNodesResponse) SetBody(v *AddLocalNodesResponseBody) *AddLocalN
 }
 
 type AddNodesRequest struct {
-	AllocatePublicAddress   *bool   `json:"AllocatePublicAddress,omitempty" xml:"AllocatePublicAddress,omitempty"`
-	AutoRenew               *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod         *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ComputeEnableHt         *bool   `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
-	ComputeSpotPriceLimit   *string `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
-	ComputeSpotStrategy     *string `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
-	Count                   *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CreateMode              *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
-	EcsChargeType           *string `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
-	HostNamePrefix          *string `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
-	HostNameSuffix          *string `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
-	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageOwnerAlias         *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandWidthIn  *int32  `json:"InternetMaxBandWidthIn,omitempty" xml:"InternetMaxBandWidthIn,omitempty"`
-	InternetMaxBandWidthOut *int32  `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
-	JobQueue                *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	MinCount                *int32  `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Sync                    *bool   `json:"Sync,omitempty" xml:"Sync,omitempty"`
-	SystemDiskLevel         *string `json:"SystemDiskLevel,omitempty" xml:"SystemDiskLevel,omitempty"`
-	SystemDiskSize          *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	SystemDiskType          *string `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AllocatePublicAddress   *bool                       `json:"AllocatePublicAddress,omitempty" xml:"AllocatePublicAddress,omitempty"`
+	AutoRenew               *string                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod         *int32                      `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	ClientToken             *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterId               *string                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ComputeEnableHt         *bool                       `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
+	ComputeSpotPriceLimit   *string                     `json:"ComputeSpotPriceLimit,omitempty" xml:"ComputeSpotPriceLimit,omitempty"`
+	ComputeSpotStrategy     *string                     `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
+	Count                   *int32                      `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreateMode              *string                     `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDisks               []*AddNodesRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	EcsChargeType           *string                     `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
+	HostNamePrefix          *string                     `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	HostNameSuffix          *string                     `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
+	ImageId                 *string                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageOwnerAlias         *string                     `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	InstanceType            *string                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string                     `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandWidthIn  *int32                      `json:"InternetMaxBandWidthIn,omitempty" xml:"InternetMaxBandWidthIn,omitempty"`
+	InternetMaxBandWidthOut *int32                      `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
+	JobQueue                *string                     `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	MinCount                *int32                      `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
+	Period                  *int32                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Sync                    *bool                       `json:"Sync,omitempty" xml:"Sync,omitempty"`
+	SystemDiskLevel         *string                     `json:"SystemDiskLevel,omitempty" xml:"SystemDiskLevel,omitempty"`
+	SystemDiskSize          *int32                      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskType          *string                     `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
+	VSwitchId               *string                     `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                  *string                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s AddNodesRequest) String() string {
@@ -399,6 +400,11 @@ func (s *AddNodesRequest) SetCount(v int32) *AddNodesRequest {
 
 func (s *AddNodesRequest) SetCreateMode(v string) *AddNodesRequest {
 	s.CreateMode = &v
+	return s
+}
+
+func (s *AddNodesRequest) SetDataDisks(v []*AddNodesRequestDataDisks) *AddNodesRequest {
+	s.DataDisks = v
 	return s
 }
 
@@ -494,6 +500,53 @@ func (s *AddNodesRequest) SetVSwitchId(v string) *AddNodesRequest {
 
 func (s *AddNodesRequest) SetZoneId(v string) *AddNodesRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type AddNodesRequestDataDisks struct {
+	DataDiskCategory           *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskDeleteWithInstance *bool   `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
+	DataDiskEncrypted          *bool   `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId           *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	DataDiskSize               *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+}
+
+func (s AddNodesRequestDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddNodesRequestDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskCategory(v string) *AddNodesRequestDataDisks {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskDeleteWithInstance(v bool) *AddNodesRequestDataDisks {
+	s.DataDiskDeleteWithInstance = &v
+	return s
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskEncrypted(v bool) *AddNodesRequestDataDisks {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskKMSKeyId(v string) *AddNodesRequestDataDisks {
+	s.DataDiskKMSKeyId = &v
+	return s
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskPerformanceLevel(v string) *AddNodesRequestDataDisks {
+	s.DataDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *AddNodesRequestDataDisks) SetDataDiskSize(v int32) *AddNodesRequestDataDisks {
+	s.DataDiskSize = &v
 	return s
 }
 
@@ -1144,6 +1197,8 @@ type CreateClusterRequest struct {
 	PeriodUnit            *string                                  `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	Plugin                *string                                  `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
 	PostInstallScript     []*CreateClusterRequestPostInstallScript `json:"PostInstallScript,omitempty" xml:"PostInstallScript,omitempty" type:"Repeated"`
+	RamNodeTypes          []*string                                `json:"RamNodeTypes,omitempty" xml:"RamNodeTypes,omitempty" type:"Repeated"`
+	RamRoleName           *string                                  `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RemoteDirectory       *string                                  `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
 	RemoteVisEnable       *string                                  `json:"RemoteVisEnable,omitempty" xml:"RemoteVisEnable,omitempty"`
 	ResourceGroupId       *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1320,6 +1375,16 @@ func (s *CreateClusterRequest) SetPlugin(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetPostInstallScript(v []*CreateClusterRequestPostInstallScript) *CreateClusterRequest {
 	s.PostInstallScript = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRamNodeTypes(v []*string) *CreateClusterRequest {
+	s.RamNodeTypes = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRamRoleName(v string) *CreateClusterRequest {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -2912,6 +2977,7 @@ type DeleteImageRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ContainerType *string `json:"ContainerType,omitempty" xml:"ContainerType,omitempty"`
 	ImageTag      *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repository    *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
 }
 
@@ -2935,6 +3001,11 @@ func (s *DeleteImageRequest) SetContainerType(v string) *DeleteImageRequest {
 
 func (s *DeleteImageRequest) SetImageTag(v string) *DeleteImageRequest {
 	s.ImageTag = &v
+	return s
+}
+
+func (s *DeleteImageRequest) SetRegionId(v string) *DeleteImageRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3612,6 +3683,7 @@ type DescribeClusterResponseBodyClusterInfo struct {
 	KeyPairName        *string                                                   `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	Location           *string                                                   `json:"Location,omitempty" xml:"Location,omitempty"`
 	Name               *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OnPremiseInfo      *DescribeClusterResponseBodyClusterInfoOnPremiseInfo      `json:"OnPremiseInfo,omitempty" xml:"OnPremiseInfo,omitempty" type:"Struct"`
 	OsTag              *string                                                   `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	PostInstallScripts *DescribeClusterResponseBodyClusterInfoPostInstallScripts `json:"PostInstallScripts,omitempty" xml:"PostInstallScripts,omitempty" type:"Struct"`
 	RegionId           *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3718,6 +3790,11 @@ func (s *DescribeClusterResponseBodyClusterInfo) SetLocation(v string) *Describe
 
 func (s *DescribeClusterResponseBodyClusterInfo) SetName(v string) *DescribeClusterResponseBodyClusterInfo {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfo) SetOnPremiseInfo(v *DescribeClusterResponseBodyClusterInfoOnPremiseInfo) *DescribeClusterResponseBodyClusterInfo {
+	s.OnPremiseInfo = v
 	return s
 }
 
@@ -3838,9 +3915,10 @@ func (s *DescribeClusterResponseBodyClusterInfoApplicationsApplicationInfo) SetV
 }
 
 type DescribeClusterResponseBodyClusterInfoEcsInfo struct {
-	Compute *DescribeClusterResponseBodyClusterInfoEcsInfoCompute `json:"Compute,omitempty" xml:"Compute,omitempty" type:"Struct"`
-	Login   *DescribeClusterResponseBodyClusterInfoEcsInfoLogin   `json:"Login,omitempty" xml:"Login,omitempty" type:"Struct"`
-	Manager *DescribeClusterResponseBodyClusterInfoEcsInfoManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
+	Compute  *DescribeClusterResponseBodyClusterInfoEcsInfoCompute  `json:"Compute,omitempty" xml:"Compute,omitempty" type:"Struct"`
+	Login    *DescribeClusterResponseBodyClusterInfoEcsInfoLogin    `json:"Login,omitempty" xml:"Login,omitempty" type:"Struct"`
+	Manager  *DescribeClusterResponseBodyClusterInfoEcsInfoManager  `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
+	ProxyMgr *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr `json:"ProxyMgr,omitempty" xml:"ProxyMgr,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterResponseBodyClusterInfoEcsInfo) String() string {
@@ -3863,6 +3941,11 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfo) SetLogin(v *DescribeClus
 
 func (s *DescribeClusterResponseBodyClusterInfoEcsInfo) SetManager(v *DescribeClusterResponseBodyClusterInfoEcsInfoManager) *DescribeClusterResponseBodyClusterInfoEcsInfo {
 	s.Manager = v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoEcsInfo) SetProxyMgr(v *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) *DescribeClusterResponseBodyClusterInfoEcsInfo {
+	s.ProxyMgr = v
 	return s
 }
 
@@ -3932,6 +4015,75 @@ func (s *DescribeClusterResponseBodyClusterInfoEcsInfoManager) SetCount(v int32)
 
 func (s *DescribeClusterResponseBodyClusterInfoEcsInfoManager) SetInstanceType(v string) *DescribeClusterResponseBodyClusterInfoEcsInfoManager {
 	s.InstanceType = &v
+	return s
+}
+
+type DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr struct {
+	Count        *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) SetCount(v int32) *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr) SetInstanceType(v string) *DescribeClusterResponseBodyClusterInfoEcsInfoProxyMgr {
+	s.InstanceType = &v
+	return s
+}
+
+type DescribeClusterResponseBodyClusterInfoOnPremiseInfo struct {
+	OnPremiseInfo []*DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo `json:"OnPremiseInfo,omitempty" xml:"OnPremiseInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterResponseBodyClusterInfoOnPremiseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponseBodyClusterInfoOnPremiseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoOnPremiseInfo) SetOnPremiseInfo(v []*DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) *DescribeClusterResponseBodyClusterInfoOnPremiseInfo {
+	s.OnPremiseInfo = v
+	return s
+}
+
+type DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo struct {
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IP       *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) SetHostName(v string) *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) SetIP(v string) *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo {
+	s.IP = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo) SetType(v string) *DescribeClusterResponseBodyClusterInfoOnPremiseInfoOnPremiseInfo {
+	s.Type = &v
 	return s
 }
 
@@ -4770,6 +4922,7 @@ type DescribeImageRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ContainerType *string `json:"ContainerType,omitempty" xml:"ContainerType,omitempty"`
 	ImageTag      *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repository    *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
 }
 
@@ -4793,6 +4946,11 @@ func (s *DescribeImageRequest) SetContainerType(v string) *DescribeImageRequest 
 
 func (s *DescribeImageRequest) SetImageTag(v string) *DescribeImageRequest {
 	s.ImageTag = &v
+	return s
+}
+
+func (s *DescribeImageRequest) SetRegionId(v string) *DescribeImageRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5399,16 +5557,17 @@ func (s *DescribePriceRequest) SetPriceUnit(v string) *DescribePriceRequest {
 }
 
 type DescribePriceRequestCommodities struct {
-	Amount                     *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	InstanceType               *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType         *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandWidthOut    *int32  `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
-	NetworkType                *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	NodeType                   *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Period                     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	SystemDiskCategory         *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	SystemDiskSize             *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Amount                     *int32                                      `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	DataDisks                  []*DescribePriceRequestCommoditiesDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	InstanceType               *string                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType         *string                                     `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandWidthOut    *int32                                      `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
+	NetworkType                *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeType                   *string                                     `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Period                     *int32                                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	SystemDiskCategory         *string                                     `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskPerformanceLevel *string                                     `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	SystemDiskSize             *int32                                      `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s DescribePriceRequestCommodities) String() string {
@@ -5421,6 +5580,11 @@ func (s DescribePriceRequestCommodities) GoString() string {
 
 func (s *DescribePriceRequestCommodities) SetAmount(v int32) *DescribePriceRequestCommodities {
 	s.Amount = &v
+	return s
+}
+
+func (s *DescribePriceRequestCommodities) SetDataDisks(v []*DescribePriceRequestCommoditiesDataDisks) *DescribePriceRequestCommodities {
+	s.DataDisks = v
 	return s
 }
 
@@ -5466,6 +5630,47 @@ func (s *DescribePriceRequestCommodities) SetSystemDiskPerformanceLevel(v string
 
 func (s *DescribePriceRequestCommodities) SetSystemDiskSize(v int32) *DescribePriceRequestCommodities {
 	s.SystemDiskSize = &v
+	return s
+}
+
+type DescribePriceRequestCommoditiesDataDisks struct {
+	Category           *string `json:"category,omitempty" xml:"category,omitempty"`
+	DeleteWithInstance *bool   `json:"deleteWithInstance,omitempty" xml:"deleteWithInstance,omitempty"`
+	Encrypted          *bool   `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	PerformanceLevel   *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Size               *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s DescribePriceRequestCommoditiesDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceRequestCommoditiesDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceRequestCommoditiesDataDisks) SetCategory(v string) *DescribePriceRequestCommoditiesDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePriceRequestCommoditiesDataDisks) SetDeleteWithInstance(v bool) *DescribePriceRequestCommoditiesDataDisks {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribePriceRequestCommoditiesDataDisks) SetEncrypted(v bool) *DescribePriceRequestCommoditiesDataDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribePriceRequestCommoditiesDataDisks) SetPerformanceLevel(v string) *DescribePriceRequestCommoditiesDataDisks {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribePriceRequestCommoditiesDataDisks) SetSize(v int32) *DescribePriceRequestCommoditiesDataDisks {
+	s.Size = &v
 	return s
 }
 
@@ -6125,6 +6330,7 @@ func (s *GetAutoScaleConfigResponseBodyQueues) SetQueueInfo(v []*GetAutoScaleCon
 }
 
 type GetAutoScaleConfigResponseBodyQueuesQueueInfo struct {
+	DataDisks          *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks     `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
 	EnableAutoGrow     *bool                                                       `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
 	EnableAutoShrink   *bool                                                       `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
 	HostNamePrefix     *string                                                     `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
@@ -6149,6 +6355,11 @@ func (s GetAutoScaleConfigResponseBodyQueuesQueueInfo) String() string {
 
 func (s GetAutoScaleConfigResponseBodyQueuesQueueInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetDataDisks(v *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
+	s.DataDisks = v
+	return s
 }
 
 func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetEnableAutoGrow(v bool) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
@@ -6228,6 +6439,70 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetSystemDiskLevel(v str
 
 func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetSystemDiskSize(v int32) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
 	s.SystemDiskSize = &v
+	return s
+}
+
+type GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks struct {
+	DataDisksInfo []*GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo `json:"DataDisksInfo,omitempty" xml:"DataDisksInfo,omitempty" type:"Repeated"`
+}
+
+func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks) SetDataDisksInfo(v []*GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisks {
+	s.DataDisksInfo = v
+	return s
+}
+
+type GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo struct {
+	DataDiskCategory           *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskDeleteWithInstance *bool   `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
+	DataDiskEncrypted          *bool   `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId           *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	DataDiskSize               *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+}
+
+func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskCategory(v string) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskDeleteWithInstance(v bool) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskDeleteWithInstance = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskEncrypted(v bool) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskKMSKeyId(v string) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskKMSKeyId = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskPerformanceLevel(v string) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo) SetDataDiskSize(v int32) *GetAutoScaleConfigResponseBodyQueuesQueueInfoDataDisksDataDisksInfo {
+	s.DataDiskSize = &v
 	return s
 }
 
@@ -8502,6 +8777,7 @@ type ListClustersResponseBodyClustersClusterInfoSimple struct {
 	DeployMode            *string                                                          `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	Description           *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	EhpcVersion           *string                                                          `json:"EhpcVersion,omitempty" xml:"EhpcVersion,omitempty"`
+	HasPlugin             *bool                                                            `json:"HasPlugin,omitempty" xml:"HasPlugin,omitempty"`
 	Id                    *string                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
 	ImageId               *string                                                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageOwnerAlias       *string                                                          `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
@@ -8585,6 +8861,11 @@ func (s *ListClustersResponseBodyClustersClusterInfoSimple) SetDescription(v str
 
 func (s *ListClustersResponseBodyClustersClusterInfoSimple) SetEhpcVersion(v string) *ListClustersResponseBodyClustersClusterInfoSimple {
 	s.EhpcVersion = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyClustersClusterInfoSimple) SetHasPlugin(v bool) *ListClustersResponseBodyClustersClusterInfoSimple {
+	s.HasPlugin = &v
 	return s
 }
 
@@ -8942,6 +9223,7 @@ type ListClustersMetaResponseBodyClustersClusterInfoSimple struct {
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	DeployMode    *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HasPlugin     *bool   `json:"HasPlugin,omitempty" xml:"HasPlugin,omitempty"`
 	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsComputeEss  *bool   `json:"IsComputeEss,omitempty" xml:"IsComputeEss,omitempty"`
 	Location      *string `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -8977,6 +9259,11 @@ func (s *ListClustersMetaResponseBodyClustersClusterInfoSimple) SetDeployMode(v 
 
 func (s *ListClustersMetaResponseBodyClustersClusterInfoSimple) SetDescription(v string) *ListClustersMetaResponseBodyClustersClusterInfoSimple {
 	s.Description = &v
+	return s
+}
+
+func (s *ListClustersMetaResponseBodyClustersClusterInfoSimple) SetHasPlugin(v bool) *ListClustersMetaResponseBodyClustersClusterInfoSimple {
+	s.HasPlugin = &v
 	return s
 }
 
@@ -11579,6 +11866,7 @@ type ListNodesResponseBodyNodesNodeInfo struct {
 	RegionId        *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Roles           *ListNodesResponseBodyNodesNodeInfoRoles          `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 	SpotStrategy    *string                                           `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	StateInSched    *string                                           `json:"StateInSched,omitempty" xml:"StateInSched,omitempty"`
 	Status          *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalResources  *ListNodesResponseBodyNodesNodeInfoTotalResources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty" type:"Struct"`
 	UsedResources   *ListNodesResponseBodyNodesNodeInfoUsedResources  `json:"UsedResources,omitempty" xml:"UsedResources,omitempty" type:"Struct"`
@@ -11683,6 +11971,11 @@ func (s *ListNodesResponseBodyNodesNodeInfo) SetRoles(v *ListNodesResponseBodyNo
 
 func (s *ListNodesResponseBodyNodesNodeInfo) SetSpotStrategy(v string) *ListNodesResponseBodyNodesNodeInfo {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyNodesNodeInfo) SetStateInSched(v string) *ListNodesResponseBodyNodesNodeInfo {
+	s.StateInSched = &v
 	return s
 }
 
@@ -11929,6 +12222,7 @@ type ListNodesByQueueResponseBodyNodesNodeInfo struct {
 	PublicIpAddress *string                                                  `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
 	RegionId        *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SpotStrategy    *string                                                  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	StateInSched    *string                                                  `json:"StateInSched,omitempty" xml:"StateInSched,omitempty"`
 	Status          *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalResources  *ListNodesByQueueResponseBodyNodesNodeInfoTotalResources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty" type:"Struct"`
 	UsedResources   *ListNodesByQueueResponseBodyNodesNodeInfoUsedResources  `json:"UsedResources,omitempty" xml:"UsedResources,omitempty" type:"Struct"`
@@ -12023,6 +12317,11 @@ func (s *ListNodesByQueueResponseBodyNodesNodeInfo) SetRegionId(v string) *ListN
 
 func (s *ListNodesByQueueResponseBodyNodesNodeInfo) SetSpotStrategy(v string) *ListNodesByQueueResponseBodyNodesNodeInfo {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *ListNodesByQueueResponseBodyNodesNodeInfo) SetStateInSched(v string) *ListNodesByQueueResponseBodyNodesNodeInfo {
+	s.StateInSched = &v
 	return s
 }
 
@@ -13778,6 +14077,7 @@ type ModifyImageGatewayConfigRequest struct {
 	DefaultRepoLocation    *string                                `json:"DefaultRepoLocation,omitempty" xml:"DefaultRepoLocation,omitempty"`
 	ImageExpirationTimeout *string                                `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
 	PullUpdateTimeout      *int32                                 `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
+	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repo                   []*ModifyImageGatewayConfigRequestRepo `json:"Repo,omitempty" xml:"Repo,omitempty" type:"Repeated"`
 }
 
@@ -13826,6 +14126,11 @@ func (s *ModifyImageGatewayConfigRequest) SetImageExpirationTimeout(v string) *M
 
 func (s *ModifyImageGatewayConfigRequest) SetPullUpdateTimeout(v int32) *ModifyImageGatewayConfigRequest {
 	s.PullUpdateTimeout = &v
+	return s
+}
+
+func (s *ModifyImageGatewayConfigRequest) SetRegionId(v string) *ModifyImageGatewayConfigRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -14895,6 +15200,7 @@ func (s *SetAutoScaleConfigRequest) SetSpotStrategy(v string) *SetAutoScaleConfi
 }
 
 type SetAutoScaleConfigRequestQueues struct {
+	DataDisks          []*SetAutoScaleConfigRequestQueuesDataDisks     `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
 	EnableAutoGrow     *bool                                           `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
 	EnableAutoShrink   *bool                                           `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
 	HostNamePrefix     *string                                         `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
@@ -14918,6 +15224,11 @@ func (s SetAutoScaleConfigRequestQueues) String() string {
 
 func (s SetAutoScaleConfigRequestQueues) GoString() string {
 	return s.String()
+}
+
+func (s *SetAutoScaleConfigRequestQueues) SetDataDisks(v []*SetAutoScaleConfigRequestQueuesDataDisks) *SetAutoScaleConfigRequestQueues {
+	s.DataDisks = v
+	return s
 }
 
 func (s *SetAutoScaleConfigRequestQueues) SetEnableAutoGrow(v bool) *SetAutoScaleConfigRequestQueues {
@@ -14992,6 +15303,53 @@ func (s *SetAutoScaleConfigRequestQueues) SetSystemDiskLevel(v string) *SetAutoS
 
 func (s *SetAutoScaleConfigRequestQueues) SetSystemDiskSize(v int32) *SetAutoScaleConfigRequestQueues {
 	s.SystemDiskSize = &v
+	return s
+}
+
+type SetAutoScaleConfigRequestQueuesDataDisks struct {
+	DataDiskCategory           *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskDeleteWithInstance *bool   `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
+	DataDiskEncrypted          *bool   `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId           *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	DataDiskSize               *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+}
+
+func (s SetAutoScaleConfigRequestQueuesDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAutoScaleConfigRequestQueuesDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskCategory(v string) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskDeleteWithInstance(v bool) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskDeleteWithInstance = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskEncrypted(v bool) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskKMSKeyId(v string) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskKMSKeyId = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskPerformanceLevel(v string) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueuesDataDisks) SetDataDiskSize(v int32) *SetAutoScaleConfigRequestQueuesDataDisks {
+	s.DataDiskSize = &v
 	return s
 }
 
@@ -16445,6 +16803,70 @@ func (s *SubmitJobResponse) SetBody(v *SubmitJobResponseBody) *SubmitJobResponse
 	return s
 }
 
+type SyncUsersRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SyncUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncUsersRequest) SetClusterId(v string) *SyncUsersRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SyncUsersRequest) SetRegionId(v string) *SyncUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SyncUsersResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncUsersResponseBody) SetRequestId(v string) *SyncUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncUsersResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SyncUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SyncUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncUsersResponse) SetHeaders(v map[string]*string) *SyncUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncUsersResponse) SetBody(v *SyncUsersResponseBody) *SyncUsersResponse {
+	s.Body = v
+	return s
+}
+
 type UninstallSoftwareRequest struct {
 	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -16855,7 +17277,7 @@ func (client *Client) AddContainerAppWithOptions(request *AddContainerAppRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddContainerAppResponse{}
@@ -16895,7 +17317,7 @@ func (client *Client) AddExistedNodesWithOptions(request *AddExistedNodesRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddExistedNodesResponse{}
@@ -16935,7 +17357,7 @@ func (client *Client) AddLocalNodesWithOptions(request *AddLocalNodesRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddLocalNodesResponse{}
@@ -16975,7 +17397,7 @@ func (client *Client) AddNodesWithOptions(request *AddNodesRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddNodesResponse{}
@@ -17015,7 +17437,7 @@ func (client *Client) AddQueueWithOptions(request *AddQueueRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddQueueResponse{}
@@ -17055,7 +17477,7 @@ func (client *Client) AddSecurityGroupWithOptions(request *AddSecurityGroupReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSecurityGroupResponse{}
@@ -17095,7 +17517,7 @@ func (client *Client) AddUsersWithOptions(request *AddUsersRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddUsersResponse{}
@@ -17135,7 +17557,7 @@ func (client *Client) ApplyNodesWithOptions(request *ApplyNodesRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyNodesResponse{}
@@ -17175,7 +17597,7 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClusterResponse{}
@@ -17215,7 +17637,7 @@ func (client *Client) CreateGWSClusterWithOptions(request *CreateGWSClusterReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGWSClusterResponse{}
@@ -17255,7 +17677,7 @@ func (client *Client) CreateGWSImageWithOptions(request *CreateGWSImageRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGWSImageResponse{}
@@ -17295,7 +17717,7 @@ func (client *Client) CreateGWSInstanceWithOptions(request *CreateGWSInstanceReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGWSInstanceResponse{}
@@ -17335,7 +17757,7 @@ func (client *Client) CreateHybridClusterWithOptions(request *CreateHybridCluste
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateHybridClusterResponse{}
@@ -17375,7 +17797,7 @@ func (client *Client) CreateJobFileWithOptions(request *CreateJobFileRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateJobFileResponse{}
@@ -17415,7 +17837,7 @@ func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateJobTemplateResponse{}
@@ -17455,7 +17877,7 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
@@ -17495,7 +17917,7 @@ func (client *Client) DeleteContainerAppsWithOptions(request *DeleteContainerApp
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteContainerAppsResponse{}
@@ -17535,7 +17957,7 @@ func (client *Client) DeleteGWSClusterWithOptions(request *DeleteGWSClusterReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGWSClusterResponse{}
@@ -17575,7 +17997,7 @@ func (client *Client) DeleteGWSInstanceWithOptions(request *DeleteGWSInstanceReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGWSInstanceResponse{}
@@ -17615,7 +18037,7 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageResponse{}
@@ -17655,7 +18077,7 @@ func (client *Client) DeleteJobTemplatesWithOptions(request *DeleteJobTemplatesR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteJobTemplatesResponse{}
@@ -17695,7 +18117,7 @@ func (client *Client) DeleteJobsWithOptions(request *DeleteJobsRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteJobsResponse{}
@@ -17735,7 +18157,7 @@ func (client *Client) DeleteNodesWithOptions(request *DeleteNodesRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteNodesResponse{}
@@ -17775,7 +18197,7 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteQueueResponse{}
@@ -17815,7 +18237,7 @@ func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGrou
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSecurityGroupResponse{}
@@ -17855,7 +18277,7 @@ func (client *Client) DeleteUsersWithOptions(request *DeleteUsersRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUsersResponse{}
@@ -17895,7 +18317,7 @@ func (client *Client) DescribeAutoScaleConfigWithOptions(request *DescribeAutoSc
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAutoScaleConfigResponse{}
@@ -17935,7 +18357,7 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterResponse{}
@@ -17975,7 +18397,7 @@ func (client *Client) DescribeContainerAppWithOptions(request *DescribeContainer
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeContainerAppResponse{}
@@ -18009,7 +18431,6 @@ func (client *Client) DescribeGWSClusterPolicyWithOptions(request *DescribeGWSCl
 	query["TaskId"] = request.TaskId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGWSClusterPolicy"),
@@ -18019,7 +18440,7 @@ func (client *Client) DescribeGWSClusterPolicyWithOptions(request *DescribeGWSCl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGWSClusterPolicyResponse{}
@@ -18059,7 +18480,7 @@ func (client *Client) DescribeGWSClustersWithOptions(request *DescribeGWSCluster
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGWSClustersResponse{}
@@ -18099,7 +18520,7 @@ func (client *Client) DescribeGWSImagesWithOptions(request *DescribeGWSImagesReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGWSImagesResponse{}
@@ -18139,7 +18560,7 @@ func (client *Client) DescribeGWSInstancesWithOptions(request *DescribeGWSInstan
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGWSInstancesResponse{}
@@ -18179,7 +18600,7 @@ func (client *Client) DescribeImageWithOptions(request *DescribeImageRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImageResponse{}
@@ -18219,7 +18640,7 @@ func (client *Client) DescribeImageGatewayConfigWithOptions(request *DescribeIma
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImageGatewayConfigResponse{}
@@ -18259,7 +18680,7 @@ func (client *Client) DescribeImagePriceWithOptions(request *DescribeImagePriceR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImagePriceResponse{}
@@ -18299,7 +18720,7 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeJobResponse{}
@@ -18339,7 +18760,7 @@ func (client *Client) DescribeNFSClientStatusWithOptions(request *DescribeNFSCli
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeNFSClientStatusResponse{}
@@ -18379,7 +18800,7 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePriceResponse{}
@@ -18419,7 +18840,7 @@ func (client *Client) EcdDeleteDesktopsWithOptions(request *EcdDeleteDesktopsReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EcdDeleteDesktopsResponse{}
@@ -18459,7 +18880,7 @@ func (client *Client) EditJobTemplateWithOptions(request *EditJobTemplateRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EditJobTemplateResponse{}
@@ -18499,7 +18920,7 @@ func (client *Client) GetAccountingReportWithOptions(request *GetAccountingRepor
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccountingReportResponse{}
@@ -18539,7 +18960,7 @@ func (client *Client) GetAutoScaleConfigWithOptions(request *GetAutoScaleConfigR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAutoScaleConfigResponse{}
@@ -18579,7 +19000,7 @@ func (client *Client) GetCloudMetricLogsWithOptions(request *GetCloudMetricLogsR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCloudMetricLogsResponse{}
@@ -18619,7 +19040,7 @@ func (client *Client) GetCloudMetricProfilingWithOptions(request *GetCloudMetric
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCloudMetricProfilingResponse{}
@@ -18659,7 +19080,7 @@ func (client *Client) GetClusterVolumesWithOptions(request *GetClusterVolumesReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetClusterVolumesResponse{}
@@ -18699,7 +19120,7 @@ func (client *Client) GetGWSConnectTicketWithOptions(request *GetGWSConnectTicke
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGWSConnectTicketResponse{}
@@ -18739,7 +19160,7 @@ func (client *Client) GetHealthMonitorLogsWithOptions(request *GetHealthMonitorL
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHealthMonitorLogsResponse{}
@@ -18779,7 +19200,7 @@ func (client *Client) GetHybridClusterConfigWithOptions(request *GetHybridCluste
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHybridClusterConfigResponse{}
@@ -18819,7 +19240,7 @@ func (client *Client) GetIfEcsTypeSupportHtConfigWithOptions(request *GetIfEcsTy
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetIfEcsTypeSupportHtConfigResponse{}
@@ -18859,7 +19280,7 @@ func (client *Client) GetSchedulerInfoWithOptions(request *GetSchedulerInfoReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSchedulerInfoResponse{}
@@ -18899,7 +19320,7 @@ func (client *Client) GetVisualServiceStatusWithOptions(request *GetVisualServic
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVisualServiceStatusResponse{}
@@ -18939,7 +19360,7 @@ func (client *Client) GetWorkbenchTokenWithOptions(request *GetWorkbenchTokenReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkbenchTokenResponse{}
@@ -18979,7 +19400,7 @@ func (client *Client) InitializeEHPCWithOptions(request *InitializeEHPCRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InitializeEHPCResponse{}
@@ -19019,7 +19440,7 @@ func (client *Client) InstallSoftwareWithOptions(request *InstallSoftwareRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InstallSoftwareResponse{}
@@ -19059,7 +19480,7 @@ func (client *Client) InvokeShellCommandWithOptions(request *InvokeShellCommandR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InvokeShellCommandResponse{}
@@ -19099,7 +19520,7 @@ func (client *Client) ListAvailableEcsTypesWithOptions(request *ListAvailableEcs
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAvailableEcsTypesResponse{}
@@ -19139,7 +19560,7 @@ func (client *Client) ListCloudMetricProfilingsWithOptions(request *ListCloudMet
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCloudMetricProfilingsResponse{}
@@ -19179,7 +19600,7 @@ func (client *Client) ListClusterLogsWithOptions(request *ListClusterLogsRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClusterLogsResponse{}
@@ -19219,7 +19640,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClustersResponse{}
@@ -19259,7 +19680,7 @@ func (client *Client) ListClustersMetaWithOptions(request *ListClustersMetaReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListClustersMetaResponse{}
@@ -19299,7 +19720,7 @@ func (client *Client) ListCommandsWithOptions(request *ListCommandsRequest, runt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCommandsResponse{}
@@ -19339,7 +19760,7 @@ func (client *Client) ListContainerAppsWithOptions(request *ListContainerAppsReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListContainerAppsResponse{}
@@ -19379,7 +19800,7 @@ func (client *Client) ListContainerImagesWithOptions(request *ListContainerImage
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListContainerImagesResponse{}
@@ -19419,7 +19840,7 @@ func (client *Client) ListCpfsFileSystemsWithOptions(request *ListCpfsFileSystem
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCpfsFileSystemsResponse{}
@@ -19452,7 +19873,7 @@ func (client *Client) ListCurrentClientVersionWithOptions(runtime *util.RuntimeO
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCurrentClientVersionResponse{}
@@ -19492,7 +19913,7 @@ func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCustomImagesResponse{}
@@ -19532,7 +19953,7 @@ func (client *Client) ListFileSystemWithMountTargetsWithOptions(request *ListFil
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFileSystemWithMountTargetsResponse{}
@@ -19572,7 +19993,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListImagesResponse{}
@@ -19612,7 +20033,7 @@ func (client *Client) ListInstalledSoftwareWithOptions(request *ListInstalledSof
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstalledSoftwareResponse{}
@@ -19652,7 +20073,7 @@ func (client *Client) ListInvocationResultsWithOptions(request *ListInvocationRe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInvocationResultsResponse{}
@@ -19692,7 +20113,7 @@ func (client *Client) ListInvocationStatusWithOptions(request *ListInvocationSta
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInvocationStatusResponse{}
@@ -19732,7 +20153,7 @@ func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListJobTemplatesResponse{}
@@ -19772,7 +20193,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListJobsResponse{}
@@ -19812,7 +20233,7 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodesResponse{}
@@ -19852,7 +20273,7 @@ func (client *Client) ListNodesByQueueWithOptions(request *ListNodesByQueueReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodesByQueueResponse{}
@@ -19892,7 +20313,7 @@ func (client *Client) ListNodesNoPagingWithOptions(request *ListNodesNoPagingReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodesNoPagingResponse{}
@@ -19932,7 +20353,7 @@ func (client *Client) ListPreferredEcsTypesWithOptions(request *ListPreferredEcs
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPreferredEcsTypesResponse{}
@@ -19972,7 +20393,7 @@ func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListQueuesResponse{}
@@ -20005,7 +20426,7 @@ func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_res
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRegionsResponse{}
@@ -20045,7 +20466,7 @@ func (client *Client) ListSecurityGroupsWithOptions(request *ListSecurityGroupsR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSecurityGroupsResponse{}
@@ -20085,7 +20506,7 @@ func (client *Client) ListSoftwaresWithOptions(request *ListSoftwaresRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSoftwaresResponse{}
@@ -20125,7 +20546,7 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTasksResponse{}
@@ -20165,7 +20586,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
@@ -20205,7 +20626,7 @@ func (client *Client) ListVolumesWithOptions(request *ListVolumesRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVolumesResponse{}
@@ -20245,7 +20666,7 @@ func (client *Client) ModifyClusterAttributesWithOptions(request *ModifyClusterA
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyClusterAttributesResponse{}
@@ -20285,7 +20706,7 @@ func (client *Client) ModifyContainerAppAttributesWithOptions(request *ModifyCon
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyContainerAppAttributesResponse{}
@@ -20325,7 +20746,7 @@ func (client *Client) ModifyImageGatewayConfigWithOptions(request *ModifyImageGa
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyImageGatewayConfigResponse{}
@@ -20365,7 +20786,7 @@ func (client *Client) ModifyUserGroupsWithOptions(request *ModifyUserGroupsReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUserGroupsResponse{}
@@ -20405,7 +20826,7 @@ func (client *Client) ModifyUserPasswordsWithOptions(request *ModifyUserPassword
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUserPasswordsResponse{}
@@ -20445,7 +20866,7 @@ func (client *Client) ModifyVisualServicePasswdWithOptions(request *ModifyVisual
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyVisualServicePasswdResponse{}
@@ -20485,7 +20906,7 @@ func (client *Client) MountNFSWithOptions(request *MountNFSRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &MountNFSResponse{}
@@ -20525,7 +20946,7 @@ func (client *Client) PullImageWithOptions(request *PullImageRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PullImageResponse{}
@@ -20558,7 +20979,7 @@ func (client *Client) QueryServicePackAndPriceWithOptions(runtime *util.RuntimeO
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryServicePackAndPriceResponse{}
@@ -20598,7 +21019,7 @@ func (client *Client) RecoverClusterWithOptions(request *RecoverClusterRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RecoverClusterResponse{}
@@ -20638,7 +21059,7 @@ func (client *Client) RerunJobsWithOptions(request *RerunJobsRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RerunJobsResponse{}
@@ -20678,7 +21099,7 @@ func (client *Client) ResetNodesWithOptions(request *ResetNodesRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetNodesResponse{}
@@ -20718,7 +21139,7 @@ func (client *Client) RunCloudMetricProfilingWithOptions(request *RunCloudMetric
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RunCloudMetricProfilingResponse{}
@@ -20758,7 +21179,7 @@ func (client *Client) SetAutoScaleConfigWithOptions(request *SetAutoScaleConfigR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetAutoScaleConfigResponse{}
@@ -20796,7 +21217,6 @@ func (client *Client) SetGWSClusterPolicyWithOptions(request *SetGWSClusterPolic
 	query["Watermark"] = request.Watermark
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetGWSClusterPolicy"),
@@ -20806,7 +21226,7 @@ func (client *Client) SetGWSClusterPolicyWithOptions(request *SetGWSClusterPolic
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGWSClusterPolicyResponse{}
@@ -20846,7 +21266,7 @@ func (client *Client) SetGWSInstanceNameWithOptions(request *SetGWSInstanceNameR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGWSInstanceNameResponse{}
@@ -20886,7 +21306,7 @@ func (client *Client) SetGWSInstanceUserWithOptions(request *SetGWSInstanceUserR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGWSInstanceUserResponse{}
@@ -20926,7 +21346,7 @@ func (client *Client) SetQueueWithOptions(request *SetQueueRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetQueueResponse{}
@@ -20966,7 +21386,7 @@ func (client *Client) SetSchedulerInfoWithOptions(request *SetSchedulerInfoReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetSchedulerInfoResponse{}
@@ -21006,7 +21426,7 @@ func (client *Client) StartClusterWithOptions(request *StartClusterRequest, runt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartClusterResponse{}
@@ -21046,7 +21466,7 @@ func (client *Client) StartGWSInstanceWithOptions(request *StartGWSInstanceReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartGWSInstanceResponse{}
@@ -21086,7 +21506,7 @@ func (client *Client) StartNodesWithOptions(request *StartNodesRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartNodesResponse{}
@@ -21126,7 +21546,7 @@ func (client *Client) StartVisualServiceWithOptions(request *StartVisualServiceR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartVisualServiceResponse{}
@@ -21166,7 +21586,7 @@ func (client *Client) StopClusterWithOptions(request *StopClusterRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopClusterResponse{}
@@ -21206,7 +21626,7 @@ func (client *Client) StopGWSInstanceWithOptions(request *StopGWSInstanceRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopGWSInstanceResponse{}
@@ -21246,7 +21666,7 @@ func (client *Client) StopJobsWithOptions(request *StopJobsRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopJobsResponse{}
@@ -21286,7 +21706,7 @@ func (client *Client) StopNodesWithOptions(request *StopNodesRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopNodesResponse{}
@@ -21326,7 +21746,7 @@ func (client *Client) StopVisualServiceWithOptions(request *StopVisualServiceReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopVisualServiceResponse{}
@@ -21366,7 +21786,7 @@ func (client *Client) SubmitJobWithOptions(request *SubmitJobRequest, runtime *u
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitJobResponse{}
@@ -21382,6 +21802,46 @@ func (client *Client) SubmitJob(request *SubmitJobRequest) (_result *SubmitJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitJobResponse{}
 	_body, _err := client.SubmitJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncUsersWithOptions(request *SyncUsersRequest, runtime *util.RuntimeOptions) (_result *SyncUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncUsers"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncUsers(request *SyncUsersRequest) (_result *SyncUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncUsersResponse{}
+	_body, _err := client.SyncUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21406,7 +21866,7 @@ func (client *Client) UninstallSoftwareWithOptions(request *UninstallSoftwareReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UninstallSoftwareResponse{}
@@ -21446,7 +21906,7 @@ func (client *Client) UpdateClusterVolumesWithOptions(request *UpdateClusterVolu
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateClusterVolumesResponse{}
@@ -21486,7 +21946,7 @@ func (client *Client) UpdateQueueConfigWithOptions(request *UpdateQueueConfigReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateQueueConfigResponse{}
@@ -21526,7 +21986,7 @@ func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeClientResponse{}
