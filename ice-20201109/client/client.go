@@ -2763,6 +2763,7 @@ func (s *GetLiveEditingIndexFileResponse) SetBody(v *GetLiveEditingIndexFileResp
 }
 
 type GetLiveEditingJobRequest struct {
+	// 直播剪辑JobId
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -2780,8 +2781,9 @@ func (s *GetLiveEditingJobRequest) SetJobId(v string) *GetLiveEditingJobRequest 
 }
 
 type GetLiveEditingJobResponseBody struct {
+	// 直播剪辑任务
 	LiveEditingJob *GetLiveEditingJobResponseBodyLiveEditingJob `json:"LiveEditingJob,omitempty" xml:"LiveEditingJob,omitempty" type:"Struct"`
-	// Id of the request
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2804,21 +2806,36 @@ func (s *GetLiveEditingJobResponseBody) SetRequestId(v string) *GetLiveEditingJo
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJob struct {
-	Clips              *string                                                        `json:"Clips,omitempty" xml:"Clips,omitempty"`
-	Code               *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	CompleteTime       *string                                                        `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreationTime       *string                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	JobId              *string                                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	LiveStreamConfig   *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig   `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
-	MediaId            *string                                                        `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 剪辑片段列表
+	Clips *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
+	// 剪辑合成作业错误码  注：作业失败时关注该字段
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 直播剪辑作业完成时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// 直播剪辑作业创建时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// 直播剪辑任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 直播剪辑配置
+	LiveStreamConfig *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig `json:"LiveStreamConfig,omitempty" xml:"LiveStreamConfig,omitempty" type:"Struct"`
+	// 输出成品的资源Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 直播剪辑合成配置
 	MediaProduceConfig *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig `json:"MediaProduceConfig,omitempty" xml:"MediaProduceConfig,omitempty" type:"Struct"`
-	MediaURL           *string                                                        `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	Message            *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	ModifiedTime       *string                                                        `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	OutputMediaConfig  *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig  `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
-	ProjectId          *string                                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserData           *string                                                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 输出成品的资源文件URL
+	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// 剪辑合成作业错误信息  注：作业失败时关注该字段
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 直播剪辑作业修改时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// 输出成片的存储配置
+	OutputMediaConfig *GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty" type:"Struct"`
+	// 直播剪辑工程ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 直播剪辑作业状态，取值可能为如下值：  -Init （初始状态）  -Queuing（排队中）  -Processing（处理中）  -Success（成功）  -Failed（失败）
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 用户数据
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetLiveEditingJobResponseBodyLiveEditingJob) String() string {
@@ -2905,8 +2922,11 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJob) SetUserData(v string) *Get
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig struct {
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 播流所属应用名称
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 播流所属域名
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// 播流所属流名
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
@@ -2934,6 +2954,7 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig) SetStreamN
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig struct {
+	// 剪辑模式，默认Accurate
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -2951,13 +2972,20 @@ func (s *GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig) SetMode(
 }
 
 type GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig struct {
-	Bitrate            *int64  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Height             *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	MediaURL           *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	StorageLocation    *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// 输出成品的码率，单位为Kbps。可以不填，默认值是多个素材的最高码率
+	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// 当 OutputMediaTarget 的目标为 vod-media 时，指定 fileName(包含文件后缀，不含路径）作为输出文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 输出成品的高。可以不填，默认值是多个素材的最大高
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// 输出成片的文件地址
+	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	// 当 OutputMediaTarget 的目标为 vod-media 时， 指定 storage location 来存储媒资到 VOD; storage location 是 VOD 中的文件存储位置， 不包含 http:// 的前缀， 如:  outin-xxxxxx.oss-cn-shanghai.aliyuncs.com
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// 合成成片输出到vod，指定vod转码模板组。如不需要VOD转码，请填写 "VOD_NO_TRANSCODE".
 	VodTemplateGroupId *string `json:"VodTemplateGroupId,omitempty" xml:"VodTemplateGroupId,omitempty"`
-	Width              *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	// 输出成品的宽。可以不填，默认值是多个素材的最大宽
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig) String() string {
@@ -8155,6 +8183,156 @@ func (s *SubmitDelogoJobResponse) SetBody(v *SubmitDelogoJobResponseBody) *Submi
 	return s
 }
 
+type SubmitDynamicChartJobRequest struct {
+	// 坐标样式。XAxisFontInterval不传或为0则算法自动计算间距
+	AxisParams *string `json:"AxisParams,omitempty" xml:"AxisParams,omitempty"`
+	// 图表背景
+	Background *string `json:"Background,omitempty" xml:"Background,omitempty"`
+	// 图表配置
+	ChartConfig *string `json:"ChartConfig,omitempty" xml:"ChartConfig,omitempty"`
+	// 主标题
+	ChartTitle *string `json:"ChartTitle,omitempty" xml:"ChartTitle,omitempty"`
+	// 图表类型
+	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	// 数据来源
+	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// 任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 图表输入数据
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// 输出设置
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// 副标题
+	Subtitle *string `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// 任务标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 单位
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// 自定义数据，JSON格式
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitDynamicChartJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDynamicChartJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDynamicChartJobRequest) SetAxisParams(v string) *SubmitDynamicChartJobRequest {
+	s.AxisParams = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetBackground(v string) *SubmitDynamicChartJobRequest {
+	s.Background = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetChartConfig(v string) *SubmitDynamicChartJobRequest {
+	s.ChartConfig = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetChartTitle(v string) *SubmitDynamicChartJobRequest {
+	s.ChartTitle = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetChartType(v string) *SubmitDynamicChartJobRequest {
+	s.ChartType = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetDataSource(v string) *SubmitDynamicChartJobRequest {
+	s.DataSource = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetDescription(v string) *SubmitDynamicChartJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetInput(v string) *SubmitDynamicChartJobRequest {
+	s.Input = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetOutputConfig(v string) *SubmitDynamicChartJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetSubtitle(v string) *SubmitDynamicChartJobRequest {
+	s.Subtitle = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetTitle(v string) *SubmitDynamicChartJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetUnit(v string) *SubmitDynamicChartJobRequest {
+	s.Unit = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobRequest) SetUserData(v string) *SubmitDynamicChartJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitDynamicChartJobResponseBody struct {
+	// 任务Id
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDynamicChartJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDynamicChartJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDynamicChartJobResponseBody) SetJobId(v string) *SubmitDynamicChartJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitDynamicChartJobResponseBody) SetRequestId(v string) *SubmitDynamicChartJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDynamicChartJobResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitDynamicChartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDynamicChartJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDynamicChartJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDynamicChartJobResponse) SetHeaders(v map[string]*string) *SubmitDynamicChartJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDynamicChartJobResponse) SetBody(v *SubmitDynamicChartJobResponseBody) *SubmitDynamicChartJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitH2VJobRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 输入文件
@@ -9538,7 +9716,6 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 	query["ProjectId"] = request.ProjectId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddEditingProjectMaterials"),
@@ -9548,7 +9725,7 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddEditingProjectMaterialsResponse{}
@@ -9580,7 +9757,6 @@ func (client *Client) AddFavoritePublicMediaWithOptions(request *AddFavoritePubl
 	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddFavoritePublicMedia"),
@@ -9590,7 +9766,7 @@ func (client *Client) AddFavoritePublicMediaWithOptions(request *AddFavoritePubl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddFavoritePublicMediaResponse{}
@@ -9629,7 +9805,6 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTemplate"),
@@ -9639,7 +9814,7 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTemplateResponse{}
@@ -9672,7 +9847,6 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchGetMediaInfos"),
@@ -9682,7 +9856,7 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchGetMediaInfosResponse{}
@@ -9714,7 +9888,6 @@ func (client *Client) CancelFavoritePublicMediaWithOptions(request *CancelFavori
 	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelFavoritePublicMedia"),
@@ -9724,7 +9897,7 @@ func (client *Client) CancelFavoritePublicMediaWithOptions(request *CancelFavori
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelFavoritePublicMediaResponse{}
@@ -9764,7 +9937,6 @@ func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProj
 	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateEditingProject"),
@@ -9774,7 +9946,7 @@ func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEditingProjectResponse{}
@@ -9802,7 +9974,10 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["MaterialIds"] = request.MaterialIds
+	query["MaterialType"] = request.MaterialType
+	query["ProjectId"] = request.ProjectId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9811,10 +9986,10 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectMaterialsResponse{}
@@ -9846,7 +10021,6 @@ func (client *Client) DeleteEditingProjectsWithOptions(request *DeleteEditingPro
 	query["ProjectIds"] = request.ProjectIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteEditingProjects"),
@@ -9856,7 +10030,7 @@ func (client *Client) DeleteEditingProjectsWithOptions(request *DeleteEditingPro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEditingProjectsResponse{}
@@ -9889,7 +10063,6 @@ func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosReque
 	query["MediaIds"] = request.MediaIds
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMediaInfos"),
@@ -9899,7 +10072,7 @@ func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaInfosResponse{}
@@ -9931,7 +10104,6 @@ func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, 
 	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSmartJob"),
@@ -9941,7 +10113,7 @@ func (client *Client) DeleteSmartJobWithOptions(request *DeleteSmartJobRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSmartJobResponse{}
@@ -9981,7 +10153,7 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
@@ -10013,7 +10185,6 @@ func (client *Client) DescribeIceProductStatusWithOptions(request *DescribeIcePr
 	query["CommodityCode"] = request.CommodityCode
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeIceProductStatus"),
@@ -10023,7 +10194,7 @@ func (client *Client) DescribeIceProductStatusWithOptions(request *DescribeIcePr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIceProductStatusResponse{}
@@ -10057,7 +10228,6 @@ func (client *Client) DescribeMaterialPackageInfoWithOptions(request *DescribeMa
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMaterialPackageInfo"),
@@ -10067,7 +10237,7 @@ func (client *Client) DescribeMaterialPackageInfoWithOptions(request *DescribeMa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMaterialPackageInfoResponse{}
@@ -10100,7 +10270,7 @@ func (client *Client) DescribeRelatedAuthorizationStatusWithOptions(runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRelatedAuthorizationStatusResponse{}
@@ -10133,7 +10303,7 @@ func (client *Client) GetDefaultStorageLocationWithOptions(runtime *util.Runtime
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDefaultStorageLocationResponse{}
@@ -10161,7 +10331,8 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["ProjectId"] = request.ProjectId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10170,10 +10341,10 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectResponse{}
@@ -10201,7 +10372,8 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	query["ProjectId"] = request.ProjectId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10210,10 +10382,10 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEditingProjectMaterialsResponse{}
@@ -10246,7 +10418,7 @@ func (client *Client) GetEventCallbackWithOptions(runtime *util.RuntimeOptions) 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEventCallbackResponse{}
@@ -10286,7 +10458,7 @@ func (client *Client) GetLiveEditingIndexFileWithOptions(request *GetLiveEditing
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLiveEditingIndexFileResponse{}
@@ -10318,7 +10490,6 @@ func (client *Client) GetLiveEditingJobWithOptions(request *GetLiveEditingJobReq
 	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetLiveEditingJob"),
@@ -10328,7 +10499,7 @@ func (client *Client) GetLiveEditingJobWithOptions(request *GetLiveEditingJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLiveEditingJobResponse{}
@@ -10362,7 +10533,6 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 	query["OutputType"] = request.OutputType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMediaInfo"),
@@ -10372,7 +10542,7 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaInfoResponse{}
@@ -10412,7 +10582,7 @@ func (client *Client) GetMediaProducingJobWithOptions(request *GetMediaProducing
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMediaProducingJobResponse{}
@@ -10444,7 +10614,6 @@ func (client *Client) GetPublicMediaInfoWithOptions(request *GetPublicMediaInfoR
 	query["MediaId"] = request.MediaId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPublicMediaInfo"),
@@ -10454,7 +10623,7 @@ func (client *Client) GetPublicMediaInfoWithOptions(request *GetPublicMediaInfoR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPublicMediaInfoResponse{}
@@ -10494,7 +10663,7 @@ func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSmartHandleJobResponse{}
@@ -10534,7 +10703,7 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
@@ -10574,7 +10743,7 @@ func (client *Client) GetTemplateMaterialsWithOptions(request *GetTemplateMateri
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateMaterialsResponse{}
@@ -10607,7 +10776,6 @@ func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMe
 	query["EntityId"] = request.EntityId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAllPublicMediaTags"),
@@ -10617,7 +10785,7 @@ func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAllPublicMediaTagsResponse{}
@@ -10659,7 +10827,6 @@ func (client *Client) ListMediaBasicInfosWithOptions(request *ListMediaBasicInfo
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMediaBasicInfos"),
@@ -10669,7 +10836,7 @@ func (client *Client) ListMediaBasicInfosWithOptions(request *ListMediaBasicInfo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaBasicInfosResponse{}
@@ -10701,7 +10868,6 @@ func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProduc
 	query["Status"] = request.Status
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMediaProducingJobs"),
@@ -10711,7 +10877,7 @@ func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProduc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaProducingJobsResponse{}
@@ -10746,7 +10912,6 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 	query["NextToken"] = request.NextToken
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPublicMediaBasicInfos"),
@@ -10756,7 +10921,7 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicMediaBasicInfosResponse{}
@@ -10796,7 +10961,7 @@ func (client *Client) ListSmartJobsWithOptions(request *ListSmartJobsRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSmartJobsResponse{}
@@ -10836,7 +11001,7 @@ func (client *Client) ListSysTemplatesWithOptions(request *ListSysTemplatesReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSysTemplatesResponse{}
@@ -10872,7 +11037,6 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 	query["Type"] = request.Type
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTemplates"),
@@ -10882,7 +11046,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
@@ -10926,7 +11090,6 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RegisterMediaInfo"),
@@ -10936,7 +11099,7 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaInfoResponse{}
@@ -10976,7 +11139,6 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 	query["TemplateType"] = request.TemplateType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchEditingProject"),
@@ -10986,7 +11148,7 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchEditingProjectResponse{}
@@ -11025,7 +11187,6 @@ func (client *Client) SearchPublicMediaInfoWithOptions(request *SearchPublicMedi
 	query["SortBy"] = request.SortBy
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchPublicMediaInfo"),
@@ -11035,7 +11196,7 @@ func (client *Client) SearchPublicMediaInfoWithOptions(request *SearchPublicMedi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchPublicMediaInfoResponse{}
@@ -11069,7 +11230,6 @@ func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultSt
 	query["StorageType"] = request.StorageType
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDefaultStorageLocation"),
@@ -11079,7 +11239,7 @@ func (client *Client) SetDefaultStorageLocationWithOptions(request *SetDefaultSt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultStorageLocationResponse{}
@@ -11112,7 +11272,6 @@ func (client *Client) SetEventCallbackWithOptions(request *SetEventCallbackReque
 	query["EventTypeList"] = request.EventTypeList
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetEventCallback"),
@@ -11122,7 +11281,7 @@ func (client *Client) SetEventCallbackWithOptions(request *SetEventCallbackReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetEventCallbackResponse{}
@@ -11159,7 +11318,6 @@ func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runt
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitASRJob"),
@@ -11169,7 +11327,7 @@ func (client *Client) SubmitASRJobWithOptions(request *SubmitASRJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitASRJobResponse{}
@@ -11207,7 +11365,6 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAudioProduceJob"),
@@ -11217,7 +11374,7 @@ func (client *Client) SubmitAudioProduceJobWithOptions(request *SubmitAudioProdu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAudioProduceJobResponse{}
@@ -11256,7 +11413,6 @@ func (client *Client) SubmitDelogoJobWithOptions(request *SubmitDelogoJobRequest
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitDelogoJob"),
@@ -11266,7 +11422,7 @@ func (client *Client) SubmitDelogoJobWithOptions(request *SubmitDelogoJobRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitDelogoJobResponse{}
@@ -11282,6 +11438,59 @@ func (client *Client) SubmitDelogoJob(request *SubmitDelogoJobRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDelogoJobResponse{}
 	_body, _err := client.SubmitDelogoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDynamicChartJobWithOptions(request *SubmitDynamicChartJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDynamicChartJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	query["AxisParams"] = request.AxisParams
+	query["Background"] = request.Background
+	query["ChartConfig"] = request.ChartConfig
+	query["ChartTitle"] = request.ChartTitle
+	query["ChartType"] = request.ChartType
+	query["DataSource"] = request.DataSource
+	query["Description"] = request.Description
+	query["Input"] = request.Input
+	query["OutputConfig"] = request.OutputConfig
+	query["Subtitle"] = request.Subtitle
+	query["Title"] = request.Title
+	query["Unit"] = request.Unit
+	query["UserData"] = request.UserData
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDynamicChartJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDynamicChartJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDynamicChartJob(request *SubmitDynamicChartJobRequest) (_result *SubmitDynamicChartJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDynamicChartJobResponse{}
+	_body, _err := client.SubmitDynamicChartJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11305,7 +11514,6 @@ func (client *Client) SubmitH2VJobWithOptions(request *SubmitH2VJobRequest, runt
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitH2VJob"),
@@ -11315,7 +11523,7 @@ func (client *Client) SubmitH2VJobWithOptions(request *SubmitH2VJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitH2VJobResponse{}
@@ -11355,7 +11563,7 @@ func (client *Client) SubmitKeyWordCutJobWithOptions(request *SubmitKeyWordCutJo
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitKeyWordCutJobResponse{}
@@ -11393,7 +11601,6 @@ func (client *Client) SubmitLiveEditingJobWithOptions(request *SubmitLiveEditing
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitLiveEditingJob"),
@@ -11403,7 +11610,7 @@ func (client *Client) SubmitLiveEditingJobWithOptions(request *SubmitLiveEditing
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitLiveEditingJobResponse{}
@@ -11442,7 +11649,6 @@ func (client *Client) SubmitMattingJobWithOptions(request *SubmitMattingJobReque
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMattingJob"),
@@ -11452,7 +11658,7 @@ func (client *Client) SubmitMattingJobWithOptions(request *SubmitMattingJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMattingJobResponse{}
@@ -11494,7 +11700,6 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaProducingJob"),
@@ -11504,7 +11709,7 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaProducingJobResponse{}
@@ -11544,7 +11749,7 @@ func (client *Client) SubmitPPTCutJobWithOptions(request *SubmitPPTCutJobRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPPTCutJobResponse{}
@@ -11583,7 +11788,6 @@ func (client *Client) SubmitSubtitleProduceJobWithOptions(request *SubmitSubtitl
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSubtitleProduceJob"),
@@ -11593,7 +11797,7 @@ func (client *Client) SubmitSubtitleProduceJobWithOptions(request *SubmitSubtitl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSubtitleProduceJobResponse{}
@@ -11632,7 +11836,6 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 	query["Title"] = request.Title
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEditingProject"),
@@ -11642,7 +11845,7 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEditingProjectResponse{}
@@ -11685,7 +11888,6 @@ func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest
 	query["UserData"] = request.UserData
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaInfo"),
@@ -11695,7 +11897,7 @@ func (client *Client) UpdateMediaInfoWithOptions(request *UpdateMediaInfoRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaInfoResponse{}
@@ -11728,7 +11930,6 @@ func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, 
 	query["JobId"] = request.JobId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSmartJob"),
@@ -11738,7 +11939,7 @@ func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSmartJobResponse{}
@@ -11777,7 +11978,6 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 	query["TemplateId"] = request.TemplateId
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
@@ -11787,7 +11987,7 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
