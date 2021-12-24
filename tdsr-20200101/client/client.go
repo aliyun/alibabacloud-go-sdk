@@ -287,6 +287,153 @@ func (s *AddRelativePositionResponse) SetBody(v *AddRelativePositionResponseBody
 	return s
 }
 
+type AddRoomPlanRequest struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s AddRoomPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRoomPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRoomPlanRequest) SetSceneId(v string) *AddRoomPlanRequest {
+	s.SceneId = &v
+	return s
+}
+
+type AddRoomPlanResponseBody struct {
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 文件上传凭据
+	Data *AddRoomPlanResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddRoomPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRoomPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRoomPlanResponseBody) SetCode(v int64) *AddRoomPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBody) SetData(v *AddRoomPlanResponseBodyData) *AddRoomPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddRoomPlanResponseBody) SetMessage(v string) *AddRoomPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBody) SetRequestId(v string) *AddRoomPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBody) SetSuccess(v bool) *AddRoomPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddRoomPlanResponseBodyData struct {
+	// accessId
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// 上传回调
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 授权路径
+	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// 授权失效时间(s)
+	Expire *string `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// 上传地址
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// 授权
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// 签名
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s AddRoomPlanResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRoomPlanResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddRoomPlanResponseBodyData) SetAccessId(v string) *AddRoomPlanResponseBodyData {
+	s.AccessId = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetCallback(v string) *AddRoomPlanResponseBodyData {
+	s.Callback = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetDir(v string) *AddRoomPlanResponseBodyData {
+	s.Dir = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetExpire(v string) *AddRoomPlanResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetHost(v string) *AddRoomPlanResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetPolicy(v string) *AddRoomPlanResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *AddRoomPlanResponseBodyData) SetSignature(v string) *AddRoomPlanResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+type AddRoomPlanResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddRoomPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddRoomPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRoomPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRoomPlanResponse) SetHeaders(v map[string]*string) *AddRoomPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRoomPlanResponse) SetBody(v *AddRoomPlanResponseBody) *AddRoomPlanResponse {
+	s.Body = v
+	return s
+}
+
 type AddSceneRequest struct {
 	// 场景名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6157,11 +6304,16 @@ func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MarkPosition"] = request.MarkPosition
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.MarkPosition)) {
+		query["MarkPosition"] = request.MarkPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddMosaics"),
@@ -6171,7 +6323,7 @@ func (client *Client) AddMosaicsWithOptions(request *AddMosaicsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddMosaicsResponse{}
@@ -6200,11 +6352,16 @@ func (client *Client) AddProjectWithOptions(request *AddProjectRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessId"] = request.BusinessId
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddProject"),
@@ -6214,7 +6371,7 @@ func (client *Client) AddProjectWithOptions(request *AddProjectRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddProjectResponse{}
@@ -6243,11 +6400,16 @@ func (client *Client) AddRelativePositionWithOptions(request *AddRelativePositio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RelativePosition"] = request.RelativePosition
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.RelativePosition)) {
+		query["RelativePosition"] = request.RelativePosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddRelativePosition"),
@@ -6257,7 +6419,7 @@ func (client *Client) AddRelativePositionWithOptions(request *AddRelativePositio
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddRelativePositionResponse{}
@@ -6280,18 +6442,70 @@ func (client *Client) AddRelativePosition(request *AddRelativePositionRequest) (
 	return _result, _err
 }
 
+func (client *Client) AddRoomPlanWithOptions(request *AddRoomPlanRequest, runtime *util.RuntimeOptions) (_result *AddRoomPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRoomPlan"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddRoomPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddRoomPlan(request *AddRoomPlanRequest) (_result *AddRoomPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddRoomPlanResponse{}
+	_body, _err := client.AddRoomPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddSceneWithOptions(request *AddSceneRequest, runtime *util.RuntimeOptions) (_result *AddSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddScene"),
@@ -6301,7 +6515,7 @@ func (client *Client) AddSceneWithOptions(request *AddSceneRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSceneResponse{}
@@ -6330,12 +6544,20 @@ func (client *Client) AddSubSceneWithOptions(request *AddSubSceneRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["SceneId"] = request.SceneId
-	query["UploadType"] = request.UploadType
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadType)) {
+		query["UploadType"] = request.UploadType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSubScene"),
@@ -6345,7 +6567,7 @@ func (client *Client) AddSubSceneWithOptions(request *AddSubSceneRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSubSceneResponse{}
@@ -6374,23 +6596,64 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bid"] = request.Bid
-	query["Country"] = request.Country
-	query["GmtWakeup"] = request.GmtWakeup
-	query["Hid"] = request.Hid
-	query["Interrupt"] = request.Interrupt
-	query["Invoker"] = request.Invoker
-	query["Level"] = request.Level
-	query["Message"] = request.Message
-	query["Pk"] = request.Pk
-	query["Prompt"] = request.Prompt
-	query["Success"] = request.Success
-	query["TaskExtraData"] = request.TaskExtraData
-	query["TaskIdentifier"] = request.TaskIdentifier
-	query["Url"] = request.Url
+	if !tea.BoolValue(util.IsUnset(request.Bid)) {
+		query["Bid"] = request.Bid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtWakeup)) {
+		query["GmtWakeup"] = request.GmtWakeup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hid)) {
+		query["Hid"] = request.Hid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
+		query["Interrupt"] = request.Interrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Invoker)) {
+		query["Invoker"] = request.Invoker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pk)) {
+		query["Pk"] = request.Pk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Success)) {
+		query["Success"] = request.Success
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskExtraData)) {
+		query["TaskExtraData"] = request.TaskExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdentifier)) {
+		query["TaskIdentifier"] = request.TaskIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckResource"),
@@ -6400,7 +6663,7 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckResourceResponse{}
@@ -6429,14 +6692,28 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuilderUserIdList"] = request.BuilderUserIdList
-	query["BusinessId"] = request.BusinessId
-	query["BusinessUserIdList"] = request.BusinessUserIdList
-	query["GatherUserIdList"] = request.GatherUserIdList
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.BuilderUserIdList)) {
+		query["BuilderUserIdList"] = request.BuilderUserIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessUserIdList)) {
+		query["BusinessUserIdList"] = request.BusinessUserIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatherUserIdList)) {
+		query["GatherUserIdList"] = request.GatherUserIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateProject"),
@@ -6446,7 +6723,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
@@ -6475,11 +6752,16 @@ func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateScene"),
@@ -6489,7 +6771,7 @@ func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSceneResponse{}
@@ -6518,11 +6800,16 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ParamFile"] = request.ParamFile
-	query["SubSceneUuid"] = request.SubSceneUuid
+	if !tea.BoolValue(util.IsUnset(request.ParamFile)) {
+		query["ParamFile"] = request.ParamFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
+		query["SubSceneUuid"] = request.SubSceneUuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFile"),
@@ -6532,7 +6819,7 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFileResponse{}
@@ -6561,10 +6848,12 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProject"),
@@ -6574,7 +6863,7 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProjectResponse{}
@@ -6603,10 +6892,12 @@ func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetailProject"),
@@ -6616,7 +6907,7 @@ func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetailProjectResponse{}
@@ -6645,10 +6936,12 @@ func (client *Client) DetailSceneWithOptions(request *DetailSceneRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetailScene"),
@@ -6658,7 +6951,7 @@ func (client *Client) DetailSceneWithOptions(request *DetailSceneRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetailSceneResponse{}
@@ -6687,10 +6980,12 @@ func (client *Client) DetailSubSceneWithOptions(request *DetailSubSceneRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetailSubScene"),
@@ -6700,7 +6995,7 @@ func (client *Client) DetailSubSceneWithOptions(request *DetailSubSceneRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetailSubSceneResponse{}
@@ -6729,10 +7024,12 @@ func (client *Client) DropProjectWithOptions(request *DropProjectRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DropProject"),
@@ -6742,7 +7039,7 @@ func (client *Client) DropProjectWithOptions(request *DropProjectRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DropProjectResponse{}
@@ -6771,10 +7068,12 @@ func (client *Client) DropSceneWithOptions(request *DropSceneRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DropScene"),
@@ -6784,7 +7083,7 @@ func (client *Client) DropSceneWithOptions(request *DropSceneRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DropSceneResponse{}
@@ -6813,10 +7112,12 @@ func (client *Client) DropSubSceneWithOptions(request *DropSubSceneRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DropSubScene"),
@@ -6826,7 +7127,7 @@ func (client *Client) DropSubSceneWithOptions(request *DropSubSceneRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DropSubSceneResponse{}
@@ -6855,10 +7156,12 @@ func (client *Client) GetConnDataWithOptions(request *GetConnDataRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetConnData"),
@@ -6868,7 +7171,7 @@ func (client *Client) GetConnDataWithOptions(request *GetConnDataRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetConnDataResponse{}
@@ -6897,13 +7200,24 @@ func (client *Client) GetHotspotConfigWithOptions(request *GetHotspotConfigReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["PreviewToken"] = request.PreviewToken
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetHotspotConfig"),
@@ -6913,7 +7227,7 @@ func (client *Client) GetHotspotConfigWithOptions(request *GetHotspotConfigReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHotspotConfigResponse{}
@@ -6942,13 +7256,24 @@ func (client *Client) GetHotspotSceneDataWithOptions(request *GetHotspotSceneDat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["PreviewToken"] = request.PreviewToken
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetHotspotSceneData"),
@@ -6958,7 +7283,7 @@ func (client *Client) GetHotspotSceneDataWithOptions(request *GetHotspotSceneDat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHotspotSceneDataResponse{}
@@ -6987,14 +7312,28 @@ func (client *Client) GetHotspotTagWithOptions(request *GetHotspotTagRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["PreviewToken"] = request.PreviewToken
-	query["SubSceneUuid"] = request.SubSceneUuid
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
+		query["SubSceneUuid"] = request.SubSceneUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetHotspotTag"),
@@ -7004,7 +7343,7 @@ func (client *Client) GetHotspotTagWithOptions(request *GetHotspotTagRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHotspotTagResponse{}
@@ -7033,10 +7372,12 @@ func (client *Client) GetLayoutDataWithOptions(request *GetLayoutDataRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetLayoutData"),
@@ -7046,7 +7387,7 @@ func (client *Client) GetLayoutDataWithOptions(request *GetLayoutDataRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLayoutDataResponse{}
@@ -7075,10 +7416,12 @@ func (client *Client) GetOriginLayoutDataWithOptions(request *GetOriginLayoutDat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetOriginLayoutData"),
@@ -7088,7 +7431,7 @@ func (client *Client) GetOriginLayoutDataWithOptions(request *GetOriginLayoutDat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOriginLayoutDataResponse{}
@@ -7117,10 +7460,12 @@ func (client *Client) GetOssPolicyWithOptions(request *GetOssPolicyRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetOssPolicy"),
@@ -7130,7 +7475,7 @@ func (client *Client) GetOssPolicyWithOptions(request *GetOssPolicyRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOssPolicyResponse{}
@@ -7159,11 +7504,16 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneUuid"] = request.SubSceneUuid
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
+		query["SubSceneUuid"] = request.SubSceneUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPolicy"),
@@ -7173,7 +7523,7 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPolicyResponse{}
@@ -7202,10 +7552,12 @@ func (client *Client) GetRectifyImageWithOptions(request *GetRectifyImageRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRectifyImage"),
@@ -7215,7 +7567,7 @@ func (client *Client) GetRectifyImageWithOptions(request *GetRectifyImageRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRectifyImageResponse{}
@@ -7244,10 +7596,12 @@ func (client *Client) GetSceneBuildTaskStatusWithOptions(request *GetSceneBuildT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSceneBuildTaskStatus"),
@@ -7257,7 +7611,7 @@ func (client *Client) GetSceneBuildTaskStatusWithOptions(request *GetSceneBuildT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSceneBuildTaskStatusResponse{}
@@ -7286,12 +7640,20 @@ func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["ModelToken"] = request.ModelToken
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelToken)) {
+		query["ModelToken"] = request.ModelToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetScenePreviewInfo"),
@@ -7301,7 +7663,7 @@ func (client *Client) GetScenePreviewInfoWithOptions(request *GetScenePreviewInf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetScenePreviewInfoResponse{}
@@ -7330,10 +7692,12 @@ func (client *Client) GetSingleConnDataWithOptions(request *GetSingleConnDataReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSingleConnData"),
@@ -7343,7 +7707,7 @@ func (client *Client) GetSingleConnDataWithOptions(request *GetSingleConnDataReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSingleConnDataResponse{}
@@ -7372,10 +7736,12 @@ func (client *Client) GetSubSceneTaskStatusWithOptions(request *GetSubSceneTaskS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSubSceneTaskStatus"),
@@ -7385,7 +7751,7 @@ func (client *Client) GetSubSceneTaskStatusWithOptions(request *GetSubSceneTaskS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSubSceneTaskStatusResponse{}
@@ -7414,10 +7780,12 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTaskStatus"),
@@ -7427,7 +7795,7 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
@@ -7456,10 +7824,12 @@ func (client *Client) GetWindowConfigWithOptions(request *GetWindowConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PreviewToken"] = request.PreviewToken
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetWindowConfig"),
@@ -7469,7 +7839,7 @@ func (client *Client) GetWindowConfigWithOptions(request *GetWindowConfigRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWindowConfigResponse{}
@@ -7498,11 +7868,16 @@ func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Mode"] = request.Mode
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LabelBuild"),
@@ -7512,7 +7887,7 @@ func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &LabelBuildResponse{}
@@ -7541,13 +7916,24 @@ func (client *Client) LinkImageWithOptions(request *LinkImageRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CameraHeight"] = request.CameraHeight
-	query["FileName"] = request.FileName
-	query["Platform"] = request.Platform
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.CameraHeight)) {
+		query["CameraHeight"] = request.CameraHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LinkImage"),
@@ -7557,7 +7943,7 @@ func (client *Client) LinkImageWithOptions(request *LinkImageRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &LinkImageResponse{}
@@ -7586,12 +7972,20 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProject"),
@@ -7601,7 +7995,7 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectResponse{}
@@ -7630,13 +8024,24 @@ func (client *Client) ListSceneWithOptions(request *ListSceneRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListScene"),
@@ -7646,7 +8051,7 @@ func (client *Client) ListSceneWithOptions(request *ListSceneRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSceneResponse{}
@@ -7675,11 +8080,16 @@ func (client *Client) ListScenesWithOptions(request *ListScenesRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IsPublishQuery"] = request.IsPublishQuery
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.IsPublishQuery)) {
+		query["IsPublishQuery"] = request.IsPublishQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListScenes"),
@@ -7689,7 +8099,7 @@ func (client *Client) ListScenesWithOptions(request *ListScenesRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListScenesResponse{}
@@ -7718,13 +8128,24 @@ func (client *Client) ListSubSceneWithOptions(request *ListSubSceneRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["SceneId"] = request.SceneId
-	query["ShowLayoutData"] = request.ShowLayoutData
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowLayoutData)) {
+		query["ShowLayoutData"] = request.ShowLayoutData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSubScene"),
@@ -7734,7 +8155,7 @@ func (client *Client) ListSubSceneWithOptions(request *ListSubSceneRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSubSceneResponse{}
@@ -7763,10 +8184,12 @@ func (client *Client) OptimizeRightAngleWithOptions(request *OptimizeRightAngleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OptimizeRightAngle"),
@@ -7776,7 +8199,7 @@ func (client *Client) OptimizeRightAngleWithOptions(request *OptimizeRightAngleR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OptimizeRightAngleResponse{}
@@ -7805,13 +8228,24 @@ func (client *Client) PredImageWithOptions(request *PredImageRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CorrectVertical"] = request.CorrectVertical
-	query["CountDetectDoor"] = request.CountDetectDoor
-	query["DetectDoor"] = request.DetectDoor
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.CorrectVertical)) {
+		query["CorrectVertical"] = request.CorrectVertical
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CountDetectDoor)) {
+		query["CountDetectDoor"] = request.CountDetectDoor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetectDoor)) {
+		query["DetectDoor"] = request.DetectDoor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PredImage"),
@@ -7821,7 +8255,7 @@ func (client *Client) PredImageWithOptions(request *PredImageRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PredImageResponse{}
@@ -7850,11 +8284,16 @@ func (client *Client) PredictionWallLineWithOptions(request *PredictionWallLineR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CameraHeight"] = request.CameraHeight
-	query["Url"] = request.Url
+	if !tea.BoolValue(util.IsUnset(request.CameraHeight)) {
+		query["CameraHeight"] = request.CameraHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PredictionWallLine"),
@@ -7864,7 +8303,7 @@ func (client *Client) PredictionWallLineWithOptions(request *PredictionWallLineR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PredictionWallLineResponse{}
@@ -7893,11 +8332,16 @@ func (client *Client) PublishHotspotWithOptions(request *PublishHotspotRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ParamTag"] = request.ParamTag
-	query["SubSceneUuid"] = request.SubSceneUuid
+	if !tea.BoolValue(util.IsUnset(request.ParamTag)) {
+		query["ParamTag"] = request.ParamTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
+		query["SubSceneUuid"] = request.SubSceneUuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishHotspot"),
@@ -7907,7 +8351,7 @@ func (client *Client) PublishHotspotWithOptions(request *PublishHotspotRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PublishHotspotResponse{}
@@ -7936,10 +8380,12 @@ func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishScene"),
@@ -7949,7 +8395,7 @@ func (client *Client) PublishSceneWithOptions(request *PublishSceneRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PublishSceneResponse{}
@@ -7978,10 +8424,12 @@ func (client *Client) PublishStatusWithOptions(request *PublishStatusRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishStatus"),
@@ -7991,7 +8439,7 @@ func (client *Client) PublishStatusWithOptions(request *PublishStatusRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PublishStatusResponse{}
@@ -8020,10 +8468,12 @@ func (client *Client) RecoveryOriginImageWithOptions(request *RecoveryOriginImag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecoveryOriginImage"),
@@ -8033,7 +8483,7 @@ func (client *Client) RecoveryOriginImageWithOptions(request *RecoveryOriginImag
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RecoveryOriginImageResponse{}
@@ -8062,13 +8512,24 @@ func (client *Client) RectVerticalWithOptions(request *RectVerticalRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CountDetectDoor"] = request.CountDetectDoor
-	query["DetectDoor"] = request.DetectDoor
-	query["SubSceneId"] = request.SubSceneId
-	query["VerticalRect"] = request.VerticalRect
+	if !tea.BoolValue(util.IsUnset(request.CountDetectDoor)) {
+		query["CountDetectDoor"] = request.CountDetectDoor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetectDoor)) {
+		query["DetectDoor"] = request.DetectDoor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerticalRect)) {
+		query["VerticalRect"] = request.VerticalRect
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RectVertical"),
@@ -8078,7 +8539,7 @@ func (client *Client) RectVerticalWithOptions(request *RectVerticalRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RectVerticalResponse{}
@@ -8107,11 +8568,16 @@ func (client *Client) RectifyImageWithOptions(request *RectifyImageRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CameraHeight"] = request.CameraHeight
-	query["Url"] = request.Url
+	if !tea.BoolValue(util.IsUnset(request.CameraHeight)) {
+		query["CameraHeight"] = request.CameraHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RectifyImage"),
@@ -8121,7 +8587,7 @@ func (client *Client) RectifyImageWithOptions(request *RectifyImageRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RectifyImageResponse{}
@@ -8150,10 +8616,12 @@ func (client *Client) RollbackSubSceneWithOptions(request *RollbackSubSceneReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RollbackSubScene"),
@@ -8163,7 +8631,7 @@ func (client *Client) RollbackSubSceneWithOptions(request *RollbackSubSceneReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RollbackSubSceneResponse{}
@@ -8192,11 +8660,16 @@ func (client *Client) SaveHotspotConfigWithOptions(request *SaveHotspotConfigReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ParamTag"] = request.ParamTag
-	query["PreviewToken"] = request.PreviewToken
+	if !tea.BoolValue(util.IsUnset(request.ParamTag)) {
+		query["ParamTag"] = request.ParamTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SaveHotspotConfig"),
@@ -8206,7 +8679,7 @@ func (client *Client) SaveHotspotConfigWithOptions(request *SaveHotspotConfigReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SaveHotspotConfigResponse{}
@@ -8235,11 +8708,16 @@ func (client *Client) SaveHotspotTagWithOptions(request *SaveHotspotTagRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ParamTag"] = request.ParamTag
-	query["SubSceneUuid"] = request.SubSceneUuid
+	if !tea.BoolValue(util.IsUnset(request.ParamTag)) {
+		query["ParamTag"] = request.ParamTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
+		query["SubSceneUuid"] = request.SubSceneUuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SaveHotspotTag"),
@@ -8249,7 +8727,7 @@ func (client *Client) SaveHotspotTagWithOptions(request *SaveHotspotTagRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SaveHotspotTagResponse{}
@@ -8278,10 +8756,12 @@ func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ScenePublish"),
@@ -8291,7 +8771,7 @@ func (client *Client) ScenePublishWithOptions(request *ScenePublishRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ScenePublishResponse{}
@@ -8320,10 +8800,12 @@ func (client *Client) TempPreviewWithOptions(request *TempPreviewRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TempPreview"),
@@ -8333,7 +8815,7 @@ func (client *Client) TempPreviewWithOptions(request *TempPreviewRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TempPreviewResponse{}
@@ -8362,10 +8844,12 @@ func (client *Client) TempPreviewStatusWithOptions(request *TempPreviewStatusReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TempPreviewStatus"),
@@ -8375,7 +8859,7 @@ func (client *Client) TempPreviewStatusWithOptions(request *TempPreviewStatusReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TempPreviewStatusResponse{}
@@ -8404,11 +8888,16 @@ func (client *Client) UpdateConnDataWithOptions(request *UpdateConnDataRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnData"] = request.ConnData
-	query["SceneId"] = request.SceneId
+	if !tea.BoolValue(util.IsUnset(request.ConnData)) {
+		query["ConnData"] = request.ConnData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateConnData"),
@@ -8418,7 +8907,7 @@ func (client *Client) UpdateConnDataWithOptions(request *UpdateConnDataRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateConnDataResponse{}
@@ -8447,11 +8936,16 @@ func (client *Client) UpdateLayoutDataWithOptions(request *UpdateLayoutDataReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LayoutData"] = request.LayoutData
-	query["SubSceneId"] = request.SubSceneId
+	if !tea.BoolValue(util.IsUnset(request.LayoutData)) {
+		query["LayoutData"] = request.LayoutData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSceneId)) {
+		query["SubSceneId"] = request.SubSceneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateLayoutData"),
@@ -8461,7 +8955,7 @@ func (client *Client) UpdateLayoutDataWithOptions(request *UpdateLayoutDataReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLayoutDataResponse{}
@@ -8490,12 +8984,20 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessId"] = request.BusinessId
-	query["Id"] = request.Id
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateProject"),
@@ -8505,7 +9007,7 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateProjectResponse{}
@@ -8534,11 +9036,16 @@ func (client *Client) UpdateSceneWithOptions(request *UpdateSceneRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateScene"),
@@ -8548,7 +9055,7 @@ func (client *Client) UpdateSceneWithOptions(request *UpdateSceneRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSceneResponse{}
@@ -8577,11 +9084,16 @@ func (client *Client) UpdateSubSceneWithOptions(request *UpdateSubSceneRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSubScene"),
@@ -8591,7 +9103,7 @@ func (client *Client) UpdateSubSceneWithOptions(request *UpdateSubSceneRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSubSceneResponse{}
