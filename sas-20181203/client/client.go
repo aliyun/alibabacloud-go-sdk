@@ -75,75 +75,6 @@ func (s *AddVpcHoneyPotResponse) SetBody(v *AddVpcHoneyPotResponseBody) *AddVpcH
 	return s
 }
 
-type CheckQuaraFileIdRequest struct {
-	QuaraFileIds []*string `json:"QuaraFileIds,omitempty" xml:"QuaraFileIds,omitempty" type:"Repeated"`
-	Uuid         *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s CheckQuaraFileIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuaraFileIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuaraFileIdRequest) SetQuaraFileIds(v []*string) *CheckQuaraFileIdRequest {
-	s.QuaraFileIds = v
-	return s
-}
-
-func (s *CheckQuaraFileIdRequest) SetUuid(v string) *CheckQuaraFileIdRequest {
-	s.Uuid = &v
-	return s
-}
-
-type CheckQuaraFileIdResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckQuaraFileIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuaraFileIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuaraFileIdResponseBody) SetData(v bool) *CheckQuaraFileIdResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckQuaraFileIdResponseBody) SetRequestId(v string) *CheckQuaraFileIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckQuaraFileIdResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckQuaraFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckQuaraFileIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuaraFileIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuaraFileIdResponse) SetHeaders(v map[string]*string) *CheckQuaraFileIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckQuaraFileIdResponse) SetBody(v *CheckQuaraFileIdResponseBody) *CheckQuaraFileIdResponse {
-	s.Body = v
-	return s
-}
-
 type CheckSecurityEventIdRequest struct {
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 	Uuid             *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -331,99 +262,6 @@ func (s *CreateAntiBruteForceRuleResponse) SetHeaders(v map[string]*string) *Cre
 }
 
 func (s *CreateAntiBruteForceRuleResponse) SetBody(v *CreateAntiBruteForceRuleResponseBody) *CreateAntiBruteForceRuleResponse {
-	s.Body = v
-	return s
-}
-
-type CreateAssetRequest struct {
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsName       *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s CreateAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAssetRequest) SetInstanceName(v string) *CreateAssetRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *CreateAssetRequest) SetInternetIp(v string) *CreateAssetRequest {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *CreateAssetRequest) SetIntranetIp(v string) *CreateAssetRequest {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *CreateAssetRequest) SetOs(v string) *CreateAssetRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *CreateAssetRequest) SetOsName(v string) *CreateAssetRequest {
-	s.OsName = &v
-	return s
-}
-
-func (s *CreateAssetRequest) SetStatus(v string) *CreateAssetRequest {
-	s.Status = &v
-	return s
-}
-
-type CreateAssetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s CreateAssetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAssetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAssetResponseBody) SetRequestId(v string) *CreateAssetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAssetResponseBody) SetUuid(v string) *CreateAssetResponseBody {
-	s.Uuid = &v
-	return s
-}
-
-type CreateAssetResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAssetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateAssetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAssetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAssetResponse) SetHeaders(v map[string]*string) *CreateAssetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAssetResponse) SetBody(v *CreateAssetResponseBody) *CreateAssetResponse {
 	s.Body = v
 	return s
 }
@@ -625,252 +463,6 @@ func (s *CreateOrUpdateAssetGroupResponse) SetBody(v *CreateOrUpdateAssetGroupRe
 	return s
 }
 
-type CreateRestoreJobRequest struct {
-	Includes        *string `json:"Includes,omitempty" xml:"Includes,omitempty"`
-	SnapshotHash    *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotVersion *string `json:"SnapshotVersion,omitempty" xml:"SnapshotVersion,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Target          *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-}
-
-func (s CreateRestoreJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRestoreJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRestoreJobRequest) SetIncludes(v string) *CreateRestoreJobRequest {
-	s.Includes = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetSnapshotHash(v string) *CreateRestoreJobRequest {
-	s.SnapshotHash = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetSnapshotId(v string) *CreateRestoreJobRequest {
-	s.SnapshotId = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetSnapshotVersion(v string) *CreateRestoreJobRequest {
-	s.SnapshotVersion = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetSourceType(v string) *CreateRestoreJobRequest {
-	s.SourceType = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetTarget(v string) *CreateRestoreJobRequest {
-	s.Target = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetUuid(v string) *CreateRestoreJobRequest {
-	s.Uuid = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest {
-	s.VaultId = &v
-	return s
-}
-
-type CreateRestoreJobResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateRestoreJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRestoreJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRestoreJobResponseBody) SetRequestId(v string) *CreateRestoreJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateRestoreJobResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRestoreJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRestoreJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRestoreJobResponse) SetHeaders(v map[string]*string) *CreateRestoreJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRestoreJobResponse) SetBody(v *CreateRestoreJobResponseBody) *CreateRestoreJobResponse {
-	s.Body = v
-	return s
-}
-
-type CreateSasOrderRequest struct {
-	AutoPay             *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenewPeriod     *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	AutoUseCoupon       *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	ContainerImageScan  *string `json:"ContainerImageScan,omitempty" xml:"ContainerImageScan,omitempty"`
-	InstanceCount       *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Period              *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit          *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	SasAntiRansomware   *string `json:"SasAntiRansomware,omitempty" xml:"SasAntiRansomware,omitempty"`
-	SasProductService   *string `json:"SasProductService,omitempty" xml:"SasProductService,omitempty"`
-	SasSc               *string `json:"SasSc,omitempty" xml:"SasSc,omitempty"`
-	SasSlsStorage       *string `json:"SasSlsStorage,omitempty" xml:"SasSlsStorage,omitempty"`
-	SasWebguardBoolean  *string `json:"SasWebguardBoolean,omitempty" xml:"SasWebguardBoolean,omitempty"`
-	SasWebguardOrderNum *string `json:"SasWebguardOrderNum,omitempty" xml:"SasWebguardOrderNum,omitempty"`
-	Spec                *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Vcore               *string `json:"Vcore,omitempty" xml:"Vcore,omitempty"`
-}
-
-func (s CreateSasOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSasOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSasOrderRequest) SetAutoPay(v bool) *CreateSasOrderRequest {
-	s.AutoPay = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetAutoRenewPeriod(v int32) *CreateSasOrderRequest {
-	s.AutoRenewPeriod = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetAutoUseCoupon(v bool) *CreateSasOrderRequest {
-	s.AutoUseCoupon = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetContainerImageScan(v string) *CreateSasOrderRequest {
-	s.ContainerImageScan = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetInstanceCount(v string) *CreateSasOrderRequest {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetPeriod(v int32) *CreateSasOrderRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetPeriodUnit(v string) *CreateSasOrderRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasAntiRansomware(v string) *CreateSasOrderRequest {
-	s.SasAntiRansomware = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasProductService(v string) *CreateSasOrderRequest {
-	s.SasProductService = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasSc(v string) *CreateSasOrderRequest {
-	s.SasSc = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasSlsStorage(v string) *CreateSasOrderRequest {
-	s.SasSlsStorage = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasWebguardBoolean(v string) *CreateSasOrderRequest {
-	s.SasWebguardBoolean = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSasWebguardOrderNum(v string) *CreateSasOrderRequest {
-	s.SasWebguardOrderNum = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetSpec(v string) *CreateSasOrderRequest {
-	s.Spec = &v
-	return s
-}
-
-func (s *CreateSasOrderRequest) SetVcore(v string) *CreateSasOrderRequest {
-	s.Vcore = &v
-	return s
-}
-
-type CreateSasOrderResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateSasOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSasOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSasOrderResponseBody) SetOrderId(v string) *CreateSasOrderResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CreateSasOrderResponseBody) SetRequestId(v string) *CreateSasOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateSasOrderResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSasOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSasOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSasOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSasOrderResponse) SetHeaders(v map[string]*string) *CreateSasOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSasOrderResponse) SetBody(v *CreateSasOrderResponseBody) *CreateSasOrderResponse {
-	s.Body = v
-	return s
-}
-
 type CreateServiceLinkedRoleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1011,398 +603,6 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetHeaders(v map[string]*
 }
 
 func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetBody(v *CreateSimilarSecurityEventsQueryTaskResponseBody) *CreateSimilarSecurityEventsQueryTaskResponse {
-	s.Body = v
-	return s
-}
-
-type CreateUniBackupPolicyRequest struct {
-	AccountName       *string                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword   *string                `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DatabaseAddByUser *string                `json:"DatabaseAddByUser,omitempty" xml:"DatabaseAddByUser,omitempty"`
-	DatabaseType      *string                `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	FullPlan          map[string]interface{} `json:"FullPlan,omitempty" xml:"FullPlan,omitempty"`
-	IncPlan           map[string]interface{} `json:"IncPlan,omitempty" xml:"IncPlan,omitempty"`
-	InstanceId        *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PolicyName        *string                `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	ResourceOwnerId   *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Retention         *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SourceIp          *string                `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	SpeedLimiter      *int64                 `json:"SpeedLimiter,omitempty" xml:"SpeedLimiter,omitempty"`
-	UniRegionId       *string                `json:"UniRegionId,omitempty" xml:"UniRegionId,omitempty"`
-	Uuid              *string                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s CreateUniBackupPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniBackupPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniBackupPolicyRequest) SetAccountName(v string) *CreateUniBackupPolicyRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetAccountPassword(v string) *CreateUniBackupPolicyRequest {
-	s.AccountPassword = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetDatabaseAddByUser(v string) *CreateUniBackupPolicyRequest {
-	s.DatabaseAddByUser = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetDatabaseType(v string) *CreateUniBackupPolicyRequest {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetFullPlan(v map[string]interface{}) *CreateUniBackupPolicyRequest {
-	s.FullPlan = v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetIncPlan(v map[string]interface{}) *CreateUniBackupPolicyRequest {
-	s.IncPlan = v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetInstanceId(v string) *CreateUniBackupPolicyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetPolicyName(v string) *CreateUniBackupPolicyRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetResourceOwnerId(v int64) *CreateUniBackupPolicyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetRetention(v int32) *CreateUniBackupPolicyRequest {
-	s.Retention = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetSourceIp(v string) *CreateUniBackupPolicyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetSpeedLimiter(v int64) *CreateUniBackupPolicyRequest {
-	s.SpeedLimiter = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetUniRegionId(v string) *CreateUniBackupPolicyRequest {
-	s.UniRegionId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyRequest) SetUuid(v string) *CreateUniBackupPolicyRequest {
-	s.Uuid = &v
-	return s
-}
-
-type CreateUniBackupPolicyShrinkRequest struct {
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword   *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DatabaseAddByUser *string `json:"DatabaseAddByUser,omitempty" xml:"DatabaseAddByUser,omitempty"`
-	DatabaseType      *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	FullPlanShrink    *string `json:"FullPlan,omitempty" xml:"FullPlan,omitempty"`
-	IncPlanShrink     *string `json:"IncPlan,omitempty" xml:"IncPlan,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	ResourceOwnerId   *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SourceIp          *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	SpeedLimiter      *int64  `json:"SpeedLimiter,omitempty" xml:"SpeedLimiter,omitempty"`
-	UniRegionId       *string `json:"UniRegionId,omitempty" xml:"UniRegionId,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s CreateUniBackupPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniBackupPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetAccountName(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetAccountPassword(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.AccountPassword = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetDatabaseAddByUser(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.DatabaseAddByUser = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetDatabaseType(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetFullPlanShrink(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.FullPlanShrink = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetIncPlanShrink(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.IncPlanShrink = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetInstanceId(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetPolicyName(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetResourceOwnerId(v int64) *CreateUniBackupPolicyShrinkRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetRetention(v int32) *CreateUniBackupPolicyShrinkRequest {
-	s.Retention = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetSourceIp(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetSpeedLimiter(v int64) *CreateUniBackupPolicyShrinkRequest {
-	s.SpeedLimiter = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetUniRegionId(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.UniRegionId = &v
-	return s
-}
-
-func (s *CreateUniBackupPolicyShrinkRequest) SetUuid(v string) *CreateUniBackupPolicyShrinkRequest {
-	s.Uuid = &v
-	return s
-}
-
-type CreateUniBackupPolicyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateUniBackupPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniBackupPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniBackupPolicyResponseBody) SetRequestId(v string) *CreateUniBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateUniBackupPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUniBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateUniBackupPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniBackupPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniBackupPolicyResponse) SetHeaders(v map[string]*string) *CreateUniBackupPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateUniBackupPolicyResponse) SetBody(v *CreateUniBackupPolicyResponseBody) *CreateUniBackupPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type CreateUniRestorePlanRequest struct {
-	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	InstanceUuid    *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	ResetScn        *string `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
-	ResetTime       *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RestoreInfo     *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TimePoint       *int64  `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-}
-
-func (s CreateUniRestorePlanRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniRestorePlanRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniRestorePlanRequest) SetDatabase(v string) *CreateUniRestorePlanRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetInstanceUuid(v string) *CreateUniRestorePlanRequest {
-	s.InstanceUuid = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetPolicyId(v int64) *CreateUniRestorePlanRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetResetScn(v string) *CreateUniRestorePlanRequest {
-	s.ResetScn = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetResetTime(v string) *CreateUniRestorePlanRequest {
-	s.ResetTime = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetResourceOwnerId(v int64) *CreateUniRestorePlanRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetRestoreInfo(v string) *CreateUniRestorePlanRequest {
-	s.RestoreInfo = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetSourceIp(v string) *CreateUniRestorePlanRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *CreateUniRestorePlanRequest) SetTimePoint(v int64) *CreateUniRestorePlanRequest {
-	s.TimePoint = &v
-	return s
-}
-
-type CreateUniRestorePlanResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateUniRestorePlanResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniRestorePlanResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniRestorePlanResponseBody) SetRequestId(v string) *CreateUniRestorePlanResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateUniRestorePlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUniRestorePlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateUniRestorePlanResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUniRestorePlanResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUniRestorePlanResponse) SetHeaders(v map[string]*string) *CreateUniRestorePlanResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateUniRestorePlanResponse) SetBody(v *CreateUniRestorePlanResponseBody) *CreateUniRestorePlanResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteAssetRequest struct {
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DeleteAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAssetRequest) SetUuid(v string) *DeleteAssetRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DeleteAssetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAssetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAssetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAssetResponseBody) SetRequestId(v string) *DeleteAssetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAssetResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAssetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAssetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAssetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAssetResponse) SetHeaders(v map[string]*string) *DeleteAssetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAssetResponse) SetBody(v *DeleteAssetResponseBody) *DeleteAssetResponse {
 	s.Body = v
 	return s
 }
@@ -1809,81 +1009,6 @@ func (s *DeleteTagWithUuidResponse) SetBody(v *DeleteTagWithUuidResponseBody) *D
 	return s
 }
 
-type DeleteUniBackupPolicyRequest struct {
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyIds       *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DeleteUniBackupPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUniBackupPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUniBackupPolicyRequest) SetPolicyId(v int64) *DeleteUniBackupPolicyRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DeleteUniBackupPolicyRequest) SetPolicyIds(v string) *DeleteUniBackupPolicyRequest {
-	s.PolicyIds = &v
-	return s
-}
-
-func (s *DeleteUniBackupPolicyRequest) SetResourceOwnerId(v int64) *DeleteUniBackupPolicyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteUniBackupPolicyRequest) SetSourceIp(v string) *DeleteUniBackupPolicyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DeleteUniBackupPolicyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteUniBackupPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUniBackupPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUniBackupPolicyResponseBody) SetRequestId(v string) *DeleteUniBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteUniBackupPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteUniBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteUniBackupPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUniBackupPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUniBackupPolicyResponse) SetHeaders(v map[string]*string) *DeleteUniBackupPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteUniBackupPolicyResponse) SetBody(v *DeleteUniBackupPolicyResponseBody) *DeleteUniBackupPolicyResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteVpcHoneyPotRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -1937,6 +1062,177 @@ func (s *DeleteVpcHoneyPotResponse) SetHeaders(v map[string]*string) *DeleteVpcH
 }
 
 func (s *DeleteVpcHoneyPotResponse) SetBody(v *DeleteVpcHoneyPotResponseBody) *DeleteVpcHoneyPotResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessKeyLeakDetailRequest struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeAccessKeyLeakDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailRequest) SetId(v int64) *DescribeAccessKeyLeakDetailRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeAccessKeyLeakDetailResponseBody struct {
+	AccesskeyId          *string `json:"AccesskeyId,omitempty" xml:"AccesskeyId,omitempty"`
+	Asset                *string `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	Code                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DealTime             *string `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	DealType             *string `json:"DealType,omitempty" xml:"DealType,omitempty"`
+	GithubFileName       *string `json:"GithubFileName,omitempty" xml:"GithubFileName,omitempty"`
+	GithubFileType       *string `json:"GithubFileType,omitempty" xml:"GithubFileType,omitempty"`
+	GithubFileUpdateTime *string `json:"GithubFileUpdateTime,omitempty" xml:"GithubFileUpdateTime,omitempty"`
+	GithubFileUrl        *string `json:"GithubFileUrl,omitempty" xml:"GithubFileUrl,omitempty"`
+	GithubRepoName       *string `json:"GithubRepoName,omitempty" xml:"GithubRepoName,omitempty"`
+	GithubRepoUrl        *string `json:"GithubRepoUrl,omitempty" xml:"GithubRepoUrl,omitempty"`
+	GithubUser           *string `json:"GithubUser,omitempty" xml:"GithubUser,omitempty"`
+	GithubUserPicUrl     *string `json:"GithubUserPicUrl,omitempty" xml:"GithubUserPicUrl,omitempty"`
+	GmtCreate            *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WhitelistStatus      *string `json:"WhitelistStatus,omitempty" xml:"WhitelistStatus,omitempty"`
+}
+
+func (s DescribeAccessKeyLeakDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetAccesskeyId(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.AccesskeyId = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetAsset(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Asset = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetCode(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetDealTime(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.DealTime = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetDealType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.DealType = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileName(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileName = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileType = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileUpdateTime(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileUpdateTime = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubRepoName(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubRepoName = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubRepoUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubRepoUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubUser(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubUser = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubUserPicUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubUserPicUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGmtCreate(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGmtModified(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetRemark(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetRequestId(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetSource(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetWhitelistStatus(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.WhitelistStatus = &v
+	return s
+}
+
+type DescribeAccessKeyLeakDetailResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAccessKeyLeakDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAccessKeyLeakDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailResponse) SetHeaders(v map[string]*string) *DescribeAccessKeyLeakDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponse) SetBody(v *DescribeAccessKeyLeakDetailResponseBody) *DescribeAccessKeyLeakDetailResponse {
 	s.Body = v
 	return s
 }
@@ -3055,93 +2351,6 @@ func (s *DescribeAlarmEventListResponse) SetBody(v *DescribeAlarmEventListRespon
 	return s
 }
 
-type DescribeAlarmEventStackInfoRequest struct {
-	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeAlarmEventStackInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventStackInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventStackInfoRequest) SetEventName(v string) *DescribeAlarmEventStackInfoRequest {
-	s.EventName = &v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoRequest) SetLang(v string) *DescribeAlarmEventStackInfoRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoRequest) SetSourceIp(v string) *DescribeAlarmEventStackInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoRequest) SetUniqueInfo(v string) *DescribeAlarmEventStackInfoRequest {
-	s.UniqueInfo = &v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoRequest) SetUuid(v string) *DescribeAlarmEventStackInfoRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeAlarmEventStackInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StackInfo *string `json:"StackInfo,omitempty" xml:"StackInfo,omitempty"`
-}
-
-func (s DescribeAlarmEventStackInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventStackInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventStackInfoResponseBody) SetRequestId(v string) *DescribeAlarmEventStackInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoResponseBody) SetStackInfo(v string) *DescribeAlarmEventStackInfoResponseBody {
-	s.StackInfo = &v
-	return s
-}
-
-type DescribeAlarmEventStackInfoResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlarmEventStackInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAlarmEventStackInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventStackInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventStackInfoResponse) SetHeaders(v map[string]*string) *DescribeAlarmEventStackInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAlarmEventStackInfoResponse) SetBody(v *DescribeAlarmEventStackInfoResponseBody) *DescribeAlarmEventStackInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAllEntityResponseBody struct {
 	EntityList []*DescribeAllEntityResponseBodyEntityList `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
 	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3335,236 +2544,6 @@ func (s *DescribeAllGroupsResponse) SetHeaders(v map[string]*string) *DescribeAl
 }
 
 func (s *DescribeAllGroupsResponse) SetBody(v *DescribeAllGroupsResponseBody) *DescribeAllGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAllRegionsStatisticsRequest struct {
-	Action1     *int32  `json:"Action1,omitempty" xml:"Action1,omitempty"`
-	AllRegion   *bool   `json:"AllRegion,omitempty" xml:"AllRegion,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed      *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Flow        *int32  `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	From        *string `json:"From,omitempty" xml:"From,omitempty"`
-	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	SaleId      *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	SecureToken *string `json:"SecureToken,omitempty" xml:"SecureToken,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusList  *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	WebGroupId  *int64  `json:"WebGroupId,omitempty" xml:"WebGroupId,omitempty"`
-}
-
-func (s DescribeAllRegionsStatisticsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAllRegionsStatisticsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetAction1(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.Action1 = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetAllRegion(v bool) *DescribeAllRegionsStatisticsRequest {
-	s.AllRegion = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetCurrentPage(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetDealed(v string) *DescribeAllRegionsStatisticsRequest {
-	s.Dealed = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetEndTime(v string) *DescribeAllRegionsStatisticsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetFlow(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.Flow = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetFrom(v string) *DescribeAllRegionsStatisticsRequest {
-	s.From = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetGroupId(v int64) *DescribeAllRegionsStatisticsRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetPageSize(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetRemark(v string) *DescribeAllRegionsStatisticsRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetRuleType(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.RuleType = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetSaleId(v string) *DescribeAllRegionsStatisticsRequest {
-	s.SaleId = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetSecureToken(v string) *DescribeAllRegionsStatisticsRequest {
-	s.SecureToken = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetSourceIp(v string) *DescribeAllRegionsStatisticsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetStartTime(v string) *DescribeAllRegionsStatisticsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetStatus(v int32) *DescribeAllRegionsStatisticsRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetStatusList(v string) *DescribeAllRegionsStatisticsRequest {
-	s.StatusList = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetTag(v string) *DescribeAllRegionsStatisticsRequest {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetType(v string) *DescribeAllRegionsStatisticsRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetUuid(v string) *DescribeAllRegionsStatisticsRequest {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsRequest) SetWebGroupId(v int64) *DescribeAllRegionsStatisticsRequest {
-	s.WebGroupId = &v
-	return s
-}
-
-type DescribeAllRegionsStatisticsResponseBody struct {
-	Data      *DescribeAllRegionsStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeAllRegionsStatisticsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAllRegionsStatisticsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBody) SetData(v *DescribeAllRegionsStatisticsResponseBodyData) *DescribeAllRegionsStatisticsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBody) SetRequestId(v string) *DescribeAllRegionsStatisticsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeAllRegionsStatisticsResponseBodyData struct {
-	Account       *int32 `json:"Account,omitempty" xml:"Account,omitempty"`
-	Health        *int32 `json:"Health,omitempty" xml:"Health,omitempty"`
-	NewSuspicious *int32 `json:"NewSuspicious,omitempty" xml:"NewSuspicious,omitempty"`
-	Suspicious    *int32 `json:"Suspicious,omitempty" xml:"Suspicious,omitempty"`
-	Trojan        *int32 `json:"Trojan,omitempty" xml:"Trojan,omitempty"`
-	Vul           *int32 `json:"Vul,omitempty" xml:"Vul,omitempty"`
-}
-
-func (s DescribeAllRegionsStatisticsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAllRegionsStatisticsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetAccount(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.Account = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetHealth(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.Health = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetNewSuspicious(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.NewSuspicious = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetSuspicious(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.Suspicious = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetTrojan(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.Trojan = &v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponseBodyData) SetVul(v int32) *DescribeAllRegionsStatisticsResponseBodyData {
-	s.Vul = &v
-	return s
-}
-
-type DescribeAllRegionsStatisticsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAllRegionsStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAllRegionsStatisticsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAllRegionsStatisticsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAllRegionsStatisticsResponse) SetHeaders(v map[string]*string) *DescribeAllRegionsStatisticsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAllRegionsStatisticsResponse) SetBody(v *DescribeAllRegionsStatisticsResponseBody) *DescribeAllRegionsStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -3802,10 +2781,12 @@ type DescribeAssetDetailByUuidResponseBodyAssetDetail struct {
 	AuthVersion    *int32    `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
 	Bind           *bool     `json:"Bind,omitempty" xml:"Bind,omitempty"`
 	ClientStatus   *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	ClientVersion  *string   `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	Cpu            *int32    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CpuInfo        *string   `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
 	CreateTime     *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DiskInfoList   []*string `json:"DiskInfoList,omitempty" xml:"DiskInfoList,omitempty" type:"Repeated"`
+	Flag           *int32    `json:"Flag,omitempty" xml:"Flag,omitempty"`
 	GroupTrace     *string   `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
 	HostName       *string   `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -3817,6 +2798,7 @@ type DescribeAssetDetailByUuidResponseBodyAssetDetail struct {
 	Kernel         *string   `json:"Kernel,omitempty" xml:"Kernel,omitempty"`
 	MacList        []*string `json:"MacList,omitempty" xml:"MacList,omitempty" type:"Repeated"`
 	Mem            *int32    `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Memory         *int64    `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	Os             *string   `json:"Os,omitempty" xml:"Os,omitempty"`
 	OsDetail       *string   `json:"OsDetail,omitempty" xml:"OsDetail,omitempty"`
 	OsName         *string   `json:"OsName,omitempty" xml:"OsName,omitempty"`
@@ -3862,6 +2844,11 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetClientStatus(v str
 	return s
 }
 
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetClientVersion(v string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.ClientVersion = &v
+	return s
+}
+
 func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetCpu(v int32) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
 	s.Cpu = &v
 	return s
@@ -3879,6 +2866,11 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetCreateTime(v int64
 
 func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetDiskInfoList(v []*string) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
 	s.DiskInfoList = v
+	return s
+}
+
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetFlag(v int32) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.Flag = &v
 	return s
 }
 
@@ -3934,6 +2926,11 @@ func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetMacList(v []*strin
 
 func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetMem(v int32) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
 	s.Mem = &v
+	return s
+}
+
+func (s *DescribeAssetDetailByUuidResponseBodyAssetDetail) SetMemory(v int64) *DescribeAssetDetailByUuidResponseBodyAssetDetail {
+	s.Memory = &v
 	return s
 }
 
@@ -4504,151 +3501,6 @@ func (s *DescribeBackupClientsResponse) SetBody(v *DescribeBackupClientsResponse
 	return s
 }
 
-type DescribeBackupDirsRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId    *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeBackupDirsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupDirsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupDirsRequest) SetCurrentPage(v int32) *DescribeBackupDirsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeBackupDirsRequest) SetPageSize(v int32) *DescribeBackupDirsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeBackupDirsRequest) SetPolicyId(v int64) *DescribeBackupDirsRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeBackupDirsRequest) SetUuid(v string) *DescribeBackupDirsRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeBackupDirsResponseBody struct {
-	BackupDirs []*DescribeBackupDirsResponseBodyBackupDirs `json:"BackupDirs,omitempty" xml:"BackupDirs,omitempty" type:"Repeated"`
-	PageInfo   *DescribeBackupDirsResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeBackupDirsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupDirsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupDirsResponseBody) SetBackupDirs(v []*DescribeBackupDirsResponseBodyBackupDirs) *DescribeBackupDirsResponseBody {
-	s.BackupDirs = v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBody) SetPageInfo(v *DescribeBackupDirsResponseBodyPageInfo) *DescribeBackupDirsResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBody) SetRequestId(v string) *DescribeBackupDirsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeBackupDirsResponseBodyBackupDirs struct {
-	BackupJobId *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s DescribeBackupDirsResponseBodyBackupDirs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupDirsResponseBodyBackupDirs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupDirsResponseBodyBackupDirs) SetBackupJobId(v int64) *DescribeBackupDirsResponseBodyBackupDirs {
-	s.BackupJobId = &v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBodyBackupDirs) SetSource(v string) *DescribeBackupDirsResponseBodyBackupDirs {
-	s.Source = &v
-	return s
-}
-
-type DescribeBackupDirsResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeBackupDirsResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupDirsResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupDirsResponseBodyPageInfo) SetCount(v int32) *DescribeBackupDirsResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeBackupDirsResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBodyPageInfo) SetPageSize(v int32) *DescribeBackupDirsResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeBackupDirsResponseBodyPageInfo) SetTotalCount(v int32) *DescribeBackupDirsResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeBackupDirsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupDirsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeBackupDirsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupDirsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupDirsResponse) SetHeaders(v map[string]*string) *DescribeBackupDirsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeBackupDirsResponse) SetBody(v *DescribeBackupDirsResponseBody) *DescribeBackupDirsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeBackupFilesRequest struct {
 	CurrentPage  *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4808,235 +3660,6 @@ func (s *DescribeBackupFilesResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeBackupFilesResponse) SetBody(v *DescribeBackupFilesResponseBody) *DescribeBackupFilesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeBackupMachineStatusRequest struct {
-	PolicyId      *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeBackupMachineStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupMachineStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupMachineStatusRequest) SetPolicyId(v int64) *DescribeBackupMachineStatusRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusRequest) SetPolicyVersion(v string) *DescribeBackupMachineStatusRequest {
-	s.PolicyVersion = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusRequest) SetUuid(v string) *DescribeBackupMachineStatusRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeBackupMachineStatusResponseBody struct {
-	BackupMachineStatus *DescribeBackupMachineStatusResponseBodyBackupMachineStatus `json:"BackupMachineStatus,omitempty" xml:"BackupMachineStatus,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeBackupMachineStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupMachineStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupMachineStatusResponseBody) SetBackupMachineStatus(v *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) *DescribeBackupMachineStatusResponseBody {
-	s.BackupMachineStatus = v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBody) SetRequestId(v string) *DescribeBackupMachineStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeBackupMachineStatusResponseBodyBackupMachineStatus struct {
-	ClientId         *string                                                                `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientStatus     *string                                                                `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	ClientVersion    *string                                                                `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	ErrorCode        *string                                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorList        []*DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
-	InstanceId       *string                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId         *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId        *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SavedBackupCount *int32                                                                 `json:"SavedBackupCount,omitempty" xml:"SavedBackupCount,omitempty"`
-	Status           *string                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uuid             *string                                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VaultId          *string                                                                `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-}
-
-func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatus) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.ClientId = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.ClientStatus = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetClientVersion(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.ClientVersion = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetErrorCode(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetErrorList(v []*DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.ErrorList = v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetInstanceId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetRegionId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetRequestId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetSavedBackupCount(v int32) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.SavedBackupCount = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetUuid(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatus) SetVaultId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatus {
-	s.VaultId = &v
-	return s
-}
-
-type DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorFile    *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
-	ErrorFileUrl *string `json:"ErrorFileUrl,omitempty" xml:"ErrorFileUrl,omitempty"`
-	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	ErrorStatus  *string `json:"ErrorStatus,omitempty" xml:"ErrorStatus,omitempty"`
-	ErrorTime    *int64  `json:"ErrorTime,omitempty" xml:"ErrorTime,omitempty"`
-	ErrorType    *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorCode(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorFile(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorFile = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorFileUrl(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorFileUrl = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorMsg(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorMsg = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorStatus(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorStatus = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorTime(v int64) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorTime = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetErrorType(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.ErrorType = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetKey(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetPath(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList) SetRequestId(v string) *DescribeBackupMachineStatusResponseBodyBackupMachineStatusErrorList {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeBackupMachineStatusResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupMachineStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeBackupMachineStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupMachineStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupMachineStatusResponse) SetHeaders(v map[string]*string) *DescribeBackupMachineStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeBackupMachineStatusResponse) SetBody(v *DescribeBackupMachineStatusResponseBody) *DescribeBackupMachineStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5272,128 +3895,6 @@ func (s *DescribeBackupPoliciesResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeBackupPoliciesResponse) SetBody(v *DescribeBackupPoliciesResponseBody) *DescribeBackupPoliciesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeBackupPolicyRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DescribeBackupPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupPolicyRequest) SetId(v int64) *DescribeBackupPolicyRequest {
-	s.Id = &v
-	return s
-}
-
-type DescribeBackupPolicyResponseBody struct {
-	BackupPolicyDetail *DescribeBackupPolicyResponseBodyBackupPolicyDetail `json:"BackupPolicyDetail,omitempty" xml:"BackupPolicyDetail,omitempty" type:"Struct"`
-	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeBackupPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetBackupPolicyDetail(v *DescribeBackupPolicyResponseBodyBackupPolicyDetail) *DescribeBackupPolicyResponseBody {
-	s.BackupPolicyDetail = v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeBackupPolicyResponseBodyBackupPolicyDetail struct {
-	ClientStatus  *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	Id            *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policy        *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PolicyVersion *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UuidList      []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupPolicyResponseBodyBackupPolicyDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetClientStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.ClientStatus = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetId(v int64) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetName(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetPolicy(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.Policy = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetPolicyVersion(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.PolicyVersion = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetRegionId(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetStatus(v string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponseBodyBackupPolicyDetail) SetUuidList(v []*string) *DescribeBackupPolicyResponseBodyBackupPolicyDetail {
-	s.UuidList = v
-	return s
-}
-
-type DescribeBackupPolicyResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeBackupPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupPolicyResponse) SetHeaders(v map[string]*string) *DescribeBackupPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBody) *DescribeBackupPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -6242,7 +4743,7 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	CreatedTime        *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	ExposedStatus      *int32  `json:"ExposedStatus,omitempty" xml:"ExposedStatus,omitempty"`
 	Flag               *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId            *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupTrace         *string `json:"GroupTrace,omitempty" xml:"GroupTrace,omitempty"`
 	HcStatus           *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
 	HealthCheckCount   *int32  `json:"HealthCheckCount,omitempty" xml:"HealthCheckCount,omitempty"`
@@ -6355,7 +4856,7 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetFlag(v int32) *De
 	return s
 }
 
-func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetGroupId(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetGroupId(v int64) *DescribeCloudCenterInstancesResponseBodyInstances {
 	s.GroupId = &v
 	return s
 }
@@ -6822,6 +5323,105 @@ func (s *DescribeContainerStatisticsResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DescribeContainerStatisticsResponse) SetBody(v *DescribeContainerStatisticsResponseBody) *DescribeContainerStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeContainerTagsRequest struct {
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FieldName   *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue  *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeContainerTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerTagsRequest) SetAppName(v string) *DescribeContainerTagsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetClusterId(v string) *DescribeContainerTagsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetCurrentPage(v int32) *DescribeContainerTagsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetFieldName(v string) *DescribeContainerTagsRequest {
+	s.FieldName = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetFieldValue(v string) *DescribeContainerTagsRequest {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetNamespace(v string) *DescribeContainerTagsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeContainerTagsRequest) SetPageSize(v int32) *DescribeContainerTagsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeContainerTagsResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+}
+
+func (s DescribeContainerTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerTagsResponseBody) SetRequestId(v string) *DescribeContainerTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeContainerTagsResponseBody) SetTagValues(v []*string) *DescribeContainerTagsResponseBody {
+	s.TagValues = v
+	return s
+}
+
+type DescribeContainerTagsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeContainerTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeContainerTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerTagsResponse) SetHeaders(v map[string]*string) *DescribeContainerTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeContainerTagsResponse) SetBody(v *DescribeContainerTagsResponseBody) *DescribeContainerTagsResponse {
 	s.Body = v
 	return s
 }
@@ -7751,139 +6351,6 @@ func (s *DescribeEmgVulItemResponse) SetBody(v *DescribeEmgVulItemResponseBody) 
 	return s
 }
 
-type DescribeExcludeSystemPathRequest struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeExcludeSystemPathRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExcludeSystemPathRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExcludeSystemPathRequest) SetCurrentPage(v int32) *DescribeExcludeSystemPathRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathRequest) SetPageSize(v int32) *DescribeExcludeSystemPathRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeExcludeSystemPathResponseBody struct {
-	ExcludePaths []*DescribeExcludeSystemPathResponseBodyExcludePaths `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
-	PageInfo     *DescribeExcludeSystemPathResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeExcludeSystemPathResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExcludeSystemPathResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExcludeSystemPathResponseBody) SetExcludePaths(v []*DescribeExcludeSystemPathResponseBodyExcludePaths) *DescribeExcludeSystemPathResponseBody {
-	s.ExcludePaths = v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBody) SetPageInfo(v *DescribeExcludeSystemPathResponseBodyPageInfo) *DescribeExcludeSystemPathResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBody) SetRequestId(v string) *DescribeExcludeSystemPathResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeExcludeSystemPathResponseBodyExcludePaths struct {
-	Os   *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-}
-
-func (s DescribeExcludeSystemPathResponseBodyExcludePaths) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExcludeSystemPathResponseBodyExcludePaths) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetOs(v string) *DescribeExcludeSystemPathResponseBodyExcludePaths {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetPath(v string) *DescribeExcludeSystemPathResponseBodyExcludePaths {
-	s.Path = &v
-	return s
-}
-
-type DescribeExcludeSystemPathResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeExcludeSystemPathResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExcludeSystemPathResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetCount(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetPageSize(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponseBodyPageInfo) SetTotalCount(v int32) *DescribeExcludeSystemPathResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeExcludeSystemPathResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExcludeSystemPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeExcludeSystemPathResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExcludeSystemPathResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExcludeSystemPathResponse) SetHeaders(v map[string]*string) *DescribeExcludeSystemPathResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeExcludeSystemPathResponse) SetBody(v *DescribeExcludeSystemPathResponseBody) *DescribeExcludeSystemPathResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeExportInfoRequest struct {
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
 }
@@ -8598,58 +7065,6 @@ func (s *DescribeExposedInstanceListResponse) SetBody(v *DescribeExposedInstance
 	return s
 }
 
-type DescribeExposedRiskNumResponseBody struct {
-	ExposedInstanceCount     *int32  `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RiskExposedInstanceCount *int32  `json:"RiskExposedInstanceCount,omitempty" xml:"RiskExposedInstanceCount,omitempty"`
-}
-
-func (s DescribeExposedRiskNumResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExposedRiskNumResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExposedRiskNumResponseBody) SetExposedInstanceCount(v int32) *DescribeExposedRiskNumResponseBody {
-	s.ExposedInstanceCount = &v
-	return s
-}
-
-func (s *DescribeExposedRiskNumResponseBody) SetRequestId(v string) *DescribeExposedRiskNumResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeExposedRiskNumResponseBody) SetRiskExposedInstanceCount(v int32) *DescribeExposedRiskNumResponseBody {
-	s.RiskExposedInstanceCount = &v
-	return s
-}
-
-type DescribeExposedRiskNumResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExposedRiskNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeExposedRiskNumResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeExposedRiskNumResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeExposedRiskNumResponse) SetHeaders(v map[string]*string) *DescribeExposedRiskNumResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeExposedRiskNumResponse) SetBody(v *DescribeExposedRiskNumResponseBody) *DescribeExposedRiskNumResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeExposedStatisticsResponseBody struct {
 	ExposedAsapVulCount             *int32  `json:"ExposedAsapVulCount,omitempty" xml:"ExposedAsapVulCount,omitempty"`
 	ExposedComponentCount           *int32  `json:"ExposedComponentCount,omitempty" xml:"ExposedComponentCount,omitempty"`
@@ -9115,496 +7530,6 @@ func (s *DescribeFieldStatisticsResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribeFieldStatisticsResponse) SetBody(v *DescribeFieldStatisticsResponseBody) *DescribeFieldStatisticsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeFrontVulPatchListRequest struct {
-	Info        *string `json:"Info,omitempty" xml:"Info,omitempty"`
-	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeFrontVulPatchListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFrontVulPatchListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFrontVulPatchListRequest) SetInfo(v string) *DescribeFrontVulPatchListRequest {
-	s.Info = &v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListRequest) SetOperateType(v string) *DescribeFrontVulPatchListRequest {
-	s.OperateType = &v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListRequest) SetType(v string) *DescribeFrontVulPatchListRequest {
-	s.Type = &v
-	return s
-}
-
-type DescribeFrontVulPatchListResponseBody struct {
-	FrontPatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchList `json:"FrontPatchList,omitempty" xml:"FrontPatchList,omitempty" type:"Repeated"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeFrontVulPatchListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFrontVulPatchListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFrontVulPatchListResponseBody) SetFrontPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchList) *DescribeFrontVulPatchListResponseBody {
-	s.FrontPatchList = v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListResponseBody) SetRequestId(v string) *DescribeFrontVulPatchListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeFrontVulPatchListResponseBodyFrontPatchList struct {
-	PatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList `json:"PatchList,omitempty" xml:"PatchList,omitempty" type:"Repeated"`
-	Uuid      *string                                                         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
-	s.PatchList = v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetUuid(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList struct {
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetAliasName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
-	s.AliasName = &v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
-	s.Name = &v
-	return s
-}
-
-type DescribeFrontVulPatchListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFrontVulPatchListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFrontVulPatchListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFrontVulPatchListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFrontVulPatchListResponse) SetHeaders(v map[string]*string) *DescribeFrontVulPatchListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFrontVulPatchListResponse) SetBody(v *DescribeFrontVulPatchListResponseBody) *DescribeFrontVulPatchListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineRequest struct {
-	AnomalyId   *string `json:"AnomalyId,omitempty" xml:"AnomalyId,omitempty"`
-	AnomalyUuid *string `json:"AnomalyUuid,omitempty" xml:"AnomalyUuid,omitempty"`
-	Direction   *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PathLength  *int32  `json:"PathLength,omitempty" xml:"PathLength,omitempty"`
-	VertexId    *string `json:"VertexId,omitempty" xml:"VertexId,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetAnomalyId(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.AnomalyId = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetAnomalyUuid(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.AnomalyUuid = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetDirection(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.Direction = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetLang(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetNamespace(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetPathLength(v int32) *DescribeGraph4InvestigationOnlineRequest {
-	s.PathLength = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineRequest) SetVertexId(v string) *DescribeGraph4InvestigationOnlineRequest {
-	s.VertexId = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBody struct {
-	Data      *DescribeGraph4InvestigationOnlineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBody) SetData(v *DescribeGraph4InvestigationOnlineResponseBodyData) *DescribeGraph4InvestigationOnlineResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBody) SetRequestId(v string) *DescribeGraph4InvestigationOnlineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyData struct {
-	EdgeList         []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList         `json:"EdgeList,omitempty" xml:"EdgeList,omitempty" type:"Repeated"`
-	EntityTypeList   []*DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList   `json:"EntityTypeList,omitempty" xml:"EntityTypeList,omitempty" type:"Repeated"`
-	RelationTypeList []*DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList `json:"RelationTypeList,omitempty" xml:"RelationTypeList,omitempty" type:"Repeated"`
-	VertexList       []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexList       `json:"VertexList,omitempty" xml:"VertexList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetEdgeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
-	s.EdgeList = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetEntityTypeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
-	s.EntityTypeList = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetRelationTypeList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) *DescribeGraph4InvestigationOnlineResponseBodyData {
-	s.RelationTypeList = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyData) SetVertexList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) *DescribeGraph4InvestigationOnlineResponseBodyData {
-	s.VertexList = v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList struct {
-	EndId     *string `json:"EndId,omitempty" xml:"EndId,omitempty"`
-	EndType   *string `json:"EndType,omitempty" xml:"EndType,omitempty"`
-	Id        *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	StartId   *string `json:"StartId,omitempty" xml:"StartId,omitempty"`
-	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
-	Time      *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetEndId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.EndId = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetEndType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.EndType = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetId(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetStartId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.StartId = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetStartType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.StartType = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetTime(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList) SetType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList {
-	s.Type = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList struct {
-	DisplayColor *string `json:"DisplayColor,omitempty" xml:"DisplayColor,omitempty"`
-	DisplayIcon  *string `json:"DisplayIcon,omitempty" xml:"DisplayIcon,omitempty"`
-	DisplayOrder *string `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayColor(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayColor = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayIcon(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayIcon = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetDisplayOrder(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.DisplayOrder = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataEntityTypeList {
-	s.Name = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList struct {
-	Directed *int32  `json:"Directed,omitempty" xml:"Directed,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetDirected(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Directed = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList) SetShowType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList {
-	s.ShowType = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataVertexList struct {
-	Aliuid       *string                                                                    `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	Id           *string                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name         *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeighborList []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList `json:"NeighborList,omitempty" xml:"NeighborList,omitempty" type:"Repeated"`
-	Position     *string                                                                    `json:"Position,omitempty" xml:"Position,omitempty"`
-	PositionId   *string                                                                    `json:"PositionId,omitempty" xml:"PositionId,omitempty"`
-	Properties   *string                                                                    `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Time         *string                                                                    `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type         *string                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid         *string                                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetAliuid(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Aliuid = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetName(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetNeighborList(v []*DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.NeighborList = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetPosition(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Position = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetPositionId(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.PositionId = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetProperties(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Properties = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetTime(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList) SetUuid(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexList {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList struct {
-	Count   *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	HasMore *bool   `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) SetCount(v int32) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) SetHasMore(v bool) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList {
-	s.HasMore = &v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList) SetType(v string) *DescribeGraph4InvestigationOnlineResponseBodyDataVertexListNeighborList {
-	s.Type = &v
-	return s
-}
-
-type DescribeGraph4InvestigationOnlineResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGraph4InvestigationOnlineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeGraph4InvestigationOnlineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeGraph4InvestigationOnlineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponse) SetHeaders(v map[string]*string) *DescribeGraph4InvestigationOnlineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeGraph4InvestigationOnlineResponse) SetBody(v *DescribeGraph4InvestigationOnlineResponseBody) *DescribeGraph4InvestigationOnlineResponse {
 	s.Body = v
 	return s
 }
@@ -11242,295 +9167,6 @@ func (s *DescribeImageGroupedVulListResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DescribeImageGroupedVulListResponse) SetBody(v *DescribeImageGroupedVulListResponseBody) *DescribeImageGroupedVulListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeImageInstancesRequest struct {
-	Criteria    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LogicalExp  *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeImageInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageInstancesRequest) SetCriteria(v string) *DescribeImageInstancesRequest {
-	s.Criteria = &v
-	return s
-}
-
-func (s *DescribeImageInstancesRequest) SetCurrentPage(v int32) *DescribeImageInstancesRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeImageInstancesRequest) SetLogicalExp(v string) *DescribeImageInstancesRequest {
-	s.LogicalExp = &v
-	return s
-}
-
-func (s *DescribeImageInstancesRequest) SetPageSize(v int32) *DescribeImageInstancesRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeImageInstancesResponseBody struct {
-	ImageInstanceList []*DescribeImageInstancesResponseBodyImageInstanceList `json:"ImageInstanceList,omitempty" xml:"ImageInstanceList,omitempty" type:"Repeated"`
-	PageInfo          *DescribeImageInstancesResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeImageInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageInstancesResponseBody) SetImageInstanceList(v []*DescribeImageInstancesResponseBodyImageInstanceList) *DescribeImageInstancesResponseBody {
-	s.ImageInstanceList = v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBody) SetPageInfo(v *DescribeImageInstancesResponseBodyPageInfo) *DescribeImageInstancesResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBody) SetRequestId(v string) *DescribeImageInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeImageInstancesResponseBodyImageInstanceList struct {
-	AlarmCount    *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	AlarmStatus   *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	Digest        *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Endpoints     *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	HcCount       *int32  `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
-	HcStatus      *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	ImageCreate   *string `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageSize     *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	ImageUpdate   *string `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoType      *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	RiskStatus    *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	ScaProgress   *int32  `json:"ScaProgress,omitempty" xml:"ScaProgress,omitempty"`
-	ScaResult     *string `json:"ScaResult,omitempty" xml:"ScaResult,omitempty"`
-	ScaStatus     *string `json:"ScaStatus,omitempty" xml:"ScaStatus,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VulCount      *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	VulStatus     *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
-}
-
-func (s DescribeImageInstancesResponseBodyImageInstanceList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageInstancesResponseBodyImageInstanceList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetAlarmCount(v int32) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.AlarmCount = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetAlarmStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.AlarmStatus = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetDigest(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.Digest = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetEndpoints(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.Endpoints = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetHcCount(v int32) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.HcCount = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetHcStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.HcStatus = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetImageCreate(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ImageCreate = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetImageId(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ImageId = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetImageSize(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ImageSize = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetImageUpdate(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ImageUpdate = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetInstanceId(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRegionId(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRegistryType(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RegistryType = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRepoId(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RepoId = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRepoName(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RepoName = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRepoNamespace(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RepoNamespace = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRepoType(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RepoType = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetRiskStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.RiskStatus = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetScaProgress(v int32) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ScaProgress = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetScaResult(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ScaResult = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetScaStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.ScaStatus = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetTag(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetUuid(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetVulCount(v int32) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.VulCount = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetVulStatus(v string) *DescribeImageInstancesResponseBodyImageInstanceList {
-	s.VulStatus = &v
-	return s
-}
-
-type DescribeImageInstancesResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeImageInstancesResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageInstancesResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageInstancesResponseBodyPageInfo) SetCount(v int32) *DescribeImageInstancesResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageInstancesResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageInstancesResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeImageInstancesResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageInstancesResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeImageInstancesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeImageInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeImageInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageInstancesResponse) SetHeaders(v map[string]*string) *DescribeImageInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeImageInstancesResponse) SetBody(v *DescribeImageInstancesResponseBody) *DescribeImageInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -15608,111 +13244,6 @@ func (s *DescribePropertyUserItemResponse) SetBody(v *DescribePropertyUserItemRe
 	return s
 }
 
-type DescribeQuaraFileDownloadInfoRequest struct {
-	From        *string `json:"From,omitempty" xml:"From,omitempty"`
-	QuaraFileId *int32  `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeQuaraFileDownloadInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQuaraFileDownloadInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQuaraFileDownloadInfoRequest) SetFrom(v string) *DescribeQuaraFileDownloadInfoRequest {
-	s.From = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoRequest) SetQuaraFileId(v int32) *DescribeQuaraFileDownloadInfoRequest {
-	s.QuaraFileId = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoRequest) SetSourceIp(v string) *DescribeQuaraFileDownloadInfoRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeQuaraFileDownloadInfoResponseBody struct {
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	QuaraFileId *int32  `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeQuaraFileDownloadInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQuaraFileDownloadInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetDownloadUrl(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetMd5(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.Md5 = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetPath(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetQuaraFileId(v int32) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.QuaraFileId = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetRequestId(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetTag(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponseBody) SetUuid(v string) *DescribeQuaraFileDownloadInfoResponseBody {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeQuaraFileDownloadInfoResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQuaraFileDownloadInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeQuaraFileDownloadInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQuaraFileDownloadInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponse) SetHeaders(v map[string]*string) *DescribeQuaraFileDownloadInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeQuaraFileDownloadInfoResponse) SetBody(v *DescribeQuaraFileDownloadInfoResponseBody) *DescribeQuaraFileDownloadInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRestoreJobsRequest struct {
 	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
@@ -16086,217 +13617,6 @@ func (s *DescribeRestoreJobsResponse) SetBody(v *DescribeRestoreJobsResponseBody
 	return s
 }
 
-type DescribeRestorePlansRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeRestorePlansRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestorePlansRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestorePlansRequest) SetCurrentPage(v int32) *DescribeRestorePlansRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeRestorePlansRequest) SetInstanceName(v string) *DescribeRestorePlansRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansRequest) SetPageSize(v int32) *DescribeRestorePlansRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRestorePlansRequest) SetResourceOwnerId(v int64) *DescribeRestorePlansRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeRestorePlansRequest) SetSourceIp(v string) *DescribeRestorePlansRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeRestorePlansRequest) SetStatus(v string) *DescribeRestorePlansRequest {
-	s.Status = &v
-	return s
-}
-
-type DescribeRestorePlansResponseBody struct {
-	PageInfo     *DescribeRestorePlansResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RestorePlans []*DescribeRestorePlansResponseBodyRestorePlans `json:"RestorePlans,omitempty" xml:"RestorePlans,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRestorePlansResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestorePlansResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestorePlansResponseBody) SetPageInfo(v *DescribeRestorePlansResponseBodyPageInfo) *DescribeRestorePlansResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBody) SetRequestId(v string) *DescribeRestorePlansResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBody) SetRestorePlans(v []*DescribeRestorePlansResponseBodyRestorePlans) *DescribeRestorePlansResponseBody {
-	s.RestorePlans = v
-	return s
-}
-
-type DescribeRestorePlansResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeRestorePlansResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestorePlansResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestorePlansResponseBodyPageInfo) SetCount(v int32) *DescribeRestorePlansResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeRestorePlansResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyPageInfo) SetPageSize(v int32) *DescribeRestorePlansResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyPageInfo) SetTotalCount(v int32) *DescribeRestorePlansResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeRestorePlansResponseBodyRestorePlans struct {
-	CreatedTime        *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DatabaseName       *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PolicyId           *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName         *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	RestorePoint       *int64  `json:"RestorePoint,omitempty" xml:"RestorePoint,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetDatabaseName *string `json:"TargetDatabaseName,omitempty" xml:"TargetDatabaseName,omitempty"`
-	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	UpdatedTime        *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-}
-
-func (s DescribeRestorePlansResponseBodyRestorePlans) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestorePlansResponseBodyRestorePlans) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetCreatedTime(v int64) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetDatabaseName(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.DatabaseName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetInstanceName(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetPolicyId(v int64) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetPolicyName(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetRestorePoint(v int64) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.RestorePoint = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetStatus(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetTargetDatabaseName(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.TargetDatabaseName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetTargetInstanceId(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.TargetInstanceId = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetTargetInstanceName(v string) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.TargetInstanceName = &v
-	return s
-}
-
-func (s *DescribeRestorePlansResponseBodyRestorePlans) SetUpdatedTime(v int64) *DescribeRestorePlansResponseBodyRestorePlans {
-	s.UpdatedTime = &v
-	return s
-}
-
-type DescribeRestorePlansResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRestorePlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRestorePlansResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestorePlansResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestorePlansResponse) SetHeaders(v map[string]*string) *DescribeRestorePlansResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRestorePlansResponse) SetBody(v *DescribeRestorePlansResponseBody) *DescribeRestorePlansResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRiskCheckItemResultRequest struct {
 	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	ItemId          *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
@@ -16368,12 +13688,12 @@ func (s *DescribeRiskCheckItemResultResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeRiskCheckItemResultResponseBodyPageContentResource struct {
-	ContentResource map[string]interface{} `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
-	Count           *int32                 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage     *int32                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageCount       *int32                 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageSize        *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount      *int32                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ContentResource *string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
+	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRiskCheckItemResultResponseBodyPageContentResource) String() string {
@@ -16384,8 +13704,8 @@ func (s DescribeRiskCheckItemResultResponseBodyPageContentResource) GoString() s
 	return s.String()
 }
 
-func (s *DescribeRiskCheckItemResultResponseBodyPageContentResource) SetContentResource(v map[string]interface{}) *DescribeRiskCheckItemResultResponseBodyPageContentResource {
-	s.ContentResource = v
+func (s *DescribeRiskCheckItemResultResponseBodyPageContentResource) SetContentResource(v string) *DescribeRiskCheckItemResultResponseBodyPageContentResource {
+	s.ContentResource = &v
 	return s
 }
 
@@ -16669,8 +13989,8 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRis
 }
 
 type DescribeRiskCheckResultResponseBodyListRiskItemResources struct {
-	ContentResource map[string]interface{} `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
-	ResourceName    *string                `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ContentResource *string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
+	ResourceName    *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) String() string {
@@ -16681,8 +14001,8 @@ func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) GoString() str
 	return s.String()
 }
 
-func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v map[string]interface{}) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
-	s.ContentResource = v
+func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v string) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
+	s.ContentResource = &v
 	return s
 }
 
@@ -18615,385 +15935,6 @@ func (s *DescribeSimilarSecurityEventsResponse) SetBody(v *DescribeSimilarSecuri
 	return s
 }
 
-type DescribeSnapshotsRequest struct {
-	ApiVersion    *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	IsAliYunEcs   *string `json:"IsAliYunEcs,omitempty" xml:"IsAliYunEcs,omitempty"`
-	MachineRegion *string `json:"MachineRegion,omitempty" xml:"MachineRegion,omitempty"`
-	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StatusList    *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeSnapshotsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSnapshotsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSnapshotsRequest) SetApiVersion(v string) *DescribeSnapshotsRequest {
-	s.ApiVersion = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetCurrentPage(v int32) *DescribeSnapshotsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetIsAliYunEcs(v string) *DescribeSnapshotsRequest {
-	s.IsAliYunEcs = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetMachineRegion(v string) *DescribeSnapshotsRequest {
-	s.MachineRegion = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetMachineRemark(v string) *DescribeSnapshotsRequest {
-	s.MachineRemark = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetNextToken(v string) *DescribeSnapshotsRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetPageSize(v int32) *DescribeSnapshotsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetStatusList(v string) *DescribeSnapshotsRequest {
-	s.StatusList = &v
-	return s
-}
-
-func (s *DescribeSnapshotsRequest) SetUuid(v string) *DescribeSnapshotsRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeSnapshotsResponseBody struct {
-	PageInfo  *DescribeSnapshotsResponseBodyPageInfo    `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSnapshotsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSnapshotsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSnapshotsResponseBody) SetPageInfo(v *DescribeSnapshotsResponseBodyPageInfo) *DescribeSnapshotsResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBody) SetRequestId(v string) *DescribeSnapshotsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBody) SetSnapshots(v []*DescribeSnapshotsResponseBodySnapshots) *DescribeSnapshotsResponseBody {
-	s.Snapshots = v
-	return s
-}
-
-type DescribeSnapshotsResponseBodyPageInfo struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeSnapshotsResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSnapshotsResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSnapshotsResponseBodyPageInfo) SetCount(v int32) *DescribeSnapshotsResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeSnapshotsResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodyPageInfo) SetNextToken(v string) *DescribeSnapshotsResponseBodyPageInfo {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodyPageInfo) SetPageSize(v int32) *DescribeSnapshotsResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodyPageInfo) SetTotalCount(v int32) *DescribeSnapshotsResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeSnapshotsResponseBodySnapshots struct {
-	ActualBytes         *int64    `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	ActualItems         *int64    `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	BytesDone           *int64    `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	BytesTotal          *int64    `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	ClientId            *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ContainerSnapshotId *string   `json:"ContainerSnapshotId,omitempty" xml:"ContainerSnapshotId,omitempty"`
-	CreatedTime         *int64    `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Duration            *int64    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ErrorCount          *int64    `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	ErrorFile           *string   `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
-	ErrorMessage        *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ErrorType           *string   `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	ExitCode            *string   `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemsDone           *int64    `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	ItemsTotal          *int64    `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
-	JobId               *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ParentHash          *string   `json:"ParentHash,omitempty" xml:"ParentHash,omitempty"`
-	ParentSnapshotHash  *string   `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
-	Path                *string   `json:"Path,omitempty" xml:"Path,omitempty"`
-	Paths               []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	PlanId              *string   `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Retention           *int64    `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Size                *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
-	SnapshotHash        *string   `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId          *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName        *string   `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SnapshotOption      *string   `json:"SnapshotOption,omitempty" xml:"SnapshotOption,omitempty"`
-	SnapshotType        *string   `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceType          *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uuid                *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VaultId             *string   `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-}
-
-func (s DescribeSnapshotsResponseBodySnapshots) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSnapshotsResponseBodySnapshots) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetActualBytes(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.ActualBytes = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetActualItems(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.ActualItems = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetBytesDone(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.BytesDone = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetBytesTotal(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.BytesTotal = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetClientId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ClientId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetContainerSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ContainerSnapshotId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetCreatedTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetDuration(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorCount(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.ErrorCount = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorFile(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ErrorFile = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorMessage(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorType(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ErrorType = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetExitCode(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ExitCode = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetInstanceId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetItemsDone(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.ItemsDone = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetItemsTotal(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.ItemsTotal = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetJobId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.JobId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetParentHash(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ParentHash = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetParentSnapshotHash(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.ParentSnapshotHash = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetPath(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.Path = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetPaths(v []*string) *DescribeSnapshotsResponseBodySnapshots {
-	s.Paths = v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetPlanId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.PlanId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetRegionId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetRetention(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.Retention = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSize(v int64) *DescribeSnapshotsResponseBodySnapshots {
-	s.Size = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotHash(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SnapshotHash = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SnapshotId = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SnapshotName = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotOption(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SnapshotOption = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotType(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SnapshotType = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSource(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.Source = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceType(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.SourceType = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetUuid(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.Uuid = &v
-	return s
-}
-
-func (s *DescribeSnapshotsResponseBodySnapshots) SetVaultId(v string) *DescribeSnapshotsResponseBodySnapshots {
-	s.VaultId = &v
-	return s
-}
-
-type DescribeSnapshotsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSnapshotsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSnapshotsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeSnapshotsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *DescribeSnapshotsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeStrategyRequest struct {
 	CustomType  *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -19347,93 +16288,6 @@ func (s *DescribeStrategyExecDetailResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeStrategyExecDetailResponse) SetBody(v *DescribeStrategyExecDetailResponseBody) *DescribeStrategyExecDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeStrategyProcessRequest struct {
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StrategyId *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-}
-
-func (s DescribeStrategyProcessRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStrategyProcessRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStrategyProcessRequest) SetSourceIp(v string) *DescribeStrategyProcessRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeStrategyProcessRequest) SetStrategyId(v int64) *DescribeStrategyProcessRequest {
-	s.StrategyId = &v
-	return s
-}
-
-type DescribeStrategyProcessResponseBody struct {
-	ExecStatus  *int32  `json:"ExecStatus,omitempty" xml:"ExecStatus,omitempty"`
-	PassRate    *string `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
-	ProcessRate *int32  `json:"ProcessRate,omitempty" xml:"ProcessRate,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StrategyId  *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-}
-
-func (s DescribeStrategyProcessResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStrategyProcessResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStrategyProcessResponseBody) SetExecStatus(v int32) *DescribeStrategyProcessResponseBody {
-	s.ExecStatus = &v
-	return s
-}
-
-func (s *DescribeStrategyProcessResponseBody) SetPassRate(v string) *DescribeStrategyProcessResponseBody {
-	s.PassRate = &v
-	return s
-}
-
-func (s *DescribeStrategyProcessResponseBody) SetProcessRate(v int32) *DescribeStrategyProcessResponseBody {
-	s.ProcessRate = &v
-	return s
-}
-
-func (s *DescribeStrategyProcessResponseBody) SetRequestId(v string) *DescribeStrategyProcessResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStrategyProcessResponseBody) SetStrategyId(v int64) *DescribeStrategyProcessResponseBody {
-	s.StrategyId = &v
-	return s
-}
-
-type DescribeStrategyProcessResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStrategyProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeStrategyProcessResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeStrategyProcessResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeStrategyProcessResponse) SetHeaders(v map[string]*string) *DescribeStrategyProcessResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeStrategyProcessResponse) SetBody(v *DescribeStrategyProcessResponseBody) *DescribeStrategyProcessResponse {
 	s.Body = v
 	return s
 }
@@ -19893,10 +16747,140 @@ func (s *DescribeSuspEventDetailResponse) SetBody(v *DescribeSuspEventDetailResp
 	return s
 }
 
+type DescribeSuspEventExportInfoRequest struct {
+	ExportId *int32  `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	From     *string `json:"From,omitempty" xml:"From,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeSuspEventExportInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspEventExportInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspEventExportInfoRequest) SetExportId(v int32) *DescribeSuspEventExportInfoRequest {
+	s.ExportId = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoRequest) SetFrom(v string) *DescribeSuspEventExportInfoRequest {
+	s.From = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoRequest) SetSourceIp(v string) *DescribeSuspEventExportInfoRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeSuspEventExportInfoResponseBody struct {
+	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Properties   *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSuspEventExportInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspEventExportInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetExportStatus(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.ExportStatus = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetFileName(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetGmtCreate(v int64) *DescribeSuspEventExportInfoResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetGmtModified(v int64) *DescribeSuspEventExportInfoResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetId(v int32) *DescribeSuspEventExportInfoResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetLink(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.Link = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetProgress(v int32) *DescribeSuspEventExportInfoResponseBody {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetProperties(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.Properties = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetRequestId(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetTotalCount(v int32) *DescribeSuspEventExportInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponseBody) SetType(v string) *DescribeSuspEventExportInfoResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeSuspEventExportInfoResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSuspEventExportInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSuspEventExportInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspEventExportInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspEventExportInfoResponse) SetHeaders(v map[string]*string) *DescribeSuspEventExportInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSuspEventExportInfoResponse) SetBody(v *DescribeSuspEventExportInfoResponseBody) *DescribeSuspEventExportInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSuspEventQuaraFilesRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	From        *string `json:"From,omitempty" xml:"From,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupingId  *int64  `json:"GroupingId,omitempty" xml:"GroupingId,omitempty"`
 	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QuaraTag    *string `json:"QuaraTag,omitempty" xml:"QuaraTag,omitempty"`
 	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -19923,6 +16907,11 @@ func (s *DescribeSuspEventQuaraFilesRequest) SetFrom(v string) *DescribeSuspEven
 
 func (s *DescribeSuspEventQuaraFilesRequest) SetGroupId(v string) *DescribeSuspEventQuaraFilesRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeSuspEventQuaraFilesRequest) SetGroupingId(v int64) *DescribeSuspEventQuaraFilesRequest {
+	s.GroupingId = &v
 	return s
 }
 
@@ -20681,306 +17670,71 @@ func (s *DescribeSuspEventsResponse) SetBody(v *DescribeSuspEventsResponseBody) 
 	return s
 }
 
-type DescribeTaskErrorLogRequest struct {
-	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+type DescribeSuspiciousUUIDConfigRequest struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
-func (s DescribeTaskErrorLogRequest) String() string {
+func (s DescribeSuspiciousUUIDConfigRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTaskErrorLogRequest) GoString() string {
+func (s DescribeSuspiciousUUIDConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTaskErrorLogRequest) SetBuildTaskId(v string) *DescribeTaskErrorLogRequest {
-	s.BuildTaskId = &v
+func (s *DescribeSuspiciousUUIDConfigRequest) SetType(v string) *DescribeSuspiciousUUIDConfigRequest {
+	s.Type = &v
 	return s
 }
 
-func (s *DescribeTaskErrorLogRequest) SetSourceIp(v string) *DescribeTaskErrorLogRequest {
-	s.SourceIp = &v
-	return s
+type DescribeSuspiciousUUIDConfigResponseBody struct {
+	Count     *int32    `json:"Count,omitempty" xml:"Count,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UUIDList  []*string `json:"UUIDList,omitempty" xml:"UUIDList,omitempty" type:"Repeated"`
 }
 
-type DescribeTaskErrorLogResponseBody struct {
-	Logs []*DescribeTaskErrorLogResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeTaskErrorLogResponseBody) String() string {
+func (s DescribeSuspiciousUUIDConfigResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeTaskErrorLogResponseBody) GoString() string {
+func (s DescribeSuspiciousUUIDConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTaskErrorLogResponseBody) SetLogs(v []*DescribeTaskErrorLogResponseBodyLogs) *DescribeTaskErrorLogResponseBody {
-	s.Logs = v
-	return s
-}
-
-func (s *DescribeTaskErrorLogResponseBody) SetRequestId(v string) *DescribeTaskErrorLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeTaskErrorLogResponseBodyLogs struct {
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-}
-
-func (s DescribeTaskErrorLogResponseBodyLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTaskErrorLogResponseBodyLogs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTaskErrorLogResponseBodyLogs) SetText(v string) *DescribeTaskErrorLogResponseBodyLogs {
-	s.Text = &v
-	return s
-}
-
-type DescribeTaskErrorLogResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTaskErrorLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeTaskErrorLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTaskErrorLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTaskErrorLogResponse) SetHeaders(v map[string]*string) *DescribeTaskErrorLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeTaskErrorLogResponse) SetBody(v *DescribeTaskErrorLogResponseBody) *DescribeTaskErrorLogResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUniBackupDatabaseRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DatabaseType    *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryType       *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	UniRegionId     *string `json:"UniRegionId,omitempty" xml:"UniRegionId,omitempty"`
-}
-
-func (s DescribeUniBackupDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetCurrentPage(v int32) *DescribeUniBackupDatabaseRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetDatabaseType(v string) *DescribeUniBackupDatabaseRequest {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetInstanceName(v string) *DescribeUniBackupDatabaseRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetPageSize(v int32) *DescribeUniBackupDatabaseRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetQueryType(v string) *DescribeUniBackupDatabaseRequest {
-	s.QueryType = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetResourceOwnerId(v int64) *DescribeUniBackupDatabaseRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetSourceIp(v string) *DescribeUniBackupDatabaseRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseRequest) SetUniRegionId(v string) *DescribeUniBackupDatabaseRequest {
-	s.UniRegionId = &v
-	return s
-}
-
-type DescribeUniBackupDatabaseResponseBody struct {
-	DatabaseList []*DescribeUniBackupDatabaseResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
-	PageInfo     *DescribeUniBackupDatabaseResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeUniBackupDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupDatabaseResponseBody) SetDatabaseList(v []*DescribeUniBackupDatabaseResponseBodyDatabaseList) *DescribeUniBackupDatabaseResponseBody {
-	s.DatabaseList = v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBody) SetPageInfo(v *DescribeUniBackupDatabaseResponseBodyPageInfo) *DescribeUniBackupDatabaseResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBody) SetRequestId(v string) *DescribeUniBackupDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeUniBackupDatabaseResponseBodyDatabaseList struct {
-	AgentStatus      *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	CreatedByProduct *string `json:"CreatedByProduct,omitempty" xml:"CreatedByProduct,omitempty"`
-	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DatabaseType     *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	DatabaseVersion  *string `json:"DatabaseVersion,omitempty" xml:"DatabaseVersion,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceUuid     *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	PolicyId         *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeUniBackupDatabaseResponseBodyDatabaseList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupDatabaseResponseBodyDatabaseList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetAgentStatus(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.AgentStatus = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetCreatedByProduct(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.CreatedByProduct = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetDatabaseName(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.DatabaseName = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetDatabaseType(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetDatabaseVersion(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.DatabaseVersion = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetInstanceId(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetInstanceName(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetInstanceUuid(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.InstanceUuid = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetPolicyId(v int64) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyDatabaseList) SetStatus(v string) *DescribeUniBackupDatabaseResponseBodyDatabaseList {
-	s.Status = &v
-	return s
-}
-
-type DescribeUniBackupDatabaseResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeUniBackupDatabaseResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupDatabaseResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupDatabaseResponseBodyPageInfo) SetCount(v int32) *DescribeUniBackupDatabaseResponseBodyPageInfo {
+func (s *DescribeSuspiciousUUIDConfigResponseBody) SetCount(v int32) *DescribeSuspiciousUUIDConfigResponseBody {
 	s.Count = &v
 	return s
 }
 
-func (s *DescribeUniBackupDatabaseResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeUniBackupDatabaseResponseBodyPageInfo {
-	s.CurrentPage = &v
+func (s *DescribeSuspiciousUUIDConfigResponseBody) SetRequestId(v string) *DescribeSuspiciousUUIDConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeUniBackupDatabaseResponseBodyPageInfo) SetPageSize(v int32) *DescribeUniBackupDatabaseResponseBodyPageInfo {
-	s.PageSize = &v
+func (s *DescribeSuspiciousUUIDConfigResponseBody) SetUUIDList(v []*string) *DescribeSuspiciousUUIDConfigResponseBody {
+	s.UUIDList = v
 	return s
 }
 
-func (s *DescribeUniBackupDatabaseResponseBodyPageInfo) SetTotalCount(v int32) *DescribeUniBackupDatabaseResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
+type DescribeSuspiciousUUIDConfigResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSuspiciousUUIDConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type DescribeUniBackupDatabaseResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUniBackupDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUniBackupDatabaseResponse) String() string {
+func (s DescribeSuspiciousUUIDConfigResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeUniBackupDatabaseResponse) GoString() string {
+func (s DescribeSuspiciousUUIDConfigResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeUniBackupDatabaseResponse) SetHeaders(v map[string]*string) *DescribeUniBackupDatabaseResponse {
+func (s *DescribeSuspiciousUUIDConfigResponse) SetHeaders(v map[string]*string) *DescribeSuspiciousUUIDConfigResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeUniBackupDatabaseResponse) SetBody(v *DescribeUniBackupDatabaseResponseBody) *DescribeUniBackupDatabaseResponse {
+func (s *DescribeSuspiciousUUIDConfigResponse) SetBody(v *DescribeSuspiciousUUIDConfigResponseBody) *DescribeSuspiciousUUIDConfigResponse {
 	s.Body = v
 	return s
 }
@@ -21232,538 +17986,6 @@ func (s *DescribeUniBackupPoliciesResponse) SetBody(v *DescribeUniBackupPolicies
 	return s
 }
 
-type DescribeUniBackupPolicyDetailRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeUniBackupPolicyDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailRequest) SetCurrentPage(v int32) *DescribeUniBackupPolicyDetailRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailRequest) SetPageSize(v int32) *DescribeUniBackupPolicyDetailRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailRequest) SetPolicyId(v string) *DescribeUniBackupPolicyDetailRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailRequest) SetResourceOwnerId(v int64) *DescribeUniBackupPolicyDetailRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailRequest) SetSourceIp(v string) *DescribeUniBackupPolicyDetailRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeUniBackupPolicyDetailResponseBody struct {
-	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UniBackupPolicyDTO *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO `json:"UniBackupPolicyDTO,omitempty" xml:"UniBackupPolicyDTO,omitempty" type:"Struct"`
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBody) SetRequestId(v string) *DescribeUniBackupPolicyDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBody) SetUniBackupPolicyDTO(v *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) *DescribeUniBackupPolicyDetailResponseBody {
-	s.UniBackupPolicyDTO = v
-	return s
-}
-
-type DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO struct {
-	AccountName    *string                                                              `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AgentStatus    *string                                                              `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	DatabaseType   *string                                                              `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	FullPlan       *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan `json:"FullPlan,omitempty" xml:"FullPlan,omitempty" type:"Struct"`
-	IncPlan        *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan  `json:"IncPlan,omitempty" xml:"IncPlan,omitempty" type:"Struct"`
-	InstanceId     *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName   *string                                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PolicyId       *int64                                                               `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName     *string                                                              `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyStatus   *string                                                              `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	Retention      *int32                                                               `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SpeedLimiter   *int64                                                               `json:"SpeedLimiter,omitempty" xml:"SpeedLimiter,omitempty"`
-	UniBackUpCount *int32                                                               `json:"UniBackUpCount,omitempty" xml:"UniBackUpCount,omitempty"`
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetAccountName(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetAgentStatus(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.AgentStatus = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetDatabaseType(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetFullPlan(v *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.FullPlan = v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetIncPlan(v *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.IncPlan = v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetInstanceId(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetInstanceName(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetPolicyId(v int64) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetPolicyName(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetPolicyStatus(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.PolicyStatus = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetRetention(v int32) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.Retention = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetSpeedLimiter(v int64) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.SpeedLimiter = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO) SetUniBackUpCount(v int32) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTO {
-	s.UniBackUpCount = &v
-	return s
-}
-
-type DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan struct {
-	Days      []*string `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
-	Interval  *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	PlanType  *string   `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) SetDays(v []*string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan {
-	s.Days = v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) SetInterval(v int32) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) SetPlanType(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan {
-	s.PlanType = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan) SetStartTime(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOFullPlan {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan struct {
-	Days      []*string `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
-	Interval  *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	PlanType  *string   `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) SetDays(v []*string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan {
-	s.Days = v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) SetInterval(v int32) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) SetPlanType(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan {
-	s.PlanType = &v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan) SetStartTime(v string) *DescribeUniBackupPolicyDetailResponseBodyUniBackupPolicyDTOIncPlan {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeUniBackupPolicyDetailResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUniBackupPolicyDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUniBackupPolicyDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupPolicyDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupPolicyDetailResponse) SetHeaders(v map[string]*string) *DescribeUniBackupPolicyDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUniBackupPolicyDetailResponse) SetBody(v *DescribeUniBackupPolicyDetailResponseBody) *DescribeUniBackupPolicyDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUniBackupStatisticsResponseBody struct {
-	ProtectedDatabaseCount   *int32  `json:"ProtectedDatabaseCount,omitempty" xml:"ProtectedDatabaseCount,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RestoringTaskCount       *int32  `json:"RestoringTaskCount,omitempty" xml:"RestoringTaskCount,omitempty"`
-	TotalRecoverableCount    *int32  `json:"TotalRecoverableCount,omitempty" xml:"TotalRecoverableCount,omitempty"`
-	TotalRestoreTaskCount    *int32  `json:"TotalRestoreTaskCount,omitempty" xml:"TotalRestoreTaskCount,omitempty"`
-	UnprotectedDatabaseCount *int32  `json:"UnprotectedDatabaseCount,omitempty" xml:"UnprotectedDatabaseCount,omitempty"`
-}
-
-func (s DescribeUniBackupStatisticsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupStatisticsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetProtectedDatabaseCount(v int32) *DescribeUniBackupStatisticsResponseBody {
-	s.ProtectedDatabaseCount = &v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetRequestId(v string) *DescribeUniBackupStatisticsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetRestoringTaskCount(v int32) *DescribeUniBackupStatisticsResponseBody {
-	s.RestoringTaskCount = &v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetTotalRecoverableCount(v int32) *DescribeUniBackupStatisticsResponseBody {
-	s.TotalRecoverableCount = &v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetTotalRestoreTaskCount(v int32) *DescribeUniBackupStatisticsResponseBody {
-	s.TotalRestoreTaskCount = &v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponseBody) SetUnprotectedDatabaseCount(v int32) *DescribeUniBackupStatisticsResponseBody {
-	s.UnprotectedDatabaseCount = &v
-	return s
-}
-
-type DescribeUniBackupStatisticsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUniBackupStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUniBackupStatisticsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniBackupStatisticsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniBackupStatisticsResponse) SetHeaders(v map[string]*string) *DescribeUniBackupStatisticsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUniBackupStatisticsResponse) SetBody(v *DescribeUniBackupStatisticsResponseBody) *DescribeUniBackupStatisticsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUniRecoverableListRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeUniRecoverableListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniRecoverableListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniRecoverableListRequest) SetCurrentPage(v int32) *DescribeUniRecoverableListRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListRequest) SetDatabase(v string) *DescribeUniRecoverableListRequest {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListRequest) SetPageSize(v int32) *DescribeUniRecoverableListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListRequest) SetPolicyId(v int64) *DescribeUniRecoverableListRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListRequest) SetResourceOwnerId(v int64) *DescribeUniRecoverableListRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListRequest) SetSourceIp(v string) *DescribeUniRecoverableListRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeUniRecoverableListResponseBody struct {
-	Count               *int32                                                       `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage         *int32                                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Database            *string                                                      `json:"Database,omitempty" xml:"Database,omitempty"`
-	PageSize            *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RecoverableInfoList []*DescribeUniRecoverableListResponseBodyRecoverableInfoList `json:"RecoverableInfoList,omitempty" xml:"RecoverableInfoList,omitempty" type:"Repeated"`
-	RequestId           *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount          *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeUniRecoverableListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniRecoverableListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetCount(v int32) *DescribeUniRecoverableListResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetCurrentPage(v int32) *DescribeUniRecoverableListResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetDatabase(v string) *DescribeUniRecoverableListResponseBody {
-	s.Database = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetPageSize(v int32) *DescribeUniRecoverableListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetRecoverableInfoList(v []*DescribeUniRecoverableListResponseBodyRecoverableInfoList) *DescribeUniRecoverableListResponseBody {
-	s.RecoverableInfoList = v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetRequestId(v string) *DescribeUniRecoverableListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBody) SetTotalCount(v int32) *DescribeUniRecoverableListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeUniRecoverableListResponseBodyRecoverableInfoList struct {
-	FirstTime   *int64                 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	LastTime    *int64                 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResetScn    *string                `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
-	ResetTime   *int64                 `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	RestoreInfo map[string]interface{} `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
-}
-
-func (s DescribeUniRecoverableListResponseBodyRecoverableInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniRecoverableListResponseBodyRecoverableInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetFirstTime(v int64) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.FirstTime = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetLastTime(v int64) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.LastTime = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetName(v string) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetResetScn(v string) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.ResetScn = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetResetTime(v int64) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.ResetTime = &v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponseBodyRecoverableInfoList) SetRestoreInfo(v map[string]interface{}) *DescribeUniRecoverableListResponseBodyRecoverableInfoList {
-	s.RestoreInfo = v
-	return s
-}
-
-type DescribeUniRecoverableListResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUniRecoverableListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUniRecoverableListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniRecoverableListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniRecoverableListResponse) SetHeaders(v map[string]*string) *DescribeUniRecoverableListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUniRecoverableListResponse) SetBody(v *DescribeUniRecoverableListResponseBody) *DescribeUniRecoverableListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUniSupportRegionResponseBody struct {
-	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UniSupportRegion []*string `json:"UniSupportRegion,omitempty" xml:"UniSupportRegion,omitempty" type:"Repeated"`
-}
-
-func (s DescribeUniSupportRegionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniSupportRegionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniSupportRegionResponseBody) SetRequestId(v string) *DescribeUniSupportRegionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUniSupportRegionResponseBody) SetUniSupportRegion(v []*string) *DescribeUniSupportRegionResponseBody {
-	s.UniSupportRegion = v
-	return s
-}
-
-type DescribeUniSupportRegionResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUniSupportRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUniSupportRegionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUniSupportRegionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUniSupportRegionResponse) SetHeaders(v map[string]*string) *DescribeUniSupportRegionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUniSupportRegionResponse) SetBody(v *DescribeUniSupportRegionResponseBody) *DescribeUniSupportRegionResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeUserBackupMachinesResponseBody struct {
 	Machines  []*DescribeUserBackupMachinesResponseBodyMachines `json:"Machines,omitempty" xml:"Machines,omitempty" type:"Repeated"`
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -22002,200 +18224,6 @@ func (s *DescribeUserLayoutAuthorizationResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *DescribeUserLayoutAuthorizationResponse) SetBody(v *DescribeUserLayoutAuthorizationResponseBody) *DescribeUserLayoutAuthorizationResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUuidsByVulNamesRequest struct {
-	Dealed         *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	FieldName      *string   `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldValue     *string   `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	GroupId        *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Level          *string   `json:"Level,omitempty" xml:"Level,omitempty"`
-	Necessity      *string   `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	Remark         *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SearchTags     *string   `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
-	StatusList     *string   `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	TargetType     *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcInstanceIds *string   `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
-	VulNames       []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`
-}
-
-func (s DescribeUuidsByVulNamesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUuidsByVulNamesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetDealed(v string) *DescribeUuidsByVulNamesRequest {
-	s.Dealed = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetFieldName(v string) *DescribeUuidsByVulNamesRequest {
-	s.FieldName = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetFieldValue(v string) *DescribeUuidsByVulNamesRequest {
-	s.FieldValue = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetGroupId(v int64) *DescribeUuidsByVulNamesRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetLang(v string) *DescribeUuidsByVulNamesRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetLevel(v string) *DescribeUuidsByVulNamesRequest {
-	s.Level = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetNecessity(v string) *DescribeUuidsByVulNamesRequest {
-	s.Necessity = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetRemark(v string) *DescribeUuidsByVulNamesRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetSearchTags(v string) *DescribeUuidsByVulNamesRequest {
-	s.SearchTags = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetStatusList(v string) *DescribeUuidsByVulNamesRequest {
-	s.StatusList = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetTag(v string) *DescribeUuidsByVulNamesRequest {
-	s.Tag = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetTargetType(v string) *DescribeUuidsByVulNamesRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetType(v string) *DescribeUuidsByVulNamesRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetVpcInstanceIds(v string) *DescribeUuidsByVulNamesRequest {
-	s.VpcInstanceIds = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesRequest) SetVulNames(v []*string) *DescribeUuidsByVulNamesRequest {
-	s.VulNames = v
-	return s
-}
-
-type DescribeUuidsByVulNamesResponseBody struct {
-	MachineInfoStatistics []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics `json:"MachineInfoStatistics,omitempty" xml:"MachineInfoStatistics,omitempty" type:"Repeated"`
-	RequestId             *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeUuidsByVulNamesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUuidsByVulNamesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUuidsByVulNamesResponseBody) SetMachineInfoStatistics(v []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) *DescribeUuidsByVulNamesResponseBody {
-	s.MachineInfoStatistics = v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBody) SetRequestId(v string) *DescribeUuidsByVulNamesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics struct {
-	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
-	MachineIp         *string `json:"MachineIp,omitempty" xml:"MachineIp,omitempty"`
-	MachineName       *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineInstanceId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.MachineInstanceId = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineIp(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.MachineIp = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineName(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.MachineName = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetOs(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetRegionId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetUuid(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeUuidsByVulNamesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUuidsByVulNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeUuidsByVulNamesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUuidsByVulNamesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUuidsByVulNamesResponse) SetHeaders(v map[string]*string) *DescribeUuidsByVulNamesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUuidsByVulNamesResponse) SetBody(v *DescribeUuidsByVulNamesResponseBody) *DescribeUuidsByVulNamesResponse {
 	s.Body = v
 	return s
 }
@@ -23721,6 +19749,161 @@ func (s *DescribeVulListResponse) SetBody(v *DescribeVulListResponseBody) *Descr
 	return s
 }
 
+type DescribeVulListPageRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CveId       *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	VulNameLike *string `json:"VulNameLike,omitempty" xml:"VulNameLike,omitempty"`
+}
+
+func (s DescribeVulListPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulListPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulListPageRequest) SetCurrentPage(v int32) *DescribeVulListPageRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeVulListPageRequest) SetCveId(v string) *DescribeVulListPageRequest {
+	s.CveId = &v
+	return s
+}
+
+func (s *DescribeVulListPageRequest) SetPageSize(v int32) *DescribeVulListPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVulListPageRequest) SetSourceIp(v string) *DescribeVulListPageRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeVulListPageRequest) SetVulNameLike(v string) *DescribeVulListPageRequest {
+	s.VulNameLike = &v
+	return s
+}
+
+type DescribeVulListPageResponseBody struct {
+	// 返回参数
+	Data      []*DescribeVulListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeVulListPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulListPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulListPageResponseBody) SetData(v []*DescribeVulListPageResponseBodyData) *DescribeVulListPageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBody) SetRequestId(v string) *DescribeVulListPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBody) SetTotalCount(v int32) *DescribeVulListPageResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeVulListPageResponseBodyData struct {
+	// cveId
+	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	// id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 是否安骑士扫描
+	IsAegis *int32 `json:"IsAegis,omitempty" xml:"IsAegis,omitempty"`
+	// 是否网络扫描
+	IsSas *int32 `json:"IsSas,omitempty" xml:"IsSas,omitempty"`
+	// 编号
+	OtherId *string `json:"OtherId,omitempty" xml:"OtherId,omitempty"`
+	// 发布时间
+	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// 漏洞标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeVulListPageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulListPageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetCveId(v string) *DescribeVulListPageResponseBodyData {
+	s.CveId = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetId(v int64) *DescribeVulListPageResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetIsAegis(v int32) *DescribeVulListPageResponseBodyData {
+	s.IsAegis = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetIsSas(v int32) *DescribeVulListPageResponseBodyData {
+	s.IsSas = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetOtherId(v string) *DescribeVulListPageResponseBodyData {
+	s.OtherId = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetReleaseTime(v int64) *DescribeVulListPageResponseBodyData {
+	s.ReleaseTime = &v
+	return s
+}
+
+func (s *DescribeVulListPageResponseBodyData) SetTitle(v string) *DescribeVulListPageResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type DescribeVulListPageResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVulListPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVulListPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulListPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulListPageResponse) SetHeaders(v map[string]*string) *DescribeVulListPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVulListPageResponse) SetBody(v *DescribeVulListPageResponseBody) *DescribeVulListPageResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVulWhitelistRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -24425,75 +20608,6 @@ func (s *DescribeWebLockConfigListResponse) SetBody(v *DescribeWebLockConfigList
 	return s
 }
 
-type ExecStrategyRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StrategyId *int32  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-}
-
-func (s ExecStrategyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecStrategyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExecStrategyRequest) SetLang(v string) *ExecStrategyRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *ExecStrategyRequest) SetSourceIp(v string) *ExecStrategyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ExecStrategyRequest) SetStrategyId(v int32) *ExecStrategyRequest {
-	s.StrategyId = &v
-	return s
-}
-
-type ExecStrategyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ExecStrategyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecStrategyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExecStrategyResponseBody) SetRequestId(v string) *ExecStrategyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ExecStrategyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExecStrategyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecStrategyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExecStrategyResponse) SetHeaders(v map[string]*string) *ExecStrategyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExecStrategyResponse) SetBody(v *ExecStrategyResponseBody) *ExecStrategyResponse {
-	s.Body = v
-	return s
-}
-
 type ExportRecordRequest struct {
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -24571,6 +20685,159 @@ func (s *ExportRecordResponse) SetHeaders(v map[string]*string) *ExportRecordRes
 }
 
 func (s *ExportRecordResponse) SetBody(v *ExportRecordResponseBody) *ExportRecordResponse {
+	s.Body = v
+	return s
+}
+
+type ExportSuspEventsRequest struct {
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	Dealed              *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	From                *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Levels              *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentEventTypes    *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
+	Remark              *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TimeEnd             *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	TimeStart           *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+}
+
+func (s ExportSuspEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportSuspEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportSuspEventsRequest) SetClusterId(v string) *ExportSuspEventsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetContainerFieldName(v string) *ExportSuspEventsRequest {
+	s.ContainerFieldName = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetContainerFieldValue(v string) *ExportSuspEventsRequest {
+	s.ContainerFieldValue = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetDealed(v string) *ExportSuspEventsRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetFrom(v string) *ExportSuspEventsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetLang(v string) *ExportSuspEventsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetLevels(v string) *ExportSuspEventsRequest {
+	s.Levels = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetName(v string) *ExportSuspEventsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetParentEventTypes(v string) *ExportSuspEventsRequest {
+	s.ParentEventTypes = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetRemark(v string) *ExportSuspEventsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetSourceIp(v string) *ExportSuspEventsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetStatus(v string) *ExportSuspEventsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetTargetType(v string) *ExportSuspEventsRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetTimeEnd(v string) *ExportSuspEventsRequest {
+	s.TimeEnd = &v
+	return s
+}
+
+func (s *ExportSuspEventsRequest) SetTimeStart(v string) *ExportSuspEventsRequest {
+	s.TimeStart = &v
+	return s
+}
+
+type ExportSuspEventsResponseBody struct {
+	FileName  *int32  `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id        *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportSuspEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportSuspEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportSuspEventsResponseBody) SetFileName(v int32) *ExportSuspEventsResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *ExportSuspEventsResponseBody) SetId(v int32) *ExportSuspEventsResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportSuspEventsResponseBody) SetRequestId(v string) *ExportSuspEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportSuspEventsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExportSuspEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportSuspEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportSuspEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportSuspEventsResponse) SetHeaders(v map[string]*string) *ExportSuspEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportSuspEventsResponse) SetBody(v *ExportSuspEventsResponseBody) *ExportSuspEventsResponse {
 	s.Body = v
 	return s
 }
@@ -24694,6 +20961,159 @@ func (s *ExportVulResponse) SetHeaders(v map[string]*string) *ExportVulResponse 
 }
 
 func (s *ExportVulResponse) SetBody(v *ExportVulResponseBody) *ExportVulResponse {
+	s.Body = v
+	return s
+}
+
+type ExportWarningRequest struct {
+	Dealed          *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	ExportType      *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	IsCleartextPwd  *int32  `json:"IsCleartextPwd,omitempty" xml:"IsCleartextPwd,omitempty"`
+	IsSummaryExport *int32  `json:"IsSummaryExport,omitempty" xml:"IsSummaryExport,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RiskIds         *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
+	RiskLevels      *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	RiskName        *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StatusList      *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	StrategyId      *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	SubTypeNames    *string `json:"SubTypeNames,omitempty" xml:"SubTypeNames,omitempty"`
+	TypeName        *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TypeNames       *string `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
+	Uuids           *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s ExportWarningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningRequest) SetDealed(v string) *ExportWarningRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetExportType(v string) *ExportWarningRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetIsCleartextPwd(v int32) *ExportWarningRequest {
+	s.IsCleartextPwd = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetIsSummaryExport(v int32) *ExportWarningRequest {
+	s.IsSummaryExport = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetLang(v string) *ExportWarningRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskIds(v string) *ExportWarningRequest {
+	s.RiskIds = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskLevels(v string) *ExportWarningRequest {
+	s.RiskLevels = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskName(v string) *ExportWarningRequest {
+	s.RiskName = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetSourceIp(v string) *ExportWarningRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetStatusList(v string) *ExportWarningRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetStrategyId(v int64) *ExportWarningRequest {
+	s.StrategyId = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetSubTypeNames(v string) *ExportWarningRequest {
+	s.SubTypeNames = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetTypeName(v string) *ExportWarningRequest {
+	s.TypeName = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetTypeNames(v string) *ExportWarningRequest {
+	s.TypeNames = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetUuids(v string) *ExportWarningRequest {
+	s.Uuids = &v
+	return s
+}
+
+type ExportWarningResponseBody struct {
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportWarningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningResponseBody) SetFileName(v string) *ExportWarningResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *ExportWarningResponseBody) SetId(v int64) *ExportWarningResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportWarningResponseBody) SetRequestId(v string) *ExportWarningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportWarningResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExportWarningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportWarningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningResponse) SetHeaders(v map[string]*string) *ExportWarningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportWarningResponse) SetBody(v *ExportWarningResponseBody) *ExportWarningResponse {
 	s.Body = v
 	return s
 }
@@ -24868,294 +21288,6 @@ func (s *GetBackupStorageCountResponse) SetHeaders(v map[string]*string) *GetBac
 }
 
 func (s *GetBackupStorageCountResponse) SetBody(v *GetBackupStorageCountResponseBody) *GetBackupStorageCountResponse {
-	s.Body = v
-	return s
-}
-
-type GetIOCsRequest struct {
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetIOCsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIOCsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetIOCsRequest) SetDate(v string) *GetIOCsRequest {
-	s.Date = &v
-	return s
-}
-
-func (s *GetIOCsRequest) SetType(v string) *GetIOCsRequest {
-	s.Type = &v
-	return s
-}
-
-type GetIOCsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-}
-
-func (s GetIOCsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIOCsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetIOCsResponseBody) SetRequestId(v string) *GetIOCsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetIOCsResponseBody) SetData(v string) *GetIOCsResponseBody {
-	s.Data = &v
-	return s
-}
-
-type GetIOCsResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIOCsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetIOCsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIOCsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetIOCsResponse) SetHeaders(v map[string]*string) *GetIOCsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetIOCsResponse) SetBody(v *GetIOCsResponseBody) *GetIOCsResponse {
-	s.Body = v
-	return s
-}
-
-type GetIncIOCsRequest struct {
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetIncIOCsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIncIOCsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetIncIOCsRequest) SetDate(v string) *GetIncIOCsRequest {
-	s.Date = &v
-	return s
-}
-
-func (s *GetIncIOCsRequest) SetType(v string) *GetIncIOCsRequest {
-	s.Type = &v
-	return s
-}
-
-type GetIncIOCsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-}
-
-func (s GetIncIOCsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIncIOCsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetIncIOCsResponseBody) SetRequestId(v string) *GetIncIOCsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetIncIOCsResponseBody) SetData(v string) *GetIncIOCsResponseBody {
-	s.Data = &v
-	return s
-}
-
-type GetIncIOCsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIncIOCsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetIncIOCsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetIncIOCsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetIncIOCsResponse) SetHeaders(v map[string]*string) *GetIncIOCsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetIncIOCsResponse) SetBody(v *GetIncIOCsResponseBody) *GetIncIOCsResponse {
-	s.Body = v
-	return s
-}
-
-type GetLocalInstallScriptRequest struct {
-	InternalNetwork *bool   `json:"InternalNetwork,omitempty" xml:"InternalNetwork,omitempty"`
-	PlatformType    *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s GetLocalInstallScriptRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalInstallScriptRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalInstallScriptRequest) SetInternalNetwork(v bool) *GetLocalInstallScriptRequest {
-	s.InternalNetwork = &v
-	return s
-}
-
-func (s *GetLocalInstallScriptRequest) SetPlatformType(v string) *GetLocalInstallScriptRequest {
-	s.PlatformType = &v
-	return s
-}
-
-func (s *GetLocalInstallScriptRequest) SetUuid(v string) *GetLocalInstallScriptRequest {
-	s.Uuid = &v
-	return s
-}
-
-type GetLocalInstallScriptResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Script    *string `json:"Script,omitempty" xml:"Script,omitempty"`
-}
-
-func (s GetLocalInstallScriptResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalInstallScriptResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalInstallScriptResponseBody) SetRequestId(v string) *GetLocalInstallScriptResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetLocalInstallScriptResponseBody) SetScript(v string) *GetLocalInstallScriptResponseBody {
-	s.Script = &v
-	return s
-}
-
-type GetLocalInstallScriptResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLocalInstallScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLocalInstallScriptResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalInstallScriptResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalInstallScriptResponse) SetHeaders(v map[string]*string) *GetLocalInstallScriptResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLocalInstallScriptResponse) SetBody(v *GetLocalInstallScriptResponseBody) *GetLocalInstallScriptResponse {
-	s.Body = v
-	return s
-}
-
-type GetLocalUninstallScriptRequest struct {
-	InternalNetwork *bool   `json:"InternalNetwork,omitempty" xml:"InternalNetwork,omitempty"`
-	PlatformType    *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s GetLocalUninstallScriptRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalUninstallScriptRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalUninstallScriptRequest) SetInternalNetwork(v bool) *GetLocalUninstallScriptRequest {
-	s.InternalNetwork = &v
-	return s
-}
-
-func (s *GetLocalUninstallScriptRequest) SetPlatformType(v string) *GetLocalUninstallScriptRequest {
-	s.PlatformType = &v
-	return s
-}
-
-func (s *GetLocalUninstallScriptRequest) SetUuid(v string) *GetLocalUninstallScriptRequest {
-	s.Uuid = &v
-	return s
-}
-
-type GetLocalUninstallScriptResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Script    *string `json:"Script,omitempty" xml:"Script,omitempty"`
-}
-
-func (s GetLocalUninstallScriptResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalUninstallScriptResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalUninstallScriptResponseBody) SetRequestId(v string) *GetLocalUninstallScriptResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetLocalUninstallScriptResponseBody) SetScript(v string) *GetLocalUninstallScriptResponseBody {
-	s.Script = &v
-	return s
-}
-
-type GetLocalUninstallScriptResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLocalUninstallScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLocalUninstallScriptResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalUninstallScriptResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalUninstallScriptResponse) SetHeaders(v map[string]*string) *GetLocalUninstallScriptResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLocalUninstallScriptResponse) SetBody(v *GetLocalUninstallScriptResponseBody) *GetLocalUninstallScriptResponse {
 	s.Body = v
 	return s
 }
@@ -25339,7 +21471,6 @@ type HandleSecurityEventsRequest struct {
 	MarkMissParam    *string   `json:"MarkMissParam,omitempty" xml:"MarkMissParam,omitempty"`
 	OperationCode    *string   `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
 	OperationParams  *string   `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
-	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 	SourceIp         *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -25369,11 +21500,6 @@ func (s *HandleSecurityEventsRequest) SetOperationCode(v string) *HandleSecurity
 
 func (s *HandleSecurityEventsRequest) SetOperationParams(v string) *HandleSecurityEventsRequest {
 	s.OperationParams = &v
-	return s
-}
-
-func (s *HandleSecurityEventsRequest) SetResourceOwnerId(v int64) *HandleSecurityEventsRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -25689,75 +21815,6 @@ func (s *InstallBackupClientResponse) SetHeaders(v map[string]*string) *InstallB
 }
 
 func (s *InstallBackupClientResponse) SetBody(v *InstallBackupClientResponseBody) *InstallBackupClientResponse {
-	s.Body = v
-	return s
-}
-
-type InstallUniBackupAgentRequest struct {
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s InstallUniBackupAgentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallUniBackupAgentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InstallUniBackupAgentRequest) SetPolicyId(v int64) *InstallUniBackupAgentRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *InstallUniBackupAgentRequest) SetResourceOwnerId(v int64) *InstallUniBackupAgentRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *InstallUniBackupAgentRequest) SetSourceIp(v string) *InstallUniBackupAgentRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type InstallUniBackupAgentResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s InstallUniBackupAgentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallUniBackupAgentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InstallUniBackupAgentResponseBody) SetRequestId(v string) *InstallUniBackupAgentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type InstallUniBackupAgentResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InstallUniBackupAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InstallUniBackupAgentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InstallUniBackupAgentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InstallUniBackupAgentResponse) SetHeaders(v map[string]*string) *InstallUniBackupAgentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InstallUniBackupAgentResponse) SetBody(v *InstallUniBackupAgentResponseBody) *InstallUniBackupAgentResponse {
 	s.Body = v
 	return s
 }
@@ -26135,6 +22192,69 @@ func (s *ModifyBackupPolicyStatusResponse) SetHeaders(v map[string]*string) *Mod
 }
 
 func (s *ModifyBackupPolicyStatusResponse) SetBody(v *ModifyBackupPolicyStatusResponseBody) *ModifyBackupPolicyStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyClearLogstoreStorageRequest struct {
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s ModifyClearLogstoreStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetFrom(v string) *ModifyClearLogstoreStorageRequest {
+	s.From = &v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetLang(v string) *ModifyClearLogstoreStorageRequest {
+	s.Lang = &v
+	return s
+}
+
+type ModifyClearLogstoreStorageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyClearLogstoreStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageResponseBody) SetRequestId(v string) *ModifyClearLogstoreStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyClearLogstoreStorageResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyClearLogstoreStorageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyClearLogstoreStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageResponse) SetHeaders(v map[string]*string) *ModifyClearLogstoreStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageResponse) SetBody(v *ModifyClearLogstoreStorageResponseBody) *ModifyClearLogstoreStorageResponse {
 	s.Body = v
 	return s
 }
@@ -26537,81 +22657,6 @@ func (s *ModifyLoginSwitchConfigResponse) SetHeaders(v map[string]*string) *Modi
 }
 
 func (s *ModifyLoginSwitchConfigResponse) SetBody(v *ModifyLoginSwitchConfigResponseBody) *ModifyLoginSwitchConfigResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyNoticeConfigRequest struct {
-	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Route     *int32  `json:"Route,omitempty" xml:"Route,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TimeLimit *int32  `json:"TimeLimit,omitempty" xml:"TimeLimit,omitempty"`
-}
-
-func (s ModifyNoticeConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNoticeConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNoticeConfigRequest) SetProject(v string) *ModifyNoticeConfigRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *ModifyNoticeConfigRequest) SetRoute(v int32) *ModifyNoticeConfigRequest {
-	s.Route = &v
-	return s
-}
-
-func (s *ModifyNoticeConfigRequest) SetSourceIp(v string) *ModifyNoticeConfigRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyNoticeConfigRequest) SetTimeLimit(v int32) *ModifyNoticeConfigRequest {
-	s.TimeLimit = &v
-	return s
-}
-
-type ModifyNoticeConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyNoticeConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNoticeConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNoticeConfigResponseBody) SetRequestId(v string) *ModifyNoticeConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyNoticeConfigResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyNoticeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyNoticeConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNoticeConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNoticeConfigResponse) SetHeaders(v map[string]*string) *ModifyNoticeConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyNoticeConfigResponse) SetBody(v *ModifyNoticeConfigResponseBody) *ModifyNoticeConfigResponse {
 	s.Body = v
 	return s
 }
@@ -27235,221 +23280,6 @@ func (s *ModifyStartVulScanResponse) SetBody(v *ModifyStartVulScanResponseBody) 
 	return s
 }
 
-type ModifyStrategyRequest struct {
-	CustomType       *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
-	CycleDays        *string `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
-	CycleStartTime   *string `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
-	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RiskCustomParams *string `json:"RiskCustomParams,omitempty" xml:"RiskCustomParams,omitempty"`
-	RiskSubTypeName  *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
-	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s ModifyStrategyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyRequest) SetCustomType(v string) *ModifyStrategyRequest {
-	s.CustomType = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetCycleDays(v string) *ModifyStrategyRequest {
-	s.CycleDays = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetCycleStartTime(v string) *ModifyStrategyRequest {
-	s.CycleStartTime = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetId(v string) *ModifyStrategyRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetName(v string) *ModifyStrategyRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetRiskCustomParams(v string) *ModifyStrategyRequest {
-	s.RiskCustomParams = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetRiskSubTypeName(v string) *ModifyStrategyRequest {
-	s.RiskSubTypeName = &v
-	return s
-}
-
-func (s *ModifyStrategyRequest) SetSourceIp(v string) *ModifyStrategyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type ModifyStrategyResponseBody struct {
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *ModifyStrategyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ModifyStrategyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyResponseBody) SetHttpStatusCode(v int32) *ModifyStrategyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifyStrategyResponseBody) SetRequestId(v string) *ModifyStrategyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyStrategyResponseBody) SetResult(v *ModifyStrategyResponseBodyResult) *ModifyStrategyResponseBody {
-	s.Result = v
-	return s
-}
-
-func (s *ModifyStrategyResponseBody) SetSuccess(v bool) *ModifyStrategyResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ModifyStrategyResponseBody) SetTotalCount(v int32) *ModifyStrategyResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ModifyStrategyResponseBodyResult struct {
-	StrategyId *int32 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-}
-
-func (s ModifyStrategyResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyResponseBodyResult) SetStrategyId(v int32) *ModifyStrategyResponseBodyResult {
-	s.StrategyId = &v
-	return s
-}
-
-type ModifyStrategyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyStrategyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyResponse) SetHeaders(v map[string]*string) *ModifyStrategyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyStrategyResponse) SetBody(v *ModifyStrategyResponseBody) *ModifyStrategyResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyStrategyTargetRequest struct {
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ModifyStrategyTargetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyTargetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyTargetRequest) SetConfig(v string) *ModifyStrategyTargetRequest {
-	s.Config = &v
-	return s
-}
-
-func (s *ModifyStrategyTargetRequest) SetSourceIp(v string) *ModifyStrategyTargetRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyStrategyTargetRequest) SetTarget(v string) *ModifyStrategyTargetRequest {
-	s.Target = &v
-	return s
-}
-
-func (s *ModifyStrategyTargetRequest) SetType(v string) *ModifyStrategyTargetRequest {
-	s.Type = &v
-	return s
-}
-
-type ModifyStrategyTargetResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyStrategyTargetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyTargetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyTargetResponseBody) SetRequestId(v string) *ModifyStrategyTargetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyStrategyTargetResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyStrategyTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyStrategyTargetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyStrategyTargetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyStrategyTargetResponse) SetHeaders(v map[string]*string) *ModifyStrategyTargetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyStrategyTargetResponse) SetBody(v *ModifyStrategyTargetResponseBody) *ModifyStrategyTargetResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyTagWithUuidRequest struct {
 	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
 	TagId        *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
@@ -27521,200 +23351,6 @@ func (s *ModifyTagWithUuidResponse) SetHeaders(v map[string]*string) *ModifyTagW
 }
 
 func (s *ModifyTagWithUuidResponse) SetBody(v *ModifyTagWithUuidResponseBody) *ModifyTagWithUuidResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyUniBackupPolicyRequest struct {
-	AccountName     *string                `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword *string                `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	FullPlan        map[string]interface{} `json:"FullPlan,omitempty" xml:"FullPlan,omitempty"`
-	IncPlan         map[string]interface{} `json:"IncPlan,omitempty" xml:"IncPlan,omitempty"`
-	PolicyId        *int64                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName      *string                `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyStatus    *string                `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	ResourceOwnerId *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Retention       *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SourceIp        *string                `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	SpeedLimiter    *int64                 `json:"SpeedLimiter,omitempty" xml:"SpeedLimiter,omitempty"`
-}
-
-func (s ModifyUniBackupPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUniBackupPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetAccountName(v string) *ModifyUniBackupPolicyRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetAccountPassword(v string) *ModifyUniBackupPolicyRequest {
-	s.AccountPassword = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetFullPlan(v map[string]interface{}) *ModifyUniBackupPolicyRequest {
-	s.FullPlan = v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetIncPlan(v map[string]interface{}) *ModifyUniBackupPolicyRequest {
-	s.IncPlan = v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetPolicyId(v int64) *ModifyUniBackupPolicyRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetPolicyName(v string) *ModifyUniBackupPolicyRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetPolicyStatus(v string) *ModifyUniBackupPolicyRequest {
-	s.PolicyStatus = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyUniBackupPolicyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetRetention(v int32) *ModifyUniBackupPolicyRequest {
-	s.Retention = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetSourceIp(v string) *ModifyUniBackupPolicyRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyRequest) SetSpeedLimiter(v int64) *ModifyUniBackupPolicyRequest {
-	s.SpeedLimiter = &v
-	return s
-}
-
-type ModifyUniBackupPolicyShrinkRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	FullPlanShrink  *string `json:"FullPlan,omitempty" xml:"FullPlan,omitempty"`
-	IncPlanShrink   *string `json:"IncPlan,omitempty" xml:"IncPlan,omitempty"`
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyStatus    *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Retention       *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	SpeedLimiter    *int64  `json:"SpeedLimiter,omitempty" xml:"SpeedLimiter,omitempty"`
-}
-
-func (s ModifyUniBackupPolicyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUniBackupPolicyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetAccountName(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetAccountPassword(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.AccountPassword = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetFullPlanShrink(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.FullPlanShrink = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetIncPlanShrink(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.IncPlanShrink = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetPolicyId(v int64) *ModifyUniBackupPolicyShrinkRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetPolicyName(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetPolicyStatus(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.PolicyStatus = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetResourceOwnerId(v int64) *ModifyUniBackupPolicyShrinkRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetRetention(v int32) *ModifyUniBackupPolicyShrinkRequest {
-	s.Retention = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetSourceIp(v string) *ModifyUniBackupPolicyShrinkRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyShrinkRequest) SetSpeedLimiter(v int64) *ModifyUniBackupPolicyShrinkRequest {
-	s.SpeedLimiter = &v
-	return s
-}
-
-type ModifyUniBackupPolicyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyUniBackupPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUniBackupPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUniBackupPolicyResponseBody) SetRequestId(v string) *ModifyUniBackupPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyUniBackupPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyUniBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyUniBackupPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyUniBackupPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyUniBackupPolicyResponse) SetHeaders(v map[string]*string) *ModifyUniBackupPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyUniBackupPolicyResponse) SetBody(v *ModifyUniBackupPolicyResponseBody) *ModifyUniBackupPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -28231,63 +23867,6 @@ func (s *ModifyWebLockStatusResponse) SetHeaders(v map[string]*string) *ModifyWe
 }
 
 func (s *ModifyWebLockStatusResponse) SetBody(v *ModifyWebLockStatusResponseBody) *ModifyWebLockStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyWebLockUnbindRequest struct {
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s ModifyWebLockUnbindRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyWebLockUnbindRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyWebLockUnbindRequest) SetUuid(v string) *ModifyWebLockUnbindRequest {
-	s.Uuid = &v
-	return s
-}
-
-type ModifyWebLockUnbindResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyWebLockUnbindResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyWebLockUnbindResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyWebLockUnbindResponseBody) SetRequestId(v string) *ModifyWebLockUnbindResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyWebLockUnbindResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyWebLockUnbindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyWebLockUnbindResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyWebLockUnbindResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyWebLockUnbindResponse) SetHeaders(v map[string]*string) *ModifyWebLockUnbindResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyWebLockUnbindResponse) SetBody(v *ModifyWebLockUnbindResponseBody) *ModifyWebLockUnbindResponse {
 	s.Body = v
 	return s
 }
@@ -28837,81 +24416,6 @@ func (s *PauseClientResponse) SetBody(v *PauseClientResponseBody) *PauseClientRe
 	return s
 }
 
-type QueryDiscoverDatabaseRequest struct {
-	CreateMark      *string `json:"CreateMark,omitempty" xml:"CreateMark,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s QueryDiscoverDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDiscoverDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDiscoverDatabaseRequest) SetCreateMark(v string) *QueryDiscoverDatabaseRequest {
-	s.CreateMark = &v
-	return s
-}
-
-func (s *QueryDiscoverDatabaseRequest) SetResourceOwnerId(v int64) *QueryDiscoverDatabaseRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryDiscoverDatabaseRequest) SetSourceIp(v string) *QueryDiscoverDatabaseRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type QueryDiscoverDatabaseResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskProgress *int32  `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-}
-
-func (s QueryDiscoverDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDiscoverDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDiscoverDatabaseResponseBody) SetRequestId(v string) *QueryDiscoverDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryDiscoverDatabaseResponseBody) SetTaskProgress(v int32) *QueryDiscoverDatabaseResponseBody {
-	s.TaskProgress = &v
-	return s
-}
-
-type QueryDiscoverDatabaseResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryDiscoverDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryDiscoverDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDiscoverDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDiscoverDatabaseResponse) SetHeaders(v map[string]*string) *QueryDiscoverDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryDiscoverDatabaseResponse) SetBody(v *QueryDiscoverDatabaseResponseBody) *QueryDiscoverDatabaseResponse {
-	s.Body = v
-	return s
-}
-
 type QueryGroupIdByGroupNameRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -28977,123 +24481,6 @@ func (s *QueryGroupIdByGroupNameResponse) SetHeaders(v map[string]*string) *Quer
 }
 
 func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResponseBody) *QueryGroupIdByGroupNameResponse {
-	s.Body = v
-	return s
-}
-
-type QueryPreCheckDatabaseRequest struct {
-	InstanceUuid    *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UniRegionId     *string `json:"UniRegionId,omitempty" xml:"UniRegionId,omitempty"`
-}
-
-func (s QueryPreCheckDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryPreCheckDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryPreCheckDatabaseRequest) SetInstanceUuid(v string) *QueryPreCheckDatabaseRequest {
-	s.InstanceUuid = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseRequest) SetResourceOwnerId(v int64) *QueryPreCheckDatabaseRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseRequest) SetSourceIp(v string) *QueryPreCheckDatabaseRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseRequest) SetTaskId(v string) *QueryPreCheckDatabaseRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseRequest) SetUniRegionId(v string) *QueryPreCheckDatabaseRequest {
-	s.UniRegionId = &v
-	return s
-}
-
-type QueryPreCheckDatabaseResponseBody struct {
-	CompletedTime *int64  `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	CreatedTime   *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Progress      *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	UpdatedTime   *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-}
-
-func (s QueryPreCheckDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryPreCheckDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetCompletedTime(v int64) *QueryPreCheckDatabaseResponseBody {
-	s.CompletedTime = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetCreatedTime(v int64) *QueryPreCheckDatabaseResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetDescription(v string) *QueryPreCheckDatabaseResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetProgress(v int32) *QueryPreCheckDatabaseResponseBody {
-	s.Progress = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetRequestId(v string) *QueryPreCheckDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetResult(v string) *QueryPreCheckDatabaseResponseBody {
-	s.Result = &v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponseBody) SetUpdatedTime(v int64) *QueryPreCheckDatabaseResponseBody {
-	s.UpdatedTime = &v
-	return s
-}
-
-type QueryPreCheckDatabaseResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryPreCheckDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryPreCheckDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryPreCheckDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryPreCheckDatabaseResponse) SetHeaders(v map[string]*string) *QueryPreCheckDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryPreCheckDatabaseResponse) SetBody(v *QueryPreCheckDatabaseResponseBody) *QueryPreCheckDatabaseResponse {
 	s.Body = v
 	return s
 }
@@ -29208,6 +24595,63 @@ func (s *RefreshContainerAssetsResponse) SetHeaders(v map[string]*string) *Refre
 }
 
 func (s *RefreshContainerAssetsResponse) SetBody(v *RefreshContainerAssetsResponseBody) *RefreshContainerAssetsResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshContainerNetworkRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s RefreshContainerNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshContainerNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshContainerNetworkRequest) SetClusterId(v string) *RefreshContainerNetworkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type RefreshContainerNetworkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshContainerNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshContainerNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshContainerNetworkResponseBody) SetRequestId(v string) *RefreshContainerNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshContainerNetworkResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshContainerNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshContainerNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshContainerNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshContainerNetworkResponse) SetHeaders(v map[string]*string) *RefreshContainerNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshContainerNetworkResponse) SetBody(v *RefreshContainerNetworkResponseBody) *RefreshContainerNetworkResponse {
 	s.Body = v
 	return s
 }
@@ -29425,75 +24869,6 @@ func (s *StartBaselineSecurityCheckResponse) SetBody(v *StartBaselineSecurityChe
 	return s
 }
 
-type StartDiscoverDatabaseTaskRequest struct {
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s StartDiscoverDatabaseTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiscoverDatabaseTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiscoverDatabaseTaskRequest) SetResourceOwnerId(v int64) *StartDiscoverDatabaseTaskRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *StartDiscoverDatabaseTaskRequest) SetSourceIp(v string) *StartDiscoverDatabaseTaskRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type StartDiscoverDatabaseTaskResponseBody struct {
-	CreateMark *string `json:"CreateMark,omitempty" xml:"CreateMark,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartDiscoverDatabaseTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiscoverDatabaseTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiscoverDatabaseTaskResponseBody) SetCreateMark(v string) *StartDiscoverDatabaseTaskResponseBody {
-	s.CreateMark = &v
-	return s
-}
-
-func (s *StartDiscoverDatabaseTaskResponseBody) SetRequestId(v string) *StartDiscoverDatabaseTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartDiscoverDatabaseTaskResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartDiscoverDatabaseTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartDiscoverDatabaseTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartDiscoverDatabaseTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartDiscoverDatabaseTaskResponse) SetHeaders(v map[string]*string) *StartDiscoverDatabaseTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartDiscoverDatabaseTaskResponse) SetBody(v *StartDiscoverDatabaseTaskResponseBody) *StartDiscoverDatabaseTaskResponse {
-	s.Body = v
-	return s
-}
-
 type StartImageVulScanRequest struct {
 	ImageDigest    *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
 	ImageLayer     *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
@@ -29601,93 +24976,6 @@ func (s *StartImageVulScanResponse) SetHeaders(v map[string]*string) *StartImage
 }
 
 func (s *StartImageVulScanResponse) SetBody(v *StartImageVulScanResponseBody) *StartImageVulScanResponse {
-	s.Body = v
-	return s
-}
-
-type StartPreCheckDatabaseRequest struct {
-	DatabaseType    *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	InstanceUuid    *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	UniRegionId     *string `json:"UniRegionId,omitempty" xml:"UniRegionId,omitempty"`
-}
-
-func (s StartPreCheckDatabaseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartPreCheckDatabaseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartPreCheckDatabaseRequest) SetDatabaseType(v string) *StartPreCheckDatabaseRequest {
-	s.DatabaseType = &v
-	return s
-}
-
-func (s *StartPreCheckDatabaseRequest) SetInstanceUuid(v string) *StartPreCheckDatabaseRequest {
-	s.InstanceUuid = &v
-	return s
-}
-
-func (s *StartPreCheckDatabaseRequest) SetResourceOwnerId(v int64) *StartPreCheckDatabaseRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *StartPreCheckDatabaseRequest) SetSourceIp(v string) *StartPreCheckDatabaseRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *StartPreCheckDatabaseRequest) SetUniRegionId(v string) *StartPreCheckDatabaseRequest {
-	s.UniRegionId = &v
-	return s
-}
-
-type StartPreCheckDatabaseResponseBody struct {
-	CreateMark *string `json:"CreateMark,omitempty" xml:"CreateMark,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s StartPreCheckDatabaseResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartPreCheckDatabaseResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartPreCheckDatabaseResponseBody) SetCreateMark(v string) *StartPreCheckDatabaseResponseBody {
-	s.CreateMark = &v
-	return s
-}
-
-func (s *StartPreCheckDatabaseResponseBody) SetRequestId(v string) *StartPreCheckDatabaseResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type StartPreCheckDatabaseResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartPreCheckDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartPreCheckDatabaseResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartPreCheckDatabaseResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartPreCheckDatabaseResponse) SetHeaders(v map[string]*string) *StartPreCheckDatabaseResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartPreCheckDatabaseResponse) SetBody(v *StartPreCheckDatabaseResponseBody) *StartPreCheckDatabaseResponse {
 	s.Body = v
 	return s
 }
@@ -29881,132 +25169,6 @@ func (s *UninstallBackupClientResponse) SetBody(v *UninstallBackupClientResponse
 	return s
 }
 
-type UninstallUniBackupAgentRequest struct {
-	PolicyId        *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s UninstallUniBackupAgentRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallUniBackupAgentRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallUniBackupAgentRequest) SetPolicyId(v int64) *UninstallUniBackupAgentRequest {
-	s.PolicyId = &v
-	return s
-}
-
-func (s *UninstallUniBackupAgentRequest) SetResourceOwnerId(v int64) *UninstallUniBackupAgentRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UninstallUniBackupAgentRequest) SetSourceIp(v string) *UninstallUniBackupAgentRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type UninstallUniBackupAgentResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UninstallUniBackupAgentResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallUniBackupAgentResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallUniBackupAgentResponseBody) SetRequestId(v string) *UninstallUniBackupAgentResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UninstallUniBackupAgentResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UninstallUniBackupAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UninstallUniBackupAgentResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UninstallUniBackupAgentResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UninstallUniBackupAgentResponse) SetHeaders(v map[string]*string) *UninstallUniBackupAgentResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UninstallUniBackupAgentResponse) SetBody(v *UninstallUniBackupAgentResponseBody) *UninstallUniBackupAgentResponse {
-	s.Body = v
-	return s
-}
-
-type UpgradeBackupPolicyVersionRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s UpgradeBackupPolicyVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeBackupPolicyVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeBackupPolicyVersionRequest) SetId(v int64) *UpgradeBackupPolicyVersionRequest {
-	s.Id = &v
-	return s
-}
-
-type UpgradeBackupPolicyVersionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpgradeBackupPolicyVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeBackupPolicyVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeBackupPolicyVersionResponseBody) SetRequestId(v string) *UpgradeBackupPolicyVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpgradeBackupPolicyVersionResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeBackupPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpgradeBackupPolicyVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeBackupPolicyVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeBackupPolicyVersionResponse) SetHeaders(v map[string]*string) *UpgradeBackupPolicyVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpgradeBackupPolicyVersionResponse) SetBody(v *UpgradeBackupPolicyVersionResponseBody) *UpgradeBackupPolicyVersionResponse {
-	s.Body = v
-	return s
-}
-
 type ValidateHcWarningsRequest struct {
 	RiskIds  *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -30187,11 +25349,31 @@ func (client *Client) AddVpcHoneyPotWithOptions(request *AddVpcHoneyPotRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcSwitchId)) {
+		query["VpcSwitchId"] = request.VpcSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVpcHoneyPot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVpcHoneyPotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVpcHoneyPot"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30210,44 +25392,36 @@ func (client *Client) AddVpcHoneyPot(request *AddVpcHoneyPotRequest) (_result *A
 	return _result, _err
 }
 
-func (client *Client) CheckQuaraFileIdWithOptions(request *CheckQuaraFileIdRequest, runtime *util.RuntimeOptions) (_result *CheckQuaraFileIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CheckQuaraFileIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckQuaraFileId"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckQuaraFileId(request *CheckQuaraFileIdRequest) (_result *CheckQuaraFileIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckQuaraFileIdResponse{}
-	_body, _err := client.CheckQuaraFileIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckSecurityEventIdWithOptions(request *CheckSecurityEventIdRequest, runtime *util.RuntimeOptions) (_result *CheckSecurityEventIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventIds)) {
+		query["SecurityEventIds"] = request.SecurityEventIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckSecurityEventId"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckSecurityEventIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckSecurityEventId"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30271,11 +25445,55 @@ func (client *Client) CreateAntiBruteForceRuleWithOptions(request *CreateAntiBru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
+		query["DefaultRule"] = request.DefaultRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailCount)) {
+		query["FailCount"] = request.FailCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForbiddenTime)) {
+		query["ForbiddenTime"] = request.ForbiddenTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Span)) {
+		query["Span"] = request.Span
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAntiBruteForceRule"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAntiBruteForceRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAntiBruteForceRule"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30294,34 +25512,6 @@ func (client *Client) CreateAntiBruteForceRule(request *CreateAntiBruteForceRule
 	return _result, _err
 }
 
-func (client *Client) CreateAssetWithOptions(request *CreateAssetRequest, runtime *util.RuntimeOptions) (_result *CreateAssetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateAssetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAsset"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateAsset(request *CreateAssetRequest) (_result *CreateAssetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAssetResponse{}
-	_body, _err := client.CreateAssetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30333,11 +25523,43 @@ func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRe
 		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		query["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyRegionId)) {
+		query["PolicyRegionId"] = request.PolicyRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackupPolicy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30361,11 +25583,35 @@ func (client *Client) CreateOrUpdateAssetGroupWithOptions(request *CreateOrUpdat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateAssetGroup"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateOrUpdateAssetGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateOrUpdateAssetGroup"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30384,66 +25630,21 @@ func (client *Client) CreateOrUpdateAssetGroup(request *CreateOrUpdateAssetGroup
 	return _result, _err
 }
 
-func (client *Client) CreateRestoreJobWithOptions(request *CreateRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateRestoreJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRestoreJob"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_result *CreateRestoreJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRestoreJobResponse{}
-	_body, _err := client.CreateRestoreJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateSasOrderWithOptions(request *CreateSasOrderRequest, runtime *util.RuntimeOptions) (_result *CreateSasOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateSasOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSasOrder"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateSasOrder(request *CreateSasOrderRequest) (_result *CreateSasOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSasOrderResponse{}
-	_body, _err := client.CreateSasOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateServiceLinkedRoleWithOptions(runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceLinkedRole"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceLinkedRole"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30467,11 +25668,39 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithOptions(request *C
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventId)) {
+		query["SecurityEventId"] = request.SecurityEventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimilarEventScenarioCode)) {
+		query["SimilarEventScenarioCode"] = request.SimilarEventScenarioCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSimilarSecurityEventsQueryTask"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSimilarSecurityEventsQueryTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSimilarSecurityEventsQueryTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30490,110 +25719,36 @@ func (client *Client) CreateSimilarSecurityEventsQueryTask(request *CreateSimila
 	return _result, _err
 }
 
-func (client *Client) CreateUniBackupPolicyWithOptions(tmpReq *CreateUniBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateUniBackupPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateUniBackupPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FullPlan)) {
-		request.FullPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FullPlan, tea.String("FullPlan"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.IncPlan)) {
-		request.IncPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncPlan, tea.String("IncPlan"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateUniBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUniBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateUniBackupPolicy(request *CreateUniBackupPolicyRequest) (_result *CreateUniBackupPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateUniBackupPolicyResponse{}
-	_body, _err := client.CreateUniBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateUniRestorePlanWithOptions(request *CreateUniRestorePlanRequest, runtime *util.RuntimeOptions) (_result *CreateUniRestorePlanResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateUniRestorePlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUniRestorePlan"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateUniRestorePlan(request *CreateUniRestorePlanRequest) (_result *CreateUniRestorePlanResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateUniRestorePlanResponse{}
-	_body, _err := client.CreateUniRestorePlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAssetWithOptions(request *DeleteAssetRequest, runtime *util.RuntimeOptions) (_result *DeleteAssetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteAssetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAsset"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAsset(request *DeleteAssetRequest) (_result *DeleteAssetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAssetResponse{}
-	_body, _err := client.DeleteAssetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackupPolicy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30617,11 +25772,39 @@ func (client *Client) DeleteBackupPolicyMachineWithOptions(request *DeleteBackup
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackupPolicyMachine"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBackupPolicyMachineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBackupPolicyMachine"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30645,11 +25828,31 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroup"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteGroup"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30673,11 +25876,35 @@ func (client *Client) DeleteLoginBaseConfigWithOptions(request *DeleteLoginBaseC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLoginBaseConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLoginBaseConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLoginBaseConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30701,11 +25928,35 @@ func (client *Client) DeleteStrategyWithOptions(request *DeleteStrategyRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStrategy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStrategyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteStrategy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30729,11 +25980,31 @@ func (client *Client) DeleteTagWithUuidWithOptions(request *DeleteTagWithUuidReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTagWithUuid"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTagWithUuidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTagWithUuid"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30752,44 +26023,32 @@ func (client *Client) DeleteTagWithUuid(request *DeleteTagWithUuidRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) DeleteUniBackupPolicyWithOptions(request *DeleteUniBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteUniBackupPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteUniBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteUniBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteUniBackupPolicy(request *DeleteUniBackupPolicyRequest) (_result *DeleteUniBackupPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteUniBackupPolicyResponse{}
-	_body, _err := client.DeleteUniBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteVpcHoneyPotWithOptions(request *DeleteVpcHoneyPotRequest, runtime *util.RuntimeOptions) (_result *DeleteVpcHoneyPotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVpcHoneyPot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVpcHoneyPotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVpcHoneyPot"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30808,16 +26067,92 @@ func (client *Client) DeleteVpcHoneyPot(request *DeleteVpcHoneyPotRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeAccessKeyLeakDetailWithOptions(request *DescribeAccessKeyLeakDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessKeyLeakDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessKeyLeakDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessKeyLeakDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessKeyLeakDetail(request *DescribeAccessKeyLeakDetailRequest) (_result *DescribeAccessKeyLeakDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessKeyLeakDetailResponse{}
+	_body, _err := client.DescribeAccessKeyLeakDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAccesskeyLeakListWithOptions(request *DescribeAccesskeyLeakListRequest, runtime *util.RuntimeOptions) (_result *DescribeAccesskeyLeakListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccesskeyLeakList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAccesskeyLeakListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAccesskeyLeakList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30841,11 +26176,71 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
+		query["ImageDigest"] = request.ImageDigest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageLayer)) {
+		query["ImageLayer"] = request.ImageLayer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaliciousMd5)) {
+		query["MaliciousMd5"] = request.MaliciousMd5
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
+		query["RepoRegionId"] = request.RepoRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAffectedMaliciousFileImages"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAffectedMaliciousFileImagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAffectedMaliciousFileImages"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30869,11 +26264,39 @@ func (client *Client) DescribeAlarmEventDetailWithOptions(request *DescribeAlarm
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmUniqueInfo)) {
+		query["AlarmUniqueInfo"] = request.AlarmUniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlarmEventDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAlarmEventDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAlarmEventDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30897,11 +26320,71 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmEventName)) {
+		query["AlarmEventName"] = request.AlarmEventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlarmEventType)) {
+		query["AlarmEventType"] = request.AlarmEventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Levels)) {
+		query["Levels"] = request.Levels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateErrorCodeList)) {
+		query["OperateErrorCodeList"] = request.OperateErrorCodeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlarmEventList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAlarmEventListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAlarmEventList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30920,38 +26403,21 @@ func (client *Client) DescribeAlarmEventList(request *DescribeAlarmEventListRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeAlarmEventStackInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAlarmEventStackInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAlarmEventStackInfo(request *DescribeAlarmEventStackInfoRequest) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAlarmEventStackInfoResponse{}
-	_body, _err := client.DescribeAlarmEventStackInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeAllEntityWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAllEntityResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllEntity"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAllEntityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAllEntity"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30975,11 +26441,27 @@ func (client *Client) DescribeAllGroupsWithOptions(request *DescribeAllGroupsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllGroups"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAllGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAllGroups"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30998,44 +26480,36 @@ func (client *Client) DescribeAllGroups(request *DescribeAllGroupsRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) DescribeAllRegionsStatisticsWithOptions(request *DescribeAllRegionsStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeAllRegionsStatisticsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeAllRegionsStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAllRegionsStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAllRegionsStatistics(request *DescribeAllRegionsStatisticsRequest) (_result *DescribeAllRegionsStatisticsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAllRegionsStatisticsResponse{}
-	_body, _err := client.DescribeAllRegionsStatisticsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeAntiBruteForceRulesWithOptions(request *DescribeAntiBruteForceRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeAntiBruteForceRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAntiBruteForceRules"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAntiBruteForceRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAntiBruteForceRules"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31059,11 +26533,35 @@ func (client *Client) DescribeAssetDetailByUuidWithOptions(request *DescribeAsse
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAssetDetailByUuid"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAssetDetailByUuidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAssetDetailByUuid"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31087,11 +26585,27 @@ func (client *Client) DescribeAssetDetailByUuidsWithOptions(request *DescribeAss
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAssetDetailByUuids"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAssetDetailByUuidsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAssetDetailByUuids"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31112,8 +26626,19 @@ func (client *Client) DescribeAssetDetailByUuids(request *DescribeAssetDetailByU
 
 func (client *Client) DescribeAssetSummaryWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAssetSummaryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAssetSummary"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAssetSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAssetSummary"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31137,11 +26662,55 @@ func (client *Client) DescribeAttackAnalysisDataWithOptions(request *DescribeAtt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Base64)) {
+		query["Base64"] = request.Base64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAttackAnalysisData"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAttackAnalysisDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAttackAnalysisData"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31162,8 +26731,19 @@ func (client *Client) DescribeAttackAnalysisData(request *DescribeAttackAnalysis
 
 func (client *Client) DescribeAutoDelConfigWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAutoDelConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAutoDelConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAutoDelConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAutoDelConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31187,11 +26767,27 @@ func (client *Client) DescribeBackupClientsWithOptions(request *DescribeBackupCl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SupportRegionId)) {
+		query["SupportRegionId"] = request.SupportRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupClients"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupClientsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupClients"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31210,44 +26806,48 @@ func (client *Client) DescribeBackupClients(request *DescribeBackupClientsReques
 	return _result, _err
 }
 
-func (client *Client) DescribeBackupDirsWithOptions(request *DescribeBackupDirsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupDirsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeBackupDirsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupDirs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeBackupDirs(request *DescribeBackupDirsRequest) (_result *DescribeBackupDirsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeBackupDirsResponse{}
-	_body, _err := client.DescribeBackupDirsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotHash)) {
+		query["SnapshotHash"] = request.SnapshotHash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupFiles"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupFilesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupFiles"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31266,44 +26866,48 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribeBackupMachineStatusWithOptions(request *DescribeBackupMachineStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupMachineStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeBackupMachineStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupMachineStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeBackupMachineStatus(request *DescribeBackupMachineStatusRequest) (_result *DescribeBackupMachineStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeBackupMachineStatusResponse{}
-	_body, _err := client.DescribeBackupMachineStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeBackupPoliciesWithOptions(request *DescribeBackupPoliciesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineRemark)) {
+		query["MachineRemark"] = request.MachineRemark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPolicies"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicies"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31322,38 +26926,21 @@ func (client *Client) DescribeBackupPolicies(request *DescribeBackupPoliciesRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeBackupRestoreCountWithOptions(runtime *util.RuntimeOptions) (_result *DescribeBackupRestoreCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupRestoreCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeBackupRestoreCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupRestoreCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31377,11 +26964,31 @@ func (client *Client) DescribeBruteForceSummaryWithOptions(request *DescribeBrut
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBruteForceSummary"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBruteForceSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBruteForceSummary"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31405,11 +27012,27 @@ func (client *Client) DescribeCheckEcsWarningsWithOptions(request *DescribeCheck
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCheckEcsWarnings"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCheckEcsWarningsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCheckEcsWarnings"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31433,11 +27056,35 @@ func (client *Client) DescribeCheckWarningDetailWithOptions(request *DescribeChe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckWarningId)) {
+		query["CheckWarningId"] = request.CheckWarningId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCheckWarningDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCheckWarningDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCheckWarningDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31461,11 +27108,63 @@ func (client *Client) DescribeCheckWarningSummaryWithOptions(request *DescribeCh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskName)) {
+		query["RiskName"] = request.RiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskStatus)) {
+		query["RiskStatus"] = request.RiskStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
+		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeName)) {
+		query["TypeName"] = request.TypeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCheckWarningSummary"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCheckWarningSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCheckWarningSummary"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31489,11 +27188,51 @@ func (client *Client) DescribeCheckWarningsWithOptions(request *DescribeCheckWar
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
+		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCheckWarnings"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCheckWarningsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCheckWarnings"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31517,11 +27256,51 @@ func (client *Client) DescribeCloudCenterInstancesWithOptions(request *DescribeC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Importance)) {
+		query["Importance"] = request.Importance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalExp)) {
+		query["LogicalExp"] = request.LogicalExp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudCenterInstances"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCloudCenterInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCloudCenterInstances"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31542,8 +27321,19 @@ func (client *Client) DescribeCloudCenterInstances(request *DescribeCloudCenterI
 
 func (client *Client) DescribeCloudProductFieldStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeCloudProductFieldStatisticsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudProductFieldStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeCloudProductFieldStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCloudProductFieldStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31567,11 +27357,27 @@ func (client *Client) DescribeConcernNecessityWithOptions(request *DescribeConce
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConcernNecessity"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConcernNecessityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeConcernNecessity"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31595,11 +27401,27 @@ func (client *Client) DescribeContainerStatisticsWithOptions(request *DescribeCo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeContainerStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeContainerStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeContainerStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31618,16 +27440,108 @@ func (client *Client) DescribeContainerStatistics(request *DescribeContainerStat
 	return _result, _err
 }
 
+func (client *Client) DescribeContainerTagsWithOptions(request *DescribeContainerTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldName)) {
+		query["FieldName"] = request.FieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValue)) {
+		query["FieldValue"] = request.FieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeContainerTags"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeContainerTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeContainerTags(request *DescribeContainerTagsRequest) (_result *DescribeContainerTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeContainerTagsResponse{}
+	_body, _err := client.DescribeContainerTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCriteriaWithOptions(request *DescribeCriteriaRequest, runtime *util.RuntimeOptions) (_result *DescribeCriteriaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportAutoTag)) {
+		query["SupportAutoTag"] = request.SupportAutoTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCriteria"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCriteriaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCriteria"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31651,11 +27565,27 @@ func (client *Client) DescribeDialogMessagesWithOptions(request *DescribeDialogM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDialogMessages"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDialogMessagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDialogMessages"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31679,11 +27609,35 @@ func (client *Client) DescribeDingTalkWithOptions(request *DescribeDingTalkReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleActionName)) {
+		query["RuleActionName"] = request.RuleActionName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDingTalk"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDingTalkResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDingTalk"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31707,11 +27661,27 @@ func (client *Client) DescribeDomainCountWithOptions(request *DescribeDomainCoun
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31735,11 +27705,31 @@ func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDet
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31763,11 +27753,43 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainType)) {
+		query["DomainType"] = request.DomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDomain)) {
+		query["FuzzyDomain"] = request.FuzzyDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDomainList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31791,11 +27813,47 @@ func (client *Client) DescribeEmgVulItemWithOptions(request *DescribeEmgVulItemR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskStatus)) {
+		query["RiskStatus"] = request.RiskStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanType)) {
+		query["ScanType"] = request.ScanType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulName)) {
+		query["VulName"] = request.VulName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEmgVulItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEmgVulItemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEmgVulItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31814,44 +27872,32 @@ func (client *Client) DescribeEmgVulItem(request *DescribeEmgVulItemRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribeExcludeSystemPathWithOptions(request *DescribeExcludeSystemPathRequest, runtime *util.RuntimeOptions) (_result *DescribeExcludeSystemPathResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeExcludeSystemPathResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExcludeSystemPath"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeExcludeSystemPath(request *DescribeExcludeSystemPathRequest) (_result *DescribeExcludeSystemPathResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeExcludeSystemPathResponse{}
-	_body, _err := client.DescribeExcludeSystemPathWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeExportInfoWithOptions(request *DescribeExportInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeExportInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportId)) {
+		query["ExportId"] = request.ExportId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExportInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExportInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExportInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31875,11 +27921,27 @@ func (client *Client) DescribeExposedInstanceCriteriaWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposedInstanceCriteria"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExposedInstanceCriteriaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedInstanceCriteria"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31903,11 +27965,27 @@ func (client *Client) DescribeExposedInstanceDetailWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposedInstanceDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExposedInstanceDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedInstanceDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31931,11 +28009,63 @@ func (client *Client) DescribeExposedInstanceListWithOptions(request *DescribeEx
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExposureComponent)) {
+		query["ExposureComponent"] = request.ExposureComponent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExposureIp)) {
+		query["ExposureIp"] = request.ExposureIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExposurePort)) {
+		query["ExposurePort"] = request.ExposurePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatus)) {
+		query["HealthStatus"] = request.HealthStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulStatus)) {
+		query["VulStatus"] = request.VulStatus
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposedInstanceList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExposedInstanceListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedInstanceList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31954,32 +28084,21 @@ func (client *Client) DescribeExposedInstanceList(request *DescribeExposedInstan
 	return _result, _err
 }
 
-func (client *Client) DescribeExposedRiskNumWithOptions(runtime *util.RuntimeOptions) (_result *DescribeExposedRiskNumResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeExposedRiskNumResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedRiskNum"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeExposedRiskNum() (_result *DescribeExposedRiskNumResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeExposedRiskNumResponse{}
-	_body, _err := client.DescribeExposedRiskNumWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeExposedStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeExposedStatisticsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposedStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeExposedStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32003,11 +28122,43 @@ func (client *Client) DescribeExposedStatisticsDetailWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsType)) {
+		query["StatisticsType"] = request.StatisticsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsTypeGatewayType)) {
+		query["StatisticsTypeGatewayType"] = request.StatisticsTypeGatewayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsTypeInstanceValue)) {
+		query["StatisticsTypeInstanceValue"] = request.StatisticsTypeInstanceValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposedStatisticsDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExposedStatisticsDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExposedStatisticsDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32031,11 +28182,31 @@ func (client *Client) DescribeFieldStatisticsWithOptions(request *DescribeFieldS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFieldStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeFieldStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFieldStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32054,72 +28225,52 @@ func (client *Client) DescribeFieldStatistics(request *DescribeFieldStatisticsRe
 	return _result, _err
 }
 
-func (client *Client) DescribeFrontVulPatchListWithOptions(request *DescribeFrontVulPatchListRequest, runtime *util.RuntimeOptions) (_result *DescribeFrontVulPatchListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeFrontVulPatchListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeFrontVulPatchList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFrontVulPatchList(request *DescribeFrontVulPatchListRequest) (_result *DescribeFrontVulPatchListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFrontVulPatchListResponse{}
-	_body, _err := client.DescribeFrontVulPatchListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeGraph4InvestigationOnlineWithOptions(request *DescribeGraph4InvestigationOnlineRequest, runtime *util.RuntimeOptions) (_result *DescribeGraph4InvestigationOnlineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeGraph4InvestigationOnlineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGraph4InvestigationOnline"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeGraph4InvestigationOnline(request *DescribeGraph4InvestigationOnlineRequest) (_result *DescribeGraph4InvestigationOnlineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeGraph4InvestigationOnlineResponse{}
-	_body, _err := client.DescribeGraph4InvestigationOnlineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeGroupedContainerInstancesWithOptions(request *DescribeGroupedContainerInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupedContainerInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValue)) {
+		query["FieldValue"] = request.FieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupField)) {
+		query["GroupField"] = request.GroupField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalExp)) {
+		query["LogicalExp"] = request.LogicalExp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupedContainerInstances"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGroupedContainerInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedContainerInstances"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32143,11 +28294,51 @@ func (client *Client) DescribeGroupedInstancesWithOptions(request *DescribeGroup
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValue)) {
+		query["FieldValue"] = request.FieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupField)) {
+		query["GroupField"] = request.GroupField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoPage)) {
+		query["NoPage"] = request.NoPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupedInstances"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGroupedInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedInstances"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32171,11 +28362,75 @@ func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyMaliciousName)) {
+		query["FuzzyMaliciousName"] = request.FuzzyMaliciousName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
+		query["ImageDigest"] = request.ImageDigest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageLayer)) {
+		query["ImageLayer"] = request.ImageLayer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Levels)) {
+		query["Levels"] = request.Levels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
+		query["RepoRegionId"] = request.RepoRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupedMaliciousFiles"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGroupedMaliciousFilesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedMaliciousFiles"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32199,11 +28454,27 @@ func (client *Client) DescribeGroupedTagsWithOptions(request *DescribeGroupedTag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupedTags"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGroupedTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedTags"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32227,11 +28498,63 @@ func (client *Client) DescribeGroupedVulWithOptions(request *DescribeGroupedVulR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchTags)) {
+		query["SearchTags"] = request.SearchTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupedVul"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGroupedVulResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGroupedVul"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32252,8 +28575,19 @@ func (client *Client) DescribeGroupedVul(request *DescribeGroupedVulRequest) (_r
 
 func (client *Client) DescribeHoneyPotAuthWithOptions(runtime *util.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHoneyPotAuth"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeHoneyPotAuthResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeHoneyPotAuth"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32277,11 +28611,35 @@ func (client *Client) DescribeHoneyPotSuspStatisticsWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsDays)) {
+		query["StatisticsDays"] = request.StatisticsDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsKeyType)) {
+		query["StatisticsKeyType"] = request.StatisticsKeyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHoneyPotSuspStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeHoneyPotSuspStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeHoneyPotSuspStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32305,11 +28663,43 @@ func (client *Client) DescribeImageFixTaskWithOptions(request *DescribeImageFixT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageFixTask"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImageFixTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageFixTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32333,11 +28723,103 @@ func (client *Client) DescribeImageGroupedVulListWithOptions(request *DescribeIm
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CveId)) {
+		query["CveId"] = request.CveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
+		query["ImageDigest"] = request.ImageDigest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageLayer)) {
+		query["ImageLayer"] = request.ImageLayer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsLatest)) {
+		query["IsLatest"] = request.IsLatest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PatchId)) {
+		query["PatchId"] = request.PatchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
+		query["RepoRegionId"] = request.RepoRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageGroupedVulList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImageGroupedVulListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageGroupedVulList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32356,38 +28838,21 @@ func (client *Client) DescribeImageGroupedVulList(request *DescribeImageGroupedV
 	return _result, _err
 }
 
-func (client *Client) DescribeImageInstancesWithOptions(request *DescribeImageInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeImageInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeImageInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageInstances"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeImageInstances(request *DescribeImageInstancesRequest) (_result *DescribeImageInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeImageInstancesResponse{}
-	_body, _err := client.DescribeImageInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeImageScanAuthCountWithOptions(runtime *util.RuntimeOptions) (_result *DescribeImageScanAuthCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageScanAuthCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeImageScanAuthCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageScanAuthCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32408,8 +28873,19 @@ func (client *Client) DescribeImageScanAuthCount() (_result *DescribeImageScanAu
 
 func (client *Client) DescribeImageStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeImageStatisticsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeImageStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32433,11 +28909,107 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
+		query["RepoRegionId"] = request.RepoRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageVulList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImageVulListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImageVulList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32461,11 +29033,35 @@ func (client *Client) DescribeInstallCaptchaWithOptions(request *DescribeInstall
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Deadline)) {
+		query["Deadline"] = request.Deadline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstallCaptcha"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstallCaptchaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstallCaptcha"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32486,8 +29082,19 @@ func (client *Client) DescribeInstallCaptcha(request *DescribeInstallCaptchaRequ
 
 func (client *Client) DescribeInstallCodesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeInstallCodesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstallCodes"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeInstallCodesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstallCodes"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32511,11 +29118,35 @@ func (client *Client) DescribeInstanceAntiBruteForceRulesWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceAntiBruteForceRules"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceAntiBruteForceRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceAntiBruteForceRules"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32539,11 +29170,39 @@ func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeIns
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32567,11 +29226,31 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		query["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIpInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32595,11 +29274,31 @@ func (client *Client) DescribeLogstoreStorageWithOptions(request *DescribeLogsto
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogstoreStorage"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeLogstoreStorageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeLogstoreStorage"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32620,8 +29319,19 @@ func (client *Client) DescribeLogstoreStorage(request *DescribeLogstoreStorageRe
 
 func (client *Client) DescribeModuleConfigWithOptions(runtime *util.RuntimeOptions) (_result *DescribeModuleConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeModuleConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeModuleConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeModuleConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32645,11 +29355,27 @@ func (client *Client) DescribeNoticeConfigWithOptions(request *DescribeNoticeCon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNoticeConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeNoticeConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeNoticeConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32673,11 +29399,31 @@ func (client *Client) DescribePropertyCountWithOptions(request *DescribeProperty
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32701,11 +29447,47 @@ func (client *Client) DescribePropertyCronDetailWithOptions(request *DescribePro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyCronDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyCronDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyCronDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32729,11 +29511,47 @@ func (client *Client) DescribePropertyPortDetailWithOptions(request *DescribePro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcName)) {
+		query["ProcName"] = request.ProcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyPortDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyPortDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyPortDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32757,11 +29575,39 @@ func (client *Client) DescribePropertyPortItemWithOptions(request *DescribePrope
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceFlush)) {
+		query["ForceFlush"] = request.ForceFlush
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyPortItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyPortItemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyPortItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32785,11 +29631,51 @@ func (client *Client) DescribePropertyProcDetailWithOptions(request *DescribePro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cmdline)) {
+		query["Cmdline"] = request.Cmdline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyProcDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyProcDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyProcDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32813,11 +29699,39 @@ func (client *Client) DescribePropertyProcItemWithOptions(request *DescribePrope
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceFlush)) {
+		query["ForceFlush"] = request.ForceFlush
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyProcItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyProcItemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyProcItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32841,11 +29755,71 @@ func (client *Client) DescribePropertyScaDetailWithOptions(request *DescribeProp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaName)) {
+		query["ScaName"] = request.ScaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchInfo)) {
+		query["SearchInfo"] = request.SearchInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchInfoSub)) {
+		query["SearchInfoSub"] = request.SearchInfoSub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchItem)) {
+		query["SearchItem"] = request.SearchItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchItemSub)) {
+		query["SearchItemSub"] = request.SearchItemSub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyScaDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyScaDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyScaDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32869,11 +29843,51 @@ func (client *Client) DescribePropertySoftwareDetailWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoftwareVersion)) {
+		query["SoftwareVersion"] = request.SoftwareVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertySoftwareDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertySoftwareDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertySoftwareDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32897,11 +29911,39 @@ func (client *Client) DescribePropertySoftwareItemWithOptions(request *DescribeP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceFlush)) {
+		query["ForceFlush"] = request.ForceFlush
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertySoftwareItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertySoftwareItemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertySoftwareItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32925,11 +29967,27 @@ func (client *Client) DescribePropertyUsageNewestWithOptions(request *DescribePr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyUsageNewest"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyUsageNewestResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyUsageNewest"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32953,11 +30011,47 @@ func (client *Client) DescribePropertyUserDetailWithOptions(request *DescribePro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRoot)) {
+		query["IsRoot"] = request.IsRoot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyUserDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyUserDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyUserDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32981,11 +30075,39 @@ func (client *Client) DescribePropertyUserItemWithOptions(request *DescribePrope
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceFlush)) {
+		query["ForceFlush"] = request.ForceFlush
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePropertyUserItem"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePropertyUserItemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePropertyUserItem"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33004,44 +30126,44 @@ func (client *Client) DescribePropertyUserItem(request *DescribePropertyUserItem
 	return _result, _err
 }
 
-func (client *Client) DescribeQuaraFileDownloadInfoWithOptions(request *DescribeQuaraFileDownloadInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeQuaraFileDownloadInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeQuaraFileDownloadInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeQuaraFileDownloadInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeQuaraFileDownloadInfo(request *DescribeQuaraFileDownloadInfoRequest) (_result *DescribeQuaraFileDownloadInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeQuaraFileDownloadInfoResponse{}
-	_body, _err := client.DescribeQuaraFileDownloadInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRestoreJobsWithOptions(request *DescribeRestoreJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineRemark)) {
+		query["MachineRemark"] = request.MachineRemark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreJobs"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreJobs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33060,44 +30182,52 @@ func (client *Client) DescribeRestoreJobs(request *DescribeRestoreJobsRequest) (
 	return _result, _err
 }
 
-func (client *Client) DescribeRestorePlansWithOptions(request *DescribeRestorePlansRequest, runtime *util.RuntimeOptions) (_result *DescribeRestorePlansResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeRestorePlansResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestorePlans"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRestorePlans(request *DescribeRestorePlansRequest) (_result *DescribeRestorePlansResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRestorePlansResponse{}
-	_body, _err := client.DescribeRestorePlansWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRiskCheckItemResultWithOptions(request *DescribeRiskCheckItemResultRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskCheckItemResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		query["ItemId"] = request.ItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskCheckItemResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRiskCheckItemResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskCheckItemResult"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33121,11 +30251,71 @@ func (client *Client) DescribeRiskCheckResultWithOptions(request *DescribeRiskCh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
+		query["AssetType"] = request.AssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemIds)) {
+		query["ItemIds"] = request.ItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryFlag)) {
+		query["QueryFlag"] = request.QueryFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskCheckResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRiskCheckResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskCheckResult"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33149,11 +30339,39 @@ func (client *Client) DescribeRiskCheckSummaryWithOptions(request *DescribeRiskC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskCheckSummary"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRiskCheckSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskCheckSummary"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33177,11 +30395,35 @@ func (client *Client) DescribeRiskItemTypeWithOptions(request *DescribeRiskItemT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskItemType"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRiskItemTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskItemType"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33205,11 +30447,47 @@ func (client *Client) DescribeRiskListCheckResultWithOptions(request *DescribeRi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskListCheckResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRiskListCheckResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRiskListCheckResult"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33233,11 +30511,27 @@ func (client *Client) DescribeScanTaskProgressWithOptions(request *DescribeScanT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeScanTaskProgress"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeScanTaskProgressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeScanTaskProgress"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33261,11 +30555,35 @@ func (client *Client) DescribeSearchConditionWithOptions(request *DescribeSearch
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSearchCondition"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSearchConditionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSearchCondition"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33289,11 +30607,31 @@ func (client *Client) DescribeSecureSuggestionWithOptions(request *DescribeSecur
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecureSuggestion"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecureSuggestionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecureSuggestion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33317,11 +30655,35 @@ func (client *Client) DescribeSecurityCheckScheduleConfigWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityCheckScheduleConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecurityCheckScheduleConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecurityCheckScheduleConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33345,11 +30707,39 @@ func (client *Client) DescribeSecurityEventOperationStatusWithOptions(request *D
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventIds)) {
+		query["SecurityEventIds"] = request.SecurityEventIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityEventOperationStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecurityEventOperationStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecurityEventOperationStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33373,11 +30763,39 @@ func (client *Client) DescribeSecurityEventOperationsWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventId)) {
+		query["SecurityEventId"] = request.SecurityEventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityEventOperations"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecurityEventOperationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecurityEventOperations"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33401,11 +30819,35 @@ func (client *Client) DescribeSecurityStatInfoWithOptions(request *DescribeSecur
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityStatInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecurityStatInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecurityStatInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33426,8 +30868,19 @@ func (client *Client) DescribeSecurityStatInfo(request *DescribeSecurityStatInfo
 
 func (client *Client) DescribeServiceLinkedRoleStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceLinkedRoleStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceLinkedRoleStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeServiceLinkedRoleStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceLinkedRoleStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33451,11 +30904,35 @@ func (client *Client) DescribeSimilarEventScenariosWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventId)) {
+		query["SecurityEventId"] = request.SecurityEventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSimilarEventScenarios"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSimilarEventScenariosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSimilarEventScenarios"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33479,11 +30956,47 @@ func (client *Client) DescribeSimilarSecurityEventsWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSimilarSecurityEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSimilarSecurityEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSimilarSecurityEvents"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33502,44 +31015,44 @@ func (client *Client) DescribeSimilarSecurityEvents(request *DescribeSimilarSecu
 	return _result, _err
 }
 
-func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSnapshots"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeStrategyWithOptions(request *DescribeStrategyRequest, runtime *util.RuntimeOptions) (_result *DescribeStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomType)) {
+		query["CustomType"] = request.CustomType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyIds)) {
+		query["StrategyIds"] = request.StrategyIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStrategy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStrategyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStrategy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33563,11 +31076,39 @@ func (client *Client) DescribeStrategyExecDetailWithOptions(request *DescribeStr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
+		query["StrategyId"] = request.StrategyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStrategyExecDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStrategyExecDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStrategyExecDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33586,44 +31127,40 @@ func (client *Client) DescribeStrategyExecDetail(request *DescribeStrategyExecDe
 	return _result, _err
 }
 
-func (client *Client) DescribeStrategyProcessWithOptions(request *DescribeStrategyProcessRequest, runtime *util.RuntimeOptions) (_result *DescribeStrategyProcessResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeStrategyProcessResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStrategyProcess"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeStrategyProcess(request *DescribeStrategyProcessRequest) (_result *DescribeStrategyProcessResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeStrategyProcessResponse{}
-	_body, _err := client.DescribeStrategyProcessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeStrategyTargetWithOptions(request *DescribeStrategyTargetRequest, runtime *util.RuntimeOptions) (_result *DescribeStrategyTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStrategyTarget"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStrategyTargetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeStrategyTarget"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33647,11 +31184,35 @@ func (client *Client) DescribeSummaryInfoWithOptions(request *DescribeSummaryInf
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSummaryInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSummaryInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSummaryInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33672,8 +31233,19 @@ func (client *Client) DescribeSummaryInfo(request *DescribeSummaryInfoRequest) (
 
 func (client *Client) DescribeSupportRegionWithOptions(runtime *util.RuntimeOptions) (_result *DescribeSupportRegionResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSupportRegion"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSupportRegionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSupportRegion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33697,11 +31269,39 @@ func (client *Client) DescribeSuspEventDetailWithOptions(request *DescribeSuspEv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuspiciousEventId)) {
+		query["SuspiciousEventId"] = request.SuspiciousEventId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspEventDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSuspEventDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSuspEventDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33720,16 +31320,112 @@ func (client *Client) DescribeSuspEventDetail(request *DescribeSuspEventDetailRe
 	return _result, _err
 }
 
+func (client *Client) DescribeSuspEventExportInfoWithOptions(request *DescribeSuspEventExportInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeSuspEventExportInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportId)) {
+		query["ExportId"] = request.ExportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspEventExportInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSuspEventExportInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSuspEventExportInfo(request *DescribeSuspEventExportInfoRequest) (_result *DescribeSuspEventExportInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSuspEventExportInfoResponse{}
+	_body, _err := client.DescribeSuspEventExportInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSuspEventQuaraFilesWithOptions(request *DescribeSuspEventQuaraFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeSuspEventQuaraFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupingId)) {
+		query["GroupingId"] = request.GroupingId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuaraTag)) {
+		query["QuaraTag"] = request.QuaraTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspEventQuaraFiles"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSuspEventQuaraFilesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSuspEventQuaraFiles"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33753,11 +31449,111 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmUniqueInfo)) {
+		query["AlarmUniqueInfo"] = request.AlarmUniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldName)) {
+		query["ContainerFieldName"] = request.ContainerFieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldValue)) {
+		query["ContainerFieldValue"] = request.ContainerFieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventNames)) {
+		query["EventNames"] = request.EventNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Levels)) {
+		query["Levels"] = request.Levels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateErrorCodeList)) {
+		query["OperateErrorCodeList"] = request.OperateErrorCodeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentEventTypes)) {
+		query["ParentEventTypes"] = request.ParentEventTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
+		query["UniqueInfo"] = request.UniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSuspEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSuspEvents"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33776,16 +31572,32 @@ func (client *Client) DescribeSuspEvents(request *DescribeSuspEventsRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribeTaskErrorLogWithOptions(request *DescribeTaskErrorLogRequest, runtime *util.RuntimeOptions) (_result *DescribeTaskErrorLogResponse, _err error) {
+func (client *Client) DescribeSuspiciousUUIDConfigWithOptions(request *DescribeSuspiciousUUIDConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSuspiciousUUIDConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
-	_result = &DescribeTaskErrorLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTaskErrorLog"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSuspiciousUUIDConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSuspiciousUUIDConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33793,38 +31605,10 @@ func (client *Client) DescribeTaskErrorLogWithOptions(request *DescribeTaskError
 	return _result, _err
 }
 
-func (client *Client) DescribeTaskErrorLog(request *DescribeTaskErrorLogRequest) (_result *DescribeTaskErrorLogResponse, _err error) {
+func (client *Client) DescribeSuspiciousUUIDConfig(request *DescribeSuspiciousUUIDConfigRequest) (_result *DescribeSuspiciousUUIDConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeTaskErrorLogResponse{}
-	_body, _err := client.DescribeTaskErrorLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUniBackupDatabaseWithOptions(request *DescribeUniBackupDatabaseRequest, runtime *util.RuntimeOptions) (_result *DescribeUniBackupDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUniBackupDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniBackupDatabase"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUniBackupDatabase(request *DescribeUniBackupDatabaseRequest) (_result *DescribeUniBackupDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUniBackupDatabaseResponse{}
-	_body, _err := client.DescribeUniBackupDatabaseWithOptions(request, runtime)
+	_result = &DescribeSuspiciousUUIDConfigResponse{}
+	_body, _err := client.DescribeSuspiciousUUIDConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33837,11 +31621,43 @@ func (client *Client) DescribeUniBackupPoliciesWithOptions(request *DescribeUniB
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUniBackupPolicies"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUniBackupPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniBackupPolicies"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33860,110 +31676,21 @@ func (client *Client) DescribeUniBackupPolicies(request *DescribeUniBackupPolici
 	return _result, _err
 }
 
-func (client *Client) DescribeUniBackupPolicyDetailWithOptions(request *DescribeUniBackupPolicyDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeUniBackupPolicyDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUniBackupPolicyDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniBackupPolicyDetail"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUniBackupPolicyDetail(request *DescribeUniBackupPolicyDetailRequest) (_result *DescribeUniBackupPolicyDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUniBackupPolicyDetailResponse{}
-	_body, _err := client.DescribeUniBackupPolicyDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUniBackupStatisticsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUniBackupStatisticsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeUniBackupStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniBackupStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUniBackupStatistics() (_result *DescribeUniBackupStatisticsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUniBackupStatisticsResponse{}
-	_body, _err := client.DescribeUniBackupStatisticsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUniRecoverableListWithOptions(request *DescribeUniRecoverableListRequest, runtime *util.RuntimeOptions) (_result *DescribeUniRecoverableListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUniRecoverableListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniRecoverableList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUniRecoverableList(request *DescribeUniRecoverableListRequest) (_result *DescribeUniRecoverableListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUniRecoverableListResponse{}
-	_body, _err := client.DescribeUniRecoverableListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeUniSupportRegionWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUniSupportRegionResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeUniSupportRegionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUniSupportRegion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUniSupportRegion() (_result *DescribeUniSupportRegionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUniSupportRegionResponse{}
-	_body, _err := client.DescribeUniSupportRegionWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeUserBackupMachinesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeUserBackupMachinesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserBackupMachines"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeUserBackupMachinesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserBackupMachines"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33987,11 +31714,35 @@ func (client *Client) DescribeUserBaselineAuthorizationWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserBaselineAuthorization"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserBaselineAuthorizationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserBaselineAuthorization"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34015,11 +31766,35 @@ func (client *Client) DescribeUserLayoutAuthorizationWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserLayoutAuthorization"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserLayoutAuthorizationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUserLayoutAuthorization"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34038,44 +31813,36 @@ func (client *Client) DescribeUserLayoutAuthorization(request *DescribeUserLayou
 	return _result, _err
 }
 
-func (client *Client) DescribeUuidsByVulNamesWithOptions(request *DescribeUuidsByVulNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeUuidsByVulNamesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeUuidsByVulNamesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUuidsByVulNames"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUuidsByVulNames(request *DescribeUuidsByVulNamesRequest) (_result *DescribeUuidsByVulNamesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUuidsByVulNamesResponse{}
-	_body, _err := client.DescribeUuidsByVulNamesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeVersionConfigWithOptions(request *DescribeVersionConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeVersionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVersionConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVersionConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVersionConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34099,11 +31866,31 @@ func (client *Client) DescribeVolDingdingMessageWithOptions(request *DescribeVol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVolDingdingMessage"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVolDingdingMessageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVolDingdingMessage"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34124,8 +31911,19 @@ func (client *Client) DescribeVolDingdingMessage(request *DescribeVolDingdingMes
 
 func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcHoneyPotCriteria"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeVpcHoneyPotCriteriaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcHoneyPotCriteria"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34149,11 +31947,47 @@ func (client *Client) DescribeVpcHoneyPotListWithOptions(request *DescribeVpcHon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoneyPotExistence)) {
+		query["HoneyPotExistence"] = request.HoneyPotExistence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcName)) {
+		query["VpcName"] = request.VpcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcRegionId)) {
+		query["VpcRegionId"] = request.VpcRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcHoneyPotList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVpcHoneyPotListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcHoneyPotList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34174,8 +32008,19 @@ func (client *Client) DescribeVpcHoneyPotList(request *DescribeVpcHoneyPotListRe
 
 func (client *Client) DescribeVpcListWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVpcListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeVpcListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34199,11 +32044,39 @@ func (client *Client) DescribeVulDetailsWithOptions(request *DescribeVulDetailsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulDetails"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVulDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVulDetails"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34227,11 +32100,27 @@ func (client *Client) DescribeVulExportInfoWithOptions(request *DescribeVulExpor
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportId)) {
+		query["ExportId"] = request.ExportId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulExportInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVulExportInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVulExportInfo"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34255,11 +32144,71 @@ func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachTypes)) {
+		query["AttachTypes"] = request.AttachTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcInstanceIds)) {
+		query["VpcInstanceIds"] = request.VpcInstanceIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVulListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVulList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34278,16 +32227,96 @@ func (client *Client) DescribeVulList(request *DescribeVulListRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeVulListPageWithOptions(request *DescribeVulListPageRequest, runtime *util.RuntimeOptions) (_result *DescribeVulListPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CveId)) {
+		query["CveId"] = request.CveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulNameLike)) {
+		query["VulNameLike"] = request.VulNameLike
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulListPage"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVulListPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVulListPage(request *DescribeVulListPageRequest) (_result *DescribeVulListPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVulListPageResponse{}
+	_body, _err := client.DescribeVulListPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVulWhitelistWithOptions(request *DescribeVulWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeVulWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVulWhitelist"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVulWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVulWhitelist"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34311,11 +32340,55 @@ func (client *Client) DescribeWarningMachinesWithOptions(request *DescribeWarnin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineName)) {
+		query["MachineName"] = request.MachineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
+		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
+		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWarningMachines"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWarningMachinesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWarningMachines"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34339,11 +32412,47 @@ func (client *Client) DescribeWebLockBindListWithOptions(request *DescribeWebLoc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebLockBindList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWebLockBindListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWebLockBindList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34367,11 +32476,35 @@ func (client *Client) DescribeWebLockConfigListWithOptions(request *DescribeWebL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebLockConfigList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeWebLockConfigListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeWebLockConfigList"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34390,44 +32523,40 @@ func (client *Client) DescribeWebLockConfigList(request *DescribeWebLockConfigLi
 	return _result, _err
 }
 
-func (client *Client) ExecStrategyWithOptions(request *ExecStrategyRequest, runtime *util.RuntimeOptions) (_result *ExecStrategyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ExecStrategyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecStrategy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExecStrategy(request *ExecStrategyRequest) (_result *ExecStrategyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExecStrategyResponse{}
-	_body, _err := client.ExecStrategyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ExportRecordWithOptions(request *ExportRecordRequest, runtime *util.RuntimeOptions) (_result *ExportRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportRecord"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExportRecordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportRecord"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34446,16 +32575,168 @@ func (client *Client) ExportRecord(request *ExportRecordRequest) (_result *Expor
 	return _result, _err
 }
 
+func (client *Client) ExportSuspEventsWithOptions(request *ExportSuspEventsRequest, runtime *util.RuntimeOptions) (_result *ExportSuspEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldName)) {
+		query["ContainerFieldName"] = request.ContainerFieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldValue)) {
+		query["ContainerFieldValue"] = request.ContainerFieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Levels)) {
+		query["Levels"] = request.Levels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentEventTypes)) {
+		query["ParentEventTypes"] = request.ParentEventTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeEnd)) {
+		query["TimeEnd"] = request.TimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStart)) {
+		query["TimeStart"] = request.TimeStart
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportSuspEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportSuspEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportSuspEvents(request *ExportSuspEventsRequest) (_result *ExportSuspEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportSuspEventsResponse{}
+	_body, _err := client.ExportSuspEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *util.RuntimeOptions) (_result *ExportVulResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachTypes)) {
+		query["AttachTypes"] = request.AttachTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchTags)) {
+		query["SearchTags"] = request.SearchTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcInstanceIds)) {
+		query["VpcInstanceIds"] = request.VpcInstanceIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportVul"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExportVulResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportVul"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34474,16 +32755,148 @@ func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulRe
 	return _result, _err
 }
 
+func (client *Client) ExportWarningWithOptions(request *ExportWarningRequest, runtime *util.RuntimeOptions) (_result *ExportWarningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCleartextPwd)) {
+		query["IsCleartextPwd"] = request.IsCleartextPwd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSummaryExport)) {
+		query["IsSummaryExport"] = request.IsSummaryExport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskIds)) {
+		query["RiskIds"] = request.RiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevels)) {
+		query["RiskLevels"] = request.RiskLevels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskName)) {
+		query["RiskName"] = request.RiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
+		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubTypeNames)) {
+		query["SubTypeNames"] = request.SubTypeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeName)) {
+		query["TypeName"] = request.TypeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeNames)) {
+		query["TypeNames"] = request.TypeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportWarning"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportWarningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportWarning(request *ExportWarningRequest) (_result *ExportWarningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportWarningResponse{}
+	_body, _err := client.ExportWarningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FixCheckWarningsWithOptions(request *FixCheckWarningsRequest, runtime *util.RuntimeOptions) (_result *FixCheckWarningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckParams)) {
+		query["CheckParams"] = request.CheckParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
+		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FixCheckWarnings"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FixCheckWarningsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FixCheckWarnings"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34504,8 +32917,19 @@ func (client *Client) FixCheckWarnings(request *FixCheckWarningsRequest) (_resul
 
 func (client *Client) GetBackupStorageCountWithOptions(runtime *util.RuntimeOptions) (_result *GetBackupStorageCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetBackupStorageCount"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetBackupStorageCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBackupStorageCount"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34524,128 +32948,36 @@ func (client *Client) GetBackupStorageCount() (_result *GetBackupStorageCountRes
 	return _result, _err
 }
 
-func (client *Client) GetIOCsWithOptions(request *GetIOCsRequest, runtime *util.RuntimeOptions) (_result *GetIOCsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetIOCsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetIOCs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetIOCs(request *GetIOCsRequest) (_result *GetIOCsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetIOCsResponse{}
-	_body, _err := client.GetIOCsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetIncIOCsWithOptions(request *GetIncIOCsRequest, runtime *util.RuntimeOptions) (_result *GetIncIOCsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetIncIOCsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetIncIOCs"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetIncIOCs(request *GetIncIOCsRequest) (_result *GetIncIOCsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetIncIOCsResponse{}
-	_body, _err := client.GetIncIOCsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetLocalInstallScriptWithOptions(request *GetLocalInstallScriptRequest, runtime *util.RuntimeOptions) (_result *GetLocalInstallScriptResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetLocalInstallScriptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLocalInstallScript"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetLocalInstallScript(request *GetLocalInstallScriptRequest) (_result *GetLocalInstallScriptResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetLocalInstallScriptResponse{}
-	_body, _err := client.GetLocalInstallScriptWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetLocalUninstallScriptWithOptions(request *GetLocalUninstallScriptRequest, runtime *util.RuntimeOptions) (_result *GetLocalUninstallScriptResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetLocalUninstallScriptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLocalUninstallScript"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetLocalUninstallScript(request *GetLocalUninstallScriptRequest) (_result *GetLocalUninstallScriptResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetLocalUninstallScriptResponse{}
-	_body, _err := client.GetLocalUninstallScriptWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetSuspiciousStatisticsWithOptions(request *GetSuspiciousStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetSuspiciousStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupIdList)) {
+		query["GroupIdList"] = request.GroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSuspiciousStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSuspiciousStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSuspiciousStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34669,11 +33001,35 @@ func (client *Client) GetVulStatisticsWithOptions(request *GetVulStatisticsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupIdList)) {
+		query["GroupIdList"] = request.GroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeList)) {
+		query["TypeList"] = request.TypeList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVulStatistics"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVulStatisticsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVulStatistics"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34697,11 +33053,47 @@ func (client *Client) HandleSecurityEventsWithOptions(request *HandleSecurityEve
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MarkBatch)) {
+		query["MarkBatch"] = request.MarkBatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MarkMissParam)) {
+		query["MarkMissParam"] = request.MarkMissParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationCode)) {
+		query["OperationCode"] = request.OperationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationParams)) {
+		query["OperationParams"] = request.OperationParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventIds)) {
+		query["SecurityEventIds"] = request.SecurityEventIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HandleSecurityEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &HandleSecurityEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("HandleSecurityEvents"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34725,11 +33117,47 @@ func (client *Client) HandleSimilarSecurityEventsWithOptions(request *HandleSimi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MarkMissParam)) {
+		query["MarkMissParam"] = request.MarkMissParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationCode)) {
+		query["OperationCode"] = request.OperationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationParams)) {
+		query["OperationParams"] = request.OperationParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HandleSimilarSecurityEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &HandleSimilarSecurityEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("HandleSimilarSecurityEvents"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34753,11 +33181,47 @@ func (client *Client) IgnoreHcCheckWarningsWithOptions(request *IgnoreHcCheckWar
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckIds)) {
+		query["CheckIds"] = request.CheckIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckWarningIds)) {
+		query["CheckWarningIds"] = request.CheckWarningIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskId)) {
+		query["RiskId"] = request.RiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IgnoreHcCheckWarnings"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &IgnoreHcCheckWarningsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("IgnoreHcCheckWarnings"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34781,11 +33245,35 @@ func (client *Client) InstallBackupClientWithOptions(request *InstallBackupClien
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallBackupClient"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &InstallBackupClientResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InstallBackupClient"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34804,44 +33292,64 @@ func (client *Client) InstallBackupClient(request *InstallBackupClientRequest) (
 	return _result, _err
 }
 
-func (client *Client) InstallUniBackupAgentWithOptions(request *InstallUniBackupAgentRequest, runtime *util.RuntimeOptions) (_result *InstallUniBackupAgentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &InstallUniBackupAgentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InstallUniBackupAgent"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InstallUniBackupAgent(request *InstallUniBackupAgentRequest) (_result *InstallUniBackupAgentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InstallUniBackupAgentResponse{}
-	_body, _err := client.InstallUniBackupAgentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyAntiBruteForceRuleWithOptions(request *ModifyAntiBruteForceRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyAntiBruteForceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
+		query["DefaultRule"] = request.DefaultRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailCount)) {
+		query["FailCount"] = request.FailCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForbiddenTime)) {
+		query["ForbiddenTime"] = request.ForbiddenTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Span)) {
+		query["Span"] = request.Span
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAntiBruteForceRule"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAntiBruteForceRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAntiBruteForceRule"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34865,11 +33373,35 @@ func (client *Client) ModifyAssetGroupWithOptions(request *ModifyAssetGroupReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAssetGroup"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAssetGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAssetGroup"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34899,11 +33431,47 @@ func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRe
 		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, tea.String("Policy"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyShrink)) {
+		query["Policy"] = request.PolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyRegionId)) {
+		query["PolicyRegionId"] = request.PolicyRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPolicy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34927,11 +33495,35 @@ func (client *Client) ModifyBackupPolicyStatusWithOptions(request *ModifyBackupP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPolicyStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyBackupPolicyStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPolicyStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34950,16 +33542,88 @@ func (client *Client) ModifyBackupPolicyStatus(request *ModifyBackupPolicyStatus
 	return _result, _err
 }
 
+func (client *Client) ModifyClearLogstoreStorageWithOptions(request *ModifyClearLogstoreStorageRequest, runtime *util.RuntimeOptions) (_result *ModifyClearLogstoreStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClearLogstoreStorage"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyClearLogstoreStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyClearLogstoreStorage(request *ModifyClearLogstoreStorageRequest) (_result *ModifyClearLogstoreStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyClearLogstoreStorageResponse{}
+	_body, _err := client.ModifyClearLogstoreStorageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyCreateVulWhitelistWithOptions(request *ModifyCreateVulWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyCreateVulWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInfo)) {
+		query["TargetInfo"] = request.TargetInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Whitelist)) {
+		query["Whitelist"] = request.Whitelist
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCreateVulWhitelist"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyCreateVulWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyCreateVulWhitelist"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34983,11 +33647,35 @@ func (client *Client) ModifyEmgVulSubmitWithOptions(request *ModifyEmgVulSubmitR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAgreement)) {
+		query["UserAgreement"] = request.UserAgreement
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyEmgVulSubmit"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyEmgVulSubmitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyEmgVulSubmit"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35011,11 +33699,27 @@ func (client *Client) ModifyGroupPropertyWithOptions(request *ModifyGroupPropert
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGroupProperty"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGroupPropertyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyGroupProperty"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35039,11 +33743,39 @@ func (client *Client) ModifyInstanceAntiBruteForceRuleWithOptions(request *Modif
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewRuleId)) {
+		query["NewRuleId"] = request.NewRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceAntiBruteForceRule"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceAntiBruteForceRuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceAntiBruteForceRule"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35067,11 +33799,35 @@ func (client *Client) ModifyLoginBaseConfigWithOptions(request *ModifyLoginBaseC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLoginBaseConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLoginBaseConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyLoginBaseConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35095,11 +33851,31 @@ func (client *Client) ModifyLoginSwitchConfigWithOptions(request *ModifyLoginSwi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Item)) {
+		query["Item"] = request.Item
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLoginSwitchConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLoginSwitchConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyLoginSwitchConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35118,44 +33894,32 @@ func (client *Client) ModifyLoginSwitchConfig(request *ModifyLoginSwitchConfigRe
 	return _result, _err
 }
 
-func (client *Client) ModifyNoticeConfigWithOptions(request *ModifyNoticeConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyNoticeConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyNoticeConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyNoticeConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyNoticeConfig(request *ModifyNoticeConfigRequest) (_result *ModifyNoticeConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyNoticeConfigResponse{}
-	_body, _err := client.ModifyNoticeConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyOpenLogShipperWithOptions(request *ModifyOpenLogShipperRequest, runtime *util.RuntimeOptions) (_result *ModifyOpenLogShipperResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyOpenLogShipper"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyOpenLogShipperResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyOpenLogShipper"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35179,11 +33943,39 @@ func (client *Client) ModifyOperateVulWithOptions(request *ModifyOperateVulReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Info)) {
+		query["Info"] = request.Info
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyOperateVul"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyOperateVulResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyOperateVul"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35207,11 +33999,35 @@ func (client *Client) ModifyPushAllTaskWithOptions(request *ModifyPushAllTaskReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		query["Tasks"] = request.Tasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPushAllTask"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPushAllTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPushAllTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35235,11 +34051,47 @@ func (client *Client) ModifyRiskCheckStatusWithOptions(request *ModifyRiskCheckS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		query["ItemId"] = request.ItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRiskCheckStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRiskCheckStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyRiskCheckStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35263,11 +34115,47 @@ func (client *Client) ModifyRiskSingleResultStatusWithOptions(request *ModifyRis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRiskSingleResultStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRiskSingleResultStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyRiskSingleResultStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35291,11 +34179,47 @@ func (client *Client) ModifySecurityCheckScheduleConfigWithOptions(request *Modi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DaysOfWeek)) {
+		query["DaysOfWeek"] = request.DaysOfWeek
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySecurityCheckScheduleConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySecurityCheckScheduleConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySecurityCheckScheduleConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35319,11 +34243,31 @@ func (client *Client) ModifyStartVulScanWithOptions(request *ModifyStartVulScanR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["Types"] = request.Types
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStartVulScan"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyStartVulScanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyStartVulScan"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35342,72 +34286,44 @@ func (client *Client) ModifyStartVulScan(request *ModifyStartVulScanRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ModifyStrategyWithOptions(request *ModifyStrategyRequest, runtime *util.RuntimeOptions) (_result *ModifyStrategyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyStrategyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyStrategy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyStrategy(request *ModifyStrategyRequest) (_result *ModifyStrategyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyStrategyResponse{}
-	_body, _err := client.ModifyStrategyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyStrategyTargetWithOptions(request *ModifyStrategyTargetRequest, runtime *util.RuntimeOptions) (_result *ModifyStrategyTargetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyStrategyTargetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyStrategyTarget"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyStrategyTarget(request *ModifyStrategyTargetRequest) (_result *ModifyStrategyTargetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyStrategyTargetResponse{}
-	_body, _err := client.ModifyStrategyTargetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyTagWithUuidWithOptions(request *ModifyTagWithUuidRequest, runtime *util.RuntimeOptions) (_result *ModifyTagWithUuidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MachineTypes)) {
+		query["MachineTypes"] = request.MachineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagList)) {
+		query["TagList"] = request.TagList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTagWithUuid"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyTagWithUuidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyTagWithUuid"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35426,54 +34342,36 @@ func (client *Client) ModifyTagWithUuid(request *ModifyTagWithUuidRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ModifyUniBackupPolicyWithOptions(tmpReq *ModifyUniBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyUniBackupPolicyResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ModifyUniBackupPolicyShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FullPlan)) {
-		request.FullPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FullPlan, tea.String("FullPlan"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.IncPlan)) {
-		request.IncPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncPlan, tea.String("IncPlan"), tea.String("json"))
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyUniBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyUniBackupPolicy"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyUniBackupPolicy(request *ModifyUniBackupPolicyRequest) (_result *ModifyUniBackupPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyUniBackupPolicyResponse{}
-	_body, _err := client.ModifyUniBackupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyVpcHoneyPotWithOptions(request *ModifyVpcHoneyPotRequest, runtime *util.RuntimeOptions) (_result *ModifyVpcHoneyPotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HoneyPotAction)) {
+		query["HoneyPotAction"] = request.HoneyPotAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVpcHoneyPot"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyVpcHoneyPotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyVpcHoneyPot"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35497,11 +34395,39 @@ func (client *Client) ModifyVulTargetConfigWithOptions(request *ModifyVulTargetC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVulTargetConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyVulTargetConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyVulTargetConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35525,11 +34451,71 @@ func (client *Client) ModifyWebLockCreateConfigWithOptions(request *ModifyWebLoc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenceMode)) {
+		query["DefenceMode"] = request.DefenceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dir)) {
+		query["Dir"] = request.Dir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveDir)) {
+		query["ExclusiveDir"] = request.ExclusiveDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFile)) {
+		query["ExclusiveFile"] = request.ExclusiveFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFileType)) {
+		query["ExclusiveFileType"] = request.ExclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InclusiveFile)) {
+		query["InclusiveFile"] = request.InclusiveFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InclusiveFileType)) {
+		query["InclusiveFileType"] = request.InclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalBackupDir)) {
+		query["LocalBackupDir"] = request.LocalBackupDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebLockCreateConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyWebLockCreateConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockCreateConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35553,11 +34539,39 @@ func (client *Client) ModifyWebLockDeleteConfigWithOptions(request *ModifyWebLoc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebLockDeleteConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyWebLockDeleteConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockDeleteConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35581,11 +34595,59 @@ func (client *Client) ModifyWebLockStartWithOptions(request *ModifyWebLockStartR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenceMode)) {
+		query["DefenceMode"] = request.DefenceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dir)) {
+		query["Dir"] = request.Dir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveDir)) {
+		query["ExclusiveDir"] = request.ExclusiveDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFile)) {
+		query["ExclusiveFile"] = request.ExclusiveFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFileType)) {
+		query["ExclusiveFileType"] = request.ExclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InclusiveFileType)) {
+		query["InclusiveFileType"] = request.InclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalBackupDir)) {
+		query["LocalBackupDir"] = request.LocalBackupDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebLockStart"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyWebLockStartResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockStart"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35609,11 +34671,39 @@ func (client *Client) ModifyWebLockStatusWithOptions(request *ModifyWebLockStatu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebLockStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyWebLockStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockStatus"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35632,44 +34722,80 @@ func (client *Client) ModifyWebLockStatus(request *ModifyWebLockStatusRequest) (
 	return _result, _err
 }
 
-func (client *Client) ModifyWebLockUnbindWithOptions(request *ModifyWebLockUnbindRequest, runtime *util.RuntimeOptions) (_result *ModifyWebLockUnbindResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyWebLockUnbindResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockUnbind"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyWebLockUnbind(request *ModifyWebLockUnbindRequest) (_result *ModifyWebLockUnbindResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyWebLockUnbindResponse{}
-	_body, _err := client.ModifyWebLockUnbindWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyWebLockUpdateConfigWithOptions(request *ModifyWebLockUpdateConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyWebLockUpdateConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenceMode)) {
+		query["DefenceMode"] = request.DefenceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dir)) {
+		query["Dir"] = request.Dir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveDir)) {
+		query["ExclusiveDir"] = request.ExclusiveDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFile)) {
+		query["ExclusiveFile"] = request.ExclusiveFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExclusiveFileType)) {
+		query["ExclusiveFileType"] = request.ExclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InclusiveFile)) {
+		query["InclusiveFile"] = request.InclusiveFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InclusiveFileType)) {
+		query["InclusiveFileType"] = request.InclusiveFileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalBackupDir)) {
+		query["LocalBackupDir"] = request.LocalBackupDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyWebLockUpdateConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyWebLockUpdateConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyWebLockUpdateConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35693,11 +34819,31 @@ func (client *Client) OperateAgentClientInstallWithOptions(request *OperateAgent
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateAgentClientInstall"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OperateAgentClientInstallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OperateAgentClientInstall"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35721,11 +34867,43 @@ func (client *Client) OperateSuspiciousTargetConfigWithOptions(request *OperateS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetOperations)) {
+		query["TargetOperations"] = request.TargetOperations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateSuspiciousTargetConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OperateSuspiciousTargetConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OperateSuspiciousTargetConfig"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35749,11 +34927,39 @@ func (client *Client) OperateVulsWithOptions(request *OperateVulsRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulNames)) {
+		query["VulNames"] = request.VulNames
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperateVuls"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OperateVulsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OperateVuls"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35777,11 +34983,47 @@ func (client *Client) OperationSuspEventsWithOptions(request *OperationSuspEvent
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		query["Operation"] = request.Operation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubOperation)) {
+		query["SubOperation"] = request.SubOperation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuspiciousEventIds)) {
+		query["SuspiciousEventIds"] = request.SuspiciousEventIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarnType)) {
+		query["WarnType"] = request.WarnType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperationSuspEvents"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OperationSuspEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OperationSuspEvents"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35805,11 +35047,31 @@ func (client *Client) PauseClientWithOptions(request *PauseClientRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseClient"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PauseClientResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PauseClient"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35828,44 +35090,36 @@ func (client *Client) PauseClient(request *PauseClientRequest) (_result *PauseCl
 	return _result, _err
 }
 
-func (client *Client) QueryDiscoverDatabaseWithOptions(request *QueryDiscoverDatabaseRequest, runtime *util.RuntimeOptions) (_result *QueryDiscoverDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryDiscoverDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDiscoverDatabase"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryDiscoverDatabase(request *QueryDiscoverDatabaseRequest) (_result *QueryDiscoverDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryDiscoverDatabaseResponse{}
-	_body, _err := client.QueryDiscoverDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryGroupIdByGroupNameWithOptions(request *QueryGroupIdByGroupNameRequest, runtime *util.RuntimeOptions) (_result *QueryGroupIdByGroupNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGroupIdByGroupName"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryGroupIdByGroupNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryGroupIdByGroupName"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35884,44 +35138,32 @@ func (client *Client) QueryGroupIdByGroupName(request *QueryGroupIdByGroupNameRe
 	return _result, _err
 }
 
-func (client *Client) QueryPreCheckDatabaseWithOptions(request *QueryPreCheckDatabaseRequest, runtime *util.RuntimeOptions) (_result *QueryPreCheckDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryPreCheckDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPreCheckDatabase"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryPreCheckDatabase(request *QueryPreCheckDatabaseRequest) (_result *QueryPreCheckDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryPreCheckDatabaseResponse{}
-	_body, _err := client.QueryPreCheckDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RefreshAssetsWithOptions(request *RefreshAssetsRequest, runtime *util.RuntimeOptions) (_result *RefreshAssetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
+		query["AssetType"] = request.AssetType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshAssets"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshAssetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshAssets"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35945,11 +35187,27 @@ func (client *Client) RefreshContainerAssetsWithOptions(request *RefreshContaine
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
+		query["AssetType"] = request.AssetType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshContainerAssets"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshContainerAssetsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshContainerAssets"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35968,16 +35226,84 @@ func (client *Client) RefreshContainerAssets(request *RefreshContainerAssetsRequ
 	return _result, _err
 }
 
+func (client *Client) RefreshContainerNetworkWithOptions(request *RefreshContainerNetworkRequest, runtime *util.RuntimeOptions) (_result *RefreshContainerNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshContainerNetwork"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshContainerNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshContainerNetwork(request *RefreshContainerNetworkRequest) (_result *RefreshContainerNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshContainerNetworkResponse{}
+	_body, _err := client.RefreshContainerNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RollbackSuspEventQuaraFileWithOptions(request *RollbackSuspEventQuaraFileRequest, runtime *util.RuntimeOptions) (_result *RollbackSuspEventQuaraFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuaraFileId)) {
+		query["QuaraFileId"] = request.QuaraFileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackSuspEventQuaraFile"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RollbackSuspEventQuaraFileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RollbackSuspEventQuaraFile"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36001,11 +35327,27 @@ func (client *Client) SasInstallCodeWithOptions(request *SasInstallCodeRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SasInstallCode"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SasInstallCodeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SasInstallCode"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36029,11 +35371,43 @@ func (client *Client) StartBaselineSecurityCheckWithOptions(request *StartBaseli
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ItemIds)) {
+		query["ItemIds"] = request.ItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartBaselineSecurityCheck"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartBaselineSecurityCheckResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartBaselineSecurityCheck"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36052,44 +35426,68 @@ func (client *Client) StartBaselineSecurityCheck(request *StartBaselineSecurityC
 	return _result, _err
 }
 
-func (client *Client) StartDiscoverDatabaseTaskWithOptions(request *StartDiscoverDatabaseTaskRequest, runtime *util.RuntimeOptions) (_result *StartDiscoverDatabaseTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartDiscoverDatabaseTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartDiscoverDatabaseTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartDiscoverDatabaseTask(request *StartDiscoverDatabaseTaskRequest) (_result *StartDiscoverDatabaseTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartDiscoverDatabaseTaskResponse{}
-	_body, _err := client.StartDiscoverDatabaseTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) StartImageVulScanWithOptions(request *StartImageVulScanRequest, runtime *util.RuntimeOptions) (_result *StartImageVulScanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageDigest)) {
+		query["ImageDigest"] = request.ImageDigest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageLayer)) {
+		query["ImageLayer"] = request.ImageLayer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistryTypes)) {
+		query["RegistryTypes"] = request.RegistryTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepName)) {
+		query["RepName"] = request.RepName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoInstanceId)) {
+		query["RepoInstanceId"] = request.RepoInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespace)) {
+		query["RepoNamespace"] = request.RepoNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoRegionId)) {
+		query["RepoRegionId"] = request.RepoRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartImageVulScan"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartImageVulScanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartImageVulScan"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36108,44 +35506,32 @@ func (client *Client) StartImageVulScan(request *StartImageVulScanRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) StartPreCheckDatabaseWithOptions(request *StartPreCheckDatabaseRequest, runtime *util.RuntimeOptions) (_result *StartPreCheckDatabaseResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartPreCheckDatabaseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartPreCheckDatabase"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartPreCheckDatabase(request *StartPreCheckDatabaseRequest) (_result *StartPreCheckDatabaseResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartPreCheckDatabaseResponse{}
-	_body, _err := client.StartPreCheckDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) StartVirusScanTaskWithOptions(request *StartVirusScanTaskRequest, runtime *util.RuntimeOptions) (_result *StartVirusScanTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetInfo)) {
+		query["TargetInfo"] = request.TargetInfo
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartVirusScanTask"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartVirusScanTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartVirusScanTask"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36169,11 +35555,27 @@ func (client *Client) UnbindAegisWithOptions(request *UnbindAegisRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindAegis"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindAegisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindAegis"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36197,11 +35599,35 @@ func (client *Client) UninstallBackupClientWithOptions(request *UninstallBackupC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallBackupClient"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UninstallBackupClientResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UninstallBackupClient"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36220,72 +35646,40 @@ func (client *Client) UninstallBackupClient(request *UninstallBackupClientReques
 	return _result, _err
 }
 
-func (client *Client) UninstallUniBackupAgentWithOptions(request *UninstallUniBackupAgentRequest, runtime *util.RuntimeOptions) (_result *UninstallUniBackupAgentResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UninstallUniBackupAgentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UninstallUniBackupAgent"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UninstallUniBackupAgent(request *UninstallUniBackupAgentRequest) (_result *UninstallUniBackupAgentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UninstallUniBackupAgentResponse{}
-	_body, _err := client.UninstallUniBackupAgentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpgradeBackupPolicyVersionWithOptions(request *UpgradeBackupPolicyVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeBackupPolicyVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpgradeBackupPolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeBackupPolicyVersion"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpgradeBackupPolicyVersion(request *UpgradeBackupPolicyVersionRequest) (_result *UpgradeBackupPolicyVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpgradeBackupPolicyVersionResponse{}
-	_body, _err := client.UpgradeBackupPolicyVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ValidateHcWarningsWithOptions(request *ValidateHcWarningsRequest, runtime *util.RuntimeOptions) (_result *ValidateHcWarningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RiskIds)) {
+		query["RiskIds"] = request.RiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateHcWarnings"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateHcWarningsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ValidateHcWarnings"), tea.String("2018-12-03"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
