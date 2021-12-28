@@ -653,6 +653,7 @@ type CreateAggregateConfigRuleRequest struct {
 	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	SourceIdentifier          *string                `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	SourceOwner               *string                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -735,6 +736,11 @@ func (s *CreateAggregateConfigRuleRequest) SetSourceOwner(v string) *CreateAggre
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetTagKeyLogicScope(v string) *CreateAggregateConfigRuleRequest {
+	s.TagKeyLogicScope = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleRequest) SetTagKeyScope(v string) *CreateAggregateConfigRuleRequest {
 	s.TagKeyScope = &v
 	return s
@@ -760,6 +766,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	SourceIdentifier          *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	SourceOwner               *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -839,6 +846,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetSourceIdentifier(v string) *
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetSourceOwner(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.SourceOwner = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetTagKeyLogicScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -1279,6 +1291,7 @@ type CreateConfigRuleRequest struct {
 	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	SourceIdentifier          *string                `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	SourceOwner               *string                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -1356,6 +1369,11 @@ func (s *CreateConfigRuleRequest) SetSourceOwner(v string) *CreateConfigRuleRequ
 	return s
 }
 
+func (s *CreateConfigRuleRequest) SetTagKeyLogicScope(v string) *CreateConfigRuleRequest {
+	s.TagKeyLogicScope = &v
+	return s
+}
+
 func (s *CreateConfigRuleRequest) SetTagKeyScope(v string) *CreateConfigRuleRequest {
 	s.TagKeyScope = &v
 	return s
@@ -1380,6 +1398,7 @@ type CreateConfigRuleShrinkRequest struct {
 	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	SourceIdentifier          *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	SourceOwner               *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -1454,6 +1473,11 @@ func (s *CreateConfigRuleShrinkRequest) SetSourceIdentifier(v string) *CreateCon
 
 func (s *CreateConfigRuleShrinkRequest) SetSourceOwner(v string) *CreateConfigRuleShrinkRequest {
 	s.SourceOwner = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetTagKeyLogicScope(v string) *CreateConfigRuleShrinkRequest {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -2527,8 +2551,9 @@ func (s *GenerateAggregateCompliancePackReportResponse) SetBody(v *GenerateAggre
 }
 
 type GenerateAggregateConfigRulesReportRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s GenerateAggregateConfigRulesReportRequest) String() string {
@@ -2549,8 +2574,14 @@ func (s *GenerateAggregateConfigRulesReportRequest) SetClientToken(v string) *Ge
 	return s
 }
 
+func (s *GenerateAggregateConfigRulesReportRequest) SetConfigRuleIds(v string) *GenerateAggregateConfigRulesReportRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
 type GenerateAggregateConfigRulesReportResponseBody struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2564,6 +2595,11 @@ func (s GenerateAggregateConfigRulesReportResponseBody) GoString() string {
 
 func (s *GenerateAggregateConfigRulesReportResponseBody) SetAggregatorId(v string) *GenerateAggregateConfigRulesReportResponseBody {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *GenerateAggregateConfigRulesReportResponseBody) SetReportId(v string) *GenerateAggregateConfigRulesReportResponseBody {
+	s.ReportId = &v
 	return s
 }
 
@@ -2665,7 +2701,8 @@ func (s *GenerateCompliancePackReportResponse) SetBody(v *GenerateCompliancePack
 }
 
 type GenerateConfigRulesReportRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s GenerateConfigRulesReportRequest) String() string {
@@ -2681,7 +2718,13 @@ func (s *GenerateConfigRulesReportRequest) SetClientToken(v string) *GenerateCon
 	return s
 }
 
+func (s *GenerateConfigRulesReportRequest) SetConfigRuleIds(v string) *GenerateConfigRulesReportRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
 type GenerateConfigRulesReportResponseBody struct {
+	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2691,6 +2734,11 @@ func (s GenerateConfigRulesReportResponseBody) String() string {
 
 func (s GenerateConfigRulesReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateConfigRulesReportResponseBody) SetReportId(v string) *GenerateConfigRulesReportResponseBody {
+	s.ReportId = &v
+	return s
 }
 
 func (s *GenerateConfigRulesReportResponseBody) SetRequestId(v string) *GenerateConfigRulesReportResponseBody {
@@ -3246,6 +3294,7 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	ResourceTypesScope         *string                                                                 `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	RiskLevel                  *int32                                                                  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	Source                     *GetAggregateConfigRuleResponseBodyConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	TagKeyLogicScope           *string                                                                 `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope                *string                                                                 `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope              *string                                                                 `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -3350,6 +3399,11 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetRiskLevel(v int32) *Ge
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetSource(v *GetAggregateConfigRuleResponseBodyConfigRuleSource) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.Source = v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagKeyLogicScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -3865,6 +3919,7 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelResponse) SetBody(v *GetAggrega
 
 type GetAggregateConfigRulesReportRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportRequest) String() string {
@@ -3877,6 +3932,11 @@ func (s GetAggregateConfigRulesReportRequest) GoString() string {
 
 func (s *GetAggregateConfigRulesReportRequest) SetAggregatorId(v string) *GetAggregateConfigRulesReportRequest {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateConfigRulesReportRequest) SetReportId(v string) *GetAggregateConfigRulesReportRequest {
+	s.ReportId = &v
 	return s
 }
 
@@ -3907,6 +3967,7 @@ type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
 	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	ReportId              *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
@@ -3931,6 +3992,11 @@ func (s *GetAggregateConfigRulesReportResponseBodyConfigRulesReport) SetAggregat
 
 func (s *GetAggregateConfigRulesReportResponseBodyConfigRulesReport) SetReportCreateTimestamp(v int64) *GetAggregateConfigRulesReportResponseBodyConfigRulesReport {
 	s.ReportCreateTimestamp = &v
+	return s
+}
+
+func (s *GetAggregateConfigRulesReportResponseBodyConfigRulesReport) SetReportId(v string) *GetAggregateConfigRulesReportResponseBodyConfigRulesReport {
+	s.ReportId = &v
 	return s
 }
 
@@ -4182,6 +4248,270 @@ func (s *GetAggregateResourceComplianceByPackResponse) SetHeaders(v map[string]*
 }
 
 func (s *GetAggregateResourceComplianceByPackResponse) SetBody(v *GetAggregateResourceComplianceByPackResponseBody) *GetAggregateResourceComplianceByPackResponse {
+	s.Body = v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionRequest struct {
+	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionRequest) SetAggregatorId(v string) *GetAggregateResourceComplianceGroupByRegionRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionRequest) SetConfigRuleIds(v string) *GetAggregateResourceComplianceGroupByRegionRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionResponseBody struct {
+	ComplianceResult *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
+	RequestId        *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBody) SetComplianceResult(v *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult) *GetAggregateResourceComplianceGroupByRegionResponseBody {
+	s.ComplianceResult = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBody) SetRequestId(v string) *GetAggregateResourceComplianceGroupByRegionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult struct {
+	ComplianceResultList []*GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult) SetComplianceResultList(v []*GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult {
+	s.ComplianceResultList = v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList struct {
+	Compliances []*GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+	RegionId    *string                                                                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) SetCompliances(v []*GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList {
+	s.Compliances = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) SetRegionId(v string) *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList {
+	s.RegionId = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) SetComplianceType(v string) *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) SetCount(v int64) *GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances {
+	s.Count = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByRegionResponse struct {
+	Headers map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAggregateResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponse) SetHeaders(v map[string]*string) *GetAggregateResourceComplianceGroupByRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByRegionResponse) SetBody(v *GetAggregateResourceComplianceGroupByRegionResponseBody) *GetAggregateResourceComplianceGroupByRegionResponse {
+	s.Body = v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeRequest struct {
+	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeRequest) SetAggregatorId(v string) *GetAggregateResourceComplianceGroupByResourceTypeRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeRequest) SetConfigRuleIds(v string) *GetAggregateResourceComplianceGroupByResourceTypeRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeResponseBody struct {
+	ComplianceResult *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
+	RequestId        *string                                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBody) SetComplianceResult(v *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) *GetAggregateResourceComplianceGroupByResourceTypeResponseBody {
+	s.ComplianceResult = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBody) SetRequestId(v string) *GetAggregateResourceComplianceGroupByResourceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult struct {
+	ComplianceResultList []*GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) SetComplianceResultList(v []*GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult {
+	s.ComplianceResultList = v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList struct {
+	Compliances  []*GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+	ResourceType *string                                                                                                         `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) SetCompliances(v []*GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList {
+	s.Compliances = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) SetResourceType(v string) *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList {
+	s.ResourceType = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) SetComplianceType(v string) *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) SetCount(v int64) *GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances {
+	s.Count = &v
+	return s
+}
+
+type GetAggregateResourceComplianceGroupByResourceTypeResponse struct {
+	Headers map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAggregateResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateResourceComplianceGroupByResourceTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponse) SetHeaders(v map[string]*string) *GetAggregateResourceComplianceGroupByResourceTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceGroupByResourceTypeResponse) SetBody(v *GetAggregateResourceComplianceGroupByResourceTypeResponseBody) *GetAggregateResourceComplianceGroupByResourceTypeResponse {
 	s.Body = v
 	return s
 }
@@ -5369,6 +5699,7 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	ResourceTypesScope         *string                                                        `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	RiskLevel                  *int32                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	Source                     *GetConfigRuleResponseBodyConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	TagKeyLogicScope           *string                                                        `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope                *string                                                        `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope              *string                                                        `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -5473,6 +5804,11 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetRiskLevel(v int32) *GetConfigRu
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetSource(v *GetConfigRuleResponseBodyConfigRuleSource) *GetConfigRuleResponseBodyConfigRule {
 	s.Source = v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetTagKeyLogicScope(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -5945,6 +6281,23 @@ func (s *GetConfigRuleSummaryByRiskLevelResponse) SetBody(v *GetConfigRuleSummar
 	return s
 }
 
+type GetConfigRulesReportRequest struct {
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+}
+
+func (s GetConfigRulesReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigRulesReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigRulesReportRequest) SetReportId(v string) *GetConfigRulesReportRequest {
+	s.ReportId = &v
+	return s
+}
+
 type GetConfigRulesReportResponseBody struct {
 	ConfigRulesReport *GetConfigRulesReportResponseBodyConfigRulesReport `json:"ConfigRulesReport,omitempty" xml:"ConfigRulesReport,omitempty" type:"Struct"`
 	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5971,6 +6324,7 @@ func (s *GetConfigRulesReportResponseBody) SetRequestId(v string) *GetConfigRule
 type GetConfigRulesReportResponseBodyConfigRulesReport struct {
 	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	ReportId              *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
@@ -5990,6 +6344,11 @@ func (s *GetConfigRulesReportResponseBodyConfigRulesReport) SetAccountId(v int64
 
 func (s *GetConfigRulesReportResponseBodyConfigRulesReport) SetReportCreateTimestamp(v int64) *GetConfigRulesReportResponseBodyConfigRulesReport {
 	s.ReportCreateTimestamp = &v
+	return s
+}
+
+func (s *GetConfigRulesReportResponseBodyConfigRulesReport) SetReportId(v string) *GetConfigRulesReportResponseBodyConfigRulesReport {
+	s.ReportId = &v
 	return s
 }
 
@@ -6198,6 +6557,180 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponse) SetBody(v *GetD
 	return s
 }
 
+type GetManagedRuleRequest struct {
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s GetManagedRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleRequest) SetIdentifier(v string) *GetManagedRuleRequest {
+	s.Identifier = &v
+	return s
+}
+
+type GetManagedRuleResponseBody struct {
+	ManagedRule *GetManagedRuleResponseBodyManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetManagedRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleResponseBody) SetManagedRule(v *GetManagedRuleResponseBodyManagedRule) *GetManagedRuleResponseBody {
+	s.ManagedRule = v
+	return s
+}
+
+func (s *GetManagedRuleResponseBody) SetRequestId(v string) *GetManagedRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetManagedRuleResponseBodyManagedRule struct {
+	CompulsoryInputParameterDetails []*string                                             `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty" type:"Repeated"`
+	ConfigRuleName                  *string                                               `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Description                     *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	HelpUrls                        *string                                               `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	Identifier                      *string                                               `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Labels                          []*string                                             `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	OptionalInputParameterDetails   []*string                                             `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty" type:"Repeated"`
+	RiskLevel                       *int32                                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Scope                           *GetManagedRuleResponseBodyManagedRuleScope           `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	SourceDetails                   []*GetManagedRuleResponseBodyManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+}
+
+func (s GetManagedRuleResponseBodyManagedRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleResponseBodyManagedRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetCompulsoryInputParameterDetails(v []*string) *GetManagedRuleResponseBodyManagedRule {
+	s.CompulsoryInputParameterDetails = v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetConfigRuleName(v string) *GetManagedRuleResponseBodyManagedRule {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetDescription(v string) *GetManagedRuleResponseBodyManagedRule {
+	s.Description = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetHelpUrls(v string) *GetManagedRuleResponseBodyManagedRule {
+	s.HelpUrls = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetIdentifier(v string) *GetManagedRuleResponseBodyManagedRule {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetLabels(v []*string) *GetManagedRuleResponseBodyManagedRule {
+	s.Labels = v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetOptionalInputParameterDetails(v []*string) *GetManagedRuleResponseBodyManagedRule {
+	s.OptionalInputParameterDetails = v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetRiskLevel(v int32) *GetManagedRuleResponseBodyManagedRule {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetScope(v *GetManagedRuleResponseBodyManagedRuleScope) *GetManagedRuleResponseBodyManagedRule {
+	s.Scope = v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRule) SetSourceDetails(v []*GetManagedRuleResponseBodyManagedRuleSourceDetails) *GetManagedRuleResponseBodyManagedRule {
+	s.SourceDetails = v
+	return s
+}
+
+type GetManagedRuleResponseBodyManagedRuleScope struct {
+	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetManagedRuleResponseBodyManagedRuleScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleResponseBodyManagedRuleScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleResponseBodyManagedRuleScope) SetComplianceResourceTypes(v []*string) *GetManagedRuleResponseBodyManagedRuleScope {
+	s.ComplianceResourceTypes = v
+	return s
+}
+
+type GetManagedRuleResponseBodyManagedRuleSourceDetails struct {
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+}
+
+func (s GetManagedRuleResponseBodyManagedRuleSourceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleResponseBodyManagedRuleSourceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleResponseBodyManagedRuleSourceDetails) SetMaximumExecutionFrequency(v string) *GetManagedRuleResponseBodyManagedRuleSourceDetails {
+	s.MaximumExecutionFrequency = &v
+	return s
+}
+
+func (s *GetManagedRuleResponseBodyManagedRuleSourceDetails) SetMessageType(v string) *GetManagedRuleResponseBodyManagedRuleSourceDetails {
+	s.MessageType = &v
+	return s
+}
+
+type GetManagedRuleResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetManagedRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetManagedRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetManagedRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedRuleResponse) SetHeaders(v map[string]*string) *GetManagedRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetManagedRuleResponse) SetBody(v *GetManagedRuleResponseBody) *GetManagedRuleResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceComplianceByConfigRuleRequest struct {
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -6401,6 +6934,258 @@ func (s *GetResourceComplianceByPackResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *GetResourceComplianceByPackResponse) SetBody(v *GetResourceComplianceByPackResponseBody) *GetResourceComplianceByPackResponse {
+	s.Body = v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionRequest) SetConfigRuleIds(v string) *GetResourceComplianceGroupByRegionRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionResponseBody struct {
+	ComplianceResult *GetResourceComplianceGroupByRegionResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
+	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBody) SetComplianceResult(v *GetResourceComplianceGroupByRegionResponseBodyComplianceResult) *GetResourceComplianceGroupByRegionResponseBody {
+	s.ComplianceResult = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBody) SetRequestId(v string) *GetResourceComplianceGroupByRegionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionResponseBodyComplianceResult struct {
+	ComplianceResultList []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResult) SetComplianceResultList(v []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) *GetResourceComplianceGroupByRegionResponseBodyComplianceResult {
+	s.ComplianceResultList = v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList struct {
+	Compliances []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+	RegionId    *string                                                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) SetCompliances(v []*GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList {
+	s.Compliances = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList) SetRegionId(v string) *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList {
+	s.RegionId = &v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) SetComplianceType(v string) *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances) SetCount(v int64) *GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances {
+	s.Count = &v
+	return s
+}
+
+type GetResourceComplianceGroupByRegionResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetResourceComplianceGroupByRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceComplianceGroupByRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByRegionResponse) SetHeaders(v map[string]*string) *GetResourceComplianceGroupByRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByRegionResponse) SetBody(v *GetResourceComplianceGroupByRegionResponseBody) *GetResourceComplianceGroupByRegionResponse {
+	s.Body = v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeRequest) SetConfigRuleIds(v string) *GetResourceComplianceGroupByResourceTypeRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeResponseBody struct {
+	ComplianceResult *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
+	RequestId        *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBody) SetComplianceResult(v *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) *GetResourceComplianceGroupByResourceTypeResponseBody {
+	s.ComplianceResult = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBody) SetRequestId(v string) *GetResourceComplianceGroupByResourceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult struct {
+	ComplianceResultList []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList `json:"ComplianceResultList,omitempty" xml:"ComplianceResultList,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult) SetComplianceResultList(v []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult {
+	s.ComplianceResultList = v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList struct {
+	Compliances  []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
+	ResourceType *string                                                                                                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) SetCompliances(v []*GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList {
+	s.Compliances = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList) SetResourceType(v string) *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList {
+	s.ResourceType = &v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) SetComplianceType(v string) *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances) SetCount(v int64) *GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances {
+	s.Count = &v
+	return s
+}
+
+type GetResourceComplianceGroupByResourceTypeResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetResourceComplianceGroupByResourceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceComplianceGroupByResourceTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponse) SetHeaders(v map[string]*string) *GetResourceComplianceGroupByResourceTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceComplianceGroupByResourceTypeResponse) SetBody(v *GetResourceComplianceGroupByResourceTypeResponseBody) *GetResourceComplianceGroupByResourceTypeResponse {
 	s.Body = v
 	return s
 }
@@ -8927,6 +9712,169 @@ func (s *ListConfigRuleEvaluationResultsResponse) SetBody(v *ListConfigRuleEvalu
 	return s
 }
 
+type ListManagedRulesRequest struct {
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel  *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s ListManagedRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesRequest) SetKeyword(v string) *ListManagedRulesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListManagedRulesRequest) SetPageNumber(v int32) *ListManagedRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListManagedRulesRequest) SetPageSize(v int32) *ListManagedRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListManagedRulesRequest) SetRiskLevel(v int32) *ListManagedRulesRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+type ListManagedRulesResponseBody struct {
+	ManagedRules []*ListManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListManagedRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesResponseBody) SetManagedRules(v []*ListManagedRulesResponseBodyManagedRules) *ListManagedRulesResponseBody {
+	s.ManagedRules = v
+	return s
+}
+
+func (s *ListManagedRulesResponseBody) SetRequestId(v string) *ListManagedRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListManagedRulesResponseBodyManagedRules struct {
+	ManagedRuleList []*ListManagedRulesResponseBodyManagedRulesManagedRuleList `json:"ManagedRuleList,omitempty" xml:"ManagedRuleList,omitempty" type:"Repeated"`
+	PageNumber      *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListManagedRulesResponseBodyManagedRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesResponseBodyManagedRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesResponseBodyManagedRules) SetManagedRuleList(v []*ListManagedRulesResponseBodyManagedRulesManagedRuleList) *ListManagedRulesResponseBodyManagedRules {
+	s.ManagedRuleList = v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRules) SetPageNumber(v int32) *ListManagedRulesResponseBodyManagedRules {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRules) SetPageSize(v int32) *ListManagedRulesResponseBodyManagedRules {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRules) SetTotalCount(v int64) *ListManagedRulesResponseBodyManagedRules {
+	s.TotalCount = &v
+	return s
+}
+
+type ListManagedRulesResponseBodyManagedRulesManagedRuleList struct {
+	ConfigRuleName *string   `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	HelpUrls       *string   `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	Identifier     *string   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Labels         []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	RiskLevel      *int32    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s ListManagedRulesResponseBodyManagedRulesManagedRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesResponseBodyManagedRulesManagedRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetConfigRuleName(v string) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetDescription(v string) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetHelpUrls(v string) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.HelpUrls = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetIdentifier(v string) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetLabels(v []*string) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.Labels = v
+	return s
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetRiskLevel(v int32) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.RiskLevel = &v
+	return s
+}
+
+type ListManagedRulesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListManagedRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListManagedRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesResponse) SetHeaders(v map[string]*string) *ListManagedRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListManagedRulesResponse) SetBody(v *ListManagedRulesResponseBody) *ListManagedRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceEvaluationResultsRequest struct {
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -9755,6 +10703,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
 	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -9832,6 +10781,11 @@ func (s *UpdateAggregateConfigRuleRequest) SetRiskLevel(v int32) *UpdateAggregat
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetTagKeyLogicScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.TagKeyLogicScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleRequest) SetTagKeyScope(v string) *UpdateAggregateConfigRuleRequest {
 	s.TagKeyScope = &v
 	return s
@@ -9856,6 +10810,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -9930,6 +10885,11 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceTypesScopeShrink(v s
 
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetRiskLevel(v int32) *UpdateAggregateConfigRuleShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagKeyLogicScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -10369,6 +11329,7 @@ type UpdateConfigRuleRequest struct {
 	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
 	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -10441,6 +11402,11 @@ func (s *UpdateConfigRuleRequest) SetRiskLevel(v int32) *UpdateConfigRuleRequest
 	return s
 }
 
+func (s *UpdateConfigRuleRequest) SetTagKeyLogicScope(v string) *UpdateConfigRuleRequest {
+	s.TagKeyLogicScope = &v
+	return s
+}
+
 func (s *UpdateConfigRuleRequest) SetTagKeyScope(v string) *UpdateConfigRuleRequest {
 	s.TagKeyScope = &v
 	return s
@@ -10464,6 +11430,7 @@ type UpdateConfigRuleShrinkRequest struct {
 	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
 	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
@@ -10533,6 +11500,11 @@ func (s *UpdateConfigRuleShrinkRequest) SetResourceTypesScopeShrink(v string) *U
 
 func (s *UpdateConfigRuleShrinkRequest) SetRiskLevel(v int32) *UpdateConfigRuleShrinkRequest {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetTagKeyLogicScope(v string) *UpdateConfigRuleShrinkRequest {
+	s.TagKeyLogicScope = &v
 	return s
 }
 
@@ -10649,8 +11621,14 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10691,9 +11669,18 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10734,8 +11721,14 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10914,6 +11907,10 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 
 	if !tea.BoolValue(util.IsUnset(request.SourceOwner)) {
 		body["SourceOwner"] = request.SourceOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyLogicScope)) {
+		body["TagKeyLogicScope"] = request.TagKeyLogicScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
@@ -11162,6 +12159,10 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 		body["SourceOwner"] = request.SourceOwner
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagKeyLogicScope)) {
+		body["TagKeyLogicScope"] = request.TagKeyLogicScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
 		body["TagKeyScope"] = request.TagKeyScope
 	}
@@ -11210,8 +12211,14 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11252,7 +12259,10 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11349,8 +12359,14 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11491,9 +12507,18 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11534,8 +12559,14 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11636,6 +12667,10 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 		body["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		body["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -11726,6 +12761,10 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		body["ConfigRuleIds"] = request.ConfigRuleIds
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11888,8 +12927,14 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["ConfigRuleId"] = request.ConfigRuleId
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12009,7 +13054,15 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12018,7 +13071,7 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -12049,7 +13102,19 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12058,7 +13123,7 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -12117,6 +13182,102 @@ func (client *Client) GetAggregateResourceComplianceByPack(request *GetAggregate
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceComplianceByPackResponse{}
 	_body, _err := client.GetAggregateResourceComplianceByPackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceComplianceGroupByRegionWithOptions(request *GetAggregateResourceComplianceGroupByRegionRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceGroupByRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceComplianceGroupByRegion"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAggregateResourceComplianceGroupByRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceComplianceGroupByRegion(request *GetAggregateResourceComplianceGroupByRegionRequest) (_result *GetAggregateResourceComplianceGroupByRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateResourceComplianceGroupByRegionResponse{}
+	_body, _err := client.GetAggregateResourceComplianceGroupByRegionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceComplianceGroupByResourceTypeWithOptions(request *GetAggregateResourceComplianceGroupByResourceTypeRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceGroupByResourceTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateResourceComplianceGroupByResourceType"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAggregateResourceComplianceGroupByResourceTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateResourceComplianceGroupByResourceType(request *GetAggregateResourceComplianceGroupByResourceTypeRequest) (_result *GetAggregateResourceComplianceGroupByResourceTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateResourceComplianceGroupByResourceTypeResponse{}
+	_body, _err := client.GetAggregateResourceComplianceGroupByResourceTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12410,7 +13571,10 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigRuleId"] = request.ConfigRuleId
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12518,14 +13682,25 @@ func (client *Client) GetConfigRuleSummaryByRiskLevel() (_result *GetConfigRuleS
 	return _result, _err
 }
 
-func (client *Client) GetConfigRulesReportWithOptions(runtime *util.RuntimeOptions) (_result *GetConfigRulesReportResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) GetConfigRulesReportWithOptions(request *GetConfigRulesReportRequest, runtime *util.RuntimeOptions) (_result *GetConfigRulesReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("GetConfigRulesReport"),
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -12540,10 +13715,10 @@ func (client *Client) GetConfigRulesReportWithOptions(runtime *util.RuntimeOptio
 	return _result, _err
 }
 
-func (client *Client) GetConfigRulesReport() (_result *GetConfigRulesReportResponse, _err error) {
+func (client *Client) GetConfigRulesReport(request *GetConfigRulesReportRequest) (_result *GetConfigRulesReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRulesReportResponse{}
-	_body, _err := client.GetConfigRulesReportWithOptions(runtime)
+	_body, _err := client.GetConfigRulesReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12631,6 +13806,50 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceType(request *Ge
 	return _result, _err
 }
 
+func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, runtime *util.RuntimeOptions) (_result *GetManagedRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetManagedRule"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetManagedRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetManagedRule(request *GetManagedRuleRequest) (_result *GetManagedRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetManagedRuleResponse{}
+	_body, _err := client.GetManagedRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetResourceComplianceByConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceByConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12704,6 +13923,94 @@ func (client *Client) GetResourceComplianceByPack(request *GetResourceCompliance
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceComplianceByPackResponse{}
 	_body, _err := client.GetResourceComplianceByPackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceGroupByRegionWithOptions(request *GetResourceComplianceGroupByRegionRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceGroupByRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceComplianceGroupByRegion"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceComplianceGroupByRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceGroupByRegion(request *GetResourceComplianceGroupByRegionRequest) (_result *GetResourceComplianceGroupByRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceComplianceGroupByRegionResponse{}
+	_body, _err := client.GetResourceComplianceGroupByRegionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceGroupByResourceTypeWithOptions(request *GetResourceComplianceGroupByResourceTypeRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceGroupByResourceTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceComplianceGroupByResourceType"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceComplianceGroupByResourceTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceComplianceGroupByResourceType(request *GetResourceComplianceGroupByResourceTypeRequest) (_result *GetResourceComplianceGroupByResourceTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetResourceComplianceGroupByResourceTypeResponse{}
+	_body, _err := client.GetResourceComplianceGroupByResourceTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13036,7 +14343,35 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13045,7 +14380,7 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -13231,12 +14566,92 @@ func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEva
 	return _result, _err
 }
 
+func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesRequest, runtime *util.RuntimeOptions) (_result *ListManagedRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListManagedRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListManagedRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListManagedRules(request *ListManagedRulesRequest) (_result *ListManagedRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListManagedRulesResponse{}
+	_body, _err := client.ListManagedRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13245,7 +14660,7 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -13389,10 +14804,22 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AggregatorId"] = request.AggregatorId
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleId"] = request.ConfigRuleId
-	query["RevertEvaluation"] = request.RevertEvaluation
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevertEvaluation)) {
+		query["RevertEvaluation"] = request.RevertEvaluation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13567,6 +14994,10 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyLogicScope)) {
+		body["TagKeyLogicScope"] = request.TagKeyLogicScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
@@ -13809,6 +15240,10 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyLogicScope)) {
+		body["TagKeyLogicScope"] = request.TagKeyLogicScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagKeyScope)) {
