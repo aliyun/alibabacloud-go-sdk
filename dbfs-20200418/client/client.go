@@ -1679,8 +1679,10 @@ func (s *ListDbfsAttachableEcsInstancesResponseBody) SetRequestId(v string) *Lis
 }
 
 type ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo struct {
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
+	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) String() string {
@@ -1689,6 +1691,16 @@ func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) String() string 
 
 func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) GoString() string {
 	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetInstanceTypeFamily(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.InstanceTypeFamily = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetOSName(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.OSName = &v
+	return s
 }
 
 func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetLabel(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
@@ -1771,10 +1783,12 @@ func (s *ListDbfsAttachedEcsInstancesResponseBody) SetRequestId(v string) *ListD
 }
 
 type ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo struct {
-	MountPoint  *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
-	MountedTime *string `json:"MountedTime,omitempty" xml:"MountedTime,omitempty"`
-	Label       *string `json:"label,omitempty" xml:"label,omitempty"`
-	Value       *string `json:"value,omitempty" xml:"value,omitempty"`
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	MountPoint         *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
+	MountedTime        *string `json:"MountedTime,omitempty" xml:"MountedTime,omitempty"`
+	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
+	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) String() string {
@@ -1785,6 +1799,11 @@ func (s ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) GoString() string 
 	return s.String()
 }
 
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetInstanceTypeFamily(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.InstanceTypeFamily = &v
+	return s
+}
+
 func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetMountPoint(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
 	s.MountPoint = &v
 	return s
@@ -1792,6 +1811,11 @@ func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetMountPoint(v s
 
 func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetMountedTime(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
 	s.MountedTime = &v
+	return s
+}
+
+func (s *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo) SetOSName(v string) *ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo {
+	s.OSName = &v
 	return s
 }
 
@@ -2564,10 +2588,22 @@ func (client *Client) AddTagsBatchWithOptions(request *AddTagsBatchRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DbfsList"] = request.DbfsList
-	query["RegionId"] = request.RegionId
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbfsList)) {
+		query["DbfsList"] = request.DbfsList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2608,12 +2644,30 @@ func (client *Client) AttachDbfsWithOptions(request *AttachDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AttachMode"] = request.AttachMode
-	query["AttachPoint"] = request.AttachPoint
-	query["ECSInstanceId"] = request.ECSInstanceId
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
-	query["ServerUrl"] = request.ServerUrl
+	if !tea.BoolValue(util.IsUnset(request.AttachMode)) {
+		query["AttachMode"] = request.AttachMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachPoint)) {
+		query["AttachPoint"] = request.AttachPoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ECSInstanceId)) {
+		query["ECSInstanceId"] = request.ECSInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerUrl)) {
+		query["ServerUrl"] = request.ServerUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2654,21 +2708,66 @@ func (client *Client) CreateDbfsWithOptions(request *CreateDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["ClientToken"] = request.ClientToken
-	query["DeleteSnapshot"] = request.DeleteSnapshot
-	query["EnableRaid"] = request.EnableRaid
-	query["Encryption"] = request.Encryption
-	query["FsName"] = request.FsName
-	query["InstanceType"] = request.InstanceType
-	query["KMSKeyId"] = request.KMSKeyId
-	query["PerformanceLevel"] = request.PerformanceLevel
-	query["RaidStripeUnitNumber"] = request.RaidStripeUnitNumber
-	query["RegionId"] = request.RegionId
-	query["SizeG"] = request.SizeG
-	query["SnapshotId"] = request.SnapshotId
-	query["UsedScene"] = request.UsedScene
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteSnapshot)) {
+		query["DeleteSnapshot"] = request.DeleteSnapshot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRaid)) {
+		query["EnableRaid"] = request.EnableRaid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Encryption)) {
+		query["Encryption"] = request.Encryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsName)) {
+		query["FsName"] = request.FsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KMSKeyId)) {
+		query["KMSKeyId"] = request.KMSKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerformanceLevel)) {
+		query["PerformanceLevel"] = request.PerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RaidStripeUnitNumber)) {
+		query["RaidStripeUnitNumber"] = request.RaidStripeUnitNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeG)) {
+		query["SizeG"] = request.SizeG
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedScene)) {
+		query["UsedScene"] = request.UsedScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2709,8 +2808,14 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2751,12 +2856,30 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
-	query["RetentionDays"] = request.RetentionDays
-	query["SnapshotName"] = request.SnapshotName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionDays)) {
+		query["RetentionDays"] = request.RetentionDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2797,8 +2920,14 @@ func (client *Client) DeleteDbfsWithOptions(request *DeleteDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2839,9 +2968,18 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Force"] = request.Force
-	query["RegionId"] = request.RegionId
-	query["SnapshotId"] = request.SnapshotId
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2882,9 +3020,18 @@ func (client *Client) DeleteTagsBatchWithOptions(request *DeleteTagsBatchRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbfsList"] = request.DbfsList
-	query["RegionId"] = request.RegionId
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.DbfsList)) {
+		query["DbfsList"] = request.DbfsList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2925,9 +3072,18 @@ func (client *Client) DescribeDbfsSpecificationsWithOptions(request *DescribeDbf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["EcsInstanceType"] = request.EcsInstanceType
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceType)) {
+		query["EcsInstanceType"] = request.EcsInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2968,7 +3124,10 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3009,9 +3168,18 @@ func (client *Client) DetachDbfsWithOptions(request *DetachDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ECSInstanceId"] = request.ECSInstanceId
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ECSInstanceId)) {
+		query["ECSInstanceId"] = request.ECSInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3052,8 +3220,14 @@ func (client *Client) GetDbfsWithOptions(request *GetDbfsRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3094,7 +3268,10 @@ func (client *Client) GetServiceLinkedRoleWithOptions(request *GetServiceLinkedR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3135,14 +3312,38 @@ func (client *Client) ListDbfsWithOptions(request *ListDbfsRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FilterKey"] = request.FilterKey
-	query["FilterValue"] = request.FilterValue
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SortKey"] = request.SortKey
-	query["SortType"] = request.SortType
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3183,7 +3384,10 @@ func (client *Client) ListDbfsAttachableEcsInstancesWithOptions(request *ListDbf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3224,8 +3428,14 @@ func (client *Client) ListDbfsAttachedEcsInstancesWithOptions(request *ListDbfsA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3266,18 +3476,54 @@ func (client *Client) ListSnapshotWithOptions(request *ListSnapshotRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FilterKey"] = request.FilterKey
-	query["FilterValue"] = request.FilterValue
-	query["FsId"] = request.FsId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SnapshotIds"] = request.SnapshotIds
-	query["SnapshotName"] = request.SnapshotName
-	query["SnapshotType"] = request.SnapshotType
-	query["SortKey"] = request.SortKey
-	query["SortType"] = request.SortType
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.FilterKey)) {
+		query["FilterKey"] = request.FilterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotIds)) {
+		query["SnapshotIds"] = request.SnapshotIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotType)) {
+		query["SnapshotType"] = request.SnapshotType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3318,7 +3564,10 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3359,8 +3608,14 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3401,9 +3656,18 @@ func (client *Client) RenameDbfsWithOptions(request *RenameDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["FsName"] = request.FsName
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsName)) {
+		query["FsName"] = request.FsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3444,9 +3708,18 @@ func (client *Client) ResetDbfsWithOptions(request *ResetDbfsRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["RegionId"] = request.RegionId
-	query["SnapshotId"] = request.SnapshotId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3487,9 +3760,18 @@ func (client *Client) ResizeDbfsWithOptions(request *ResizeDbfsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FsId"] = request.FsId
-	query["NewSizeG"] = request.NewSizeG
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FsId)) {
+		query["FsId"] = request.FsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSizeG)) {
+		query["NewSizeG"] = request.NewSizeG
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3530,9 +3812,18 @@ func (client *Client) TagDbfsWithOptions(request *TagDbfsRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbfsId"] = request.DbfsId
-	query["RegionId"] = request.RegionId
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.DbfsId)) {
+		query["DbfsId"] = request.DbfsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
