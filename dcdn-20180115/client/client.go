@@ -1642,6 +1642,194 @@ func (s *CreateSlrAndSlsProjectResponse) SetBody(v *CreateSlrAndSlsProjectRespon
 	return s
 }
 
+type DcdnHttpRequestTestToolRequest struct {
+	Args    *string                `json:"Args,omitempty" xml:"Args,omitempty"`
+	Body    *string                `json:"Body,omitempty" xml:"Body,omitempty"`
+	Header  map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
+	Host    *string                `json:"Host,omitempty" xml:"Host,omitempty"`
+	Method  *string                `json:"Method,omitempty" xml:"Method,omitempty"`
+	OwnerId *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyIp *string                `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
+	Scheme  *string                `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Uri     *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetArgs(v string) *DcdnHttpRequestTestToolRequest {
+	s.Args = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetBody(v string) *DcdnHttpRequestTestToolRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetHeader(v map[string]interface{}) *DcdnHttpRequestTestToolRequest {
+	s.Header = v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetHost(v string) *DcdnHttpRequestTestToolRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetMethod(v string) *DcdnHttpRequestTestToolRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetOwnerId(v int64) *DcdnHttpRequestTestToolRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetProxyIp(v string) *DcdnHttpRequestTestToolRequest {
+	s.ProxyIp = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetScheme(v string) *DcdnHttpRequestTestToolRequest {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolRequest) SetUri(v string) *DcdnHttpRequestTestToolRequest {
+	s.Uri = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolShrinkRequest struct {
+	Args         *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	HeaderShrink *string `json:"Header,omitempty" xml:"Header,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Method       *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProxyIp      *string `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
+	Scheme       *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetArgs(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Args = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetBody(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetHeaderShrink(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.HeaderShrink = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetHost(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetMethod(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetOwnerId(v int64) *DcdnHttpRequestTestToolShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetProxyIp(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.ProxyIp = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetScheme(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Scheme = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolShrinkRequest) SetUri(v string) *DcdnHttpRequestTestToolShrinkRequest {
+	s.Uri = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolResponseBody struct {
+	Body       *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Header     *string `json:"Header,omitempty" xml:"Header,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s DcdnHttpRequestTestToolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetBody(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.Body = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetHeader(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.Header = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetRequestId(v string) *DcdnHttpRequestTestToolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponseBody) SetStatusCode(v int32) *DcdnHttpRequestTestToolResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DcdnHttpRequestTestToolResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DcdnHttpRequestTestToolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DcdnHttpRequestTestToolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DcdnHttpRequestTestToolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DcdnHttpRequestTestToolResponse) SetHeaders(v map[string]*string) *DcdnHttpRequestTestToolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DcdnHttpRequestTestToolResponse) SetBody(v *DcdnHttpRequestTestToolResponseBody) *DcdnHttpRequestTestToolResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDcdnDeliverTaskRequest struct {
 	DeliverId *int64 `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
 	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -16710,6 +16898,163 @@ func (s *EditRoutineConfResponse) SetBody(v *EditRoutineConfResponseBody) *EditR
 	return s
 }
 
+type ListDcdnEsTemplateInfoRequest struct {
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Op         *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDcdnEsTemplateInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnEsTemplateInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnEsTemplateInfoRequest) SetLanguage(v string) *ListDcdnEsTemplateInfoRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoRequest) SetOp(v string) *ListDcdnEsTemplateInfoRequest {
+	s.Op = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoRequest) SetOwnerId(v int64) *ListDcdnEsTemplateInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoRequest) SetPageNumber(v int32) *ListDcdnEsTemplateInfoRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoRequest) SetPageSize(v int32) *ListDcdnEsTemplateInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDcdnEsTemplateInfoResponseBody struct {
+	DataItems  *ListDcdnEsTemplateInfoResponseBodyDataItems `json:"DataItems,omitempty" xml:"DataItems,omitempty" type:"Struct"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDcdnEsTemplateInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnEsTemplateInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBody) SetDataItems(v *ListDcdnEsTemplateInfoResponseBodyDataItems) *ListDcdnEsTemplateInfoResponseBody {
+	s.DataItems = v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBody) SetPageNumber(v int32) *ListDcdnEsTemplateInfoResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBody) SetPageSize(v int32) *ListDcdnEsTemplateInfoResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBody) SetRequestId(v string) *ListDcdnEsTemplateInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBody) SetTotalCount(v int32) *ListDcdnEsTemplateInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDcdnEsTemplateInfoResponseBodyDataItems struct {
+	DataItem []*ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem `json:"DataItem,omitempty" xml:"DataItem,omitempty" type:"Repeated"`
+}
+
+func (s ListDcdnEsTemplateInfoResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnEsTemplateInfoResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBodyDataItems) SetDataItem(v []*ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) *ListDcdnEsTemplateInfoResponseBodyDataItems {
+	s.DataItem = v
+	return s
+}
+
+type ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem struct {
+	Id       *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	TmplDef  *string `json:"TmplDef,omitempty" xml:"TmplDef,omitempty"`
+	TmplDesc *string `json:"TmplDesc,omitempty" xml:"TmplDesc,omitempty"`
+	TmplName *string `json:"TmplName,omitempty" xml:"TmplName,omitempty"`
+}
+
+func (s ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) SetId(v int32) *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) SetTmplDef(v string) *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem {
+	s.TmplDef = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) SetTmplDesc(v string) *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem {
+	s.TmplDesc = &v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem) SetTmplName(v string) *ListDcdnEsTemplateInfoResponseBodyDataItemsDataItem {
+	s.TmplName = &v
+	return s
+}
+
+type ListDcdnEsTemplateInfoResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDcdnEsTemplateInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDcdnEsTemplateInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDcdnEsTemplateInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDcdnEsTemplateInfoResponse) SetHeaders(v map[string]*string) *ListDcdnEsTemplateInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDcdnEsTemplateInfoResponse) SetBody(v *ListDcdnEsTemplateInfoResponseBody) *ListDcdnEsTemplateInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListDcdnRealTimeDeliveryProjectRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -19497,15 +19842,42 @@ func (client *Client) AddDcdnDomainWithOptions(request *AddDcdnDomainRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19546,16 +19918,46 @@ func (client *Client) AddDcdnIpaDomainWithOptions(request *AddDcdnIpaDomainReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Protocol"] = request.Protocol
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19596,15 +19998,42 @@ func (client *Client) BatchAddDcdnDomainWithOptions(request *BatchAddDcdnDomainR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19645,11 +20074,26 @@ func (client *Client) BatchDeleteDcdnDomainConfigsWithOptions(request *BatchDele
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19690,15 +20134,42 @@ func (client *Client) BatchSetDcdnDomainCertificateWithOptions(request *BatchSet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["CertType"] = request.CertType
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["SSLPri"] = request.SSLPri
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SSLPub"] = request.SSLPub
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19739,11 +20210,26 @@ func (client *Client) BatchSetDcdnDomainConfigsWithOptions(request *BatchSetDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["Functions"] = request.Functions
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19784,11 +20270,26 @@ func (client *Client) BatchSetDcdnIpaDomainConfigsWithOptions(request *BatchSetD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["Functions"] = request.Functions
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19829,9 +20330,18 @@ func (client *Client) BatchStartDcdnDomainWithOptions(request *BatchStartDcdnDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19872,9 +20382,18 @@ func (client *Client) BatchStopDcdnDomainWithOptions(request *BatchStopDcdnDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19955,7 +20474,10 @@ func (client *Client) CommitStagingRoutineCodeWithOptions(request *CommitStaging
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CodeDescription)) {
 		body["CodeDescription"] = request.CodeDescription
@@ -20006,15 +20528,42 @@ func (client *Client) CreateDcdnCertificateSigningRequestWithOptions(request *Cr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["City"] = request.City
-	query["CommonName"] = request.CommonName
-	query["Country"] = request.Country
-	query["Email"] = request.Email
-	query["Organization"] = request.Organization
-	query["OrganizationUnit"] = request.OrganizationUnit
-	query["OwnerId"] = request.OwnerId
-	query["SANs"] = request.SANs
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Organization)) {
+		query["Organization"] = request.Organization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
+		query["OrganizationUnit"] = request.OrganizationUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SANs)) {
+		query["SANs"] = request.SANs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20055,7 +20604,10 @@ func (client *Client) CreateDcdnDeliverTaskWithOptions(request *CreateDcdnDelive
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
 		body["Deliver"] = request.Deliver
@@ -20118,7 +20670,10 @@ func (client *Client) CreateDcdnSLSRealTimeLogDeliveryWithOptions(request *Creat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		body["BusinessType"] = request.BusinessType
@@ -20193,7 +20748,10 @@ func (client *Client) CreateDcdnSubTaskWithOptions(request *CreateDcdnSubTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		body["DomainName"] = request.DomainName
@@ -20250,7 +20808,10 @@ func (client *Client) CreateRoutineWithOptions(tmpReq *CreateRoutineRequest, run
 	}
 
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
@@ -20305,7 +20866,10 @@ func (client *Client) CreateSlrAndSlsProjectWithOptions(request *CreateSlrAndSls
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		body["Region"] = request.Region
@@ -20346,14 +20910,104 @@ func (client *Client) CreateSlrAndSlsProject(request *CreateSlrAndSlsProjectRequ
 	return _result, _err
 }
 
+func (client *Client) DcdnHttpRequestTestToolWithOptions(tmpReq *DcdnHttpRequestTestToolRequest, runtime *util.RuntimeOptions) (_result *DcdnHttpRequestTestToolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DcdnHttpRequestTestToolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Header)) {
+		request.HeaderShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Header, tea.String("Header"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Args)) {
+		body["Args"] = request.Args
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeaderShrink)) {
+		body["Header"] = request.HeaderShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		body["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		body["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyIp)) {
+		body["ProxyIp"] = request.ProxyIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheme)) {
+		body["Scheme"] = request.Scheme
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DcdnHttpRequestTestTool"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTP"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DcdnHttpRequestTestToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DcdnHttpRequestTestTool(request *DcdnHttpRequestTestToolRequest) (_result *DcdnHttpRequestTestToolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DcdnHttpRequestTestToolResponse{}
+	_body, _err := client.DcdnHttpRequestTestToolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDcdnDeliverTaskWithOptions(request *DeleteDcdnDeliverTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDcdnDeliverTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeliverId"] = request.DeliverId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
+		query["DeliverId"] = request.DeliverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20394,10 +21048,22 @@ func (client *Client) DeleteDcdnDomainWithOptions(request *DeleteDcdnDomainReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20438,10 +21104,22 @@ func (client *Client) DeleteDcdnIpaDomainWithOptions(request *DeleteDcdnIpaDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20482,10 +21160,22 @@ func (client *Client) DeleteDcdnIpaSpecificConfigWithOptions(request *DeleteDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20526,9 +21216,18 @@ func (client *Client) DeleteDcdnRealTimeLogProjectWithOptions(request *DeleteDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessType"] = request.BusinessType
-	query["OwnerId"] = request.OwnerId
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20569,10 +21268,22 @@ func (client *Client) DeleteDcdnSpecificConfigWithOptions(request *DeleteDcdnSpe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20613,10 +21324,22 @@ func (client *Client) DeleteDcdnSpecificStagingConfigWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20657,7 +21380,10 @@ func (client *Client) DeleteDcdnSubTaskWithOptions(request *DeleteDcdnSubTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20698,7 +21424,10 @@ func (client *Client) DeleteRoutineWithOptions(request *DeleteRoutineRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
@@ -20745,7 +21474,10 @@ func (client *Client) DeleteRoutineCodeRevisionWithOptions(request *DeleteRoutin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
@@ -20802,7 +21534,10 @@ func (client *Client) DeleteRoutineConfEnvsWithOptions(tmpReq *DeleteRoutineConf
 	}
 
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvsShrink)) {
 		body["Envs"] = request.EnvsShrink
@@ -20853,8 +21588,14 @@ func (client *Client) DescribeDcdnAclFieldsWithOptions(request *DescribeDcdnAclF
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20895,11 +21636,26 @@ func (client *Client) DescribeDcdnBgpBpsDataWithOptions(request *DescribeDcdnBgp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["Isp"] = request.Isp
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20940,11 +21696,26 @@ func (client *Client) DescribeDcdnBgpTrafficDataWithOptions(request *DescribeDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["Isp"] = request.Isp
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21025,9 +21796,18 @@ func (client *Client) DescribeDcdnCertificateDetailWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21068,9 +21848,18 @@ func (client *Client) DescribeDcdnCertificateListWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21111,9 +21900,18 @@ func (client *Client) DescribeDcdnConfigGroupDetailWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigGroupId"] = request.ConfigGroupId
-	query["ConfigGroupName"] = request.ConfigGroupName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
+		query["ConfigGroupId"] = request.ConfigGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigGroupName)) {
+		query["ConfigGroupName"] = request.ConfigGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21154,12 +21952,30 @@ func (client *Client) DescribeDcdnConfigOfVersionWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FunctionId"] = request.FunctionId
-	query["FunctionName"] = request.FunctionName
-	query["GroupId"] = request.GroupId
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
+		query["FunctionId"] = request.FunctionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21200,9 +22016,18 @@ func (client *Client) DescribeDcdnDeletedDomainsWithOptions(request *DescribeDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21243,8 +22068,14 @@ func (client *Client) DescribeDcdnDeliverListWithOptions(request *DescribeDcdnDe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeliverId"] = request.DeliverId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
+		query["DeliverId"] = request.DeliverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21285,13 +22116,34 @@ func (client *Client) DescribeDcdnDomainBpsDataWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21332,8 +22184,14 @@ func (client *Client) DescribeDcdnDomainByCertificateWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SSLPub"] = request.SSLPub
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21374,15 +22232,42 @@ func (client *Client) DescribeDcdnDomainCcActivityLogWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RuleName"] = request.RuleName
-	query["StartTime"] = request.StartTime
-	query["TriggerObject"] = request.TriggerObject
-	query["Value"] = request.Value
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerObject)) {
+		query["TriggerObject"] = request.TriggerObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21423,8 +22308,14 @@ func (client *Client) DescribeDcdnDomainCertificateInfoWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21505,11 +22396,26 @@ func (client *Client) DescribeDcdnDomainConfigsWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21550,9 +22456,18 @@ func (client *Client) DescribeDcdnDomainDetailWithOptions(request *DescribeDcdnD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21593,11 +22508,26 @@ func (client *Client) DescribeDcdnDomainHitRateDataWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21638,13 +22568,34 @@ func (client *Client) DescribeDcdnDomainHttpCodeDataWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21685,15 +22636,42 @@ func (client *Client) DescribeDcdnDomainIpaBpsDataWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["FixTimeGap"] = request.FixTimeGap
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TimeMerge"] = request.TimeMerge
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FixTimeGap)) {
+		query["FixTimeGap"] = request.FixTimeGap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeMerge)) {
+		query["TimeMerge"] = request.TimeMerge
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21734,15 +22712,42 @@ func (client *Client) DescribeDcdnDomainIpaTrafficDataWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["FixTimeGap"] = request.FixTimeGap
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TimeMerge"] = request.TimeMerge
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FixTimeGap)) {
+		query["FixTimeGap"] = request.FixTimeGap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeMerge)) {
+		query["TimeMerge"] = request.TimeMerge
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21783,10 +22788,22 @@ func (client *Client) DescribeDcdnDomainIspDataWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21827,12 +22844,30 @@ func (client *Client) DescribeDcdnDomainLogWithOptions(request *DescribeDcdnDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21873,10 +22908,22 @@ func (client *Client) DescribeDcdnDomainMultiUsageDataWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21917,11 +22964,26 @@ func (client *Client) DescribeDcdnDomainOriginBpsDataWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21962,11 +23024,26 @@ func (client *Client) DescribeDcdnDomainOriginTrafficDataWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22007,8 +23084,14 @@ func (client *Client) DescribeDcdnDomainPropertyWithOptions(request *DescribeDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22049,10 +23132,22 @@ func (client *Client) DescribeDcdnDomainPvDataWithOptions(request *DescribeDcdnD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22093,13 +23188,34 @@ func (client *Client) DescribeDcdnDomainQpsDataWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22260,12 +23376,30 @@ func (client *Client) DescribeDcdnDomainRealTimeHttpCodeDataWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22386,10 +23520,22 @@ func (client *Client) DescribeDcdnDomainRealTimeSrcBpsDataWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22430,12 +23576,30 @@ func (client *Client) DescribeDcdnDomainRealTimeSrcHttpCodeDataWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22476,10 +23640,22 @@ func (client *Client) DescribeDcdnDomainRealTimeSrcTrafficDataWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22520,10 +23696,22 @@ func (client *Client) DescribeDcdnDomainRealTimeTrafficDataWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22564,10 +23752,22 @@ func (client *Client) DescribeDcdnDomainRegionDataWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22608,9 +23808,18 @@ func (client *Client) DescribeDcdnDomainStagingConfigWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22651,10 +23860,22 @@ func (client *Client) DescribeDcdnDomainTopReferVisitWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22695,10 +23916,22 @@ func (client *Client) DescribeDcdnDomainTopUrlVisitWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22739,13 +23972,34 @@ func (client *Client) DescribeDcdnDomainTrafficDataWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22786,14 +24040,38 @@ func (client *Client) DescribeDcdnDomainUsageDataWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["DataProtocol"] = request.DataProtocol
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Field"] = request.Field
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataProtocol)) {
+		query["DataProtocol"] = request.DataProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		query["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22834,10 +24112,22 @@ func (client *Client) DescribeDcdnDomainUvDataWithOptions(request *DescribeDcdnD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22878,13 +24168,34 @@ func (client *Client) DescribeDcdnDomainWebsocketBpsDataWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22925,13 +24236,34 @@ func (client *Client) DescribeDcdnDomainWebsocketHttpCodeDataWithOptions(request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22972,13 +24304,34 @@ func (client *Client) DescribeDcdnDomainWebsocketTrafficDataWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23019,10 +24372,22 @@ func (client *Client) DescribeDcdnEsExceptionDataWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23063,10 +24428,22 @@ func (client *Client) DescribeDcdnEsExecuteDataWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23107,10 +24484,22 @@ func (client *Client) DescribeDcdnHttpsDomainListWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Keyword"] = request.Keyword
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23151,9 +24540,18 @@ func (client *Client) DescribeDcdnIpInfoWithOptions(request *DescribeDcdnIpInfoR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IP"] = request.IP
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IP)) {
+		query["IP"] = request.IP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23194,10 +24592,22 @@ func (client *Client) DescribeDcdnIpaDomainConfigsWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23238,9 +24648,18 @@ func (client *Client) DescribeDcdnIpaDomainDetailWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23281,8 +24700,14 @@ func (client *Client) DescribeDcdnIpaServiceWithOptions(request *DescribeDcdnIpa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23323,18 +24748,54 @@ func (client *Client) DescribeDcdnIpaUserDomainsWithOptions(request *DescribeDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CheckDomainShow"] = request.CheckDomainShow
-	query["DomainName"] = request.DomainName
-	query["DomainSearchType"] = request.DomainSearchType
-	query["DomainStatus"] = request.DomainStatus
-	query["FuncFilter"] = request.FuncFilter
-	query["FuncId"] = request.FuncId
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.CheckDomainShow)) {
+		query["CheckDomainShow"] = request.CheckDomainShow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainSearchType)) {
+		query["DomainSearchType"] = request.DomainSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainStatus)) {
+		query["DomainStatus"] = request.DomainStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuncFilter)) {
+		query["FuncFilter"] = request.FuncFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuncId)) {
+		query["FuncId"] = request.FuncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23375,8 +24836,14 @@ func (client *Client) DescribeDcdnRealTimeDeliveryFieldWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessType"] = request.BusinessType
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23417,8 +24884,14 @@ func (client *Client) DescribeDcdnRefreshQuotaWithOptions(request *DescribeDcdnR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23459,8 +24932,14 @@ func (client *Client) DescribeDcdnRefreshTaskByIdWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23501,17 +24980,50 @@ func (client *Client) DescribeDcdnRefreshTasksWithOptions(request *DescribeDcdnR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23552,8 +25064,14 @@ func (client *Client) DescribeDcdnRegionAndIspWithOptions(request *DescribeDcdnR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23594,14 +25112,38 @@ func (client *Client) DescribeDcdnReportWithOptions(request *DescribeDcdnReportR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["HttpCode"] = request.HttpCode
-	query["IsOverseas"] = request.IsOverseas
-	query["OwnerId"] = request.OwnerId
-	query["ReportId"] = request.ReportId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpCode)) {
+		query["HttpCode"] = request.HttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOverseas)) {
+		query["IsOverseas"] = request.IsOverseas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23642,8 +25184,14 @@ func (client *Client) DescribeDcdnReportListWithOptions(request *DescribeDcdnRep
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ReportId"] = request.ReportId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23684,9 +25232,18 @@ func (client *Client) DescribeDcdnSLSRealtimeLogDeliveryWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessType"] = request.BusinessType
-	query["OwnerId"] = request.OwnerId
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23727,9 +25284,18 @@ func (client *Client) DescribeDcdnSMCertificateDetailWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertIdentifier"] = request.CertIdentifier
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23770,9 +25336,18 @@ func (client *Client) DescribeDcdnSMCertificateListWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23813,9 +25388,18 @@ func (client *Client) DescribeDcdnSecFuncInfoWithOptions(request *DescribeDcdnSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
-	query["OwnerId"] = request.OwnerId
-	query["SecFuncType"] = request.SecFuncType
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecFuncType)) {
+		query["SecFuncType"] = request.SecFuncType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23856,7 +25440,10 @@ func (client *Client) DescribeDcdnSecSpecInfoWithOptions(request *DescribeDcdnSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23897,8 +25484,14 @@ func (client *Client) DescribeDcdnServiceWithOptions(request *DescribeDcdnServic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23939,7 +25532,10 @@ func (client *Client) DescribeDcdnStagingIpWithOptions(request *DescribeDcdnStag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23980,7 +25576,10 @@ func (client *Client) DescribeDcdnSubListWithOptions(request *DescribeDcdnSubLis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24021,10 +25620,22 @@ func (client *Client) DescribeDcdnTagResourcesWithOptions(request *DescribeDcdnT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24065,10 +25676,22 @@ func (client *Client) DescribeDcdnTopDomainsByFlowWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Limit"] = request.Limit
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24109,9 +25732,18 @@ func (client *Client) DescribeDcdnUserBillHistoryWithOptions(request *DescribeDc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24152,9 +25784,18 @@ func (client *Client) DescribeDcdnUserBillTypeWithOptions(request *DescribeDcdnU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24195,19 +25836,58 @@ func (client *Client) DescribeDcdnUserDomainsWithOptions(request *DescribeDcdnUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeEndTime"] = request.ChangeEndTime
-	query["ChangeStartTime"] = request.ChangeStartTime
-	query["CheckDomainShow"] = request.CheckDomainShow
-	query["Coverage"] = request.Coverage
-	query["DomainName"] = request.DomainName
-	query["DomainSearchType"] = request.DomainSearchType
-	query["DomainStatus"] = request.DomainStatus
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.ChangeEndTime)) {
+		query["ChangeEndTime"] = request.ChangeEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeStartTime)) {
+		query["ChangeStartTime"] = request.ChangeStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckDomainShow)) {
+		query["CheckDomainShow"] = request.CheckDomainShow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coverage)) {
+		query["Coverage"] = request.Coverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainSearchType)) {
+		query["DomainSearchType"] = request.DomainSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainStatus)) {
+		query["DomainStatus"] = request.DomainStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24248,13 +25928,34 @@ func (client *Client) DescribeDcdnUserDomainsByFuncWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FuncFilter"] = request.FuncFilter
-	query["FuncId"] = request.FuncId
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuncFilter)) {
+		query["FuncFilter"] = request.FuncFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuncId)) {
+		query["FuncId"] = request.FuncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24295,8 +25996,14 @@ func (client *Client) DescribeDcdnUserQuotaWithOptions(request *DescribeDcdnUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24377,9 +26084,18 @@ func (client *Client) DescribeDcdnUserResourcePackageWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24420,10 +26136,22 @@ func (client *Client) DescribeDcdnUserSecDropWithOptions(request *DescribeDcdnUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["Metric"] = request.Metric
-	query["OwnerId"] = request.OwnerId
-	query["SecFunc"] = request.SecFunc
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecFunc)) {
+		query["SecFunc"] = request.SecFunc
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24464,16 +26192,46 @@ func (client *Client) DescribeDcdnUserSecDropByMinuteWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Lang"] = request.Lang
-	query["Object"] = request.Object
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RuleName"] = request.RuleName
-	query["SecFunc"] = request.SecFunc
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Object)) {
+		query["Object"] = request.Object
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecFunc)) {
+		query["SecFunc"] = request.SecFunc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24514,7 +26272,10 @@ func (client *Client) DescribeDcdnUserTagsWithOptions(request *DescribeDcdnUserT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24555,8 +26316,14 @@ func (client *Client) DescribeDcdnVerifyContentWithOptions(request *DescribeDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24597,10 +26364,22 @@ func (client *Client) DescribeDcdnWafDomainWithOptions(request *DescribeDcdnWafD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24641,8 +26420,14 @@ func (client *Client) DescribeDcdnsecServiceWithOptions(request *DescribeDcdnsec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24683,7 +26468,10 @@ func (client *Client) DescribeRoutineWithOptions(request *DescribeRoutineRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
@@ -24730,7 +26518,10 @@ func (client *Client) DescribeRoutineCanaryEnvsWithOptions(request *DescribeRout
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24771,7 +26562,10 @@ func (client *Client) DescribeRoutineCodeRevisionWithOptions(request *DescribeRo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
@@ -24822,7 +26616,10 @@ func (client *Client) DescribeRoutineSpecWithOptions(request *DescribeRoutineSpe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24863,7 +26660,10 @@ func (client *Client) DescribeRoutineUserInfoWithOptions(request *DescribeRoutin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24904,8 +26704,14 @@ func (client *Client) DescribeUserDcdnIpaStatusWithOptions(request *DescribeUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24946,8 +26752,14 @@ func (client *Client) DescribeUserDcdnStatusWithOptions(request *DescribeUserDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24988,8 +26800,14 @@ func (client *Client) DescribeUserErStatusWithOptions(request *DescribeUserErSta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25030,8 +26848,14 @@ func (client *Client) DescribeUserLogserviceStatusWithOptions(request *DescribeU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25078,7 +26902,10 @@ func (client *Client) EditRoutineConfWithOptions(tmpReq *EditRoutineConfRequest,
 	}
 
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
@@ -25127,17 +26954,72 @@ func (client *Client) EditRoutineConf(request *EditRoutineConfRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListDcdnEsTemplateInfoWithOptions(request *ListDcdnEsTemplateInfoRequest, runtime *util.RuntimeOptions) (_result *ListDcdnEsTemplateInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDcdnEsTemplateInfo"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTP"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDcdnEsTemplateInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDcdnEsTemplateInfo(request *ListDcdnEsTemplateInfoRequest) (_result *ListDcdnEsTemplateInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDcdnEsTemplateInfoResponse{}
+	_body, _err := client.ListDcdnEsTemplateInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDcdnRealTimeDeliveryProjectWithOptions(request *ListDcdnRealTimeDeliveryProjectRequest, runtime *util.RuntimeOptions) (_result *ListDcdnRealTimeDeliveryProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BusinessType"] = request.BusinessType
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25178,9 +27060,18 @@ func (client *Client) ModifyDCdnDomainSchdmByPropertyWithOptions(request *Modify
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["Property"] = request.Property
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		query["Property"] = request.Property
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25221,10 +27112,22 @@ func (client *Client) OpenDcdnServiceWithOptions(request *OpenDcdnServiceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BillType"] = request.BillType
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["WebsocketBillType"] = request.WebsocketBillType
+	if !tea.BoolValue(util.IsUnset(request.BillType)) {
+		query["BillType"] = request.BillType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebsocketBillType)) {
+		query["WebsocketBillType"] = request.WebsocketBillType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25265,10 +27168,22 @@ func (client *Client) PreloadDcdnObjectCachesWithOptions(request *PreloadDcdnObj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["ObjectPath"] = request.ObjectPath
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25309,9 +27224,18 @@ func (client *Client) PublishDcdnStagingConfigToProductionWithOptions(request *P
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionName"] = request.FunctionName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25358,7 +27282,10 @@ func (client *Client) PublishRoutineCodeRevisionWithOptions(tmpReq *PublishRouti
 	}
 
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvsShrink)) {
 		body["Envs"] = request.EnvsShrink
@@ -25413,10 +27340,22 @@ func (client *Client) RefreshDcdnObjectCachesWithOptions(request *RefreshDcdnObj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25457,8 +27396,14 @@ func (client *Client) RollbackDcdnStagingConfigWithOptions(request *RollbackDcdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25499,14 +27444,38 @@ func (client *Client) SetDcdnConfigOfVersionWithOptions(request *SetDcdnConfigOf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["FunctionArgs"] = request.FunctionArgs
-	query["FunctionId"] = request.FunctionId
-	query["FunctionName"] = request.FunctionName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionArgs)) {
+		query["FunctionArgs"] = request.FunctionArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
+		query["FunctionId"] = request.FunctionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25547,9 +27516,18 @@ func (client *Client) SetDcdnDomainCSRCertificateWithOptions(request *SetDcdnDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ServerCertificate"] = request.ServerCertificate
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificate)) {
+		query["ServerCertificate"] = request.ServerCertificate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25590,16 +27568,46 @@ func (client *Client) SetDcdnDomainCertificateWithOptions(request *SetDcdnDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["CertType"] = request.CertType
-	query["DomainName"] = request.DomainName
-	query["ForceSet"] = request.ForceSet
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["SSLPri"] = request.SSLPri
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SSLPub"] = request.SSLPub
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceSet)) {
+		query["ForceSet"] = request.ForceSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25640,11 +27648,26 @@ func (client *Client) SetDcdnDomainSMCertificateWithOptions(request *SetDcdnDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertIdentifier"] = request.CertIdentifier
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25685,9 +27708,18 @@ func (client *Client) SetDcdnDomainStagingConfigWithOptions(request *SetDcdnDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["Functions"] = request.Functions
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25728,7 +27760,10 @@ func (client *Client) SetDcdnFullDomainsBlockIPWithOptions(request *SetDcdnFullD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BlockInterval)) {
 		body["BlockInterval"] = request.BlockInterval
@@ -25783,11 +27818,26 @@ func (client *Client) SetDcdnUserConfigWithOptions(request *SetDcdnUserConfigReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Configs"] = request.Configs
-	query["FunctionId"] = request.FunctionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		query["Configs"] = request.Configs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
+		query["FunctionId"] = request.FunctionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25834,7 +27884,10 @@ func (client *Client) SetRoutineSubdomainWithOptions(tmpReq *SetRoutineSubdomain
 	}
 
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SubdomainsShrink)) {
 		body["Subdomains"] = request.SubdomainsShrink
@@ -25881,9 +27934,18 @@ func (client *Client) StartDcdnDomainWithOptions(request *StartDcdnDomainRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25924,9 +27986,18 @@ func (client *Client) StartDcdnIpaDomainWithOptions(request *StartDcdnIpaDomainR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25967,9 +28038,18 @@ func (client *Client) StopDcdnDomainWithOptions(request *StopDcdnDomainRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26010,9 +28090,18 @@ func (client *Client) StopDcdnIpaDomainWithOptions(request *StopDcdnIpaDomainReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26053,10 +28142,22 @@ func (client *Client) TagDcdnResourcesWithOptions(request *TagDcdnResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26097,11 +28198,26 @@ func (client *Client) UntagDcdnResourcesWithOptions(request *UntagDcdnResourcesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26142,7 +28258,10 @@ func (client *Client) UpdateDcdnDeliverTaskWithOptions(request *UpdateDcdnDelive
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
 		body["Deliver"] = request.Deliver
@@ -26209,12 +28328,30 @@ func (client *Client) UpdateDcdnDomainWithOptions(request *UpdateDcdnDomainReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26255,12 +28392,30 @@ func (client *Client) UpdateDcdnIpaDomainWithOptions(request *UpdateDcdnIpaDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26301,7 +28456,10 @@ func (client *Client) UpdateDcdnSLSRealtimeLogDeliveryWithOptions(request *Updat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DataCenter)) {
 		body["DataCenter"] = request.DataCenter
@@ -26372,7 +28530,10 @@ func (client *Client) UpdateDcdnSubTaskWithOptions(request *UpdateDcdnSubTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		body["DomainName"] = request.DomainName
@@ -26471,7 +28632,10 @@ func (client *Client) UploadRoutineCodeWithOptions(request *UploadRoutineCodeReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CodeDescription)) {
 		body["CodeDescription"] = request.CodeDescription
@@ -26522,7 +28686,10 @@ func (client *Client) UploadStagingRoutineCodeWithOptions(request *UploadStaging
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CodeDescription)) {
 		body["CodeDescription"] = request.CodeDescription
@@ -26573,9 +28740,18 @@ func (client *Client) VerifyDcdnDomainOwnerWithOptions(request *VerifyDcdnDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["VerifyType"] = request.VerifyType
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
