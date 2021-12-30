@@ -1918,20 +1918,21 @@ func (s *AddPornPipelineResponse) SetBody(v *AddPornPipelineResponseBody) *AddPo
 }
 
 type AddSmarttagTemplateRequest struct {
-	AnalyseTypes         *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
-	FaceCategoryIds      *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
-	Industry             *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	IsDefault            *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	KeywordConfig        *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
-	KnowledgeConfig      *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
-	LabelType            *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	LabelVersion         *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Scene                *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	AnalyseTypes           *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
+	FaceCategoryIds        *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
+	FaceCustomParamsConfig *string `json:"FaceCustomParamsConfig,omitempty" xml:"FaceCustomParamsConfig,omitempty"`
+	Industry               *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	IsDefault              *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	KeywordConfig          *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
+	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
+	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Scene                  *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s AddSmarttagTemplateRequest) String() string {
@@ -1949,6 +1950,11 @@ func (s *AddSmarttagTemplateRequest) SetAnalyseTypes(v string) *AddSmarttagTempl
 
 func (s *AddSmarttagTemplateRequest) SetFaceCategoryIds(v string) *AddSmarttagTemplateRequest {
 	s.FaceCategoryIds = &v
+	return s
+}
+
+func (s *AddSmarttagTemplateRequest) SetFaceCustomParamsConfig(v string) *AddSmarttagTemplateRequest {
+	s.FaceCustomParamsConfig = &v
 	return s
 }
 
@@ -24615,29 +24621,32 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamLis
 }
 
 type QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream struct {
-	AvgFPS         *string                                                                                         `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	Bitrate        *string                                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CodecLongName  *string                                                                                         `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	CodecName      *string                                                                                         `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CodecTag       *string                                                                                         `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
-	CodecTagString *string                                                                                         `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
-	CodecTimeBase  *string                                                                                         `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	Dar            *string                                                                                         `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	Duration       *string                                                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Fps            *string                                                                                         `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HasBFrames     *string                                                                                         `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	Height         *string                                                                                         `json:"Height,omitempty" xml:"Height,omitempty"`
-	Index          *string                                                                                         `json:"Index,omitempty" xml:"Index,omitempty"`
-	Lang           *string                                                                                         `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Level          *string                                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
-	NetworkCost    *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
-	NumFrames      *string                                                                                         `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	PixFmt         *string                                                                                         `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	Profile        *string                                                                                         `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Sar            *string                                                                                         `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	StartTime      *string                                                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Timebase       *string                                                                                         `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	Width          *string                                                                                         `json:"Width,omitempty" xml:"Width,omitempty"`
+	AvgFPS           *string                                                                                         `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate          *string                                                                                         `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName    *string                                                                                         `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName        *string                                                                                         `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag         *string                                                                                         `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString   *string                                                                                         `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase    *string                                                                                         `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar              *string                                                                                         `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration         *string                                                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps              *string                                                                                         `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames       *string                                                                                         `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height           *string                                                                                         `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index            *string                                                                                         `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang             *string                                                                                         `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level            *string                                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
+	NetworkCost      *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStreamNetworkCost `json:"NetworkCost,omitempty" xml:"NetworkCost,omitempty" type:"Struct"`
+	NumFrames        *string                                                                                         `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt           *string                                                                                         `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile          *string                                                                                         `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Sar              *string                                                                                         `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime        *string                                                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase         *string                                                                                         `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width            *string                                                                                         `json:"Width,omitempty" xml:"Width,omitempty"`
+	BitsPerRawSample *string                                                                                         `json:"bitsPerRawSample,omitempty" xml:"bitsPerRawSample,omitempty"`
+	ColorPrimaries   *string                                                                                         `json:"colorPrimaries,omitempty" xml:"colorPrimaries,omitempty"`
+	ColorTransfer    *string                                                                                         `json:"colorTransfer,omitempty" xml:"colorTransfer,omitempty"`
 }
 
 func (s QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) String() string {
@@ -24760,6 +24769,21 @@ func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamLis
 
 func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) SetWidth(v string) *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream {
 	s.Width = &v
+	return s
+}
+
+func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) SetBitsPerRawSample(v string) *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.BitsPerRawSample = &v
+	return s
+}
+
+func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) SetColorPrimaries(v string) *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.ColorPrimaries = &v
+	return s
+}
+
+func (s *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream) SetColorTransfer(v string) *QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoStream {
+	s.ColorTransfer = &v
 	return s
 }
 
@@ -36168,17 +36192,18 @@ func (s *QuerySmarttagTemplateListResponseBodyTemplates) SetTemplate(v []*QueryS
 }
 
 type QuerySmarttagTemplateListResponseBodyTemplatesTemplate struct {
-	AnalyseTypes    *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
-	FaceCategoryIds *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
-	Industry        *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	IsDefault       *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	KeywordConfig   *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
-	KnowledgeConfig *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
-	LabelType       *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	LabelVersion    *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
-	Scene           *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	AnalyseTypes           *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
+	FaceCategoryIds        *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
+	FaceCustomParamsConfig *string `json:"FaceCustomParamsConfig,omitempty" xml:"FaceCustomParamsConfig,omitempty"`
+	Industry               *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	IsDefault              *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	KeywordConfig          *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
+	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
+	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	Scene                  *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	TemplateId             *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s QuerySmarttagTemplateListResponseBodyTemplatesTemplate) String() string {
@@ -36196,6 +36221,11 @@ func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetAnalyseTypes
 
 func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetFaceCategoryIds(v string) *QuerySmarttagTemplateListResponseBodyTemplatesTemplate {
 	s.FaceCategoryIds = &v
+	return s
+}
+
+func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetFaceCustomParamsConfig(v string) *QuerySmarttagTemplateListResponseBodyTemplatesTemplate {
+	s.FaceCustomParamsConfig = &v
 	return s
 }
 
@@ -60378,21 +60408,22 @@ func (s *UpdatePornPipelineResponse) SetBody(v *UpdatePornPipelineResponseBody) 
 }
 
 type UpdateSmarttagTemplateRequest struct {
-	AnalyseTypes         *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
-	FaceCategoryIds      *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
-	Industry             *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
-	IsDefault            *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	KeywordConfig        *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
-	KnowledgeConfig      *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
-	LabelType            *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	LabelVersion         *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Scene                *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	AnalyseTypes           *string `json:"AnalyseTypes,omitempty" xml:"AnalyseTypes,omitempty"`
+	FaceCategoryIds        *string `json:"FaceCategoryIds,omitempty" xml:"FaceCategoryIds,omitempty"`
+	FaceCustomParamsConfig *string `json:"FaceCustomParamsConfig,omitempty" xml:"FaceCustomParamsConfig,omitempty"`
+	Industry               *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	IsDefault              *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	KeywordConfig          *string `json:"KeywordConfig,omitempty" xml:"KeywordConfig,omitempty"`
+	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
+	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Scene                  *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	TemplateId             *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s UpdateSmarttagTemplateRequest) String() string {
@@ -60410,6 +60441,11 @@ func (s *UpdateSmarttagTemplateRequest) SetAnalyseTypes(v string) *UpdateSmartta
 
 func (s *UpdateSmarttagTemplateRequest) SetFaceCategoryIds(v string) *UpdateSmarttagTemplateRequest {
 	s.FaceCategoryIds = &v
+	return s
+}
+
+func (s *UpdateSmarttagTemplateRequest) SetFaceCustomParamsConfig(v string) *UpdateSmarttagTemplateRequest {
+	s.FaceCustomParamsConfig = &v
 	return s
 }
 
@@ -61599,14 +61635,28 @@ func (client *Client) ActivateMediaWorkflowWithOptions(request *ActivateMediaWor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ActivateMediaWorkflow"),
@@ -61616,7 +61666,7 @@ func (client *Client) ActivateMediaWorkflowWithOptions(request *ActivateMediaWor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActivateMediaWorkflowResponse{}
@@ -61645,16 +61695,36 @@ func (client *Client) AddAsrPipelineWithOptions(request *AddAsrPipelineRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddAsrPipeline"),
@@ -61664,7 +61734,7 @@ func (client *Client) AddAsrPipelineWithOptions(request *AddAsrPipelineRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddAsrPipelineResponse{}
@@ -61693,15 +61763,32 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateName"] = request.CateName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ParentId"] = request.ParentId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CateName)) {
+		query["CateName"] = request.CateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddCategory"),
@@ -61711,7 +61798,7 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddCategoryResponse{}
@@ -61740,16 +61827,36 @@ func (client *Client) AddCensorPipelineWithOptions(request *AddCensorPipelineReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddCensorPipeline"),
@@ -61759,7 +61866,7 @@ func (client *Client) AddCensorPipelineWithOptions(request *AddCensorPipelineReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddCensorPipelineResponse{}
@@ -61788,17 +61895,40 @@ func (client *Client) AddCoverPipelineWithOptions(request *AddCoverPipelineReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Role"] = request.Role
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddCoverPipeline"),
@@ -61808,7 +61938,7 @@ func (client *Client) AddCoverPipelineWithOptions(request *AddCoverPipelineReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddCoverPipelineResponse{}
@@ -61837,24 +61967,68 @@ func (client *Client) AddMCTemplateWithOptions(request *AddMCTemplateRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Abuse"] = request.Abuse
-	query["Ad"] = request.Ad
-	query["Contraband"] = request.Contraband
-	query["Live"] = request.Live
-	query["Logo"] = request.Logo
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Politics"] = request.Politics
-	query["Porn"] = request.Porn
-	query["Qrcode"] = request.Qrcode
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Terrorism"] = request.Terrorism
-	query["spam"] = request.Spam
+	if !tea.BoolValue(util.IsUnset(request.Abuse)) {
+		query["Abuse"] = request.Abuse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ad)) {
+		query["Ad"] = request.Ad
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contraband)) {
+		query["Contraband"] = request.Contraband
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Live)) {
+		query["Live"] = request.Live
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logo)) {
+		query["Logo"] = request.Logo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Politics)) {
+		query["Politics"] = request.Politics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Porn)) {
+		query["Porn"] = request.Porn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qrcode)) {
+		query["Qrcode"] = request.Qrcode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Terrorism)) {
+		query["Terrorism"] = request.Terrorism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spam)) {
+		query["spam"] = request.Spam
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddMCTemplate"),
@@ -61864,7 +62038,7 @@ func (client *Client) AddMCTemplateWithOptions(request *AddMCTemplateRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddMCTemplateResponse{}
@@ -61893,23 +62067,64 @@ func (client *Client) AddMediaWithOptions(request *AddMediaRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["FileURL"] = request.FileURL
-	query["InputUnbind"] = request.InputUnbind
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["MediaWorkflowUserData"] = request.MediaWorkflowUserData
-	query["OverrideParams"] = request.OverrideParams
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tags"] = request.Tags
-	query["Title"] = request.Title
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileURL)) {
+		query["FileURL"] = request.FileURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputUnbind)) {
+		query["InputUnbind"] = request.InputUnbind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowUserData)) {
+		query["MediaWorkflowUserData"] = request.MediaWorkflowUserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverrideParams)) {
+		query["OverrideParams"] = request.OverrideParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddMedia"),
@@ -61919,7 +62134,7 @@ func (client *Client) AddMediaWithOptions(request *AddMediaRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddMediaResponse{}
@@ -61948,15 +62163,32 @@ func (client *Client) AddMediaTagWithOptions(request *AddMediaTagRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddMediaTag"),
@@ -61966,7 +62198,7 @@ func (client *Client) AddMediaTagWithOptions(request *AddMediaTagRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddMediaTagResponse{}
@@ -61995,16 +62227,36 @@ func (client *Client) AddMediaWorkflowWithOptions(request *AddMediaWorkflowReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Topology"] = request.Topology
-	query["TriggerMode"] = request.TriggerMode
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topology)) {
+		query["Topology"] = request.Topology
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerMode)) {
+		query["TriggerMode"] = request.TriggerMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddMediaWorkflow"),
@@ -62014,7 +62266,7 @@ func (client *Client) AddMediaWorkflowWithOptions(request *AddMediaWorkflowReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddMediaWorkflowResponse{}
@@ -62043,18 +62295,44 @@ func (client *Client) AddPipelineWithOptions(request *AddPipelineRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Role"] = request.Role
-	query["Speed"] = request.Speed
-	query["SpeedLevel"] = request.SpeedLevel
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Speed)) {
+		query["Speed"] = request.Speed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeedLevel)) {
+		query["SpeedLevel"] = request.SpeedLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddPipeline"),
@@ -62064,7 +62342,7 @@ func (client *Client) AddPipelineWithOptions(request *AddPipelineRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddPipelineResponse{}
@@ -62093,16 +62371,36 @@ func (client *Client) AddPornPipelineWithOptions(request *AddPornPipelineRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddPornPipeline"),
@@ -62112,7 +62410,7 @@ func (client *Client) AddPornPipelineWithOptions(request *AddPornPipelineRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddPornPipelineResponse{}
@@ -62141,23 +62439,68 @@ func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnalyseTypes"] = request.AnalyseTypes
-	query["FaceCategoryIds"] = request.FaceCategoryIds
-	query["Industry"] = request.Industry
-	query["IsDefault"] = request.IsDefault
-	query["KeywordConfig"] = request.KeywordConfig
-	query["KnowledgeConfig"] = request.KnowledgeConfig
-	query["LabelType"] = request.LabelType
-	query["LabelVersion"] = request.LabelVersion
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Scene"] = request.Scene
-	query["TemplateName"] = request.TemplateName
+	if !tea.BoolValue(util.IsUnset(request.AnalyseTypes)) {
+		query["AnalyseTypes"] = request.AnalyseTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceCategoryIds)) {
+		query["FaceCategoryIds"] = request.FaceCategoryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceCustomParamsConfig)) {
+		query["FaceCustomParamsConfig"] = request.FaceCustomParamsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["Industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeywordConfig)) {
+		query["KeywordConfig"] = request.KeywordConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeConfig)) {
+		query["KnowledgeConfig"] = request.KnowledgeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelType)) {
+		query["LabelType"] = request.LabelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelVersion)) {
+		query["LabelVersion"] = request.LabelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSmarttagTemplate"),
@@ -62167,7 +62510,7 @@ func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSmarttagTemplateResponse{}
@@ -62196,19 +62539,48 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Audio"] = request.Audio
-	query["Container"] = request.Container
-	query["MuxConfig"] = request.MuxConfig
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransConfig"] = request.TransConfig
-	query["Video"] = request.Video
+	if !tea.BoolValue(util.IsUnset(request.Audio)) {
+		query["Audio"] = request.Audio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Container)) {
+		query["Container"] = request.Container
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MuxConfig)) {
+		query["MuxConfig"] = request.MuxConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransConfig)) {
+		query["TransConfig"] = request.TransConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTemplate"),
@@ -62218,7 +62590,7 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTemplateResponse{}
@@ -62247,16 +62619,36 @@ func (client *Client) AddTerrorismPipelineWithOptions(request *AddTerrorismPipel
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTerrorismPipeline"),
@@ -62266,7 +62658,7 @@ func (client *Client) AddTerrorismPipelineWithOptions(request *AddTerrorismPipel
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTerrorismPipelineResponse{}
@@ -62295,15 +62687,32 @@ func (client *Client) AddWaterMarkTemplateWithOptions(request *AddWaterMarkTempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddWaterMarkTemplate"),
@@ -62313,7 +62722,7 @@ func (client *Client) AddWaterMarkTemplateWithOptions(request *AddWaterMarkTempl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddWaterMarkTemplateResponse{}
@@ -62342,15 +62751,32 @@ func (client *Client) BindInputBucketWithOptions(request *BindInputBucketRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bucket"] = request.Bucket
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RoleArn"] = request.RoleArn
+	if !tea.BoolValue(util.IsUnset(request.Bucket)) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindInputBucket"),
@@ -62360,7 +62786,7 @@ func (client *Client) BindInputBucketWithOptions(request *BindInputBucketRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindInputBucketResponse{}
@@ -62389,15 +62815,32 @@ func (client *Client) BindOutputBucketWithOptions(request *BindOutputBucketReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bucket"] = request.Bucket
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RoleArn"] = request.RoleArn
+	if !tea.BoolValue(util.IsUnset(request.Bucket)) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindOutputBucket"),
@@ -62407,7 +62850,7 @@ func (client *Client) BindOutputBucketWithOptions(request *BindOutputBucketReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindOutputBucketResponse{}
@@ -62436,14 +62879,28 @@ func (client *Client) CancelJobWithOptions(request *CancelJobRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelJob"),
@@ -62453,7 +62910,7 @@ func (client *Client) CancelJobWithOptions(request *CancelJobRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelJobResponse{}
@@ -62482,13 +62939,24 @@ func (client *Client) CategoryTreeWithOptions(request *CategoryTreeRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CategoryTree"),
@@ -62498,7 +62966,7 @@ func (client *Client) CategoryTreeWithOptions(request *CategoryTreeRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CategoryTreeResponse{}
@@ -62527,23 +62995,64 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bid"] = request.Bid
-	query["Country"] = request.Country
-	query["GmtWakeup"] = request.GmtWakeup
-	query["Hid"] = request.Hid
-	query["Interrupt"] = request.Interrupt
-	query["Invoker"] = request.Invoker
-	query["Level"] = request.Level
-	query["Message"] = request.Message
-	query["Pk"] = request.Pk
-	query["Prompt"] = request.Prompt
-	query["Success"] = request.Success
-	query["TaskExtraData"] = request.TaskExtraData
-	query["TaskIdentifier"] = request.TaskIdentifier
-	query["Url"] = request.Url
+	if !tea.BoolValue(util.IsUnset(request.Bid)) {
+		query["Bid"] = request.Bid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtWakeup)) {
+		query["GmtWakeup"] = request.GmtWakeup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hid)) {
+		query["Hid"] = request.Hid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
+		query["Interrupt"] = request.Interrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Invoker)) {
+		query["Invoker"] = request.Invoker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pk)) {
+		query["Pk"] = request.Pk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Success)) {
+		query["Success"] = request.Success
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskExtraData)) {
+		query["TaskExtraData"] = request.TaskExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdentifier)) {
+		query["TaskIdentifier"] = request.TaskIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckResource"),
@@ -62553,7 +63062,7 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckResourceResponse{}
@@ -62582,17 +63091,40 @@ func (client *Client) CreateFpShotDBWithOptions(request *CreateFpShotDBRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["Description"] = request.Description
-	query["ModelId"] = request.ModelId
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateFpShotDB"),
@@ -62602,7 +63134,7 @@ func (client *Client) CreateFpShotDBWithOptions(request *CreateFpShotDBRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateFpShotDBResponse{}
@@ -62631,15 +63163,32 @@ func (client *Client) CreateInferenceServerWithOptions(request *CreateInferenceS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FunctionName"] = request.FunctionName
-	query["ModelPath"] = request.ModelPath
-	query["ModelType"] = request.ModelType
-	query["PipelineId"] = request.PipelineId
-	query["TestId"] = request.TestId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelPath)) {
+		query["ModelPath"] = request.ModelPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestId)) {
+		query["TestId"] = request.TestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInferenceServer"),
@@ -62649,7 +63198,7 @@ func (client *Client) CreateInferenceServerWithOptions(request *CreateInferenceS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInferenceServerResponse{}
@@ -62678,14 +63227,28 @@ func (client *Client) CreateMcuTemplateWithOptions(request *CreateMcuTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Template"] = request.Template
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["Template"] = request.Template
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateMcuTemplate"),
@@ -62695,7 +63258,7 @@ func (client *Client) CreateMcuTemplateWithOptions(request *CreateMcuTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMcuTemplateResponse{}
@@ -62724,16 +63287,36 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndUserId"] = request.EndUserId
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SessionTime"] = request.SessionTime
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionTime)) {
+		query["SessionTime"] = request.SessionTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSession"),
@@ -62743,7 +63326,7 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSessionResponse{}
@@ -62772,14 +63355,28 @@ func (client *Client) DeactivateMediaWorkflowWithOptions(request *DeactivateMedi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeactivateMediaWorkflow"),
@@ -62789,7 +63386,7 @@ func (client *Client) DeactivateMediaWorkflowWithOptions(request *DeactivateMedi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeactivateMediaWorkflowResponse{}
@@ -62818,15 +63415,32 @@ func (client *Client) DecryptKeyWithOptions(request *DecryptKeyRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CiphertextBlob"] = request.CiphertextBlob
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Rand"] = request.Rand
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rand)) {
+		query["Rand"] = request.Rand
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DecryptKey"),
@@ -62836,7 +63450,7 @@ func (client *Client) DecryptKeyWithOptions(request *DecryptKeyRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DecryptKeyResponse{}
@@ -62865,14 +63479,28 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCategory"),
@@ -62882,7 +63510,7 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCategoryResponse{}
@@ -62911,14 +63539,28 @@ func (client *Client) DeleteMCTemplateWithOptions(request *DeleteMCTemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMCTemplate"),
@@ -62928,7 +63570,7 @@ func (client *Client) DeleteMCTemplateWithOptions(request *DeleteMCTemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMCTemplateResponse{}
@@ -62957,14 +63599,28 @@ func (client *Client) DeleteMcuJobWithOptions(request *DeleteMcuJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMcuJob"),
@@ -62974,7 +63630,7 @@ func (client *Client) DeleteMcuJobWithOptions(request *DeleteMcuJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMcuJobResponse{}
@@ -63003,14 +63659,28 @@ func (client *Client) DeleteMcuTemplateWithOptions(request *DeleteMcuTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMcuTemplate"),
@@ -63020,7 +63690,7 @@ func (client *Client) DeleteMcuTemplateWithOptions(request *DeleteMcuTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMcuTemplateResponse{}
@@ -63049,14 +63719,28 @@ func (client *Client) DeleteMediaWithOptions(request *DeleteMediaRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaIds"] = request.MediaIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMedia"),
@@ -63066,7 +63750,7 @@ func (client *Client) DeleteMediaWithOptions(request *DeleteMediaRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaResponse{}
@@ -63095,15 +63779,32 @@ func (client *Client) DeleteMediaTagWithOptions(request *DeleteMediaTagRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMediaTag"),
@@ -63113,7 +63814,7 @@ func (client *Client) DeleteMediaTagWithOptions(request *DeleteMediaTagRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaTagResponse{}
@@ -63142,14 +63843,28 @@ func (client *Client) DeleteMediaWorkflowWithOptions(request *DeleteMediaWorkflo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMediaWorkflow"),
@@ -63159,7 +63874,7 @@ func (client *Client) DeleteMediaWorkflowWithOptions(request *DeleteMediaWorkflo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaWorkflowResponse{}
@@ -63188,14 +63903,28 @@ func (client *Client) DeletePipelineWithOptions(request *DeletePipelineRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePipeline"),
@@ -63205,7 +63934,7 @@ func (client *Client) DeletePipelineWithOptions(request *DeletePipelineRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePipelineResponse{}
@@ -63234,14 +63963,28 @@ func (client *Client) DeleteSmarttagTemplateWithOptions(request *DeleteSmarttagT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSmarttagTemplate"),
@@ -63251,7 +63994,7 @@ func (client *Client) DeleteSmarttagTemplateWithOptions(request *DeleteSmarttagT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSmarttagTemplateResponse{}
@@ -63280,14 +64023,28 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTemplate"),
@@ -63297,7 +64054,7 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
@@ -63326,14 +64083,28 @@ func (client *Client) DeleteWaterMarkTemplateWithOptions(request *DeleteWaterMar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["WaterMarkTemplateId"] = request.WaterMarkTemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaterMarkTemplateId)) {
+		query["WaterMarkTemplateId"] = request.WaterMarkTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteWaterMarkTemplate"),
@@ -63343,7 +64114,7 @@ func (client *Client) DeleteWaterMarkTemplateWithOptions(request *DeleteWaterMar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWaterMarkTemplateResponse{}
@@ -63372,11 +64143,16 @@ func (client *Client) DescribeMtsUserResourcePackageWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMtsUserResourcePackage"),
@@ -63386,7 +64162,7 @@ func (client *Client) DescribeMtsUserResourcePackageWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMtsUserResourcePackageResponse{}
@@ -63415,10 +64191,12 @@ func (client *Client) DetectImageSyncWithOptions(request *DetectImageSyncRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Image"] = request.Image
+	if !tea.BoolValue(util.IsUnset(request.Image)) {
+		query["Image"] = request.Image
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectImageSync"),
@@ -63428,7 +64206,7 @@ func (client *Client) DetectImageSyncWithOptions(request *DetectImageSyncRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DetectImageSyncResponse{}
@@ -63468,7 +64246,7 @@ func (client *Client) GetJobInfoWithOptions(request *GetJobInfoRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobInfoResponse{}
@@ -63497,18 +64275,44 @@ func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["Header"] = request.Header
-	query["LicenseUrl"] = request.LicenseUrl
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Header)) {
+		query["Header"] = request.Header
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseUrl)) {
+		query["LicenseUrl"] = request.LicenseUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetLicense"),
@@ -63518,7 +64322,7 @@ func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLicenseResponse{}
@@ -63547,14 +64351,28 @@ func (client *Client) GetPackageWithOptions(request *GetPackageRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPackage"),
@@ -63564,7 +64382,7 @@ func (client *Client) GetPackageWithOptions(request *GetPackageRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPackageResponse{}
@@ -63593,16 +64411,36 @@ func (client *Client) ImAuditWithOptions(request *ImAuditRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BizType"] = request.BizType
-	query["Contents"] = request.Contents
-	query["Images"] = request.Images
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Scenes"] = request.Scenes
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contents)) {
+		query["Contents"] = request.Contents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenes)) {
+		query["Scenes"] = request.Scenes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImAudit"),
@@ -63612,7 +64450,7 @@ func (client *Client) ImAuditWithOptions(request *ImAuditRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ImAuditResponse{}
@@ -63641,18 +64479,44 @@ func (client *Client) ImportFpShotJobWithOptions(request *ImportFpShotJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpDBId"] = request.FpDBId
-	query["FpImportConfig"] = request.FpImportConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FpImportConfig)) {
+		query["FpImportConfig"] = request.FpImportConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImportFpShotJob"),
@@ -63662,7 +64526,7 @@ func (client *Client) ImportFpShotJobWithOptions(request *ImportFpShotJobRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ImportFpShotJobResponse{}
@@ -63691,13 +64555,24 @@ func (client *Client) ListAllCategoryWithOptions(request *ListAllCategoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAllCategory"),
@@ -63707,7 +64582,7 @@ func (client *Client) ListAllCategoryWithOptions(request *ListAllCategoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAllCategoryResponse{}
@@ -63736,15 +64611,32 @@ func (client *Client) ListAllMediaBucketWithOptions(request *ListAllMediaBucketR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAllMediaBucket"),
@@ -63754,7 +64646,7 @@ func (client *Client) ListAllMediaBucketWithOptions(request *ListAllMediaBucketR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAllMediaBucketResponse{}
@@ -63783,16 +64675,36 @@ func (client *Client) ListAsrPipelineWithOptions(request *ListAsrPipelineRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAsrPipeline"),
@@ -63802,7 +64714,7 @@ func (client *Client) ListAsrPipelineWithOptions(request *ListAsrPipelineRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAsrPipelineResponse{}
@@ -63831,16 +64743,36 @@ func (client *Client) ListCensorPipelineWithOptions(request *ListCensorPipelineR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListCensorPipeline"),
@@ -63850,7 +64782,7 @@ func (client *Client) ListCensorPipelineWithOptions(request *ListCensorPipelineR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCensorPipelineResponse{}
@@ -63879,16 +64811,36 @@ func (client *Client) ListCoverPipelineWithOptions(request *ListCoverPipelineReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListCoverPipeline"),
@@ -63898,7 +64850,7 @@ func (client *Client) ListCoverPipelineWithOptions(request *ListCoverPipelineReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCoverPipelineResponse{}
@@ -63927,15 +64879,32 @@ func (client *Client) ListCustomPersonsWithOptions(request *ListCustomPersonsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PersonId"] = request.PersonId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		query["PersonId"] = request.PersonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListCustomPersons"),
@@ -63945,7 +64914,7 @@ func (client *Client) ListCustomPersonsWithOptions(request *ListCustomPersonsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCustomPersonsResponse{}
@@ -63974,14 +64943,28 @@ func (client *Client) ListFpShotDBWithOptions(request *ListFpShotDBRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpDBIds"] = request.FpDBIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.FpDBIds)) {
+		query["FpDBIds"] = request.FpDBIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFpShotDB"),
@@ -63991,7 +64974,7 @@ func (client *Client) ListFpShotDBWithOptions(request *ListFpShotDBRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFpShotDBResponse{}
@@ -64020,16 +65003,36 @@ func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpDBId"] = request.FpDBId
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFpShotFiles"),
@@ -64039,7 +65042,7 @@ func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFpShotFilesResponse{}
@@ -64068,14 +65071,28 @@ func (client *Client) ListFpShotImportJobWithOptions(request *ListFpShotImportJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFpShotImportJob"),
@@ -64085,7 +65102,7 @@ func (client *Client) ListFpShotImportJobWithOptions(request *ListFpShotImportJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFpShotImportJobResponse{}
@@ -64114,18 +65131,44 @@ func (client *Client) ListFpShotNotaryWithOptions(request *ListFpShotNotaryReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfCreatedTimeRange"] = request.EndOfCreatedTimeRange
-	query["FpDBId"] = request.FpDBId
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfCreatedTimeRange"] = request.StartOfCreatedTimeRange
+	if !tea.BoolValue(util.IsUnset(request.EndOfCreatedTimeRange)) {
+		query["EndOfCreatedTimeRange"] = request.EndOfCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfCreatedTimeRange)) {
+		query["StartOfCreatedTimeRange"] = request.StartOfCreatedTimeRange
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFpShotNotary"),
@@ -64135,7 +65178,7 @@ func (client *Client) ListFpShotNotaryWithOptions(request *ListFpShotNotaryReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFpShotNotaryResponse{}
@@ -64164,12 +65207,20 @@ func (client *Client) ListInferenceJobWithOptions(request *ListInferenceJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxPageSize"] = request.MaxPageSize
-	query["PageNumber"] = request.PageNumber
-	query["ServerName"] = request.ServerName
+	if !tea.BoolValue(util.IsUnset(request.MaxPageSize)) {
+		query["MaxPageSize"] = request.MaxPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerName)) {
+		query["ServerName"] = request.ServerName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInferenceJob"),
@@ -64179,7 +65230,7 @@ func (client *Client) ListInferenceJobWithOptions(request *ListInferenceJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInferenceJobResponse{}
@@ -64208,19 +65259,48 @@ func (client *Client) ListJobWithOptions(request *ListJobRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListJob"),
@@ -64230,7 +65310,7 @@ func (client *Client) ListJobWithOptions(request *ListJobRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListJobResponse{}
@@ -64259,17 +65339,40 @@ func (client *Client) ListMediaWithOptions(request *ListMediaRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["From"] = request.From
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["To"] = request.To
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMedia"),
@@ -64279,7 +65382,7 @@ func (client *Client) ListMediaWithOptions(request *ListMediaRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaResponse{}
@@ -64308,18 +65411,44 @@ func (client *Client) ListMediaWorkflowExecutionsWithOptions(request *ListMediaW
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InputFileURL"] = request.InputFileURL
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["MediaWorkflowName"] = request.MediaWorkflowName
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.InputFileURL)) {
+		query["InputFileURL"] = request.InputFileURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowName)) {
+		query["MediaWorkflowName"] = request.MediaWorkflowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMediaWorkflowExecutions"),
@@ -64329,7 +65458,7 @@ func (client *Client) ListMediaWorkflowExecutionsWithOptions(request *ListMediaW
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediaWorkflowExecutionsResponse{}
@@ -64358,16 +65487,36 @@ func (client *Client) ListPornPipelineWithOptions(request *ListPornPipelineReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPornPipeline"),
@@ -64377,7 +65526,7 @@ func (client *Client) ListPornPipelineWithOptions(request *ListPornPipelineReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPornPipelineResponse{}
@@ -64406,16 +65555,36 @@ func (client *Client) ListTerrorismPipelineWithOptions(request *ListTerrorismPip
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTerrorismPipeline"),
@@ -64425,7 +65594,7 @@ func (client *Client) ListTerrorismPipelineWithOptions(request *ListTerrorismPip
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTerrorismPipelineResponse{}
@@ -64454,20 +65623,52 @@ func (client *Client) LogicalDeleteResourceWithOptions(request *LogicalDeleteRes
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bid"] = request.Bid
-	query["Country"] = request.Country
-	query["GmtWakeup"] = request.GmtWakeup
-	query["Hid"] = request.Hid
-	query["Interrupt"] = request.Interrupt
-	query["Invoker"] = request.Invoker
-	query["Message"] = request.Message
-	query["Pk"] = request.Pk
-	query["Success"] = request.Success
-	query["TaskExtraData"] = request.TaskExtraData
-	query["TaskIdentifier"] = request.TaskIdentifier
+	if !tea.BoolValue(util.IsUnset(request.Bid)) {
+		query["Bid"] = request.Bid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtWakeup)) {
+		query["GmtWakeup"] = request.GmtWakeup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hid)) {
+		query["Hid"] = request.Hid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
+		query["Interrupt"] = request.Interrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Invoker)) {
+		query["Invoker"] = request.Invoker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pk)) {
+		query["Pk"] = request.Pk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Success)) {
+		query["Success"] = request.Success
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskExtraData)) {
+		query["TaskExtraData"] = request.TaskExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdentifier)) {
+		query["TaskIdentifier"] = request.TaskIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LogicalDeleteResource"),
@@ -64477,7 +65678,7 @@ func (client *Client) LogicalDeleteResourceWithOptions(request *LogicalDeleteRes
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &LogicalDeleteResourceResponse{}
@@ -64506,20 +65707,52 @@ func (client *Client) PhysicalDeleteResourceWithOptions(request *PhysicalDeleteR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bid"] = request.Bid
-	query["Country"] = request.Country
-	query["GmtWakeup"] = request.GmtWakeup
-	query["Hid"] = request.Hid
-	query["Interrupt"] = request.Interrupt
-	query["Invoker"] = request.Invoker
-	query["Message"] = request.Message
-	query["Pk"] = request.Pk
-	query["Success"] = request.Success
-	query["TaskExtraData"] = request.TaskExtraData
-	query["TaskIdentifier"] = request.TaskIdentifier
+	if !tea.BoolValue(util.IsUnset(request.Bid)) {
+		query["Bid"] = request.Bid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtWakeup)) {
+		query["GmtWakeup"] = request.GmtWakeup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hid)) {
+		query["Hid"] = request.Hid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
+		query["Interrupt"] = request.Interrupt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Invoker)) {
+		query["Invoker"] = request.Invoker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pk)) {
+		query["Pk"] = request.Pk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Success)) {
+		query["Success"] = request.Success
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskExtraData)) {
+		query["TaskExtraData"] = request.TaskExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdentifier)) {
+		query["TaskIdentifier"] = request.TaskIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PhysicalDeleteResource"),
@@ -64529,7 +65762,7 @@ func (client *Client) PhysicalDeleteResourceWithOptions(request *PhysicalDeleteR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PhysicalDeleteResourceResponse{}
@@ -64558,21 +65791,56 @@ func (client *Client) PlayInfoWithOptions(request *PlayInfoRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthInfo"] = request.AuthInfo
-	query["AuthTimeout"] = request.AuthTimeout
-	query["Formats"] = request.Formats
-	query["HlsUriToken"] = request.HlsUriToken
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PlayDomain"] = request.PlayDomain
-	query["Rand"] = request.Rand
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Terminal"] = request.Terminal
+	if !tea.BoolValue(util.IsUnset(request.AuthInfo)) {
+		query["AuthInfo"] = request.AuthInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Formats)) {
+		query["Formats"] = request.Formats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HlsUriToken)) {
+		query["HlsUriToken"] = request.HlsUriToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayDomain)) {
+		query["PlayDomain"] = request.PlayDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rand)) {
+		query["Rand"] = request.Rand
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Terminal)) {
+		query["Terminal"] = request.Terminal
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PlayInfo"),
@@ -64582,7 +65850,7 @@ func (client *Client) PlayInfoWithOptions(request *PlayInfoRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PlayInfoResponse{}
@@ -64611,13 +65879,24 @@ func (client *Client) PlayerAuthWithOptions(request *PlayerAuthRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PlayerAuth"),
@@ -64627,7 +65906,7 @@ func (client *Client) PlayerAuthWithOptions(request *PlayerAuthRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PlayerAuthResponse{}
@@ -64656,14 +65935,28 @@ func (client *Client) QueryAnalysisJobListWithOptions(request *QueryAnalysisJobL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnalysisJobIds"] = request.AnalysisJobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AnalysisJobIds)) {
+		query["AnalysisJobIds"] = request.AnalysisJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryAnalysisJobList"),
@@ -64673,7 +65966,7 @@ func (client *Client) QueryAnalysisJobListWithOptions(request *QueryAnalysisJobL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAnalysisJobListResponse{}
@@ -64702,14 +65995,28 @@ func (client *Client) QueryAnnotationJobListWithOptions(request *QueryAnnotation
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnnotationJobIds"] = request.AnnotationJobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AnnotationJobIds)) {
+		query["AnnotationJobIds"] = request.AnnotationJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryAnnotationJobList"),
@@ -64719,7 +66026,7 @@ func (client *Client) QueryAnnotationJobListWithOptions(request *QueryAnnotation
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAnnotationJobListResponse{}
@@ -64748,14 +66055,28 @@ func (client *Client) QueryAsrJobListWithOptions(request *QueryAsrJobListRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryAsrJobList"),
@@ -64765,7 +66086,7 @@ func (client *Client) QueryAsrJobListWithOptions(request *QueryAsrJobListRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAsrJobListResponse{}
@@ -64794,14 +66115,28 @@ func (client *Client) QueryAsrPipelineListWithOptions(request *QueryAsrPipelineL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryAsrPipelineList"),
@@ -64811,7 +66146,7 @@ func (client *Client) QueryAsrPipelineListWithOptions(request *QueryAsrPipelineL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAsrPipelineListResponse{}
@@ -64840,13 +66175,24 @@ func (client *Client) QueryAuthConfigWithOptions(request *QueryAuthConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryAuthConfig"),
@@ -64856,7 +66202,7 @@ func (client *Client) QueryAuthConfigWithOptions(request *QueryAuthConfigRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAuthConfigResponse{}
@@ -64885,14 +66231,28 @@ func (client *Client) QueryCensorJobListWithOptions(request *QueryCensorJobListR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryCensorJobList"),
@@ -64902,7 +66262,7 @@ func (client *Client) QueryCensorJobListWithOptions(request *QueryCensorJobListR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCensorJobListResponse{}
@@ -64931,14 +66291,28 @@ func (client *Client) QueryCensorPipelineListWithOptions(request *QueryCensorPip
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryCensorPipelineList"),
@@ -64948,7 +66322,7 @@ func (client *Client) QueryCensorPipelineListWithOptions(request *QueryCensorPip
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCensorPipelineListResponse{}
@@ -64977,14 +66351,28 @@ func (client *Client) QueryComplexJobListWithOptions(request *QueryComplexJobLis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryComplexJobList"),
@@ -64994,7 +66382,7 @@ func (client *Client) QueryComplexJobListWithOptions(request *QueryComplexJobLis
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryComplexJobListResponse{}
@@ -65023,20 +66411,52 @@ func (client *Client) QueryCoverJobListWithOptions(request *QueryCoverJobListReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverJobIds"] = request.CoverJobIds
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.CoverJobIds)) {
+		query["CoverJobIds"] = request.CoverJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryCoverJobList"),
@@ -65046,7 +66466,7 @@ func (client *Client) QueryCoverJobListWithOptions(request *QueryCoverJobListReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCoverJobListResponse{}
@@ -65075,14 +66495,28 @@ func (client *Client) QueryCoverPipelineListWithOptions(request *QueryCoverPipel
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryCoverPipelineList"),
@@ -65092,7 +66526,7 @@ func (client *Client) QueryCoverPipelineListWithOptions(request *QueryCoverPipel
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCoverPipelineListResponse{}
@@ -65121,14 +66555,28 @@ func (client *Client) QueryEditingJobListWithOptions(request *QueryEditingJobLis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryEditingJobList"),
@@ -65138,7 +66586,7 @@ func (client *Client) QueryEditingJobListWithOptions(request *QueryEditingJobLis
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryEditingJobListResponse{}
@@ -65167,14 +66615,28 @@ func (client *Client) QueryFacerecogJobListWithOptions(request *QueryFacerecogJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FacerecogJobIds"] = request.FacerecogJobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.FacerecogJobIds)) {
+		query["FacerecogJobIds"] = request.FacerecogJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFacerecogJobList"),
@@ -65184,7 +66646,7 @@ func (client *Client) QueryFacerecogJobListWithOptions(request *QueryFacerecogJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFacerecogJobListResponse{}
@@ -65213,14 +66675,28 @@ func (client *Client) QueryFpCompareJobListWithOptions(request *QueryFpCompareJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFpCompareJobList"),
@@ -65230,7 +66706,7 @@ func (client *Client) QueryFpCompareJobListWithOptions(request *QueryFpCompareJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFpCompareJobListResponse{}
@@ -65259,14 +66735,28 @@ func (client *Client) QueryFpDBDeleteJobListWithOptions(request *QueryFpDBDelete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFpDBDeleteJobList"),
@@ -65276,7 +66766,7 @@ func (client *Client) QueryFpDBDeleteJobListWithOptions(request *QueryFpDBDelete
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFpDBDeleteJobListResponse{}
@@ -65305,14 +66795,28 @@ func (client *Client) QueryFpFileDeleteJobListWithOptions(request *QueryFpFileDe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFpFileDeleteJobList"),
@@ -65322,7 +66826,7 @@ func (client *Client) QueryFpFileDeleteJobListWithOptions(request *QueryFpFileDe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFpFileDeleteJobListResponse{}
@@ -65351,17 +66855,40 @@ func (client *Client) QueryFpImportResultWithOptions(request *QueryFpImportResul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFpImportResult"),
@@ -65371,7 +66898,7 @@ func (client *Client) QueryFpImportResultWithOptions(request *QueryFpImportResul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFpImportResultResponse{}
@@ -65400,22 +66927,60 @@ func (client *Client) QueryFpShotJobListWithOptions(request *QueryFpShotJobListR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["JobIds"] = request.JobIds
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["PrimaryKeyList"] = request.PrimaryKeyList
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKeyList)) {
+		query["PrimaryKeyList"] = request.PrimaryKeyList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryFpShotJobList"),
@@ -65425,7 +66990,7 @@ func (client *Client) QueryFpShotJobListWithOptions(request *QueryFpShotJobListR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFpShotJobListResponse{}
@@ -65454,14 +67019,28 @@ func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryIProductionJob"),
@@ -65471,7 +67050,7 @@ func (client *Client) QueryIProductionJobWithOptions(request *QueryIProductionJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryIProductionJobResponse{}
@@ -65500,14 +67079,28 @@ func (client *Client) QueryIProductionJobListWithOptions(request *QueryIProducti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IProductionJobIds"] = request.IProductionJobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.IProductionJobIds)) {
+		query["IProductionJobIds"] = request.IProductionJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryIProductionJobList"),
@@ -65517,7 +67110,7 @@ func (client *Client) QueryIProductionJobListWithOptions(request *QueryIProducti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryIProductionJobListResponse{}
@@ -65546,14 +67139,28 @@ func (client *Client) QueryImageSearchJobListWithOptions(request *QueryImageSear
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryImageSearchJobList"),
@@ -65563,7 +67170,7 @@ func (client *Client) QueryImageSearchJobListWithOptions(request *QueryImageSear
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryImageSearchJobListResponse{}
@@ -65592,10 +67199,12 @@ func (client *Client) QueryInferenceJobWithOptions(request *QueryInferenceJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryInferenceJob"),
@@ -65605,7 +67214,7 @@ func (client *Client) QueryInferenceJobWithOptions(request *QueryInferenceJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInferenceJobResponse{}
@@ -65634,13 +67243,24 @@ func (client *Client) QueryInferenceServerWithOptions(request *QueryInferenceSer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CreateTime"] = request.CreateTime
-	query["MaxPageSize"] = request.MaxPageSize
-	query["ModelType"] = request.ModelType
-	query["PageNumber"] = request.PageNumber
+	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
+		query["CreateTime"] = request.CreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPageSize)) {
+		query["MaxPageSize"] = request.MaxPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryInferenceServer"),
@@ -65650,7 +67270,7 @@ func (client *Client) QueryInferenceServerWithOptions(request *QueryInferenceSer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInferenceServerResponse{}
@@ -65679,13 +67299,24 @@ func (client *Client) QueryInnerJobWithOptions(request *QueryInnerJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryInnerJob"),
@@ -65695,7 +67326,7 @@ func (client *Client) QueryInnerJobWithOptions(request *QueryInnerJobRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInnerJobResponse{}
@@ -65724,14 +67355,28 @@ func (client *Client) QueryJobListWithOptions(request *QueryJobListRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryJobList"),
@@ -65741,7 +67386,7 @@ func (client *Client) QueryJobListWithOptions(request *QueryJobListRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryJobListResponse{}
@@ -65770,20 +67415,52 @@ func (client *Client) QueryMCJobListWithOptions(request *QueryMCJobListRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["JobIds"] = request.JobIds
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMCJobList"),
@@ -65793,7 +67470,7 @@ func (client *Client) QueryMCJobListWithOptions(request *QueryMCJobListRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMCJobListResponse{}
@@ -65822,14 +67499,28 @@ func (client *Client) QueryMCTemplateListWithOptions(request *QueryMCTemplateLis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateIds"] = request.TemplateIds
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMCTemplateList"),
@@ -65839,7 +67530,7 @@ func (client *Client) QueryMCTemplateListWithOptions(request *QueryMCTemplateLis
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMCTemplateListResponse{}
@@ -65868,14 +67559,28 @@ func (client *Client) QueryMcuJobWithOptions(request *QueryMcuJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMcuJob"),
@@ -65885,7 +67590,7 @@ func (client *Client) QueryMcuJobWithOptions(request *QueryMcuJobRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMcuJobResponse{}
@@ -65914,14 +67619,28 @@ func (client *Client) QueryMcuTemplateWithOptions(request *QueryMcuTemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMcuTemplate"),
@@ -65931,7 +67650,7 @@ func (client *Client) QueryMcuTemplateWithOptions(request *QueryMcuTemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMcuTemplateResponse{}
@@ -65960,16 +67679,36 @@ func (client *Client) QueryMediaCensorJobDetailWithOptions(request *QueryMediaCe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaCensorJobDetail"),
@@ -65979,7 +67718,7 @@ func (client *Client) QueryMediaCensorJobDetailWithOptions(request *QueryMediaCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaCensorJobDetailResponse{}
@@ -66008,20 +67747,52 @@ func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCens
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["JobId"] = request.JobId
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaCensorJobList"),
@@ -66031,7 +67802,7 @@ func (client *Client) QueryMediaCensorJobListWithOptions(request *QueryMediaCens
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaCensorJobListResponse{}
@@ -66060,14 +67831,28 @@ func (client *Client) QueryMediaDetailJobListWithOptions(request *QueryMediaDeta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaDetailJobList"),
@@ -66077,7 +67862,7 @@ func (client *Client) QueryMediaDetailJobListWithOptions(request *QueryMediaDeta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaDetailJobListResponse{}
@@ -66106,14 +67891,28 @@ func (client *Client) QueryMediaFpDeleteJobListWithOptions(request *QueryMediaFp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaFpDeleteJobList"),
@@ -66123,7 +67922,7 @@ func (client *Client) QueryMediaFpDeleteJobListWithOptions(request *QueryMediaFp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaFpDeleteJobListResponse{}
@@ -66152,14 +67951,28 @@ func (client *Client) QueryMediaInfoJobListWithOptions(request *QueryMediaInfoJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaInfoJobIds"] = request.MediaInfoJobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaInfoJobIds)) {
+		query["MediaInfoJobIds"] = request.MediaInfoJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaInfoJobList"),
@@ -66169,7 +67982,7 @@ func (client *Client) QueryMediaInfoJobListWithOptions(request *QueryMediaInfoJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaInfoJobListResponse{}
@@ -66198,18 +68011,44 @@ func (client *Client) QueryMediaListWithOptions(request *QueryMediaListRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IncludeMediaInfo"] = request.IncludeMediaInfo
-	query["IncludePlayList"] = request.IncludePlayList
-	query["IncludeSnapshotList"] = request.IncludeSnapshotList
-	query["IncludeSummaryList"] = request.IncludeSummaryList
-	query["MediaIds"] = request.MediaIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.IncludeMediaInfo)) {
+		query["IncludeMediaInfo"] = request.IncludeMediaInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludePlayList)) {
+		query["IncludePlayList"] = request.IncludePlayList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSnapshotList)) {
+		query["IncludeSnapshotList"] = request.IncludeSnapshotList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSummaryList)) {
+		query["IncludeSummaryList"] = request.IncludeSummaryList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaList"),
@@ -66219,7 +68058,7 @@ func (client *Client) QueryMediaListWithOptions(request *QueryMediaListRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaListResponse{}
@@ -66248,18 +68087,44 @@ func (client *Client) QueryMediaListByURLWithOptions(request *QueryMediaListByUR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileURLs"] = request.FileURLs
-	query["IncludeMediaInfo"] = request.IncludeMediaInfo
-	query["IncludePlayList"] = request.IncludePlayList
-	query["IncludeSnapshotList"] = request.IncludeSnapshotList
-	query["IncludeSummaryList"] = request.IncludeSummaryList
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.FileURLs)) {
+		query["FileURLs"] = request.FileURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeMediaInfo)) {
+		query["IncludeMediaInfo"] = request.IncludeMediaInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludePlayList)) {
+		query["IncludePlayList"] = request.IncludePlayList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSnapshotList)) {
+		query["IncludeSnapshotList"] = request.IncludeSnapshotList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSummaryList)) {
+		query["IncludeSummaryList"] = request.IncludeSummaryList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaListByURL"),
@@ -66269,7 +68134,7 @@ func (client *Client) QueryMediaListByURLWithOptions(request *QueryMediaListByUR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaListByURLResponse{}
@@ -66298,14 +68163,28 @@ func (client *Client) QueryMediaWorkflowExecutionListWithOptions(request *QueryM
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RunIds"] = request.RunIds
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunIds)) {
+		query["RunIds"] = request.RunIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaWorkflowExecutionList"),
@@ -66315,7 +68194,7 @@ func (client *Client) QueryMediaWorkflowExecutionListWithOptions(request *QueryM
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaWorkflowExecutionListResponse{}
@@ -66344,14 +68223,28 @@ func (client *Client) QueryMediaWorkflowListWithOptions(request *QueryMediaWorkf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowIds"] = request.MediaWorkflowIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowIds)) {
+		query["MediaWorkflowIds"] = request.MediaWorkflowIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryMediaWorkflowList"),
@@ -66361,7 +68254,7 @@ func (client *Client) QueryMediaWorkflowListWithOptions(request *QueryMediaWorkf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMediaWorkflowListResponse{}
@@ -66390,14 +68283,28 @@ func (client *Client) QueryPipelineListWithOptions(request *QueryPipelineListReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryPipelineList"),
@@ -66407,7 +68314,7 @@ func (client *Client) QueryPipelineListWithOptions(request *QueryPipelineListReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPipelineListResponse{}
@@ -66436,14 +68343,28 @@ func (client *Client) QueryPornJobListWithOptions(request *QueryPornJobListReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryPornJobList"),
@@ -66453,7 +68374,7 @@ func (client *Client) QueryPornJobListWithOptions(request *QueryPornJobListReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPornJobListResponse{}
@@ -66482,14 +68403,28 @@ func (client *Client) QueryPornPipelineListWithOptions(request *QueryPornPipelin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryPornPipelineList"),
@@ -66499,7 +68434,7 @@ func (client *Client) QueryPornPipelineListWithOptions(request *QueryPornPipelin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPornPipelineListResponse{}
@@ -66528,15 +68463,32 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Params"] = request.Params
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySmarttagJob"),
@@ -66546,7 +68498,7 @@ func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySmarttagJobResponse{}
@@ -66575,19 +68527,48 @@ func (client *Client) QuerySmarttagJobListWithOptions(request *QuerySmarttagJobL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["JobIds"] = request.JobIds
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySmarttagJobList"),
@@ -66597,7 +68578,7 @@ func (client *Client) QuerySmarttagJobListWithOptions(request *QuerySmarttagJobL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySmarttagJobListResponse{}
@@ -66626,14 +68607,28 @@ func (client *Client) QuerySmarttagTemplateListWithOptions(request *QuerySmartta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySmarttagTemplateList"),
@@ -66643,7 +68638,7 @@ func (client *Client) QuerySmarttagTemplateListWithOptions(request *QuerySmartta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySmarttagTemplateListResponse{}
@@ -66672,20 +68667,52 @@ func (client *Client) QuerySnapshotJobListWithOptions(request *QuerySnapshotJobL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
-	query["MaximumPageSize"] = request.MaximumPageSize
-	query["NextPageToken"] = request.NextPageToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SnapshotJobIds"] = request.SnapshotJobIds
-	query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.EndOfJobCreatedTimeRange)) {
+		query["EndOfJobCreatedTimeRange"] = request.EndOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumPageSize)) {
+		query["MaximumPageSize"] = request.MaximumPageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotJobIds)) {
+		query["SnapshotJobIds"] = request.SnapshotJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfJobCreatedTimeRange)) {
+		query["StartOfJobCreatedTimeRange"] = request.StartOfJobCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySnapshotJobList"),
@@ -66695,7 +68722,7 @@ func (client *Client) QuerySnapshotJobListWithOptions(request *QuerySnapshotJobL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySnapshotJobListResponse{}
@@ -66724,14 +68751,28 @@ func (client *Client) QuerySubtitleJobListWithOptions(request *QuerySubtitleJobL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySubtitleJobList"),
@@ -66741,7 +68782,7 @@ func (client *Client) QuerySubtitleJobListWithOptions(request *QuerySubtitleJobL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySubtitleJobListResponse{}
@@ -66770,14 +68811,28 @@ func (client *Client) QueryTagJobListWithOptions(request *QueryTagJobListRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagJobIds"] = request.TagJobIds
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagJobIds)) {
+		query["TagJobIds"] = request.TagJobIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryTagJobList"),
@@ -66787,7 +68842,7 @@ func (client *Client) QueryTagJobListWithOptions(request *QueryTagJobListRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryTagJobListResponse{}
@@ -66816,14 +68871,28 @@ func (client *Client) QueryTemplateListWithOptions(request *QueryTemplateListReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateIds"] = request.TemplateIds
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryTemplateList"),
@@ -66833,7 +68902,7 @@ func (client *Client) QueryTemplateListWithOptions(request *QueryTemplateListReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryTemplateListResponse{}
@@ -66862,14 +68931,28 @@ func (client *Client) QueryTerrorismJobListWithOptions(request *QueryTerrorismJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryTerrorismJobList"),
@@ -66879,7 +68962,7 @@ func (client *Client) QueryTerrorismJobListWithOptions(request *QueryTerrorismJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryTerrorismJobListResponse{}
@@ -66908,14 +68991,28 @@ func (client *Client) QueryTerrorismPipelineListWithOptions(request *QueryTerror
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineIds"] = request.PipelineIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
+		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryTerrorismPipelineList"),
@@ -66925,7 +69022,7 @@ func (client *Client) QueryTerrorismPipelineListWithOptions(request *QueryTerror
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryTerrorismPipelineListResponse{}
@@ -66954,14 +69051,28 @@ func (client *Client) QueryVideoGifJobListWithOptions(request *QueryVideoGifJobL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryVideoGifJobList"),
@@ -66971,7 +69082,7 @@ func (client *Client) QueryVideoGifJobListWithOptions(request *QueryVideoGifJobL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVideoGifJobListResponse{}
@@ -67000,14 +69111,28 @@ func (client *Client) QueryVideoPoseJobListWithOptions(request *QueryVideoPoseJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryVideoPoseJobList"),
@@ -67017,7 +69142,7 @@ func (client *Client) QueryVideoPoseJobListWithOptions(request *QueryVideoPoseJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVideoPoseJobListResponse{}
@@ -67046,11 +69171,16 @@ func (client *Client) QueryVideoQualityJobWithOptions(request *QueryVideoQuality
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryVideoQualityJob"),
@@ -67060,7 +69190,7 @@ func (client *Client) QueryVideoQualityJobWithOptions(request *QueryVideoQuality
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVideoQualityJobResponse{}
@@ -67089,14 +69219,28 @@ func (client *Client) QueryVideoSplitJobListWithOptions(request *QueryVideoSplit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryVideoSplitJobList"),
@@ -67106,7 +69250,7 @@ func (client *Client) QueryVideoSplitJobListWithOptions(request *QueryVideoSplit
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVideoSplitJobListResponse{}
@@ -67135,14 +69279,28 @@ func (client *Client) QueryVideoSummaryJobListWithOptions(request *QueryVideoSum
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryVideoSummaryJobList"),
@@ -67152,7 +69310,7 @@ func (client *Client) QueryVideoSummaryJobListWithOptions(request *QueryVideoSum
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryVideoSummaryJobListResponse{}
@@ -67181,14 +69339,28 @@ func (client *Client) QueryWaterMarkTemplateListWithOptions(request *QueryWaterM
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["WaterMarkTemplateIds"] = request.WaterMarkTemplateIds
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaterMarkTemplateIds)) {
+		query["WaterMarkTemplateIds"] = request.WaterMarkTemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryWaterMarkTemplateList"),
@@ -67198,7 +69370,7 @@ func (client *Client) QueryWaterMarkTemplateListWithOptions(request *QueryWaterM
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryWaterMarkTemplateListResponse{}
@@ -67227,14 +69399,28 @@ func (client *Client) RefreshCdnDomainConfigsCacheWithOptions(request *RefreshCd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domains"] = request.Domains
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Domains)) {
+		query["Domains"] = request.Domains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshCdnDomainConfigsCache"),
@@ -67244,7 +69430,7 @@ func (client *Client) RefreshCdnDomainConfigsCacheWithOptions(request *RefreshCd
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshCdnDomainConfigsCacheResponse{}
@@ -67273,16 +69459,36 @@ func (client *Client) RegisterCustomFaceWithOptions(request *RegisterCustomFaceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["ImageUrl"] = request.ImageUrl
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PersonId"] = request.PersonId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		query["PersonId"] = request.PersonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RegisterCustomFace"),
@@ -67292,7 +69498,7 @@ func (client *Client) RegisterCustomFaceWithOptions(request *RegisterCustomFaceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterCustomFaceResponse{}
@@ -67321,17 +69527,40 @@ func (client *Client) RegisterMediaDetailPersonWithOptions(request *RegisterMedi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["Images"] = request.Images
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PersonLib"] = request.PersonLib
-	query["PersonName"] = request.PersonName
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonLib)) {
+		query["PersonLib"] = request.PersonLib
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonName)) {
+		query["PersonName"] = request.PersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RegisterMediaDetailPerson"),
@@ -67341,7 +69570,7 @@ func (client *Client) RegisterMediaDetailPersonWithOptions(request *RegisterMedi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaDetailPersonResponse{}
@@ -67370,16 +69599,36 @@ func (client *Client) RegisterMediaDetailScenarioWithOptions(request *RegisterMe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Scenario"] = request.Scenario
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		query["Scenario"] = request.Scenario
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RegisterMediaDetailScenario"),
@@ -67389,7 +69638,7 @@ func (client *Client) RegisterMediaDetailScenarioWithOptions(request *RegisterMe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterMediaDetailScenarioResponse{}
@@ -67418,16 +69667,36 @@ func (client *Client) ReportAnnotationJobResultWithOptions(request *ReportAnnota
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Annotation"] = request.Annotation
-	query["Details"] = request.Details
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Annotation)) {
+		query["Annotation"] = request.Annotation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		query["Details"] = request.Details
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportAnnotationJobResult"),
@@ -67437,7 +69706,7 @@ func (client *Client) ReportAnnotationJobResultWithOptions(request *ReportAnnota
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportAnnotationJobResultResponse{}
@@ -67466,16 +69735,36 @@ func (client *Client) ReportCensorJobResultWithOptions(request *ReportCensorJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Detail"] = request.Detail
-	query["JobId"] = request.JobId
-	query["Label"] = request.Label
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportCensorJobResult"),
@@ -67485,7 +69774,7 @@ func (client *Client) ReportCensorJobResultWithOptions(request *ReportCensorJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportCensorJobResultResponse{}
@@ -67514,15 +69803,32 @@ func (client *Client) ReportCoverJobResultWithOptions(request *ReportCoverJobRes
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Result"] = request.Result
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportCoverJobResult"),
@@ -67532,7 +69838,7 @@ func (client *Client) ReportCoverJobResultWithOptions(request *ReportCoverJobRes
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportCoverJobResultResponse{}
@@ -67561,16 +69867,36 @@ func (client *Client) ReportFacerecogJobResultWithOptions(request *ReportFacerec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Details"] = request.Details
-	query["Facerecog"] = request.Facerecog
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		query["Details"] = request.Details
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Facerecog)) {
+		query["Facerecog"] = request.Facerecog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportFacerecogJobResult"),
@@ -67580,7 +69906,7 @@ func (client *Client) ReportFacerecogJobResultWithOptions(request *ReportFacerec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportFacerecogJobResultResponse{}
@@ -67609,16 +69935,36 @@ func (client *Client) ReportFpShotJobResultWithOptions(request *ReportFpShotJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Details"] = request.Details
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Result"] = request.Result
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		query["Details"] = request.Details
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportFpShotJobResult"),
@@ -67628,7 +69974,7 @@ func (client *Client) ReportFpShotJobResultWithOptions(request *ReportFpShotJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportFpShotJobResultResponse{}
@@ -67657,16 +70003,36 @@ func (client *Client) ReportMediaDetailJobResultWithOptions(request *ReportMedia
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Results"] = request.Results
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Results)) {
+		query["Results"] = request.Results
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportMediaDetailJobResult"),
@@ -67676,7 +70042,7 @@ func (client *Client) ReportMediaDetailJobResultWithOptions(request *ReportMedia
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportMediaDetailJobResultResponse{}
@@ -67705,16 +70071,36 @@ func (client *Client) ReportPornJobResultWithOptions(request *ReportPornJobResul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Detail"] = request.Detail
-	query["JobId"] = request.JobId
-	query["Label"] = request.Label
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportPornJobResult"),
@@ -67724,7 +70110,7 @@ func (client *Client) ReportPornJobResultWithOptions(request *ReportPornJobResul
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportPornJobResultResponse{}
@@ -67753,16 +70139,36 @@ func (client *Client) ReportTagJobResultWithOptions(request *ReportTagJobResultR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Result"] = request.Result
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportTagJobResult"),
@@ -67772,7 +70178,7 @@ func (client *Client) ReportTagJobResultWithOptions(request *ReportTagJobResultR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportTagJobResultResponse{}
@@ -67801,16 +70207,36 @@ func (client *Client) ReportTerrorismJobResultWithOptions(request *ReportTerrori
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Detail"] = request.Detail
-	query["JobId"] = request.JobId
-	query["Label"] = request.Label
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportTerrorismJobResult"),
@@ -67820,7 +70246,7 @@ func (client *Client) ReportTerrorismJobResultWithOptions(request *ReportTerrori
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportTerrorismJobResultResponse{}
@@ -67849,16 +70275,36 @@ func (client *Client) ReportVideoSplitJobResultWithOptions(request *ReportVideoS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Details"] = request.Details
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Result"] = request.Result
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		query["Details"] = request.Details
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportVideoSplitJobResult"),
@@ -67868,7 +70314,7 @@ func (client *Client) ReportVideoSplitJobResultWithOptions(request *ReportVideoS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportVideoSplitJobResultResponse{}
@@ -67897,23 +70343,64 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["Description"] = request.Description
-	query["From"] = request.From
-	query["KeyWord"] = request.KeyWord
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SortBy"] = request.SortBy
-	query["Tag"] = request.Tag
-	query["Title"] = request.Title
-	query["To"] = request.To
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWord)) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchMedia"),
@@ -67923,7 +70410,7 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchMediaResponse{}
@@ -67952,16 +70439,36 @@ func (client *Client) SearchMediaWorkflowWithOptions(request *SearchMediaWorkflo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StateList"] = request.StateList
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StateList)) {
+		query["StateList"] = request.StateList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchMediaWorkflow"),
@@ -67971,7 +70478,7 @@ func (client *Client) SearchMediaWorkflowWithOptions(request *SearchMediaWorkflo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchMediaWorkflowResponse{}
@@ -68000,16 +70507,36 @@ func (client *Client) SearchPipelineWithOptions(request *SearchPipelineRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchPipeline"),
@@ -68019,7 +70546,7 @@ func (client *Client) SearchPipelineWithOptions(request *SearchPipelineRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchPipelineResponse{}
@@ -68048,16 +70575,36 @@ func (client *Client) SearchTemplateWithOptions(request *SearchTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchTemplate"),
@@ -68067,7 +70614,7 @@ func (client *Client) SearchTemplateWithOptions(request *SearchTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchTemplateResponse{}
@@ -68096,16 +70643,36 @@ func (client *Client) SearchWaterMarkTemplateWithOptions(request *SearchWaterMar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchWaterMarkTemplate"),
@@ -68115,7 +70682,7 @@ func (client *Client) SearchWaterMarkTemplateWithOptions(request *SearchWaterMar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchWaterMarkTemplateResponse{}
@@ -68144,15 +70711,32 @@ func (client *Client) SetAuthConfigWithOptions(request *SetAuthConfigRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Key1"] = request.Key1
-	query["Key2"] = request.Key2
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Key1)) {
+		query["Key1"] = request.Key1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key2)) {
+		query["Key2"] = request.Key2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetAuthConfig"),
@@ -68162,7 +70746,7 @@ func (client *Client) SetAuthConfigWithOptions(request *SetAuthConfigRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetAuthConfigResponse{}
@@ -68191,14 +70775,28 @@ func (client *Client) StopIProductionJobWithOptions(request *StopIProductionJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopIProductionJob"),
@@ -68208,7 +70806,7 @@ func (client *Client) StopIProductionJobWithOptions(request *StopIProductionJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopIProductionJobResponse{}
@@ -68237,18 +70835,44 @@ func (client *Client) SubmitAnalysisJobWithOptions(request *SubmitAnalysisJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnalysisConfig"] = request.AnalysisConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AnalysisConfig)) {
+		query["AnalysisConfig"] = request.AnalysisConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAnalysisJob"),
@@ -68258,7 +70882,7 @@ func (client *Client) SubmitAnalysisJobWithOptions(request *SubmitAnalysisJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAnalysisJobResponse{}
@@ -68287,17 +70911,40 @@ func (client *Client) SubmitAnnotationJobWithOptions(request *SubmitAnnotationJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnnotationConfig"] = request.AnnotationConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AnnotationConfig)) {
+		query["AnnotationConfig"] = request.AnnotationConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAnnotationJob"),
@@ -68307,7 +70954,7 @@ func (client *Client) SubmitAnnotationJobWithOptions(request *SubmitAnnotationJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAnnotationJobResponse{}
@@ -68336,17 +70983,40 @@ func (client *Client) SubmitAsrJobWithOptions(request *SubmitAsrJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsrConfig"] = request.AsrConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AsrConfig)) {
+		query["AsrConfig"] = request.AsrConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitAsrJob"),
@@ -68356,7 +71026,7 @@ func (client *Client) SubmitAsrJobWithOptions(request *SubmitAsrJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitAsrJobResponse{}
@@ -68385,17 +71055,40 @@ func (client *Client) SubmitBeautifyJobsWithOptions(request *SubmitBeautifyJobsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Async"] = request.Async
-	query["BeautifyConfig"] = request.BeautifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Async)) {
+		query["Async"] = request.Async
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeautifyConfig)) {
+		query["BeautifyConfig"] = request.BeautifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitBeautifyJobs"),
@@ -68405,7 +71098,7 @@ func (client *Client) SubmitBeautifyJobsWithOptions(request *SubmitBeautifyJobsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitBeautifyJobsResponse{}
@@ -68434,20 +71127,52 @@ func (client *Client) SubmitComplexJobWithOptions(request *SubmitComplexJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ComplexConfigs"] = request.ComplexConfigs
-	query["Inputs"] = request.Inputs
-	query["OutputBucket"] = request.OutputBucket
-	query["OutputLocation"] = request.OutputLocation
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TranscodeOutput"] = request.TranscodeOutput
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.ComplexConfigs)) {
+		query["ComplexConfigs"] = request.ComplexConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inputs)) {
+		query["Inputs"] = request.Inputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputBucket)) {
+		query["OutputBucket"] = request.OutputBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputLocation)) {
+		query["OutputLocation"] = request.OutputLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeOutput)) {
+		query["TranscodeOutput"] = request.TranscodeOutput
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitComplexJob"),
@@ -68457,7 +71182,7 @@ func (client *Client) SubmitComplexJobWithOptions(request *SubmitComplexJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitComplexJobResponse{}
@@ -68486,17 +71211,40 @@ func (client *Client) SubmitCoverJobWithOptions(request *SubmitCoverJobRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverConfig"] = request.CoverConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.CoverConfig)) {
+		query["CoverConfig"] = request.CoverConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitCoverJob"),
@@ -68506,7 +71254,7 @@ func (client *Client) SubmitCoverJobWithOptions(request *SubmitCoverJobRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitCoverJobResponse{}
@@ -68535,21 +71283,56 @@ func (client *Client) SubmitEditingJobsWithOptions(request *SubmitEditingJobsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EditingInputs"] = request.EditingInputs
-	query["EditingJobOssFileRoleArn"] = request.EditingJobOssFileRoleArn
-	query["EditingJobOssFileUid"] = request.EditingJobOssFileUid
-	query["EditingJobOutputs"] = request.EditingJobOutputs
-	query["EditingJobURL"] = request.EditingJobURL
-	query["OutputBucket"] = request.OutputBucket
-	query["OutputLocation"] = request.OutputLocation
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.EditingInputs)) {
+		query["EditingInputs"] = request.EditingInputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingJobOssFileRoleArn)) {
+		query["EditingJobOssFileRoleArn"] = request.EditingJobOssFileRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingJobOssFileUid)) {
+		query["EditingJobOssFileUid"] = request.EditingJobOssFileUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingJobOutputs)) {
+		query["EditingJobOutputs"] = request.EditingJobOutputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingJobURL)) {
+		query["EditingJobURL"] = request.EditingJobURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputBucket)) {
+		query["OutputBucket"] = request.OutputBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputLocation)) {
+		query["OutputLocation"] = request.OutputLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitEditingJobs"),
@@ -68559,7 +71342,7 @@ func (client *Client) SubmitEditingJobsWithOptions(request *SubmitEditingJobsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitEditingJobsResponse{}
@@ -68588,17 +71371,40 @@ func (client *Client) SubmitFacerecogJobWithOptions(request *SubmitFacerecogJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FacerecogConfig"] = request.FacerecogConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FacerecogConfig)) {
+		query["FacerecogConfig"] = request.FacerecogConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFacerecogJob"),
@@ -68608,7 +71414,7 @@ func (client *Client) SubmitFacerecogJobWithOptions(request *SubmitFacerecogJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitFacerecogJobResponse{}
@@ -68637,19 +71443,48 @@ func (client *Client) SubmitFpCompareJobWithOptions(request *SubmitFpCompareJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpDBId"] = request.FpDBId
-	query["MasterMedia"] = request.MasterMedia
-	query["MatchedFrameStorage"] = request.MatchedFrameStorage
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["QueryMedia"] = request.QueryMedia
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterMedia)) {
+		query["MasterMedia"] = request.MasterMedia
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchedFrameStorage)) {
+		query["MatchedFrameStorage"] = request.MatchedFrameStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryMedia)) {
+		query["QueryMedia"] = request.QueryMedia
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFpCompareJob"),
@@ -68659,7 +71494,7 @@ func (client *Client) SubmitFpCompareJobWithOptions(request *SubmitFpCompareJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitFpCompareJobResponse{}
@@ -68688,17 +71523,40 @@ func (client *Client) SubmitFpDBDeleteJobWithOptions(request *SubmitFpDBDeleteJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DelType"] = request.DelType
-	query["FpDBId"] = request.FpDBId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.DelType)) {
+		query["DelType"] = request.DelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFpDBDeleteJob"),
@@ -68708,7 +71566,7 @@ func (client *Client) SubmitFpDBDeleteJobWithOptions(request *SubmitFpDBDeleteJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitFpDBDeleteJobResponse{}
@@ -68737,17 +71595,40 @@ func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDele
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileIds"] = request.FileIds
-	query["FpDBId"] = request.FpDBId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FileIds)) {
+		query["FileIds"] = request.FileIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFpFileDeleteJob"),
@@ -68757,7 +71638,7 @@ func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDele
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitFpFileDeleteJobResponse{}
@@ -68786,17 +71667,40 @@ func (client *Client) SubmitFpShotJobWithOptions(request *SubmitFpShotJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpShotConfig"] = request.FpShotConfig
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FpShotConfig)) {
+		query["FpShotConfig"] = request.FpShotConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFpShotJob"),
@@ -68806,7 +71710,7 @@ func (client *Client) SubmitFpShotJobWithOptions(request *SubmitFpShotJobRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitFpShotJobResponse{}
@@ -68835,22 +71739,60 @@ func (client *Client) SubmitIProductionJobWithOptions(request *SubmitIProduction
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FunctionName"] = request.FunctionName
-	query["Input"] = request.Input
-	query["JobParams"] = request.JobParams
-	query["ModelId"] = request.ModelId
-	query["NotifyUrl"] = request.NotifyUrl
-	query["Output"] = request.Output
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ScheduleParams"] = request.ScheduleParams
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobParams)) {
+		query["JobParams"] = request.JobParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["Output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleParams)) {
+		query["ScheduleParams"] = request.ScheduleParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitIProductionJob"),
@@ -68860,7 +71802,7 @@ func (client *Client) SubmitIProductionJobWithOptions(request *SubmitIProduction
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitIProductionJobResponse{}
@@ -68889,16 +71831,36 @@ func (client *Client) SubmitImageQualityJobWithOptions(request *SubmitImageQuali
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitImageQualityJob"),
@@ -68908,7 +71870,7 @@ func (client *Client) SubmitImageQualityJobWithOptions(request *SubmitImageQuali
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitImageQualityJobResponse{}
@@ -68937,19 +71899,48 @@ func (client *Client) SubmitImageSearchJobWithOptions(request *SubmitImageSearch
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["FpDBId"] = request.FpDBId
-	query["InputImage"] = request.InputImage
-	query["InputVideo"] = request.InputVideo
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputImage)) {
+		query["InputImage"] = request.InputImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputVideo)) {
+		query["InputVideo"] = request.InputVideo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitImageSearchJob"),
@@ -68959,7 +71950,7 @@ func (client *Client) SubmitImageSearchJobWithOptions(request *SubmitImageSearch
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitImageSearchJobResponse{}
@@ -68988,12 +71979,20 @@ func (client *Client) SubmitInferenceJobWithOptions(request *SubmitInferenceJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["ModelType"] = request.ModelType
-	query["ServerName"] = request.ServerName
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerName)) {
+		query["ServerName"] = request.ServerName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitInferenceJob"),
@@ -69003,7 +72002,7 @@ func (client *Client) SubmitInferenceJobWithOptions(request *SubmitInferenceJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitInferenceJobResponse{}
@@ -69032,17 +72031,40 @@ func (client *Client) SubmitInnerJobWithOptions(request *SubmitInnerJobRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["Images"] = request.Images
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Uid"] = request.Uid
-	query["Video"] = request.Video
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitInnerJob"),
@@ -69052,7 +72074,7 @@ func (client *Client) SubmitInnerJobWithOptions(request *SubmitInnerJobRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitInnerJobResponse{}
@@ -69081,18 +72103,44 @@ func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OutputBucket"] = request.OutputBucket
-	query["OutputLocation"] = request.OutputLocation
-	query["Outputs"] = request.Outputs
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputBucket)) {
+		query["OutputBucket"] = request.OutputBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputLocation)) {
+		query["OutputLocation"] = request.OutputLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Outputs)) {
+		query["Outputs"] = request.Outputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitJobs"),
@@ -69102,7 +72150,7 @@ func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitJobsResponse{}
@@ -69131,19 +72179,48 @@ func (client *Client) SubmitMCJobWithOptions(request *SubmitMCJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CensorConfig"] = request.CensorConfig
-	query["Images"] = request.Images
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Texts"] = request.Texts
-	query["UserData"] = request.UserData
-	query["Video"] = request.Video
+	if !tea.BoolValue(util.IsUnset(request.CensorConfig)) {
+		query["CensorConfig"] = request.CensorConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Texts)) {
+		query["Texts"] = request.Texts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMCJob"),
@@ -69153,7 +72230,7 @@ func (client *Client) SubmitMCJobWithOptions(request *SubmitMCJobRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMCJobResponse{}
@@ -69182,18 +72259,44 @@ func (client *Client) SubmitMcuJobWithOptions(request *SubmitMcuJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Template"] = request.Template
-	query["TemplateId"] = request.TemplateId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["Template"] = request.Template
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMcuJob"),
@@ -69203,7 +72306,7 @@ func (client *Client) SubmitMcuJobWithOptions(request *SubmitMcuJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMcuJobResponse{}
@@ -69232,22 +72335,60 @@ func (client *Client) SubmitMediaCensorJobWithOptions(request *SubmitMediaCensor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Barrages"] = request.Barrages
-	query["CoverImages"] = request.CoverImages
-	query["Description"] = request.Description
-	query["ExternalUrl"] = request.ExternalUrl
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
-	query["VideoCensorConfig"] = request.VideoCensorConfig
+	if !tea.BoolValue(util.IsUnset(request.Barrages)) {
+		query["Barrages"] = request.Barrages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverImages)) {
+		query["CoverImages"] = request.CoverImages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalUrl)) {
+		query["ExternalUrl"] = request.ExternalUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoCensorConfig)) {
+		query["VideoCensorConfig"] = request.VideoCensorConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaCensorJob"),
@@ -69257,7 +72398,7 @@ func (client *Client) SubmitMediaCensorJobWithOptions(request *SubmitMediaCensor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaCensorJobResponse{}
@@ -69286,17 +72427,40 @@ func (client *Client) SubmitMediaDetailJobWithOptions(request *SubmitMediaDetail
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["MediaDetailConfig"] = request.MediaDetailConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaDetailConfig)) {
+		query["MediaDetailConfig"] = request.MediaDetailConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaDetailJob"),
@@ -69306,7 +72470,7 @@ func (client *Client) SubmitMediaDetailJobWithOptions(request *SubmitMediaDetail
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaDetailJobResponse{}
@@ -69335,17 +72499,40 @@ func (client *Client) SubmitMediaFpDeleteJobWithOptions(request *SubmitMediaFpDe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FpDBId"] = request.FpDBId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["PrimaryKey"] = request.PrimaryKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
+		query["FpDBId"] = request.FpDBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKey)) {
+		query["PrimaryKey"] = request.PrimaryKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaFpDeleteJob"),
@@ -69355,7 +72542,7 @@ func (client *Client) SubmitMediaFpDeleteJobWithOptions(request *SubmitMediaFpDe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaFpDeleteJobResponse{}
@@ -69384,17 +72571,40 @@ func (client *Client) SubmitMediaInfoJobWithOptions(request *SubmitMediaInfoJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Async"] = request.Async
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Async)) {
+		query["Async"] = request.Async
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaInfoJob"),
@@ -69404,7 +72614,7 @@ func (client *Client) SubmitMediaInfoJobWithOptions(request *SubmitMediaInfoJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitMediaInfoJobResponse{}
@@ -69443,14 +72653,28 @@ func (client *Client) SubmitOssFileCopyJobWithOptions(tmpReq *SubmitOssFileCopyJ
 	}
 
 	query := map[string]interface{}{}
-	query["Notify"] = request.Notify
-	query["Region"] = request.Region
-	query["SourceStorage"] = request.SourceStorageShrink
-	query["TargetStorage"] = request.TargetStorageShrink
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Notify)) {
+		query["Notify"] = request.Notify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceStorageShrink)) {
+		query["SourceStorage"] = request.SourceStorageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetStorageShrink)) {
+		query["TargetStorage"] = request.TargetStorageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitOssFileCopyJob"),
@@ -69460,7 +72684,7 @@ func (client *Client) SubmitOssFileCopyJobWithOptions(tmpReq *SubmitOssFileCopyJ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitOssFileCopyJobResponse{}
@@ -69489,17 +72713,40 @@ func (client *Client) SubmitPornJobWithOptions(request *SubmitPornJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["PornConfig"] = request.PornConfig
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PornConfig)) {
+		query["PornConfig"] = request.PornConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitPornJob"),
@@ -69509,7 +72756,7 @@ func (client *Client) SubmitPornJobWithOptions(request *SubmitPornJobRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPornJobResponse{}
@@ -69538,23 +72785,64 @@ func (client *Client) SubmitSmarttagJobWithOptions(request *SubmitSmarttagJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Content"] = request.Content
-	query["ContentAddr"] = request.ContentAddr
-	query["ContentType"] = request.ContentType
-	query["Input"] = request.Input
-	query["NotifyUrl"] = request.NotifyUrl
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Params"] = request.Params
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentAddr)) {
+		query["ContentAddr"] = request.ContentAddr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSmarttagJob"),
@@ -69564,7 +72852,7 @@ func (client *Client) SubmitSmarttagJobWithOptions(request *SubmitSmarttagJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSmarttagJobResponse{}
@@ -69593,17 +72881,40 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SnapshotConfig"] = request.SnapshotConfig
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotConfig)) {
+		query["SnapshotConfig"] = request.SnapshotConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSnapshotJob"),
@@ -69613,7 +72924,7 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSnapshotJobResponse{}
@@ -69642,17 +72953,40 @@ func (client *Client) SubmitSubtitleJobWithOptions(request *SubmitSubtitleJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InputConfig"] = request.InputConfig
-	query["OutputConfig"] = request.OutputConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		query["InputConfig"] = request.InputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSubtitleJob"),
@@ -69662,7 +72996,7 @@ func (client *Client) SubmitSubtitleJobWithOptions(request *SubmitSubtitleJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSubtitleJobResponse{}
@@ -69691,17 +73025,40 @@ func (client *Client) SubmitTagJobWithOptions(request *SubmitTagJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TagConfig"] = request.TagConfig
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagConfig)) {
+		query["TagConfig"] = request.TagConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitTagJob"),
@@ -69711,7 +73068,7 @@ func (client *Client) SubmitTagJobWithOptions(request *SubmitTagJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitTagJobResponse{}
@@ -69740,17 +73097,40 @@ func (client *Client) SubmitTerrorismJobWithOptions(request *SubmitTerrorismJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TerrorismConfig"] = request.TerrorismConfig
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerrorismConfig)) {
+		query["TerrorismConfig"] = request.TerrorismConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitTerrorismJob"),
@@ -69760,7 +73140,7 @@ func (client *Client) SubmitTerrorismJobWithOptions(request *SubmitTerrorismJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitTerrorismJobResponse{}
@@ -69795,14 +73175,28 @@ func (client *Client) SubmitURLUploadJobWithOptions(tmpReq *SubmitURLUploadJobRe
 	}
 
 	query := map[string]interface{}{}
-	query["Notify"] = request.Notify
-	query["Region"] = request.Region
-	query["SourceFileURL"] = request.SourceFileURL
-	query["TargetStorage"] = request.TargetStorageShrink
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Notify)) {
+		query["Notify"] = request.Notify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFileURL)) {
+		query["SourceFileURL"] = request.SourceFileURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetStorageShrink)) {
+		query["TargetStorage"] = request.TargetStorageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitURLUploadJob"),
@@ -69812,7 +73206,7 @@ func (client *Client) SubmitURLUploadJobWithOptions(tmpReq *SubmitURLUploadJobRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitURLUploadJobResponse{}
@@ -69841,17 +73235,40 @@ func (client *Client) SubmitVideoGifJobWithOptions(request *SubmitVideoGifJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
-	query["VideoGifConfig"] = request.VideoGifConfig
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoGifConfig)) {
+		query["VideoGifConfig"] = request.VideoGifConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitVideoGifJob"),
@@ -69861,7 +73278,7 @@ func (client *Client) SubmitVideoGifJobWithOptions(request *SubmitVideoGifJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitVideoGifJobResponse{}
@@ -69890,17 +73307,40 @@ func (client *Client) SubmitVideoPoseJobWithOptions(request *SubmitVideoPoseJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OutputConfig"] = request.OutputConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitVideoPoseJob"),
@@ -69910,7 +73350,7 @@ func (client *Client) SubmitVideoPoseJobWithOptions(request *SubmitVideoPoseJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitVideoPoseJobResponse{}
@@ -69939,19 +73379,48 @@ func (client *Client) SubmitVideoQualityJobWithOptions(request *SubmitVideoQuali
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["JobParams"] = request.JobParams
-	query["ModelId"] = request.ModelId
-	query["NotifyUrl"] = request.NotifyUrl
-	query["Output"] = request.Output
-	query["PipelineId"] = request.PipelineId
-	query["ScheduleParams"] = request.ScheduleParams
-	query["SourceType"] = request.SourceType
-	query["UserData"] = request.UserData
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobParams)) {
+		query["JobParams"] = request.JobParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyUrl)) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["Output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleParams)) {
+		query["ScheduleParams"] = request.ScheduleParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitVideoQualityJob"),
@@ -69961,7 +73430,7 @@ func (client *Client) SubmitVideoQualityJobWithOptions(request *SubmitVideoQuali
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitVideoQualityJobResponse{}
@@ -69990,17 +73459,40 @@ func (client *Client) SubmitVideoSplitJobWithOptions(request *SubmitVideoSplitJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
-	query["VideoSplitConfig"] = request.VideoSplitConfig
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSplitConfig)) {
+		query["VideoSplitConfig"] = request.VideoSplitConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitVideoSplitJob"),
@@ -70010,7 +73502,7 @@ func (client *Client) SubmitVideoSplitJobWithOptions(request *SubmitVideoSplitJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitVideoSplitJobResponse{}
@@ -70039,17 +73531,40 @@ func (client *Client) SubmitVideoSummaryJobWithOptions(request *SubmitVideoSumma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Input"] = request.Input
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
-	query["VideoSummaryConfig"] = request.VideoSummaryConfig
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSummaryConfig)) {
+		query["VideoSummaryConfig"] = request.VideoSummaryConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitVideoSummaryJob"),
@@ -70059,7 +73574,7 @@ func (client *Client) SubmitVideoSummaryJobWithOptions(request *SubmitVideoSumma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitVideoSummaryJobResponse{}
@@ -70088,19 +73603,48 @@ func (client *Client) TagCustomPersonWithOptions(request *TagCustomPersonRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryDescription"] = request.CategoryDescription
-	query["CategoryId"] = request.CategoryId
-	query["CategoryName"] = request.CategoryName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PersonDescription"] = request.PersonDescription
-	query["PersonId"] = request.PersonId
-	query["PersonName"] = request.PersonName
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CategoryDescription)) {
+		query["CategoryDescription"] = request.CategoryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonDescription)) {
+		query["PersonDescription"] = request.PersonDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		query["PersonId"] = request.PersonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonName)) {
+		query["PersonName"] = request.PersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagCustomPerson"),
@@ -70110,7 +73654,7 @@ func (client *Client) TagCustomPersonWithOptions(request *TagCustomPersonRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagCustomPersonResponse{}
@@ -70139,15 +73683,32 @@ func (client *Client) UnbindInputBucketWithOptions(request *UnbindInputBucketReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bucket"] = request.Bucket
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RoleArn"] = request.RoleArn
+	if !tea.BoolValue(util.IsUnset(request.Bucket)) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnbindInputBucket"),
@@ -70157,7 +73718,7 @@ func (client *Client) UnbindInputBucketWithOptions(request *UnbindInputBucketReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindInputBucketResponse{}
@@ -70186,14 +73747,28 @@ func (client *Client) UnbindOutputBucketWithOptions(request *UnbindOutputBucketR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bucket"] = request.Bucket
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Bucket)) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnbindOutputBucket"),
@@ -70203,7 +73778,7 @@ func (client *Client) UnbindOutputBucketWithOptions(request *UnbindOutputBucketR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindOutputBucketResponse{}
@@ -70232,16 +73807,36 @@ func (client *Client) UnregisterCustomFaceWithOptions(request *UnregisterCustomF
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["FaceId"] = request.FaceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PersonId"] = request.PersonId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceId)) {
+		query["FaceId"] = request.FaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		query["PersonId"] = request.PersonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnregisterCustomFace"),
@@ -70251,7 +73846,7 @@ func (client *Client) UnregisterCustomFaceWithOptions(request *UnregisterCustomF
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnregisterCustomFaceResponse{}
@@ -70280,18 +73875,44 @@ func (client *Client) UpdateAsrPipelineWithOptions(request *UpdateAsrPipelineReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAsrPipeline"),
@@ -70301,7 +73922,7 @@ func (client *Client) UpdateAsrPipelineWithOptions(request *UpdateAsrPipelineReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAsrPipelineResponse{}
@@ -70330,15 +73951,32 @@ func (client *Client) UpdateCategoryNameWithOptions(request *UpdateCategoryNameR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["CateName"] = request.CateName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateName)) {
+		query["CateName"] = request.CateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCategoryName"),
@@ -70348,7 +73986,7 @@ func (client *Client) UpdateCategoryNameWithOptions(request *UpdateCategoryNameR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCategoryNameResponse{}
@@ -70377,18 +74015,44 @@ func (client *Client) UpdateCensorPipelineWithOptions(request *UpdateCensorPipel
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCensorPipeline"),
@@ -70398,7 +74062,7 @@ func (client *Client) UpdateCensorPipelineWithOptions(request *UpdateCensorPipel
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCensorPipelineResponse{}
@@ -70427,19 +74091,48 @@ func (client *Client) UpdateCoverPipelineWithOptions(request *UpdateCoverPipelin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Role"] = request.Role
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCoverPipeline"),
@@ -70449,7 +74142,7 @@ func (client *Client) UpdateCoverPipelineWithOptions(request *UpdateCoverPipelin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCoverPipelineResponse{}
@@ -70478,25 +74171,72 @@ func (client *Client) UpdateMCTemplateWithOptions(request *UpdateMCTemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Abuse"] = request.Abuse
-	query["Ad"] = request.Ad
-	query["Contraband"] = request.Contraband
-	query["Live"] = request.Live
-	query["Logo"] = request.Logo
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Politics"] = request.Politics
-	query["Porn"] = request.Porn
-	query["Qrcode"] = request.Qrcode
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
-	query["Terrorism"] = request.Terrorism
-	query["spam"] = request.Spam
+	if !tea.BoolValue(util.IsUnset(request.Abuse)) {
+		query["Abuse"] = request.Abuse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ad)) {
+		query["Ad"] = request.Ad
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contraband)) {
+		query["Contraband"] = request.Contraband
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Live)) {
+		query["Live"] = request.Live
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logo)) {
+		query["Logo"] = request.Logo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Politics)) {
+		query["Politics"] = request.Politics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Porn)) {
+		query["Porn"] = request.Porn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qrcode)) {
+		query["Qrcode"] = request.Qrcode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Terrorism)) {
+		query["Terrorism"] = request.Terrorism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spam)) {
+		query["spam"] = request.Spam
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMCTemplate"),
@@ -70506,7 +74246,7 @@ func (client *Client) UpdateMCTemplateWithOptions(request *UpdateMCTemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMCTemplateResponse{}
@@ -70535,15 +74275,32 @@ func (client *Client) UpdateMcuTemplateWithOptions(request *UpdateMcuTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Template"] = request.Template
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["Template"] = request.Template
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMcuTemplate"),
@@ -70553,7 +74310,7 @@ func (client *Client) UpdateMcuTemplateWithOptions(request *UpdateMcuTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMcuTemplateResponse{}
@@ -70582,19 +74339,48 @@ func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tags"] = request.Tags
-	query["Title"] = request.Title
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMedia"),
@@ -70604,7 +74390,7 @@ func (client *Client) UpdateMediaWithOptions(request *UpdateMediaRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaResponse{}
@@ -70633,15 +74419,32 @@ func (client *Client) UpdateMediaCategoryWithOptions(request *UpdateMediaCategor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaCategory"),
@@ -70651,7 +74454,7 @@ func (client *Client) UpdateMediaCategoryWithOptions(request *UpdateMediaCategor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaCategoryResponse{}
@@ -70680,15 +74483,32 @@ func (client *Client) UpdateMediaCoverWithOptions(request *UpdateMediaCoverReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverURL"] = request.CoverURL
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaCover"),
@@ -70698,7 +74518,7 @@ func (client *Client) UpdateMediaCoverWithOptions(request *UpdateMediaCoverReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaCoverResponse{}
@@ -70727,15 +74547,32 @@ func (client *Client) UpdateMediaPublishStateWithOptions(request *UpdateMediaPub
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Publish"] = request.Publish
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Publish)) {
+		query["Publish"] = request.Publish
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaPublishState"),
@@ -70745,7 +74582,7 @@ func (client *Client) UpdateMediaPublishStateWithOptions(request *UpdateMediaPub
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaPublishStateResponse{}
@@ -70774,15 +74611,32 @@ func (client *Client) UpdateMediaWorkflowWithOptions(request *UpdateMediaWorkflo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Topology"] = request.Topology
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topology)) {
+		query["Topology"] = request.Topology
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaWorkflow"),
@@ -70792,7 +74646,7 @@ func (client *Client) UpdateMediaWorkflowWithOptions(request *UpdateMediaWorkflo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaWorkflowResponse{}
@@ -70821,15 +74675,32 @@ func (client *Client) UpdateMediaWorkflowTriggerModeWithOptions(request *UpdateM
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaWorkflowId"] = request.MediaWorkflowId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TriggerMode"] = request.TriggerMode
+	if !tea.BoolValue(util.IsUnset(request.MediaWorkflowId)) {
+		query["MediaWorkflowId"] = request.MediaWorkflowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerMode)) {
+		query["TriggerMode"] = request.TriggerMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMediaWorkflowTriggerMode"),
@@ -70839,7 +74710,7 @@ func (client *Client) UpdateMediaWorkflowTriggerModeWithOptions(request *UpdateM
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMediaWorkflowTriggerModeResponse{}
@@ -70868,18 +74739,44 @@ func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Role"] = request.Role
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePipeline"),
@@ -70889,7 +74786,7 @@ func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePipelineResponse{}
@@ -70918,18 +74815,44 @@ func (client *Client) UpdatePornPipelineWithOptions(request *UpdatePornPipelineR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePornPipeline"),
@@ -70939,7 +74862,7 @@ func (client *Client) UpdatePornPipelineWithOptions(request *UpdatePornPipelineR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePornPipelineResponse{}
@@ -70968,24 +74891,72 @@ func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AnalyseTypes"] = request.AnalyseTypes
-	query["FaceCategoryIds"] = request.FaceCategoryIds
-	query["Industry"] = request.Industry
-	query["IsDefault"] = request.IsDefault
-	query["KeywordConfig"] = request.KeywordConfig
-	query["KnowledgeConfig"] = request.KnowledgeConfig
-	query["LabelType"] = request.LabelType
-	query["LabelVersion"] = request.LabelVersion
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Scene"] = request.Scene
-	query["TemplateId"] = request.TemplateId
-	query["TemplateName"] = request.TemplateName
+	if !tea.BoolValue(util.IsUnset(request.AnalyseTypes)) {
+		query["AnalyseTypes"] = request.AnalyseTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceCategoryIds)) {
+		query["FaceCategoryIds"] = request.FaceCategoryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceCustomParamsConfig)) {
+		query["FaceCustomParamsConfig"] = request.FaceCustomParamsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["Industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeywordConfig)) {
+		query["KeywordConfig"] = request.KeywordConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeConfig)) {
+		query["KnowledgeConfig"] = request.KnowledgeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelType)) {
+		query["LabelType"] = request.LabelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelVersion)) {
+		query["LabelVersion"] = request.LabelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSmarttagTemplate"),
@@ -70995,7 +74966,7 @@ func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSmarttagTemplateResponse{}
@@ -71024,20 +74995,52 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Audio"] = request.Audio
-	query["Container"] = request.Container
-	query["MuxConfig"] = request.MuxConfig
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
-	query["TransConfig"] = request.TransConfig
-	query["Video"] = request.Video
+	if !tea.BoolValue(util.IsUnset(request.Audio)) {
+		query["Audio"] = request.Audio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Container)) {
+		query["Container"] = request.Container
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MuxConfig)) {
+		query["MuxConfig"] = request.MuxConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransConfig)) {
+		query["TransConfig"] = request.TransConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Video)) {
+		query["Video"] = request.Video
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
@@ -71047,7 +75050,7 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTemplateResponse{}
@@ -71076,18 +75079,44 @@ func (client *Client) UpdateTerrorismPipelineWithOptions(request *UpdateTerroris
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["NotifyConfig"] = request.NotifyConfig
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyConfig)) {
+		query["NotifyConfig"] = request.NotifyConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTerrorismPipeline"),
@@ -71097,7 +75126,7 @@ func (client *Client) UpdateTerrorismPipelineWithOptions(request *UpdateTerroris
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTerrorismPipelineResponse{}
@@ -71126,16 +75155,36 @@ func (client *Client) UpdateWaterMarkTemplateWithOptions(request *UpdateWaterMar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["WaterMarkTemplateId"] = request.WaterMarkTemplateId
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaterMarkTemplateId)) {
+		query["WaterMarkTemplateId"] = request.WaterMarkTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateWaterMarkTemplate"),
@@ -71145,7 +75194,7 @@ func (client *Client) UpdateWaterMarkTemplateWithOptions(request *UpdateWaterMar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWaterMarkTemplateResponse{}
