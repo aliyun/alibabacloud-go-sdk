@@ -442,13 +442,14 @@ func (s *CreateAutoLiveStreamRuleResponse) SetBody(v *CreateAutoLiveStreamRuleRe
 }
 
 type CreateEventSubscribeRequest struct {
-	AppId       *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CallbackUrl *string   `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	ChannelId   *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Events      []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Users       []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	AppId            *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CallbackUrl      *string   `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	ChannelId        *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Events           []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	NeedCallbackAuth *bool     `json:"NeedCallbackAuth,omitempty" xml:"NeedCallbackAuth,omitempty"`
+	OwnerId          *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Users            []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s CreateEventSubscribeRequest) String() string {
@@ -481,6 +482,11 @@ func (s *CreateEventSubscribeRequest) SetClientToken(v string) *CreateEventSubsc
 
 func (s *CreateEventSubscribeRequest) SetEvents(v []*string) *CreateEventSubscribeRequest {
 	s.Events = v
+	return s
+}
+
+func (s *CreateEventSubscribeRequest) SetNeedCallbackAuth(v bool) *CreateEventSubscribeRequest {
+	s.NeedCallbackAuth = &v
 	return s
 }
 
@@ -2091,7 +2097,7 @@ type DescribeRecordTemplatesResponseBodyTemplates struct {
 	FileSplitInterval  *int32                                                      `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
 	Formats            []*string                                                   `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
 	HttpCallbackUrl    *string                                                     `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
-	LayoutIds          []*int32                                                    `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	LayoutIds          []*int64                                                    `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
 	MediaEncode        *int32                                                      `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	MnsQueue           *string                                                     `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
 	Name               *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2155,7 +2161,7 @@ func (s *DescribeRecordTemplatesResponseBodyTemplates) SetHttpCallbackUrl(v stri
 	return s
 }
 
-func (s *DescribeRecordTemplatesResponseBodyTemplates) SetLayoutIds(v []*int32) *DescribeRecordTemplatesResponseBodyTemplates {
+func (s *DescribeRecordTemplatesResponseBodyTemplates) SetLayoutIds(v []*int64) *DescribeRecordTemplatesResponseBodyTemplates {
 	s.LayoutIds = v
 	return s
 }
@@ -5334,27 +5340,80 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["BackgroundColor"] = request.BackgroundColor
-	query["Backgrounds"] = request.Backgrounds
-	query["ClockWidgets"] = request.ClockWidgets
-	query["DelayStopTime"] = request.DelayStopTime
-	query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
-	query["FileSplitInterval"] = request.FileSplitInterval
-	query["Formats"] = request.Formats
-	query["HttpCallbackUrl"] = request.HttpCallbackUrl
-	query["LayoutIds"] = request.LayoutIds
-	query["MediaEncode"] = request.MediaEncode
-	query["MnsQueue"] = request.MnsQueue
-	query["Name"] = request.Name
-	query["OssBucket"] = request.OssBucket
-	query["OssFilePrefix"] = request.OssFilePrefix
-	query["OwnerId"] = request.OwnerId
-	query["TaskProfile"] = request.TaskProfile
-	query["Watermarks"] = request.Watermarks
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundColor)) {
+		query["BackgroundColor"] = request.BackgroundColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayStopTime)) {
+		query["DelayStopTime"] = request.DelayStopTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableM3u8DateTime)) {
+		query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSplitInterval)) {
+		query["FileSplitInterval"] = request.FileSplitInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Formats)) {
+		query["Formats"] = request.Formats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpCallbackUrl)) {
+		query["HttpCallbackUrl"] = request.HttpCallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsQueue)) {
+		query["MnsQueue"] = request.MnsQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssFilePrefix)) {
+		query["OssFilePrefix"] = request.OssFilePrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskProfile)) {
+		query["TaskProfile"] = request.TaskProfile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermarks)) {
+		query["Watermarks"] = request.Watermarks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddRecordTemplate"),
@@ -5364,7 +5423,7 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddRecordTemplateResponse{}
@@ -5393,17 +5452,40 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CallBack"] = request.CallBack
-	query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
-	query["ChannelIds"] = request.ChannelIds
-	query["MediaEncode"] = request.MediaEncode
-	query["OwnerId"] = request.OwnerId
-	query["PlayDomain"] = request.PlayDomain
-	query["RuleName"] = request.RuleName
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallBack)) {
+		query["CallBack"] = request.CallBack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelIdPrefixes)) {
+		query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelIds)) {
+		query["ChannelIds"] = request.ChannelIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayDomain)) {
+		query["PlayDomain"] = request.PlayDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAutoLiveStreamRule"),
@@ -5413,7 +5495,7 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAutoLiveStreamRuleResponse{}
@@ -5442,16 +5524,40 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CallbackUrl"] = request.CallbackUrl
-	query["ChannelId"] = request.ChannelId
-	query["ClientToken"] = request.ClientToken
-	query["Events"] = request.Events
-	query["OwnerId"] = request.OwnerId
-	query["Users"] = request.Users
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Events)) {
+		query["Events"] = request.Events
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedCallbackAuth)) {
+		query["NeedCallbackAuth"] = request.NeedCallbackAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Users)) {
+		query["Users"] = request.Users
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateEventSubscribe"),
@@ -5461,7 +5567,7 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEventSubscribeResponse{}
@@ -5490,14 +5596,28 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AudioMixCount"] = request.AudioMixCount
-	query["Name"] = request.Name
-	query["OwnerId"] = request.OwnerId
-	query["Panes"] = request.Panes
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AudioMixCount)) {
+		query["AudioMixCount"] = request.AudioMixCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateMPULayout"),
@@ -5507,7 +5627,7 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMPULayoutResponse{}
@@ -5536,12 +5656,20 @@ func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAutoLiveStreamRule"),
@@ -5551,7 +5679,7 @@ func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAutoLiveStreamRuleResponse{}
@@ -5580,12 +5708,20 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteChannel"),
@@ -5595,7 +5731,7 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteChannelResponse{}
@@ -5624,12 +5760,20 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["SubscribeId"] = request.SubscribeId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscribeId)) {
+		query["SubscribeId"] = request.SubscribeId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteEventSubscribe"),
@@ -5639,7 +5783,7 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEventSubscribeResponse{}
@@ -5668,12 +5812,20 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["LayoutId"] = request.LayoutId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutId)) {
+		query["LayoutId"] = request.LayoutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMPULayout"),
@@ -5683,7 +5835,7 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMPULayoutResponse{}
@@ -5712,12 +5864,20 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRecordTemplate"),
@@ -5727,7 +5887,7 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRecordTemplateResponse{}
@@ -5756,15 +5916,32 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Order"] = request.Order
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApps"),
@@ -5774,7 +5951,7 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppsResponse{}
@@ -5803,11 +5980,16 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAutoLiveStreamRule"),
@@ -5817,7 +5999,7 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAutoLiveStreamRuleResponse{}
@@ -5846,15 +6028,32 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["Order"] = request.Order
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeChannelParticipants"),
@@ -5864,7 +6063,7 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeChannelParticipantsResponse{}
@@ -5893,12 +6092,20 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeChannelUsers"),
@@ -5908,7 +6115,7 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeChannelUsersResponse{}
@@ -5937,15 +6144,32 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["LayoutId"] = request.LayoutId
-	query["Name"] = request.Name
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutId)) {
+		query["LayoutId"] = request.LayoutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMPULayoutInfoList"),
@@ -5955,7 +6179,7 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMPULayoutInfoListResponse{}
@@ -5984,17 +6208,40 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["TaskIds"] = request.TaskIds
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRecordFiles"),
@@ -6004,7 +6251,7 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecordFilesResponse{}
@@ -6033,14 +6280,28 @@ func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecord
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["TemplateIds"] = request.TemplateIds
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRecordTemplates"),
@@ -6050,7 +6311,7 @@ func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecord
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecordTemplatesResponse{}
@@ -6079,13 +6340,24 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["OwnerId"] = request.OwnerId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserInfoInChannel"),
@@ -6095,7 +6367,7 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserInfoInChannelResponse{}
@@ -6124,12 +6396,20 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableAutoLiveStreamRule"),
@@ -6139,7 +6419,7 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableAutoLiveStreamRuleResponse{}
@@ -6168,12 +6448,20 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableAutoLiveStreamRule"),
@@ -6183,7 +6471,7 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableAutoLiveStreamRuleResponse{}
@@ -6212,12 +6500,20 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMPUTaskStatus"),
@@ -6227,7 +6523,7 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMPUTaskStatusResponse{}
@@ -6256,12 +6552,20 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AppName"] = request.AppName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyApp"),
@@ -6271,7 +6575,7 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAppResponse{}
@@ -6300,15 +6604,32 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AudioMixCount"] = request.AudioMixCount
-	query["LayoutId"] = request.LayoutId
-	query["Name"] = request.Name
-	query["OwnerId"] = request.OwnerId
-	query["Panes"] = request.Panes
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AudioMixCount)) {
+		query["AudioMixCount"] = request.AudioMixCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutId)) {
+		query["LayoutId"] = request.LayoutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyMPULayout"),
@@ -6318,7 +6639,7 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyMPULayoutResponse{}
@@ -6347,13 +6668,24 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["OwnerId"] = request.OwnerId
-	query["TerminalIds"] = request.TerminalIds
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalIds)) {
+		query["TerminalIds"] = request.TerminalIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveTerminals"),
@@ -6363,7 +6695,7 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveTerminalsResponse{}
@@ -6392,38 +6724,133 @@ func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["BackgroundColor"] = request.BackgroundColor
-	query["Backgrounds"] = request.Backgrounds
-	query["ChannelId"] = request.ChannelId
-	query["ClockWidgets"] = request.ClockWidgets
-	query["CropMode"] = request.CropMode
-	query["LayoutIds"] = request.LayoutIds
-	query["MediaEncode"] = request.MediaEncode
-	query["MixMode"] = request.MixMode
-	query["OwnerId"] = request.OwnerId
-	query["PayloadType"] = request.PayloadType
-	query["ReportVad"] = request.ReportVad
-	query["RtpExtInfo"] = request.RtpExtInfo
-	query["SourceType"] = request.SourceType
-	query["StreamType"] = request.StreamType
-	query["StreamURL"] = request.StreamURL
-	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
-	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
-	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
-	query["SubSpecUsers"] = request.SubSpecUsers
-	query["TaskId"] = request.TaskId
-	query["TaskType"] = request.TaskType
-	query["TimeStampRef"] = request.TimeStampRef
-	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
-	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
-	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
-	query["UserPanes"] = request.UserPanes
-	query["VadInterval"] = request.VadInterval
-	query["Watermarks"] = request.Watermarks
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundColor)) {
+		query["BackgroundColor"] = request.BackgroundColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MixMode)) {
+		query["MixMode"] = request.MixMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayloadType)) {
+		query["PayloadType"] = request.PayloadType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportVad)) {
+		query["ReportVad"] = request.ReportVad
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RtpExtInfo)) {
+		query["RtpExtInfo"] = request.RtpExtInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
+		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamURL)) {
+		query["StreamURL"] = request.StreamURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecAudioUsers)) {
+		query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecCameraUsers)) {
+		query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecShareScreenUsers)) {
+		query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecUsers)) {
+		query["SubSpecUsers"] = request.SubSpecUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStampRef)) {
+		query["TimeStampRef"] = request.TimeStampRef
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecAudioUsers)) {
+		query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecCameraUsers)) {
+		query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecShareScreenUsers)) {
+		query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPanes)) {
+		query["UserPanes"] = request.UserPanes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VadInterval)) {
+		query["VadInterval"] = request.VadInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermarks)) {
+		query["Watermarks"] = request.Watermarks
+	}
+
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.EnhancedParam))) {
+		bodyFlat["EnhancedParam"] = request.EnhancedParam
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartMPUTask"),
@@ -6462,29 +6889,88 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["CropMode"] = request.CropMode
-	query["LayoutIds"] = request.LayoutIds
-	query["MediaEncode"] = request.MediaEncode
-	query["MixMode"] = request.MixMode
-	query["OwnerId"] = request.OwnerId
-	query["SourceType"] = request.SourceType
-	query["StreamType"] = request.StreamType
-	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
-	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
-	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
-	query["SubSpecUsers"] = request.SubSpecUsers
-	query["TaskId"] = request.TaskId
-	query["TaskProfile"] = request.TaskProfile
-	query["TemplateId"] = request.TemplateId
-	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
-	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
-	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
-	query["UserPanes"] = request.UserPanes
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MixMode)) {
+		query["MixMode"] = request.MixMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
+		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecAudioUsers)) {
+		query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecCameraUsers)) {
+		query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecShareScreenUsers)) {
+		query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecUsers)) {
+		query["SubSpecUsers"] = request.SubSpecUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskProfile)) {
+		query["TaskProfile"] = request.TaskProfile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecAudioUsers)) {
+		query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecCameraUsers)) {
+		query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecShareScreenUsers)) {
+		query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPanes)) {
+		query["UserPanes"] = request.UserPanes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartRecordTask"),
@@ -6494,7 +6980,7 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartRecordTaskResponse{}
@@ -6523,12 +7009,20 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopMPUTask"),
@@ -6538,7 +7032,7 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopMPUTaskResponse{}
@@ -6567,12 +7061,20 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopRecordTask"),
@@ -6582,7 +7084,7 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopRecordTaskResponse{}
@@ -6611,18 +7113,44 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CallBack"] = request.CallBack
-	query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
-	query["ChannelIds"] = request.ChannelIds
-	query["MediaEncode"] = request.MediaEncode
-	query["OwnerId"] = request.OwnerId
-	query["PlayDomain"] = request.PlayDomain
-	query["RuleId"] = request.RuleId
-	query["RuleName"] = request.RuleName
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallBack)) {
+		query["CallBack"] = request.CallBack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelIdPrefixes)) {
+		query["ChannelIdPrefixes"] = request.ChannelIdPrefixes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelIds)) {
+		query["ChannelIds"] = request.ChannelIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayDomain)) {
+		query["PlayDomain"] = request.PlayDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAutoLiveStreamRule"),
@@ -6632,7 +7160,7 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAutoLiveStreamRuleResponse{}
@@ -6661,30 +7189,92 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["BackgroundColor"] = request.BackgroundColor
-	query["Backgrounds"] = request.Backgrounds
-	query["ClockWidgets"] = request.ClockWidgets
-	query["CropMode"] = request.CropMode
-	query["LayoutIds"] = request.LayoutIds
-	query["MediaEncode"] = request.MediaEncode
-	query["MixMode"] = request.MixMode
-	query["OwnerId"] = request.OwnerId
-	query["SourceType"] = request.SourceType
-	query["StreamType"] = request.StreamType
-	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
-	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
-	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
-	query["SubSpecUsers"] = request.SubSpecUsers
-	query["TaskId"] = request.TaskId
-	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
-	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
-	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
-	query["UserPanes"] = request.UserPanes
-	query["Watermarks"] = request.Watermarks
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundColor)) {
+		query["BackgroundColor"] = request.BackgroundColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MixMode)) {
+		query["MixMode"] = request.MixMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
+		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecAudioUsers)) {
+		query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecCameraUsers)) {
+		query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecShareScreenUsers)) {
+		query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecUsers)) {
+		query["SubSpecUsers"] = request.SubSpecUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecAudioUsers)) {
+		query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecCameraUsers)) {
+		query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecShareScreenUsers)) {
+		query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPanes)) {
+		query["UserPanes"] = request.UserPanes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermarks)) {
+		query["Watermarks"] = request.Watermarks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMPUTask"),
@@ -6694,7 +7284,7 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMPUTaskResponse{}
@@ -6723,23 +7313,64 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ChannelId"] = request.ChannelId
-	query["LayoutIds"] = request.LayoutIds
-	query["OwnerId"] = request.OwnerId
-	query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
-	query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
-	query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
-	query["SubSpecUsers"] = request.SubSpecUsers
-	query["TaskId"] = request.TaskId
-	query["TemplateId"] = request.TemplateId
-	query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
-	query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
-	query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
-	query["UserPanes"] = request.UserPanes
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecAudioUsers)) {
+		query["SubSpecAudioUsers"] = request.SubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecCameraUsers)) {
+		query["SubSpecCameraUsers"] = request.SubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecShareScreenUsers)) {
+		query["SubSpecShareScreenUsers"] = request.SubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubSpecUsers)) {
+		query["SubSpecUsers"] = request.SubSpecUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecAudioUsers)) {
+		query["UnsubSpecAudioUsers"] = request.UnsubSpecAudioUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecCameraUsers)) {
+		query["UnsubSpecCameraUsers"] = request.UnsubSpecCameraUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnsubSpecShareScreenUsers)) {
+		query["UnsubSpecShareScreenUsers"] = request.UnsubSpecShareScreenUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPanes)) {
+		query["UserPanes"] = request.UserPanes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRecordTask"),
@@ -6749,7 +7380,7 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRecordTaskResponse{}
@@ -6778,28 +7409,84 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["BackgroundColor"] = request.BackgroundColor
-	query["Backgrounds"] = request.Backgrounds
-	query["ClockWidgets"] = request.ClockWidgets
-	query["DelayStopTime"] = request.DelayStopTime
-	query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
-	query["FileSplitInterval"] = request.FileSplitInterval
-	query["Formats"] = request.Formats
-	query["HttpCallbackUrl"] = request.HttpCallbackUrl
-	query["LayoutIds"] = request.LayoutIds
-	query["MediaEncode"] = request.MediaEncode
-	query["MnsQueue"] = request.MnsQueue
-	query["Name"] = request.Name
-	query["OssBucket"] = request.OssBucket
-	query["OssFilePrefix"] = request.OssFilePrefix
-	query["OwnerId"] = request.OwnerId
-	query["TaskProfile"] = request.TaskProfile
-	query["TemplateId"] = request.TemplateId
-	query["Watermarks"] = request.Watermarks
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundColor)) {
+		query["BackgroundColor"] = request.BackgroundColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Backgrounds)) {
+		query["Backgrounds"] = request.Backgrounds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayStopTime)) {
+		query["DelayStopTime"] = request.DelayStopTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableM3u8DateTime)) {
+		query["EnableM3u8DateTime"] = request.EnableM3u8DateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSplitInterval)) {
+		query["FileSplitInterval"] = request.FileSplitInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Formats)) {
+		query["Formats"] = request.Formats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpCallbackUrl)) {
+		query["HttpCallbackUrl"] = request.HttpCallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
+		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsQueue)) {
+		query["MnsQueue"] = request.MnsQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssFilePrefix)) {
+		query["OssFilePrefix"] = request.OssFilePrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskProfile)) {
+		query["TaskProfile"] = request.TaskProfile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermarks)) {
+		query["Watermarks"] = request.Watermarks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRecordTemplate"),
@@ -6809,7 +7496,7 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRecordTemplateResponse{}
