@@ -2178,6 +2178,182 @@ func (s *GetPipelineResponse) SetBody(v *GetPipelineResponseBody) *GetPipelineRe
 	return s
 }
 
+type GetPipelineArtifactUrlRequest struct {
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+}
+
+func (s GetPipelineArtifactUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineArtifactUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineArtifactUrlRequest) SetFileName(v string) *GetPipelineArtifactUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlRequest) SetFilePath(v string) *GetPipelineArtifactUrlRequest {
+	s.FilePath = &v
+	return s
+}
+
+type GetPipelineArtifactUrlResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	FileUrl      *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetPipelineArtifactUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineArtifactUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineArtifactUrlResponseBody) SetErrorCode(v string) *GetPipelineArtifactUrlResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlResponseBody) SetErrorMessage(v string) *GetPipelineArtifactUrlResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlResponseBody) SetFileUrl(v string) *GetPipelineArtifactUrlResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlResponseBody) SetRequestId(v string) *GetPipelineArtifactUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlResponseBody) SetSuccess(v bool) *GetPipelineArtifactUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPipelineArtifactUrlResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineArtifactUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineArtifactUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineArtifactUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineArtifactUrlResponse) SetHeaders(v map[string]*string) *GetPipelineArtifactUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineArtifactUrlResponse) SetBody(v *GetPipelineArtifactUrlResponseBody) *GetPipelineArtifactUrlResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineEmasArtifactUrlRequest struct {
+	ServiceConnectionId *int64 `json:"serviceConnectionId,omitempty" xml:"serviceConnectionId,omitempty"`
+}
+
+func (s GetPipelineEmasArtifactUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineEmasArtifactUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineEmasArtifactUrlRequest) SetServiceConnectionId(v int64) *GetPipelineEmasArtifactUrlRequest {
+	s.ServiceConnectionId = &v
+	return s
+}
+
+type GetPipelineEmasArtifactUrlResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	FileUrl      *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetPipelineEmasArtifactUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineEmasArtifactUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineEmasArtifactUrlResponseBody) SetErrorCode(v string) *GetPipelineEmasArtifactUrlResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineEmasArtifactUrlResponseBody) SetErrorMessage(v string) *GetPipelineEmasArtifactUrlResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineEmasArtifactUrlResponseBody) SetFileUrl(v string) *GetPipelineEmasArtifactUrlResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetPipelineEmasArtifactUrlResponseBody) SetRequestId(v string) *GetPipelineEmasArtifactUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineEmasArtifactUrlResponseBody) SetSuccess(v bool) *GetPipelineEmasArtifactUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPipelineEmasArtifactUrlResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineEmasArtifactUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineEmasArtifactUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineEmasArtifactUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineEmasArtifactUrlResponse) SetHeaders(v map[string]*string) *GetPipelineEmasArtifactUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineEmasArtifactUrlResponse) SetBody(v *GetPipelineEmasArtifactUrlResponseBody) *GetPipelineEmasArtifactUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetPipelineRunResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -2558,6 +2734,91 @@ func (s *GetPipelineRunResponse) SetHeaders(v map[string]*string) *GetPipelineRu
 }
 
 func (s *GetPipelineRunResponse) SetBody(v *GetPipelineRunResponseBody) *GetPipelineRunResponse {
+	s.Body = v
+	return s
+}
+
+type GetPipelineScanReportUrlRequest struct {
+	ReportPath *string `json:"reportPath,omitempty" xml:"reportPath,omitempty"`
+}
+
+func (s GetPipelineScanReportUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineScanReportUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineScanReportUrlRequest) SetReportPath(v string) *GetPipelineScanReportUrlRequest {
+	s.ReportPath = &v
+	return s
+}
+
+type GetPipelineScanReportUrlResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	ReportUrl    *string `json:"reportUrl,omitempty" xml:"reportUrl,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetPipelineScanReportUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineScanReportUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineScanReportUrlResponseBody) SetErrorCode(v string) *GetPipelineScanReportUrlResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPipelineScanReportUrlResponseBody) SetErrorMessage(v string) *GetPipelineScanReportUrlResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPipelineScanReportUrlResponseBody) SetReportUrl(v string) *GetPipelineScanReportUrlResponseBody {
+	s.ReportUrl = &v
+	return s
+}
+
+func (s *GetPipelineScanReportUrlResponseBody) SetRequestId(v string) *GetPipelineScanReportUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineScanReportUrlResponseBody) SetSuccess(v bool) *GetPipelineScanReportUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPipelineScanReportUrlResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPipelineScanReportUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPipelineScanReportUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPipelineScanReportUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineScanReportUrlResponse) SetHeaders(v map[string]*string) *GetPipelineScanReportUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPipelineScanReportUrlResponse) SetBody(v *GetPipelineScanReportUrlResponseBody) *GetPipelineScanReportUrlResponse {
 	s.Body = v
 	return s
 }
@@ -4077,6 +4338,306 @@ func (s *ListOrganizationMembersResponse) SetHeaders(v map[string]*string) *List
 }
 
 func (s *ListOrganizationMembersResponse) SetBody(v *ListOrganizationMembersResponseBody) *ListOrganizationMembersResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelineJobHistorysRequest struct {
+	Category   *string `json:"category,omitempty" xml:"category,omitempty"`
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	MaxResults *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListPipelineJobHistorysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobHistorysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobHistorysRequest) SetCategory(v string) *ListPipelineJobHistorysRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysRequest) SetIdentifier(v string) *ListPipelineJobHistorysRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysRequest) SetMaxResults(v int64) *ListPipelineJobHistorysRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysRequest) SetNextToken(v string) *ListPipelineJobHistorysRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListPipelineJobHistorysResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Jobs         []*ListPipelineJobHistorysResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	NextToken    *string                                    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success    *bool  `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListPipelineJobHistorysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobHistorysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetErrorCode(v string) *ListPipelineJobHistorysResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetErrorMessage(v string) *ListPipelineJobHistorysResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetJobs(v []*ListPipelineJobHistorysResponseBodyJobs) *ListPipelineJobHistorysResponseBody {
+	s.Jobs = v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetNextToken(v string) *ListPipelineJobHistorysResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetRequestId(v string) *ListPipelineJobHistorysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetSuccess(v bool) *ListPipelineJobHistorysResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBody) SetTotalCount(v int32) *ListPipelineJobHistorysResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPipelineJobHistorysResponseBodyJobs struct {
+	ExecuteNumber     *int32  `json:"executeNumber,omitempty" xml:"executeNumber,omitempty"`
+	Identifier        *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	JobId             *int64  `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	JobName           *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	OperatorAccountId *string `json:"operatorAccountId,omitempty" xml:"operatorAccountId,omitempty"`
+	PipelineId        *int64  `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	PipelineRunId     *int64  `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	Sources           *string `json:"sources,omitempty" xml:"sources,omitempty"`
+	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListPipelineJobHistorysResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobHistorysResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetExecuteNumber(v int32) *ListPipelineJobHistorysResponseBodyJobs {
+	s.ExecuteNumber = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetIdentifier(v string) *ListPipelineJobHistorysResponseBodyJobs {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetJobId(v int64) *ListPipelineJobHistorysResponseBodyJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetJobName(v string) *ListPipelineJobHistorysResponseBodyJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetOperatorAccountId(v string) *ListPipelineJobHistorysResponseBodyJobs {
+	s.OperatorAccountId = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetPipelineId(v int64) *ListPipelineJobHistorysResponseBodyJobs {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetPipelineRunId(v int64) *ListPipelineJobHistorysResponseBodyJobs {
+	s.PipelineRunId = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetSources(v string) *ListPipelineJobHistorysResponseBodyJobs {
+	s.Sources = &v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponseBodyJobs) SetStatus(v string) *ListPipelineJobHistorysResponseBodyJobs {
+	s.Status = &v
+	return s
+}
+
+type ListPipelineJobHistorysResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPipelineJobHistorysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPipelineJobHistorysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobHistorysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobHistorysResponse) SetHeaders(v map[string]*string) *ListPipelineJobHistorysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineJobHistorysResponse) SetBody(v *ListPipelineJobHistorysResponseBody) *ListPipelineJobHistorysResponse {
+	s.Body = v
+	return s
+}
+
+type ListPipelineJobsRequest struct {
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+}
+
+func (s ListPipelineJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobsRequest) SetCategory(v string) *ListPipelineJobsRequest {
+	s.Category = &v
+	return s
+}
+
+type ListPipelineJobsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Jobs         []*ListPipelineJobsResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true 接口调用成功，false 接口调用失败
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListPipelineJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobsResponseBody) SetErrorCode(v string) *ListPipelineJobsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBody) SetErrorMessage(v string) *ListPipelineJobsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBody) SetJobs(v []*ListPipelineJobsResponseBodyJobs) *ListPipelineJobsResponseBody {
+	s.Jobs = v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBody) SetRequestId(v string) *ListPipelineJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBody) SetSuccess(v bool) *ListPipelineJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListPipelineJobsResponseBodyJobs struct {
+	Identifier    *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	JobName       *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	LastJobId     *int64  `json:"lastJobId,omitempty" xml:"lastJobId,omitempty"`
+	LastJobParams *string `json:"lastJobParams,omitempty" xml:"lastJobParams,omitempty"`
+}
+
+func (s ListPipelineJobsResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobsResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobsResponseBodyJobs) SetIdentifier(v string) *ListPipelineJobsResponseBodyJobs {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBodyJobs) SetJobName(v string) *ListPipelineJobsResponseBodyJobs {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBodyJobs) SetLastJobId(v int64) *ListPipelineJobsResponseBodyJobs {
+	s.LastJobId = &v
+	return s
+}
+
+func (s *ListPipelineJobsResponseBodyJobs) SetLastJobParams(v string) *ListPipelineJobsResponseBodyJobs {
+	s.LastJobParams = &v
+	return s
+}
+
+type ListPipelineJobsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListPipelineJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPipelineJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineJobsResponse) SetHeaders(v map[string]*string) *ListPipelineJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineJobsResponse) SetBody(v *ListPipelineJobsResponseBody) *ListPipelineJobsResponse {
 	s.Body = v
 	return s
 }
@@ -7967,6 +8528,108 @@ func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId 
 	return _result, _err
 }
 
+func (client *Client) GetPipelineArtifactUrl(organizationId *string, request *GetPipelineArtifactUrlRequest) (_result *GetPipelineArtifactUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineArtifactUrlResponse{}
+	_body, _err := client.GetPipelineArtifactUrlWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineArtifactUrlWithOptions(organizationId *string, request *GetPipelineArtifactUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineArtifactUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["filePath"] = request.FilePath
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipelineArtifactUrl"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/getArtifactDownloadUrl"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPipelineArtifactUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineEmasArtifactUrl(organizationId *string, emasJobInstanceId *string, md5 *string, pipelineId *string, pipelineRunId *string, request *GetPipelineEmasArtifactUrlRequest) (_result *GetPipelineEmasArtifactUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineEmasArtifactUrlResponse{}
+	_body, _err := client.GetPipelineEmasArtifactUrlWithOptions(organizationId, emasJobInstanceId, md5, pipelineId, pipelineRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineEmasArtifactUrlWithOptions(organizationId *string, emasJobInstanceId *string, md5 *string, pipelineId *string, pipelineRunId *string, request *GetPipelineEmasArtifactUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineEmasArtifactUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	emasJobInstanceId = openapiutil.GetEncodeParam(emasJobInstanceId)
+	md5 = openapiutil.GetEncodeParam(md5)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceConnectionId)) {
+		query["serviceConnectionId"] = request.ServiceConnectionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipelineEmasArtifactUrl"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/pipelineRun/" + tea.StringValue(pipelineRunId) + "/emas/artifact/" + tea.StringValue(emasJobInstanceId) + "/" + tea.StringValue(md5)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPipelineEmasArtifactUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string, pipelineRunId *string) (_result *GetPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7998,6 +8661,53 @@ func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipeline
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPipelineScanReportUrl(organizationId *string, request *GetPipelineScanReportUrlRequest) (_result *GetPipelineScanReportUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineScanReportUrlResponse{}
+	_body, _err := client.GetPipelineScanReportUrlWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPipelineScanReportUrlWithOptions(organizationId *string, request *GetPipelineScanReportUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineScanReportUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportPath)) {
+		body["reportPath"] = request.ReportPath
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPipelineScanReportUrl"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/getPipelineScanReportUrl"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPipelineScanReportUrlResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8341,6 +9051,114 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListOrganizationMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelineJobHistorys(organizationId *string, pipelineId *string, request *ListPipelineJobHistorysRequest) (_result *ListPipelineJobHistorysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelineJobHistorysResponse{}
+	_body, _err := client.ListPipelineJobHistorysWithOptions(organizationId, pipelineId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelineJobHistorysWithOptions(organizationId *string, pipelineId *string, request *ListPipelineJobHistorysRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineJobHistorysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineJobHistorys"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/job/historys"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPipelineJobHistorysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPipelineJobs(organizationId *string, pipelineId *string, request *ListPipelineJobsRequest) (_result *ListPipelineJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelineJobsResponse{}
+	_body, _err := client.ListPipelineJobsWithOptions(organizationId, pipelineId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPipelineJobsWithOptions(organizationId *string, pipelineId *string, request *ListPipelineJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	pipelineId = openapiutil.GetEncodeParam(pipelineId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineJobs"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPipelineJobsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
