@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -330,6 +331,7 @@ type FetchAccessTokenRequest struct {
 	MobileExtendParamsJson     *string `json:"MobileExtendParamsJson,omitempty" xml:"MobileExtendParamsJson,omitempty"`
 	MobileExtendParamsJsonSign *string `json:"MobileExtendParamsJsonSign,omitempty" xml:"MobileExtendParamsJsonSign,omitempty"`
 	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	XClientIp                  *string `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
 }
 
@@ -358,6 +360,11 @@ func (s *FetchAccessTokenRequest) SetMobileExtendParamsJsonSign(v string) *Fetch
 
 func (s *FetchAccessTokenRequest) SetServerExtendParamsJson(v string) *FetchAccessTokenRequest {
 	s.ServerExtendParamsJson = &v
+	return s
+}
+
+func (s *FetchAccessTokenRequest) SetUserId(v string) *FetchAccessTokenRequest {
+	s.UserId = &v
 	return s
 }
 
@@ -1324,7 +1331,6 @@ func (s *ListAuthenticatorsResponse) SetBody(v *ListAuthenticatorsResponseBody) 
 }
 
 type ListPwnedPasswordsRequest struct {
-	// 泄露密码SHA1值前6位
 	PrefixHexPasswordSha1Hash *string `json:"PrefixHexPasswordSha1Hash,omitempty" xml:"PrefixHexPasswordSha1Hash,omitempty"`
 }
 
@@ -1342,10 +1348,12 @@ func (s *ListPwnedPasswordsRequest) SetPrefixHexPasswordSha1Hash(v string) *List
 }
 
 type ListPwnedPasswordsResponseBody struct {
+	PageNumber         *int64                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PwnedPasswordInfos []*ListPwnedPasswordsResponseBodyPwnedPasswordInfos `json:"PwnedPasswordInfos,omitempty" xml:"PwnedPasswordInfos,omitempty" type:"Repeated"`
-	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回列表长度
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPwnedPasswordsResponseBody) String() string {
@@ -1354,6 +1362,16 @@ func (s ListPwnedPasswordsResponseBody) String() string {
 
 func (s ListPwnedPasswordsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListPwnedPasswordsResponseBody) SetPageNumber(v int64) *ListPwnedPasswordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPwnedPasswordsResponseBody) SetPageSize(v int64) *ListPwnedPasswordsResponseBody {
+	s.PageSize = &v
+	return s
 }
 
 func (s *ListPwnedPasswordsResponseBody) SetPwnedPasswordInfos(v []*ListPwnedPasswordsResponseBodyPwnedPasswordInfos) *ListPwnedPasswordsResponseBody {
@@ -1372,10 +1390,8 @@ func (s *ListPwnedPasswordsResponseBody) SetTotalCount(v int64) *ListPwnedPasswo
 }
 
 type ListPwnedPasswordsResponseBodyPwnedPasswordInfos struct {
-	// 泄露密码SHA1值
 	HexPasswordSha1Hash *string `json:"HexPasswordSha1Hash,omitempty" xml:"HexPasswordSha1Hash,omitempty"`
-	// 泄露次数
-	PwnedCount *int64 `json:"PwnedCount,omitempty" xml:"PwnedCount,omitempty"`
+	PwnedCount          *int64  `json:"PwnedCount,omitempty" xml:"PwnedCount,omitempty"`
 }
 
 func (s ListPwnedPasswordsResponseBodyPwnedPasswordInfos) String() string {
@@ -1617,6 +1633,8 @@ func (s *RegisterAuthenticatorRequest) SetUserSourceIp(v string) *RegisterAuthen
 type RegisterAuthenticatorResponseBody struct {
 	// 认证器UUID
 	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// 仅IFAA认证器注册返回
+	EtasResponseSting *string `json:"EtasResponseSting,omitempty" xml:"EtasResponseSting,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1630,6 +1648,11 @@ func (s RegisterAuthenticatorResponseBody) GoString() string {
 
 func (s *RegisterAuthenticatorResponseBody) SetAuthenticatorUuid(v string) *RegisterAuthenticatorResponseBody {
 	s.AuthenticatorUuid = &v
+	return s
+}
+
+func (s *RegisterAuthenticatorResponseBody) SetEtasResponseSting(v string) *RegisterAuthenticatorResponseBody {
+	s.EtasResponseSting = &v
 	return s
 }
 
@@ -1961,6 +1984,8 @@ func (s *VerifyUserAuthenticationRequest) SetUserSourceIp(v string) *VerifyUserA
 type VerifyUserAuthenticationResponseBody struct {
 	// 认证结果
 	AuthenticateResultInfo *VerifyUserAuthenticationResponseBodyAuthenticateResultInfo `json:"AuthenticateResultInfo,omitempty" xml:"AuthenticateResultInfo,omitempty" type:"Struct"`
+	EtasSDKString          *string                                                     `json:"EtasSDKString,omitempty" xml:"EtasSDKString,omitempty"`
+	IdToken                *string                                                     `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
 	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 认证结果，true or false
 	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
@@ -1976,6 +2001,16 @@ func (s VerifyUserAuthenticationResponseBody) GoString() string {
 
 func (s *VerifyUserAuthenticationResponseBody) SetAuthenticateResultInfo(v *VerifyUserAuthenticationResponseBodyAuthenticateResultInfo) *VerifyUserAuthenticationResponseBody {
 	s.AuthenticateResultInfo = v
+	return s
+}
+
+func (s *VerifyUserAuthenticationResponseBody) SetEtasSDKString(v string) *VerifyUserAuthenticationResponseBody {
+	s.EtasSDKString = &v
+	return s
+}
+
+func (s *VerifyUserAuthenticationResponseBody) SetIdToken(v string) *VerifyUserAuthenticationResponseBody {
+	s.IdToken = &v
 	return s
 }
 
@@ -2099,11 +2134,59 @@ func (client *Client) CreateAuthenticatorRegistrationWithOptions(request *Create
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJson)) {
+		query["ClientExtendParamsJson"] = request.ClientExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJsonSign)) {
+		query["ClientExtendParamsJsonSign"] = request.ClientExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationContext)) {
+		query["RegistrationContext"] = request.RegistrationContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDisplayName)) {
+		query["UserDisplayName"] = request.UserDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAuthenticatorRegistration"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAuthenticatorRegistrationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAuthenticatorRegistration"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2127,11 +2210,51 @@ func (client *Client) CreateUserAuthenticateOptionsWithOptions(request *CreateUs
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindHashBase64)) {
+		query["BindHashBase64"] = request.BindHashBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJson)) {
+		query["ClientExtendParamsJson"] = request.ClientExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJsonSign)) {
+		query["ClientExtendParamsJsonSign"] = request.ClientExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUserAuthenticateOptions"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserAuthenticateOptionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUserAuthenticateOptions"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2155,11 +2278,35 @@ func (client *Client) DeregisterAuthenticatorWithOptions(request *DeregisterAuth
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorUuid)) {
+		query["AuthenticatorUuid"] = request.AuthenticatorUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeregisterAuthenticator"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeregisterAuthenticatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeregisterAuthenticator"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2183,11 +2330,47 @@ func (client *Client) FetchAccessTokenWithOptions(request *FetchAccessTokenReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileExtendParamsJson)) {
+		query["MobileExtendParamsJson"] = request.MobileExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileExtendParamsJsonSign)) {
+		query["MobileExtendParamsJsonSign"] = request.MobileExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XClientIp)) {
+		query["XClientIp"] = request.XClientIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FetchAccessToken"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FetchAccessTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FetchAccessToken"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2211,11 +2394,35 @@ func (client *Client) GetAuthenticatorWithOptions(request *GetAuthenticatorReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorUuid)) {
+		query["AuthenticatorUuid"] = request.AuthenticatorUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthenticator"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAuthenticatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAuthenticator"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2239,11 +2446,63 @@ func (client *Client) ListAuthenticationLogsWithOptions(request *ListAuthenticat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorUuid)) {
+		query["AuthenticatorUuid"] = request.AuthenticatorUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredentialId)) {
+		query["CredentialId"] = request.CredentialId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromTime)) {
+		query["FromTime"] = request.FromTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogTag)) {
+		query["LogTag"] = request.LogTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToTime)) {
+		query["ToTime"] = request.ToTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthenticationLogs"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuthenticationLogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAuthenticationLogs"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2267,11 +2526,55 @@ func (client *Client) ListAuthenticatorOpsLogsWithOptions(request *ListAuthentic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorUuid)) {
+		query["AuthenticatorUuid"] = request.AuthenticatorUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromTime)) {
+		query["FromTime"] = request.FromTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToTime)) {
+		query["ToTime"] = request.ToTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthenticatorOpsLogs"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuthenticatorOpsLogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAuthenticatorOpsLogs"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2295,11 +2598,43 @@ func (client *Client) ListAuthenticatorsWithOptions(request *ListAuthenticatorsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthenticators"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuthenticatorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAuthenticators"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2323,11 +2658,27 @@ func (client *Client) ListPwnedPasswordsWithOptions(request *ListPwnedPasswordsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PrefixHexPasswordSha1Hash)) {
+		query["PrefixHexPasswordSha1Hash"] = request.PrefixHexPasswordSha1Hash
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPwnedPasswords"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPwnedPasswordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPwnedPasswords"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2351,11 +2702,31 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsers"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2379,11 +2750,67 @@ func (client *Client) RegisterAuthenticatorWithOptions(request *RegisterAuthenti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorName)) {
+		query["AuthenticatorName"] = request.AuthenticatorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJson)) {
+		query["ClientExtendParamsJson"] = request.ClientExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJsonSign)) {
+		query["ClientExtendParamsJsonSign"] = request.ClientExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogParams)) {
+		query["LogParams"] = request.LogParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationContext)) {
+		query["RegistrationContext"] = request.RegistrationContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireChallengeBase64)) {
+		query["RequireChallengeBase64"] = request.RequireChallengeBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSourceIp)) {
+		query["UserSourceIp"] = request.UserSourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterAuthenticator"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterAuthenticatorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterAuthenticator"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2407,11 +2834,55 @@ func (client *Client) ServiceInvokeWithOptions(request *ServiceInvokeRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DoraemonAction)) {
+		query["DoraemonAction"] = request.DoraemonAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileExtendParamsJson)) {
+		query["MobileExtendParamsJson"] = request.MobileExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileExtendParamsJsonSign)) {
+		query["MobileExtendParamsJsonSign"] = request.MobileExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestModel)) {
+		query["TestModel"] = request.TestModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XClientIp)) {
+		query["XClientIp"] = request.XClientIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ServiceInvoke"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ServiceInvokeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ServiceInvoke"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2435,11 +2906,39 @@ func (client *Client) UpdateAuthenticatorAttributeWithOptions(request *UpdateAut
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorName)) {
+		query["AuthenticatorName"] = request.AuthenticatorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorUuid)) {
+		query["AuthenticatorUuid"] = request.AuthenticatorUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAuthenticatorAttribute"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAuthenticatorAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAuthenticatorAttribute"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2463,11 +2962,71 @@ func (client *Client) VerifyUserAuthenticationWithOptions(request *VerifyUserAut
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationExternalId)) {
+		query["ApplicationExternalId"] = request.ApplicationExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationContext)) {
+		query["AuthenticationContext"] = request.AuthenticationContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticatorType)) {
+		query["AuthenticatorType"] = request.AuthenticatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJson)) {
+		query["ClientExtendParamsJson"] = request.ClientExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientExtendParamsJsonSign)) {
+		query["ClientExtendParamsJsonSign"] = request.ClientExtendParamsJsonSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogParams)) {
+		query["LogParams"] = request.LogParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogTag)) {
+		query["LogTag"] = request.LogTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireBindHashBase64)) {
+		query["RequireBindHashBase64"] = request.RequireBindHashBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireChallengeBase64)) {
+		query["RequireChallengeBase64"] = request.RequireChallengeBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerExtendParamsJson)) {
+		query["ServerExtendParamsJson"] = request.ServerExtendParamsJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSourceIp)) {
+		query["UserSourceIp"] = request.UserSourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyUserAuthentication"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyUserAuthenticationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyUserAuthentication"), tea.String("2021-05-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

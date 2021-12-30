@@ -1,3 +1,6 @@
+2021-12-30 Version: v1.0.0
+- Support Sms Auth.
+
 2021-11-11 Version: v1.0.0
 - Release idaas-doraemon TOTP WebAuthn sdk.
 
