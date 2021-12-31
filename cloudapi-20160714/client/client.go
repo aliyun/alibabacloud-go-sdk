@@ -13248,13 +13248,13 @@ func (s *DescribePluginsResponseBodyPlugins) SetPluginAttribute(v []*DescribePlu
 
 type DescribePluginsResponseBodyPluginsPluginAttribute struct {
 	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description  *int32                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	PluginData   *string                                                `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
 	PluginId     *string                                                `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	PluginName   *string                                                `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
 	PluginType   *string                                                `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	RegionId     *int32                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tags         *DescribePluginsResponseBodyPluginsPluginAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
@@ -13271,7 +13271,7 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetCreatedTime(v str
 	return s
 }
 
-func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetDescription(v int32) *DescribePluginsResponseBodyPluginsPluginAttribute {
+func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetDescription(v string) *DescribePluginsResponseBodyPluginsPluginAttribute {
 	s.Description = &v
 	return s
 }
@@ -13301,7 +13301,7 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetPluginType(v stri
 	return s
 }
 
-func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetRegionId(v int32) *DescribePluginsResponseBodyPluginsPluginAttribute {
+func (s *DescribePluginsResponseBodyPluginsPluginAttribute) SetRegionId(v string) *DescribePluginsResponseBodyPluginsPluginAttribute {
 	s.RegionId = &v
 	return s
 }
@@ -15182,15 +15182,21 @@ func (s *DescribeUpdateVpcInfoTaskResponse) SetBody(v *DescribeUpdateVpcInfoTask
 }
 
 type DescribeVpcAccessesRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// VPC授权名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// 当前页码
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页展示条目
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 端口号
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// Vpc授权ID
 	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	// Vpc ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVpcAccessesRequest) String() string {
@@ -15199,6 +15205,11 @@ func (s DescribeVpcAccessesRequest) String() string {
 
 func (s DescribeVpcAccessesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVpcAccessesRequest) SetInstanceId(v string) *DescribeVpcAccessesRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeVpcAccessesRequest) SetName(v string) *DescribeVpcAccessesRequest {
@@ -15216,6 +15227,11 @@ func (s *DescribeVpcAccessesRequest) SetPageSize(v int32) *DescribeVpcAccessesRe
 	return s
 }
 
+func (s *DescribeVpcAccessesRequest) SetPort(v string) *DescribeVpcAccessesRequest {
+	s.Port = &v
+	return s
+}
+
 func (s *DescribeVpcAccessesRequest) SetSecurityToken(v string) *DescribeVpcAccessesRequest {
 	s.SecurityToken = &v
 	return s
@@ -15223,6 +15239,11 @@ func (s *DescribeVpcAccessesRequest) SetSecurityToken(v string) *DescribeVpcAcce
 
 func (s *DescribeVpcAccessesRequest) SetVpcAccessId(v string) *DescribeVpcAccessesRequest {
 	s.VpcAccessId = &v
+	return s
+}
+
+func (s *DescribeVpcAccessesRequest) SetVpcId(v string) *DescribeVpcAccessesRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -19946,13 +19967,24 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AbolishApi"),
@@ -19962,7 +19994,7 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AbolishApiResponse{}
@@ -19991,13 +20023,24 @@ func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CidrIp"] = request.CidrIp
-	query["IpControlId"] = request.IpControlId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrIp)) {
+		query["CidrIp"] = request.CidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddIpControlPolicyItem"),
@@ -20007,7 +20050,7 @@ func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPol
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddIpControlPolicyItemResponse{}
@@ -20036,14 +20079,28 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["SpecialKey"] = request.SpecialKey
-	query["SpecialType"] = request.SpecialType
-	query["TrafficControlId"] = request.TrafficControlId
-	query["TrafficValue"] = request.TrafficValue
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecialKey)) {
+		query["SpecialKey"] = request.SpecialKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecialType)) {
+		query["SpecialType"] = request.SpecialType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficValue)) {
+		query["TrafficValue"] = request.TrafficValue
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTrafficSpecialControl"),
@@ -20053,7 +20110,7 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTrafficSpecialControlResponse{}
@@ -20082,15 +20139,32 @@ func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["PluginId"] = request.PluginId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AttachPlugin"),
@@ -20100,7 +20174,7 @@ func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AttachPluginResponse{}
@@ -20129,11 +20203,16 @@ func (client *Client) BatchAbolishApisWithOptions(request *BatchAbolishApisReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Api"] = request.Api
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Api)) {
+		query["Api"] = request.Api
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchAbolishApis"),
@@ -20143,7 +20222,7 @@ func (client *Client) BatchAbolishApisWithOptions(request *BatchAbolishApisReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchAbolishApisResponse{}
@@ -20172,13 +20251,24 @@ func (client *Client) BatchDeployApisWithOptions(request *BatchDeployApisRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Api"] = request.Api
-	query["Description"] = request.Description
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.Api)) {
+		query["Api"] = request.Api
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchDeployApis"),
@@ -20188,7 +20278,7 @@ func (client *Client) BatchDeployApisWithOptions(request *BatchDeployApisRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchDeployApisResponse{}
@@ -20217,34 +20307,108 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowSignatureMethod"] = request.AllowSignatureMethod
-	query["ApiName"] = request.ApiName
-	query["AppCodeAuthType"] = request.AppCodeAuthType
-	query["AuthType"] = request.AuthType
-	query["ConstantParameters"] = request.ConstantParameters
-	query["Description"] = request.Description
-	query["DisableInternet"] = request.DisableInternet
-	query["ErrorCodeSamples"] = request.ErrorCodeSamples
-	query["FailResultSample"] = request.FailResultSample
-	query["ForceNonceCheck"] = request.ForceNonceCheck
-	query["GroupId"] = request.GroupId
-	query["OpenIdConnectConfig"] = request.OpenIdConnectConfig
-	query["RequestConfig"] = request.RequestConfig
-	query["RequestParameters"] = request.RequestParameters
-	query["ResultBodyModel"] = request.ResultBodyModel
-	query["ResultDescriptions"] = request.ResultDescriptions
-	query["ResultSample"] = request.ResultSample
-	query["ResultType"] = request.ResultType
-	query["SecurityToken"] = request.SecurityToken
-	query["ServiceConfig"] = request.ServiceConfig
-	query["ServiceParameters"] = request.ServiceParameters
-	query["ServiceParametersMap"] = request.ServiceParametersMap
-	query["SystemParameters"] = request.SystemParameters
-	query["Visibility"] = request.Visibility
-	query["WebSocketApiType"] = request.WebSocketApiType
+	if !tea.BoolValue(util.IsUnset(request.AllowSignatureMethod)) {
+		query["AllowSignatureMethod"] = request.AllowSignatureMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppCodeAuthType)) {
+		query["AppCodeAuthType"] = request.AppCodeAuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
+		query["ConstantParameters"] = request.ConstantParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableInternet)) {
+		query["DisableInternet"] = request.DisableInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorCodeSamples)) {
+		query["ErrorCodeSamples"] = request.ErrorCodeSamples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
+		query["FailResultSample"] = request.FailResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceNonceCheck)) {
+		query["ForceNonceCheck"] = request.ForceNonceCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenIdConnectConfig)) {
+		query["OpenIdConnectConfig"] = request.OpenIdConnectConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestConfig)) {
+		query["RequestConfig"] = request.RequestConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestParameters)) {
+		query["RequestParameters"] = request.RequestParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultBodyModel)) {
+		query["ResultBodyModel"] = request.ResultBodyModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultDescriptions)) {
+		query["ResultDescriptions"] = request.ResultDescriptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
+		query["ResultSample"] = request.ResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceConfig)) {
+		query["ServiceConfig"] = request.ServiceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParametersMap)) {
+		query["ServiceParametersMap"] = request.ServiceParametersMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemParameters)) {
+		query["SystemParameters"] = request.SystemParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebSocketApiType)) {
+		query["WebSocketApiType"] = request.WebSocketApiType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApi"),
@@ -20254,7 +20418,7 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateApiResponse{}
@@ -20283,15 +20447,32 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BasePath"] = request.BasePath
-	query["Description"] = request.Description
-	query["GroupName"] = request.GroupName
-	query["InstanceId"] = request.InstanceId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
+		query["BasePath"] = request.BasePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApiGroup"),
@@ -20301,7 +20482,7 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateApiGroupResponse{}
@@ -20330,16 +20511,36 @@ func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageId"] = request.StageId
-	query["StageRouteModel"] = request.StageRouteModel
-	query["SupportRoute"] = request.SupportRoute
-	query["VariableName"] = request.VariableName
-	query["VariableValue"] = request.VariableValue
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageId)) {
+		query["StageId"] = request.StageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageRouteModel)) {
+		query["StageRouteModel"] = request.StageRouteModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportRoute)) {
+		query["SupportRoute"] = request.SupportRoute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariableName)) {
+		query["VariableName"] = request.VariableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariableValue)) {
+		query["VariableValue"] = request.VariableValue
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApiStageVariable"),
@@ -20349,7 +20550,7 @@ func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateApiStageVariableResponse{}
@@ -20378,14 +20579,28 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Description"] = request.Description
-	query["SecurityToken"] = request.SecurityToken
-	query["Source"] = request.Source
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApp"),
@@ -20395,7 +20610,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAppResponse{}
@@ -20424,18 +20639,44 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPay"] = request.AutoPay
-	query["ChargeType"] = request.ChargeType
-	query["Duration"] = request.Duration
-	query["HttpsPolicy"] = request.HttpsPolicy
-	query["InstanceName"] = request.InstanceName
-	query["InstanceSpec"] = request.InstanceSpec
-	query["PricingCycle"] = request.PricingCycle
-	query["Token"] = request.Token
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsPolicy)) {
+		query["HttpsPolicy"] = request.HttpsPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInstance"),
@@ -20445,7 +20686,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
@@ -20474,11 +20715,16 @@ func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIntranetDomain"),
@@ -20488,7 +20734,7 @@ func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIntranetDomainResponse{}
@@ -20517,14 +20763,28 @@ func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["IpControlName"] = request.IpControlName
-	query["IpControlPolicys"] = request.IpControlPolicys
-	query["IpControlType"] = request.IpControlType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlName)) {
+		query["IpControlName"] = request.IpControlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlPolicys)) {
+		query["IpControlPolicys"] = request.IpControlPolicys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlType)) {
+		query["IpControlType"] = request.IpControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIpControl"),
@@ -20534,7 +20794,7 @@ func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIpControlResponse{}
@@ -20563,13 +20823,24 @@ func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogType"] = request.LogType
-	query["SecurityToken"] = request.SecurityToken
-	query["SlsLogStore"] = request.SlsLogStore
-	query["SlsProject"] = request.SlsProject
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsLogStore)) {
+		query["SlsLogStore"] = request.SlsLogStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProject)) {
+		query["SlsProject"] = request.SlsProject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateLogConfig"),
@@ -20579,7 +20850,7 @@ func (client *Client) CreateLogConfigWithOptions(request *CreateLogConfigRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLogConfigResponse{}
@@ -20608,13 +20879,24 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["ModelName"] = request.ModelName
-	query["Schema"] = request.Schema
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateModel"),
@@ -20624,7 +20906,7 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateModelResponse{}
@@ -20653,13 +20935,24 @@ func (client *Client) CreateMonitorGroupWithOptions(request *CreateMonitorGroupR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Auth"] = request.Auth
-	query["GroupId"] = request.GroupId
-	query["RawMonitorGroupId"] = request.RawMonitorGroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Auth)) {
+		query["Auth"] = request.Auth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RawMonitorGroupId)) {
+		query["RawMonitorGroupId"] = request.RawMonitorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateMonitorGroup"),
@@ -20669,7 +20962,7 @@ func (client *Client) CreateMonitorGroupWithOptions(request *CreateMonitorGroupR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMonitorGroupResponse{}
@@ -20698,15 +20991,32 @@ func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["PluginData"] = request.PluginData
-	query["PluginName"] = request.PluginName
-	query["PluginType"] = request.PluginType
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginData)) {
+		query["PluginData"] = request.PluginData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginName)) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePlugin"),
@@ -20716,7 +21026,7 @@ func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePluginResponse{}
@@ -20745,13 +21055,24 @@ func (client *Client) CreateSignatureWithOptions(request *CreateSignatureRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureKey"] = request.SignatureKey
-	query["SignatureName"] = request.SignatureName
-	query["SignatureSecret"] = request.SignatureSecret
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureKey)) {
+		query["SignatureKey"] = request.SignatureKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureName)) {
+		query["SignatureName"] = request.SignatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureSecret)) {
+		query["SignatureSecret"] = request.SignatureSecret
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSignature"),
@@ -20761,7 +21082,7 @@ func (client *Client) CreateSignatureWithOptions(request *CreateSignatureRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSignatureResponse{}
@@ -20790,16 +21111,36 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiDefault"] = request.ApiDefault
-	query["AppDefault"] = request.AppDefault
-	query["Description"] = request.Description
-	query["SecurityToken"] = request.SecurityToken
-	query["TrafficControlName"] = request.TrafficControlName
-	query["TrafficControlUnit"] = request.TrafficControlUnit
-	query["UserDefault"] = request.UserDefault
+	if !tea.BoolValue(util.IsUnset(request.ApiDefault)) {
+		query["ApiDefault"] = request.ApiDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppDefault)) {
+		query["AppDefault"] = request.AppDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlName)) {
+		query["TrafficControlName"] = request.TrafficControlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlUnit)) {
+		query["TrafficControlUnit"] = request.TrafficControlUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDefault)) {
+		query["UserDefault"] = request.UserDefault
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTrafficControl"),
@@ -20809,7 +21150,7 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTrafficControlResponse{}
@@ -20838,11 +21179,16 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAllTrafficSpecialControl"),
@@ -20852,7 +21198,7 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAllTrafficSpecialControlResponse{}
@@ -20881,12 +21227,20 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteApi"),
@@ -20896,7 +21250,7 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteApiResponse{}
@@ -20925,12 +21279,20 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteApiGroup"),
@@ -20940,7 +21302,7 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteApiGroupResponse{}
@@ -20969,13 +21331,24 @@ func (client *Client) DeleteApiStageVariableWithOptions(request *DeleteApiStageV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageId"] = request.StageId
-	query["VariableName"] = request.VariableName
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageId)) {
+		query["StageId"] = request.StageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariableName)) {
+		query["VariableName"] = request.VariableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteApiStageVariable"),
@@ -20985,7 +21358,7 @@ func (client *Client) DeleteApiStageVariableWithOptions(request *DeleteApiStageV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteApiStageVariableResponse{}
@@ -21014,12 +21387,20 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteApp"),
@@ -21029,7 +21410,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAppResponse{}
@@ -21058,12 +21439,20 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDomain"),
@@ -21073,7 +21462,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDomainResponse{}
@@ -21102,13 +21491,24 @@ func (client *Client) DeleteDomainCertificateWithOptions(request *DeleteDomainCe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertificateId"] = request.CertificateId
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDomainCertificate"),
@@ -21118,7 +21518,7 @@ func (client *Client) DeleteDomainCertificateWithOptions(request *DeleteDomainCe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDomainCertificateResponse{}
@@ -21147,11 +21547,16 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteInstance"),
@@ -21161,7 +21566,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
@@ -21190,11 +21595,16 @@ func (client *Client) DeleteIpControlWithOptions(request *DeleteIpControlRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpControlId"] = request.IpControlId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteIpControl"),
@@ -21204,7 +21614,7 @@ func (client *Client) DeleteIpControlWithOptions(request *DeleteIpControlRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIpControlResponse{}
@@ -21233,11 +21643,16 @@ func (client *Client) DeleteLogConfigWithOptions(request *DeleteLogConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogType"] = request.LogType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteLogConfig"),
@@ -21247,7 +21662,7 @@ func (client *Client) DeleteLogConfigWithOptions(request *DeleteLogConfigRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLogConfigResponse{}
@@ -21276,11 +21691,16 @@ func (client *Client) DeleteModelWithOptions(request *DeleteModelRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["ModelName"] = request.ModelName
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteModel"),
@@ -21290,7 +21710,7 @@ func (client *Client) DeleteModelWithOptions(request *DeleteModelRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteModelResponse{}
@@ -21319,12 +21739,20 @@ func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PluginId"] = request.PluginId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePlugin"),
@@ -21334,7 +21762,7 @@ func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePluginResponse{}
@@ -21363,11 +21791,16 @@ func (client *Client) DeleteSignatureWithOptions(request *DeleteSignatureRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSignature"),
@@ -21377,7 +21810,7 @@ func (client *Client) DeleteSignatureWithOptions(request *DeleteSignatureRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSignatureResponse{}
@@ -21406,11 +21839,16 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTrafficControl"),
@@ -21420,7 +21858,7 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTrafficControlResponse{}
@@ -21449,13 +21887,24 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["SpecialKey"] = request.SpecialKey
-	query["SpecialType"] = request.SpecialType
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecialKey)) {
+		query["SpecialKey"] = request.SpecialKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecialType)) {
+		query["SpecialType"] = request.SpecialType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTrafficSpecialControl"),
@@ -21465,7 +21914,7 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTrafficSpecialControlResponse{}
@@ -21494,14 +21943,28 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployApi"),
@@ -21511,7 +21974,7 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeployApiResponse{}
@@ -21540,11 +22003,16 @@ func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolish
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationUid"] = request.OperationUid
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OperationUid)) {
+		query["OperationUid"] = request.OperationUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAbolishApiTask"),
@@ -21554,7 +22022,7 @@ func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolish
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAbolishApiTaskResponse{}
@@ -21583,12 +22051,20 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApi"),
@@ -21598,7 +22074,7 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiResponse{}
@@ -21627,13 +22103,24 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiDoc"),
@@ -21643,7 +22130,7 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiDocResponse{}
@@ -21672,12 +22159,20 @@ func (client *Client) DescribeApiGroupWithOptions(request *DescribeApiGroupReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiGroup"),
@@ -21687,7 +22182,7 @@ func (client *Client) DescribeApiGroupWithOptions(request *DescribeApiGroupReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiGroupResponse{}
@@ -21716,11 +22211,16 @@ func (client *Client) DescribeApiGroupVpcWhitelistWithOptions(request *DescribeA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiGroupVpcWhitelist"),
@@ -21730,7 +22230,7 @@ func (client *Client) DescribeApiGroupVpcWhitelistWithOptions(request *DescribeA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiGroupVpcWhitelistResponse{}
@@ -21759,18 +22259,44 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnableTagAuth"] = request.EnableTagAuth
-	query["GroupId"] = request.GroupId
-	query["GroupName"] = request.GroupName
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["Sort"] = request.Sort
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
+		query["EnableTagAuth"] = request.EnableTagAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiGroups"),
@@ -21780,7 +22306,7 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiGroupsResponse{}
@@ -21809,16 +22335,36 @@ func (client *Client) DescribeApiHistoriesWithOptions(request *DescribeApiHistor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiHistories"),
@@ -21828,7 +22374,7 @@ func (client *Client) DescribeApiHistoriesWithOptions(request *DescribeApiHistor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiHistoriesResponse{}
@@ -21857,14 +22403,28 @@ func (client *Client) DescribeApiHistoryWithOptions(request *DescribeApiHistoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["HistoryVersion"] = request.HistoryVersion
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryVersion)) {
+		query["HistoryVersion"] = request.HistoryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiHistory"),
@@ -21874,7 +22434,7 @@ func (client *Client) DescribeApiHistoryWithOptions(request *DescribeApiHistoryR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiHistoryResponse{}
@@ -21903,15 +22463,32 @@ func (client *Client) DescribeApiIpControlsWithOptions(request *DescribeApiIpCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiIpControls"),
@@ -21921,7 +22498,7 @@ func (client *Client) DescribeApiIpControlsWithOptions(request *DescribeApiIpCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiIpControlsResponse{}
@@ -21950,15 +22527,32 @@ func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["EndTime"] = request.EndTime
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiLatencyData"),
@@ -21968,7 +22562,7 @@ func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiLatencyDataResponse{}
@@ -21997,12 +22591,20 @@ func (client *Client) DescribeApiMarketAttributesWithOptions(request *DescribeAp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiMarketAttributes"),
@@ -22012,7 +22614,7 @@ func (client *Client) DescribeApiMarketAttributesWithOptions(request *DescribeAp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiMarketAttributesResponse{}
@@ -22041,15 +22643,32 @@ func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["EndTime"] = request.EndTime
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiQpsData"),
@@ -22059,7 +22678,7 @@ func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiQpsDataResponse{}
@@ -22088,15 +22707,32 @@ func (client *Client) DescribeApiSignaturesWithOptions(request *DescribeApiSigna
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiSignatures"),
@@ -22106,7 +22742,7 @@ func (client *Client) DescribeApiSignaturesWithOptions(request *DescribeApiSigna
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiSignaturesResponse{}
@@ -22135,15 +22771,32 @@ func (client *Client) DescribeApiTrafficControlsWithOptions(request *DescribeApi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiTrafficControls"),
@@ -22153,7 +22806,7 @@ func (client *Client) DescribeApiTrafficControlsWithOptions(request *DescribeApi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiTrafficControlsResponse{}
@@ -22182,15 +22835,32 @@ func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTraf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["EndTime"] = request.EndTime
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApiTrafficData"),
@@ -22200,7 +22870,7 @@ func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTraf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApiTrafficDataResponse{}
@@ -22229,19 +22899,48 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["CatalogId"] = request.CatalogId
-	query["EnableTagAuth"] = request.EnableTagAuth
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
-	query["Visibility"] = request.Visibility
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CatalogId)) {
+		query["CatalogId"] = request.CatalogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
+		query["EnableTagAuth"] = request.EnableTagAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApis"),
@@ -22251,7 +22950,7 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApisResponse{}
@@ -22280,17 +22979,40 @@ func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiName"] = request.ApiName
-	query["ApiUid"] = request.ApiUid
-	query["AppId"] = request.AppId
-	query["Method"] = request.Method
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Path"] = request.Path
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiUid)) {
+		query["ApiUid"] = request.ApiUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApisByApp"),
@@ -22300,7 +23022,7 @@ func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApisByAppResponse{}
@@ -22329,13 +23051,24 @@ func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisBy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpControlId"] = request.IpControlId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApisByIpControl"),
@@ -22345,7 +23078,7 @@ func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisBy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApisByIpControlResponse{}
@@ -22374,13 +23107,24 @@ func (client *Client) DescribeApisBySignatureWithOptions(request *DescribeApisBy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApisBySignature"),
@@ -22390,7 +23134,7 @@ func (client *Client) DescribeApisBySignatureWithOptions(request *DescribeApisBy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApisBySignatureResponse{}
@@ -22419,13 +23163,24 @@ func (client *Client) DescribeApisByTrafficControlWithOptions(request *DescribeA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApisByTrafficControl"),
@@ -22435,7 +23190,7 @@ func (client *Client) DescribeApisByTrafficControlWithOptions(request *DescribeA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeApisByTrafficControlResponse{}
@@ -22464,11 +23219,16 @@ func (client *Client) DescribeAppWithOptions(request *DescribeAppRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApp"),
@@ -22478,7 +23238,7 @@ func (client *Client) DescribeAppWithOptions(request *DescribeAppRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppResponse{}
@@ -22507,19 +23267,48 @@ func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppCode"] = request.AppCode
-	query["AppId"] = request.AppId
-	query["AppKey"] = request.AppKey
-	query["AppName"] = request.AppName
-	query["EnableTagAuth"] = request.EnableTagAuth
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["Sort"] = request.Sort
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
+		query["EnableTagAuth"] = request.EnableTagAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAppAttributes"),
@@ -22529,7 +23318,7 @@ func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppAttributesResponse{}
@@ -22558,12 +23347,20 @@ func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAppSecurity"),
@@ -22573,7 +23370,7 @@ func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurit
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppSecurityResponse{}
@@ -22602,14 +23399,28 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AppOwner"] = request.AppOwner
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppOwner)) {
+		query["AppOwner"] = request.AppOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeApps"),
@@ -22619,7 +23430,7 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAppsResponse{}
@@ -22648,13 +23459,24 @@ func (client *Client) DescribeAuthorizedApisWithOptions(request *DescribeAuthori
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAuthorizedApis"),
@@ -22664,7 +23486,7 @@ func (client *Client) DescribeAuthorizedApisWithOptions(request *DescribeAuthori
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAuthorizedApisResponse{}
@@ -22693,18 +23515,44 @@ func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthori
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["AppId"] = request.AppId
-	query["AppName"] = request.AppName
-	query["AppOwnerId"] = request.AppOwnerId
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppOwnerId)) {
+		query["AppOwnerId"] = request.AppOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAuthorizedApps"),
@@ -22714,7 +23562,7 @@ func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthori
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAuthorizedAppsResponse{}
@@ -22743,11 +23591,16 @@ func (client *Client) DescribeDeployApiTaskWithOptions(request *DescribeDeployAp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationUid"] = request.OperationUid
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OperationUid)) {
+		query["OperationUid"] = request.OperationUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDeployApiTask"),
@@ -22757,7 +23610,7 @@ func (client *Client) DescribeDeployApiTaskWithOptions(request *DescribeDeployAp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeployApiTaskResponse{}
@@ -22786,13 +23639,24 @@ func (client *Client) DescribeDeployedApiWithOptions(request *DescribeDeployedAp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDeployedApi"),
@@ -22802,7 +23666,7 @@ func (client *Client) DescribeDeployedApiWithOptions(request *DescribeDeployedAp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeployedApiResponse{}
@@ -22831,18 +23695,44 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["EnableTagAuth"] = request.EnableTagAuth
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTagAuth)) {
+		query["EnableTagAuth"] = request.EnableTagAuth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDeployedApis"),
@@ -22852,7 +23742,7 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeployedApisResponse{}
@@ -22881,12 +23771,20 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomain"),
@@ -22896,7 +23794,7 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainResponse{}
@@ -22925,16 +23823,36 @@ func (client *Client) DescribeHistoryApisWithOptions(request *DescribeHistoryApi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeHistoryApis"),
@@ -22944,7 +23862,7 @@ func (client *Client) DescribeHistoryApisWithOptions(request *DescribeHistoryApi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeHistoryApisResponse{}
@@ -22973,14 +23891,28 @@ func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpControlId"] = request.IpControlId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PolicyItemId"] = request.PolicyItemId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyItemId)) {
+		query["PolicyItemId"] = request.PolicyItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeIpControlPolicyItems"),
@@ -22990,7 +23922,7 @@ func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpControlPolicyItemsResponse{}
@@ -23019,15 +23951,32 @@ func (client *Client) DescribeIpControlsWithOptions(request *DescribeIpControlsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpControlId"] = request.IpControlId
-	query["IpControlName"] = request.IpControlName
-	query["IpControlType"] = request.IpControlType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlName)) {
+		query["IpControlName"] = request.IpControlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlType)) {
+		query["IpControlType"] = request.IpControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeIpControls"),
@@ -23037,7 +23986,7 @@ func (client *Client) DescribeIpControlsWithOptions(request *DescribeIpControlsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpControlsResponse{}
@@ -23066,11 +24015,16 @@ func (client *Client) DescribeLogConfigWithOptions(request *DescribeLogConfigReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogType"] = request.LogType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeLogConfig"),
@@ -23080,7 +24034,7 @@ func (client *Client) DescribeLogConfigWithOptions(request *DescribeLogConfigReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeLogConfigResponse{}
@@ -23109,11 +24063,16 @@ func (client *Client) DescribeMarketRemainsQuotaWithOptions(request *DescribeMar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMarketRemainsQuota"),
@@ -23123,7 +24082,7 @@ func (client *Client) DescribeMarketRemainsQuotaWithOptions(request *DescribeMar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMarketRemainsQuotaResponse{}
@@ -23152,14 +24111,28 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["ModelId"] = request.ModelId
-	query["ModelName"] = request.ModelName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeModels"),
@@ -23169,7 +24142,7 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeModelsResponse{}
@@ -23198,11 +24171,16 @@ func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Language"] = request.Language
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePluginSchemas"),
@@ -23212,7 +24190,7 @@ func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePluginSchemasResponse{}
@@ -23241,12 +24219,20 @@ func (client *Client) DescribePluginTemplatesWithOptions(request *DescribePlugin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Language"] = request.Language
-	query["PluginName"] = request.PluginName
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginName)) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePluginTemplates"),
@@ -23256,7 +24242,7 @@ func (client *Client) DescribePluginTemplatesWithOptions(request *DescribePlugin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePluginTemplatesResponse{}
@@ -23285,16 +24271,36 @@ func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PluginId"] = request.PluginId
-	query["PluginName"] = request.PluginName
-	query["PluginType"] = request.PluginType
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginName)) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePlugins"),
@@ -23304,7 +24310,7 @@ func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePluginsResponse{}
@@ -23333,13 +24339,24 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePluginsByApi"),
@@ -23349,7 +24366,7 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePluginsByApiResponse{}
@@ -23378,11 +24395,16 @@ func (client *Client) DescribePurchasedApiGroupWithOptions(request *DescribePurc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePurchasedApiGroup"),
@@ -23392,7 +24414,7 @@ func (client *Client) DescribePurchasedApiGroupWithOptions(request *DescribePurc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePurchasedApiGroupResponse{}
@@ -23421,12 +24443,20 @@ func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePur
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePurchasedApiGroups"),
@@ -23436,7 +24466,7 @@ func (client *Client) DescribePurchasedApiGroupsWithOptions(request *DescribePur
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePurchasedApiGroupsResponse{}
@@ -23465,17 +24495,40 @@ func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchase
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["Visibility"] = request.Visibility
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePurchasedApis"),
@@ -23485,7 +24538,7 @@ func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchase
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePurchasedApisResponse{}
@@ -23514,11 +24567,16 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Language"] = request.Language
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -23528,7 +24586,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -23557,14 +24615,28 @@ func (client *Client) DescribeSignaturesWithOptions(request *DescribeSignaturesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
-	query["SignatureName"] = request.SignatureName
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureName)) {
+		query["SignatureName"] = request.SignatureName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSignatures"),
@@ -23574,7 +24646,7 @@ func (client *Client) DescribeSignaturesWithOptions(request *DescribeSignaturesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSignaturesResponse{}
@@ -23603,13 +24675,24 @@ func (client *Client) DescribeSignaturesByApiWithOptions(request *DescribeSignat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSignaturesByApi"),
@@ -23619,7 +24702,7 @@ func (client *Client) DescribeSignaturesByApiWithOptions(request *DescribeSignat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSignaturesByApiResponse{}
@@ -23648,10 +24731,12 @@ func (client *Client) DescribeSystemParametersWithOptions(request *DescribeSyste
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSystemParameters"),
@@ -23661,7 +24746,7 @@ func (client *Client) DescribeSystemParametersWithOptions(request *DescribeSyste
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSystemParametersResponse{}
@@ -23690,17 +24775,40 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["TrafficControlId"] = request.TrafficControlId
-	query["TrafficControlName"] = request.TrafficControlName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlName)) {
+		query["TrafficControlName"] = request.TrafficControlName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTrafficControls"),
@@ -23710,7 +24818,7 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTrafficControlsResponse{}
@@ -23739,13 +24847,24 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTrafficControlsByApi"),
@@ -23755,7 +24874,7 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTrafficControlsByApiResponse{}
@@ -23784,11 +24903,16 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationUid"] = request.OperationUid
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OperationUid)) {
+		query["OperationUid"] = request.OperationUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUpdateVpcInfoTask"),
@@ -23798,7 +24922,7 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUpdateVpcInfoTaskResponse{}
@@ -23827,14 +24951,40 @@ func (client *Client) DescribeVpcAccessesWithOptions(request *DescribeVpcAccesse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcAccessId"] = request.VpcAccessId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcAccessId)) {
+		query["VpcAccessId"] = request.VpcAccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVpcAccesses"),
@@ -23844,7 +24994,7 @@ func (client *Client) DescribeVpcAccessesWithOptions(request *DescribeVpcAccesse
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVpcAccessesResponse{}
@@ -23873,11 +25023,16 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Language"] = request.Language
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeZones"),
@@ -23887,7 +25042,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
@@ -23922,14 +25077,34 @@ func (client *Client) DryRunSwaggerWithOptions(tmpReq *DryRunSwaggerRequest, run
 	}
 
 	query := map[string]interface{}{}
-	query["DataFormat"] = request.DataFormat
-	query["GlobalCondition"] = request.GlobalConditionShrink
-	query["GroupId"] = request.GroupId
-	query["Overwrite"] = request.Overwrite
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		query["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalConditionShrink)) {
+		query["GlobalCondition"] = request.GlobalConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Overwrite)) {
+		query["Overwrite"] = request.Overwrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DryRunSwagger"),
@@ -23974,15 +25149,38 @@ func (client *Client) ImportSwaggerWithOptions(tmpReq *ImportSwaggerRequest, run
 	}
 
 	query := map[string]interface{}{}
-	query["DataFormat"] = request.DataFormat
-	query["DryRun"] = request.DryRun
-	query["GlobalCondition"] = request.GlobalConditionShrink
-	query["GroupId"] = request.GroupId
-	query["Overwrite"] = request.Overwrite
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		query["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalConditionShrink)) {
+		query["GlobalCondition"] = request.GlobalConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Overwrite)) {
+		query["Overwrite"] = request.Overwrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImportSwagger"),
@@ -24021,13 +25219,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -24037,7 +25246,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -24066,35 +25275,112 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowSignatureMethod"] = request.AllowSignatureMethod
-	query["ApiId"] = request.ApiId
-	query["ApiName"] = request.ApiName
-	query["AppCodeAuthType"] = request.AppCodeAuthType
-	query["AuthType"] = request.AuthType
-	query["ConstantParameters"] = request.ConstantParameters
-	query["Description"] = request.Description
-	query["DisableInternet"] = request.DisableInternet
-	query["ErrorCodeSamples"] = request.ErrorCodeSamples
-	query["FailResultSample"] = request.FailResultSample
-	query["ForceNonceCheck"] = request.ForceNonceCheck
-	query["GroupId"] = request.GroupId
-	query["OpenIdConnectConfig"] = request.OpenIdConnectConfig
-	query["RequestConfig"] = request.RequestConfig
-	query["RequestParameters"] = request.RequestParameters
-	query["ResultBodyModel"] = request.ResultBodyModel
-	query["ResultDescriptions"] = request.ResultDescriptions
-	query["ResultSample"] = request.ResultSample
-	query["ResultType"] = request.ResultType
-	query["SecurityToken"] = request.SecurityToken
-	query["ServiceConfig"] = request.ServiceConfig
-	query["ServiceParameters"] = request.ServiceParameters
-	query["ServiceParametersMap"] = request.ServiceParametersMap
-	query["SystemParameters"] = request.SystemParameters
-	query["Visibility"] = request.Visibility
-	query["WebSocketApiType"] = request.WebSocketApiType
+	if !tea.BoolValue(util.IsUnset(request.AllowSignatureMethod)) {
+		query["AllowSignatureMethod"] = request.AllowSignatureMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppCodeAuthType)) {
+		query["AppCodeAuthType"] = request.AppCodeAuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
+		query["ConstantParameters"] = request.ConstantParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableInternet)) {
+		query["DisableInternet"] = request.DisableInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorCodeSamples)) {
+		query["ErrorCodeSamples"] = request.ErrorCodeSamples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
+		query["FailResultSample"] = request.FailResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceNonceCheck)) {
+		query["ForceNonceCheck"] = request.ForceNonceCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenIdConnectConfig)) {
+		query["OpenIdConnectConfig"] = request.OpenIdConnectConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestConfig)) {
+		query["RequestConfig"] = request.RequestConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestParameters)) {
+		query["RequestParameters"] = request.RequestParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultBodyModel)) {
+		query["ResultBodyModel"] = request.ResultBodyModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultDescriptions)) {
+		query["ResultDescriptions"] = request.ResultDescriptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
+		query["ResultSample"] = request.ResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceConfig)) {
+		query["ServiceConfig"] = request.ServiceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParametersMap)) {
+		query["ServiceParametersMap"] = request.ServiceParametersMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemParameters)) {
+		query["SystemParameters"] = request.SystemParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebSocketApiType)) {
+		query["WebSocketApiType"] = request.WebSocketApiType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyApi"),
@@ -24104,7 +25390,7 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyApiResponse{}
@@ -24133,22 +25419,60 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BasePath"] = request.BasePath
-	query["CompatibleFlags"] = request.CompatibleFlags
-	query["CustomTraceConfig"] = request.CustomTraceConfig
-	query["CustomerConfigs"] = request.CustomerConfigs
-	query["DefaultDomain"] = request.DefaultDomain
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["GroupName"] = request.GroupName
-	query["PassthroughHeaders"] = request.PassthroughHeaders
-	query["RpcPattern"] = request.RpcPattern
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
-	query["UserLogConfig"] = request.UserLogConfig
+	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
+		query["BasePath"] = request.BasePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompatibleFlags)) {
+		query["CompatibleFlags"] = request.CompatibleFlags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomTraceConfig)) {
+		query["CustomTraceConfig"] = request.CustomTraceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerConfigs)) {
+		query["CustomerConfigs"] = request.CustomerConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultDomain)) {
+		query["DefaultDomain"] = request.DefaultDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PassthroughHeaders)) {
+		query["PassthroughHeaders"] = request.PassthroughHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RpcPattern)) {
+		query["RpcPattern"] = request.RpcPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLogConfig)) {
+		query["UserLogConfig"] = request.UserLogConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyApiGroup"),
@@ -24158,7 +25482,7 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyApiGroupResponse{}
@@ -24187,12 +25511,20 @@ func (client *Client) ModifyApiGroupVpcWhitelistWithOptions(request *ModifyApiGr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcIds"] = request.VpcIds
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcIds)) {
+		query["VpcIds"] = request.VpcIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyApiGroupVpcWhitelist"),
@@ -24202,7 +25534,7 @@ func (client *Client) ModifyApiGroupVpcWhitelistWithOptions(request *ModifyApiGr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyApiGroupVpcWhitelistResponse{}
@@ -24231,14 +25563,28 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AppName"] = request.AppName
-	query["Description"] = request.Description
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyApp"),
@@ -24248,7 +25594,7 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAppResponse{}
@@ -24277,13 +25623,24 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPay"] = request.AutoPay
-	query["InstanceId"] = request.InstanceId
-	query["InstanceSpec"] = request.InstanceSpec
-	query["Token"] = request.Token
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyInstanceSpec"),
@@ -24293,7 +25650,7 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceSpecResponse{}
@@ -24322,13 +25679,24 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["IpControlId"] = request.IpControlId
-	query["IpControlName"] = request.IpControlName
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlName)) {
+		query["IpControlName"] = request.IpControlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyIpControl"),
@@ -24338,7 +25706,7 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyIpControlResponse{}
@@ -24367,14 +25735,28 @@ func (client *Client) ModifyIpControlPolicyItemWithOptions(request *ModifyIpCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CidrIp"] = request.CidrIp
-	query["IpControlId"] = request.IpControlId
-	query["PolicyItemId"] = request.PolicyItemId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrIp)) {
+		query["CidrIp"] = request.CidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyItemId)) {
+		query["PolicyItemId"] = request.PolicyItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyIpControlPolicyItem"),
@@ -24384,7 +25766,7 @@ func (client *Client) ModifyIpControlPolicyItemWithOptions(request *ModifyIpCont
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyIpControlPolicyItemResponse{}
@@ -24413,13 +25795,24 @@ func (client *Client) ModifyLogConfigWithOptions(request *ModifyLogConfigRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogType"] = request.LogType
-	query["SecurityToken"] = request.SecurityToken
-	query["SlsLogStore"] = request.SlsLogStore
-	query["SlsProject"] = request.SlsProject
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsLogStore)) {
+		query["SlsLogStore"] = request.SlsLogStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProject)) {
+		query["SlsProject"] = request.SlsProject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyLogConfig"),
@@ -24429,7 +25822,7 @@ func (client *Client) ModifyLogConfigWithOptions(request *ModifyLogConfigRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyLogConfigResponse{}
@@ -24458,14 +25851,28 @@ func (client *Client) ModifyModelWithOptions(request *ModifyModelRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["ModelName"] = request.ModelName
-	query["NewModelName"] = request.NewModelName
-	query["Schema"] = request.Schema
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewModelName)) {
+		query["NewModelName"] = request.NewModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyModel"),
@@ -24475,7 +25882,7 @@ func (client *Client) ModifyModelWithOptions(request *ModifyModelRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyModelResponse{}
@@ -24504,15 +25911,32 @@ func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["PluginData"] = request.PluginData
-	query["PluginId"] = request.PluginId
-	query["PluginName"] = request.PluginName
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginData)) {
+		query["PluginData"] = request.PluginData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginName)) {
+		query["PluginName"] = request.PluginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyPlugin"),
@@ -24522,7 +25946,7 @@ func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPluginResponse{}
@@ -24551,14 +25975,28 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
-	query["SignatureKey"] = request.SignatureKey
-	query["SignatureName"] = request.SignatureName
-	query["SignatureSecret"] = request.SignatureSecret
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureKey)) {
+		query["SignatureKey"] = request.SignatureKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureName)) {
+		query["SignatureName"] = request.SignatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureSecret)) {
+		query["SignatureSecret"] = request.SignatureSecret
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySignature"),
@@ -24568,7 +26006,7 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySignatureResponse{}
@@ -24597,17 +26035,40 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiDefault"] = request.ApiDefault
-	query["AppDefault"] = request.AppDefault
-	query["Description"] = request.Description
-	query["SecurityToken"] = request.SecurityToken
-	query["TrafficControlId"] = request.TrafficControlId
-	query["TrafficControlName"] = request.TrafficControlName
-	query["TrafficControlUnit"] = request.TrafficControlUnit
-	query["UserDefault"] = request.UserDefault
+	if !tea.BoolValue(util.IsUnset(request.ApiDefault)) {
+		query["ApiDefault"] = request.ApiDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppDefault)) {
+		query["AppDefault"] = request.AppDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlName)) {
+		query["TrafficControlName"] = request.TrafficControlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlUnit)) {
+		query["TrafficControlUnit"] = request.TrafficControlUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDefault)) {
+		query["UserDefault"] = request.UserDefault
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyTrafficControl"),
@@ -24617,7 +26078,7 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyTrafficControlResponse{}
@@ -24650,7 +26111,7 @@ func (client *Client) OpenApiGatewayServiceWithOptions(runtime *util.RuntimeOpti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OpenApiGatewayServiceResponse{}
@@ -24679,12 +26140,20 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReactivateDomain"),
@@ -24694,7 +26163,7 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReactivateDomainResponse{}
@@ -24723,15 +26192,32 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["AppId"] = request.AppId
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveApisAuthorities"),
@@ -24741,7 +26227,7 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveApisAuthoritiesResponse{}
@@ -24770,14 +26256,28 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["AppIds"] = request.AppIds
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveAppsAuthorities"),
@@ -24787,7 +26287,7 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveAppsAuthoritiesResponse{}
@@ -24816,14 +26316,28 @@ func (client *Client) RemoveIpControlApisWithOptions(request *RemoveIpControlApi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["IpControlId"] = request.IpControlId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveIpControlApis"),
@@ -24833,7 +26347,7 @@ func (client *Client) RemoveIpControlApisWithOptions(request *RemoveIpControlApi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveIpControlApisResponse{}
@@ -24862,12 +26376,20 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpControlId"] = request.IpControlId
-	query["PolicyItemIds"] = request.PolicyItemIds
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyItemIds)) {
+		query["PolicyItemIds"] = request.PolicyItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveIpControlPolicyItem"),
@@ -24877,7 +26399,7 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveIpControlPolicyItemResponse{}
@@ -24906,14 +26428,28 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveSignatureApis"),
@@ -24923,7 +26459,7 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveSignatureApisResponse{}
@@ -24952,14 +26488,28 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveTrafficControlApis"),
@@ -24969,7 +26519,7 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveTrafficControlApisResponse{}
@@ -24998,14 +26548,28 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NeedBatchWork"] = request.NeedBatchWork
-	query["Port"] = request.Port
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedBatchWork)) {
+		query["NeedBatchWork"] = request.NeedBatchWork
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveVpcAccess"),
@@ -25015,7 +26579,7 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveVpcAccessResponse{}
@@ -25044,14 +26608,28 @@ func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NeedBatchWork"] = request.NeedBatchWork
-	query["Port"] = request.Port
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedBatchWork)) {
+		query["NeedBatchWork"] = request.NeedBatchWork
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveVpcAccessAndAbolishApis"),
@@ -25061,7 +26639,7 @@ func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveVpcAccessAndAbolishApisResponse{}
@@ -25090,11 +26668,16 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppCode"] = request.AppCode
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetAppCode"),
@@ -25104,7 +26687,7 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetAppCodeResponse{}
@@ -25133,11 +26716,16 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppKey"] = request.AppKey
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetAppSecret"),
@@ -25147,7 +26735,7 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetAppSecretResponse{}
@@ -25176,12 +26764,20 @@ func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Language"] = request.Language
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SdkGenerateByApp"),
@@ -25191,7 +26787,7 @@ func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SdkGenerateByAppResponse{}
@@ -25220,12 +26816,20 @@ func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["Language"] = request.Language
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SdkGenerateByGroup"),
@@ -25235,7 +26839,7 @@ func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SdkGenerateByGroupResponse{}
@@ -25264,16 +26868,36 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["AppId"] = request.AppId
-	query["AuthValidTime"] = request.AuthValidTime
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthValidTime)) {
+		query["AuthValidTime"] = request.AuthValidTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetApisAuthorities"),
@@ -25283,7 +26907,7 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetApisAuthoritiesResponse{}
@@ -25312,16 +26936,36 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["AppIds"] = request.AppIds
-	query["AuthValidTime"] = request.AuthValidTime
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthValidTime)) {
+		query["AuthValidTime"] = request.AuthValidTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetAppsAuthorities"),
@@ -25331,7 +26975,7 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetAppsAuthoritiesResponse{}
@@ -25360,14 +27004,28 @@ func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BindStageName"] = request.BindStageName
-	query["CustomDomainType"] = request.CustomDomainType
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["IsForce"] = request.IsForce
+	if !tea.BoolValue(util.IsUnset(request.BindStageName)) {
+		query["BindStageName"] = request.BindStageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomDomainType)) {
+		query["CustomDomainType"] = request.CustomDomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsForce)) {
+		query["IsForce"] = request.IsForce
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomain"),
@@ -25377,7 +27035,7 @@ func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainResponse{}
@@ -25406,16 +27064,36 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CaCertificateBody"] = request.CaCertificateBody
-	query["CertificateBody"] = request.CertificateBody
-	query["CertificateName"] = request.CertificateName
-	query["CertificatePrivateKey"] = request.CertificatePrivateKey
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CaCertificateBody)) {
+		query["CaCertificateBody"] = request.CaCertificateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateBody)) {
+		query["CertificateBody"] = request.CertificateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateName)) {
+		query["CertificateName"] = request.CertificateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificatePrivateKey)) {
+		query["CertificatePrivateKey"] = request.CertificatePrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomainCertificate"),
@@ -25425,7 +27103,7 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainCertificateResponse{}
@@ -25454,13 +27132,24 @@ func (client *Client) SetDomainWebSocketStatusWithOptions(request *SetDomainWebS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ActionValue"] = request.ActionValue
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ActionValue)) {
+		query["ActionValue"] = request.ActionValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomainWebSocketStatus"),
@@ -25470,7 +27159,7 @@ func (client *Client) SetDomainWebSocketStatusWithOptions(request *SetDomainWebS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainWebSocketStatusResponse{}
@@ -25499,14 +27188,28 @@ func (client *Client) SetIpControlApisWithOptions(request *SetIpControlApisReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["IpControlId"] = request.IpControlId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpControlId)) {
+		query["IpControlId"] = request.IpControlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetIpControlApis"),
@@ -25516,7 +27219,7 @@ func (client *Client) SetIpControlApisWithOptions(request *SetIpControlApisReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetIpControlApisResponse{}
@@ -25545,14 +27248,28 @@ func (client *Client) SetSignatureApisWithOptions(request *SetSignatureApisReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["SignatureId"] = request.SignatureId
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		query["SignatureId"] = request.SignatureId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetSignatureApis"),
@@ -25562,7 +27279,7 @@ func (client *Client) SetSignatureApisWithOptions(request *SetSignatureApisReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetSignatureApisResponse{}
@@ -25591,14 +27308,28 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiIds"] = request.ApiIds
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
-	query["TrafficControlId"] = request.TrafficControlId
+	if !tea.BoolValue(util.IsUnset(request.ApiIds)) {
+		query["ApiIds"] = request.ApiIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlId)) {
+		query["TrafficControlId"] = request.TrafficControlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetTrafficControlApis"),
@@ -25608,7 +27339,7 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetTrafficControlApisResponse{}
@@ -25637,15 +27368,32 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["InstanceId"] = request.InstanceId
-	query["Name"] = request.Name
-	query["Port"] = request.Port
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetVpcAccess"),
@@ -25655,7 +27403,7 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetVpcAccessResponse{}
@@ -25684,13 +27432,24 @@ func (client *Client) SetWildcardDomainPatternsWithOptions(request *SetWildcardD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["GroupId"] = request.GroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["WildcardDomainPatterns"] = request.WildcardDomainPatterns
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WildcardDomainPatterns)) {
+		query["WildcardDomainPatterns"] = request.WildcardDomainPatterns
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetWildcardDomainPatterns"),
@@ -25700,7 +27459,7 @@ func (client *Client) SetWildcardDomainPatternsWithOptions(request *SetWildcardD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetWildcardDomainPatternsResponse{}
@@ -25729,15 +27488,32 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiId"] = request.ApiId
-	query["Description"] = request.Description
-	query["GroupId"] = request.GroupId
-	query["HistoryVersion"] = request.HistoryVersion
-	query["SecurityToken"] = request.SecurityToken
-	query["StageName"] = request.StageName
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryVersion)) {
+		query["HistoryVersion"] = request.HistoryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchApi"),
@@ -25747,7 +27523,7 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchApiResponse{}
@@ -25776,13 +27552,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -25792,7 +27579,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -25821,14 +27608,28 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["SecurityToken"] = request.SecurityToken
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -25838,7 +27639,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
