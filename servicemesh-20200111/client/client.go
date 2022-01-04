@@ -413,7 +413,6 @@ type CreateServiceMeshRequest struct {
 	OPARequestMemory           *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
 	OpaEnabled                 *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
 	OpenAgentPolicy            *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	PilotPublicEip             *bool    `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
 	PrometheusUrl              *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
 	ProxyLimitCPU              *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
 	ProxyLimitMemory           *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
@@ -645,11 +644,6 @@ func (s *CreateServiceMeshRequest) SetOpaEnabled(v bool) *CreateServiceMeshReque
 
 func (s *CreateServiceMeshRequest) SetOpenAgentPolicy(v bool) *CreateServiceMeshRequest {
 	s.OpenAgentPolicy = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetPilotPublicEip(v bool) *CreateServiceMeshRequest {
-	s.PilotPublicEip = &v
 	return s
 }
 
@@ -5042,6 +5036,75 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 	return s
 }
 
+type DescribeVersionsResponseBody struct {
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionInfo []*DescribeVersionsResponseBodyVersionInfo `json:"VersionInfo,omitempty" xml:"VersionInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionsResponseBody) SetRequestId(v string) *DescribeVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVersionsResponseBody) SetVersionInfo(v []*DescribeVersionsResponseBodyVersionInfo) *DescribeVersionsResponseBody {
+	s.VersionInfo = v
+	return s
+}
+
+type DescribeVersionsResponseBodyVersionInfo struct {
+	Edition  *string   `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVersionsResponseBodyVersionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionsResponseBodyVersionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionsResponseBodyVersionInfo) SetEdition(v string) *DescribeVersionsResponseBodyVersionInfo {
+	s.Edition = &v
+	return s
+}
+
+func (s *DescribeVersionsResponseBodyVersionInfo) SetVersions(v []*string) *DescribeVersionsResponseBodyVersionInfo {
+	s.Versions = v
+	return s
+}
+
+type DescribeVersionsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionsResponse) SetHeaders(v map[string]*string) *DescribeVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVersionsResponse) SetBody(v *DescribeVersionsResponseBody) *DescribeVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVpcsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -6933,6 +6996,75 @@ func (s *RemoveVMFromServiceMeshResponse) SetBody(v *RemoveVMFromServiceMeshResp
 	return s
 }
 
+type RevokeKubeconfigRequest struct {
+	PrivateIpAddress *bool   `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s RevokeKubeconfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeKubeconfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeKubeconfigRequest) SetPrivateIpAddress(v bool) *RevokeKubeconfigRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *RevokeKubeconfigRequest) SetServiceMeshId(v string) *RevokeKubeconfigRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type RevokeKubeconfigResponseBody struct {
+	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeKubeconfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeKubeconfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeKubeconfigResponseBody) SetKubeconfig(v string) *RevokeKubeconfigResponseBody {
+	s.Kubeconfig = &v
+	return s
+}
+
+func (s *RevokeKubeconfigResponseBody) SetRequestId(v string) *RevokeKubeconfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeKubeconfigResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RevokeKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeKubeconfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeKubeconfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeKubeconfigResponse) SetHeaders(v map[string]*string) *RevokeKubeconfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeKubeconfigResponse) SetBody(v *RevokeKubeconfigResponseBody) *RevokeKubeconfigResponse {
+	s.Body = v
+	return s
+}
+
 type RunDiagnosisRequest struct {
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -8256,11 +8388,43 @@ func (client *Client) AddBuiltinEnvoyFilterWithOptions(request *AddBuiltinEnvoyF
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddBuiltinEnvoyFilter"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddBuiltinEnvoyFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddBuiltinEnvoyFilter"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8284,11 +8448,31 @@ func (client *Client) AddClusterIntoServiceMeshWithOptions(request *AddClusterIn
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddClusterIntoServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddClusterIntoServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddClusterIntoServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8312,11 +8496,31 @@ func (client *Client) AddMeshTagToEcsWithOptions(request *AddMeshTagToEcsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcsId)) {
+		query["EcsId"] = request.EcsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMeshTagToEcs"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddMeshTagToEcsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddMeshTagToEcs"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8340,11 +8544,31 @@ func (client *Client) AddVMIntoServiceMeshWithOptions(request *AddVMIntoServiceM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcsId)) {
+		query["EcsId"] = request.EcsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVMIntoServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddVMIntoServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddVMIntoServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8368,11 +8592,39 @@ func (client *Client) CreateExtensionProviderWithOptions(request *CreateExtensio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateExtensionProvider"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateExtensionProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateExtensionProvider"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8396,11 +8648,247 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLogEnabled)) {
+		body["AccessLogEnabled"] = request.AccessLogEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogFile)) {
+		body["AccessLogFile"] = request.AccessLogFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogFormat)) {
+		body["AccessLogFormat"] = request.AccessLogFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogProject)) {
+		body["AccessLogProject"] = request.AccessLogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServiceEnabled)) {
+		body["AccessLogServiceEnabled"] = request.AccessLogServiceEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServiceHost)) {
+		body["AccessLogServiceHost"] = request.AccessLogServiceHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServicePort)) {
+		body["AccessLogServicePort"] = request.AccessLogServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiServerPublicEip)) {
+		body["ApiServerPublicEip"] = request.ApiServerPublicEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuditProject)) {
+		body["AuditProject"] = request.AuditProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CRAggregationEnabled)) {
+		body["CRAggregationEnabled"] = request.CRAggregationEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigSourceEnabled)) {
+		body["ConfigSourceEnabled"] = request.ConfigSourceEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigSourceNacosID)) {
+		body["ConfigSourceNacosID"] = request.ConfigSourceNacosID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlPlaneLogEnabled)) {
+		body["ControlPlaneLogEnabled"] = request.ControlPlaneLogEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlPlaneLogProject)) {
+		body["ControlPlaneLogProject"] = request.ControlPlaneLogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomizedPrometheus)) {
+		body["CustomizedPrometheus"] = request.CustomizedPrometheus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomizedZipkin)) {
+		body["CustomizedZipkin"] = request.CustomizedZipkin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSProxyingEnabled)) {
+		body["DNSProxyingEnabled"] = request.DNSProxyingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DubboFilterEnabled)) {
+		body["DubboFilterEnabled"] = request.DubboFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		body["Edition"] = request.Edition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
+		body["EnableAudit"] = request.EnableAudit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCRHistory)) {
+		body["EnableCRHistory"] = request.EnableCRHistory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSDSServer)) {
+		body["EnableSDSServer"] = request.EnableSDSServer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeIPRanges)) {
+		body["ExcludeIPRanges"] = request.ExcludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeInboundPorts)) {
+		body["ExcludeInboundPorts"] = request.ExcludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeOutboundPorts)) {
+		body["ExcludeOutboundPorts"] = request.ExcludeOutboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterGatewayClusterConfig)) {
+		body["FilterGatewayClusterConfig"] = request.FilterGatewayClusterConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayAPIEnabled)) {
+		body["GatewayAPIEnabled"] = request.GatewayAPIEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeIPRanges)) {
+		body["IncludeIPRanges"] = request.IncludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KialiEnabled)) {
+		body["KialiEnabled"] = request.KialiEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalityLBConf)) {
+		body["LocalityLBConf"] = request.LocalityLBConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalityLoadBalancing)) {
+		body["LocalityLoadBalancing"] = request.LocalityLoadBalancing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MSEEnabled)) {
+		body["MSEEnabled"] = request.MSEEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MysqlFilterEnabled)) {
+		body["MysqlFilterEnabled"] = request.MysqlFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALimitCPU)) {
+		body["OPALimitCPU"] = request.OPALimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALimitMemory)) {
+		body["OPALimitMemory"] = request.OPALimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALogLevel)) {
+		body["OPALogLevel"] = request.OPALogLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPARequestCPU)) {
+		body["OPARequestCPU"] = request.OPARequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPARequestMemory)) {
+		body["OPARequestMemory"] = request.OPARequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpaEnabled)) {
+		body["OpaEnabled"] = request.OpaEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenAgentPolicy)) {
+		body["OpenAgentPolicy"] = request.OpenAgentPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrometheusUrl)) {
+		body["PrometheusUrl"] = request.PrometheusUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyLimitCPU)) {
+		body["ProxyLimitCPU"] = request.ProxyLimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyLimitMemory)) {
+		body["ProxyLimitMemory"] = request.ProxyLimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyRequestCPU)) {
+		body["ProxyRequestCPU"] = request.ProxyRequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyRequestMemory)) {
+		body["ProxyRequestMemory"] = request.ProxyRequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedisFilterEnabled)) {
+		body["RedisFilterEnabled"] = request.RedisFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Telemetry)) {
+		body["Telemetry"] = request.Telemetry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThriftFilterEnabled)) {
+		body["ThriftFilterEnabled"] = request.ThriftFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceSampling)) {
+		body["TraceSampling"] = request.TraceSampling
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tracing)) {
+		body["Tracing"] = request.Tracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitches)) {
+		body["VSwitches"] = request.VSwitches
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebAssemblyFilterEnabled)) {
+		body["WebAssemblyFilterEnabled"] = request.WebAssemblyFilterEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8424,11 +8912,35 @@ func (client *Client) DeleteExtensionProviderWithOptions(request *DeleteExtensio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExtensionProvider"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteExtensionProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteExtensionProvider"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8452,11 +8964,35 @@ func (client *Client) DeleteServiceMeshWithOptions(request *DeleteServiceMeshReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		body["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResources)) {
+		body["RetainResources"] = request.RetainResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8480,11 +9016,27 @@ func (client *Client) DescribeAlertActionPoliciesWithOptions(request *DescribeAl
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["Page"] = request.Page
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlertActionPolicies"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAlertActionPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAlertActionPolicies"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8508,11 +9060,31 @@ func (client *Client) DescribeAvailableNacosInstancesWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableNacosInstances"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAvailableNacosInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAvailableNacosInstances"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8536,11 +9108,27 @@ func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCens"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCensResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCens"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8564,11 +9152,31 @@ func (client *Client) DescribeClusterGrafanaWithOptions(request *DescribeCluster
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		query["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterGrafana"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterGrafanaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterGrafana"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8592,11 +9200,35 @@ func (client *Client) DescribeClusterPrometheusWithOptions(request *DescribeClus
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		query["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterRegionId)) {
+		query["K8sClusterRegionId"] = request.K8sClusterRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterPrometheus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterPrometheusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterPrometheus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8620,11 +9252,27 @@ func (client *Client) DescribeClustersInServiceMeshWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClustersInServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClustersInServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClustersInServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8648,11 +9296,27 @@ func (client *Client) DescribeControlPlaneLogAlertRulesWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeControlPlaneLogAlertRules"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeControlPlaneLogAlertRulesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeControlPlaneLogAlertRules"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8676,11 +9340,31 @@ func (client *Client) DescribeCrTemplatesWithOptions(request *DescribeCrTemplate
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Kind)) {
+		body["Kind"] = request.Kind
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCrTemplates"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCrTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCrTemplates"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8704,11 +9388,31 @@ func (client *Client) DescribeExtensionProviderWithOptions(request *DescribeExte
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExtensionProvider"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExtensionProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeExtensionProvider"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8732,11 +9436,27 @@ func (client *Client) DescribeGuestClusterAccessLogDashboardsWithOptions(request
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		body["K8sClusterId"] = request.K8sClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGuestClusterAccessLogDashboards"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGuestClusterAccessLogDashboardsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGuestClusterAccessLogDashboards"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8760,11 +9480,31 @@ func (client *Client) DescribeGuestClusterNamespacesWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestClusterID)) {
+		body["GuestClusterID"] = request.GuestClusterID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGuestClusterNamespaces"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGuestClusterNamespacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGuestClusterNamespaces"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8788,11 +9528,35 @@ func (client *Client) DescribeGuestClusterPodsWithOptions(request *DescribeGuest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestClusterID)) {
+		body["GuestClusterID"] = request.GuestClusterID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGuestClusterPods"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGuestClusterPodsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeGuestClusterPods"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8818,10 +9582,21 @@ func (client *Client) DescribeIngressGatewaysWithOptions(request *DescribeIngres
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIngressGateways"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIngressGatewaysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIngressGateways"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8845,11 +9620,31 @@ func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespaceScopeSidecarConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeNamespaceScopeSidecarConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8875,10 +9670,21 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8902,11 +9708,27 @@ func (client *Client) DescribeServiceMeshDetailWithOptions(request *DescribeServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshDetail"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshDetail"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8930,11 +9752,37 @@ func (client *Client) DescribeServiceMeshGatewayPodStatusWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayFullName)) {
+		body["GatewayFullName"] = request.GatewayFullName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GuestClusterIds)) {
+		body["GuestClusterIds"] = request.GuestClusterIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshGatewayPodStatus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshGatewayPodStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshGatewayPodStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8958,11 +9806,37 @@ func (client *Client) DescribeServiceMeshGatewaySLBStatusWithOptions(request *De
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayAddresses)) {
+		body["GatewayAddresses"] = request.GatewayAddresses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayFullName)) {
+		body["GatewayFullName"] = request.GatewayFullName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshGatewaySLBStatus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshGatewaySLBStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshGatewaySLBStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8986,11 +9860,31 @@ func (client *Client) DescribeServiceMeshKubeconfigWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshKubeconfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshKubeconfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshKubeconfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9014,11 +9908,37 @@ func (client *Client) DescribeServiceMeshUpgradeStatusWithOptions(request *Descr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllIstioGatewayFullNames)) {
+		body["AllIstioGatewayFullNames"] = request.AllIstioGatewayFullNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GuestClusterIds)) {
+		body["GuestClusterIds"] = request.GuestClusterIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshUpgradeStatus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshUpgradeStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshUpgradeStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9042,11 +9962,27 @@ func (client *Client) DescribeServiceMeshVMsWithOptions(request *DescribeService
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshVMs"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceMeshVMsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshVMs"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9067,8 +10003,19 @@ func (client *Client) DescribeServiceMeshVMs(request *DescribeServiceMeshVMsRequ
 
 func (client *Client) DescribeServiceMeshesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceMeshesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshes"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeServiceMeshesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeServiceMeshes"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9092,11 +10039,27 @@ func (client *Client) DescribeUpgradeVersionWithOptions(request *DescribeUpgrade
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUpgradeVersion"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUpgradeVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeUpgradeVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9120,11 +10083,27 @@ func (client *Client) DescribeVMsInServiceMeshWithOptions(request *DescribeVMsIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVMsInServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVMsInServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVMsInServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9148,11 +10127,31 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVSwitches"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVSwitches"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9171,16 +10170,65 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeVersionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVersionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVersions"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVersions() (_result *DescribeVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVersionsResponse{}
+	_body, _err := client.DescribeVersionsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVpcs"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVpcsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVpcs"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9204,11 +10252,31 @@ func (client *Client) DisableControlPlaneLogAlertWithOptions(request *DisableCon
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableControlPlaneLogAlert"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableControlPlaneLogAlertResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableControlPlaneLogAlert"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9232,11 +10300,35 @@ func (client *Client) EnableControlPlaneLogAlertWithOptions(request *EnableContr
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionPolicyId)) {
+		body["ActionPolicyId"] = request.ActionPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableControlPlaneLogAlert"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableControlPlaneLogAlertResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableControlPlaneLogAlert"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9260,11 +10352,27 @@ func (client *Client) GetAutoInjectionLabelSyncStatusWithOptions(request *GetAut
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoInjectionLabelSyncStatus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAutoInjectionLabelSyncStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAutoInjectionLabelSyncStatus"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9288,11 +10396,39 @@ func (client *Client) GetBuiltinEnvoyFilterWithOptions(request *GetBuiltinEnvoyF
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBuiltinEnvoyFilter"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBuiltinEnvoyFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBuiltinEnvoyFilter"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9316,11 +10452,27 @@ func (client *Client) GetBuiltinEnvoyFilterCatalogWithOptions(request *GetBuilti
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBuiltinEnvoyFilterCatalog"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBuiltinEnvoyFilterCatalogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBuiltinEnvoyFilterCatalog"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9344,11 +10496,27 @@ func (client *Client) GetCaCertWithOptions(request *GetCaCertRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCaCert"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCaCertResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCaCert"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9372,11 +10540,27 @@ func (client *Client) GetDiagnosisWithOptions(request *GetDiagnosisRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiagnosis"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiagnosisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9402,10 +10586,21 @@ func (client *Client) GetEcsListWithOptions(request *GetEcsListRequest, runtime 
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEcsList"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetEcsListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEcsList"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9429,11 +10624,35 @@ func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegisteredServiceEndpoints"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRegisteredServiceEndpointsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceEndpoints"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9457,11 +10676,27 @@ func (client *Client) GetRegisteredServiceNamespacesWithOptions(request *GetRegi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegisteredServiceNamespaces"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRegisteredServiceNamespacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServiceNamespaces"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9485,11 +10720,31 @@ func (client *Client) GetRegisteredServicesWithOptions(request *GetRegisteredSer
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRegisteredServices"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRegisteredServicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRegisteredServices"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9513,11 +10768,39 @@ func (client *Client) GetSaTokenWithOptions(request *GetSaTokenRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedRefresh)) {
+		body["NeedRefresh"] = request.NeedRefresh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAccountName)) {
+		body["ServiceAccountName"] = request.ServiceAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSaToken"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSaTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSaToken"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9541,11 +10824,27 @@ func (client *Client) GetServiceMeshSlbWithOptions(request *GetServiceMeshSlbReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceMeshSlb"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceMeshSlbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceMeshSlb"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9569,11 +10868,27 @@ func (client *Client) GetServiceRegistrySourceWithOptions(request *GetServiceReg
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceRegistrySource"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceRegistrySourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceRegistrySource"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9599,10 +10914,21 @@ func (client *Client) GetVmAppMeshInfoWithOptions(request *GetVmAppMeshInfoReque
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVmAppMeshInfo"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVmAppMeshInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVmAppMeshInfo"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9628,10 +10954,21 @@ func (client *Client) GetVmMetaWithOptions(request *GetVmMetaRequest, runtime *u
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVmMeta"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVmMetaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVmMeta"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9652,8 +10989,19 @@ func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaRe
 
 func (client *Client) InitializeASMRoleWithOptions(runtime *util.RuntimeOptions) (_result *InitializeASMRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("InitializeASMRole"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InitializeASMRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitializeASMRole"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9677,11 +11025,31 @@ func (client *Client) ListBuiltinEnvoyFilterWithOptions(request *ListBuiltinEnvo
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBuiltinEnvoyFilter"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBuiltinEnvoyFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBuiltinEnvoyFilter"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9705,11 +11073,43 @@ func (client *Client) ModifyBuiltinEnvoyFilterWithOptions(request *ModifyBuiltin
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBuiltinEnvoyFilter"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyBuiltinEnvoyFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyBuiltinEnvoyFilter"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9733,11 +11133,31 @@ func (client *Client) ModifyServiceMeshNameWithOptions(request *ModifyServiceMes
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyServiceMeshName"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyServiceMeshNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyServiceMeshName"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9761,11 +11181,31 @@ func (client *Client) ReActivateAuditWithOptions(request *ReActivateAuditRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
+		body["EnableAudit"] = request.EnableAudit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReActivateAudit"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReActivateAuditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReActivateAudit"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9789,11 +11229,39 @@ func (client *Client) RemoveBuiltinEnvoyFilterWithOptions(request *RemoveBuiltin
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioVersion)) {
+		body["IstioVersion"] = request.IstioVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveBuiltinEnvoyFilter"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveBuiltinEnvoyFilterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveBuiltinEnvoyFilter"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9817,11 +11285,31 @@ func (client *Client) RemoveClusterFromServiceMeshWithOptions(request *RemoveClu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveClusterFromServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveClusterFromServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveClusterFromServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9845,11 +11333,31 @@ func (client *Client) RemoveVMFromServiceMeshWithOptions(request *RemoveVMFromSe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcsId)) {
+		query["EcsId"] = request.EcsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveVMFromServiceMesh"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveVMFromServiceMeshResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveVMFromServiceMesh"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9868,16 +11376,80 @@ func (client *Client) RemoveVMFromServiceMesh(request *RemoveVMFromServiceMeshRe
 	return _result, _err
 }
 
+func (client *Client) RevokeKubeconfigWithOptions(request *RevokeKubeconfigRequest, runtime *util.RuntimeOptions) (_result *RevokeKubeconfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		body["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeKubeconfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeKubeconfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeKubeconfig(request *RevokeKubeconfigRequest) (_result *RevokeKubeconfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeKubeconfigResponse{}
+	_body, _err := client.RevokeKubeconfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runtime *util.RuntimeOptions) (_result *RunDiagnosisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDiagnosis"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RunDiagnosisResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RunDiagnosis"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9907,11 +11479,31 @@ func (client *Client) SetServiceRegistrySourceWithOptions(tmpReq *SetServiceRegi
 		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		body["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetServiceRegistrySource"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetServiceRegistrySourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetServiceRegistrySource"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9935,11 +11527,35 @@ func (client *Client) UpdateControlPlaneLogAlertActionPolicyWithOptions(request 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionPolicyId)) {
+		body["ActionPolicyId"] = request.ActionPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateControlPlaneLogAlertActionPolicy"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateControlPlaneLogAlertActionPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateControlPlaneLogAlertActionPolicy"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9963,11 +11579,35 @@ func (client *Client) UpdateControlPlaneLogConfigWithOptions(request *UpdateCont
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateControlPlaneLogConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateControlPlaneLogConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateControlPlaneLogConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9991,11 +11631,39 @@ func (client *Client) UpdateExtensionProviderWithOptions(request *UpdateExtensio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExtensionProvider"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateExtensionProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateExtensionProvider"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10019,11 +11687,39 @@ func (client *Client) UpdateIstioInjectionConfigWithOptions(request *UpdateIstio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableIstioInjection)) {
+		body["EnableIstioInjection"] = request.EnableIstioInjection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSidecarSetInjection)) {
+		body["EnableSidecarSetInjection"] = request.EnableSidecarSetInjection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIstioInjectionConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIstioInjectionConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIstioInjectionConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10047,11 +11743,299 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLogEnabled)) {
+		body["AccessLogEnabled"] = request.AccessLogEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogFile)) {
+		body["AccessLogFile"] = request.AccessLogFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogFormat)) {
+		body["AccessLogFormat"] = request.AccessLogFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogProject)) {
+		body["AccessLogProject"] = request.AccessLogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServiceEnabled)) {
+		body["AccessLogServiceEnabled"] = request.AccessLogServiceEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServiceHost)) {
+		body["AccessLogServiceHost"] = request.AccessLogServiceHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogServicePort)) {
+		body["AccessLogServicePort"] = request.AccessLogServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuditProject)) {
+		body["AuditProject"] = request.AuditProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoInjectionPolicyEnabled)) {
+		body["AutoInjectionPolicyEnabled"] = request.AutoInjectionPolicyEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CRAggregationEnabled)) {
+		body["CRAggregationEnabled"] = request.CRAggregationEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CniEnabled)) {
+		body["CniEnabled"] = request.CniEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CniExcludeNamespaces)) {
+		body["CniExcludeNamespaces"] = request.CniExcludeNamespaces
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigSourceEnabled)) {
+		body["ConfigSourceEnabled"] = request.ConfigSourceEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigSourceNacosID)) {
+		body["ConfigSourceNacosID"] = request.ConfigSourceNacosID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomizedPrometheus)) {
+		body["CustomizedPrometheus"] = request.CustomizedPrometheus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomizedZipkin)) {
+		body["CustomizedZipkin"] = request.CustomizedZipkin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSProxyingEnabled)) {
+		body["DNSProxyingEnabled"] = request.DNSProxyingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiscoverySelectors)) {
+		body["DiscoverySelectors"] = request.DiscoverySelectors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DubboFilterEnabled)) {
+		body["DubboFilterEnabled"] = request.DubboFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
+		body["EnableAudit"] = request.EnableAudit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCRHistory)) {
+		body["EnableCRHistory"] = request.EnableCRHistory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableNamespacesByDefault)) {
+		body["EnableNamespacesByDefault"] = request.EnableNamespacesByDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSDSServer)) {
+		body["EnableSDSServer"] = request.EnableSDSServer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeIPRanges)) {
+		body["ExcludeIPRanges"] = request.ExcludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeInboundPorts)) {
+		body["ExcludeInboundPorts"] = request.ExcludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeOutboundPorts)) {
+		body["ExcludeOutboundPorts"] = request.ExcludeOutboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterGatewayClusterConfig)) {
+		body["FilterGatewayClusterConfig"] = request.FilterGatewayClusterConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayAPIEnabled)) {
+		body["GatewayAPIEnabled"] = request.GatewayAPIEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http10Enabled)) {
+		body["Http10Enabled"] = request.Http10Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeIPRanges)) {
+		body["IncludeIPRanges"] = request.IncludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeInboundPorts)) {
+		body["IncludeInboundPorts"] = request.IncludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KialiEnabled)) {
+		body["KialiEnabled"] = request.KialiEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lifecycle)) {
+		body["Lifecycle"] = request.Lifecycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalityLBConf)) {
+		body["LocalityLBConf"] = request.LocalityLBConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalityLoadBalancing)) {
+		body["LocalityLoadBalancing"] = request.LocalityLoadBalancing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MSEEnabled)) {
+		body["MSEEnabled"] = request.MSEEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiBufferEnabled)) {
+		body["MultiBufferEnabled"] = request.MultiBufferEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiBufferPollDelay)) {
+		body["MultiBufferPollDelay"] = request.MultiBufferPollDelay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MysqlFilterEnabled)) {
+		body["MysqlFilterEnabled"] = request.MysqlFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALimitCPU)) {
+		body["OPALimitCPU"] = request.OPALimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALimitMemory)) {
+		body["OPALimitMemory"] = request.OPALimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPALogLevel)) {
+		body["OPALogLevel"] = request.OPALogLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPARequestCPU)) {
+		body["OPARequestCPU"] = request.OPARequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPARequestMemory)) {
+		body["OPARequestMemory"] = request.OPARequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpaEnabled)) {
+		body["OpaEnabled"] = request.OpaEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenAgentPolicy)) {
+		body["OpenAgentPolicy"] = request.OpenAgentPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundTrafficPolicy)) {
+		body["OutboundTrafficPolicy"] = request.OutboundTrafficPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrometheusUrl)) {
+		body["PrometheusUrl"] = request.PrometheusUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitCPUResourceLimit)) {
+		body["ProxyInitCPUResourceLimit"] = request.ProxyInitCPUResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitCPUResourceRequest)) {
+		body["ProxyInitCPUResourceRequest"] = request.ProxyInitCPUResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitMemoryResourceLimit)) {
+		body["ProxyInitMemoryResourceLimit"] = request.ProxyInitMemoryResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitMemoryResourceRequest)) {
+		body["ProxyInitMemoryResourceRequest"] = request.ProxyInitMemoryResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyLimitCPU)) {
+		body["ProxyLimitCPU"] = request.ProxyLimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyLimitMemory)) {
+		body["ProxyLimitMemory"] = request.ProxyLimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyRequestCPU)) {
+		body["ProxyRequestCPU"] = request.ProxyRequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyRequestMemory)) {
+		body["ProxyRequestMemory"] = request.ProxyRequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedisFilterEnabled)) {
+		body["RedisFilterEnabled"] = request.RedisFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarInjectorLimitCPU)) {
+		body["SidecarInjectorLimitCPU"] = request.SidecarInjectorLimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarInjectorLimitMemory)) {
+		body["SidecarInjectorLimitMemory"] = request.SidecarInjectorLimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarInjectorRequestCPU)) {
+		body["SidecarInjectorRequestCPU"] = request.SidecarInjectorRequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarInjectorRequestMemory)) {
+		body["SidecarInjectorRequestMemory"] = request.SidecarInjectorRequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarInjectorWebhookAsYaml)) {
+		body["SidecarInjectorWebhookAsYaml"] = request.SidecarInjectorWebhookAsYaml
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Telemetry)) {
+		body["Telemetry"] = request.Telemetry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminationDrainDuration)) {
+		body["TerminationDrainDuration"] = request.TerminationDrainDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThriftFilterEnabled)) {
+		body["ThriftFilterEnabled"] = request.ThriftFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceSampling)) {
+		body["TraceSampling"] = request.TraceSampling
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tracing)) {
+		body["Tracing"] = request.Tracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebAssemblyFilterEnabled)) {
+		body["WebAssemblyFilterEnabled"] = request.WebAssemblyFilterEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMeshFeature"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateMeshFeatureResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateMeshFeature"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10075,11 +12059,99 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeIPRanges)) {
+		body["ExcludeIPRanges"] = request.ExcludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeInboundPorts)) {
+		body["ExcludeInboundPorts"] = request.ExcludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeOutboundPorts)) {
+		body["ExcludeOutboundPorts"] = request.ExcludeOutboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeIPRanges)) {
+		body["IncludeIPRanges"] = request.IncludeIPRanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeInboundPorts)) {
+		body["IncludeInboundPorts"] = request.IncludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeOutboundPorts)) {
+		body["IncludeOutboundPorts"] = request.IncludeOutboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioDNSProxyEnabled)) {
+		body["IstioDNSProxyEnabled"] = request.IstioDNSProxyEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lifecycle)) {
+		body["Lifecycle"] = request.Lifecycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitCPUResourceLimit)) {
+		body["ProxyInitCPUResourceLimit"] = request.ProxyInitCPUResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitCPUResourceRequest)) {
+		body["ProxyInitCPUResourceRequest"] = request.ProxyInitCPUResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitMemoryResourceLimit)) {
+		body["ProxyInitMemoryResourceLimit"] = request.ProxyInitMemoryResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInitMemoryResourceRequest)) {
+		body["ProxyInitMemoryResourceRequest"] = request.ProxyInitMemoryResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarProxyCPUResourceLimit)) {
+		body["SidecarProxyCPUResourceLimit"] = request.SidecarProxyCPUResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarProxyCPUResourceRequest)) {
+		body["SidecarProxyCPUResourceRequest"] = request.SidecarProxyCPUResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarProxyMemoryResourceLimit)) {
+		body["SidecarProxyMemoryResourceLimit"] = request.SidecarProxyMemoryResourceLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidecarProxyMemoryResourceRequest)) {
+		body["SidecarProxyMemoryResourceRequest"] = request.SidecarProxyMemoryResourceRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminationDrainDuration)) {
+		body["TerminationDrainDuration"] = request.TerminationDrainDuration
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNamespaceScopeSidecarConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateNamespaceScopeSidecarConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateNamespaceScopeSidecarConfig"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10103,11 +12175,27 @@ func (client *Client) UpgradeMeshVersionWithOptions(request *UpgradeMeshVersionR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeMeshVersion"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeMeshVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeMeshVersion"), tea.String("2020-01-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
