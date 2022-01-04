@@ -1913,134 +1913,6 @@ func (s *CreatePickUpWaybillResponse) SetBody(v *CreatePickUpWaybillResponseBody
 	return s
 }
 
-type CreateSubscriptionRequest struct {
-	BindToken            *string `json:"BindToken,omitempty" xml:"BindToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-}
-
-func (s CreateSubscriptionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSubscriptionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSubscriptionRequest) SetBindToken(v string) *CreateSubscriptionRequest {
-	s.BindToken = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetOwnerId(v int64) *CreateSubscriptionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetPhoneNo(v string) *CreateSubscriptionRequest {
-	s.PhoneNo = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetPoolKey(v string) *CreateSubscriptionRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetResourceOwnerAccount(v string) *CreateSubscriptionRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetResourceOwnerId(v int64) *CreateSubscriptionRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateSubscriptionRequest) SetSecretNo(v string) *CreateSubscriptionRequest {
-	s.SecretNo = &v
-	return s
-}
-
-type CreateSubscriptionResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateSubscriptionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSubscriptionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSubscriptionResponseBody) SetCode(v string) *CreateSubscriptionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateSubscriptionResponseBody) SetData(v *CreateSubscriptionResponseBodyData) *CreateSubscriptionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateSubscriptionResponseBody) SetMessage(v string) *CreateSubscriptionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateSubscriptionResponseBody) SetRequestId(v string) *CreateSubscriptionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateSubscriptionResponseBodyData struct {
-	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-}
-
-func (s CreateSubscriptionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSubscriptionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSubscriptionResponseBodyData) SetSubsId(v string) *CreateSubscriptionResponseBodyData {
-	s.SubsId = &v
-	return s
-}
-
-type CreateSubscriptionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSubscriptionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSubscriptionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSubscriptionResponse) SetHeaders(v map[string]*string) *CreateSubscriptionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSubscriptionResponse) SetBody(v *CreateSubscriptionResponseBody) *CreateSubscriptionResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteSecretBlacklistRequest struct {
 	BlackNo    *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
 	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
@@ -2130,116 +2002,6 @@ func (s *DeleteSecretBlacklistResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 func (s *DeleteSecretBlacklistResponse) SetBody(v *DeleteSecretBlacklistResponseBody) *DeleteSecretBlacklistResponse {
-	s.Body = v
-	return s
-}
-
-type GetFaceVerifyRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VerifyToken          *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
-}
-
-func (s GetFaceVerifyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFaceVerifyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFaceVerifyRequest) SetOwnerId(v int64) *GetFaceVerifyRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetFaceVerifyRequest) SetResourceOwnerAccount(v string) *GetFaceVerifyRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetFaceVerifyRequest) SetResourceOwnerId(v int64) *GetFaceVerifyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetFaceVerifyRequest) SetVerifyToken(v string) *GetFaceVerifyRequest {
-	s.VerifyToken = &v
-	return s
-}
-
-type GetFaceVerifyResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetFaceVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetFaceVerifyResponseBody) SetCode(v string) *GetFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetFaceVerifyResponseBody) SetData(v *GetFaceVerifyResponseBodyData) *GetFaceVerifyResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetFaceVerifyResponseBody) SetMessage(v string) *GetFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetFaceVerifyResponseBody) SetRequestId(v string) *GetFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetFaceVerifyResponseBodyData struct {
-	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-}
-
-func (s GetFaceVerifyResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFaceVerifyResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetFaceVerifyResponseBodyData) SetVerifyResult(v string) *GetFaceVerifyResponseBodyData {
-	s.VerifyResult = &v
-	return s
-}
-
-type GetFaceVerifyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFaceVerifyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFaceVerifyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetFaceVerifyResponse) SetHeaders(v map[string]*string) *GetFaceVerifyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFaceVerifyResponse) SetBody(v *GetFaceVerifyResponseBody) *GetFaceVerifyResponse {
 	s.Body = v
 	return s
 }
@@ -2731,116 +2493,6 @@ func (s *GetTotalPublicUrlResponse) SetHeaders(v map[string]*string) *GetTotalPu
 }
 
 func (s *GetTotalPublicUrlResponse) SetBody(v *GetTotalPublicUrlResponseBody) *GetTotalPublicUrlResponse {
-	s.Body = v
-	return s
-}
-
-type InitFaceVerifyRequest struct {
-	MetaInfo             *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s InitFaceVerifyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyRequest) SetMetaInfo(v string) *InitFaceVerifyRequest {
-	s.MetaInfo = &v
-	return s
-}
-
-func (s *InitFaceVerifyRequest) SetOwnerId(v int64) *InitFaceVerifyRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *InitFaceVerifyRequest) SetResourceOwnerAccount(v string) *InitFaceVerifyRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *InitFaceVerifyRequest) SetResourceOwnerId(v int64) *InitFaceVerifyRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type InitFaceVerifyResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *InitFaceVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s InitFaceVerifyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyResponseBody) SetCode(v string) *InitFaceVerifyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetData(v *InitFaceVerifyResponseBodyData) *InitFaceVerifyResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetMessage(v string) *InitFaceVerifyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InitFaceVerifyResponseBody) SetRequestId(v string) *InitFaceVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type InitFaceVerifyResponseBodyData struct {
-	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-}
-
-func (s InitFaceVerifyResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyResponseBodyData) SetCertifyId(v string) *InitFaceVerifyResponseBodyData {
-	s.CertifyId = &v
-	return s
-}
-
-type InitFaceVerifyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InitFaceVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InitFaceVerifyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InitFaceVerifyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InitFaceVerifyResponse) SetHeaders(v map[string]*string) *InitFaceVerifyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InitFaceVerifyResponse) SetBody(v *InitFaceVerifyResponseBody) *InitFaceVerifyResponse {
 	s.Body = v
 	return s
 }
@@ -4443,345 +4095,6 @@ func (s *UnlockSecretNoResponse) SetBody(v *UnlockSecretNoResponseBody) *UnlockS
 	return s
 }
 
-type UpdateDefaultBRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-}
-
-func (s UpdateDefaultBRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDefaultBRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDefaultBRequest) SetOwnerId(v int64) *UpdateDefaultBRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetPhoneNo(v string) *UpdateDefaultBRequest {
-	s.PhoneNo = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetPoolKey(v string) *UpdateDefaultBRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetResourceOwnerAccount(v string) *UpdateDefaultBRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetResourceOwnerId(v int64) *UpdateDefaultBRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetSecretNo(v string) *UpdateDefaultBRequest {
-	s.SecretNo = &v
-	return s
-}
-
-func (s *UpdateDefaultBRequest) SetSubsId(v int64) *UpdateDefaultBRequest {
-	s.SubsId = &v
-	return s
-}
-
-type UpdateDefaultBResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateDefaultBResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDefaultBResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDefaultBResponseBody) SetCode(v string) *UpdateDefaultBResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateDefaultBResponseBody) SetData(v string) *UpdateDefaultBResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdateDefaultBResponseBody) SetMessage(v string) *UpdateDefaultBResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateDefaultBResponseBody) SetRequestId(v string) *UpdateDefaultBResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateDefaultBResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDefaultBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDefaultBResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDefaultBResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDefaultBResponse) SetHeaders(v map[string]*string) *UpdateDefaultBResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDefaultBResponse) SetBody(v *UpdateDefaultBResponseBody) *UpdateDefaultBResponse {
-	s.Body = v
-	return s
-}
-
-type UpdatePhoneNumberRequest struct {
-	BindToken            *string `json:"BindToken,omitempty" xml:"BindToken,omitempty"`
-	NewPhoneNo           *string `json:"NewPhoneNo,omitempty" xml:"NewPhoneNo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-}
-
-func (s UpdatePhoneNumberRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneNumberRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneNumberRequest) SetBindToken(v string) *UpdatePhoneNumberRequest {
-	s.BindToken = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetNewPhoneNo(v string) *UpdatePhoneNumberRequest {
-	s.NewPhoneNo = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetOwnerId(v int64) *UpdatePhoneNumberRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetPoolKey(v string) *UpdatePhoneNumberRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetResourceOwnerAccount(v string) *UpdatePhoneNumberRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetResourceOwnerId(v int64) *UpdatePhoneNumberRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetSecretNo(v string) *UpdatePhoneNumberRequest {
-	s.SecretNo = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberRequest) SetSubsId(v int64) *UpdatePhoneNumberRequest {
-	s.SubsId = &v
-	return s
-}
-
-type UpdatePhoneNumberResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdatePhoneNumberResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneNumberResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneNumberResponseBody) SetCode(v string) *UpdatePhoneNumberResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberResponseBody) SetData(v string) *UpdatePhoneNumberResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberResponseBody) SetMessage(v string) *UpdatePhoneNumberResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdatePhoneNumberResponseBody) SetRequestId(v string) *UpdatePhoneNumberResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdatePhoneNumberResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdatePhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdatePhoneNumberResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneNumberResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneNumberResponse) SetHeaders(v map[string]*string) *UpdatePhoneNumberResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdatePhoneNumberResponse) SetBody(v *UpdatePhoneNumberResponseBody) *UpdatePhoneNumberResponse {
-	s.Body = v
-	return s
-}
-
-type UpdatePhoneSwitchRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId               *int64  `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-	SwitchStatus         *int32  `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-}
-
-func (s UpdatePhoneSwitchRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneSwitchRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneSwitchRequest) SetOwnerId(v int64) *UpdatePhoneSwitchRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetPoolKey(v string) *UpdatePhoneSwitchRequest {
-	s.PoolKey = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetResourceOwnerAccount(v string) *UpdatePhoneSwitchRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetResourceOwnerId(v int64) *UpdatePhoneSwitchRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetSecretNo(v string) *UpdatePhoneSwitchRequest {
-	s.SecretNo = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetSubsId(v int64) *UpdatePhoneSwitchRequest {
-	s.SubsId = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchRequest) SetSwitchStatus(v int32) *UpdatePhoneSwitchRequest {
-	s.SwitchStatus = &v
-	return s
-}
-
-type UpdatePhoneSwitchResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdatePhoneSwitchResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneSwitchResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneSwitchResponseBody) SetCode(v string) *UpdatePhoneSwitchResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchResponseBody) SetData(v string) *UpdatePhoneSwitchResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchResponseBody) SetMessage(v string) *UpdatePhoneSwitchResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdatePhoneSwitchResponseBody) SetRequestId(v string) *UpdatePhoneSwitchResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdatePhoneSwitchResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdatePhoneSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdatePhoneSwitchResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePhoneSwitchResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePhoneSwitchResponse) SetHeaders(v map[string]*string) *UpdatePhoneSwitchResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdatePhoneSwitchResponse) SetBody(v *UpdatePhoneSwitchResponseBody) *UpdatePhoneSwitchResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateSubscriptionRequest struct {
 	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
 	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
@@ -5012,16 +4325,36 @@ func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SubsId"] = request.SubsId
-	query["trackNo"] = request.TrackNo
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrackNo)) {
+		query["trackNo"] = request.TrackNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddAxnTrackNo"),
@@ -5031,7 +4364,7 @@ func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddAxnTrackNoResponse{}
@@ -5060,14 +4393,28 @@ func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BlackNo"] = request.BlackNo
-	query["BlackType"] = request.BlackType
-	query["PoolKey"] = request.PoolKey
-	query["Remark"] = request.Remark
-	query["WayControl"] = request.WayControl
+	if !tea.BoolValue(util.IsUnset(request.BlackNo)) {
+		query["BlackNo"] = request.BlackNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlackType)) {
+		query["BlackType"] = request.BlackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WayControl)) {
+		query["WayControl"] = request.WayControl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSecretBlacklist"),
@@ -5077,7 +4424,7 @@ func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSecretBlacklistResponse{}
@@ -5106,27 +4453,80 @@ func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ASRModelId"] = request.ASRModelId
-	query["ASRStatus"] = request.ASRStatus
-	query["CallDisplayType"] = request.CallDisplayType
-	query["CallRestrict"] = request.CallRestrict
-	query["CallTimeout"] = request.CallTimeout
-	query["ExpectCity"] = request.ExpectCity
-	query["Expiration"] = request.Expiration
-	query["IsRecordingEnabled"] = request.IsRecordingEnabled
-	query["OutId"] = request.OutId
-	query["OutOrderId"] = request.OutOrderId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoA"] = request.PhoneNoA
-	query["PhoneNoB"] = request.PhoneNoB
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RingConfig"] = request.RingConfig
+	if !tea.BoolValue(util.IsUnset(request.ASRModelId)) {
+		query["ASRModelId"] = request.ASRModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ASRStatus)) {
+		query["ASRStatus"] = request.ASRStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallDisplayType)) {
+		query["CallDisplayType"] = request.CallDisplayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallRestrict)) {
+		query["CallRestrict"] = request.CallRestrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallTimeout)) {
+		query["CallTimeout"] = request.CallTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectCity)) {
+		query["ExpectCity"] = request.ExpectCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
+		query["IsRecordingEnabled"] = request.IsRecordingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["OutOrderId"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoB)) {
+		query["PhoneNoB"] = request.PhoneNoB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RingConfig)) {
+		query["RingConfig"] = request.RingConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindAxb"),
@@ -5136,7 +4536,7 @@ func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindAxbResponse{}
@@ -5165,27 +4565,80 @@ func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ASRModelId"] = request.ASRModelId
-	query["ASRStatus"] = request.ASRStatus
-	query["CallDisplayType"] = request.CallDisplayType
-	query["CallRestrict"] = request.CallRestrict
-	query["ExpectCity"] = request.ExpectCity
-	query["Expiration"] = request.Expiration
-	query["GroupId"] = request.GroupId
-	query["IsRecordingEnabled"] = request.IsRecordingEnabled
-	query["OutId"] = request.OutId
-	query["OutOrderId"] = request.OutOrderId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoA"] = request.PhoneNoA
-	query["PhoneNoB"] = request.PhoneNoB
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RingConfig"] = request.RingConfig
+	if !tea.BoolValue(util.IsUnset(request.ASRModelId)) {
+		query["ASRModelId"] = request.ASRModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ASRStatus)) {
+		query["ASRStatus"] = request.ASRStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallDisplayType)) {
+		query["CallDisplayType"] = request.CallDisplayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallRestrict)) {
+		query["CallRestrict"] = request.CallRestrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectCity)) {
+		query["ExpectCity"] = request.ExpectCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
+		query["IsRecordingEnabled"] = request.IsRecordingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["OutOrderId"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoB)) {
+		query["PhoneNoB"] = request.PhoneNoB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RingConfig)) {
+		query["RingConfig"] = request.RingConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindAxg"),
@@ -5195,7 +4648,7 @@ func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindAxgResponse{}
@@ -5224,28 +4677,84 @@ func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ASRModelId"] = request.ASRModelId
-	query["ASRStatus"] = request.ASRStatus
-	query["CallDisplayType"] = request.CallDisplayType
-	query["CallRestrict"] = request.CallRestrict
-	query["CallTimeout"] = request.CallTimeout
-	query["ExpectCity"] = request.ExpectCity
-	query["Expiration"] = request.Expiration
-	query["IsRecordingEnabled"] = request.IsRecordingEnabled
-	query["NoType"] = request.NoType
-	query["OutId"] = request.OutId
-	query["OutOrderId"] = request.OutOrderId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoA"] = request.PhoneNoA
-	query["PhoneNoB"] = request.PhoneNoB
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RingConfig"] = request.RingConfig
+	if !tea.BoolValue(util.IsUnset(request.ASRModelId)) {
+		query["ASRModelId"] = request.ASRModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ASRStatus)) {
+		query["ASRStatus"] = request.ASRStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallDisplayType)) {
+		query["CallDisplayType"] = request.CallDisplayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallRestrict)) {
+		query["CallRestrict"] = request.CallRestrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallTimeout)) {
+		query["CallTimeout"] = request.CallTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectCity)) {
+		query["ExpectCity"] = request.ExpectCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
+		query["IsRecordingEnabled"] = request.IsRecordingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoType)) {
+		query["NoType"] = request.NoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["OutOrderId"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoB)) {
+		query["PhoneNoB"] = request.PhoneNoB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RingConfig)) {
+		query["RingConfig"] = request.RingConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindAxn"),
@@ -5255,7 +4764,7 @@ func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindAxnResponse{}
@@ -5284,27 +4793,80 @@ func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ASRModelId"] = request.ASRModelId
-	query["ASRStatus"] = request.ASRStatus
-	query["CallDisplayType"] = request.CallDisplayType
-	query["CallRestrict"] = request.CallRestrict
-	query["ExpectCity"] = request.ExpectCity
-	query["Expiration"] = request.Expiration
-	query["Extension"] = request.Extension
-	query["IsRecordingEnabled"] = request.IsRecordingEnabled
-	query["OutId"] = request.OutId
-	query["OutOrderId"] = request.OutOrderId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoA"] = request.PhoneNoA
-	query["PhoneNoB"] = request.PhoneNoB
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RingConfig"] = request.RingConfig
+	if !tea.BoolValue(util.IsUnset(request.ASRModelId)) {
+		query["ASRModelId"] = request.ASRModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ASRStatus)) {
+		query["ASRStatus"] = request.ASRStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallDisplayType)) {
+		query["CallDisplayType"] = request.CallDisplayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallRestrict)) {
+		query["CallRestrict"] = request.CallRestrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectCity)) {
+		query["ExpectCity"] = request.ExpectCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
+		query["IsRecordingEnabled"] = request.IsRecordingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["OutOrderId"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoB)) {
+		query["PhoneNoB"] = request.PhoneNoB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RingConfig)) {
+		query["RingConfig"] = request.RingConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindAxnExtension"),
@@ -5314,7 +4876,7 @@ func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindAxnExtensionResponse{}
@@ -5343,17 +4905,40 @@ func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["City"] = request.City
-	query["DisplayPool"] = request.DisplayPool
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SpecId"] = request.SpecId
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayPool)) {
+		query["DisplayPool"] = request.DisplayPool
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecId)) {
+		query["SpecId"] = request.SpecId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BuySecretNo"),
@@ -5363,7 +4948,7 @@ func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BuySecretNoResponse{}
@@ -5392,14 +4977,28 @@ func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybil
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CancelDesc"] = request.CancelDesc
-	query["OuterOrderCode"] = request.OuterOrderCode
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CancelDesc)) {
+		query["CancelDesc"] = request.CancelDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderCode)) {
+		query["OuterOrderCode"] = request.OuterOrderCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelPickUpWaybill"),
@@ -5409,7 +5008,7 @@ func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybil
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelPickUpWaybillResponse{}
@@ -5438,15 +5037,32 @@ func (client *Client) ConfirmSendSmsWithOptions(request *ConfirmSendSmsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfirmSendSms"),
@@ -5456,7 +5072,7 @@ func (client *Client) ConfirmSendSmsWithOptions(request *ConfirmSendSmsRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfirmSendSmsResponse{}
@@ -5485,16 +5101,36 @@ func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["Numbers"] = request.Numbers
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["Remark"] = request.Remark
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Numbers)) {
+		query["Numbers"] = request.Numbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAxgGroup"),
@@ -5504,7 +5140,7 @@ func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAxgGroupResponse{}
@@ -5547,22 +5183,60 @@ func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybill
 	}
 
 	query := map[string]interface{}{}
-	query["ConsigneeAddress"] = request.ConsigneeAddressShrink
-	query["ConsigneeMobile"] = request.ConsigneeMobile
-	query["ConsigneeName"] = request.ConsigneeName
-	query["ConsigneePhone"] = request.ConsigneePhone
-	query["CpCode"] = request.CpCode
-	query["GoodsInfos"] = request.GoodsInfosShrink
-	query["OrderChannels"] = request.OrderChannels
-	query["OuterOrderCode"] = request.OuterOrderCode
-	query["Remark"] = request.Remark
-	query["SendAddress"] = request.SendAddressShrink
-	query["SendMobile"] = request.SendMobile
-	query["SendName"] = request.SendName
-	query["SendPhone"] = request.SendPhone
+	if !tea.BoolValue(util.IsUnset(request.ConsigneeAddressShrink)) {
+		query["ConsigneeAddress"] = request.ConsigneeAddressShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsigneeMobile)) {
+		query["ConsigneeMobile"] = request.ConsigneeMobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsigneeName)) {
+		query["ConsigneeName"] = request.ConsigneeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsigneePhone)) {
+		query["ConsigneePhone"] = request.ConsigneePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpCode)) {
+		query["CpCode"] = request.CpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoodsInfosShrink)) {
+		query["GoodsInfos"] = request.GoodsInfosShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderChannels)) {
+		query["OrderChannels"] = request.OrderChannels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterOrderCode)) {
+		query["OuterOrderCode"] = request.OuterOrderCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendAddressShrink)) {
+		query["SendAddress"] = request.SendAddressShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendMobile)) {
+		query["SendMobile"] = request.SendMobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendName)) {
+		query["SendName"] = request.SendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendPhone)) {
+		query["SendPhone"] = request.SendPhone
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePickUpWaybill"),
@@ -5572,7 +5246,7 @@ func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybill
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePickUpWaybillResponse{}
@@ -5595,68 +5269,34 @@ func (client *Client) CreatePickUpWaybill(request *CreatePickUpWaybillRequest) (
 	return _result, _err
 }
 
-func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionRequest, runtime *util.RuntimeOptions) (_result *CreateSubscriptionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["BindToken"] = request.BindToken
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNo"] = request.PhoneNo
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateSubscription"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateSubscription(request *CreateSubscriptionRequest) (_result *CreateSubscriptionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSubscriptionResponse{}
-	_body, _err := client.CreateSubscriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlacklistRequest, runtime *util.RuntimeOptions) (_result *DeleteSecretBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BlackNo"] = request.BlackNo
-	query["BlackType"] = request.BlackType
-	query["PoolKey"] = request.PoolKey
-	query["Remark"] = request.Remark
-	query["WayControl"] = request.WayControl
+	if !tea.BoolValue(util.IsUnset(request.BlackNo)) {
+		query["BlackNo"] = request.BlackNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlackType)) {
+		query["BlackType"] = request.BlackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WayControl)) {
+		query["WayControl"] = request.WayControl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSecretBlacklist"),
@@ -5666,7 +5306,7 @@ func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSecretBlacklistResponse{}
@@ -5689,63 +5329,26 @@ func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistReques
 	return _result, _err
 }
 
-func (client *Client) GetFaceVerifyWithOptions(request *GetFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *GetFaceVerifyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VerifyToken"] = request.VerifyToken
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFaceVerify"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetFaceVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetFaceVerify(request *GetFaceVerifyRequest) (_result *GetFaceVerifyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetFaceVerifyResponse{}
-	_body, _err := client.GetFaceVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailRequest, runtime *util.RuntimeOptions) (_result *GetSecretAsrDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["CallTime"] = request.CallTime
-	query["PoolKey"] = request.PoolKey
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallTime)) {
+		query["CallTime"] = request.CallTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSecretAsrDetail"),
@@ -5755,7 +5358,7 @@ func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSecretAsrDetailResponse{}
@@ -5784,15 +5387,32 @@ func (client *Client) GetSubscriptionDetailWithOptions(request *GetSubscriptionD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SubsId"] = request.SubsId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSubscriptionDetail"),
@@ -5802,7 +5422,7 @@ func (client *Client) GetSubscriptionDetailWithOptions(request *GetSubscriptionD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSubscriptionDetailResponse{}
@@ -5831,16 +5451,36 @@ func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["CallTime"] = request.CallTime
-	query["CheckSubs"] = request.CheckSubs
-	query["OwnerId"] = request.OwnerId
-	query["PartnerKey"] = request.PartnerKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallTime)) {
+		query["CallTime"] = request.CallTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckSubs)) {
+		query["CheckSubs"] = request.CheckSubs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartnerKey)) {
+		query["PartnerKey"] = request.PartnerKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTotalPublicUrl"),
@@ -5850,7 +5490,7 @@ func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTotalPublicUrlResponse{}
@@ -5873,65 +5513,34 @@ func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, runtime *util.RuntimeOptions) (_result *InitFaceVerifyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["MetaInfo"] = request.MetaInfo
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("InitFaceVerify"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &InitFaceVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InitFaceVerify(request *InitFaceVerifyRequest) (_result *InitFaceVerifyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InitFaceVerifyResponse{}
-	_body, _err := client.InitFaceVerifyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runtime *util.RuntimeOptions) (_result *LockSecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LockSecretNo"),
@@ -5941,7 +5550,7 @@ func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &LockSecretNoResponse{}
@@ -5970,16 +5579,36 @@ func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["Numbers"] = request.Numbers
-	query["OperateType"] = request.OperateType
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Numbers)) {
+		query["Numbers"] = request.Numbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OperateAxgGroup"),
@@ -5989,7 +5618,7 @@ func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OperateAxgGroupResponse{}
@@ -6018,16 +5647,36 @@ func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BlackNo"] = request.BlackNo
-	query["OperateType"] = request.OperateType
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tips"] = request.Tips
+	if !tea.BoolValue(util.IsUnset(request.BlackNo)) {
+		query["BlackNo"] = request.BlackNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tips)) {
+		query["Tips"] = request.Tips
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OperateBlackNo"),
@@ -6037,7 +5686,7 @@ func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OperateBlackNoResponse{}
@@ -6066,15 +5715,32 @@ func (client *Client) QueryCallStatusWithOptions(request *QueryCallStatusRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallNo"] = request.CallNo
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SubsId"] = request.SubsId
+	if !tea.BoolValue(util.IsUnset(request.CallNo)) {
+		query["CallNo"] = request.CallNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryCallStatus"),
@@ -6084,7 +5750,7 @@ func (client *Client) QueryCallStatusWithOptions(request *QueryCallStatusRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCallStatusResponse{}
@@ -6113,15 +5779,32 @@ func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoABy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CabinetNo"] = request.CabinetNo
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoX"] = request.PhoneNoX
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["trackNo"] = request.TrackNo
+	if !tea.BoolValue(util.IsUnset(request.CabinetNo)) {
+		query["CabinetNo"] = request.CabinetNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrackNo)) {
+		query["trackNo"] = request.TrackNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryPhoneNoAByTrackNo"),
@@ -6131,7 +5814,7 @@ func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoABy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPhoneNoAByTrackNoResponse{}
@@ -6160,16 +5843,36 @@ func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecord
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["CallTime"] = request.CallTime
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ProductType"] = request.ProductType
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallTime)) {
+		query["CallTime"] = request.CallTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryRecordFileDownloadUrl"),
@@ -6179,7 +5882,7 @@ func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecord
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRecordFileDownloadUrlResponse{}
@@ -6208,14 +5911,28 @@ func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySecretNoDetail"),
@@ -6225,7 +5942,7 @@ func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySecretNoDetailResponse{}
@@ -6254,15 +5971,32 @@ func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["City"] = request.City
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SpecId"] = request.SpecId
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecId)) {
+		query["SpecId"] = request.SpecId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySecretNoRemain"),
@@ -6272,7 +6006,7 @@ func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySecretNoRemainResponse{}
@@ -6301,14 +6035,28 @@ func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySubsId"),
@@ -6318,7 +6066,7 @@ func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySubsIdResponse{}
@@ -6347,16 +6095,36 @@ func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscript
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ProductType"] = request.ProductType
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SubsId"] = request.SubsId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySubscriptionDetail"),
@@ -6366,7 +6134,7 @@ func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscript
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySubscriptionDetailResponse{}
@@ -6395,14 +6163,28 @@ func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReleaseSecretNo"),
@@ -6412,7 +6194,7 @@ func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseSecretNoResponse{}
@@ -6441,16 +6223,36 @@ func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ProductType"] = request.ProductType
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SubsId"] = request.SubsId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnbindSubscription"),
@@ -6460,7 +6262,7 @@ func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindSubscriptionResponse{}
@@ -6489,14 +6291,28 @@ func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretNo)) {
+		query["SecretNo"] = request.SecretNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnlockSecretNo"),
@@ -6506,7 +6322,7 @@ func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnlockSecretNoResponse{}
@@ -6529,179 +6345,90 @@ func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UpdateDefaultBWithOptions(request *UpdateDefaultBRequest, runtime *util.RuntimeOptions) (_result *UpdateDefaultBResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNo"] = request.PhoneNo
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SubsId"] = request.SubsId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateDefaultB"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateDefaultBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateDefaultB(request *UpdateDefaultBRequest) (_result *UpdateDefaultBResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDefaultBResponse{}
-	_body, _err := client.UpdateDefaultBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdatePhoneNumberWithOptions(request *UpdatePhoneNumberRequest, runtime *util.RuntimeOptions) (_result *UpdatePhoneNumberResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["BindToken"] = request.BindToken
-	query["NewPhoneNo"] = request.NewPhoneNo
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SubsId"] = request.SubsId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdatePhoneNumber"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdatePhoneNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdatePhoneNumber(request *UpdatePhoneNumberRequest) (_result *UpdatePhoneNumberResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdatePhoneNumberResponse{}
-	_body, _err := client.UpdatePhoneNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdatePhoneSwitchWithOptions(request *UpdatePhoneSwitchRequest, runtime *util.RuntimeOptions) (_result *UpdatePhoneSwitchResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PoolKey"] = request.PoolKey
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecretNo"] = request.SecretNo
-	query["SubsId"] = request.SubsId
-	query["SwitchStatus"] = request.SwitchStatus
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdatePhoneSwitch"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdatePhoneSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdatePhoneSwitch(request *UpdatePhoneSwitchRequest) (_result *UpdatePhoneSwitchResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdatePhoneSwitchResponse{}
-	_body, _err := client.UpdatePhoneSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ASRModelId"] = request.ASRModelId
-	query["ASRStatus"] = request.ASRStatus
-	query["CallDisplayType"] = request.CallDisplayType
-	query["CallRestrict"] = request.CallRestrict
-	query["Expiration"] = request.Expiration
-	query["GroupId"] = request.GroupId
-	query["IsRecordingEnabled"] = request.IsRecordingEnabled
-	query["OperateType"] = request.OperateType
-	query["OutId"] = request.OutId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNoA"] = request.PhoneNoA
-	query["PhoneNoB"] = request.PhoneNoB
-	query["PhoneNoX"] = request.PhoneNoX
-	query["PoolKey"] = request.PoolKey
-	query["ProductType"] = request.ProductType
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RingConfig"] = request.RingConfig
-	query["SubsId"] = request.SubsId
+	if !tea.BoolValue(util.IsUnset(request.ASRModelId)) {
+		query["ASRModelId"] = request.ASRModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ASRStatus)) {
+		query["ASRStatus"] = request.ASRStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallDisplayType)) {
+		query["CallDisplayType"] = request.CallDisplayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallRestrict)) {
+		query["CallRestrict"] = request.CallRestrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecordingEnabled)) {
+		query["IsRecordingEnabled"] = request.IsRecordingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoB)) {
+		query["PhoneNoB"] = request.PhoneNoB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoX)) {
+		query["PhoneNoX"] = request.PhoneNoX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RingConfig)) {
+		query["RingConfig"] = request.RingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubsId)) {
+		query["SubsId"] = request.SubsId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSubscription"),
@@ -6711,7 +6438,7 @@ func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSubscriptionResponse{}
