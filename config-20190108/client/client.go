@@ -2518,8 +2518,7 @@ func (s *GetSupportedResourceTypesResponse) SetBody(v *GetSupportedResourceTypes
 }
 
 type ListAggregateDiscoveredResourcesRequest struct {
-	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// 资源夹ID
 	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -2541,11 +2540,6 @@ func (s ListAggregateDiscoveredResourcesRequest) GoString() string {
 
 func (s *ListAggregateDiscoveredResourcesRequest) SetAggregatorId(v string) *ListAggregateDiscoveredResourcesRequest {
 	s.AggregatorId = &v
-	return s
-}
-
-func (s *ListAggregateDiscoveredResourcesRequest) SetComplianceType(v string) *ListAggregateDiscoveredResourcesRequest {
-	s.ComplianceType = &v
 	return s
 }
 
@@ -3023,7 +3017,6 @@ func (s *ListConfigRulesResponse) SetBody(v *ListConfigRulesResponseBody) *ListC
 }
 
 type ListDiscoveredResourcesRequest struct {
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	MemberId        *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	MultiAccount    *bool   `json:"MultiAccount,omitempty" xml:"MultiAccount,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -3040,11 +3033,6 @@ func (s ListDiscoveredResourcesRequest) String() string {
 
 func (s ListDiscoveredResourcesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListDiscoveredResourcesRequest) SetComplianceType(v string) *ListDiscoveredResourcesRequest {
-	s.ComplianceType = &v
-	return s
 }
 
 func (s *ListDiscoveredResourcesRequest) SetMemberId(v int64) *ListDiscoveredResourcesRequest {
@@ -4095,10 +4083,12 @@ func (client *Client) ActiveConfigRulesWithOptions(request *ActiveConfigRulesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ActiveConfigRules"),
@@ -4108,7 +4098,7 @@ func (client *Client) ActiveConfigRulesWithOptions(request *ActiveConfigRulesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActiveConfigRulesResponse{}
@@ -4137,10 +4127,12 @@ func (client *Client) DeleteConfigRulesWithOptions(request *DeleteConfigRulesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteConfigRules"),
@@ -4150,7 +4142,7 @@ func (client *Client) DeleteConfigRulesWithOptions(request *DeleteConfigRulesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteConfigRulesResponse{}
@@ -4190,7 +4182,7 @@ func (client *Client) DescribeComplianceWithOptions(request *DescribeComplianceR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeComplianceResponse{}
@@ -4230,7 +4222,7 @@ func (client *Client) DescribeComplianceSummaryWithOptions(request *DescribeComp
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeComplianceSummaryResponse{}
@@ -4270,7 +4262,7 @@ func (client *Client) DescribeConfigRuleWithOptions(request *DescribeConfigRuleR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConfigRuleResponse{}
@@ -4303,7 +4295,7 @@ func (client *Client) DescribeConfigurationRecorderWithOptions(runtime *util.Run
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConfigurationRecorderResponse{}
@@ -4343,7 +4335,7 @@ func (client *Client) DescribeDeliveryChannelsWithOptions(request *DescribeDeliv
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeliveryChannelsResponse{}
@@ -4383,7 +4375,7 @@ func (client *Client) DescribeDiscoveredResourceWithOptions(request *DescribeDis
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDiscoveredResourceResponse{}
@@ -4423,7 +4415,7 @@ func (client *Client) DescribeEvaluationResultsWithOptions(request *DescribeEval
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEvaluationResultsResponse{}
@@ -4463,7 +4455,7 @@ func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggr
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAggregateDiscoveredResourceResponse{}
@@ -4503,7 +4495,7 @@ func (client *Client) GetDiscoveredResourceCountsWithOptions(request *GetDiscove
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceCountsResponse{}
@@ -4543,7 +4535,7 @@ func (client *Client) GetDiscoveredResourceSummaryWithOptions(request *GetDiscov
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDiscoveredResourceSummaryResponse{}
@@ -4583,7 +4575,7 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceComplianceTimelineResponse{}
@@ -4623,7 +4615,7 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceConfigurationTimelineResponse{}
@@ -4656,7 +4648,7 @@ func (client *Client) GetSupportedResourceTypesWithOptions(runtime *util.Runtime
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSupportedResourceTypesResponse{}
@@ -4684,7 +4676,43 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDeleted)) {
+		query["ResourceDeleted"] = request.ResourceDeleted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4693,10 +4721,10 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAggregateDiscoveredResourcesResponse{}
@@ -4736,7 +4764,7 @@ func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListConfigRulesResponse{}
@@ -4764,7 +4792,39 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDeleted)) {
+		query["ResourceDeleted"] = request.ResourceDeleted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4773,10 +4833,10 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 		Version:     tea.String("2019-01-08"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDiscoveredResourcesResponse{}
@@ -4805,11 +4865,16 @@ func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediati
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ManagedRuleIdentifier"] = request.ManagedRuleIdentifier
-	query["RemediationType"] = request.RemediationType
+	if !tea.BoolValue(util.IsUnset(request.ManagedRuleIdentifier)) {
+		query["ManagedRuleIdentifier"] = request.ManagedRuleIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		query["RemediationType"] = request.RemediationType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRemediationTemplates"),
@@ -4819,7 +4884,7 @@ func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediati
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRemediationTemplatesResponse{}
@@ -4848,11 +4913,66 @@ func (client *Client) PutConfigRuleWithOptions(request *PutConfigRuleRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MemberId"] = request.MemberId
-	query["MultiAccount"] = request.MultiAccount
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		query["MemberId"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiAccount)) {
+		query["MultiAccount"] = request.MultiAccount
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		body["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParameters)) {
+		body["InputParameters"] = request.InputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeComplianceResourceId)) {
+		body["ScopeComplianceResourceId"] = request.ScopeComplianceResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeComplianceResourceTypes)) {
+		body["ScopeComplianceResourceTypes"] = request.ScopeComplianceResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDetailMessageType)) {
+		body["SourceDetailMessageType"] = request.SourceDetailMessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdentifier)) {
+		body["SourceIdentifier"] = request.SourceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceMaximumExecutionFrequency)) {
+		body["SourceMaximumExecutionFrequency"] = request.SourceMaximumExecutionFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceOwner)) {
+		body["SourceOwner"] = request.SourceOwner
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutConfigRule"),
@@ -4890,8 +5010,13 @@ func (client *Client) PutConfigurationRecorderWithOptions(request *PutConfigurat
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		body["ResourceTypes"] = request.ResourceTypes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutConfigurationRecorder"),
@@ -4929,8 +5054,45 @@ func (client *Client) PutDeliveryChannelWithOptions(request *PutDeliveryChannelR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelAssumeRoleArn)) {
+		body["DeliveryChannelAssumeRoleArn"] = request.DeliveryChannelAssumeRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelCondition)) {
+		body["DeliveryChannelCondition"] = request.DeliveryChannelCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		body["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		body["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelTargetArn)) {
+		body["DeliveryChannelTargetArn"] = request.DeliveryChannelTargetArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelType)) {
+		body["DeliveryChannelType"] = request.DeliveryChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutDeliveryChannel"),
@@ -4968,8 +5130,17 @@ func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Evaluations)) {
+		body["Evaluations"] = request.Evaluations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultToken)) {
+		body["ResultToken"] = request.ResultToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutEvaluations"),
@@ -5008,12 +5179,20 @@ func (client *Client) StartConfigRuleEvaluationWithOptions(request *StartConfigR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CompliancePackId"] = request.CompliancePackId
-	query["ConfigRuleId"] = request.ConfigRuleId
-	query["RevertEvaluation"] = request.RevertEvaluation
+	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
+		query["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevertEvaluation)) {
+		query["RevertEvaluation"] = request.RevertEvaluation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartConfigRuleEvaluation"),
@@ -5023,7 +5202,7 @@ func (client *Client) StartConfigRuleEvaluationWithOptions(request *StartConfigR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartConfigRuleEvaluationResponse{}
@@ -5051,8 +5230,13 @@ func (client *Client) StartConfigurationRecorderWithOptions(request *StartConfig
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnterpriseEdition)) {
+		body["EnterpriseEdition"] = request.EnterpriseEdition
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartConfigurationRecorder"),
@@ -5091,10 +5275,12 @@ func (client *Client) StopConfigRulesWithOptions(request *StopConfigRulesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigRuleIds"] = request.ConfigRuleIds
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopConfigRules"),
@@ -5104,7 +5290,7 @@ func (client *Client) StopConfigRulesWithOptions(request *StopConfigRulesRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopConfigRulesResponse{}
