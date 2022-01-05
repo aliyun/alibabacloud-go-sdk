@@ -6091,6 +6091,7 @@ type GetLoginDetailsResponseBodyData struct {
 	SipServerUrl   *string `json:"SipServerUrl,omitempty" xml:"SipServerUrl,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserKey        *string `json:"UserKey,omitempty" xml:"UserKey,omitempty"`
+	WorkMode       *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s GetLoginDetailsResponseBodyData) String() string {
@@ -6138,6 +6139,11 @@ func (s *GetLoginDetailsResponseBodyData) SetUserId(v string) *GetLoginDetailsRe
 
 func (s *GetLoginDetailsResponseBodyData) SetUserKey(v string) *GetLoginDetailsResponseBodyData {
 	s.UserKey = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetWorkMode(v string) *GetLoginDetailsResponseBodyData {
+	s.WorkMode = &v
 	return s
 }
 
@@ -18691,6 +18697,7 @@ type ListUsersResponseBodyDataList struct {
 	Mobile                     *string                                                    `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	PersonalOutboundNumberList []*ListUsersResponseBodyDataListPersonalOutboundNumberList `json:"PersonalOutboundNumberList,omitempty" xml:"PersonalOutboundNumberList,omitempty" type:"Repeated"`
 	PrimaryAccount             *bool                                                      `json:"PrimaryAccount,omitempty" xml:"PrimaryAccount,omitempty"`
+	RamId                      *int64                                                     `json:"RamId,omitempty" xml:"RamId,omitempty"`
 	RoleId                     *string                                                    `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	RoleName                   *string                                                    `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SkillLevelList             []*ListUsersResponseBodyDataListSkillLevelList             `json:"SkillLevelList,omitempty" xml:"SkillLevelList,omitempty" type:"Repeated"`
@@ -18738,6 +18745,11 @@ func (s *ListUsersResponseBodyDataList) SetPersonalOutboundNumberList(v []*ListU
 
 func (s *ListUsersResponseBodyDataList) SetPrimaryAccount(v bool) *ListUsersResponseBodyDataList {
 	s.PrimaryAccount = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyDataList) SetRamId(v int64) *ListUsersResponseBodyDataList {
+	s.RamId = &v
 	return s
 }
 
@@ -25815,8 +25827,14 @@ func (client *Client) AbortCampaignWithOptions(request *AbortCampaignRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25857,9 +25875,18 @@ func (client *Client) AddNumbersToSkillGroupWithOptions(request *AddNumbersToSki
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NumberList"] = request.NumberList
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25900,9 +25927,18 @@ func (client *Client) AddPersonalNumbersToUserWithOptions(request *AddPersonalNu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NumberList"] = request.NumberList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25943,9 +25979,18 @@ func (client *Client) AddPhoneNumberToSkillGroupsWithOptions(request *AddPhoneNu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Number"] = request.Number
-	query["SkillGroupIdList"] = request.SkillGroupIdList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25986,11 +26031,26 @@ func (client *Client) AddPhoneNumbersWithOptions(request *AddPhoneNumbersRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactFlowId"] = request.ContactFlowId
-	query["InstanceId"] = request.InstanceId
-	query["NumberGroupId"] = request.NumberGroupId
-	query["NumberList"] = request.NumberList
-	query["Usage"] = request.Usage
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberGroupId)) {
+		query["NumberGroupId"] = request.NumberGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26031,9 +26091,18 @@ func (client *Client) AddSkillGroupsToUserWithOptions(request *AddSkillGroupsToU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillLevelList"] = request.SkillLevelList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevelList)) {
+		query["SkillLevelList"] = request.SkillLevelList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26074,9 +26143,18 @@ func (client *Client) AddUsersToSkillGroupWithOptions(request *AddUsersToSkillGr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupId"] = request.SkillGroupId
-	query["UserSkillLevelList"] = request.UserSkillLevelList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSkillLevelList)) {
+		query["UserSkillLevelList"] = request.UserSkillLevelList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26117,10 +26195,22 @@ func (client *Client) AnswerCallWithOptions(request *AnswerCallRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26161,11 +26251,26 @@ func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RamIdList"] = request.RamIdList
-	query["RoleId"] = request.RoleId
-	query["SkillLevelList"] = request.SkillLevelList
-	query["WorkMode"] = request.WorkMode
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamIdList)) {
+		query["RamIdList"] = request.RamIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevelList)) {
+		query["SkillLevelList"] = request.SkillLevelList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkMode)) {
+		query["WorkMode"] = request.WorkMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26206,12 +26311,30 @@ func (client *Client) BargeInCallWithOptions(request *BargeInCallRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BargedUserId"] = request.BargedUserId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.BargedUserId)) {
+		query["BargedUserId"] = request.BargedUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26252,13 +26375,34 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["Transferee"] = request.Transferee
-	query["Transferor"] = request.Transferor
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transferee)) {
+		query["Transferee"] = request.Transferee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transferor)) {
+		query["Transferor"] = request.Transferor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26299,10 +26443,22 @@ func (client *Client) CancelAttendedTransferWithOptions(request *CancelAttendedT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26343,10 +26499,22 @@ func (client *Client) ChangeWorkModeWithOptions(request *ChangeWorkModeRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
-	query["WorkMode"] = request.WorkMode
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkMode)) {
+		query["WorkMode"] = request.WorkMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26387,12 +26555,30 @@ func (client *Client) CoachCallWithOptions(request *CoachCallRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoachedUserId"] = request.CoachedUserId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.CoachedUserId)) {
+		query["CoachedUserId"] = request.CoachedUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26433,10 +26619,22 @@ func (client *Client) CompleteAttendedTransferWithOptions(request *CompleteAtten
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26483,21 +26681,66 @@ func (client *Client) CreateCampaignWithOptions(tmpReq *CreateCampaignRequest, r
 	}
 
 	query := map[string]interface{}{}
-	query["CallableTime"] = request.CallableTime
-	query["CaseFileKey"] = request.CaseFileKey
-	query["CaseList"] = request.CaseListShrink
-	query["ContactFlowId"] = request.ContactFlowId
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["MaxAttemptCount"] = request.MaxAttemptCount
-	query["MinAttemptInterval"] = request.MinAttemptInterval
-	query["Name"] = request.Name
-	query["QueueId"] = request.QueueId
-	query["Simulation"] = request.Simulation
-	query["SimulationParameters"] = request.SimulationParameters
-	query["StartTime"] = request.StartTime
-	query["StrategyParameters"] = request.StrategyParameters
-	query["StrategyType"] = request.StrategyType
+	if !tea.BoolValue(util.IsUnset(request.CallableTime)) {
+		query["CallableTime"] = request.CallableTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CaseFileKey)) {
+		query["CaseFileKey"] = request.CaseFileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CaseListShrink)) {
+		query["CaseList"] = request.CaseListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxAttemptCount)) {
+		query["MaxAttemptCount"] = request.MaxAttemptCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinAttemptInterval)) {
+		query["MinAttemptInterval"] = request.MinAttemptInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueId)) {
+		query["QueueId"] = request.QueueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Simulation)) {
+		query["Simulation"] = request.Simulation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimulationParameters)) {
+		query["SimulationParameters"] = request.SimulationParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyParameters)) {
+		query["StrategyParameters"] = request.StrategyParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyType)) {
+		query["StrategyType"] = request.StrategyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26538,11 +26781,26 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AdminRamIdList"] = request.AdminRamIdList
-	query["Description"] = request.Description
-	query["DomainName"] = request.DomainName
-	query["Name"] = request.Name
-	query["NumberList"] = request.NumberList
+	if !tea.BoolValue(util.IsUnset(request.AdminRamIdList)) {
+		query["AdminRamIdList"] = request.AdminRamIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26583,10 +26841,22 @@ func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DisplayName"] = request.DisplayName
-	query["InstanceId"] = request.InstanceId
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26627,15 +26897,42 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DisplayName"] = request.DisplayName
-	query["Email"] = request.Email
-	query["InstanceId"] = request.InstanceId
-	query["LoginName"] = request.LoginName
-	query["Mobile"] = request.Mobile
-	query["ResetPassword"] = request.ResetPassword
-	query["RoleId"] = request.RoleId
-	query["SkillLevelList"] = request.SkillLevelList
-	query["WorkMode"] = request.WorkMode
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginName)) {
+		query["LoginName"] = request.LoginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetPassword)) {
+		query["ResetPassword"] = request.ResetPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevelList)) {
+		query["SkillLevelList"] = request.SkillLevelList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkMode)) {
+		query["WorkMode"] = request.WorkMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26676,9 +26973,18 @@ func (client *Client) DeleteSkillGroupWithOptions(request *DeleteSkillGroupReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Force"] = request.Force
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26719,8 +27025,14 @@ func (client *Client) GetCallDetailRecordWithOptions(request *GetCallDetailRecor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactId"] = request.ContactId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26761,8 +27073,14 @@ func (client *Client) GetCampaignWithOptions(request *GetCampaignRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26803,10 +27121,22 @@ func (client *Client) GetHistoricalCallerReportWithOptions(request *GetHistorica
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallingNumber"] = request.CallingNumber
-	query["InstanceId"] = request.InstanceId
-	query["StartTime"] = request.StartTime
-	query["StopTime"] = request.StopTime
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26847,9 +27177,18 @@ func (client *Client) GetHistoricalInstanceReportWithOptions(request *GetHistori
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26890,7 +27229,10 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26931,9 +27273,18 @@ func (client *Client) GetInstanceTrendingReportWithOptions(request *GetInstanceT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26974,8 +27325,14 @@ func (client *Client) GetLoginDetailsWithOptions(request *GetLoginDetailsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27016,8 +27373,14 @@ func (client *Client) GetMonoRecordingWithOptions(request *GetMonoRecordingReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactId"] = request.ContactId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27058,8 +27421,14 @@ func (client *Client) GetMultiChannelRecordingWithOptions(request *GetMultiChann
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactId"] = request.ContactId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27100,8 +27469,14 @@ func (client *Client) GetNumberLocationWithOptions(request *GetNumberLocationReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Number"] = request.Number
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27142,7 +27517,10 @@ func (client *Client) GetRealtimeInstanceStatesWithOptions(request *GetRealtimeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27183,8 +27561,14 @@ func (client *Client) GetTurnCredentialsWithOptions(request *GetTurnCredentialsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27225,7 +27609,10 @@ func (client *Client) GetTurnServerListWithOptions(request *GetTurnServerListReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27266,9 +27653,18 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Extension"] = request.Extension
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27309,12 +27705,30 @@ func (client *Client) HoldCallWithOptions(request *HoldCallRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["Music"] = request.Music
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Music)) {
+		query["Music"] = request.Music
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27355,13 +27769,34 @@ func (client *Client) InitiateAttendedTransferWithOptions(request *InitiateAtten
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["Transferee"] = request.Transferee
-	query["Transferor"] = request.Transferor
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transferee)) {
+		query["Transferee"] = request.Transferee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transferor)) {
+		query["Transferor"] = request.Transferor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27402,12 +27837,30 @@ func (client *Client) InterceptCallWithOptions(request *InterceptCallRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["InterceptedUserId"] = request.InterceptedUserId
-	query["JobId"] = request.JobId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterceptedUserId)) {
+		query["InterceptedUserId"] = request.InterceptedUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27448,11 +27901,26 @@ func (client *Client) LaunchAuthenticationWithOptions(request *LaunchAuthenticat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactFlowId"] = request.ContactFlowId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27493,11 +27961,26 @@ func (client *Client) LaunchSurveyWithOptions(request *LaunchSurveyRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactFlowId"] = request.ContactFlowId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27538,10 +28021,22 @@ func (client *Client) ListAgentStateLogsWithOptions(request *ListAgentStateLogsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AgentId"] = request.AgentId
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27622,10 +28117,22 @@ func (client *Client) ListBriefSkillGroupsWithOptions(request *ListBriefSkillGro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27666,25 +28173,82 @@ func (client *Client) ListCallDetailRecordsWithOptions(request *ListCallDetailRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AgentId"] = request.AgentId
-	query["CalledNumber"] = request.CalledNumber
-	query["CallingNumber"] = request.CallingNumber
-	query["ContactDisposition"] = request.ContactDisposition
-	query["ContactId"] = request.ContactId
-	query["ContactType"] = request.ContactType
-	query["Criteria"] = request.Criteria
-	query["EarlyMediaStateList"] = request.EarlyMediaStateList
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["OrderByField"] = request.OrderByField
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SatisfactionDescriptionList"] = request.SatisfactionDescriptionList
-	query["SatisfactionList"] = request.SatisfactionList
-	query["SatisfactionSurveyChannel"] = request.SatisfactionSurveyChannel
-	query["SkillGroupId"] = request.SkillGroupId
-	query["SortOrder"] = request.SortOrder
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactDisposition)) {
+		query["ContactDisposition"] = request.ContactDisposition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactType)) {
+		query["ContactType"] = request.ContactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EarlyMediaStateList)) {
+		query["EarlyMediaStateList"] = request.EarlyMediaStateList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByField)) {
+		query["OrderByField"] = request.OrderByField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionDescriptionList)) {
+		query["SatisfactionDescriptionList"] = request.SatisfactionDescriptionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionList)) {
+		query["SatisfactionList"] = request.SatisfactionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionSurveyChannel)) {
+		query["SatisfactionSurveyChannel"] = request.SatisfactionSurveyChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27765,16 +28329,46 @@ func (client *Client) ListCampaignsWithOptions(request *ListCampaignsRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ActualStartTimeFrom"] = request.ActualStartTimeFrom
-	query["ActualStartTimeTo"] = request.ActualStartTimeTo
-	query["InstanceId"] = request.InstanceId
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PlanedStartTimeFrom"] = request.PlanedStartTimeFrom
-	query["PlanedStartTimeTo"] = request.PlanedStartTimeTo
-	query["QueueId"] = request.QueueId
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.ActualStartTimeFrom)) {
+		query["ActualStartTimeFrom"] = request.ActualStartTimeFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActualStartTimeTo)) {
+		query["ActualStartTimeTo"] = request.ActualStartTimeTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanedStartTimeFrom)) {
+		query["PlanedStartTimeFrom"] = request.PlanedStartTimeFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanedStartTimeTo)) {
+		query["PlanedStartTimeTo"] = request.PlanedStartTimeTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueId)) {
+		query["QueueId"] = request.QueueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27815,11 +28409,26 @@ func (client *Client) ListCasesWithOptions(request *ListCasesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PhoneNumber"] = request.PhoneNumber
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27860,9 +28469,18 @@ func (client *Client) ListConfigItemsWithOptions(request *ListConfigItemsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ObjectId"] = request.ObjectId
-	query["ObjectType"] = request.ObjectType
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27903,10 +28521,22 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27947,8 +28577,14 @@ func (client *Client) ListDevicesWithOptions(request *ListDevicesRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27989,11 +28625,26 @@ func (client *Client) ListHistoricalAgentReportWithOptions(request *ListHistoric
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["StopTime"] = request.StopTime
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentIdList)) {
 		body["AgentIdList"] = request.AgentIdList
@@ -28040,11 +28691,26 @@ func (client *Client) ListHistoricalSkillGroupReportWithOptions(request *ListHis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
 		body["SkillGroupIdList"] = request.SkillGroupIdList
@@ -28091,8 +28757,14 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28133,8 +28805,14 @@ func (client *Client) ListInstancesOfUserWithOptions(request *ListInstancesOfUse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28175,11 +28853,26 @@ func (client *Client) ListIntervalAgentReportWithOptions(request *ListIntervalAg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AgentId"] = request.AgentId
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["Interval"] = request.Interval
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28220,10 +28913,22 @@ func (client *Client) ListIntervalInstanceReportWithOptions(request *ListInterva
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["Interval"] = request.Interval
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28264,11 +28969,26 @@ func (client *Client) ListIntervalSkillGroupReportWithOptions(request *ListInter
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["Interval"] = request.Interval
-	query["SkillGroupId"] = request.SkillGroupId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28309,10 +29029,22 @@ func (client *Client) ListIvrTrackingDetailsWithOptions(request *ListIvrTracking
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactId"] = request.ContactId
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28353,11 +29085,26 @@ func (client *Client) ListOutboundNumbersOfUserWithOptions(request *ListOutbound
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SkillGroupIdList"] = request.SkillGroupIdList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28398,12 +29145,30 @@ func (client *Client) ListPersonalNumbersOfUserWithOptions(request *ListPersonal
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["IsMember"] = request.IsMember
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMember)) {
+		query["IsMember"] = request.IsMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28444,12 +29209,30 @@ func (client *Client) ListPhoneNumbersWithOptions(request *ListPhoneNumbersReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Active"] = request.Active
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
-	query["Usage"] = request.Usage
+	if !tea.BoolValue(util.IsUnset(request.Active)) {
+		query["Active"] = request.Active
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28490,13 +29273,34 @@ func (client *Client) ListPhoneNumbersOfSkillGroupWithOptions(request *ListPhone
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Active"] = request.Active
-	query["InstanceId"] = request.InstanceId
-	query["IsMember"] = request.IsMember
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.Active)) {
+		query["Active"] = request.Active
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMember)) {
+		query["IsMember"] = request.IsMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28537,7 +29341,10 @@ func (client *Client) ListPrivilegesOfUserWithOptions(request *ListPrivilegesOfU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28578,10 +29385,22 @@ func (client *Client) ListRamUsersWithOptions(request *ListRamUsersRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28622,11 +29441,26 @@ func (client *Client) ListRealtimeAgentStatesWithOptions(request *ListRealtimeAg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AgentName"] = request.AgentName
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.AgentName)) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentIdList)) {
 		body["AgentIdList"] = request.AgentIdList
@@ -28677,9 +29511,18 @@ func (client *Client) ListRealtimeSkillGroupStatesWithOptions(request *ListRealt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
 		body["SkillGroupIdList"] = request.SkillGroupIdList
@@ -28726,11 +29569,26 @@ func (client *Client) ListRecentCallDetailRecordsWithOptions(request *ListRecent
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Criteria"] = request.Criteria
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
@@ -28777,7 +29635,10 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28818,8 +29679,14 @@ func (client *Client) ListSipCallRecordsWithOptions(request *ListSipCallRecordsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactIdList"] = request.ContactIdList
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ContactIdList)) {
+		query["ContactIdList"] = request.ContactIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28860,8 +29727,14 @@ func (client *Client) ListSipTracesWithOptions(request *ListSipTracesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28902,10 +29775,22 @@ func (client *Client) ListSkillGroupsWithOptions(request *ListSkillGroupsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28946,12 +29831,30 @@ func (client *Client) ListSkillLevelsOfUserWithOptions(request *ListSkillLevelsO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["IsMember"] = request.IsMember
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMember)) {
+		query["IsMember"] = request.IsMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28992,10 +29895,22 @@ func (client *Client) ListUnassignedNumbersWithOptions(request *ListUnassignedNu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29036,12 +29951,30 @@ func (client *Client) ListUserLevelsOfSkillGroupWithOptions(request *ListUserLev
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["IsMember"] = request.IsMember
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMember)) {
+		query["IsMember"] = request.IsMember
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29082,10 +30015,22 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchPattern"] = request.SearchPattern
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29126,14 +30071,38 @@ func (client *Client) MakeCallWithOptions(request *MakeCallRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Callee"] = request.Callee
-	query["Caller"] = request.Caller
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["MaskedCallee"] = request.MaskedCallee
-	query["Tags"] = request.Tags
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskedCallee)) {
+		query["MaskedCallee"] = request.MaskedCallee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29174,8 +30143,14 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29216,10 +30191,22 @@ func (client *Client) ModifyPhoneNumberWithOptions(request *ModifyPhoneNumberReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ContactFlowId"] = request.ContactFlowId
-	query["InstanceId"] = request.InstanceId
-	query["Number"] = request.Number
-	query["Usage"] = request.Usage
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29260,10 +30247,22 @@ func (client *Client) ModifySkillGroupWithOptions(request *ModifySkillGroupReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DisplayName"] = request.DisplayName
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29304,9 +30303,18 @@ func (client *Client) ModifySkillLevelsOfUserWithOptions(request *ModifySkillLev
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillLevelList"] = request.SkillLevelList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevelList)) {
+		query["SkillLevelList"] = request.SkillLevelList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29347,11 +30355,26 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Mobile"] = request.Mobile
-	query["RoleId"] = request.RoleId
-	query["UserId"] = request.UserId
-	query["WorkMode"] = request.WorkMode
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkMode)) {
+		query["WorkMode"] = request.WorkMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29392,9 +30415,18 @@ func (client *Client) ModifyUserLevelsOfSkillGroupWithOptions(request *ModifyUse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupId"] = request.SkillGroupId
-	query["UserLevelList"] = request.UserLevelList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLevelList)) {
+		query["UserLevelList"] = request.UserLevelList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29435,11 +30467,26 @@ func (client *Client) MonitorCallWithOptions(request *MonitorCallRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["MonitoredUserId"] = request.MonitoredUserId
-	query["TimeoutSeconds"] = request.TimeoutSeconds
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitoredUserId)) {
+		query["MonitoredUserId"] = request.MonitoredUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29480,11 +30527,26 @@ func (client *Client) MuteCallWithOptions(request *MuteCallRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29525,8 +30587,14 @@ func (client *Client) PauseCampaignWithOptions(request *PauseCampaignRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29567,10 +30635,22 @@ func (client *Client) PickOutboundNumbersWithOptions(request *PickOutboundNumber
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CalledNumber"] = request.CalledNumber
-	query["Count"] = request.Count
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupIdList"] = request.SkillGroupIdList
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29611,9 +30691,18 @@ func (client *Client) PollUserStatusWithOptions(request *PollUserStatusRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29654,10 +30743,22 @@ func (client *Client) ReadyForServiceWithOptions(request *ReadyForServiceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["OutboundScenario"] = request.OutboundScenario
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundScenario)) {
+		query["OutboundScenario"] = request.OutboundScenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29698,10 +30799,22 @@ func (client *Client) RegisterDeviceWithOptions(request *RegisterDeviceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["Password"] = request.Password
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29742,11 +30855,26 @@ func (client *Client) ReleaseCallWithOptions(request *ReleaseCallRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29787,9 +30915,18 @@ func (client *Client) RemovePersonalNumbersFromUserWithOptions(request *RemovePe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NumberList"] = request.NumberList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29830,9 +30967,18 @@ func (client *Client) RemovePhoneNumberFromSkillGroupsWithOptions(request *Remov
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Number"] = request.Number
-	query["SkillGroupIdList"] = request.SkillGroupIdList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29873,8 +31019,14 @@ func (client *Client) RemovePhoneNumbersWithOptions(request *RemovePhoneNumbersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NumberList"] = request.NumberList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29915,9 +31067,18 @@ func (client *Client) RemovePhoneNumbersFromSkillGroupWithOptions(request *Remov
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NumberList"] = request.NumberList
-	query["SkillGroupId"] = request.SkillGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29958,9 +31119,18 @@ func (client *Client) RemoveSkillGroupsFromUserWithOptions(request *RemoveSkillG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupIdList"] = request.SkillGroupIdList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30001,8 +31171,14 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["UserIdList"] = request.UserIdList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdList)) {
+		query["UserIdList"] = request.UserIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30043,9 +31219,18 @@ func (client *Client) RemoveUsersFromSkillGroupWithOptions(request *RemoveUsersF
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SkillGroupId"] = request.SkillGroupId
-	query["UserIdList"] = request.UserIdList
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdList)) {
+		query["UserIdList"] = request.UserIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30086,9 +31271,18 @@ func (client *Client) ResetAgentStateWithOptions(request *ResetAgentStateRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30129,9 +31323,18 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Password"] = request.Password
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30172,8 +31375,14 @@ func (client *Client) ResumeCampaignWithOptions(request *ResumeCampaignRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30214,11 +31423,26 @@ func (client *Client) RetrieveCallWithOptions(request *RetrieveCallRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30259,12 +31483,30 @@ func (client *Client) SaveRTCStatsV2WithOptions(request *SaveRTCStatsV2Request, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["GeneralInfo"] = request.GeneralInfo
-	query["GoogAddress"] = request.GoogAddress
-	query["InstanceId"] = request.InstanceId
-	query["ReceiverReport"] = request.ReceiverReport
-	query["SenderReport"] = request.SenderReport
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeneralInfo)) {
+		query["GeneralInfo"] = request.GeneralInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoogAddress)) {
+		query["GoogAddress"] = request.GoogAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiverReport)) {
+		query["ReceiverReport"] = request.ReceiverReport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderReport)) {
+		query["SenderReport"] = request.SenderReport
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30305,15 +31547,42 @@ func (client *Client) SaveTerminalLogWithOptions(request *SaveTerminalLogRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["CallId"] = request.CallId
-	query["Content"] = request.Content
-	query["DataType"] = request.DataType
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["MethodName"] = request.MethodName
-	query["Status"] = request.Status
-	query["UniqueRequestId"] = request.UniqueRequestId
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		query["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MethodName)) {
+		query["MethodName"] = request.MethodName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueRequestId)) {
+		query["UniqueRequestId"] = request.UniqueRequestId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30354,12 +31623,30 @@ func (client *Client) SaveWebRTCStatsWithOptions(request *SaveWebRTCStatsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["GeneralInfo"] = request.GeneralInfo
-	query["GoogAddress"] = request.GoogAddress
-	query["InstanceId"] = request.InstanceId
-	query["ReceiverReport"] = request.ReceiverReport
-	query["SenderReport"] = request.SenderReport
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeneralInfo)) {
+		query["GeneralInfo"] = request.GeneralInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoogAddress)) {
+		query["GoogAddress"] = request.GoogAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiverReport)) {
+		query["ReceiverReport"] = request.ReceiverReport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderReport)) {
+		query["SenderReport"] = request.SenderReport
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30400,11 +31687,26 @@ func (client *Client) SaveWebRtcInfoWithOptions(request *SaveWebRtcInfoRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CallId"] = request.CallId
-	query["Content"] = request.Content
-	query["ContentType"] = request.ContentType
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30445,12 +31747,30 @@ func (client *Client) SendDtmfSignalingWithOptions(request *SendDtmfSignalingReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["Dtmf"] = request.Dtmf
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dtmf)) {
+		query["Dtmf"] = request.Dtmf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30491,10 +31811,22 @@ func (client *Client) SignInGroupWithOptions(request *SignInGroupRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["SignedSkillGroupIdList"] = request.SignedSkillGroupIdList
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignedSkillGroupIdList)) {
+		query["SignedSkillGroupIdList"] = request.SignedSkillGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30535,9 +31867,18 @@ func (client *Client) SignOutGroupWithOptions(request *SignOutGroupRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30578,13 +31919,34 @@ func (client *Client) StartBack2BackCallWithOptions(request *StartBack2BackCallR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AdditionalBroker"] = request.AdditionalBroker
-	query["Broker"] = request.Broker
-	query["Callee"] = request.Callee
-	query["Caller"] = request.Caller
-	query["InstanceId"] = request.InstanceId
-	query["Tags"] = request.Tags
-	query["TimeoutSeconds"] = request.TimeoutSeconds
+	if !tea.BoolValue(util.IsUnset(request.AdditionalBroker)) {
+		query["AdditionalBroker"] = request.AdditionalBroker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Broker)) {
+		query["Broker"] = request.Broker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30625,15 +31987,42 @@ func (client *Client) StartPredictiveCallWithOptions(request *StartPredictiveCal
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Callee"] = request.Callee
-	query["Caller"] = request.Caller
-	query["ContactFlowId"] = request.ContactFlowId
-	query["ContactFlowVariables"] = request.ContactFlowVariables
-	query["InstanceId"] = request.InstanceId
-	query["MaskedCallee"] = request.MaskedCallee
-	query["SkillGroupId"] = request.SkillGroupId
-	query["Tags"] = request.Tags
-	query["TimeoutSeconds"] = request.TimeoutSeconds
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVariables)) {
+		query["ContactFlowVariables"] = request.ContactFlowVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskedCallee)) {
+		query["MaskedCallee"] = request.MaskedCallee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30674,8 +32063,14 @@ func (client *Client) SubmitCampaignWithOptions(request *SubmitCampaignRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CampaignId"] = request.CampaignId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30716,10 +32111,22 @@ func (client *Client) TakeBreakWithOptions(request *TakeBreakRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Code"] = request.Code
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30760,11 +32167,26 @@ func (client *Client) UnmuteCallWithOptions(request *UnmuteCallRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChannelId"] = request.ChannelId
-	query["DeviceId"] = request.DeviceId
-	query["InstanceId"] = request.InstanceId
-	query["JobId"] = request.JobId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30805,10 +32227,22 @@ func (client *Client) UpdateConfigItemsWithOptions(request *UpdateConfigItemsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigItems"] = request.ConfigItems
-	query["InstanceId"] = request.InstanceId
-	query["ObjectId"] = request.ObjectId
-	query["ObjectType"] = request.ObjectType
+	if !tea.BoolValue(util.IsUnset(request.ConfigItems)) {
+		query["ConfigItems"] = request.ConfigItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
