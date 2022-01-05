@@ -11672,9 +11672,18 @@ func (client *Client) CancelUpdateStackWithOptions(request *CancelUpdateStackReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CancelType"] = request.CancelType
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.CancelType)) {
+		query["CancelType"] = request.CancelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11715,18 +11724,54 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DryRun"] = request.DryRun
-	query["Mode"] = request.Mode
-	query["Parallelism"] = request.Parallelism
-	query["Parameters"] = request.Parameters
-	query["RamRoleName"] = request.RamRoleName
-	query["RecreatingResources"] = request.RecreatingResources
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecreatingResources)) {
+		query["RecreatingResources"] = request.RecreatingResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11767,31 +11812,106 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetName"] = request.ChangeSetName
-	query["ChangeSetType"] = request.ChangeSetType
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["DisableRollback"] = request.DisableRollback
-	query["NotificationURLs"] = request.NotificationURLs
-	query["Parallelism"] = request.Parallelism
-	query["Parameters"] = request.Parameters
-	query["RamRoleName"] = request.RamRoleName
-	query["RegionId"] = request.RegionId
-	query["ReplacementOption"] = request.ReplacementOption
-	query["ResourcesToImport"] = request.ResourcesToImport
-	query["StackId"] = request.StackId
-	query["StackName"] = request.StackName
-	query["StackPolicyBody"] = request.StackPolicyBody
-	query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
-	query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
-	query["StackPolicyURL"] = request.StackPolicyURL
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateScratchId"] = request.TemplateScratchId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
-	query["UsePreviousParameters"] = request.UsePreviousParameters
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetName)) {
+		query["ChangeSetName"] = request.ChangeSetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetType)) {
+		query["ChangeSetType"] = request.ChangeSetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationURLs)) {
+		query["NotificationURLs"] = request.NotificationURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplacementOption)) {
+		query["ReplacementOption"] = request.ReplacementOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourcesToImport)) {
+		query["ResourcesToImport"] = request.ResourcesToImport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackName)) {
+		query["StackName"] = request.StackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyBody)) {
+		query["StackPolicyBody"] = request.StackPolicyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyDuringUpdateBody)) {
+		query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyDuringUpdateURL)) {
+		query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
+		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsePreviousParameters)) {
+		query["UsePreviousParameters"] = request.UsePreviousParameters
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11832,27 +11952,90 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["CreateOption"] = request.CreateOption
-	query["DeletionProtection"] = request.DeletionProtection
-	query["DisableRollback"] = request.DisableRollback
-	query["NotificationURLs"] = request.NotificationURLs
-	query["Parallelism"] = request.Parallelism
-	query["Parameters"] = request.Parameters
-	query["RamRoleName"] = request.RamRoleName
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["StackName"] = request.StackName
-	query["StackPolicyBody"] = request.StackPolicyBody
-	query["StackPolicyURL"] = request.StackPolicyURL
-	query["Tags"] = request.Tags
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateScratchId"] = request.TemplateScratchId
-	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateOption)) {
+		query["CreateOption"] = request.CreateOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationURLs)) {
+		query["NotificationURLs"] = request.NotificationURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackName)) {
+		query["StackName"] = request.StackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyBody)) {
+		query["StackPolicyBody"] = request.StackPolicyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
+		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchRegionId)) {
+		query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11899,20 +12082,62 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 	}
 
 	query := map[string]interface{}{}
-	query["AdministrationRoleName"] = request.AdministrationRoleName
-	query["AutoDeployment"] = request.AutoDeploymentShrink
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["ExecutionRoleName"] = request.ExecutionRoleName
-	query["Parameters"] = request.Parameters
-	query["PermissionModel"] = request.PermissionModel
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["StackGroupName"] = request.StackGroupName
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.AdministrationRoleName)) {
+		query["AdministrationRoleName"] = request.AdministrationRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoDeploymentShrink)) {
+		query["AutoDeployment"] = request.AutoDeploymentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionRoleName)) {
+		query["ExecutionRoleName"] = request.ExecutionRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionModel)) {
+		query["PermissionModel"] = request.PermissionModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11971,17 +12196,50 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 	}
 
 	query := map[string]interface{}{}
-	query["AccountIds"] = request.AccountIdsShrink
-	query["ClientToken"] = request.ClientToken
-	query["DeploymentTargets"] = request.DeploymentTargetsShrink
-	query["DisableRollback"] = request.DisableRollback
-	query["OperationDescription"] = request.OperationDescription
-	query["OperationPreferences"] = request.OperationPreferencesShrink
-	query["ParameterOverrides"] = request.ParameterOverrides
-	query["RegionId"] = request.RegionId
-	query["RegionIds"] = request.RegionIdsShrink
-	query["StackGroupName"] = request.StackGroupName
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentTargetsShrink)) {
+		query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationDescription)) {
+		query["OperationDescription"] = request.OperationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterOverrides)) {
+		query["ParameterOverrides"] = request.ParameterOverrides
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12022,11 +12280,26 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateName"] = request.TemplateName
-	query["TemplateURL"] = request.TemplateURL
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12085,16 +12358,46 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["ExecutionMode"] = request.ExecutionMode
-	query["LogicalIdStrategy"] = request.LogicalIdStrategy
-	query["PreferenceParameters"] = request.PreferenceParametersShrink
-	query["RegionId"] = request.RegionId
-	query["SourceResourceGroup"] = request.SourceResourceGroupShrink
-	query["SourceResources"] = request.SourceResourcesShrink
-	query["SourceTag"] = request.SourceTagShrink
-	query["TemplateScratchType"] = request.TemplateScratchType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionMode)) {
+		query["ExecutionMode"] = request.ExecutionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalIdStrategy)) {
+		query["LogicalIdStrategy"] = request.LogicalIdStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferenceParametersShrink)) {
+		query["PreferenceParameters"] = request.PreferenceParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourceGroupShrink)) {
+		query["SourceResourceGroup"] = request.SourceResourceGroupShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourcesShrink)) {
+		query["SourceResources"] = request.SourceResourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTagShrink)) {
+		query["SourceTag"] = request.SourceTagShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchType)) {
+		query["TemplateScratchType"] = request.TemplateScratchType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12135,8 +12438,14 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12177,11 +12486,26 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RamRoleName"] = request.RamRoleName
-	query["RegionId"] = request.RegionId
-	query["RetainAllResources"] = request.RetainAllResources
-	query["RetainResources"] = request.RetainResources
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainAllResources)) {
+		query["RetainAllResources"] = request.RetainAllResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResources)) {
+		query["RetainResources"] = request.RetainResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12222,8 +12546,14 @@ func (client *Client) DeleteStackGroupWithOptions(request *DeleteStackGroupReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12282,15 +12612,42 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 	}
 
 	query := map[string]interface{}{}
-	query["AccountIds"] = request.AccountIdsShrink
-	query["ClientToken"] = request.ClientToken
-	query["DeploymentTargets"] = request.DeploymentTargetsShrink
-	query["OperationDescription"] = request.OperationDescription
-	query["OperationPreferences"] = request.OperationPreferencesShrink
-	query["RegionId"] = request.RegionId
-	query["RegionIds"] = request.RegionIdsShrink
-	query["RetainStacks"] = request.RetainStacks
-	query["StackGroupName"] = request.StackGroupName
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentTargetsShrink)) {
+		query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationDescription)) {
+		query["OperationDescription"] = request.OperationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainStacks)) {
+		query["RetainStacks"] = request.RetainStacks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12331,7 +12688,10 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12372,8 +12732,14 @@ func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateSc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["TemplateScratchId"] = request.TemplateScratchId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12414,7 +12780,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12455,10 +12824,22 @@ func (client *Client) DetectStackDriftWithOptions(request *DetectStackDriftReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12505,10 +12886,22 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["OperationPreferences"] = request.OperationPreferencesShrink
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12549,10 +12942,22 @@ func (client *Client) DetectStackResourceDriftWithOptions(request *DetectStackRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12593,9 +12998,18 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["ClientToken"] = request.ClientToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12636,9 +13050,18 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProvisionRegionId"] = request.ProvisionRegionId
-	query["RegionId"] = request.RegionId
-	query["TemplateScratchId"] = request.TemplateScratchId
+	if !tea.BoolValue(util.IsUnset(request.ProvisionRegionId)) {
+		query["ProvisionRegionId"] = request.ProvisionRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12679,10 +13102,22 @@ func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12723,9 +13158,18 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["RegionId"] = request.RegionId
-	query["ShowTemplate"] = request.ShowTemplate
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowTemplate)) {
+		query["ShowTemplate"] = request.ShowTemplate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12766,8 +13210,14 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Feature"] = request.Feature
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Feature)) {
+		query["Feature"] = request.Feature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12808,7 +13258,10 @@ func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12849,7 +13302,10 @@ func (client *Client) GetResourceTypeTemplateWithOptions(request *GetResourceTyp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12890,13 +13346,34 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Parameters"] = request.Parameters
-	query["RegionId"] = request.RegionId
-	query["Services"] = request.Services
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Services)) {
+		query["Services"] = request.Services
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12937,11 +13414,26 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["OutputOption"] = request.OutputOption
-	query["RegionId"] = request.RegionId
-	query["ShowResourceProgress"] = request.ShowResourceProgress
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputOption)) {
+		query["OutputOption"] = request.OutputOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowResourceProgress)) {
+		query["ShowResourceProgress"] = request.ShowResourceProgress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12982,8 +13474,14 @@ func (client *Client) GetStackDriftDetectionStatusWithOptions(request *GetStackD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DriftDetectionId"] = request.DriftDetectionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DriftDetectionId)) {
+		query["DriftDetectionId"] = request.DriftDetectionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13024,9 +13522,18 @@ func (client *Client) GetStackGroupWithOptions(request *GetStackGroupRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackGroupId"] = request.StackGroupId
-	query["StackGroupName"] = request.StackGroupName
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupId)) {
+		query["StackGroupId"] = request.StackGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13067,8 +13574,14 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationId"] = request.OperationId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.OperationId)) {
+		query["OperationId"] = request.OperationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13109,10 +13622,22 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
-	query["StackInstanceAccountId"] = request.StackInstanceAccountId
-	query["StackInstanceRegionId"] = request.StackInstanceRegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackInstanceAccountId)) {
+		query["StackInstanceAccountId"] = request.StackInstanceAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackInstanceRegionId)) {
+		query["StackInstanceRegionId"] = request.StackInstanceRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13153,8 +13678,14 @@ func (client *Client) GetStackPolicyWithOptions(request *GetStackPolicyRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13195,11 +13726,26 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["RegionId"] = request.RegionId
-	query["ShowResourceAttributes"] = request.ShowResourceAttributes
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowResourceAttributes)) {
+		query["ShowResourceAttributes"] = request.ShowResourceAttributes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13240,14 +13786,38 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["IncludePermission"] = request.IncludePermission
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
-	query["StackId"] = request.StackId
-	query["TemplateId"] = request.TemplateId
-	query["TemplateStage"] = request.TemplateStage
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludePermission)) {
+		query["IncludePermission"] = request.IncludePermission
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateStage)) {
+		query["TemplateStage"] = request.TemplateStage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13288,15 +13858,42 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Parameters"] = request.Parameters
-	query["RegionId"] = request.RegionId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateScratchId"] = request.TemplateScratchId
-	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchRegionId)) {
+		query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13343,14 +13940,38 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Parameters"] = request.Parameters
-	query["ParametersKeyFilter"] = request.ParametersKeyFilterShrink
-	query["RegionId"] = request.RegionId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersKeyFilterShrink)) {
+		query["ParametersKeyFilter"] = request.ParametersKeyFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13391,9 +14012,18 @@ func (client *Client) GetTemplateScratchWithOptions(request *GetTemplateScratchR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ShowDataOption"] = request.ShowDataOption
-	query["TemplateScratchId"] = request.TemplateScratchId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowDataOption)) {
+		query["ShowDataOption"] = request.ShowDataOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13434,14 +14064,38 @@ func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
-	query["StackId"] = request.StackId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13482,14 +14136,38 @@ func (client *Client) ListChangeSetsWithOptions(request *ListChangeSetsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChangeSetId"] = request.ChangeSetId
-	query["ChangeSetName"] = request.ChangeSetName
-	query["ExecutionStatus"] = request.ExecutionStatus
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetId)) {
+		query["ChangeSetId"] = request.ChangeSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeSetName)) {
+		query["ChangeSetName"] = request.ChangeSetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionStatus)) {
+		query["ExecutionStatus"] = request.ExecutionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13563,13 +14241,34 @@ func (client *Client) ListStackEventsWithOptions(request *ListStackEventsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceType"] = request.ResourceType
-	query["StackId"] = request.StackId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13610,10 +14309,22 @@ func (client *Client) ListStackGroupOperationResultsWithOptions(request *ListSta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationId"] = request.OperationId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.OperationId)) {
+		query["OperationId"] = request.OperationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13654,10 +14365,22 @@ func (client *Client) ListStackGroupOperationsWithOptions(request *ListStackGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13698,11 +14421,26 @@ func (client *Client) ListStackGroupsWithOptions(request *ListStackGroupsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13743,12 +14481,30 @@ func (client *Client) ListStackInstancesWithOptions(request *ListStackInstancesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["StackGroupName"] = request.StackGroupName
-	query["StackInstanceAccountId"] = request.StackInstanceAccountId
-	query["StackInstanceRegionId"] = request.StackInstanceRegionId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackInstanceAccountId)) {
+		query["StackInstanceAccountId"] = request.StackInstanceAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackInstanceRegionId)) {
+		query["StackInstanceRegionId"] = request.StackInstanceRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13789,13 +14545,34 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["OperationType"] = request.OperationType
-	query["RamRoleName"] = request.RamRoleName
-	query["RegionId"] = request.RegionId
-	query["RetainAllResources"] = request.RetainAllResources
-	query["RetainResources"] = request.RetainResources
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainAllResources)) {
+		query["RetainAllResources"] = request.RetainAllResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResources)) {
+		query["RetainResources"] = request.RetainResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13836,11 +14613,26 @@ func (client *Client) ListStackResourceDriftsWithOptions(request *ListStackResou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceDriftStatus"] = request.ResourceDriftStatus
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDriftStatus)) {
+		query["ResourceDriftStatus"] = request.ResourceDriftStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13881,8 +14673,14 @@ func (client *Client) ListStackResourcesWithOptions(request *ListStackResourcesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13923,17 +14721,50 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ParentStackId"] = request.ParentStackId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ShowNestedStack"] = request.ShowNestedStack
-	query["StackId"] = request.StackId
-	query["StackIds"] = request.StackIds
-	query["StackName"] = request.StackName
-	query["Status"] = request.Status
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentStackId)) {
+		query["ParentStackId"] = request.ParentStackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowNestedStack)) {
+		query["ShowNestedStack"] = request.ShowNestedStack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackIds)) {
+		query["StackIds"] = request.StackIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackName)) {
+		query["StackName"] = request.StackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13974,9 +14805,18 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14017,11 +14857,26 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14062,10 +14917,22 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Key"] = request.Key
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14106,12 +14973,30 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["Status"] = request.Status
-	query["TemplateScratchId"] = request.TemplateScratchId
-	query["TemplateScratchType"] = request.TemplateScratchType
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchType)) {
+		query["TemplateScratchType"] = request.TemplateScratchType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14152,9 +15037,18 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14195,12 +15089,30 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ShareType"] = request.ShareType
-	query["Tag"] = request.Tag
-	query["TemplateName"] = request.TemplateName
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareType)) {
+		query["ShareType"] = request.ShareType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14241,10 +15153,22 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NewResourceGroupId"] = request.NewResourceGroupId
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14285,21 +15209,66 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DisableRollback"] = request.DisableRollback
-	query["Parallelism"] = request.Parallelism
-	query["Parameters"] = request.Parameters
-	query["RegionId"] = request.RegionId
-	query["StackName"] = request.StackName
-	query["StackPolicyBody"] = request.StackPolicyBody
-	query["StackPolicyURL"] = request.StackPolicyURL
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateScratchId"] = request.TemplateScratchId
-	query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackName)) {
+		query["StackName"] = request.StackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyBody)) {
+		query["StackPolicyBody"] = request.StackPolicyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
+		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchRegionId)) {
+		query["TemplateScratchRegionId"] = request.TemplateScratchRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14340,9 +15309,18 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeletionProtection"] = request.DeletionProtection
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14383,10 +15361,22 @@ func (client *Client) SetStackPolicyWithOptions(request *SetStackPolicyRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
-	query["StackPolicyBody"] = request.StackPolicyBody
-	query["StackPolicyURL"] = request.StackPolicyURL
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyBody)) {
+		query["StackPolicyBody"] = request.StackPolicyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
+		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14427,11 +15417,26 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountIds"] = request.AccountIds
-	query["ShareOption"] = request.ShareOption
-	query["TemplateId"] = request.TemplateId
-	query["TemplateVersion"] = request.TemplateVersion
-	query["VersionOption"] = request.VersionOption
+	if !tea.BoolValue(util.IsUnset(request.AccountIds)) {
+		query["AccountIds"] = request.AccountIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareOption)) {
+		query["ShareOption"] = request.ShareOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionOption)) {
+		query["VersionOption"] = request.VersionOption
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14472,12 +15477,30 @@ func (client *Client) SignalResourceWithOptions(request *SignalResourceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
-	query["Status"] = request.Status
-	query["UniqueId"] = request.UniqueId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueId)) {
+		query["UniqueId"] = request.UniqueId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14518,8 +15541,14 @@ func (client *Client) StopStackGroupOperationWithOptions(request *StopStackGroup
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OperationId"] = request.OperationId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.OperationId)) {
+		query["OperationId"] = request.OperationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14560,10 +15589,22 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14604,11 +15645,26 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14649,25 +15705,82 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DisableRollback"] = request.DisableRollback
-	query["Parallelism"] = request.Parallelism
-	query["Parameters"] = request.Parameters
-	query["RamRoleName"] = request.RamRoleName
-	query["RegionId"] = request.RegionId
-	query["ReplacementOption"] = request.ReplacementOption
-	query["StackId"] = request.StackId
-	query["StackPolicyBody"] = request.StackPolicyBody
-	query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
-	query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
-	query["StackPolicyURL"] = request.StackPolicyURL
-	query["Tags"] = request.Tags
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
-	query["UsePreviousParameters"] = request.UsePreviousParameters
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableRollback)) {
+		query["DisableRollback"] = request.DisableRollback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
+		query["RamRoleName"] = request.RamRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplacementOption)) {
+		query["ReplacementOption"] = request.ReplacementOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyBody)) {
+		query["StackPolicyBody"] = request.StackPolicyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyDuringUpdateBody)) {
+		query["StackPolicyDuringUpdateBody"] = request.StackPolicyDuringUpdateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyDuringUpdateURL)) {
+		query["StackPolicyDuringUpdateURL"] = request.StackPolicyDuringUpdateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
+		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsePreviousParameters)) {
+		query["UsePreviousParameters"] = request.UsePreviousParameters
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14730,24 +15843,78 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 	}
 
 	query := map[string]interface{}{}
-	query["AccountIds"] = request.AccountIdsShrink
-	query["AdministrationRoleName"] = request.AdministrationRoleName
-	query["AutoDeployment"] = request.AutoDeploymentShrink
-	query["ClientToken"] = request.ClientToken
-	query["DeploymentTargets"] = request.DeploymentTargetsShrink
-	query["Description"] = request.Description
-	query["ExecutionRoleName"] = request.ExecutionRoleName
-	query["OperationDescription"] = request.OperationDescription
-	query["OperationPreferences"] = request.OperationPreferencesShrink
-	query["Parameters"] = request.Parameters
-	query["PermissionModel"] = request.PermissionModel
-	query["RegionId"] = request.RegionId
-	query["RegionIds"] = request.RegionIdsShrink
-	query["StackGroupName"] = request.StackGroupName
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateURL"] = request.TemplateURL
-	query["TemplateVersion"] = request.TemplateVersion
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdministrationRoleName)) {
+		query["AdministrationRoleName"] = request.AdministrationRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoDeploymentShrink)) {
+		query["AutoDeployment"] = request.AutoDeploymentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentTargetsShrink)) {
+		query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionRoleName)) {
+		query["ExecutionRoleName"] = request.ExecutionRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationDescription)) {
+		query["OperationDescription"] = request.OperationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionModel)) {
+		query["PermissionModel"] = request.PermissionModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14806,16 +15973,46 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 	}
 
 	query := map[string]interface{}{}
-	query["AccountIds"] = request.AccountIdsShrink
-	query["ClientToken"] = request.ClientToken
-	query["DeploymentTargets"] = request.DeploymentTargetsShrink
-	query["OperationDescription"] = request.OperationDescription
-	query["OperationPreferences"] = request.OperationPreferencesShrink
-	query["ParameterOverrides"] = request.ParameterOverrides
-	query["RegionId"] = request.RegionId
-	query["RegionIds"] = request.RegionIdsShrink
-	query["StackGroupName"] = request.StackGroupName
-	query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsShrink)) {
+		query["AccountIds"] = request.AccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentTargetsShrink)) {
+		query["DeploymentTargets"] = request.DeploymentTargetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationDescription)) {
+		query["OperationDescription"] = request.OperationDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationPreferencesShrink)) {
+		query["OperationPreferences"] = request.OperationPreferencesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterOverrides)) {
+		query["ParameterOverrides"] = request.ParameterOverrides
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackGroupName)) {
+		query["StackGroupName"] = request.StackGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutInMinutes)) {
+		query["TimeoutInMinutes"] = request.TimeoutInMinutes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14856,12 +16053,30 @@ func (client *Client) UpdateStackTemplateByResourcesWithOptions(request *UpdateS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LogicalResourceId"] = request.LogicalResourceId
-	query["RegionId"] = request.RegionId
-	query["StackId"] = request.StackId
-	query["TemplateFormat"] = request.TemplateFormat
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalResourceId)) {
+		query["LogicalResourceId"] = request.LogicalResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateFormat)) {
+		query["TemplateFormat"] = request.TemplateFormat
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14902,11 +16117,26 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateId"] = request.TemplateId
-	query["TemplateName"] = request.TemplateName
-	query["TemplateURL"] = request.TemplateURL
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14965,16 +16195,46 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["ExecutionMode"] = request.ExecutionMode
-	query["LogicalIdStrategy"] = request.LogicalIdStrategy
-	query["PreferenceParameters"] = request.PreferenceParametersShrink
-	query["RegionId"] = request.RegionId
-	query["SourceResourceGroup"] = request.SourceResourceGroupShrink
-	query["SourceResources"] = request.SourceResourcesShrink
-	query["SourceTag"] = request.SourceTagShrink
-	query["TemplateScratchId"] = request.TemplateScratchId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionMode)) {
+		query["ExecutionMode"] = request.ExecutionMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalIdStrategy)) {
+		query["LogicalIdStrategy"] = request.LogicalIdStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferenceParametersShrink)) {
+		query["PreferenceParameters"] = request.PreferenceParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourceGroupShrink)) {
+		query["SourceResourceGroup"] = request.SourceResourceGroupShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourcesShrink)) {
+		query["SourceResources"] = request.SourceResourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTagShrink)) {
+		query["SourceTag"] = request.SourceTagShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateScratchId)) {
+		query["TemplateScratchId"] = request.TemplateScratchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15015,11 +16275,26 @@ func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["RegionId"] = request.RegionId
-	query["TemplateBody"] = request.TemplateBody
-	query["TemplateURL"] = request.TemplateURL
-	query["ValidationOption"] = request.ValidationOption
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidationOption)) {
+		query["ValidationOption"] = request.ValidationOption
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
