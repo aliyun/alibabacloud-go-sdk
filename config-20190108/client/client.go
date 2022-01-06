@@ -2518,9 +2518,7 @@ func (s *GetSupportedResourceTypesResponse) SetBody(v *GetSupportedResourceTypes
 }
 
 type ListAggregateDiscoveredResourcesRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// 资源夹ID
-	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
@@ -2540,11 +2538,6 @@ func (s ListAggregateDiscoveredResourcesRequest) GoString() string {
 
 func (s *ListAggregateDiscoveredResourcesRequest) SetAggregatorId(v string) *ListAggregateDiscoveredResourcesRequest {
 	s.AggregatorId = &v
-	return s
-}
-
-func (s *ListAggregateDiscoveredResourcesRequest) SetFolderId(v string) *ListAggregateDiscoveredResourcesRequest {
-	s.FolderId = &v
 	return s
 }
 
@@ -4679,10 +4672,6 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		query["AggregatorId"] = request.AggregatorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
-		query["FolderId"] = request.FolderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
