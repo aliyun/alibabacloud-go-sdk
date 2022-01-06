@@ -1494,10 +1494,16 @@ type DetailSubSceneResponseBody struct {
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// 子场景id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 矫正后图的路径
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 墙线标注数据
+	LayoutData *string `json:"LayoutData,omitempty" xml:"LayoutData,omitempty"`
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 子场景名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 原图路径
+	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
 	// 请求ID，与入参requestId对应
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 图片ID/视频ID
@@ -1506,6 +1512,8 @@ type DetailSubSceneResponseBody struct {
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 是否请求成功
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 资源类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// 图片路径/视频路径
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -1548,6 +1556,16 @@ func (s *DetailSubSceneResponseBody) SetId(v string) *DetailSubSceneResponseBody
 	return s
 }
 
+func (s *DetailSubSceneResponseBody) SetImageUrl(v string) *DetailSubSceneResponseBody {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DetailSubSceneResponseBody) SetLayoutData(v string) *DetailSubSceneResponseBody {
+	s.LayoutData = &v
+	return s
+}
+
 func (s *DetailSubSceneResponseBody) SetMessage(v string) *DetailSubSceneResponseBody {
 	s.Message = &v
 	return s
@@ -1555,6 +1573,11 @@ func (s *DetailSubSceneResponseBody) SetMessage(v string) *DetailSubSceneRespons
 
 func (s *DetailSubSceneResponseBody) SetName(v string) *DetailSubSceneResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *DetailSubSceneResponseBody) SetOriginUrl(v string) *DetailSubSceneResponseBody {
+	s.OriginUrl = &v
 	return s
 }
 
@@ -1575,6 +1598,11 @@ func (s *DetailSubSceneResponseBody) SetStatus(v int64) *DetailSubSceneResponseB
 
 func (s *DetailSubSceneResponseBody) SetSuccess(v bool) *DetailSubSceneResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *DetailSubSceneResponseBody) SetType(v string) *DetailSubSceneResponseBody {
+	s.Type = &v
 	return s
 }
 
