@@ -168,99 +168,6 @@ func (s *ChangeInstanceAzoneResponse) SetBody(v *ChangeInstanceAzoneResponseBody
 	return s
 }
 
-type ChangeInstanceNetworkRequest struct {
-	ClassicExpiredDays     *int32  `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	DrdsInstanceId         *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RetainClassic          *bool   `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
-	SrcInstanceNetworkType *string `json:"SrcInstanceNetworkType,omitempty" xml:"SrcInstanceNetworkType,omitempty"`
-	VpcId                  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId              *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-}
-
-func (s ChangeInstanceNetworkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeInstanceNetworkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeInstanceNetworkRequest) SetClassicExpiredDays(v int32) *ChangeInstanceNetworkRequest {
-	s.ClassicExpiredDays = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkRequest) SetDrdsInstanceId(v string) *ChangeInstanceNetworkRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkRequest) SetRetainClassic(v bool) *ChangeInstanceNetworkRequest {
-	s.RetainClassic = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkRequest) SetSrcInstanceNetworkType(v string) *ChangeInstanceNetworkRequest {
-	s.SrcInstanceNetworkType = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkRequest) SetVpcId(v string) *ChangeInstanceNetworkRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkRequest) SetVswitchId(v string) *ChangeInstanceNetworkRequest {
-	s.VswitchId = &v
-	return s
-}
-
-type ChangeInstanceNetworkResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ChangeInstanceNetworkResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeInstanceNetworkResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeInstanceNetworkResponseBody) SetRequestId(v string) *ChangeInstanceNetworkResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ChangeInstanceNetworkResponseBody) SetSuccess(v bool) *ChangeInstanceNetworkResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ChangeInstanceNetworkResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ChangeInstanceNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ChangeInstanceNetworkResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChangeInstanceNetworkResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ChangeInstanceNetworkResponse) SetHeaders(v map[string]*string) *ChangeInstanceNetworkResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ChangeInstanceNetworkResponse) SetBody(v *ChangeInstanceNetworkResponseBody) *ChangeInstanceNetworkResponse {
-	s.Body = v
-	return s
-}
-
 type CheckDrdsDbNameRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -434,87 +341,6 @@ func (s *CheckExpandStatusResponse) SetBody(v *CheckExpandStatusResponseBody) *C
 	return s
 }
 
-type CheckRdsSuperAccountRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-}
-
-func (s CheckRdsSuperAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckRdsSuperAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckRdsSuperAccountRequest) SetAccountName(v string) *CheckRdsSuperAccountRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CheckRdsSuperAccountRequest) SetDbInstanceId(v string) *CheckRdsSuperAccountRequest {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *CheckRdsSuperAccountRequest) SetDrdsInstanceId(v string) *CheckRdsSuperAccountRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *CheckRdsSuperAccountRequest) SetPassword(v string) *CheckRdsSuperAccountRequest {
-	s.Password = &v
-	return s
-}
-
-type CheckRdsSuperAccountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CheckRdsSuperAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckRdsSuperAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckRdsSuperAccountResponseBody) SetRequestId(v string) *CheckRdsSuperAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CheckRdsSuperAccountResponseBody) SetSuccess(v bool) *CheckRdsSuperAccountResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CheckRdsSuperAccountResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckRdsSuperAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckRdsSuperAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckRdsSuperAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckRdsSuperAccountResponse) SetHeaders(v map[string]*string) *CheckRdsSuperAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckRdsSuperAccountResponse) SetBody(v *CheckRdsSuperAccountResponseBody) *CheckRdsSuperAccountResponse {
-	s.Body = v
-	return s
-}
-
 type CheckSqlAuditEnableStatusRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -586,110 +412,6 @@ func (s *CheckSqlAuditEnableStatusResponse) SetHeaders(v map[string]*string) *Ch
 }
 
 func (s *CheckSqlAuditEnableStatusResponse) SetBody(v *CheckSqlAuditEnableStatusResponseBody) *CheckSqlAuditEnableStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ConfigureDrdsDbInstancesRequest struct {
-	DbInstance     []*ConfigureDrdsDbInstancesRequestDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Repeated"`
-	DbName         *string                                      `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string                                      `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-}
-
-func (s ConfigureDrdsDbInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureDrdsDbInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureDrdsDbInstancesRequest) SetDbInstance(v []*ConfigureDrdsDbInstancesRequestDbInstance) *ConfigureDrdsDbInstancesRequest {
-	s.DbInstance = v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesRequest) SetDbName(v string) *ConfigureDrdsDbInstancesRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesRequest) SetDrdsInstanceId(v string) *ConfigureDrdsDbInstancesRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-type ConfigureDrdsDbInstancesRequestDbInstance struct {
-	MasterDbInstanceId  *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
-	SlaveDbInstanceId   *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
-	SlaveDbInstanceType *string `json:"SlaveDbInstanceType,omitempty" xml:"SlaveDbInstanceType,omitempty"`
-}
-
-func (s ConfigureDrdsDbInstancesRequestDbInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureDrdsDbInstancesRequestDbInstance) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureDrdsDbInstancesRequestDbInstance) SetMasterDbInstanceId(v string) *ConfigureDrdsDbInstancesRequestDbInstance {
-	s.MasterDbInstanceId = &v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesRequestDbInstance) SetSlaveDbInstanceId(v string) *ConfigureDrdsDbInstancesRequestDbInstance {
-	s.SlaveDbInstanceId = &v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesRequestDbInstance) SetSlaveDbInstanceType(v string) *ConfigureDrdsDbInstancesRequestDbInstance {
-	s.SlaveDbInstanceType = &v
-	return s
-}
-
-type ConfigureDrdsDbInstancesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ConfigureDrdsDbInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureDrdsDbInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureDrdsDbInstancesResponseBody) SetRequestId(v string) *ConfigureDrdsDbInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesResponseBody) SetSuccess(v bool) *ConfigureDrdsDbInstancesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ConfigureDrdsDbInstancesResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConfigureDrdsDbInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ConfigureDrdsDbInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureDrdsDbInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureDrdsDbInstancesResponse) SetHeaders(v map[string]*string) *ConfigureDrdsDbInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ConfigureDrdsDbInstancesResponse) SetBody(v *ConfigureDrdsDbInstancesResponseBody) *ConfigureDrdsDbInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -865,384 +587,6 @@ func (s *CreateDrdsDBResponse) SetHeaders(v map[string]*string) *CreateDrdsDBRes
 }
 
 func (s *CreateDrdsDBResponse) SetBody(v *CreateDrdsDBResponseBody) *CreateDrdsDBResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDrdsDBPreCheckRequest struct {
-	AccountName          *string                                       `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstType           *string                                       `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbInstanceIsCreating *bool                                         `json:"DbInstanceIsCreating,omitempty" xml:"DbInstanceIsCreating,omitempty"`
-	DbName               *string                                       `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId       *string                                       `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Encode               *string                                       `json:"Encode,omitempty" xml:"Encode,omitempty"`
-	InstDbName           []*CreateDrdsDBPreCheckRequestInstDbName      `json:"InstDbName,omitempty" xml:"InstDbName,omitempty" type:"Repeated"`
-	Password             *string                                       `json:"Password,omitempty" xml:"Password,omitempty"`
-	RdsInstance          []*string                                     `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
-	RdsSuperAccount      []*CreateDrdsDBPreCheckRequestRdsSuperAccount `json:"RdsSuperAccount,omitempty" xml:"RdsSuperAccount,omitempty" type:"Repeated"`
-	Type                 *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateDrdsDBPreCheckRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreCheckRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetAccountName(v string) *CreateDrdsDBPreCheckRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetDbInstType(v string) *CreateDrdsDBPreCheckRequest {
-	s.DbInstType = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetDbInstanceIsCreating(v bool) *CreateDrdsDBPreCheckRequest {
-	s.DbInstanceIsCreating = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetDbName(v string) *CreateDrdsDBPreCheckRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetDrdsInstanceId(v string) *CreateDrdsDBPreCheckRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetEncode(v string) *CreateDrdsDBPreCheckRequest {
-	s.Encode = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetInstDbName(v []*CreateDrdsDBPreCheckRequestInstDbName) *CreateDrdsDBPreCheckRequest {
-	s.InstDbName = v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetPassword(v string) *CreateDrdsDBPreCheckRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetRdsInstance(v []*string) *CreateDrdsDBPreCheckRequest {
-	s.RdsInstance = v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetRdsSuperAccount(v []*CreateDrdsDBPreCheckRequestRdsSuperAccount) *CreateDrdsDBPreCheckRequest {
-	s.RdsSuperAccount = v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequest) SetType(v string) *CreateDrdsDBPreCheckRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateDrdsDBPreCheckRequestInstDbName struct {
-	DbInstanceId *string   `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	ShardDbName  []*string `json:"ShardDbName,omitempty" xml:"ShardDbName,omitempty" type:"Repeated"`
-}
-
-func (s CreateDrdsDBPreCheckRequestInstDbName) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreCheckRequestInstDbName) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreCheckRequestInstDbName) SetDbInstanceId(v string) *CreateDrdsDBPreCheckRequestInstDbName {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequestInstDbName) SetShardDbName(v []*string) *CreateDrdsDBPreCheckRequestInstDbName {
-	s.ShardDbName = v
-	return s
-}
-
-type CreateDrdsDBPreCheckRequestRdsSuperAccount struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-}
-
-func (s CreateDrdsDBPreCheckRequestRdsSuperAccount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreCheckRequestRdsSuperAccount) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreCheckRequestRdsSuperAccount) SetAccountName(v string) *CreateDrdsDBPreCheckRequestRdsSuperAccount {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequestRdsSuperAccount) SetDbInstanceId(v string) *CreateDrdsDBPreCheckRequestRdsSuperAccount {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckRequestRdsSuperAccount) SetPassword(v string) *CreateDrdsDBPreCheckRequestRdsSuperAccount {
-	s.Password = &v
-	return s
-}
-
-type CreateDrdsDBPreCheckResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateDrdsDBPreCheckResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreCheckResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreCheckResponseBody) SetRequestId(v string) *CreateDrdsDBPreCheckResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckResponseBody) SetSuccess(v bool) *CreateDrdsDBPreCheckResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckResponseBody) SetTaskId(v int64) *CreateDrdsDBPreCheckResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type CreateDrdsDBPreCheckResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDrdsDBPreCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDrdsDBPreCheckResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreCheckResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreCheckResponse) SetHeaders(v map[string]*string) *CreateDrdsDBPreCheckResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDrdsDBPreCheckResponse) SetBody(v *CreateDrdsDBPreCheckResponseBody) *CreateDrdsDBPreCheckResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDrdsDBPreviewRequest struct {
-	AccountName          *string                                 `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DbInstType           *string                                 `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DbInstanceIsCreating *bool                                   `json:"DbInstanceIsCreating,omitempty" xml:"DbInstanceIsCreating,omitempty"`
-	DbName               *string                                 `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId       *string                                 `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstDbName           []*CreateDrdsDBPreviewRequestInstDbName `json:"InstDbName,omitempty" xml:"InstDbName,omitempty" type:"Repeated"`
-	OrderId              *string                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RdsInstance          []*string                               `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
-	Type                 *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateDrdsDBPreviewRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetAccountName(v string) *CreateDrdsDBPreviewRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetDbInstType(v string) *CreateDrdsDBPreviewRequest {
-	s.DbInstType = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetDbInstanceIsCreating(v bool) *CreateDrdsDBPreviewRequest {
-	s.DbInstanceIsCreating = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetDbName(v string) *CreateDrdsDBPreviewRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetDrdsInstanceId(v string) *CreateDrdsDBPreviewRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetInstDbName(v []*CreateDrdsDBPreviewRequestInstDbName) *CreateDrdsDBPreviewRequest {
-	s.InstDbName = v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetOrderId(v string) *CreateDrdsDBPreviewRequest {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetRdsInstance(v []*string) *CreateDrdsDBPreviewRequest {
-	s.RdsInstance = v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequest) SetType(v string) *CreateDrdsDBPreviewRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateDrdsDBPreviewRequestInstDbName struct {
-	DbInstanceId *string   `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	ShardDbName  []*string `json:"ShardDbName,omitempty" xml:"ShardDbName,omitempty" type:"Repeated"`
-}
-
-func (s CreateDrdsDBPreviewRequestInstDbName) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewRequestInstDbName) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewRequestInstDbName) SetDbInstanceId(v string) *CreateDrdsDBPreviewRequestInstDbName {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewRequestInstDbName) SetShardDbName(v []*string) *CreateDrdsDBPreviewRequestInstDbName {
-	s.ShardDbName = v
-	return s
-}
-
-type CreateDrdsDBPreviewResponseBody struct {
-	Items     *CreateDrdsDBPreviewResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateDrdsDBPreviewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewResponseBody) SetItems(v *CreateDrdsDBPreviewResponseBodyItems) *CreateDrdsDBPreviewResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewResponseBody) SetRequestId(v string) *CreateDrdsDBPreviewResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewResponseBody) SetSuccess(v bool) *CreateDrdsDBPreviewResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateDrdsDBPreviewResponseBodyItems struct {
-	Item []*CreateDrdsDBPreviewResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewResponseBodyItems) SetItem(v []*CreateDrdsDBPreviewResponseBodyItemsItem) *CreateDrdsDBPreviewResponseBodyItems {
-	s.Item = v
-	return s
-}
-
-type CreateDrdsDBPreviewResponseBodyItemsItem struct {
-	DbInstanceId *string                                          `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbNames      *CreateDrdsDBPreviewResponseBodyItemsItemDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItemsItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItemsItem) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewResponseBodyItemsItem) SetDbInstanceId(v string) *CreateDrdsDBPreviewResponseBodyItemsItem {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewResponseBodyItemsItem) SetDbNames(v *CreateDrdsDBPreviewResponseBodyItemsItemDbNames) *CreateDrdsDBPreviewResponseBodyItemsItem {
-	s.DbNames = v
-	return s
-}
-
-type CreateDrdsDBPreviewResponseBodyItemsItemDbNames struct {
-	DbName []*string `json:"DbName,omitempty" xml:"DbName,omitempty" type:"Repeated"`
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItemsItemDbNames) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewResponseBodyItemsItemDbNames) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewResponseBodyItemsItemDbNames) SetDbName(v []*string) *CreateDrdsDBPreviewResponseBodyItemsItemDbNames {
-	s.DbName = v
-	return s
-}
-
-type CreateDrdsDBPreviewResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDrdsDBPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDrdsDBPreviewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDrdsDBPreviewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDrdsDBPreviewResponse) SetHeaders(v map[string]*string) *CreateDrdsDBPreviewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDrdsDBPreviewResponse) SetBody(v *CreateDrdsDBPreviewResponseBody) *CreateDrdsDBPreviewResponse {
 	s.Body = v
 	return s
 }
@@ -1454,140 +798,6 @@ func (s *CreateDrdsInstanceResponse) SetHeaders(v map[string]*string) *CreateDrd
 }
 
 func (s *CreateDrdsInstanceResponse) SetBody(v *CreateDrdsInstanceResponseBody) *CreateDrdsInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateEvaluatePreCheckTaskRequest struct {
-	AvgQpsGrowthScale *int32                                     `json:"AvgQpsGrowthScale,omitempty" xml:"AvgQpsGrowthScale,omitempty"`
-	DataGrowthScale   *int32                                     `json:"DataGrowthScale,omitempty" xml:"DataGrowthScale,omitempty"`
-	DbInfo            []*CreateEvaluatePreCheckTaskRequestDbInfo `json:"DbInfo,omitempty" xml:"DbInfo,omitempty" type:"Repeated"`
-	EvaluateHours     *int32                                     `json:"EvaluateHours,omitempty" xml:"EvaluateHours,omitempty"`
-	TaskName          *string                                    `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-}
-
-func (s CreateEvaluatePreCheckTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEvaluatePreCheckTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEvaluatePreCheckTaskRequest) SetAvgQpsGrowthScale(v int32) *CreateEvaluatePreCheckTaskRequest {
-	s.AvgQpsGrowthScale = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequest) SetDataGrowthScale(v int32) *CreateEvaluatePreCheckTaskRequest {
-	s.DataGrowthScale = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequest) SetDbInfo(v []*CreateEvaluatePreCheckTaskRequestDbInfo) *CreateEvaluatePreCheckTaskRequest {
-	s.DbInfo = v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequest) SetEvaluateHours(v int32) *CreateEvaluatePreCheckTaskRequest {
-	s.EvaluateHours = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequest) SetTaskName(v string) *CreateEvaluatePreCheckTaskRequest {
-	s.TaskName = &v
-	return s
-}
-
-type CreateEvaluatePreCheckTaskRequestDbInfo struct {
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	DbPort     *string `json:"DbPort,omitempty" xml:"DbPort,omitempty"`
-	DbUser     *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	InstId     *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
-}
-
-func (s CreateEvaluatePreCheckTaskRequestDbInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEvaluatePreCheckTaskRequestDbInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEvaluatePreCheckTaskRequestDbInfo) SetDbName(v string) *CreateEvaluatePreCheckTaskRequestDbInfo {
-	s.DbName = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequestDbInfo) SetDbPassword(v string) *CreateEvaluatePreCheckTaskRequestDbInfo {
-	s.DbPassword = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequestDbInfo) SetDbPort(v string) *CreateEvaluatePreCheckTaskRequestDbInfo {
-	s.DbPort = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequestDbInfo) SetDbUser(v string) *CreateEvaluatePreCheckTaskRequestDbInfo {
-	s.DbUser = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskRequestDbInfo) SetInstId(v string) *CreateEvaluatePreCheckTaskRequestDbInfo {
-	s.InstId = &v
-	return s
-}
-
-type CreateEvaluatePreCheckTaskResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateEvaluatePreCheckTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEvaluatePreCheckTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEvaluatePreCheckTaskResponseBody) SetRequestId(v string) *CreateEvaluatePreCheckTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskResponseBody) SetSuccess(v bool) *CreateEvaluatePreCheckTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskResponseBody) SetTaskId(v int64) *CreateEvaluatePreCheckTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type CreateEvaluatePreCheckTaskResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEvaluatePreCheckTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEvaluatePreCheckTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEvaluatePreCheckTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEvaluatePreCheckTaskResponse) SetHeaders(v map[string]*string) *CreateEvaluatePreCheckTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEvaluatePreCheckTaskResponse) SetBody(v *CreateEvaluatePreCheckTaskResponseBody) *CreateEvaluatePreCheckTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2984,75 +2194,6 @@ func (s *DescribeBroadcastTablesResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribeBroadcastTablesResponse) SetBody(v *DescribeBroadcastTablesResponseBody) *DescribeBroadcastTablesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDataImportTaskReportRequest struct {
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeDataImportTaskReportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDataImportTaskReportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDataImportTaskReportRequest) SetTaskId(v int64) *DescribeDataImportTaskReportRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeDataImportTaskReportResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeDataImportTaskReportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDataImportTaskReportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDataImportTaskReportResponseBody) SetData(v string) *DescribeDataImportTaskReportResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DescribeDataImportTaskReportResponseBody) SetRequestId(v string) *DescribeDataImportTaskReportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDataImportTaskReportResponseBody) SetSuccess(v bool) *DescribeDataImportTaskReportResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeDataImportTaskReportResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDataImportTaskReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDataImportTaskReportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDataImportTaskReportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDataImportTaskReportResponse) SetHeaders(v map[string]*string) *DescribeDataImportTaskReportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDataImportTaskReportResponse) SetBody(v *DescribeDataImportTaskReportResponseBody) *DescribeDataImportTaskReportResponse {
 	s.Body = v
 	return s
 }
@@ -4786,459 +3927,6 @@ func (s *DescribeDrdsDbRdsNameListResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DescribeDrdsDbRdsNameListResponse) SetBody(v *DescribeDrdsDbRdsNameListResponseBody) *DescribeDrdsDbRdsNameListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceRequest struct {
-	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceRequest) SetDBName(v string) *DescribeDrdsDbSpecAndPriceRequest {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceRequest) SetDrdsInstanceId(v string) *DescribeDrdsDbSpecAndPriceRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceRequest) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBody struct {
-	Data      *DescribeDrdsDbSpecAndPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBody) SetData(v *DescribeDrdsDbSpecAndPriceResponseBodyData) *DescribeDrdsDbSpecAndPriceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBody) SetRequestId(v string) *DescribeDrdsDbSpecAndPriceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyData struct {
-	DrdsDbPrice               *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice                 `json:"DrdsDbPrice,omitempty" xml:"DrdsDbPrice,omitempty" type:"Struct"`
-	DrdsInstance              *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance                `json:"DrdsInstance,omitempty" xml:"DrdsInstance,omitempty" type:"Struct"`
-	RdsInstanceSpecsAndPrices []*DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices `json:"RdsInstanceSpecsAndPrices,omitempty" xml:"RdsInstanceSpecsAndPrices,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetDrdsDbPrice(v *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) *DescribeDrdsDbSpecAndPriceResponseBodyData {
-	s.DrdsDbPrice = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetDrdsInstance(v *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) *DescribeDrdsDbSpecAndPriceResponseBodyData {
-	s.DrdsInstance = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyData) SetRdsInstanceSpecsAndPrices(v []*DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) *DescribeDrdsDbSpecAndPriceResponseBodyData {
-	s.RdsInstanceSpecsAndPrices = v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice struct {
-	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetCurrency(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetDiscountPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
-	s.DiscountPrice = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetOriginalPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
-	s.OriginalPrice = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice) SetTradePrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsDbPrice {
-	s.TradePrice = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance struct {
-	DrdsInstanceId     *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstRole           *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
-	InstanceSeries     *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
-	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MachineType        *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	ProductVersion     *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	ProtocolType       *int32  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VersionAction      *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
-	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetDrdsInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstRole(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.InstRole = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstanceSeries(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.InstanceSeries = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetInstanceSpec(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.InstanceSpec = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetMachineType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.MachineType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetNetworkType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetProductVersion(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.ProductVersion = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetProtocolType(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.ProtocolType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetStatus(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVersionAction(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.VersionAction = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVpcCloudInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.VpcCloudInstanceId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetVpcId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance) SetZoneId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataDrdsInstance {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices struct {
-	RdsPrice        *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice        `json:"RdsPrice,omitempty" xml:"RdsPrice,omitempty" type:"Struct"`
-	StorageInstance *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance `json:"StorageInstance,omitempty" xml:"StorageInstance,omitempty" type:"Struct"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) SetRdsPrice(v *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices {
-	s.RdsPrice = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices) SetStorageInstance(v *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPrices {
-	s.StorageInstance = v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice struct {
-	Coupons       *string   `json:"Coupons,omitempty" xml:"Coupons,omitempty"`
-	Currency      *string   `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiscountPrice *float32  `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OriginalPrice *float32  `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	RuleIds       []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	TradePrice    *float32  `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetCoupons(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.Coupons = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetCurrency(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.Currency = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetDiscountPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.DiscountPrice = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetOriginalPrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.OriginalPrice = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetRuleIds(v []*string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.RuleIds = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice) SetTradePrice(v float32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesRdsPrice {
-	s.TradePrice = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance struct {
-	ConnectUrl            *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstType            *string `json:"DBInstType,omitempty" xml:"DBInstType,omitempty"`
-	DBInstanceCPU         *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceClassType   *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory      *int32  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceStatus      *int32  `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStorage     *int32  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime            *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                  *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RDSInstType           *string `json:"RDSInstType,omitempty" xml:"RDSInstType,omitempty"`
-	ReadWeight            *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemainDays            *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetConnectUrl(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.ConnectUrl = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceCPU(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceCPU = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceClass(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceClass = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceClassType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceClassType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceDescription(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceDescription = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceMemory(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceMemory = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStatus(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStorage(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceStorage = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetDBInstanceStorageType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.DBInstanceStorageType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetEngine(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetEngineVersion(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetExpireTime(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetNetworkType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetPayType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetPort(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRDSInstType(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.RDSInstType = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetReadWeight(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.ReadWeight = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRegionId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetRemainDays(v int32) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.RemainDays = &v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance) SetZoneId(v string) *DescribeDrdsDbSpecAndPriceResponseBodyDataRdsInstanceSpecsAndPricesStorageInstance {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeDrdsDbSpecAndPriceResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDrdsDbSpecAndPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDrdsDbSpecAndPriceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponse) SetHeaders(v map[string]*string) *DescribeDrdsDbSpecAndPriceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDrdsDbSpecAndPriceResponse) SetBody(v *DescribeDrdsDbSpecAndPriceResponseBody) *DescribeDrdsDbSpecAndPriceResponse {
 	s.Body = v
 	return s
 }
@@ -7887,122 +6575,6 @@ func (s *DescribeExpandLogicTableInfoListResponse) SetBody(v *DescribeExpandLogi
 	return s
 }
 
-type DescribeHiStoreInstanceInfoRequest struct {
-	DrdsInstanceId    *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
-}
-
-func (s DescribeHiStoreInstanceInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHiStoreInstanceInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHiStoreInstanceInfoRequest) SetDrdsInstanceId(v string) *DescribeHiStoreInstanceInfoRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoRequest) SetHistoreInstanceId(v string) *DescribeHiStoreInstanceInfoRequest {
-	s.HistoreInstanceId = &v
-	return s
-}
-
-type DescribeHiStoreInstanceInfoResponseBody struct {
-	HiStoreInstanceInfo *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo `json:"HiStoreInstanceInfo,omitempty" xml:"HiStoreInstanceInfo,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeHiStoreInstanceInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHiStoreInstanceInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBody) SetHiStoreInstanceInfo(v *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) *DescribeHiStoreInstanceInfoResponseBody {
-	s.HiStoreInstanceInfo = v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBody) SetRequestId(v string) *DescribeHiStoreInstanceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBody) SetSuccess(v bool) *DescribeHiStoreInstanceInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo struct {
-	DiskSize          *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	GmtCreate         *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
-	MachineSpec       *string `json:"MachineSpec,omitempty" xml:"MachineSpec,omitempty"`
-	RpmVersion        *string `json:"RpmVersion,omitempty" xml:"RpmVersion,omitempty"`
-}
-
-func (s DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetDiskSize(v int32) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.DiskSize = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetGmtCreate(v int64) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetHistoreInstanceId(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.HistoreInstanceId = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetMachineSpec(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.MachineSpec = &v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo) SetRpmVersion(v string) *DescribeHiStoreInstanceInfoResponseBodyHiStoreInstanceInfo {
-	s.RpmVersion = &v
-	return s
-}
-
-type DescribeHiStoreInstanceInfoResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHiStoreInstanceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeHiStoreInstanceInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeHiStoreInstanceInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeHiStoreInstanceInfoResponse) SetHeaders(v map[string]*string) *DescribeHiStoreInstanceInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeHiStoreInstanceInfoResponse) SetBody(v *DescribeHiStoreInstanceInfoResponseBody) *DescribeHiStoreInstanceInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeHotDbListRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -8523,75 +7095,6 @@ func (s *DescribeInstanceAccountsResponse) SetHeaders(v map[string]*string) *Des
 }
 
 func (s *DescribeInstanceAccountsResponse) SetBody(v *DescribeInstanceAccountsResponseBody) *DescribeInstanceAccountsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeInstanceMenuSwitchRequest struct {
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-}
-
-func (s DescribeInstanceMenuSwitchRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceMenuSwitchRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceMenuSwitchRequest) SetDrdsInstanceId(v string) *DescribeInstanceMenuSwitchRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-type DescribeInstanceMenuSwitchResponseBody struct {
-	Config    map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeInstanceMenuSwitchResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceMenuSwitchResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceMenuSwitchResponseBody) SetConfig(v map[string]interface{}) *DescribeInstanceMenuSwitchResponseBody {
-	s.Config = v
-	return s
-}
-
-func (s *DescribeInstanceMenuSwitchResponseBody) SetRequestId(v string) *DescribeInstanceMenuSwitchResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceMenuSwitchResponseBody) SetSuccess(v bool) *DescribeInstanceMenuSwitchResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeInstanceMenuSwitchResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceMenuSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeInstanceMenuSwitchResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceMenuSwitchResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceMenuSwitchResponse) SetHeaders(v map[string]*string) *DescribeInstanceMenuSwitchResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeInstanceMenuSwitchResponse) SetBody(v *DescribeInstanceMenuSwitchResponseBody) *DescribeInstanceMenuSwitchResponse {
 	s.Body = v
 	return s
 }
@@ -9285,138 +7788,6 @@ func (s *DescribeRdsCommodityResponse) SetBody(v *DescribeRdsCommodityResponseBo
 	return s
 }
 
-type DescribeRdsDrdsDBRequest struct {
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RdsInstanceId  []*string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsDrdsDBRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBRequest) SetDrdsInstanceId(v string) *DescribeRdsDrdsDBRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeRdsDrdsDBRequest) SetRdsInstanceId(v []*string) *DescribeRdsDrdsDBRequest {
-	s.RdsInstanceId = v
-	return s
-}
-
-type DescribeRdsDrdsDBResponseBody struct {
-	RdsDrdsDbs *DescribeRdsDrdsDBResponseBodyRdsDrdsDbs `json:"RdsDrdsDbs,omitempty" xml:"RdsDrdsDbs,omitempty" type:"Struct"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRdsDrdsDBResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBResponseBody) SetRdsDrdsDbs(v *DescribeRdsDrdsDBResponseBodyRdsDrdsDbs) *DescribeRdsDrdsDBResponseBody {
-	s.RdsDrdsDbs = v
-	return s
-}
-
-func (s *DescribeRdsDrdsDBResponseBody) SetRequestId(v string) *DescribeRdsDrdsDBResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRdsDrdsDBResponseBody) SetSuccess(v bool) *DescribeRdsDrdsDBResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRdsDrdsDBResponseBodyRdsDrdsDbs struct {
-	RdsDrdsDb []*DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb `json:"RdsDrdsDb,omitempty" xml:"RdsDrdsDb,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBResponseBodyRdsDrdsDbs) SetRdsDrdsDb(v []*DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb) *DescribeRdsDrdsDBResponseBodyRdsDrdsDbs {
-	s.RdsDrdsDb = v
-	return s
-}
-
-type DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb struct {
-	DBList *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList `json:"DBList,omitempty" xml:"DBList,omitempty" type:"Struct"`
-	RdsId  *string                                                 `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb) SetDBList(v *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList) *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb {
-	s.DBList = v
-	return s
-}
-
-func (s *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb) SetRdsId(v string) *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDb {
-	s.RdsId = &v
-	return s
-}
-
-type DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList struct {
-	DB []*string `json:"DB,omitempty" xml:"DB,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList) SetDB(v []*string) *DescribeRdsDrdsDBResponseBodyRdsDrdsDbsRdsDrdsDbDBList {
-	s.DB = v
-	return s
-}
-
-type DescribeRdsDrdsDBResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsDrdsDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRdsDrdsDBResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsDrdsDBResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsDrdsDBResponse) SetHeaders(v map[string]*string) *DescribeRdsDrdsDBResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRdsDrdsDBResponse) SetBody(v *DescribeRdsDrdsDBResponseBody) *DescribeRdsDrdsDBResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRdsPerformanceSummaryRequest struct {
 	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	RdsInstanceId  []*string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty" type:"Repeated"`
@@ -9545,298 +7916,6 @@ func (s *DescribeRdsPerformanceSummaryResponse) SetBody(v *DescribeRdsPerformanc
 	return s
 }
 
-type DescribeRdsPriceRequest struct {
-	Params   *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRdsPriceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsPriceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsPriceRequest) SetParams(v string) *DescribeRdsPriceRequest {
-	s.Params = &v
-	return s
-}
-
-func (s *DescribeRdsPriceRequest) SetRegionId(v string) *DescribeRdsPriceRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRdsPriceResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRdsPriceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsPriceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsPriceResponseBody) SetData(v string) *DescribeRdsPriceResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DescribeRdsPriceResponseBody) SetRequestId(v string) *DescribeRdsPriceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRdsPriceResponseBody) SetSuccess(v bool) *DescribeRdsPriceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRdsPriceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRdsPriceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsPriceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsPriceResponse) SetHeaders(v map[string]*string) *DescribeRdsPriceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRdsPriceResponse) SetBody(v *DescribeRdsPriceResponseBody) *DescribeRdsPriceResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRdsReadOnlyRequest struct {
-	DbInstType     *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RdsInstanceId  *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
-}
-
-func (s DescribeRdsReadOnlyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsReadOnlyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsReadOnlyRequest) SetDbInstType(v string) *DescribeRdsReadOnlyRequest {
-	s.DbInstType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyRequest) SetDrdsInstanceId(v string) *DescribeRdsReadOnlyRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyRequest) SetRdsInstanceId(v string) *DescribeRdsReadOnlyRequest {
-	s.RdsInstanceId = &v
-	return s
-}
-
-type DescribeRdsReadOnlyResponseBody struct {
-	DbInstances *DescribeRdsReadOnlyResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRdsReadOnlyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsReadOnlyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsReadOnlyResponseBody) SetDbInstances(v *DescribeRdsReadOnlyResponseBodyDbInstances) *DescribeRdsReadOnlyResponseBody {
-	s.DbInstances = v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBody) SetRequestId(v string) *DescribeRdsReadOnlyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBody) SetSuccess(v bool) *DescribeRdsReadOnlyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRdsReadOnlyResponseBodyDbInstances struct {
-	DbInstance []*DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsReadOnlyResponseBodyDbInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsReadOnlyResponseBodyDbInstances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstances) SetDbInstance(v []*DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) *DescribeRdsReadOnlyResponseBodyDbInstances {
-	s.DbInstance = v
-	return s
-}
-
-type DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance struct {
-	ConnectUrl          *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	DBInstanceCPU       *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
-	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	DBInstanceId        *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory    *int64  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	DBInstanceStatus    *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStorage   *int64  `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	DbInstType          *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
-	DmInstanceId        *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
-	Engine              *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	NetworkType         *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RdsInstType         *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
-	ReadWeight          *int32  `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
-	RemainDays          *int32  `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
-}
-
-func (s DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetConnectUrl(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.ConnectUrl = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceCPU(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceCPU = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceClassType(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceClassType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceId(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceMemory(v int64) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceMemory = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceStatus(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDBInstanceStorage(v int64) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DBInstanceStorage = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDbInstType(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DbInstType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetDmInstanceId(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.DmInstanceId = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetEngine(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetEngineVersion(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetExpireTime(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetNetworkType(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetPayType(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetPort(v int32) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetRdsInstType(v string) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.RdsInstType = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetReadWeight(v int32) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.ReadWeight = &v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance) SetRemainDays(v int32) *DescribeRdsReadOnlyResponseBodyDbInstancesDbInstance {
-	s.RemainDays = &v
-	return s
-}
-
-type DescribeRdsReadOnlyResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsReadOnlyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRdsReadOnlyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsReadOnlyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsReadOnlyResponse) SetHeaders(v map[string]*string) *DescribeRdsReadOnlyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRdsReadOnlyResponse) SetBody(v *DescribeRdsReadOnlyResponseBody) *DescribeRdsReadOnlyResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRdsSuperAccountInstancesRequest struct {
 	DbInstType     *string   `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -9925,81 +8004,6 @@ func (s *DescribeRdsSuperAccountInstancesResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *DescribeRdsSuperAccountInstancesResponse) SetBody(v *DescribeRdsSuperAccountInstancesResponseBody) *DescribeRdsSuperAccountInstancesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRdsVpcForZoneRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeRdsVpcForZoneRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsVpcForZoneRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsVpcForZoneRequest) SetRegionId(v string) *DescribeRdsVpcForZoneRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeRdsVpcForZoneRequest) SetZoneId(v string) *DescribeRdsVpcForZoneRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeRdsVpcForZoneResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRdsVpcForZoneResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsVpcForZoneResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsVpcForZoneResponseBody) SetData(v string) *DescribeRdsVpcForZoneResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DescribeRdsVpcForZoneResponseBody) SetRequestId(v string) *DescribeRdsVpcForZoneResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRdsVpcForZoneResponseBody) SetSuccess(v bool) *DescribeRdsVpcForZoneResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRdsVpcForZoneResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsVpcForZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRdsVpcForZoneResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsVpcForZoneResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsVpcForZoneResponse) SetHeaders(v map[string]*string) *DescribeRdsVpcForZoneResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRdsVpcForZoneResponse) SetBody(v *DescribeRdsVpcForZoneResponseBody) *DescribeRdsVpcForZoneResponse {
 	s.Body = v
 	return s
 }
@@ -11283,168 +9287,6 @@ func (s *DescribeSqlFlashbakTaskResponse) SetBody(v *DescribeSqlFlashbakTaskResp
 	return s
 }
 
-type DescribeSrcRdsListRequest struct {
-	DbName           *string                                      `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId   *string                                      `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PartitionMapping []*DescribeSrcRdsListRequestPartitionMapping `json:"PartitionMapping,omitempty" xml:"PartitionMapping,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSrcRdsListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListRequest) SetDbName(v string) *DescribeSrcRdsListRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequest) SetDrdsInstanceId(v string) *DescribeSrcRdsListRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequest) SetPartitionMapping(v []*DescribeSrcRdsListRequestPartitionMapping) *DescribeSrcRdsListRequest {
-	s.PartitionMapping = v
-	return s
-}
-
-type DescribeSrcRdsListRequestPartitionMapping struct {
-	DbShardValue *string `json:"DbShardValue,omitempty" xml:"DbShardValue,omitempty"`
-	HotDbName    *string `json:"HotDbName,omitempty" xml:"HotDbName,omitempty"`
-	HotTableName *string `json:"HotTableName,omitempty" xml:"HotTableName,omitempty"`
-	LogicTable   *string `json:"LogicTable,omitempty" xml:"LogicTable,omitempty"`
-	TbShardValue *string `json:"TbShardValue,omitempty" xml:"TbShardValue,omitempty"`
-}
-
-func (s DescribeSrcRdsListRequestPartitionMapping) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListRequestPartitionMapping) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListRequestPartitionMapping) SetDbShardValue(v string) *DescribeSrcRdsListRequestPartitionMapping {
-	s.DbShardValue = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequestPartitionMapping) SetHotDbName(v string) *DescribeSrcRdsListRequestPartitionMapping {
-	s.HotDbName = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequestPartitionMapping) SetHotTableName(v string) *DescribeSrcRdsListRequestPartitionMapping {
-	s.HotTableName = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequestPartitionMapping) SetLogicTable(v string) *DescribeSrcRdsListRequestPartitionMapping {
-	s.LogicTable = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListRequestPartitionMapping) SetTbShardValue(v string) *DescribeSrcRdsListRequestPartitionMapping {
-	s.TbShardValue = &v
-	return s
-}
-
-type DescribeSrcRdsListResponseBody struct {
-	Data      *DescribeSrcRdsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeSrcRdsListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListResponseBody) SetData(v *DescribeSrcRdsListResponseBodyData) *DescribeSrcRdsListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeSrcRdsListResponseBody) SetRequestId(v string) *DescribeSrcRdsListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListResponseBody) SetSuccess(v bool) *DescribeSrcRdsListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeSrcRdsListResponseBodyData struct {
-	Data []*DescribeSrcRdsListResponseBodyDataData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-}
-
-func (s DescribeSrcRdsListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListResponseBodyData) SetData(v []*DescribeSrcRdsListResponseBodyDataData) *DescribeSrcRdsListResponseBodyData {
-	s.Data = v
-	return s
-}
-
-type DescribeSrcRdsListResponseBodyDataData struct {
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Rds    *string `json:"Rds,omitempty" xml:"Rds,omitempty"`
-}
-
-func (s DescribeSrcRdsListResponseBodyDataData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListResponseBodyDataData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListResponseBodyDataData) SetDbName(v string) *DescribeSrcRdsListResponseBodyDataData {
-	s.DbName = &v
-	return s
-}
-
-func (s *DescribeSrcRdsListResponseBodyDataData) SetRds(v string) *DescribeSrcRdsListResponseBodyDataData {
-	s.Rds = &v
-	return s
-}
-
-type DescribeSrcRdsListResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSrcRdsListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSrcRdsListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSrcRdsListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSrcRdsListResponse) SetHeaders(v map[string]*string) *DescribeSrcRdsListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSrcRdsListResponse) SetBody(v *DescribeSrcRdsListResponseBody) *DescribeSrcRdsListResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeTableRequest struct {
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -12601,289 +10443,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
-type ListUserReportsRequest struct {
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	ReportId       *int64  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-}
-
-func (s ListUserReportsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsRequest) SetDrdsInstanceId(v string) *ListUserReportsRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *ListUserReportsRequest) SetReportId(v int64) *ListUserReportsRequest {
-	s.ReportId = &v
-	return s
-}
-
-type ListUserReportsResponseBody struct {
-	RequestId           *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	SqlComparisonReport *ListUserReportsResponseBodySqlComparisonReport `json:"sqlComparisonReport,omitempty" xml:"sqlComparisonReport,omitempty" type:"Struct"`
-}
-
-func (s ListUserReportsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsResponseBody) SetRequestId(v string) *ListUserReportsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBody) SetSuccess(v bool) *ListUserReportsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBody) SetSqlComparisonReport(v *ListUserReportsResponseBodySqlComparisonReport) *ListUserReportsResponseBody {
-	s.SqlComparisonReport = v
-	return s
-}
-
-type ListUserReportsResponseBodySqlComparisonReport struct {
-	SqlPassFailNum    *int64                                                           `json:"SqlPassFailNum,omitempty" xml:"SqlPassFailNum,omitempty"`
-	SqlPassRate       *string                                                          `json:"SqlPassRate,omitempty" xml:"SqlPassRate,omitempty"`
-	SqlPassSuccNum    *int64                                                           `json:"SqlPassSuccNum,omitempty" xml:"SqlPassSuccNum,omitempty"`
-	Version           *string                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
-	ExecuteDetailList *ListUserReportsResponseBodySqlComparisonReportExecuteDetailList `json:"executeDetailList,omitempty" xml:"executeDetailList,omitempty" type:"Struct"`
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReport) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReport) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReport) SetSqlPassFailNum(v int64) *ListUserReportsResponseBodySqlComparisonReport {
-	s.SqlPassFailNum = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReport) SetSqlPassRate(v string) *ListUserReportsResponseBodySqlComparisonReport {
-	s.SqlPassRate = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReport) SetSqlPassSuccNum(v int64) *ListUserReportsResponseBodySqlComparisonReport {
-	s.SqlPassSuccNum = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReport) SetVersion(v string) *ListUserReportsResponseBodySqlComparisonReport {
-	s.Version = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReport) SetExecuteDetailList(v *ListUserReportsResponseBodySqlComparisonReportExecuteDetailList) *ListUserReportsResponseBodySqlComparisonReport {
-	s.ExecuteDetailList = v
-	return s
-}
-
-type ListUserReportsResponseBodySqlComparisonReportExecuteDetailList struct {
-	ExecuteDetail []*ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail `json:"executeDetail,omitempty" xml:"executeDetail,omitempty" type:"Repeated"`
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReportExecuteDetailList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReportExecuteDetailList) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReportExecuteDetailList) SetExecuteDetail(v []*ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) *ListUserReportsResponseBodySqlComparisonReportExecuteDetailList {
-	s.ExecuteDetail = v
-	return s
-}
-
-type ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail struct {
-	DbName        *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	ExecDetailMsg *string `json:"ExecDetailMsg,omitempty" xml:"ExecDetailMsg,omitempty"`
-	Execute       *string `json:"Execute,omitempty" xml:"Execute,omitempty"`
-	SqlContent    *string `json:"SqlContent,omitempty" xml:"SqlContent,omitempty"`
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) SetDbName(v string) *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail {
-	s.DbName = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) SetExecDetailMsg(v string) *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail {
-	s.ExecDetailMsg = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) SetExecute(v string) *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail {
-	s.Execute = &v
-	return s
-}
-
-func (s *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail) SetSqlContent(v string) *ListUserReportsResponseBodySqlComparisonReportExecuteDetailListExecuteDetail {
-	s.SqlContent = &v
-	return s
-}
-
-type ListUserReportsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUserReportsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserReportsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserReportsResponse) SetHeaders(v map[string]*string) *ListUserReportsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserReportsResponse) SetBody(v *ListUserReportsResponseBody) *ListUserReportsResponse {
-	s.Body = v
-	return s
-}
-
-type ListVersionsRequest struct {
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	DrdsVer        *string `json:"DrdsVer,omitempty" xml:"DrdsVer,omitempty"`
-}
-
-func (s ListVersionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVersionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVersionsRequest) SetDrdsInstanceId(v string) *ListVersionsRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *ListVersionsRequest) SetDrdsVer(v string) *ListVersionsRequest {
-	s.DrdsVer = &v
-	return s
-}
-
-type ListVersionsResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Versions  *ListVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Struct"`
-}
-
-func (s ListVersionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVersionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVersionsResponseBody) SetRequestId(v string) *ListVersionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListVersionsResponseBody) SetSuccess(v bool) *ListVersionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListVersionsResponseBody) SetVersions(v *ListVersionsResponseBodyVersions) *ListVersionsResponseBody {
-	s.Versions = v
-	return s
-}
-
-type ListVersionsResponseBodyVersions struct {
-	Versions []*ListVersionsResponseBodyVersionsVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
-}
-
-func (s ListVersionsResponseBodyVersions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVersionsResponseBodyVersions) GoString() string {
-	return s.String()
-}
-
-func (s *ListVersionsResponseBodyVersions) SetVersions(v []*ListVersionsResponseBodyVersionsVersions) *ListVersionsResponseBodyVersions {
-	s.Versions = v
-	return s
-}
-
-type ListVersionsResponseBodyVersionsVersions struct {
-	DrdsVersion *string `json:"DrdsVersion,omitempty" xml:"DrdsVersion,omitempty"`
-	Latest      *bool   `json:"Latest,omitempty" xml:"Latest,omitempty"`
-}
-
-func (s ListVersionsResponseBodyVersionsVersions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVersionsResponseBodyVersionsVersions) GoString() string {
-	return s.String()
-}
-
-func (s *ListVersionsResponseBodyVersionsVersions) SetDrdsVersion(v string) *ListVersionsResponseBodyVersionsVersions {
-	s.DrdsVersion = &v
-	return s
-}
-
-func (s *ListVersionsResponseBodyVersionsVersions) SetLatest(v bool) *ListVersionsResponseBodyVersionsVersions {
-	s.Latest = &v
-	return s
-}
-
-type ListVersionsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVersionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVersionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVersionsResponse) SetHeaders(v map[string]*string) *ListVersionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVersionsResponse) SetBody(v *ListVersionsResponseBody) *ListVersionsResponse {
-	s.Body = v
-	return s
-}
-
 type ManagePrivateRdsRequest struct {
 	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
@@ -13318,87 +10877,6 @@ func (s *ModifyDrdsIpWhiteListResponse) SetBody(v *ModifyDrdsIpWhiteListResponse
 	return s
 }
 
-type ModifyEventTaskStatusRequest struct {
-	EventId    *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Ids        *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SwitchTime *int64  `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-}
-
-func (s ModifyEventTaskStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyEventTaskStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyEventTaskStatusRequest) SetEventId(v string) *ModifyEventTaskStatusRequest {
-	s.EventId = &v
-	return s
-}
-
-func (s *ModifyEventTaskStatusRequest) SetIds(v string) *ModifyEventTaskStatusRequest {
-	s.Ids = &v
-	return s
-}
-
-func (s *ModifyEventTaskStatusRequest) SetRegion(v string) *ModifyEventTaskStatusRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *ModifyEventTaskStatusRequest) SetSwitchTime(v int64) *ModifyEventTaskStatusRequest {
-	s.SwitchTime = &v
-	return s
-}
-
-type ModifyEventTaskStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyEventTaskStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyEventTaskStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyEventTaskStatusResponseBody) SetRequestId(v string) *ModifyEventTaskStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyEventTaskStatusResponseBody) SetSuccess(v bool) *ModifyEventTaskStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyEventTaskStatusResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyEventTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyEventTaskStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyEventTaskStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyEventTaskStatusResponse) SetHeaders(v map[string]*string) *ModifyEventTaskStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyEventTaskStatusResponse) SetBody(v *ModifyEventTaskStatusResponseBody) *ModifyEventTaskStatusResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyPolarDbReadWeightRequest struct {
 	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
@@ -13567,320 +11045,6 @@ func (s *ModifyRdsReadWeightResponse) SetBody(v *ModifyRdsReadWeightResponseBody
 	return s
 }
 
-type PreCheckSqlFlashbackTaskRequest struct {
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s PreCheckSqlFlashbackTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCheckSqlFlashbackTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PreCheckSqlFlashbackTaskRequest) SetDbName(v string) *PreCheckSqlFlashbackTaskRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskRequest) SetDrdsInstanceId(v string) *PreCheckSqlFlashbackTaskRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskRequest) SetEndTime(v string) *PreCheckSqlFlashbackTaskRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskRequest) SetStartTime(v string) *PreCheckSqlFlashbackTaskRequest {
-	s.StartTime = &v
-	return s
-}
-
-type PreCheckSqlFlashbackTaskResponseBody struct {
-	CheckResult *PreCheckSqlFlashbackTaskResponseBodyCheckResult `json:"CheckResult,omitempty" xml:"CheckResult,omitempty" type:"Struct"`
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PreCheckSqlFlashbackTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCheckSqlFlashbackTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBody) SetCheckResult(v *PreCheckSqlFlashbackTaskResponseBodyCheckResult) *PreCheckSqlFlashbackTaskResponseBody {
-	s.CheckResult = v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBody) SetRequestId(v string) *PreCheckSqlFlashbackTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBody) SetSuccess(v bool) *PreCheckSqlFlashbackTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PreCheckSqlFlashbackTaskResponseBodyCheckResult struct {
-	BinlogExists                          *bool `json:"BinlogExists,omitempty" xml:"BinlogExists,omitempty"`
-	BinlogRowQueryEventEnabled            *bool `json:"BinlogRowQueryEventEnabled,omitempty" xml:"BinlogRowQueryEventEnabled,omitempty"`
-	CanUpgradeSupportBinlogRowQueryEvents *bool `json:"CanUpgradeSupportBinlogRowQueryEvents,omitempty" xml:"CanUpgradeSupportBinlogRowQueryEvents,omitempty"`
-	HasTable                              *bool `json:"HasTable,omitempty" xml:"HasTable,omitempty"`
-	SupportBinlogRowQueryEvents           *bool `json:"SupportBinlogRowQueryEvents,omitempty" xml:"SupportBinlogRowQueryEvents,omitempty"`
-}
-
-func (s PreCheckSqlFlashbackTaskResponseBodyCheckResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCheckSqlFlashbackTaskResponseBodyCheckResult) GoString() string {
-	return s.String()
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBodyCheckResult) SetBinlogExists(v bool) *PreCheckSqlFlashbackTaskResponseBodyCheckResult {
-	s.BinlogExists = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBodyCheckResult) SetBinlogRowQueryEventEnabled(v bool) *PreCheckSqlFlashbackTaskResponseBodyCheckResult {
-	s.BinlogRowQueryEventEnabled = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBodyCheckResult) SetCanUpgradeSupportBinlogRowQueryEvents(v bool) *PreCheckSqlFlashbackTaskResponseBodyCheckResult {
-	s.CanUpgradeSupportBinlogRowQueryEvents = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBodyCheckResult) SetHasTable(v bool) *PreCheckSqlFlashbackTaskResponseBodyCheckResult {
-	s.HasTable = &v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponseBodyCheckResult) SetSupportBinlogRowQueryEvents(v bool) *PreCheckSqlFlashbackTaskResponseBodyCheckResult {
-	s.SupportBinlogRowQueryEvents = &v
-	return s
-}
-
-type PreCheckSqlFlashbackTaskResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PreCheckSqlFlashbackTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PreCheckSqlFlashbackTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreCheckSqlFlashbackTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PreCheckSqlFlashbackTaskResponse) SetHeaders(v map[string]*string) *PreCheckSqlFlashbackTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PreCheckSqlFlashbackTaskResponse) SetBody(v *PreCheckSqlFlashbackTaskResponseBody) *PreCheckSqlFlashbackTaskResponse {
-	s.Body = v
-	return s
-}
-
-type PutRestorePreCheckRequest struct {
-	BackupDbNames       *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
-	BackupId            *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupLevel         *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	BackupMode          *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	DrdsInstanceId      *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-}
-
-func (s PutRestorePreCheckRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckRequest) SetBackupDbNames(v string) *PutRestorePreCheckRequest {
-	s.BackupDbNames = &v
-	return s
-}
-
-func (s *PutRestorePreCheckRequest) SetBackupId(v string) *PutRestorePreCheckRequest {
-	s.BackupId = &v
-	return s
-}
-
-func (s *PutRestorePreCheckRequest) SetBackupLevel(v string) *PutRestorePreCheckRequest {
-	s.BackupLevel = &v
-	return s
-}
-
-func (s *PutRestorePreCheckRequest) SetBackupMode(v string) *PutRestorePreCheckRequest {
-	s.BackupMode = &v
-	return s
-}
-
-func (s *PutRestorePreCheckRequest) SetDrdsInstanceId(v string) *PutRestorePreCheckRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *PutRestorePreCheckRequest) SetPreferredBackupTime(v string) *PutRestorePreCheckRequest {
-	s.PreferredBackupTime = &v
-	return s
-}
-
-type PutRestorePreCheckResponseBody struct {
-	PrecheckBackupResult *PutRestorePreCheckResponseBodyPrecheckBackupResult `json:"PrecheckBackupResult,omitempty" xml:"PrecheckBackupResult,omitempty" type:"Struct"`
-	RequestId            *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PutRestorePreCheckResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckResponseBody) SetPrecheckBackupResult(v *PutRestorePreCheckResponseBodyPrecheckBackupResult) *PutRestorePreCheckResponseBody {
-	s.PrecheckBackupResult = v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBody) SetRequestId(v string) *PutRestorePreCheckResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBody) SetSuccess(v bool) *PutRestorePreCheckResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PutRestorePreCheckResponseBodyPrecheckBackupResult struct {
-	List   *PutRestorePreCheckResponseBodyPrecheckBackupResultList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	Result *bool                                                   `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResult) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResult) SetList(v *PutRestorePreCheckResponseBodyPrecheckBackupResultList) *PutRestorePreCheckResponseBodyPrecheckBackupResult {
-	s.List = v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResult) SetResult(v bool) *PutRestorePreCheckResponseBodyPrecheckBackupResult {
-	s.Result = &v
-	return s
-}
-
-type PutRestorePreCheckResponseBodyPrecheckBackupResultList struct {
-	List []*PutRestorePreCheckResponseBodyPrecheckBackupResultListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResultList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResultList) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultList) SetList(v []*PutRestorePreCheckResponseBodyPrecheckBackupResultListList) *PutRestorePreCheckResponseBodyPrecheckBackupResultList {
-	s.List = v
-	return s
-}
-
-type PutRestorePreCheckResponseBodyPrecheckBackupResultListList struct {
-	CheckFailReason  *string `json:"CheckFailReason,omitempty" xml:"CheckFailReason,omitempty"`
-	CheckItemContent *string `json:"CheckItemContent,omitempty" xml:"CheckItemContent,omitempty"`
-	CheckItemName    *string `json:"CheckItemName,omitempty" xml:"CheckItemName,omitempty"`
-	CheckResult      *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	ItemId           *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Result           *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResultListList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckResponseBodyPrecheckBackupResultListList) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetCheckFailReason(v string) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.CheckFailReason = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetCheckItemContent(v string) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.CheckItemContent = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetCheckItemName(v string) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.CheckItemName = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetCheckResult(v string) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.CheckResult = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetItemId(v int64) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.ItemId = &v
-	return s
-}
-
-func (s *PutRestorePreCheckResponseBodyPrecheckBackupResultListList) SetResult(v bool) *PutRestorePreCheckResponseBodyPrecheckBackupResultListList {
-	s.Result = &v
-	return s
-}
-
-type PutRestorePreCheckResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutRestorePreCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PutRestorePreCheckResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PutRestorePreCheckResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PutRestorePreCheckResponse) SetHeaders(v map[string]*string) *PutRestorePreCheckResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PutRestorePreCheckResponse) SetBody(v *PutRestorePreCheckResponseBody) *PutRestorePreCheckResponse {
-	s.Body = v
-	return s
-}
-
 type PutStartBackupRequest struct {
 	BackupDbNames  *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
 	BackupLevel    *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
@@ -13964,151 +11128,6 @@ func (s *PutStartBackupResponse) SetHeaders(v map[string]*string) *PutStartBacku
 }
 
 func (s *PutStartBackupResponse) SetBody(v *PutStartBackupResponseBody) *PutStartBackupResponse {
-	s.Body = v
-	return s
-}
-
-type RearrangeDbToInstanceRequest struct {
-	ChooseRds      *string   `json:"ChooseRds,omitempty" xml:"ChooseRds,omitempty"`
-	ChooseSubDb    *string   `json:"ChooseSubDb,omitempty" xml:"ChooseSubDb,omitempty"`
-	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	InstanceList   []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	OrderId        *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-}
-
-func (s RearrangeDbToInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RearrangeDbToInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RearrangeDbToInstanceRequest) SetChooseRds(v string) *RearrangeDbToInstanceRequest {
-	s.ChooseRds = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceRequest) SetChooseSubDb(v string) *RearrangeDbToInstanceRequest {
-	s.ChooseSubDb = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceRequest) SetDbName(v string) *RearrangeDbToInstanceRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceRequest) SetDrdsInstanceId(v string) *RearrangeDbToInstanceRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceRequest) SetInstanceList(v []*string) *RearrangeDbToInstanceRequest {
-	s.InstanceList = v
-	return s
-}
-
-func (s *RearrangeDbToInstanceRequest) SetOrderId(v string) *RearrangeDbToInstanceRequest {
-	s.OrderId = &v
-	return s
-}
-
-type RearrangeDbToInstanceResponseBody struct {
-	Data      *RearrangeDbToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RearrangeDbToInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RearrangeDbToInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RearrangeDbToInstanceResponseBody) SetData(v *RearrangeDbToInstanceResponseBodyData) *RearrangeDbToInstanceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RearrangeDbToInstanceResponseBody) SetRequestId(v string) *RearrangeDbToInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceResponseBody) SetSuccess(v bool) *RearrangeDbToInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RearrangeDbToInstanceResponseBodyData struct {
-	Data []*RearrangeDbToInstanceResponseBodyDataData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-}
-
-func (s RearrangeDbToInstanceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RearrangeDbToInstanceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RearrangeDbToInstanceResponseBodyData) SetData(v []*RearrangeDbToInstanceResponseBodyDataData) *RearrangeDbToInstanceResponseBodyData {
-	s.Data = v
-	return s
-}
-
-type RearrangeDbToInstanceResponseBodyDataData struct {
-	DstInstance *string `json:"DstInstance,omitempty" xml:"DstInstance,omitempty"`
-	SrcDbName   *string `json:"SrcDbName,omitempty" xml:"SrcDbName,omitempty"`
-	SrcInstance *string `json:"SrcInstance,omitempty" xml:"SrcInstance,omitempty"`
-}
-
-func (s RearrangeDbToInstanceResponseBodyDataData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RearrangeDbToInstanceResponseBodyDataData) GoString() string {
-	return s.String()
-}
-
-func (s *RearrangeDbToInstanceResponseBodyDataData) SetDstInstance(v string) *RearrangeDbToInstanceResponseBodyDataData {
-	s.DstInstance = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceResponseBodyDataData) SetSrcDbName(v string) *RearrangeDbToInstanceResponseBodyDataData {
-	s.SrcDbName = &v
-	return s
-}
-
-func (s *RearrangeDbToInstanceResponseBodyDataData) SetSrcInstance(v string) *RearrangeDbToInstanceResponseBodyDataData {
-	s.SrcInstance = &v
-	return s
-}
-
-type RearrangeDbToInstanceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RearrangeDbToInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RearrangeDbToInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RearrangeDbToInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RearrangeDbToInstanceResponse) SetHeaders(v map[string]*string) *RearrangeDbToInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RearrangeDbToInstanceResponse) SetBody(v *RearrangeDbToInstanceResponseBody) *RearrangeDbToInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -14535,122 +11554,6 @@ func (s *RemoveDrdsInstanceResponse) SetHeaders(v map[string]*string) *RemoveDrd
 }
 
 func (s *RemoveDrdsInstanceResponse) SetBody(v *RemoveDrdsInstanceResponseBody) *RemoveDrdsInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type RemoveDrdsMysqlRequest struct {
-	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	Force          *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	RoDbInstanceId *string `json:"RoDbInstanceId,omitempty" xml:"RoDbInstanceId,omitempty"`
-}
-
-func (s RemoveDrdsMysqlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveDrdsMysqlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveDrdsMysqlRequest) SetDbInstanceId(v string) *RemoveDrdsMysqlRequest {
-	s.DbInstanceId = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlRequest) SetDbName(v string) *RemoveDrdsMysqlRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlRequest) SetDrdsInstanceId(v string) *RemoveDrdsMysqlRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlRequest) SetForce(v bool) *RemoveDrdsMysqlRequest {
-	s.Force = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlRequest) SetRoDbInstanceId(v string) *RemoveDrdsMysqlRequest {
-	s.RoDbInstanceId = &v
-	return s
-}
-
-type RemoveDrdsMysqlResponseBody struct {
-	Data      *RemoveDrdsMysqlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RemoveDrdsMysqlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveDrdsMysqlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveDrdsMysqlResponseBody) SetData(v *RemoveDrdsMysqlResponseBodyData) *RemoveDrdsMysqlResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RemoveDrdsMysqlResponseBody) SetRequestId(v string) *RemoveDrdsMysqlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlResponseBody) SetSuccess(v bool) *RemoveDrdsMysqlResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RemoveDrdsMysqlResponseBodyData struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s RemoveDrdsMysqlResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveDrdsMysqlResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveDrdsMysqlResponseBodyData) SetMessage(v string) *RemoveDrdsMysqlResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *RemoveDrdsMysqlResponseBodyData) SetResult(v bool) *RemoveDrdsMysqlResponseBodyData {
-	s.Result = &v
-	return s
-}
-
-type RemoveDrdsMysqlResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveDrdsMysqlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveDrdsMysqlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveDrdsMysqlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveDrdsMysqlResponse) SetHeaders(v map[string]*string) *RemoveDrdsMysqlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveDrdsMysqlResponse) SetBody(v *RemoveDrdsMysqlResponseBody) *RemoveDrdsMysqlResponse {
 	s.Body = v
 	return s
 }
@@ -15556,255 +12459,6 @@ func (s *SetupTableResponse) SetHeaders(v map[string]*string) *SetupTableRespons
 }
 
 func (s *SetupTableResponse) SetBody(v *SetupTableResponseBody) *SetupTableResponse {
-	s.Body = v
-	return s
-}
-
-type SetupTableAsyncRequest struct {
-	AllowFullTableScan *bool     `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
-	DbName             *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DrdsInstanceId     *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableName          []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
-}
-
-func (s SetupTableAsyncRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetupTableAsyncRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetupTableAsyncRequest) SetAllowFullTableScan(v bool) *SetupTableAsyncRequest {
-	s.AllowFullTableScan = &v
-	return s
-}
-
-func (s *SetupTableAsyncRequest) SetDbName(v string) *SetupTableAsyncRequest {
-	s.DbName = &v
-	return s
-}
-
-func (s *SetupTableAsyncRequest) SetDrdsInstanceId(v string) *SetupTableAsyncRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *SetupTableAsyncRequest) SetRegionId(v string) *SetupTableAsyncRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SetupTableAsyncRequest) SetTableName(v []*string) *SetupTableAsyncRequest {
-	s.TableName = v
-	return s
-}
-
-type SetupTableAsyncResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SetupTableAsyncResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetupTableAsyncResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetupTableAsyncResponseBody) SetData(v string) *SetupTableAsyncResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SetupTableAsyncResponseBody) SetRequestId(v string) *SetupTableAsyncResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetupTableAsyncResponseBody) SetSuccess(v bool) *SetupTableAsyncResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SetupTableAsyncResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetupTableAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetupTableAsyncResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetupTableAsyncResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetupTableAsyncResponse) SetHeaders(v map[string]*string) *SetupTableAsyncResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetupTableAsyncResponse) SetBody(v *SetupTableAsyncResponseBody) *SetupTableAsyncResponse {
-	s.Body = v
-	return s
-}
-
-type SqlCompatibilityCancelRequest struct {
-	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s SqlCompatibilityCancelRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityCancelRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityCancelRequest) SetDrdsInstanceId(v string) *SqlCompatibilityCancelRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *SqlCompatibilityCancelRequest) SetTaskId(v int64) *SqlCompatibilityCancelRequest {
-	s.TaskId = &v
-	return s
-}
-
-type SqlCompatibilityCancelResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SqlCompatibilityCancelResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityCancelResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityCancelResponseBody) SetData(v bool) *SqlCompatibilityCancelResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SqlCompatibilityCancelResponseBody) SetRequestId(v string) *SqlCompatibilityCancelResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SqlCompatibilityCancelResponseBody) SetSuccess(v bool) *SqlCompatibilityCancelResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SqlCompatibilityCancelResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SqlCompatibilityCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SqlCompatibilityCancelResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityCancelResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityCancelResponse) SetHeaders(v map[string]*string) *SqlCompatibilityCancelResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SqlCompatibilityCancelResponse) SetBody(v *SqlCompatibilityCancelResponseBody) *SqlCompatibilityCancelResponse {
-	s.Body = v
-	return s
-}
-
-type SqlCompatibilityStartRequest struct {
-	DrdsInstanceId  *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	PerformanceTest *bool   `json:"PerformanceTest,omitempty" xml:"PerformanceTest,omitempty"`
-	TargetVersion   *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
-}
-
-func (s SqlCompatibilityStartRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityStartRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityStartRequest) SetDrdsInstanceId(v string) *SqlCompatibilityStartRequest {
-	s.DrdsInstanceId = &v
-	return s
-}
-
-func (s *SqlCompatibilityStartRequest) SetPerformanceTest(v bool) *SqlCompatibilityStartRequest {
-	s.PerformanceTest = &v
-	return s
-}
-
-func (s *SqlCompatibilityStartRequest) SetTargetVersion(v string) *SqlCompatibilityStartRequest {
-	s.TargetVersion = &v
-	return s
-}
-
-type SqlCompatibilityStartResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SqlCompatibilityStartResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityStartResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityStartResponseBody) SetData(v bool) *SqlCompatibilityStartResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SqlCompatibilityStartResponseBody) SetRequestId(v string) *SqlCompatibilityStartResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SqlCompatibilityStartResponseBody) SetSuccess(v bool) *SqlCompatibilityStartResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SqlCompatibilityStartResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SqlCompatibilityStartResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SqlCompatibilityStartResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SqlCompatibilityStartResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SqlCompatibilityStartResponse) SetHeaders(v map[string]*string) *SqlCompatibilityStartResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SqlCompatibilityStartResponse) SetBody(v *SqlCompatibilityStartResponseBody) *SqlCompatibilityStartResponse {
 	s.Body = v
 	return s
 }
@@ -17405,186 +14059,6 @@ func (s *ValidateShardTaskResponse) SetBody(v *ValidateShardTaskResponseBody) *V
 	return s
 }
 
-type DescribeRdsInstInfosRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
-}
-
-func (s DescribeRdsInstInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosRequest) SetPageNumber(v int32) *DescribeRdsInstInfosRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosRequest) SetPageSize(v int32) *DescribeRdsInstInfosRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosRequest) SetSearch(v string) *DescribeRdsInstInfosRequest {
-	s.Search = &v
-	return s
-}
-
-type DescribeRdsInstInfosResponseBody struct {
-	Items     *DescribeRdsInstInfosResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRdsInstInfosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosResponseBody) SetItems(v *DescribeRdsInstInfosResponseBodyItems) *DescribeRdsInstInfosResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBody) SetRequestId(v string) *DescribeRdsInstInfosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRdsInstInfosResponseBodyItems struct {
-	DBInstance []*DescribeRdsInstInfosResponseBodyItemsDBInstance `json:"DBInstance,omitempty" xml:"DBInstance,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsInstInfosResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItems) SetDBInstance(v []*DescribeRdsInstInfosResponseBodyItemsDBInstance) *DescribeRdsInstInfosResponseBodyItems {
-	s.DBInstance = v
-	return s
-}
-
-type DescribeRdsInstInfosResponseBodyItemsDBInstance struct {
-	DBInstanceDescription *string                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus      *int32                                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceType        *string                                                              `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	Engine                *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	InstanceNetworkType   *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	ReadOnlyDBInstanceId  *DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
-	RegionId              *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId                *string                                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s DescribeRdsInstInfosResponseBodyItemsDBInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosResponseBodyItemsDBInstance) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetDBInstanceDescription(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.DBInstanceDescription = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetDBInstanceId(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetDBInstanceStatus(v int32) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.DBInstanceStatus = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetDBInstanceType(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.DBInstanceType = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetEngine(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetEngineVersion(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetInstanceNetworkType(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.InstanceNetworkType = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetReadOnlyDBInstanceId(v *DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.ReadOnlyDBInstanceId = v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetRegionId(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstance) SetZoneId(v string) *DescribeRdsInstInfosResponseBodyItemsDBInstance {
-	s.ZoneId = &v
-	return s
-}
-
-type DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId struct {
-	ReadOnlyDBInstanceId []*string `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId) SetReadOnlyDBInstanceId(v []*string) *DescribeRdsInstInfosResponseBodyItemsDBInstanceReadOnlyDBInstanceId {
-	s.ReadOnlyDBInstanceId = v
-	return s
-}
-
-type DescribeRdsInstInfosResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRdsInstInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRdsInstInfosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRdsInstInfosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRdsInstInfosResponse) SetHeaders(v map[string]*string) *DescribeRdsInstInfosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRdsInstInfosResponse) SetBody(v *DescribeRdsInstInfosResponseBody) *DescribeRdsInstInfosResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -17681,12 +14155,20 @@ func (client *Client) ChangeAccountPasswordWithOptions(request *ChangeAccountPas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ChangeAccountPassword"),
@@ -17696,7 +14178,7 @@ func (client *Client) ChangeAccountPasswordWithOptions(request *ChangeAccountPas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeAccountPasswordResponse{}
@@ -17725,13 +14207,24 @@ func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["DrdsRegionId"] = request.DrdsRegionId
-	query["OriginAzoneId"] = request.OriginAzoneId
-	query["TargetAzoneId"] = request.TargetAzoneId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsRegionId)) {
+		query["DrdsRegionId"] = request.DrdsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginAzoneId)) {
+		query["OriginAzoneId"] = request.OriginAzoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetAzoneId)) {
+		query["TargetAzoneId"] = request.TargetAzoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ChangeInstanceAzone"),
@@ -17741,7 +14234,7 @@ func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeInstanceAzoneResponse{}
@@ -17764,64 +14257,22 @@ func (client *Client) ChangeInstanceAzone(request *ChangeInstanceAzoneRequest) (
 	return _result, _err
 }
 
-func (client *Client) ChangeInstanceNetworkWithOptions(request *ChangeInstanceNetworkRequest, runtime *util.RuntimeOptions) (_result *ChangeInstanceNetworkResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ClassicExpiredDays"] = request.ClassicExpiredDays
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RetainClassic"] = request.RetainClassic
-	query["SrcInstanceNetworkType"] = request.SrcInstanceNetworkType
-	query["VpcId"] = request.VpcId
-	query["VswitchId"] = request.VswitchId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ChangeInstanceNetwork"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ChangeInstanceNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ChangeInstanceNetwork(request *ChangeInstanceNetworkRequest) (_result *ChangeInstanceNetworkResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ChangeInstanceNetworkResponse{}
-	_body, _err := client.ChangeInstanceNetworkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckDrdsDbNameWithOptions(request *CheckDrdsDbNameRequest, runtime *util.RuntimeOptions) (_result *CheckDrdsDbNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckDrdsDbName"),
@@ -17831,7 +14282,7 @@ func (client *Client) CheckDrdsDbNameWithOptions(request *CheckDrdsDbNameRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckDrdsDbNameResponse{}
@@ -17860,11 +14311,16 @@ func (client *Client) CheckExpandStatusWithOptions(request *CheckExpandStatusReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckExpandStatus"),
@@ -17874,7 +14330,7 @@ func (client *Client) CheckExpandStatusWithOptions(request *CheckExpandStatusReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckExpandStatusResponse{}
@@ -17897,62 +14353,22 @@ func (client *Client) CheckExpandStatus(request *CheckExpandStatusRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) CheckRdsSuperAccountWithOptions(request *CheckRdsSuperAccountRequest, runtime *util.RuntimeOptions) (_result *CheckRdsSuperAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Password"] = request.Password
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckRdsSuperAccount"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckRdsSuperAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckRdsSuperAccount(request *CheckRdsSuperAccountRequest) (_result *CheckRdsSuperAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckRdsSuperAccountResponse{}
-	_body, _err := client.CheckRdsSuperAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckSqlAuditEnableStatusWithOptions(request *CheckSqlAuditEnableStatusRequest, runtime *util.RuntimeOptions) (_result *CheckSqlAuditEnableStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckSqlAuditEnableStatus"),
@@ -17962,7 +14378,7 @@ func (client *Client) CheckSqlAuditEnableStatusWithOptions(request *CheckSqlAudi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckSqlAuditEnableStatusResponse{}
@@ -17985,70 +14401,58 @@ func (client *Client) CheckSqlAuditEnableStatus(request *CheckSqlAuditEnableStat
 	return _result, _err
 }
 
-func (client *Client) ConfigureDrdsDbInstancesWithOptions(request *ConfigureDrdsDbInstancesRequest, runtime *util.RuntimeOptions) (_result *ConfigureDrdsDbInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DbInstance"] = request.DbInstance
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConfigureDrdsDbInstances"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ConfigureDrdsDbInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ConfigureDrdsDbInstances(request *ConfigureDrdsDbInstancesRequest) (_result *ConfigureDrdsDbInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ConfigureDrdsDbInstancesResponse{}
-	_body, _err := client.ConfigureDrdsDbInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbInstType"] = request.DbInstType
-	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Encode"] = request.Encode
-	query["InstDbName"] = request.InstDbName
-	query["Password"] = request.Password
-	query["RdsInstance"] = request.RdsInstance
-	query["RdsSuperAccount"] = request.RdsSuperAccount
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceIsCreating)) {
+		query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Encode)) {
+		query["Encode"] = request.Encode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstDbName)) {
+		query["InstDbName"] = request.InstDbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstance)) {
+		query["RdsInstance"] = request.RdsInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsSuperAccount)) {
+		query["RdsSuperAccount"] = request.RdsSuperAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDrdsDB"),
@@ -18058,7 +14462,7 @@ func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsDBResponse{}
@@ -18081,135 +14485,86 @@ func (client *Client) CreateDrdsDB(request *CreateDrdsDBRequest) (_result *Creat
 	return _result, _err
 }
 
-func (client *Client) CreateDrdsDBPreCheckWithOptions(request *CreateDrdsDBPreCheckRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsDBPreCheckResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbInstType"] = request.DbInstType
-	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Encode"] = request.Encode
-	query["InstDbName"] = request.InstDbName
-	query["Password"] = request.Password
-	query["RdsInstance"] = request.RdsInstance
-	query["RdsSuperAccount"] = request.RdsSuperAccount
-	query["Type"] = request.Type
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDrdsDBPreCheck"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDrdsDBPreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDrdsDBPreCheck(request *CreateDrdsDBPreCheckRequest) (_result *CreateDrdsDBPreCheckResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDrdsDBPreCheckResponse{}
-	_body, _err := client.CreateDrdsDBPreCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDrdsDBPreviewWithOptions(request *CreateDrdsDBPreviewRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsDBPreviewResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbInstType"] = request.DbInstType
-	query["DbInstanceIsCreating"] = request.DbInstanceIsCreating
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["InstDbName"] = request.InstDbName
-	query["OrderId"] = request.OrderId
-	query["RdsInstance"] = request.RdsInstance
-	query["Type"] = request.Type
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDrdsDBPreview"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDrdsDBPreviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDrdsDBPreview(request *CreateDrdsDBPreviewRequest) (_result *CreateDrdsDBPreviewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDrdsDBPreviewResponse{}
-	_body, _err := client.CreateDrdsDBPreviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Duration"] = request.Duration
-	query["InstanceSeries"] = request.InstanceSeries
-	query["IsAutoRenew"] = request.IsAutoRenew
-	query["MasterInstId"] = request.MasterInstId
-	query["MySQLVersion"] = request.MySQLVersion
-	query["PayType"] = request.PayType
-	query["PricingCycle"] = request.PricingCycle
-	query["Quantity"] = request.Quantity
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Specification"] = request.Specification
-	query["Type"] = request.Type
-	query["VpcId"] = request.VpcId
-	query["VswitchId"] = request.VswitchId
-	query["ZoneId"] = request.ZoneId
-	query["isHa"] = request.IsHa
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSeries)) {
+		query["InstanceSeries"] = request.InstanceSeries
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAutoRenew)) {
+		query["IsAutoRenew"] = request.IsAutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstId)) {
+		query["MasterInstId"] = request.MasterInstId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MySQLVersion)) {
+		query["MySQLVersion"] = request.MySQLVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHa)) {
+		query["isHa"] = request.IsHa
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDrdsInstance"),
@@ -18219,7 +14574,7 @@ func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDrdsInstanceResponse{}
@@ -18242,65 +14597,30 @@ func (client *Client) CreateDrdsInstance(request *CreateDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) CreateEvaluatePreCheckTaskWithOptions(request *CreateEvaluatePreCheckTaskRequest, runtime *util.RuntimeOptions) (_result *CreateEvaluatePreCheckTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AvgQpsGrowthScale"] = request.AvgQpsGrowthScale
-	query["DataGrowthScale"] = request.DataGrowthScale
-	query["DbInfo"] = request.DbInfo
-	query["EvaluateHours"] = request.EvaluateHours
-	query["TaskName"] = request.TaskName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEvaluatePreCheckTask"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateEvaluatePreCheckTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateEvaluatePreCheckTask(request *CreateEvaluatePreCheckTaskRequest) (_result *CreateEvaluatePreCheckTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateEvaluatePreCheckTaskResponse{}
-	_body, _err := client.CreateEvaluatePreCheckTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateInstanceAccountWithOptions(request *CreateInstanceAccountRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbPrivilege"] = request.DbPrivilege
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbPrivilege)) {
+		query["DbPrivilege"] = request.DbPrivilege
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInstanceAccount"),
@@ -18310,7 +14630,7 @@ func (client *Client) CreateInstanceAccountWithOptions(request *CreateInstanceAc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceAccountResponse{}
@@ -18339,11 +14659,16 @@ func (client *Client) CreateInstanceInternetAddressWithOptions(request *CreateIn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateInstanceInternetAddress"),
@@ -18353,7 +14678,7 @@ func (client *Client) CreateInstanceInternetAddressWithOptions(request *CreateIn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceInternetAddressResponse{}
@@ -18382,11 +14707,16 @@ func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Params"] = request.Params
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateOrderForRds"),
@@ -18396,7 +14726,7 @@ func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateOrderForRdsResponse{}
@@ -18425,15 +14755,32 @@ func (client *Client) CreateShardTaskWithOptions(request *CreateShardTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["SourceTableName"] = request.SourceTableName
-	query["TargetTableName"] = request.TargetTableName
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTableName)) {
+		query["SourceTableName"] = request.SourceTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetTableName)) {
+		query["TargetTableName"] = request.TargetTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateShardTask"),
@@ -18443,7 +14790,7 @@ func (client *Client) CreateShardTaskWithOptions(request *CreateShardTaskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateShardTaskResponse{}
@@ -18472,10 +14819,12 @@ func (client *Client) DescribeBackMenuWithOptions(request *DescribeBackMenuReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackMenu"),
@@ -18485,7 +14834,7 @@ func (client *Client) DescribeBackMenuWithOptions(request *DescribeBackMenuReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackMenuResponse{}
@@ -18514,12 +14863,20 @@ func (client *Client) DescribeBackupDbsWithOptions(request *DescribeBackupDbsReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupId"] = request.BackupId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PreferredRestoreTime"] = request.PreferredRestoreTime
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredRestoreTime)) {
+		query["PreferredRestoreTime"] = request.PreferredRestoreTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackupDbs"),
@@ -18529,7 +14886,7 @@ func (client *Client) DescribeBackupDbsWithOptions(request *DescribeBackupDbsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupDbsResponse{}
@@ -18558,10 +14915,12 @@ func (client *Client) DescribeBackupLocalWithOptions(request *DescribeBackupLoca
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackupLocal"),
@@ -18571,7 +14930,7 @@ func (client *Client) DescribeBackupLocalWithOptions(request *DescribeBackupLoca
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupLocalResponse{}
@@ -18600,10 +14959,12 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackupPolicy"),
@@ -18613,7 +14974,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupPolicyResponse{}
@@ -18642,12 +15003,20 @@ func (client *Client) DescribeBackupSetsWithOptions(request *DescribeBackupSetsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackupSets"),
@@ -18657,7 +15026,7 @@ func (client *Client) DescribeBackupSetsWithOptions(request *DescribeBackupSetsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupSetsResponse{}
@@ -18686,10 +15055,12 @@ func (client *Client) DescribeBackupTimesWithOptions(request *DescribeBackupTime
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBackupTimes"),
@@ -18699,7 +15070,7 @@ func (client *Client) DescribeBackupTimesWithOptions(request *DescribeBackupTime
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupTimesResponse{}
@@ -18728,15 +15099,32 @@ func (client *Client) DescribeBroadcastTablesWithOptions(request *DescribeBroadc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageSize"] = request.PageSize
-	query["Query"] = request.Query
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBroadcastTables"),
@@ -18746,7 +15134,7 @@ func (client *Client) DescribeBroadcastTablesWithOptions(request *DescribeBroadc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBroadcastTablesResponse{}
@@ -18769,62 +15157,34 @@ func (client *Client) DescribeBroadcastTables(request *DescribeBroadcastTablesRe
 	return _result, _err
 }
 
-func (client *Client) DescribeDataImportTaskReportWithOptions(request *DescribeDataImportTaskReportRequest, runtime *util.RuntimeOptions) (_result *DescribeDataImportTaskReportResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["TaskId"] = request.TaskId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDataImportTaskReport"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDataImportTaskReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDataImportTaskReport(request *DescribeDataImportTaskReportRequest) (_result *DescribeDataImportTaskReportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDataImportTaskReportResponse{}
-	_body, _err := client.DescribeDataImportTaskReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeDbInstanceDbsWithOptions(request *DescribeDbInstanceDbsRequest, runtime *util.RuntimeOptions) (_result *DescribeDbInstanceDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbInstType"] = request.DbInstType
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDbInstanceDbs"),
@@ -18834,7 +15194,7 @@ func (client *Client) DescribeDbInstanceDbsWithOptions(request *DescribeDbInstan
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbInstanceDbsResponse{}
@@ -18863,14 +15223,28 @@ func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Search"] = request.Search
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDbInstances"),
@@ -18880,7 +15254,7 @@ func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstance
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDbInstancesResponse{}
@@ -18909,11 +15283,16 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDB"),
@@ -18923,7 +15302,7 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBResponse{}
@@ -18952,12 +15331,20 @@ func (client *Client) DescribeDrdsDBClusterWithOptions(request *DescribeDrdsDBCl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDBCluster"),
@@ -18967,7 +15354,7 @@ func (client *Client) DescribeDrdsDBClusterWithOptions(request *DescribeDrdsDBCl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBClusterResponse{}
@@ -18996,12 +15383,20 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["GroupName"] = request.GroupName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDBIpWhiteList"),
@@ -19011,7 +15406,7 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBIpWhiteListResponse{}
@@ -19040,13 +15435,24 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDBs"),
@@ -19056,7 +15462,7 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDBsResponse{}
@@ -19085,12 +15491,20 @@ func (client *Client) DescribeDrdsDbInstanceWithOptions(request *DescribeDrdsDbI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDbInstance"),
@@ -19100,7 +15514,7 @@ func (client *Client) DescribeDrdsDbInstanceWithOptions(request *DescribeDrdsDbI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbInstanceResponse{}
@@ -19129,13 +15543,24 @@ func (client *Client) DescribeDrdsDbInstancesWithOptions(request *DescribeDrdsDb
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDbInstances"),
@@ -19145,7 +15570,7 @@ func (client *Client) DescribeDrdsDbInstancesWithOptions(request *DescribeDrdsDb
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbInstancesResponse{}
@@ -19174,11 +15599,16 @@ func (client *Client) DescribeDrdsDbRdsNameListWithOptions(request *DescribeDrds
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDbRdsNameList"),
@@ -19188,7 +15618,7 @@ func (client *Client) DescribeDrdsDbRdsNameListWithOptions(request *DescribeDrds
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbRdsNameListResponse{}
@@ -19211,62 +15641,26 @@ func (client *Client) DescribeDrdsDbRdsNameList(request *DescribeDrdsDbRdsNameLi
 	return _result, _err
 }
 
-func (client *Client) DescribeDrdsDbSpecAndPriceWithOptions(request *DescribeDrdsDbSpecAndPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbSpecAndPriceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DBName"] = request.DBName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDrdsDbSpecAndPrice"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDrdsDbSpecAndPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDrdsDbSpecAndPrice(request *DescribeDrdsDbSpecAndPriceRequest) (_result *DescribeDrdsDbSpecAndPriceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDrdsDbSpecAndPriceResponse{}
-	_body, _err := client.DescribeDrdsDbSpecAndPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeDrdsDbTasksWithOptions(request *DescribeDrdsDbTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsDbTasks"),
@@ -19276,7 +15670,7 @@ func (client *Client) DescribeDrdsDbTasksWithOptions(request *DescribeDrdsDbTask
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsDbTasksResponse{}
@@ -19305,11 +15699,16 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstance"),
@@ -19319,7 +15718,7 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceResponse{}
@@ -19348,15 +15747,32 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["Key"] = request.Key
-	query["RegionId"] = request.RegionId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceDbMonitor"),
@@ -19366,7 +15782,7 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceDbMonitorResponse{}
@@ -19395,10 +15811,12 @@ func (client *Client) DescribeDrdsInstanceLevelTasksWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceLevelTasks"),
@@ -19408,7 +15826,7 @@ func (client *Client) DescribeDrdsInstanceLevelTasksWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceLevelTasksResponse{}
@@ -19437,15 +15855,32 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["Key"] = request.Key
-	query["PeriodMultiple"] = request.PeriodMultiple
-	query["RegionId"] = request.RegionId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodMultiple)) {
+		query["PeriodMultiple"] = request.PeriodMultiple
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceMonitor"),
@@ -19455,7 +15890,7 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceMonitorResponse{}
@@ -19484,11 +15919,16 @@ func (client *Client) DescribeDrdsInstanceVersionWithOptions(request *DescribeDr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstanceVersion"),
@@ -19498,7 +15938,7 @@ func (client *Client) DescribeDrdsInstanceVersionWithOptions(request *DescribeDr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstanceVersionResponse{}
@@ -19527,19 +15967,48 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["Expired"] = request.Expired
-	query["Mix"] = request.Mix
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProductVersion"] = request.ProductVersion
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Tag"] = request.Tag
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expired)) {
+		query["Expired"] = request.Expired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mix)) {
+		query["Mix"] = request.Mix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
+		query["ProductVersion"] = request.ProductVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsInstances"),
@@ -19549,7 +16018,7 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsInstancesResponse{}
@@ -19578,13 +16047,24 @@ func (client *Client) DescribeDrdsParamsWithOptions(request *DescribeDrdsParamsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["ParamLevel"] = request.ParamLevel
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamLevel)) {
+		query["ParamLevel"] = request.ParamLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsParams"),
@@ -19594,7 +16074,7 @@ func (client *Client) DescribeDrdsParamsWithOptions(request *DescribeDrdsParamsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsParamsResponse{}
@@ -19623,10 +16103,12 @@ func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsRdsInstances"),
@@ -19636,7 +16118,7 @@ func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsRdsInstancesResponse{}
@@ -19665,14 +16147,28 @@ func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsSh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DbNamePattern"] = request.DbNamePattern
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbNamePattern)) {
+		query["DbNamePattern"] = request.DbNamePattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsShardingDbs"),
@@ -19682,7 +16178,7 @@ func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsSh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsShardingDbsResponse{}
@@ -19711,16 +16207,36 @@ func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["ExeTime"] = request.ExeTime
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExeTime)) {
+		query["ExeTime"] = request.ExeTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsSlowSqls"),
@@ -19730,7 +16246,7 @@ func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsSlowSqlsResponse{}
@@ -19759,10 +16275,12 @@ func (client *Client) DescribeDrdsSqlAuditStatusWithOptions(request *DescribeDrd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsSqlAuditStatus"),
@@ -19772,7 +16290,7 @@ func (client *Client) DescribeDrdsSqlAuditStatusWithOptions(request *DescribeDrd
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsSqlAuditStatusResponse{}
@@ -19801,12 +16319,20 @@ func (client *Client) DescribeDrdsTasksWithOptions(request *DescribeDrdsTasksReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDrdsTasks"),
@@ -19816,7 +16342,7 @@ func (client *Client) DescribeDrdsTasksWithOptions(request *DescribeDrdsTasksReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDrdsTasksResponse{}
@@ -19845,11 +16371,16 @@ func (client *Client) DescribeExpandLogicTableInfoListWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeExpandLogicTableInfoList"),
@@ -19859,7 +16390,7 @@ func (client *Client) DescribeExpandLogicTableInfoListWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExpandLogicTableInfoListResponse{}
@@ -19882,60 +16413,22 @@ func (client *Client) DescribeExpandLogicTableInfoList(request *DescribeExpandLo
 	return _result, _err
 }
 
-func (client *Client) DescribeHiStoreInstanceInfoWithOptions(request *DescribeHiStoreInstanceInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeHiStoreInstanceInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["HistoreInstanceId"] = request.HistoreInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeHiStoreInstanceInfo"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeHiStoreInstanceInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeHiStoreInstanceInfo(request *DescribeHiStoreInstanceInfoRequest) (_result *DescribeHiStoreInstanceInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeHiStoreInstanceInfoResponse{}
-	_body, _err := client.DescribeHiStoreInstanceInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeHotDbListWithOptions(request *DescribeHotDbListRequest, runtime *util.RuntimeOptions) (_result *DescribeHotDbListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeHotDbList"),
@@ -19945,7 +16438,7 @@ func (client *Client) DescribeHotDbListWithOptions(request *DescribeHotDbListReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeHotDbListResponse{}
@@ -19974,11 +16467,16 @@ func (client *Client) DescribeInstDbLogInfoWithOptions(request *DescribeInstDbLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstDbLogInfo"),
@@ -19988,7 +16486,7 @@ func (client *Client) DescribeInstDbLogInfoWithOptions(request *DescribeInstDbLo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstDbLogInfoResponse{}
@@ -20017,11 +16515,16 @@ func (client *Client) DescribeInstDbSlsInfoWithOptions(request *DescribeInstDbSl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstDbSlsInfo"),
@@ -20031,7 +16534,7 @@ func (client *Client) DescribeInstDbSlsInfoWithOptions(request *DescribeInstDbSl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstDbSlsInfoResponse{}
@@ -20060,10 +16563,12 @@ func (client *Client) DescribeInstanceAccountsWithOptions(request *DescribeInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceAccounts"),
@@ -20073,7 +16578,7 @@ func (client *Client) DescribeInstanceAccountsWithOptions(request *DescribeInsta
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceAccountsResponse{}
@@ -20096,58 +16601,18 @@ func (client *Client) DescribeInstanceAccounts(request *DescribeInstanceAccounts
 	return _result, _err
 }
 
-func (client *Client) DescribeInstanceMenuSwitchWithOptions(request *DescribeInstanceMenuSwitchRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceMenuSwitchResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstanceMenuSwitch"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeInstanceMenuSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeInstanceMenuSwitch(request *DescribeInstanceMenuSwitchRequest) (_result *DescribeInstanceMenuSwitchResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstanceMenuSwitchResponse{}
-	_body, _err := client.DescribeInstanceMenuSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeInstanceSwitchAzoneWithOptions(request *DescribeInstanceSwitchAzoneRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSwitchAzoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceSwitchAzone"),
@@ -20157,7 +16622,7 @@ func (client *Client) DescribeInstanceSwitchAzoneWithOptions(request *DescribeIn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSwitchAzoneResponse{}
@@ -20186,10 +16651,12 @@ func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInstanceSwitchNetwork"),
@@ -20199,7 +16666,7 @@ func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSwitchNetworkResponse{}
@@ -20228,12 +16695,20 @@ func (client *Client) DescribePreCheckResultWithOptions(request *DescribePreChec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePreCheckResult"),
@@ -20243,7 +16718,7 @@ func (client *Client) DescribePreCheckResultWithOptions(request *DescribePreChec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePreCheckResultResponse{}
@@ -20272,15 +16747,32 @@ func (client *Client) DescribeRDSPerformanceWithOptions(request *DescribeRDSPerf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["Keys"] = request.Keys
-	query["RdsInstanceId"] = request.RdsInstanceId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keys)) {
+		query["Keys"] = request.Keys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstanceId)) {
+		query["RdsInstanceId"] = request.RdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRDSPerformance"),
@@ -20290,7 +16782,7 @@ func (client *Client) DescribeRDSPerformanceWithOptions(request *DescribeRDSPerf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRDSPerformanceResponse{}
@@ -20319,12 +16811,20 @@ func (client *Client) DescribeRdsCommodityWithOptions(request *DescribeRdsCommod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CommodityCode"] = request.CommodityCode
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["OrderType"] = request.OrderType
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRdsCommodity"),
@@ -20334,7 +16834,7 @@ func (client *Client) DescribeRdsCommodityWithOptions(request *DescribeRdsCommod
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsCommodityResponse{}
@@ -20357,61 +16857,26 @@ func (client *Client) DescribeRdsCommodity(request *DescribeRdsCommodityRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeRdsDrdsDBWithOptions(request *DescribeRdsDrdsDBRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsDrdsDBResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RdsInstanceId"] = request.RdsInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRdsDrdsDB"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRdsDrdsDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsDrdsDB(request *DescribeRdsDrdsDBRequest) (_result *DescribeRdsDrdsDBResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRdsDrdsDBResponse{}
-	_body, _err := client.DescribeRdsDrdsDBWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRdsPerformanceSummaryWithOptions(request *DescribeRdsPerformanceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsPerformanceSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RdsInstanceId"] = request.RdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstanceId)) {
+		query["RdsInstanceId"] = request.RdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRdsPerformanceSummary"),
@@ -20421,7 +16886,7 @@ func (client *Client) DescribeRdsPerformanceSummaryWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsPerformanceSummaryResponse{}
@@ -20444,105 +16909,26 @@ func (client *Client) DescribeRdsPerformanceSummary(request *DescribeRdsPerforma
 	return _result, _err
 }
 
-func (client *Client) DescribeRdsPriceWithOptions(request *DescribeRdsPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsPriceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["Params"] = request.Params
-	query["RegionId"] = request.RegionId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRdsPrice"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRdsPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsPrice(request *DescribeRdsPriceRequest) (_result *DescribeRdsPriceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRdsPriceResponse{}
-	_body, _err := client.DescribeRdsPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsReadOnlyWithOptions(request *DescribeRdsReadOnlyRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsReadOnlyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RdsInstanceId"] = request.RdsInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRdsReadOnly"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRdsReadOnlyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsReadOnly(request *DescribeRdsReadOnlyRequest) (_result *DescribeRdsReadOnlyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRdsReadOnlyResponse{}
-	_body, _err := client.DescribeRdsReadOnlyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRdsSuperAccountInstancesWithOptions(request *DescribeRdsSuperAccountInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsSuperAccountInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RdsInstance"] = request.RdsInstance
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstance)) {
+		query["RdsInstance"] = request.RdsInstance
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRdsSuperAccountInstances"),
@@ -20552,7 +16938,7 @@ func (client *Client) DescribeRdsSuperAccountInstancesWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRdsSuperAccountInstancesResponse{}
@@ -20575,61 +16961,26 @@ func (client *Client) DescribeRdsSuperAccountInstances(request *DescribeRdsSuper
 	return _result, _err
 }
 
-func (client *Client) DescribeRdsVpcForZoneWithOptions(request *DescribeRdsVpcForZoneRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVpcForZoneResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ZoneId"] = request.ZoneId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRdsVpcForZone"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRdsVpcForZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsVpcForZone(request *DescribeRdsVpcForZoneRequest) (_result *DescribeRdsVpcForZoneResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRdsVpcForZoneResponse{}
-	_body, _err := client.DescribeRdsVpcForZoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRecycleBinStatusWithOptions(request *DescribeRecycleBinStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeRecycleBinStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRecycleBinStatus"),
@@ -20639,7 +16990,7 @@ func (client *Client) DescribeRecycleBinStatusWithOptions(request *DescribeRecyc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecycleBinStatusResponse{}
@@ -20668,12 +17019,20 @@ func (client *Client) DescribeRecycleBinTablesWithOptions(request *DescribeRecyc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRecycleBinTables"),
@@ -20683,7 +17042,7 @@ func (client *Client) DescribeRecycleBinTablesWithOptions(request *DescribeRecyc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecycleBinTablesResponse{}
@@ -20712,15 +17071,32 @@ func (client *Client) DescribeRestoreOrderWithOptions(request *DescribeRestoreOr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupDbNames"] = request.BackupDbNames
-	query["BackupId"] = request.BackupId
-	query["BackupLevel"] = request.BackupLevel
-	query["BackupMode"] = request.BackupMode
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PreferredBackupTime"] = request.PreferredBackupTime
+	if !tea.BoolValue(util.IsUnset(request.BackupDbNames)) {
+		query["BackupDbNames"] = request.BackupDbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupLevel)) {
+		query["BackupLevel"] = request.BackupLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupMode)) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupTime)) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRestoreOrder"),
@@ -20730,7 +17106,7 @@ func (client *Client) DescribeRestoreOrderWithOptions(request *DescribeRestoreOr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreOrderResponse{}
@@ -20759,14 +17135,28 @@ func (client *Client) DescribeShardTaskInfoWithOptions(request *DescribeShardTas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["SourceTableName"] = request.SourceTableName
-	query["TargetTableName"] = request.TargetTableName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTableName)) {
+		query["SourceTableName"] = request.SourceTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetTableName)) {
+		query["TargetTableName"] = request.TargetTableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeShardTaskInfo"),
@@ -20776,7 +17166,7 @@ func (client *Client) DescribeShardTaskInfoWithOptions(request *DescribeShardTas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardTaskInfoResponse{}
@@ -20805,16 +17195,36 @@ func (client *Client) DescribeShardTaskListWithOptions(request *DescribeShardTas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageSize"] = request.PageSize
-	query["Query"] = request.Query
-	query["RegionId"] = request.RegionId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeShardTaskList"),
@@ -20824,7 +17234,7 @@ func (client *Client) DescribeShardTaskListWithOptions(request *DescribeShardTas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeShardTaskListResponse{}
@@ -20853,10 +17263,12 @@ func (client *Client) DescribeSqlFlashbakTaskWithOptions(request *DescribeSqlFla
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSqlFlashbakTask"),
@@ -20866,7 +17278,7 @@ func (client *Client) DescribeSqlFlashbakTaskWithOptions(request *DescribeSqlFla
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSqlFlashbakTaskResponse{}
@@ -20889,63 +17301,30 @@ func (client *Client) DescribeSqlFlashbakTask(request *DescribeSqlFlashbakTaskRe
 	return _result, _err
 }
 
-func (client *Client) DescribeSrcRdsListWithOptions(request *DescribeSrcRdsListRequest, runtime *util.RuntimeOptions) (_result *DescribeSrcRdsListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PartitionMapping"] = request.PartitionMapping
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSrcRdsList"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSrcRdsListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSrcRdsList(request *DescribeSrcRdsListRequest) (_result *DescribeSrcRdsListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSrcRdsListResponse{}
-	_body, _err := client.DescribeSrcRdsListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, runtime *util.RuntimeOptions) (_result *DescribeTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTable"),
@@ -20955,7 +17334,7 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTableResponse{}
@@ -20984,16 +17363,36 @@ func (client *Client) DescribeTableListByTypeWithOptions(request *DescribeTableL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageSize"] = request.PageSize
-	query["Query"] = request.Query
-	query["RegionId"] = request.RegionId
-	query["TableType"] = request.TableType
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableType)) {
+		query["TableType"] = request.TableType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTableListByType"),
@@ -21003,7 +17402,7 @@ func (client *Client) DescribeTableListByTypeWithOptions(request *DescribeTableL
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTableListByTypeResponse{}
@@ -21032,15 +17431,32 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PageSize"] = request.PageSize
-	query["Query"] = request.Query
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTables"),
@@ -21050,7 +17466,7 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTablesResponse{}
@@ -21079,11 +17495,16 @@ func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableSqlAudit"),
@@ -21093,7 +17514,7 @@ func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableSqlAuditResponse{}
@@ -21122,11 +17543,16 @@ func (client *Client) EnableInstanceIpv6AddressWithOptions(request *EnableInstan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableInstanceIpv6Address"),
@@ -21136,7 +17562,7 @@ func (client *Client) EnableInstanceIpv6AddressWithOptions(request *EnableInstan
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableInstanceIpv6AddressResponse{}
@@ -21165,14 +17591,28 @@ func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["IsRecall"] = request.IsRecall
-	query["RecallEndTimestamp"] = request.RecallEndTimestamp
-	query["RecallStartTimestamp"] = request.RecallStartTimestamp
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRecall)) {
+		query["IsRecall"] = request.IsRecall
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallEndTimestamp)) {
+		query["RecallEndTimestamp"] = request.RecallEndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallStartTimestamp)) {
+		query["RecallStartTimestamp"] = request.RecallStartTimestamp
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableSqlAudit"),
@@ -21182,7 +17622,7 @@ func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableSqlAuditResponse{}
@@ -21211,11 +17651,16 @@ func (client *Client) EnableSqlFlashbackMatchSwitchWithOptions(request *EnableSq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableSqlFlashbackMatchSwitch"),
@@ -21225,7 +17670,7 @@ func (client *Client) EnableSqlFlashbackMatchSwitchWithOptions(request *EnableSq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableSqlFlashbackMatchSwitchResponse{}
@@ -21254,13 +17699,24 @@ func (client *Client) FlashbackRecycleBinTableWithOptions(request *FlashbackRecy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FlashbackRecycleBinTable"),
@@ -21270,7 +17726,7 @@ func (client *Client) FlashbackRecycleBinTableWithOptions(request *FlashbackRecy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &FlashbackRecycleBinTableResponse{}
@@ -21299,11 +17755,16 @@ func (client *Client) GetDrdsDbRdsRelationInfoWithOptions(request *GetDrdsDbRdsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDrdsDbRdsRelationInfo"),
@@ -21313,7 +17774,7 @@ func (client *Client) GetDrdsDbRdsRelationInfoWithOptions(request *GetDrdsDbRdsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDrdsDbRdsRelationInfoResponse{}
@@ -21342,14 +17803,28 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -21359,7 +17834,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -21382,106 +17857,34 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListUserReportsWithOptions(request *ListUserReportsRequest, runtime *util.RuntimeOptions) (_result *ListUserReportsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["ReportId"] = request.ReportId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListUserReports"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListUserReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUserReports(request *ListUserReportsRequest) (_result *ListUserReportsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUserReportsResponse{}
-	_body, _err := client.ListUserReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListVersionsWithOptions(request *ListVersionsRequest, runtime *util.RuntimeOptions) (_result *ListVersionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["DrdsVer"] = request.DrdsVer
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVersions"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVersions(request *ListVersionsRequest) (_result *ListVersionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListVersionsResponse{}
-	_body, _err := client.ListVersionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ManagePrivateRdsWithOptions(request *ManagePrivateRdsRequest, runtime *util.RuntimeOptions) (_result *ManagePrivateRdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DBInstanceId"] = request.DBInstanceId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Params"] = request.Params
-	query["RdsAction"] = request.RdsAction
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsAction)) {
+		query["RdsAction"] = request.RdsAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ManagePrivateRds"),
@@ -21491,7 +17894,7 @@ func (client *Client) ManagePrivateRdsWithOptions(request *ManagePrivateRdsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ManagePrivateRdsResponse{}
@@ -21520,12 +17923,20 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["Description"] = request.Description
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyAccountDescription"),
@@ -21535,7 +17946,7 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountDescriptionResponse{}
@@ -21564,13 +17975,24 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DbPrivilege"] = request.DbPrivilege
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbPrivilege)) {
+		query["DbPrivilege"] = request.DbPrivilege
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyAccountPrivilege"),
@@ -21580,7 +18002,7 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountPrivilegeResponse{}
@@ -21609,11 +18031,16 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDrdsInstanceDescription"),
@@ -21623,7 +18050,7 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsInstanceDescriptionResponse{}
@@ -21652,15 +18079,32 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["GroupAttribute"] = request.GroupAttribute
-	query["GroupName"] = request.GroupName
-	query["IpWhiteList"] = request.IpWhiteList
-	query["Mode"] = request.Mode
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupAttribute)) {
+		query["GroupAttribute"] = request.GroupAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpWhiteList)) {
+		query["IpWhiteList"] = request.IpWhiteList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDrdsIpWhiteList"),
@@ -21670,7 +18114,7 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDrdsIpWhiteListResponse{}
@@ -21693,64 +18137,34 @@ func (client *Client) ModifyDrdsIpWhiteList(request *ModifyDrdsIpWhiteListReques
 	return _result, _err
 }
 
-func (client *Client) ModifyEventTaskStatusWithOptions(request *ModifyEventTaskStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyEventTaskStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["EventId"] = request.EventId
-	query["Region"] = request.Region
-	query["SwitchTime"] = request.SwitchTime
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyEventTaskStatus"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyEventTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyEventTaskStatus(request *ModifyEventTaskStatusRequest) (_result *ModifyEventTaskStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyEventTaskStatusResponse{}
-	_body, _err := client.ModifyEventTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyPolarDbReadWeightWithOptions(request *ModifyPolarDbReadWeightRequest, runtime *util.RuntimeOptions) (_result *ModifyPolarDbReadWeightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DbName"] = request.DbName
-	query["DbNodeIds"] = request.DbNodeIds
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Weights"] = request.Weights
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbNodeIds)) {
+		query["DbNodeIds"] = request.DbNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weights)) {
+		query["Weights"] = request.Weights
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyPolarDbReadWeight"),
@@ -21760,7 +18174,7 @@ func (client *Client) ModifyPolarDbReadWeightWithOptions(request *ModifyPolarDbR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPolarDbReadWeightResponse{}
@@ -21789,13 +18203,24 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["InstanceNames"] = request.InstanceNames
-	query["Weights"] = request.Weights
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNames)) {
+		query["InstanceNames"] = request.InstanceNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weights)) {
+		query["Weights"] = request.Weights
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyRdsReadWeight"),
@@ -21805,7 +18230,7 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRdsReadWeightResponse{}
@@ -21828,111 +18253,30 @@ func (client *Client) ModifyRdsReadWeight(request *ModifyRdsReadWeightRequest) (
 	return _result, _err
 }
 
-func (client *Client) PreCheckSqlFlashbackTaskWithOptions(request *PreCheckSqlFlashbackTaskRequest, runtime *util.RuntimeOptions) (_result *PreCheckSqlFlashbackTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["StartTime"] = request.StartTime
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PreCheckSqlFlashbackTask"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PreCheckSqlFlashbackTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PreCheckSqlFlashbackTask(request *PreCheckSqlFlashbackTaskRequest) (_result *PreCheckSqlFlashbackTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PreCheckSqlFlashbackTaskResponse{}
-	_body, _err := client.PreCheckSqlFlashbackTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PutRestorePreCheckWithOptions(request *PutRestorePreCheckRequest, runtime *util.RuntimeOptions) (_result *PutRestorePreCheckResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["BackupDbNames"] = request.BackupDbNames
-	query["BackupId"] = request.BackupId
-	query["BackupLevel"] = request.BackupLevel
-	query["BackupMode"] = request.BackupMode
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PreferredBackupTime"] = request.PreferredBackupTime
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PutRestorePreCheck"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PutRestorePreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PutRestorePreCheck(request *PutRestorePreCheckRequest) (_result *PutRestorePreCheckResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PutRestorePreCheckResponse{}
-	_body, _err := client.PutRestorePreCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) PutStartBackupWithOptions(request *PutStartBackupRequest, runtime *util.RuntimeOptions) (_result *PutStartBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupDbNames"] = request.BackupDbNames
-	query["BackupLevel"] = request.BackupLevel
-	query["BackupMode"] = request.BackupMode
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.BackupDbNames)) {
+		query["BackupDbNames"] = request.BackupDbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupLevel)) {
+		query["BackupLevel"] = request.BackupLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupMode)) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutStartBackup"),
@@ -21942,7 +18286,7 @@ func (client *Client) PutStartBackupWithOptions(request *PutStartBackupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutStartBackupResponse{}
@@ -21965,64 +18309,22 @@ func (client *Client) PutStartBackup(request *PutStartBackupRequest) (_result *P
 	return _result, _err
 }
 
-func (client *Client) RearrangeDbToInstanceWithOptions(request *RearrangeDbToInstanceRequest, runtime *util.RuntimeOptions) (_result *RearrangeDbToInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ChooseRds"] = request.ChooseRds
-	query["ChooseSubDb"] = request.ChooseSubDb
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["InstanceList"] = request.InstanceList
-	query["OrderId"] = request.OrderId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RearrangeDbToInstance"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RearrangeDbToInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RearrangeDbToInstance(request *RearrangeDbToInstanceRequest) (_result *RearrangeDbToInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RearrangeDbToInstanceResponse{}
-	_body, _err := client.RearrangeDbToInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RefreshDrdsAtomUrlWithOptions(request *RefreshDrdsAtomUrlRequest, runtime *util.RuntimeOptions) (_result *RefreshDrdsAtomUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshDrdsAtomUrl"),
@@ -22032,7 +18334,7 @@ func (client *Client) RefreshDrdsAtomUrlWithOptions(request *RefreshDrdsAtomUrlR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshDrdsAtomUrlResponse{}
@@ -22061,11 +18363,16 @@ func (client *Client) ReleaseInstanceInternetAddressWithOptions(request *Release
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReleaseInstanceInternetAddress"),
@@ -22075,7 +18382,7 @@ func (client *Client) ReleaseInstanceInternetAddressWithOptions(request *Release
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseInstanceInternetAddressResponse{}
@@ -22104,11 +18411,16 @@ func (client *Client) RemoveBackupsSetWithOptions(request *RemoveBackupsSetReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupId"] = request.BackupId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveBackupsSet"),
@@ -22118,7 +18430,7 @@ func (client *Client) RemoveBackupsSetWithOptions(request *RemoveBackupsSetReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveBackupsSetResponse{}
@@ -22147,11 +18459,16 @@ func (client *Client) RemoveDrdsDbWithOptions(request *RemoveDrdsDbRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveDrdsDb"),
@@ -22161,7 +18478,7 @@ func (client *Client) RemoveDrdsDbWithOptions(request *RemoveDrdsDbRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsDbResponse{}
@@ -22190,11 +18507,16 @@ func (client *Client) RemoveDrdsDbFailedRecordWithOptions(request *RemoveDrdsDbF
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveDrdsDbFailedRecord"),
@@ -22204,7 +18526,7 @@ func (client *Client) RemoveDrdsDbFailedRecordWithOptions(request *RemoveDrdsDbF
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsDbFailedRecordResponse{}
@@ -22233,10 +18555,12 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveDrdsInstance"),
@@ -22246,7 +18570,7 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveDrdsInstanceResponse{}
@@ -22269,63 +18593,22 @@ func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) RemoveDrdsMysqlWithOptions(request *RemoveDrdsMysqlRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsMysqlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DbInstanceId"] = request.DbInstanceId
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["Force"] = request.Force
-	query["RoDbInstanceId"] = request.RoDbInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveDrdsMysql"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RemoveDrdsMysqlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RemoveDrdsMysql(request *RemoveDrdsMysqlRequest) (_result *RemoveDrdsMysqlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RemoveDrdsMysqlResponse{}
-	_body, _err := client.RemoveDrdsMysqlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RemoveInstanceAccountWithOptions(request *RemoveInstanceAccountRequest, runtime *util.RuntimeOptions) (_result *RemoveInstanceAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountName"] = request.AccountName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveInstanceAccount"),
@@ -22335,7 +18618,7 @@ func (client *Client) RemoveInstanceAccountWithOptions(request *RemoveInstanceAc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveInstanceAccountResponse{}
@@ -22364,13 +18647,24 @@ func (client *Client) RemoveRecycleBinTableWithOptions(request *RemoveRecycleBin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveRecycleBinTable"),
@@ -22380,7 +18674,7 @@ func (client *Client) RemoveRecycleBinTableWithOptions(request *RemoveRecycleBin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveRecycleBinTableResponse{}
@@ -22409,10 +18703,12 @@ func (client *Client) RestartDrdsInstanceWithOptions(request *RestartDrdsInstanc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartDrdsInstance"),
@@ -22422,7 +18718,7 @@ func (client *Client) RestartDrdsInstanceWithOptions(request *RestartDrdsInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RestartDrdsInstanceResponse{}
@@ -22451,11 +18747,16 @@ func (client *Client) RollbackInstanceVersionWithOptions(request *RollbackInstan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RollbackInstanceVersion"),
@@ -22465,7 +18766,7 @@ func (client *Client) RollbackInstanceVersionWithOptions(request *RollbackInstan
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RollbackInstanceVersionResponse{}
@@ -22494,13 +18795,24 @@ func (client *Client) SetBackupLocalWithOptions(request *SetBackupLocalRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["HighSpaceUsageProtection"] = request.HighSpaceUsageProtection
-	query["LocalLogRetentionHours"] = request.LocalLogRetentionHours
-	query["LocalLogRetentionSpace"] = request.LocalLogRetentionSpace
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HighSpaceUsageProtection)) {
+		query["HighSpaceUsageProtection"] = request.HighSpaceUsageProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalLogRetentionHours)) {
+		query["LocalLogRetentionHours"] = request.LocalLogRetentionHours
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalLogRetentionSpace)) {
+		query["LocalLogRetentionSpace"] = request.LocalLogRetentionSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetBackupLocal"),
@@ -22510,7 +18822,7 @@ func (client *Client) SetBackupLocalWithOptions(request *SetBackupLocalRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetBackupLocalResponse{}
@@ -22539,19 +18851,48 @@ func (client *Client) SetBackupPolicyWithOptions(request *SetBackupPolicyRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupDbNames"] = request.BackupDbNames
-	query["BackupLevel"] = request.BackupLevel
-	query["BackupLog"] = request.BackupLog
-	query["BackupMode"] = request.BackupMode
-	query["DataBackupRetentionPeriod"] = request.DataBackupRetentionPeriod
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["LogBackupRetentionPeriod"] = request.LogBackupRetentionPeriod
-	query["PreferredBackupEndTime"] = request.PreferredBackupEndTime
-	query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
-	query["PreferredBackupStartTime"] = request.PreferredBackupStartTime
+	if !tea.BoolValue(util.IsUnset(request.BackupDbNames)) {
+		query["BackupDbNames"] = request.BackupDbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupLevel)) {
+		query["BackupLevel"] = request.BackupLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupLog)) {
+		query["BackupLog"] = request.BackupLog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupMode)) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataBackupRetentionPeriod)) {
+		query["DataBackupRetentionPeriod"] = request.DataBackupRetentionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogBackupRetentionPeriod)) {
+		query["LogBackupRetentionPeriod"] = request.LogBackupRetentionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupEndTime)) {
+		query["PreferredBackupEndTime"] = request.PreferredBackupEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupPeriod)) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupStartTime)) {
+		query["PreferredBackupStartTime"] = request.PreferredBackupStartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetBackupPolicy"),
@@ -22561,7 +18902,7 @@ func (client *Client) SetBackupPolicyWithOptions(request *SetBackupPolicyRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetBackupPolicyResponse{}
@@ -22590,14 +18931,28 @@ func (client *Client) SetupBroadcastTablesWithOptions(request *SetupBroadcastTab
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Active"] = request.Active
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.Active)) {
+		query["Active"] = request.Active
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetupBroadcastTables"),
@@ -22607,7 +18962,7 @@ func (client *Client) SetupBroadcastTablesWithOptions(request *SetupBroadcastTab
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetupBroadcastTablesResponse{}
@@ -22636,13 +18991,24 @@ func (client *Client) SetupDrdsParamsWithOptions(request *SetupDrdsParamsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["ParamLevel"] = request.ParamLevel
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamLevel)) {
+		query["ParamLevel"] = request.ParamLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetupDrdsParams"),
@@ -22652,7 +19018,7 @@ func (client *Client) SetupDrdsParamsWithOptions(request *SetupDrdsParamsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetupDrdsParamsResponse{}
@@ -22681,13 +19047,24 @@ func (client *Client) SetupRecycleBinStatusWithOptions(request *SetupRecycleBinS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["StatusAction"] = request.StatusAction
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusAction)) {
+		query["StatusAction"] = request.StatusAction
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetupRecycleBinStatus"),
@@ -22697,7 +19074,7 @@ func (client *Client) SetupRecycleBinStatusWithOptions(request *SetupRecycleBinS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetupRecycleBinStatusResponse{}
@@ -22726,14 +19103,28 @@ func (client *Client) SetupTableWithOptions(request *SetupTableRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowFullTableScan"] = request.AllowFullTableScan
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.AllowFullTableScan)) {
+		query["AllowFullTableScan"] = request.AllowFullTableScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetupTable"),
@@ -22743,7 +19134,7 @@ func (client *Client) SetupTableWithOptions(request *SetupTableRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetupTableResponse{}
@@ -22766,154 +19157,38 @@ func (client *Client) SetupTable(request *SetupTableRequest) (_result *SetupTabl
 	return _result, _err
 }
 
-func (client *Client) SetupTableAsyncWithOptions(request *SetupTableAsyncRequest, runtime *util.RuntimeOptions) (_result *SetupTableAsyncResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AllowFullTableScan"] = request.AllowFullTableScan
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["TableName"] = request.TableName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetupTableAsync"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetupTableAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetupTableAsync(request *SetupTableAsyncRequest) (_result *SetupTableAsyncResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetupTableAsyncResponse{}
-	_body, _err := client.SetupTableAsyncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SqlCompatibilityCancelWithOptions(request *SqlCompatibilityCancelRequest, runtime *util.RuntimeOptions) (_result *SqlCompatibilityCancelResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["TaskId"] = request.TaskId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SqlCompatibilityCancel"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SqlCompatibilityCancelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SqlCompatibilityCancel(request *SqlCompatibilityCancelRequest) (_result *SqlCompatibilityCancelResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SqlCompatibilityCancelResponse{}
-	_body, _err := client.SqlCompatibilityCancelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SqlCompatibilityStartWithOptions(request *SqlCompatibilityStartRequest, runtime *util.RuntimeOptions) (_result *SqlCompatibilityStartResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PerformanceTest"] = request.PerformanceTest
-	query["TargetVersion"] = request.TargetVersion
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SqlCompatibilityStart"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SqlCompatibilityStartResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SqlCompatibilityStart(request *SqlCompatibilityStartRequest) (_result *SqlCompatibilityStartResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SqlCompatibilityStartResponse{}
-	_body, _err := client.SqlCompatibilityStartWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) StartRestoreWithOptions(request *StartRestoreRequest, runtime *util.RuntimeOptions) (_result *StartRestoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackupDbNames"] = request.BackupDbNames
-	query["BackupId"] = request.BackupId
-	query["BackupLevel"] = request.BackupLevel
-	query["BackupMode"] = request.BackupMode
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PreferredBackupTime"] = request.PreferredBackupTime
+	if !tea.BoolValue(util.IsUnset(request.BackupDbNames)) {
+		query["BackupDbNames"] = request.BackupDbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupLevel)) {
+		query["BackupLevel"] = request.BackupLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupMode)) {
+		query["BackupMode"] = request.BackupMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupTime)) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartRestore"),
@@ -22923,7 +19198,7 @@ func (client *Client) StartRestoreWithOptions(request *StartRestoreRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartRestoreResponse{}
@@ -22952,14 +19227,28 @@ func (client *Client) SubmitCleanTaskWithOptions(request *SubmitCleanTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["ExpandType"] = request.ExpandType
-	query["JobId"] = request.JobId
-	query["ParentJobId"] = request.ParentJobId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpandType)) {
+		query["ExpandType"] = request.ExpandType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentJobId)) {
+		query["ParentJobId"] = request.ParentJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitCleanTask"),
@@ -22969,7 +19258,7 @@ func (client *Client) SubmitCleanTaskWithOptions(request *SubmitCleanTaskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitCleanTaskResponse{}
@@ -22998,13 +19287,24 @@ func (client *Client) SubmitHotExpandPreCheckTaskWithOptions(request *SubmitHotE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["TableList"] = request.TableList
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableList)) {
+		query["TableList"] = request.TableList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitHotExpandPreCheckTask"),
@@ -23014,7 +19314,7 @@ func (client *Client) SubmitHotExpandPreCheckTaskWithOptions(request *SubmitHotE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitHotExpandPreCheckTaskResponse{}
@@ -23043,17 +19343,40 @@ func (client *Client) SubmitHotExpandTaskWithOptions(request *SubmitHotExpandTas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["ExtendedMapping"] = request.ExtendedMapping
-	query["InstanceDbMapping"] = request.InstanceDbMapping
-	query["Mapping"] = request.Mapping
-	query["SupperAccountMapping"] = request.SupperAccountMapping
-	query["TaskDesc"] = request.TaskDesc
-	query["TaskName"] = request.TaskName
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendedMapping)) {
+		query["ExtendedMapping"] = request.ExtendedMapping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceDbMapping)) {
+		query["InstanceDbMapping"] = request.InstanceDbMapping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mapping)) {
+		query["Mapping"] = request.Mapping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupperAccountMapping)) {
+		query["SupperAccountMapping"] = request.SupperAccountMapping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDesc)) {
+		query["TaskDesc"] = request.TaskDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitHotExpandTask"),
@@ -23063,7 +19386,7 @@ func (client *Client) SubmitHotExpandTaskWithOptions(request *SubmitHotExpandTas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitHotExpandTaskResponse{}
@@ -23092,12 +19415,20 @@ func (client *Client) SubmitSmoothExpandPreCheckWithOptions(request *SubmitSmoot
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbInstType"] = request.DbInstType
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbInstType)) {
+		query["DbInstType"] = request.DbInstType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSmoothExpandPreCheck"),
@@ -23107,7 +19438,7 @@ func (client *Client) SubmitSmoothExpandPreCheckWithOptions(request *SubmitSmoot
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSmoothExpandPreCheckResponse{}
@@ -23136,11 +19467,16 @@ func (client *Client) SubmitSmoothExpandPreCheckTaskWithOptions(request *SubmitS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSmoothExpandPreCheckTask"),
@@ -23150,7 +19486,7 @@ func (client *Client) SubmitSmoothExpandPreCheckTaskWithOptions(request *SubmitS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSmoothExpandPreCheckTaskResponse{}
@@ -23179,19 +19515,48 @@ func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashb
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["EndTime"] = request.EndTime
-	query["RecallRestoreType"] = request.RecallRestoreType
-	query["RecallType"] = request.RecallType
-	query["SqlPk"] = request.SqlPk
-	query["SqlType"] = request.SqlType
-	query["StartTime"] = request.StartTime
-	query["TableName"] = request.TableName
-	query["TraceId"] = request.TraceId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallRestoreType)) {
+		query["RecallRestoreType"] = request.RecallRestoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallType)) {
+		query["RecallType"] = request.RecallType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlPk)) {
+		query["SqlPk"] = request.SqlPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlType)) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		query["TraceId"] = request.TraceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitSqlFlashbackTask"),
@@ -23201,7 +19566,7 @@ func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashb
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSqlFlashbackTaskResponse{}
@@ -23230,12 +19595,20 @@ func (client *Client) SwitchGlobalBroadcastTypeWithOptions(request *SwitchGlobal
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchGlobalBroadcastType"),
@@ -23245,7 +19618,7 @@ func (client *Client) SwitchGlobalBroadcastTypeWithOptions(request *SwitchGlobal
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchGlobalBroadcastTypeResponse{}
@@ -23274,13 +19647,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -23290,7 +19674,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -23319,14 +19703,28 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -23336,7 +19734,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
@@ -23365,13 +19763,24 @@ func (client *Client) UpdateInstanceNetworkWithOptions(request *UpdateInstanceNe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClassicExpiredDays"] = request.ClassicExpiredDays
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RetainClassic"] = request.RetainClassic
-	query["SrcInstanceNetworkType"] = request.SrcInstanceNetworkType
+	if !tea.BoolValue(util.IsUnset(request.ClassicExpiredDays)) {
+		query["ClassicExpiredDays"] = request.ClassicExpiredDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainClassic)) {
+		query["RetainClassic"] = request.RetainClassic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcInstanceNetworkType)) {
+		query["SrcInstanceNetworkType"] = request.SrcInstanceNetworkType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateInstanceNetwork"),
@@ -23381,7 +19790,7 @@ func (client *Client) UpdateInstanceNetworkWithOptions(request *UpdateInstanceNe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateInstanceNetworkResponse{}
@@ -23410,15 +19819,32 @@ func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRds
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoUseCoupon"] = request.AutoUseCoupon
-	query["DBInstanceId"] = request.DBInstanceId
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["PrePayDuration"] = request.PrePayDuration
-	query["RdsClass"] = request.RdsClass
-	query["Storage"] = request.Storage
+	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrePayDuration)) {
+		query["PrePayDuration"] = request.PrePayDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsClass)) {
+		query["RdsClass"] = request.RdsClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePrivateRdsClass"),
@@ -23428,7 +19854,7 @@ func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRds
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePrivateRdsClassResponse{}
@@ -23457,12 +19883,20 @@ func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateRes
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["NewResourceGroupId"] = request.NewResourceGroupId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateResourceGroupAttribute"),
@@ -23472,7 +19906,7 @@ func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateRes
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateResourceGroupAttributeResponse{}
@@ -23501,12 +19935,20 @@ func (client *Client) UpgradeHiStoreInstanceWithOptions(request *UpgradeHiStoreI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["HistoreInstanceId"] = request.HistoreInstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoreInstanceId)) {
+		query["HistoreInstanceId"] = request.HistoreInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpgradeHiStoreInstance"),
@@ -23516,7 +19958,7 @@ func (client *Client) UpgradeHiStoreInstanceWithOptions(request *UpgradeHiStoreI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeHiStoreInstanceResponse{}
@@ -23545,12 +19987,20 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["Rpm"] = request.Rpm
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rpm)) {
+		query["Rpm"] = request.Rpm
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpgradeInstanceVersion"),
@@ -23560,7 +20010,7 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeInstanceVersionResponse{}
@@ -23589,15 +20039,32 @@ func (client *Client) ValidateShardTaskWithOptions(request *ValidateShardTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbName"] = request.DbName
-	query["DrdsInstanceId"] = request.DrdsInstanceId
-	query["RegionId"] = request.RegionId
-	query["SourceTableName"] = request.SourceTableName
-	query["TargetTableName"] = request.TargetTableName
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrdsInstanceId)) {
+		query["DrdsInstanceId"] = request.DrdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTableName)) {
+		query["SourceTableName"] = request.SourceTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetTableName)) {
+		query["TargetTableName"] = request.TargetTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateShardTask"),
@@ -23607,7 +20074,7 @@ func (client *Client) ValidateShardTaskWithOptions(request *ValidateShardTaskReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateShardTaskResponse{}
@@ -23623,50 +20090,6 @@ func (client *Client) ValidateShardTask(request *ValidateShardTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateShardTaskResponse{}
 	_body, _err := client.ValidateShardTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsInstInfosWithOptions(request *DescribeRdsInstInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsInstInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Search"] = request.Search
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("describeRdsInstInfos"),
-		Version:     tea.String("2019-01-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRdsInstInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRdsInstInfos(request *DescribeRdsInstInfosRequest) (_result *DescribeRdsInstInfosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRdsInstInfosResponse{}
-	_body, _err := client.DescribeRdsInstInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
