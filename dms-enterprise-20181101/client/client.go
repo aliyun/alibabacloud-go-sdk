@@ -13,7 +13,6 @@ import (
 )
 
 type AddLogicTableRouteConfigRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteExpr *string `json:"RouteExpr,omitempty" xml:"RouteExpr,omitempty"`
 	RouteKey  *string `json:"RouteKey,omitempty" xml:"RouteKey,omitempty"`
 	TableId   *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -26,11 +25,6 @@ func (s AddLogicTableRouteConfigRequest) String() string {
 
 func (s AddLogicTableRouteConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddLogicTableRouteConfigRequest) SetRegionId(v string) *AddLogicTableRouteConfigRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *AddLogicTableRouteConfigRequest) SetRouteExpr(v string) *AddLogicTableRouteConfigRequest {
@@ -114,7 +108,6 @@ func (s *AddLogicTableRouteConfigResponse) SetBody(v *AddLogicTableRouteConfigRe
 type ApproveOrderRequest struct {
 	ApprovalType       *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 }
@@ -134,11 +127,6 @@ func (s *ApproveOrderRequest) SetApprovalType(v string) *ApproveOrderRequest {
 
 func (s *ApproveOrderRequest) SetComment(v string) *ApproveOrderRequest {
 	s.Comment = &v
-	return s
-}
-
-func (s *ApproveOrderRequest) SetRegionId(v string) *ApproveOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -216,7 +204,6 @@ type ChangeColumnSecLevelRequest struct {
 	IsLogic    *bool   `json:"IsLogic,omitempty" xml:"IsLogic,omitempty"`
 	// 新的敏感等级
 	NewLevel   *string `json:"NewLevel,omitempty" xml:"NewLevel,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -247,11 +234,6 @@ func (s *ChangeColumnSecLevelRequest) SetIsLogic(v bool) *ChangeColumnSecLevelRe
 
 func (s *ChangeColumnSecLevelRequest) SetNewLevel(v string) *ChangeColumnSecLevelRequest {
 	s.NewLevel = &v
-	return s
-}
-
-func (s *ChangeColumnSecLevelRequest) SetRegionId(v string) *ChangeColumnSecLevelRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -331,7 +313,6 @@ func (s *ChangeColumnSecLevelResponse) SetBody(v *ChangeColumnSecLevelResponseBo
 type CloseOrderRequest struct {
 	CloseReason *string `json:"CloseReason,omitempty" xml:"CloseReason,omitempty"`
 	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -350,11 +331,6 @@ func (s *CloseOrderRequest) SetCloseReason(v string) *CloseOrderRequest {
 
 func (s *CloseOrderRequest) SetOrderId(v int64) *CloseOrderRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *CloseOrderRequest) SetRegionId(v string) *CloseOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -425,7 +401,6 @@ type CreateDataCorrectOrderRequest struct {
 	AttachmentKey   *string                             `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                            `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                              `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -450,11 +425,6 @@ func (s *CreateDataCorrectOrderRequest) SetComment(v string) *CreateDataCorrectO
 
 func (s *CreateDataCorrectOrderRequest) SetParam(v *CreateDataCorrectOrderRequestParam) *CreateDataCorrectOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateDataCorrectOrderRequest) SetRegionId(v string) *CreateDataCorrectOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -560,7 +530,6 @@ type CreateDataCorrectOrderShrinkRequest struct {
 	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -585,11 +554,6 @@ func (s *CreateDataCorrectOrderShrinkRequest) SetComment(v string) *CreateDataCo
 
 func (s *CreateDataCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateDataCorrectOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateDataCorrectOrderShrinkRequest) SetRegionId(v string) *CreateDataCorrectOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -672,7 +636,6 @@ type CreateDataCronClearOrderRequest struct {
 	AttachmentKey   *string                               `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                               `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateDataCronClearOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                              `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -697,11 +660,6 @@ func (s *CreateDataCronClearOrderRequest) SetComment(v string) *CreateDataCronCl
 
 func (s *CreateDataCronClearOrderRequest) SetParam(v *CreateDataCronClearOrderRequestParam) *CreateDataCronClearOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateDataCronClearOrderRequest) SetRegionId(v string) *CreateDataCronClearOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -830,7 +788,6 @@ type CreateDataCronClearOrderShrinkRequest struct {
 	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -855,11 +812,6 @@ func (s *CreateDataCronClearOrderShrinkRequest) SetComment(v string) *CreateData
 
 func (s *CreateDataCronClearOrderShrinkRequest) SetParamShrink(v string) *CreateDataCronClearOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateDataCronClearOrderShrinkRequest) SetRegionId(v string) *CreateDataCronClearOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -942,7 +894,6 @@ type CreateDataImportOrderRequest struct {
 	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateDataImportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -967,11 +918,6 @@ func (s *CreateDataImportOrderRequest) SetComment(v string) *CreateDataImportOrd
 
 func (s *CreateDataImportOrderRequest) SetParam(v *CreateDataImportOrderRequestParam) *CreateDataImportOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateDataImportOrderRequest) SetRegionId(v string) *CreateDataImportOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1101,7 +1047,6 @@ type CreateDataImportOrderShrinkRequest struct {
 	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -1126,11 +1071,6 @@ func (s *CreateDataImportOrderShrinkRequest) SetComment(v string) *CreateDataImp
 
 func (s *CreateDataImportOrderShrinkRequest) SetParamShrink(v string) *CreateDataImportOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateDataImportOrderShrinkRequest) SetRegionId(v string) *CreateDataImportOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1213,7 +1153,6 @@ type CreateFreeLockCorrectOrderRequest struct {
 	AttachmentKey   *string                                 `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                                 `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateFreeLockCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                                `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                                  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -1238,11 +1177,6 @@ func (s *CreateFreeLockCorrectOrderRequest) SetComment(v string) *CreateFreeLock
 
 func (s *CreateFreeLockCorrectOrderRequest) SetParam(v *CreateFreeLockCorrectOrderRequestParam) *CreateFreeLockCorrectOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateFreeLockCorrectOrderRequest) SetRegionId(v string) *CreateFreeLockCorrectOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1342,7 +1276,6 @@ type CreateFreeLockCorrectOrderShrinkRequest struct {
 	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -1367,11 +1300,6 @@ func (s *CreateFreeLockCorrectOrderShrinkRequest) SetComment(v string) *CreateFr
 
 func (s *CreateFreeLockCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateFreeLockCorrectOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateFreeLockCorrectOrderShrinkRequest) SetRegionId(v string) *CreateFreeLockCorrectOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1453,7 +1381,6 @@ func (s *CreateFreeLockCorrectOrderResponse) SetBody(v *CreateFreeLockCorrectOrd
 type CreateLogicDatabaseRequest struct {
 	Alias       *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
-	RegionId    *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid         *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -1475,11 +1402,6 @@ func (s *CreateLogicDatabaseRequest) SetDatabaseIds(v []*int64) *CreateLogicData
 	return s
 }
 
-func (s *CreateLogicDatabaseRequest) SetRegionId(v string) *CreateLogicDatabaseRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateLogicDatabaseRequest) SetTid(v int64) *CreateLogicDatabaseRequest {
 	s.Tid = &v
 	return s
@@ -1488,7 +1410,6 @@ func (s *CreateLogicDatabaseRequest) SetTid(v int64) *CreateLogicDatabaseRequest
 type CreateLogicDatabaseShrinkRequest struct {
 	Alias             *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseIdsShrink *string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -1507,11 +1428,6 @@ func (s *CreateLogicDatabaseShrinkRequest) SetAlias(v string) *CreateLogicDataba
 
 func (s *CreateLogicDatabaseShrinkRequest) SetDatabaseIdsShrink(v string) *CreateLogicDatabaseShrinkRequest {
 	s.DatabaseIdsShrink = &v
-	return s
-}
-
-func (s *CreateLogicDatabaseShrinkRequest) SetRegionId(v string) *CreateLogicDatabaseShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1590,7 +1506,6 @@ type CreateOrderRequest struct {
 	Comment         *string                `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	PluginParam     map[string]interface{} `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
 	PluginType      *string                `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	RegionId        *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList *string                `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid             *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -1623,11 +1538,6 @@ func (s *CreateOrderRequest) SetPluginType(v string) *CreateOrderRequest {
 	return s
 }
 
-func (s *CreateOrderRequest) SetRegionId(v string) *CreateOrderRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateOrderRequest) SetRelatedUserList(v string) *CreateOrderRequest {
 	s.RelatedUserList = &v
 	return s
@@ -1643,7 +1553,6 @@ type CreateOrderShrinkRequest struct {
 	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
 	PluginType        *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList   *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -1673,11 +1582,6 @@ func (s *CreateOrderShrinkRequest) SetPluginParamShrink(v string) *CreateOrderSh
 
 func (s *CreateOrderShrinkRequest) SetPluginType(v string) *CreateOrderShrinkRequest {
 	s.PluginType = &v
-	return s
-}
-
-func (s *CreateOrderShrinkRequest) SetRegionId(v string) *CreateOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1775,7 +1679,6 @@ func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderRe
 type CreateProxyRequest struct {
 	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
@@ -1795,11 +1698,6 @@ func (s *CreateProxyRequest) SetInstanceId(v int64) *CreateProxyRequest {
 
 func (s *CreateProxyRequest) SetPassword(v string) *CreateProxyRequest {
 	s.Password = &v
-	return s
-}
-
-func (s *CreateProxyRequest) SetRegionId(v string) *CreateProxyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1882,7 +1780,6 @@ type CreateProxyAccessRequest struct {
 	IndepAccount  *string `json:"IndepAccount,omitempty" xml:"IndepAccount,omitempty"`
 	IndepPassword *string `json:"IndepPassword,omitempty" xml:"IndepPassword,omitempty"`
 	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -1907,11 +1804,6 @@ func (s *CreateProxyAccessRequest) SetIndepPassword(v string) *CreateProxyAccess
 
 func (s *CreateProxyAccessRequest) SetProxyId(v int64) *CreateProxyAccessRequest {
 	s.ProxyId = &v
-	return s
-}
-
-func (s *CreateProxyAccessRequest) SetRegionId(v string) *CreateProxyAccessRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1996,7 +1888,6 @@ type CreatePublishGroupTaskRequest struct {
 	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PlanTime        *string `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
 	PublishStrategy *string `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -2030,11 +1921,6 @@ func (s *CreatePublishGroupTaskRequest) SetPlanTime(v string) *CreatePublishGrou
 
 func (s *CreatePublishGroupTaskRequest) SetPublishStrategy(v string) *CreatePublishGroupTaskRequest {
 	s.PublishStrategy = &v
-	return s
-}
-
-func (s *CreatePublishGroupTaskRequest) SetRegionId(v string) *CreatePublishGroupTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2110,7 +1996,6 @@ func (s *CreatePublishGroupTaskResponse) SetBody(v *CreatePublishGroupTaskRespon
 type CreateSQLReviewOrderRequest struct {
 	Comment         *string                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateSQLReviewOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                          `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                            `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -2130,11 +2015,6 @@ func (s *CreateSQLReviewOrderRequest) SetComment(v string) *CreateSQLReviewOrder
 
 func (s *CreateSQLReviewOrderRequest) SetParam(v *CreateSQLReviewOrderRequestParam) *CreateSQLReviewOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateSQLReviewOrderRequest) SetRegionId(v string) *CreateSQLReviewOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2180,7 +2060,6 @@ func (s *CreateSQLReviewOrderRequestParam) SetProjectName(v string) *CreateSQLRe
 type CreateSQLReviewOrderShrinkRequest struct {
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -2200,11 +2079,6 @@ func (s *CreateSQLReviewOrderShrinkRequest) SetComment(v string) *CreateSQLRevie
 
 func (s *CreateSQLReviewOrderShrinkRequest) SetParamShrink(v string) *CreateSQLReviewOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateSQLReviewOrderShrinkRequest) SetRegionId(v string) *CreateSQLReviewOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2287,7 +2161,6 @@ type CreateStructSyncOrderRequest struct {
 	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	Param           *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -2312,11 +2185,6 @@ func (s *CreateStructSyncOrderRequest) SetComment(v string) *CreateStructSyncOrd
 
 func (s *CreateStructSyncOrderRequest) SetParam(v *CreateStructSyncOrderRequestParam) *CreateStructSyncOrderRequest {
 	s.Param = v
-	return s
-}
-
-func (s *CreateStructSyncOrderRequest) SetRegionId(v string) *CreateStructSyncOrderRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2462,7 +2330,6 @@ type CreateStructSyncOrderShrinkRequest struct {
 	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -2487,11 +2354,6 @@ func (s *CreateStructSyncOrderShrinkRequest) SetComment(v string) *CreateStructS
 
 func (s *CreateStructSyncOrderShrinkRequest) SetParamShrink(v string) *CreateStructSyncOrderShrinkRequest {
 	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateStructSyncOrderShrinkRequest) SetRegionId(v string) *CreateStructSyncOrderShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2573,7 +2435,6 @@ func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponse
 type CreateUploadFileJobRequest struct {
 	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileSource *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UploadURL  *string `json:"UploadURL,omitempty" xml:"UploadURL,omitempty"`
 }
@@ -2593,11 +2454,6 @@ func (s *CreateUploadFileJobRequest) SetFileName(v string) *CreateUploadFileJobR
 
 func (s *CreateUploadFileJobRequest) SetFileSource(v string) *CreateUploadFileJobRequest {
 	s.FileSource = &v
-	return s
-}
-
-func (s *CreateUploadFileJobRequest) SetRegionId(v string) *CreateUploadFileJobRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2679,7 +2535,6 @@ func (s *CreateUploadFileJobResponse) SetBody(v *CreateUploadFileJobResponseBody
 type CreateUploadOSSFileJobRequest struct {
 	FileName     *string                                    `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileSource   *string                                    `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
-	RegionId     *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid          *int64                                     `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UploadTarget *CreateUploadOSSFileJobRequestUploadTarget `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty" type:"Struct"`
 }
@@ -2699,11 +2554,6 @@ func (s *CreateUploadOSSFileJobRequest) SetFileName(v string) *CreateUploadOSSFi
 
 func (s *CreateUploadOSSFileJobRequest) SetFileSource(v string) *CreateUploadOSSFileJobRequest {
 	s.FileSource = &v
-	return s
-}
-
-func (s *CreateUploadOSSFileJobRequest) SetRegionId(v string) *CreateUploadOSSFileJobRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2749,7 +2599,6 @@ func (s *CreateUploadOSSFileJobRequestUploadTarget) SetObjectName(v string) *Cre
 type CreateUploadOSSFileJobShrinkRequest struct {
 	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileSource         *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UploadTargetShrink *string `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty"`
 }
@@ -2769,11 +2618,6 @@ func (s *CreateUploadOSSFileJobShrinkRequest) SetFileName(v string) *CreateUploa
 
 func (s *CreateUploadOSSFileJobShrinkRequest) SetFileSource(v string) *CreateUploadOSSFileJobShrinkRequest {
 	s.FileSource = &v
-	return s
-}
-
-func (s *CreateUploadOSSFileJobShrinkRequest) SetRegionId(v string) *CreateUploadOSSFileJobShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2853,11 +2697,10 @@ func (s *CreateUploadOSSFileJobResponse) SetBody(v *CreateUploadOSSFileJobRespon
 }
 
 type DeleteInstanceRequest struct {
-	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sid      *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sid  *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -2875,11 +2718,6 @@ func (s *DeleteInstanceRequest) SetHost(v string) *DeleteInstanceRequest {
 
 func (s *DeleteInstanceRequest) SetPort(v int32) *DeleteInstanceRequest {
 	s.Port = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetRegionId(v string) *DeleteInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2952,9 +2790,8 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteLogicDatabaseRequest struct {
-	LogicDbId *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DeleteLogicDatabaseRequest) String() string {
@@ -2967,11 +2804,6 @@ func (s DeleteLogicDatabaseRequest) GoString() string {
 
 func (s *DeleteLogicDatabaseRequest) SetLogicDbId(v int64) *DeleteLogicDatabaseRequest {
 	s.LogicDbId = &v
-	return s
-}
-
-func (s *DeleteLogicDatabaseRequest) SetRegionId(v string) *DeleteLogicDatabaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3040,7 +2872,6 @@ func (s *DeleteLogicDatabaseResponse) SetBody(v *DeleteLogicDatabaseResponseBody
 }
 
 type DeleteLogicTableRouteConfigRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteKey *string `json:"RouteKey,omitempty" xml:"RouteKey,omitempty"`
 	TableId  *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -3052,11 +2883,6 @@ func (s DeleteLogicTableRouteConfigRequest) String() string {
 
 func (s DeleteLogicTableRouteConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteLogicTableRouteConfigRequest) SetRegionId(v string) *DeleteLogicTableRouteConfigRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteLogicTableRouteConfigRequest) SetRouteKey(v string) *DeleteLogicTableRouteConfigRequest {
@@ -3133,9 +2959,8 @@ func (s *DeleteLogicTableRouteConfigResponse) SetBody(v *DeleteLogicTableRouteCo
 }
 
 type DeleteProxyRequest struct {
-	ProxyId  *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DeleteProxyRequest) String() string {
@@ -3148,11 +2973,6 @@ func (s DeleteProxyRequest) GoString() string {
 
 func (s *DeleteProxyRequest) SetProxyId(v int64) *DeleteProxyRequest {
 	s.ProxyId = &v
-	return s
-}
-
-func (s *DeleteProxyRequest) SetRegionId(v string) *DeleteProxyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3221,9 +3041,8 @@ func (s *DeleteProxyResponse) SetBody(v *DeleteProxyResponseBody) *DeleteProxyRe
 }
 
 type DeleteProxyAccessRequest struct {
-	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s DeleteProxyAccessRequest) String() string {
@@ -3236,11 +3055,6 @@ func (s DeleteProxyAccessRequest) GoString() string {
 
 func (s *DeleteProxyAccessRequest) SetProxyAccessId(v int64) *DeleteProxyAccessRequest {
 	s.ProxyAccessId = &v
-	return s
-}
-
-func (s *DeleteProxyAccessRequest) SetRegionId(v string) *DeleteProxyAccessRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3309,9 +3123,8 @@ func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *D
 }
 
 type DeleteUserRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Tid *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -3320,11 +3133,6 @@ func (s DeleteUserRequest) String() string {
 
 func (s DeleteUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteUserRequest) SetRegionId(v string) *DeleteUserRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DeleteUserRequest) SetTid(v int64) *DeleteUserRequest {
@@ -3396,9 +3204,8 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DisableUserRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Tid *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DisableUserRequest) String() string {
@@ -3407,11 +3214,6 @@ func (s DisableUserRequest) String() string {
 
 func (s DisableUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DisableUserRequest) SetRegionId(v string) *DisableUserRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DisableUserRequest) SetTid(v int64) *DisableUserRequest {
@@ -3486,7 +3288,6 @@ type EditLogicDatabaseRequest struct {
 	Alias       *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
 	LogicDbId   *int64   `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	RegionId    *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid         *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3513,11 +3314,6 @@ func (s *EditLogicDatabaseRequest) SetLogicDbId(v int64) *EditLogicDatabaseReque
 	return s
 }
 
-func (s *EditLogicDatabaseRequest) SetRegionId(v string) *EditLogicDatabaseRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *EditLogicDatabaseRequest) SetTid(v int64) *EditLogicDatabaseRequest {
 	s.Tid = &v
 	return s
@@ -3527,7 +3323,6 @@ type EditLogicDatabaseShrinkRequest struct {
 	Alias             *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseIdsShrink *string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty"`
 	LogicDbId         *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3551,11 +3346,6 @@ func (s *EditLogicDatabaseShrinkRequest) SetDatabaseIdsShrink(v string) *EditLog
 
 func (s *EditLogicDatabaseShrinkRequest) SetLogicDbId(v int64) *EditLogicDatabaseShrinkRequest {
 	s.LogicDbId = &v
-	return s
-}
-
-func (s *EditLogicDatabaseShrinkRequest) SetRegionId(v string) *EditLogicDatabaseShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3624,9 +3414,8 @@ func (s *EditLogicDatabaseResponse) SetBody(v *EditLogicDatabaseResponseBody) *E
 }
 
 type EnableUserRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Tid *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s EnableUserRequest) String() string {
@@ -3635,11 +3424,6 @@ func (s EnableUserRequest) String() string {
 
 func (s EnableUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *EnableUserRequest) SetRegionId(v string) *EnableUserRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *EnableUserRequest) SetTid(v int64) *EnableUserRequest {
@@ -3713,7 +3497,6 @@ func (s *EnableUserResponse) SetBody(v *EnableUserResponseBody) *EnableUserRespo
 type ExecuteDataCorrectRequest struct {
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId     *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid          *string                `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3735,11 +3518,6 @@ func (s *ExecuteDataCorrectRequest) SetOrderId(v int64) *ExecuteDataCorrectReque
 	return s
 }
 
-func (s *ExecuteDataCorrectRequest) SetRegionId(v string) *ExecuteDataCorrectRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ExecuteDataCorrectRequest) SetTid(v string) *ExecuteDataCorrectRequest {
 	s.Tid = &v
 	return s
@@ -3748,7 +3526,6 @@ func (s *ExecuteDataCorrectRequest) SetTid(v string) *ExecuteDataCorrectRequest 
 type ExecuteDataCorrectShrinkRequest struct {
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3767,11 +3544,6 @@ func (s *ExecuteDataCorrectShrinkRequest) SetActionDetailShrink(v string) *Execu
 
 func (s *ExecuteDataCorrectShrinkRequest) SetOrderId(v int64) *ExecuteDataCorrectShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataCorrectShrinkRequest) SetRegionId(v string) *ExecuteDataCorrectShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3841,7 +3613,6 @@ func (s *ExecuteDataCorrectResponse) SetBody(v *ExecuteDataCorrectResponseBody) 
 type ExecuteDataExportRequest struct {
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId     *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3863,11 +3634,6 @@ func (s *ExecuteDataExportRequest) SetOrderId(v int64) *ExecuteDataExportRequest
 	return s
 }
 
-func (s *ExecuteDataExportRequest) SetRegionId(v string) *ExecuteDataExportRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
 	s.Tid = &v
 	return s
@@ -3876,7 +3642,6 @@ func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
 type ExecuteDataExportShrinkRequest struct {
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -3895,11 +3660,6 @@ func (s *ExecuteDataExportShrinkRequest) SetActionDetailShrink(v string) *Execut
 
 func (s *ExecuteDataExportShrinkRequest) SetOrderId(v int64) *ExecuteDataExportShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteDataExportShrinkRequest) SetRegionId(v string) *ExecuteDataExportShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3967,11 +3727,10 @@ func (s *ExecuteDataExportResponse) SetBody(v *ExecuteDataExportResponseBody) *E
 }
 
 type ExecuteScriptRequest struct {
-	DbId     *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic    *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Script   *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId   *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic  *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteScriptRequest) String() string {
@@ -3989,11 +3748,6 @@ func (s *ExecuteScriptRequest) SetDbId(v int32) *ExecuteScriptRequest {
 
 func (s *ExecuteScriptRequest) SetLogic(v bool) *ExecuteScriptRequest {
 	s.Logic = &v
-	return s
-}
-
-func (s *ExecuteScriptRequest) SetRegionId(v string) *ExecuteScriptRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4113,9 +3867,8 @@ func (s *ExecuteScriptResponse) SetBody(v *ExecuteScriptResponseBody) *ExecuteSc
 }
 
 type ExecuteStructSyncRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteStructSyncRequest) String() string {
@@ -4128,11 +3881,6 @@ func (s ExecuteStructSyncRequest) GoString() string {
 
 func (s *ExecuteStructSyncRequest) SetOrderId(v int64) *ExecuteStructSyncRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ExecuteStructSyncRequest) SetRegionId(v string) *ExecuteStructSyncRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4201,9 +3949,8 @@ func (s *ExecuteStructSyncResponse) SetBody(v *ExecuteStructSyncResponseBody) *E
 }
 
 type GetApprovalDetailRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	Tid                *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 }
 
 func (s GetApprovalDetailRequest) String() string {
@@ -4212,11 +3959,6 @@ func (s GetApprovalDetailRequest) String() string {
 
 func (s GetApprovalDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetApprovalDetailRequest) SetRegionId(v string) *GetApprovalDetailRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetApprovalDetailRequest) SetTid(v int64) *GetApprovalDetailRequest {
@@ -4503,9 +4245,8 @@ func (s *GetApprovalDetailResponse) SetBody(v *GetApprovalDetailResponseBody) *G
 }
 
 type GetDBTaskSQLJobLogRequest struct {
-	JobId    *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDBTaskSQLJobLogRequest) String() string {
@@ -4518,11 +4259,6 @@ func (s GetDBTaskSQLJobLogRequest) GoString() string {
 
 func (s *GetDBTaskSQLJobLogRequest) SetJobId(v int64) *GetDBTaskSQLJobLogRequest {
 	s.JobId = &v
-	return s
-}
-
-func (s *GetDBTaskSQLJobLogRequest) SetRegionId(v string) *GetDBTaskSQLJobLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4597,9 +4333,8 @@ func (s *GetDBTaskSQLJobLogResponse) SetBody(v *GetDBTaskSQLJobLogResponseBody) 
 }
 
 type GetDBTopologyRequest struct {
-	LogicDbId *int64  `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDBTopologyRequest) String() string {
@@ -4612,11 +4347,6 @@ func (s GetDBTopologyRequest) GoString() string {
 
 func (s *GetDBTopologyRequest) SetLogicDbId(v int64) *GetDBTopologyRequest {
 	s.LogicDbId = &v
-	return s
-}
-
-func (s *GetDBTopologyRequest) SetRegionId(v string) *GetDBTopologyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4817,7 +4547,6 @@ func (s *GetDBTopologyResponse) SetBody(v *GetDBTopologyResponseBody) *GetDBTopo
 type GetDataCorrectBackupFilesRequest struct {
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId     *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -4839,11 +4568,6 @@ func (s *GetDataCorrectBackupFilesRequest) SetOrderId(v int64) *GetDataCorrectBa
 	return s
 }
 
-func (s *GetDataCorrectBackupFilesRequest) SetRegionId(v string) *GetDataCorrectBackupFilesRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetDataCorrectBackupFilesRequest) SetTid(v int64) *GetDataCorrectBackupFilesRequest {
 	s.Tid = &v
 	return s
@@ -4852,7 +4576,6 @@ func (s *GetDataCorrectBackupFilesRequest) SetTid(v int64) *GetDataCorrectBackup
 type GetDataCorrectBackupFilesShrinkRequest struct {
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
 	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -4871,11 +4594,6 @@ func (s *GetDataCorrectBackupFilesShrinkRequest) SetActionDetailShrink(v string)
 
 func (s *GetDataCorrectBackupFilesShrinkRequest) SetOrderId(v int64) *GetDataCorrectBackupFilesShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectBackupFilesShrinkRequest) SetRegionId(v string) *GetDataCorrectBackupFilesShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4966,9 +4684,8 @@ func (s *GetDataCorrectBackupFilesResponse) SetBody(v *GetDataCorrectBackupFiles
 }
 
 type GetDataCorrectOrderDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectOrderDetailRequest) String() string {
@@ -4981,11 +4698,6 @@ func (s GetDataCorrectOrderDetailRequest) GoString() string {
 
 func (s *GetDataCorrectOrderDetailRequest) SetOrderId(v int64) *GetDataCorrectOrderDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectOrderDetailRequest) SetRegionId(v string) *GetDataCorrectOrderDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5275,9 +4987,8 @@ func (s *GetDataCorrectOrderDetailResponse) SetBody(v *GetDataCorrectOrderDetail
 }
 
 type GetDataCorrectSQLFileRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileRequest) String() string {
@@ -5290,11 +5001,6 @@ func (s GetDataCorrectSQLFileRequest) GoString() string {
 
 func (s *GetDataCorrectSQLFileRequest) SetOrderId(v int64) *GetDataCorrectSQLFileRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectSQLFileRequest) SetRegionId(v string) *GetDataCorrectSQLFileRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5369,9 +5075,8 @@ func (s *GetDataCorrectSQLFileResponse) SetBody(v *GetDataCorrectSQLFileResponse
 }
 
 type GetDataCorrectTaskDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectTaskDetailRequest) String() string {
@@ -5384,11 +5089,6 @@ func (s GetDataCorrectTaskDetailRequest) GoString() string {
 
 func (s *GetDataCorrectTaskDetailRequest) SetOrderId(v int64) *GetDataCorrectTaskDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataCorrectTaskDetailRequest) SetRegionId(v string) *GetDataCorrectTaskDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5498,11 +5198,10 @@ func (s *GetDataCorrectTaskDetailResponse) SetBody(v *GetDataCorrectTaskDetailRe
 }
 
 type GetDataCronClearTaskDetailListRequest struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCronClearTaskDetailListRequest) String() string {
@@ -5525,11 +5224,6 @@ func (s *GetDataCronClearTaskDetailListRequest) SetPageNumber(v int64) *GetDataC
 
 func (s *GetDataCronClearTaskDetailListRequest) SetPageSize(v int64) *GetDataCronClearTaskDetailListRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *GetDataCronClearTaskDetailListRequest) SetRegionId(v string) *GetDataCronClearTaskDetailListRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5645,9 +5339,8 @@ func (s *GetDataCronClearTaskDetailListResponse) SetBody(v *GetDataCronClearTask
 }
 
 type GetDataExportDownloadURLRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataExportDownloadURLRequest) String() string {
@@ -5660,11 +5353,6 @@ func (s GetDataExportDownloadURLRequest) GoString() string {
 
 func (s *GetDataExportDownloadURLRequest) SetOrderId(v int64) *GetDataExportDownloadURLRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataExportDownloadURLRequest) SetRegionId(v string) *GetDataExportDownloadURLRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5767,9 +5455,8 @@ func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLRe
 }
 
 type GetDataExportOrderDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataExportOrderDetailRequest) String() string {
@@ -5782,11 +5469,6 @@ func (s GetDataExportOrderDetailRequest) GoString() string {
 
 func (s *GetDataExportOrderDetailRequest) SetOrderId(v int64) *GetDataExportOrderDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetDataExportOrderDetailRequest) SetRegionId(v string) *GetDataExportOrderDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5973,7 +5655,6 @@ func (s *GetDataExportOrderDetailResponse) SetBody(v *GetDataExportOrderDetailRe
 type GetDatabaseRequest struct {
 	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	Sid        *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -5994,11 +5675,6 @@ func (s *GetDatabaseRequest) SetHost(v string) *GetDatabaseRequest {
 
 func (s *GetDatabaseRequest) SetPort(v int32) *GetDatabaseRequest {
 	s.Port = &v
-	return s
-}
-
-func (s *GetDatabaseRequest) SetRegionId(v string) *GetDatabaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6223,11 +5899,10 @@ func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseRe
 }
 
 type GetInstanceRequest struct {
-	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sid      *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Sid  *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetInstanceRequest) String() string {
@@ -6245,11 +5920,6 @@ func (s *GetInstanceRequest) SetHost(v string) *GetInstanceRequest {
 
 func (s *GetInstanceRequest) SetPort(v int32) *GetInstanceRequest {
 	s.Port = &v
-	return s
-}
-
-func (s *GetInstanceRequest) SetRegionId(v string) *GetInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6546,9 +6216,8 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetLogicDatabaseRequest struct {
-	DbId     *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Tid  *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetLogicDatabaseRequest) String() string {
@@ -6561,11 +6230,6 @@ func (s GetLogicDatabaseRequest) GoString() string {
 
 func (s *GetLogicDatabaseRequest) SetDbId(v string) *GetLogicDatabaseRequest {
 	s.DbId = &v
-	return s
-}
-
-func (s *GetLogicDatabaseRequest) SetRegionId(v string) *GetLogicDatabaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6738,7 +6402,6 @@ func (s *GetLogicDatabaseResponse) SetBody(v *GetLogicDatabaseResponseBody) *Get
 }
 
 type GetMetaTableColumnRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -6749,11 +6412,6 @@ func (s GetMetaTableColumnRequest) String() string {
 
 func (s GetMetaTableColumnRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetMetaTableColumnRequest) SetRegionId(v string) *GetMetaTableColumnRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetMetaTableColumnRequest) SetTableGuid(v string) *GetMetaTableColumnRequest {
@@ -6914,7 +6572,6 @@ func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) 
 }
 
 type GetMetaTableDetailInfoRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -6925,11 +6582,6 @@ func (s GetMetaTableDetailInfoRequest) String() string {
 
 func (s GetMetaTableDetailInfoRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetMetaTableDetailInfoRequest) SetRegionId(v string) *GetMetaTableDetailInfoRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetMetaTableDetailInfoRequest) SetTableGuid(v string) *GetMetaTableDetailInfoRequest {
@@ -7146,7 +6798,6 @@ type GetOpLogRequest struct {
 	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -7176,11 +6827,6 @@ func (s *GetOpLogRequest) SetPageNumber(v int32) *GetOpLogRequest {
 
 func (s *GetOpLogRequest) SetPageSize(v int32) *GetOpLogRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *GetOpLogRequest) SetRegionId(v string) *GetOpLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7341,9 +6987,8 @@ func (s *GetOpLogResponse) SetBody(v *GetOpLogResponseBody) *GetOpLogResponse {
 }
 
 type GetOrderBaseInfoRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOrderBaseInfoRequest) String() string {
@@ -7356,11 +7001,6 @@ func (s GetOrderBaseInfoRequest) GoString() string {
 
 func (s *GetOrderBaseInfoRequest) SetOrderId(v int64) *GetOrderBaseInfoRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetOrderBaseInfoRequest) SetRegionId(v string) *GetOrderBaseInfoRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7557,9 +7197,8 @@ func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *Get
 }
 
 type GetOwnerApplyOrderDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailRequest) String() string {
@@ -7572,11 +7211,6 @@ func (s GetOwnerApplyOrderDetailRequest) GoString() string {
 
 func (s *GetOwnerApplyOrderDetailRequest) SetOrderId(v int64) *GetOwnerApplyOrderDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetOwnerApplyOrderDetailRequest) SetRegionId(v string) *GetOwnerApplyOrderDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7750,9 +7384,8 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 }
 
 type GetPermApplyOrderDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailRequest) String() string {
@@ -7765,11 +7398,6 @@ func (s GetPermApplyOrderDetailRequest) GoString() string {
 
 func (s *GetPermApplyOrderDetailRequest) SetOrderId(v int64) *GetPermApplyOrderDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetPermApplyOrderDetailRequest) SetRegionId(v string) *GetPermApplyOrderDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8078,9 +7706,8 @@ func (s *GetPermApplyOrderDetailResponse) SetBody(v *GetPermApplyOrderDetailResp
 }
 
 type GetPhysicalDatabaseRequest struct {
-	DbId     *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPhysicalDatabaseRequest) String() string {
@@ -8093,11 +7720,6 @@ func (s GetPhysicalDatabaseRequest) GoString() string {
 
 func (s *GetPhysicalDatabaseRequest) SetDbId(v int64) *GetPhysicalDatabaseRequest {
 	s.DbId = &v
-	return s
-}
-
-func (s *GetPhysicalDatabaseRequest) SetRegionId(v string) *GetPhysicalDatabaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8312,10 +7934,9 @@ func (s *GetPhysicalDatabaseResponse) SetBody(v *GetPhysicalDatabaseResponseBody
 }
 
 type GetProxyRequest struct {
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProxyId    *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProxyId    *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetProxyRequest) String() string {
@@ -8333,11 +7954,6 @@ func (s *GetProxyRequest) SetInstanceId(v int64) *GetProxyRequest {
 
 func (s *GetProxyRequest) SetProxyId(v int64) *GetProxyRequest {
 	s.ProxyId = &v
-	return s
-}
-
-func (s *GetProxyRequest) SetRegionId(v string) *GetProxyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8466,9 +8082,8 @@ func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
 }
 
 type GetSQLReviewCheckResultStatusRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetSQLReviewCheckResultStatusRequest) String() string {
@@ -8481,11 +8096,6 @@ func (s GetSQLReviewCheckResultStatusRequest) GoString() string {
 
 func (s *GetSQLReviewCheckResultStatusRequest) SetOrderId(v int64) *GetSQLReviewCheckResultStatusRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetSQLReviewCheckResultStatusRequest) SetRegionId(v string) *GetSQLReviewCheckResultStatusRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8688,7 +8298,6 @@ func (s *GetSQLReviewCheckResultStatusResponse) SetBody(v *GetSQLReviewCheckResu
 }
 
 type GetSQLReviewOptimizeDetailRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
 	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -8699,11 +8308,6 @@ func (s GetSQLReviewOptimizeDetailRequest) String() string {
 
 func (s GetSQLReviewOptimizeDetailRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetSQLReviewOptimizeDetailRequest) SetRegionId(v string) *GetSQLReviewOptimizeDetailRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetSQLReviewOptimizeDetailRequest) SetSQLReviewQueryKey(v string) *GetSQLReviewOptimizeDetailRequest {
@@ -8926,12 +8530,455 @@ func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDeta
 	return s
 }
 
+type GetSparkJobDetailRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSparkJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDetailRequest) SetJobId(v int64) *GetSparkJobDetailRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkJobDetailRequest) SetTid(v int64) *GetSparkJobDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSparkJobDetailResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Details of the spark job
+	JobDetail *GetSparkJobDetailResponseBodyJobDetail `json:"JobDetail,omitempty" xml:"JobDetail,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSparkJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDetailResponseBody) SetErrorCode(v string) *GetSparkJobDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBody) SetErrorMessage(v string) *GetSparkJobDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBody) SetJobDetail(v *GetSparkJobDetailResponseBodyJobDetail) *GetSparkJobDetailResponseBody {
+	s.JobDetail = v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBody) SetRequestId(v string) *GetSparkJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBody) SetSuccess(v bool) *GetSparkJobDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSparkJobDetailResponseBodyJobDetail struct {
+	Arguments     *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	BeginTime     *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MainClass     *string `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
+	MainFile      *string `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime    *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+}
+
+func (s GetSparkJobDetailResponseBodyJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDetailResponseBodyJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetArguments(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.Arguments = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetBeginTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetConfiguration(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetEndTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetJobId(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetMainClass(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.MainClass = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetMainFile(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.MainFile = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetName(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetStatus(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSparkJobDetailResponseBodyJobDetail) SetSubmitTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
+	s.SubmitTime = &v
+	return s
+}
+
+type GetSparkJobDetailResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSparkJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDetailResponse) SetHeaders(v map[string]*string) *GetSparkJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkJobDetailResponse) SetBody(v *GetSparkJobDetailResponseBody) *GetSparkJobDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkJobDriverLogRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSparkJobDriverLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDriverLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDriverLogRequest) SetJobId(v int64) *GetSparkJobDriverLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkJobDriverLogRequest) SetTid(v int64) *GetSparkJobDriverLogRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSparkJobDriverLogResponseBody struct {
+	// driver log of the spark job
+	DriverLog    *string `json:"DriverLog,omitempty" xml:"DriverLog,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSparkJobDriverLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDriverLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDriverLogResponseBody) SetDriverLog(v string) *GetSparkJobDriverLogResponseBody {
+	s.DriverLog = &v
+	return s
+}
+
+func (s *GetSparkJobDriverLogResponseBody) SetErrorCode(v string) *GetSparkJobDriverLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSparkJobDriverLogResponseBody) SetErrorMessage(v string) *GetSparkJobDriverLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSparkJobDriverLogResponseBody) SetRequestId(v string) *GetSparkJobDriverLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSparkJobDriverLogResponseBody) SetSuccess(v bool) *GetSparkJobDriverLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSparkJobDriverLogResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSparkJobDriverLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkJobDriverLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobDriverLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobDriverLogResponse) SetHeaders(v map[string]*string) *GetSparkJobDriverLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkJobDriverLogResponse) SetBody(v *GetSparkJobDriverLogResponseBody) *GetSparkJobDriverLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkJobExecutorLogsRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSparkJobExecutorLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobExecutorLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobExecutorLogsRequest) SetJobId(v int64) *GetSparkJobExecutorLogsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsRequest) SetTid(v int64) *GetSparkJobExecutorLogsRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSparkJobExecutorLogsResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// log of the spark job
+	ExecutorLogs *GetSparkJobExecutorLogsResponseBodyExecutorLogs `json:"ExecutorLogs,omitempty" xml:"ExecutorLogs,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSparkJobExecutorLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobExecutorLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobExecutorLogsResponseBody) SetErrorCode(v string) *GetSparkJobExecutorLogsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsResponseBody) SetErrorMessage(v string) *GetSparkJobExecutorLogsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsResponseBody) SetExecutorLogs(v *GetSparkJobExecutorLogsResponseBodyExecutorLogs) *GetSparkJobExecutorLogsResponseBody {
+	s.ExecutorLogs = v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsResponseBody) SetRequestId(v string) *GetSparkJobExecutorLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsResponseBody) SetSuccess(v bool) *GetSparkJobExecutorLogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSparkJobExecutorLogsResponseBodyExecutorLogs struct {
+	ExecutorLogs []*string `json:"executorLogs,omitempty" xml:"executorLogs,omitempty" type:"Repeated"`
+}
+
+func (s GetSparkJobExecutorLogsResponseBodyExecutorLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobExecutorLogsResponseBodyExecutorLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobExecutorLogsResponseBodyExecutorLogs) SetExecutorLogs(v []*string) *GetSparkJobExecutorLogsResponseBodyExecutorLogs {
+	s.ExecutorLogs = v
+	return s
+}
+
+type GetSparkJobExecutorLogsResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSparkJobExecutorLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkJobExecutorLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobExecutorLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobExecutorLogsResponse) SetHeaders(v map[string]*string) *GetSparkJobExecutorLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkJobExecutorLogsResponse) SetBody(v *GetSparkJobExecutorLogsResponseBody) *GetSparkJobExecutorLogsResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkJobLogRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetSparkJobLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobLogRequest) SetJobId(v int64) *GetSparkJobLogRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkJobLogRequest) SetTid(v int64) *GetSparkJobLogRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetSparkJobLogResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// log of the spark job
+	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSparkJobLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobLogResponseBody) SetErrorCode(v string) *GetSparkJobLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSparkJobLogResponseBody) SetErrorMessage(v string) *GetSparkJobLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSparkJobLogResponseBody) SetLog(v string) *GetSparkJobLogResponseBody {
+	s.Log = &v
+	return s
+}
+
+func (s *GetSparkJobLogResponseBody) SetRequestId(v string) *GetSparkJobLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSparkJobLogResponseBody) SetSuccess(v bool) *GetSparkJobLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSparkJobLogResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSparkJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkJobLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkJobLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkJobLogResponse) SetHeaders(v map[string]*string) *GetSparkJobLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkJobLogResponse) SetBody(v *GetSparkJobLogResponseBody) *GetSparkJobLogResponse {
+	s.Body = v
+	return s
+}
+
 type GetStructSyncExecSqlDetailRequest struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncExecSqlDetailRequest) String() string {
@@ -8954,11 +9001,6 @@ func (s *GetStructSyncExecSqlDetailRequest) SetPageNumber(v int64) *GetStructSyn
 
 func (s *GetStructSyncExecSqlDetailRequest) SetPageSize(v int64) *GetStructSyncExecSqlDetailRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *GetStructSyncExecSqlDetailRequest) SetRegionId(v string) *GetStructSyncExecSqlDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9060,7 +9102,6 @@ type GetStructSyncJobAnalyzeResultRequest struct {
 	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -9089,11 +9130,6 @@ func (s *GetStructSyncJobAnalyzeResultRequest) SetPageNumber(v int64) *GetStruct
 
 func (s *GetStructSyncJobAnalyzeResultRequest) SetPageSize(v int64) *GetStructSyncJobAnalyzeResultRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *GetStructSyncJobAnalyzeResultRequest) SetRegionId(v string) *GetStructSyncJobAnalyzeResultRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9243,9 +9279,8 @@ func (s *GetStructSyncJobAnalyzeResultResponse) SetBody(v *GetStructSyncJobAnaly
 }
 
 type GetStructSyncJobDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncJobDetailRequest) String() string {
@@ -9258,11 +9293,6 @@ func (s GetStructSyncJobDetailRequest) GoString() string {
 
 func (s *GetStructSyncJobDetailRequest) SetOrderId(v int64) *GetStructSyncJobDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetStructSyncJobDetailRequest) SetRegionId(v string) *GetStructSyncJobDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9396,9 +9426,8 @@ func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailRespon
 }
 
 type GetStructSyncOrderDetailRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncOrderDetailRequest) String() string {
@@ -9411,11 +9440,6 @@ func (s GetStructSyncOrderDetailRequest) GoString() string {
 
 func (s *GetStructSyncOrderDetailRequest) SetOrderId(v int64) *GetStructSyncOrderDetailRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *GetStructSyncOrderDetailRequest) SetRegionId(v string) *GetStructSyncOrderDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9688,7 +9712,6 @@ func (s *GetStructSyncOrderDetailResponse) SetBody(v *GetStructSyncOrderDetailRe
 }
 
 type GetTableDBTopologyRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -9699,11 +9722,6 @@ func (s GetTableDBTopologyRequest) String() string {
 
 func (s GetTableDBTopologyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetTableDBTopologyRequest) SetRegionId(v string) *GetTableDBTopologyRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetTableDBTopologyRequest) SetTableGuid(v string) *GetTableDBTopologyRequest {
@@ -9921,7 +9939,6 @@ func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) 
 }
 
 type GetTableTopologyRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -9932,11 +9949,6 @@ func (s GetTableTopologyRequest) String() string {
 
 func (s GetTableTopologyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetTableTopologyRequest) SetRegionId(v string) *GetTableTopologyRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetTableTopologyRequest) SetTableGuid(v string) *GetTableTopologyRequest {
@@ -10127,10 +10139,9 @@ func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *Get
 }
 
 type GetUserRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Uid    *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
@@ -10139,11 +10150,6 @@ func (s GetUserRequest) String() string {
 
 func (s GetUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetUserRequest) SetRegionId(v string) *GetUserRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetUserRequest) SetTid(v int64) *GetUserRequest {
@@ -10379,8 +10385,7 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserActiveTenantRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetUserActiveTenantRequest) String() string {
@@ -10389,11 +10394,6 @@ func (s GetUserActiveTenantRequest) String() string {
 
 func (s GetUserActiveTenantRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetUserActiveTenantRequest) SetRegionId(v string) *GetUserActiveTenantRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *GetUserActiveTenantRequest) SetTid(v int64) *GetUserActiveTenantRequest {
@@ -10495,9 +10495,8 @@ func (s *GetUserActiveTenantResponse) SetBody(v *GetUserActiveTenantResponseBody
 }
 
 type GetUserUploadFileJobRequest struct {
-	JobKey   *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetUserUploadFileJobRequest) String() string {
@@ -10510,11 +10509,6 @@ func (s GetUserUploadFileJobRequest) GoString() string {
 
 func (s *GetUserUploadFileJobRequest) SetJobKey(v string) *GetUserUploadFileJobRequest {
 	s.JobKey = &v
-	return s
-}
-
-func (s *GetUserUploadFileJobRequest) SetRegionId(v string) *GetUserUploadFileJobRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10701,7 +10695,6 @@ type GrantUserPermissionRequest struct {
 	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	PermTypes  *string `json:"PermTypes,omitempty" xml:"PermTypes,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableId    *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -10743,11 +10736,6 @@ func (s *GrantUserPermissionRequest) SetLogic(v bool) *GrantUserPermissionReques
 
 func (s *GrantUserPermissionRequest) SetPermTypes(v string) *GrantUserPermissionRequest {
 	s.PermTypes = &v
-	return s
-}
-
-func (s *GrantUserPermissionRequest) SetRegionId(v string) *GrantUserPermissionRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10830,9 +10818,8 @@ func (s *GrantUserPermissionResponse) SetBody(v *GrantUserPermissionResponseBody
 }
 
 type InspectProxyAccessSecretRequest struct {
-	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s InspectProxyAccessSecretRequest) String() string {
@@ -10845,11 +10832,6 @@ func (s InspectProxyAccessSecretRequest) GoString() string {
 
 func (s *InspectProxyAccessSecretRequest) SetProxyAccessId(v int64) *InspectProxyAccessSecretRequest {
 	s.ProxyAccessId = &v
-	return s
-}
-
-func (s *InspectProxyAccessSecretRequest) SetRegionId(v string) *InspectProxyAccessSecretRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10923,11 +10905,93 @@ func (s *InspectProxyAccessSecretResponse) SetBody(v *InspectProxyAccessSecretRe
 	return s
 }
 
+type KillSparkJobRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s KillSparkJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillSparkJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *KillSparkJobRequest) SetJobId(v int64) *KillSparkJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *KillSparkJobRequest) SetTid(v int64) *KillSparkJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type KillSparkJobResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Killing status
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s KillSparkJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillSparkJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *KillSparkJobResponseBody) SetErrorCode(v string) *KillSparkJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *KillSparkJobResponseBody) SetErrorMessage(v string) *KillSparkJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *KillSparkJobResponseBody) SetRequestId(v string) *KillSparkJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *KillSparkJobResponseBody) SetSuccess(v bool) *KillSparkJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type KillSparkJobResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s KillSparkJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillSparkJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *KillSparkJobResponse) SetHeaders(v map[string]*string) *KillSparkJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *KillSparkJobResponse) SetBody(v *KillSparkJobResponseBody) *KillSparkJobResponse {
+	s.Body = v
+	return s
+}
+
 type ListColumnsRequest struct {
-	Logic    *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableId  *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Logic   *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListColumnsRequest) String() string {
@@ -10940,11 +11004,6 @@ func (s ListColumnsRequest) GoString() string {
 
 func (s *ListColumnsRequest) SetLogic(v bool) *ListColumnsRequest {
 	s.Logic = &v
-	return s
-}
-
-func (s *ListColumnsRequest) SetRegionId(v string) *ListColumnsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11129,11 +11188,10 @@ func (s *ListColumnsResponse) SetBody(v *ListColumnsResponseBody) *ListColumnsRe
 }
 
 type ListDBTaskSQLJobRequest struct {
-	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	PageNumber    *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDBTaskSQLJobRequest) String() string {
@@ -11156,11 +11214,6 @@ func (s *ListDBTaskSQLJobRequest) SetPageNumber(v int64) *ListDBTaskSQLJobReques
 
 func (s *ListDBTaskSQLJobRequest) SetPageSize(v int64) *ListDBTaskSQLJobRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobRequest) SetRegionId(v string) *ListDBTaskSQLJobRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11318,11 +11371,10 @@ func (s *ListDBTaskSQLJobResponse) SetBody(v *ListDBTaskSQLJobResponseBody) *Lis
 }
 
 type ListDBTaskSQLJobDetailRequest struct {
-	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	JobId      *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDBTaskSQLJobDetailRequest) String() string {
@@ -11345,11 +11397,6 @@ func (s *ListDBTaskSQLJobDetailRequest) SetPageNumber(v int64) *ListDBTaskSQLJob
 
 func (s *ListDBTaskSQLJobDetailRequest) SetPageSize(v int64) *ListDBTaskSQLJobDetailRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDBTaskSQLJobDetailRequest) SetRegionId(v string) *ListDBTaskSQLJobDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11525,9 +11572,8 @@ func (s *ListDBTaskSQLJobDetailResponse) SetBody(v *ListDBTaskSQLJobDetailRespon
 }
 
 type ListDDLPublishRecordsRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDDLPublishRecordsRequest) String() string {
@@ -11540,11 +11586,6 @@ func (s ListDDLPublishRecordsRequest) GoString() string {
 
 func (s *ListDDLPublishRecordsRequest) SetOrderId(v int64) *ListDDLPublishRecordsRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ListDDLPublishRecordsRequest) SetRegionId(v string) *ListDDLPublishRecordsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11790,11 +11831,10 @@ func (s *ListDDLPublishRecordsResponse) SetBody(v *ListDDLPublishRecordsResponse
 }
 
 type ListDataCorrectPreCheckDBRequest struct {
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDataCorrectPreCheckDBRequest) String() string {
@@ -11817,11 +11857,6 @@ func (s *ListDataCorrectPreCheckDBRequest) SetPageNumber(v int64) *ListDataCorre
 
 func (s *ListDataCorrectPreCheckDBRequest) SetPageSize(v int64) *ListDataCorrectPreCheckDBRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDataCorrectPreCheckDBRequest) SetRegionId(v string) *ListDataCorrectPreCheckDBRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11925,12 +11960,11 @@ func (s *ListDataCorrectPreCheckDBResponse) SetBody(v *ListDataCorrectPreCheckDB
 }
 
 type ListDataCorrectPreCheckSQLRequest struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId       *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDataCorrectPreCheckSQLRequest) String() string {
@@ -11958,11 +11992,6 @@ func (s *ListDataCorrectPreCheckSQLRequest) SetPageNumber(v int64) *ListDataCorr
 
 func (s *ListDataCorrectPreCheckSQLRequest) SetPageSize(v int64) *ListDataCorrectPreCheckSQLRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDataCorrectPreCheckSQLRequest) SetRegionId(v string) *ListDataCorrectPreCheckSQLRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -12089,7 +12118,6 @@ type ListDatabaseUserPermssionsRequest struct {
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PermType   *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -12124,11 +12152,6 @@ func (s *ListDatabaseUserPermssionsRequest) SetPageSize(v int32) *ListDatabaseUs
 
 func (s *ListDatabaseUserPermssionsRequest) SetPermType(v string) *ListDatabaseUserPermssionsRequest {
 	s.PermType = &v
-	return s
-}
-
-func (s *ListDatabaseUserPermssionsRequest) SetRegionId(v string) *ListDatabaseUserPermssionsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -12398,7 +12421,6 @@ type ListDatabasesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -12422,11 +12444,6 @@ func (s *ListDatabasesRequest) SetPageNumber(v int32) *ListDatabasesRequest {
 
 func (s *ListDatabasesRequest) SetPageSize(v int32) *ListDatabasesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListDatabasesRequest) SetRegionId(v string) *ListDatabasesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -12664,10 +12681,9 @@ func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatab
 }
 
 type ListIndexesRequest struct {
-	Logic    *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableId  *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Logic   *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListIndexesRequest) String() string {
@@ -12680,11 +12696,6 @@ func (s ListIndexesRequest) GoString() string {
 
 func (s *ListIndexesRequest) SetLogic(v bool) *ListIndexesRequest {
 	s.Logic = &v
-	return s
-}
-
-func (s *ListIndexesRequest) SetRegionId(v string) *ListIndexesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -12825,7 +12836,6 @@ type ListInstanceLoginAuditLogRequest struct {
 	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -12856,11 +12866,6 @@ func (s *ListInstanceLoginAuditLogRequest) SetPageNumber(v int32) *ListInstanceL
 
 func (s *ListInstanceLoginAuditLogRequest) SetPageSize(v int32) *ListInstanceLoginAuditLogRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListInstanceLoginAuditLogRequest) SetRegionId(v string) *ListInstanceLoginAuditLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -13023,7 +13028,6 @@ type ListInstanceUserPermissionsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -13048,11 +13052,6 @@ func (s *ListInstanceUserPermissionsRequest) SetPageNumber(v int32) *ListInstanc
 
 func (s *ListInstanceUserPermissionsRequest) SetPageSize(v int32) *ListInstanceUserPermissionsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListInstanceUserPermissionsRequest) SetRegionId(v string) *ListInstanceUserPermissionsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -13260,7 +13259,6 @@ type ListInstancesRequest struct {
 	NetType        *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchKey      *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	Tid            *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -13305,11 +13303,6 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -13629,10 +13622,9 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListLogicDatabasesRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListLogicDatabasesRequest) String() string {
@@ -13650,11 +13642,6 @@ func (s *ListLogicDatabasesRequest) SetPageNumber(v int32) *ListLogicDatabasesRe
 
 func (s *ListLogicDatabasesRequest) SetPageSize(v int32) *ListLogicDatabasesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListLogicDatabasesRequest) SetRegionId(v string) *ListLogicDatabasesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -13850,9 +13837,8 @@ func (s *ListLogicDatabasesResponse) SetBody(v *ListLogicDatabasesResponseBody) 
 }
 
 type ListLogicTableRouteConfigRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableId  *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListLogicTableRouteConfigRequest) String() string {
@@ -13861,11 +13847,6 @@ func (s ListLogicTableRouteConfigRequest) String() string {
 
 func (s ListLogicTableRouteConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListLogicTableRouteConfigRequest) SetRegionId(v string) *ListLogicTableRouteConfigRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListLogicTableRouteConfigRequest) SetTableId(v int64) *ListLogicTableRouteConfigRequest {
@@ -13992,7 +13973,6 @@ type ListLogicTablesRequest struct {
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReturnGuid *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -14018,11 +13998,6 @@ func (s *ListLogicTablesRequest) SetPageNumber(v int32) *ListLogicTablesRequest 
 
 func (s *ListLogicTablesRequest) SetPageSize(v int32) *ListLogicTablesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListLogicTablesRequest) SetRegionId(v string) *ListLogicTablesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -14240,7 +14215,6 @@ type ListOrdersRequest struct {
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PluginType      *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchContent   *string `json:"SearchContent,omitempty" xml:"SearchContent,omitempty"`
 	SearchDateType  *string `json:"SearchDateType,omitempty" xml:"SearchDateType,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -14282,11 +14256,6 @@ func (s *ListOrdersRequest) SetPageSize(v int32) *ListOrdersRequest {
 
 func (s *ListOrdersRequest) SetPluginType(v string) *ListOrdersRequest {
 	s.PluginType = &v
-	return s
-}
-
-func (s *ListOrdersRequest) SetRegionId(v string) *ListOrdersRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -14463,8 +14432,7 @@ func (s *ListOrdersResponse) SetBody(v *ListOrdersResponseBody) *ListOrdersRespo
 }
 
 type ListProxiesRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListProxiesRequest) String() string {
@@ -14473,11 +14441,6 @@ func (s ListProxiesRequest) String() string {
 
 func (s ListProxiesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListProxiesRequest) SetRegionId(v string) *ListProxiesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListProxiesRequest) SetTid(v int64) *ListProxiesRequest {
@@ -14622,9 +14585,8 @@ func (s *ListProxiesResponse) SetBody(v *ListProxiesResponseBody) *ListProxiesRe
 }
 
 type ListProxyAccessesRequest struct {
-	ProxyId  *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListProxyAccessesRequest) String() string {
@@ -14637,11 +14599,6 @@ func (s ListProxyAccessesRequest) GoString() string {
 
 func (s *ListProxyAccessesRequest) SetProxyId(v int64) *ListProxyAccessesRequest {
 	s.ProxyId = &v
-	return s
-}
-
-func (s *ListProxyAccessesRequest) SetRegionId(v string) *ListProxyAccessesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -14792,7 +14749,6 @@ type ListProxySQLExecAuditLogRequest struct {
 	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SQLType    *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -14829,11 +14785,6 @@ func (s *ListProxySQLExecAuditLogRequest) SetPageNumber(v int32) *ListProxySQLEx
 
 func (s *ListProxySQLExecAuditLogRequest) SetPageSize(v int32) *ListProxySQLExecAuditLogRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListProxySQLExecAuditLogRequest) SetRegionId(v string) *ListProxySQLExecAuditLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15033,7 +14984,6 @@ type ListSQLExecAuditLogRequest struct {
 	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	SqlType    *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -15070,11 +15020,6 @@ func (s *ListSQLExecAuditLogRequest) SetPageNumber(v int32) *ListSQLExecAuditLog
 
 func (s *ListSQLExecAuditLogRequest) SetPageSize(v int32) *ListSQLExecAuditLogRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListSQLExecAuditLogRequest) SetRegionId(v string) *ListSQLExecAuditLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15283,7 +15228,6 @@ func (s *ListSQLExecAuditLogResponse) SetBody(v *ListSQLExecAuditLogResponseBody
 type ListSQLReviewOriginSQLRequest struct {
 	OrderActionDetail *ListSQLReviewOriginSQLRequestOrderActionDetail `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty" type:"Struct"`
 	OrderId           *int64                                          `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId          *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid               *int64                                          `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -15302,11 +15246,6 @@ func (s *ListSQLReviewOriginSQLRequest) SetOrderActionDetail(v *ListSQLReviewOri
 
 func (s *ListSQLReviewOriginSQLRequest) SetOrderId(v int64) *ListSQLReviewOriginSQLRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ListSQLReviewOriginSQLRequest) SetRegionId(v string) *ListSQLReviewOriginSQLRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15376,7 +15315,6 @@ func (s *ListSQLReviewOriginSQLRequestOrderActionDetailPage) SetPageSize(v int32
 type ListSQLReviewOriginSQLShrinkRequest struct {
 	OrderActionDetailShrink *string `json:"OrderActionDetail,omitempty" xml:"OrderActionDetail,omitempty"`
 	OrderId                 *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid                     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -15395,11 +15333,6 @@ func (s *ListSQLReviewOriginSQLShrinkRequest) SetOrderActionDetailShrink(v strin
 
 func (s *ListSQLReviewOriginSQLShrinkRequest) SetOrderId(v int64) *ListSQLReviewOriginSQLShrinkRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ListSQLReviewOriginSQLShrinkRequest) SetRegionId(v string) *ListSQLReviewOriginSQLShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15555,7 +15488,6 @@ type ListSensitiveColumnsRequest struct {
 	Logic         *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -15592,11 +15524,6 @@ func (s *ListSensitiveColumnsRequest) SetPageNumber(v int32) *ListSensitiveColum
 
 func (s *ListSensitiveColumnsRequest) SetPageSize(v int32) *ListSensitiveColumnsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListSensitiveColumnsRequest) SetRegionId(v string) *ListSensitiveColumnsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15758,7 +15685,6 @@ type ListSensitiveColumnsDetailRequest struct {
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -15784,11 +15710,6 @@ func (s *ListSensitiveColumnsDetailRequest) SetDbId(v int64) *ListSensitiveColum
 
 func (s *ListSensitiveColumnsDetailRequest) SetLogic(v bool) *ListSensitiveColumnsDetailRequest {
 	s.Logic = &v
-	return s
-}
-
-func (s *ListSensitiveColumnsDetailRequest) SetRegionId(v string) *ListSensitiveColumnsDetailRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -15963,7 +15884,6 @@ type ListTablesRequest struct {
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReturnGuid *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -15989,11 +15909,6 @@ func (s *ListTablesRequest) SetPageNumber(v int32) *ListTablesRequest {
 
 func (s *ListTablesRequest) SetPageSize(v int32) *ListTablesRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListTablesRequest) SetRegionId(v string) *ListTablesRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -16230,7 +16145,6 @@ type ListUserPermissionsRequest struct {
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -16276,11 +16190,6 @@ func (s *ListUserPermissionsRequest) SetPageSize(v int32) *ListUserPermissionsRe
 
 func (s *ListUserPermissionsRequest) SetPermType(v string) *ListUserPermissionsRequest {
 	s.PermType = &v
-	return s
-}
-
-func (s *ListUserPermissionsRequest) SetRegionId(v string) *ListUserPermissionsRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -16564,8 +16473,7 @@ func (s *ListUserPermissionsResponse) SetBody(v *ListUserPermissionsResponseBody
 }
 
 type ListUserTenantsRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListUserTenantsRequest) String() string {
@@ -16574,11 +16482,6 @@ func (s ListUserTenantsRequest) String() string {
 
 func (s ListUserTenantsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListUserTenantsRequest) SetRegionId(v string) *ListUserTenantsRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListUserTenantsRequest) SetTid(v int64) *ListUserTenantsRequest {
@@ -16682,7 +16585,6 @@ func (s *ListUserTenantsResponse) SetBody(v *ListUserTenantsResponseBody) *ListU
 type ListUsersRequest struct {
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	SearchKey  *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -16704,11 +16606,6 @@ func (s *ListUsersRequest) SetPageNumber(v int32) *ListUsersRequest {
 
 func (s *ListUsersRequest) SetPageSize(v int32) *ListUsersRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListUsersRequest) SetRegionId(v string) *ListUsersRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -16973,7 +16870,6 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type ListWorkFlowNodesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -16984,11 +16880,6 @@ func (s ListWorkFlowNodesRequest) String() string {
 
 func (s ListWorkFlowNodesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListWorkFlowNodesRequest) SetRegionId(v string) *ListWorkFlowNodesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListWorkFlowNodesRequest) SetSearchName(v string) *ListWorkFlowNodesRequest {
@@ -17182,7 +17073,6 @@ func (s *ListWorkFlowNodesResponse) SetBody(v *ListWorkFlowNodesResponseBody) *L
 }
 
 type ListWorkFlowTemplatesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -17193,11 +17083,6 @@ func (s ListWorkFlowTemplatesRequest) String() string {
 
 func (s ListWorkFlowTemplatesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListWorkFlowTemplatesRequest) SetRegionId(v string) *ListWorkFlowTemplatesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListWorkFlowTemplatesRequest) SetSearchName(v string) *ListWorkFlowTemplatesRequest {
@@ -17415,10 +17300,9 @@ func (s *ListWorkFlowTemplatesResponse) SetBody(v *ListWorkFlowTemplatesResponse
 }
 
 type ModifyDataCorrectExecSQLRequest struct {
-	ExecSQL  *string `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	ExecSQL *string `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ModifyDataCorrectExecSQLRequest) String() string {
@@ -17436,11 +17320,6 @@ func (s *ModifyDataCorrectExecSQLRequest) SetExecSQL(v string) *ModifyDataCorrec
 
 func (s *ModifyDataCorrectExecSQLRequest) SetOrderId(v int64) *ModifyDataCorrectExecSQLRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *ModifyDataCorrectExecSQLRequest) SetRegionId(v string) *ModifyDataCorrectExecSQLRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -17525,7 +17404,6 @@ type RegisterInstanceRequest struct {
 	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
 	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
@@ -17622,11 +17500,6 @@ func (s *RegisterInstanceRequest) SetQueryTimeout(v int32) *RegisterInstanceRequ
 	return s
 }
 
-func (s *RegisterInstanceRequest) SetRegionId(v string) *RegisterInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *RegisterInstanceRequest) SetSafeRule(v string) *RegisterInstanceRequest {
 	s.SafeRule = &v
 	return s
@@ -17717,7 +17590,6 @@ func (s *RegisterInstanceResponse) SetBody(v *RegisterInstanceResponseBody) *Reg
 
 type RegisterUserRequest struct {
 	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RoleNames *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -17734,11 +17606,6 @@ func (s RegisterUserRequest) GoString() string {
 
 func (s *RegisterUserRequest) SetMobile(v string) *RegisterUserRequest {
 	s.Mobile = &v
-	return s
-}
-
-func (s *RegisterUserRequest) SetRegionId(v string) *RegisterUserRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -17821,9 +17688,8 @@ func (s *RegisterUserResponse) SetBody(v *RegisterUserResponseBody) *RegisterUse
 }
 
 type RetryDataCorrectPreCheckRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s RetryDataCorrectPreCheckRequest) String() string {
@@ -17836,11 +17702,6 @@ func (s RetryDataCorrectPreCheckRequest) GoString() string {
 
 func (s *RetryDataCorrectPreCheckRequest) SetOrderId(v int64) *RetryDataCorrectPreCheckRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *RetryDataCorrectPreCheckRequest) SetRegionId(v string) *RetryDataCorrectPreCheckRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -17914,7 +17775,6 @@ type RevokeUserPermissionRequest struct {
 	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	PermTypes    *string `json:"PermTypes,omitempty" xml:"PermTypes,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TableId      *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -17952,11 +17812,6 @@ func (s *RevokeUserPermissionRequest) SetLogic(v bool) *RevokeUserPermissionRequ
 
 func (s *RevokeUserPermissionRequest) SetPermTypes(v string) *RevokeUserPermissionRequest {
 	s.PermTypes = &v
-	return s
-}
-
-func (s *RevokeUserPermissionRequest) SetRegionId(v string) *RevokeUserPermissionRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18048,7 +17903,6 @@ type SearchDatabaseRequest struct {
 	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
 	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
@@ -18080,11 +17934,6 @@ func (s *SearchDatabaseRequest) SetPageNumber(v int32) *SearchDatabaseRequest {
 
 func (s *SearchDatabaseRequest) SetPageSize(v int32) *SearchDatabaseRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *SearchDatabaseRequest) SetRegionId(v string) *SearchDatabaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18335,7 +18184,6 @@ type SearchTableRequest struct {
 	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReturnGuid   *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
 	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
@@ -18368,11 +18216,6 @@ func (s *SearchTableRequest) SetPageNumber(v int32) *SearchTableRequest {
 
 func (s *SearchTableRequest) SetPageSize(v int32) *SearchTableRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *SearchTableRequest) SetRegionId(v string) *SearchTableRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18626,7 +18469,6 @@ func (s *SearchTableResponse) SetBody(v *SearchTableResponseBody) *SearchTableRe
 type SetOwnersRequest struct {
 	OwnerIds   *string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty"`
 	OwnerType  *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
@@ -18646,11 +18488,6 @@ func (s *SetOwnersRequest) SetOwnerIds(v string) *SetOwnersRequest {
 
 func (s *SetOwnersRequest) SetOwnerType(v string) *SetOwnersRequest {
 	s.OwnerType = &v
-	return s
-}
-
-func (s *SetOwnersRequest) SetRegionId(v string) *SetOwnersRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18723,9 +18560,8 @@ func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse
 }
 
 type SubmitOrderApprovalRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SubmitOrderApprovalRequest) String() string {
@@ -18738,11 +18574,6 @@ func (s SubmitOrderApprovalRequest) GoString() string {
 
 func (s *SubmitOrderApprovalRequest) SetOrderId(v int64) *SubmitOrderApprovalRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *SubmitOrderApprovalRequest) SetRegionId(v string) *SubmitOrderApprovalRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18809,10 +18640,234 @@ func (s *SubmitOrderApprovalResponse) SetBody(v *SubmitOrderApprovalResponseBody
 	return s
 }
 
+type SubmitSparkJobRequest struct {
+	AppCode       *string                       `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	Arguments     []*string                     `json:"Arguments,omitempty" xml:"Arguments,omitempty" type:"Repeated"`
+	Configuration map[string]interface{}        `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Files         []*string                     `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	MainClass     *string                       `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
+	MainFile      *string                       `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
+	Name          *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssInfo       *SubmitSparkJobRequestOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
+	Tid           *int64                        `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SubmitSparkJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSparkJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSparkJobRequest) SetAppCode(v string) *SubmitSparkJobRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetArguments(v []*string) *SubmitSparkJobRequest {
+	s.Arguments = v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetConfiguration(v map[string]interface{}) *SubmitSparkJobRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetFiles(v []*string) *SubmitSparkJobRequest {
+	s.Files = v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetMainClass(v string) *SubmitSparkJobRequest {
+	s.MainClass = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetMainFile(v string) *SubmitSparkJobRequest {
+	s.MainFile = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetName(v string) *SubmitSparkJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetOssInfo(v *SubmitSparkJobRequestOssInfo) *SubmitSparkJobRequest {
+	s.OssInfo = v
+	return s
+}
+
+func (s *SubmitSparkJobRequest) SetTid(v int64) *SubmitSparkJobRequest {
+	s.Tid = &v
+	return s
+}
+
+type SubmitSparkJobRequestOssInfo struct {
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+}
+
+func (s SubmitSparkJobRequestOssInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSparkJobRequestOssInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSparkJobRequestOssInfo) SetAccessKeyId(v string) *SubmitSparkJobRequestOssInfo {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequestOssInfo) SetAccessKeySecret(v string) *SubmitSparkJobRequestOssInfo {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *SubmitSparkJobRequestOssInfo) SetEndpoint(v string) *SubmitSparkJobRequestOssInfo {
+	s.Endpoint = &v
+	return s
+}
+
+type SubmitSparkJobShrinkRequest struct {
+	AppCode             *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	ArgumentsShrink     *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	FilesShrink         *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	MainClass           *string `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
+	MainFile            *string `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssInfoShrink       *string `json:"OssInfo,omitempty" xml:"OssInfo,omitempty"`
+	Tid                 *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SubmitSparkJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSparkJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetAppCode(v string) *SubmitSparkJobShrinkRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetArgumentsShrink(v string) *SubmitSparkJobShrinkRequest {
+	s.ArgumentsShrink = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetConfigurationShrink(v string) *SubmitSparkJobShrinkRequest {
+	s.ConfigurationShrink = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetFilesShrink(v string) *SubmitSparkJobShrinkRequest {
+	s.FilesShrink = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetMainClass(v string) *SubmitSparkJobShrinkRequest {
+	s.MainClass = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetMainFile(v string) *SubmitSparkJobShrinkRequest {
+	s.MainFile = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetName(v string) *SubmitSparkJobShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetOssInfoShrink(v string) *SubmitSparkJobShrinkRequest {
+	s.OssInfoShrink = &v
+	return s
+}
+
+func (s *SubmitSparkJobShrinkRequest) SetTid(v int64) *SubmitSparkJobShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type SubmitSparkJobResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the spark job
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitSparkJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSparkJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSparkJobResponseBody) SetErrorCode(v string) *SubmitSparkJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitSparkJobResponseBody) SetErrorMessage(v string) *SubmitSparkJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubmitSparkJobResponseBody) SetJobId(v int64) *SubmitSparkJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitSparkJobResponseBody) SetRequestId(v string) *SubmitSparkJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitSparkJobResponseBody) SetSuccess(v bool) *SubmitSparkJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitSparkJobResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitSparkJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSparkJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSparkJobResponse) SetHeaders(v map[string]*string) *SubmitSparkJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSparkJobResponse) SetBody(v *SubmitSparkJobResponseBody) *SubmitSparkJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitStructSyncOrderApprovalRequest struct {
-	OrderId  *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SubmitStructSyncOrderApprovalRequest) String() string {
@@ -18825,11 +18880,6 @@ func (s SubmitStructSyncOrderApprovalRequest) GoString() string {
 
 func (s *SubmitStructSyncOrderApprovalRequest) SetOrderId(v int64) *SubmitStructSyncOrderApprovalRequest {
 	s.OrderId = &v
-	return s
-}
-
-func (s *SubmitStructSyncOrderApprovalRequest) SetRegionId(v string) *SubmitStructSyncOrderApprovalRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18904,10 +18954,9 @@ func (s *SubmitStructSyncOrderApprovalResponse) SetBody(v *SubmitStructSyncOrder
 }
 
 type SyncDatabaseMetaRequest struct {
-	DbId     *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic    *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SyncDatabaseMetaRequest) String() string {
@@ -18925,11 +18974,6 @@ func (s *SyncDatabaseMetaRequest) SetDbId(v string) *SyncDatabaseMetaRequest {
 
 func (s *SyncDatabaseMetaRequest) SetLogic(v bool) *SyncDatabaseMetaRequest {
 	s.Logic = &v
-	return s
-}
-
-func (s *SyncDatabaseMetaRequest) SetRegionId(v string) *SyncDatabaseMetaRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18999,7 +19043,6 @@ func (s *SyncDatabaseMetaResponse) SetBody(v *SyncDatabaseMetaResponseBody) *Syn
 type SyncInstanceMetaRequest struct {
 	IgnoreTable *bool   `json:"IgnoreTable,omitempty" xml:"IgnoreTable,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -19018,11 +19061,6 @@ func (s *SyncInstanceMetaRequest) SetIgnoreTable(v bool) *SyncInstanceMetaReques
 
 func (s *SyncInstanceMetaRequest) SetInstanceId(v string) *SyncInstanceMetaRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *SyncInstanceMetaRequest) SetRegionId(v string) *SyncInstanceMetaRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -19106,7 +19144,6 @@ type UpdateInstanceRequest struct {
 	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	QueryTimeout     *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SafeRuleId       *string `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
 	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
@@ -19203,11 +19240,6 @@ func (s *UpdateInstanceRequest) SetQueryTimeout(v int32) *UpdateInstanceRequest 
 	return s
 }
 
-func (s *UpdateInstanceRequest) SetRegionId(v string) *UpdateInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *UpdateInstanceRequest) SetSafeRuleId(v string) *UpdateInstanceRequest {
 	s.SafeRuleId = &v
 	return s
@@ -19300,7 +19332,6 @@ type UpdateUserRequest struct {
 	MaxExecuteCount *int64  `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
 	MaxResultCount  *int64  `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
 	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RoleNames       *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
 	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	Uid             *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -19327,11 +19358,6 @@ func (s *UpdateUserRequest) SetMaxResultCount(v int64) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetMobile(v string) *UpdateUserRequest {
 	s.Mobile = &v
-	return s
-}
-
-func (s *UpdateUserRequest) SetRegionId(v string) *UpdateUserRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -19466,10 +19492,22 @@ func (client *Client) AddLogicTableRouteConfigWithOptions(request *AddLogicTable
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RouteExpr"] = request.RouteExpr
-	query["RouteKey"] = request.RouteKey
-	query["TableId"] = request.TableId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.RouteExpr)) {
+		query["RouteExpr"] = request.RouteExpr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteKey)) {
+		query["RouteKey"] = request.RouteKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19510,10 +19548,22 @@ func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApprovalType"] = request.ApprovalType
-	query["Comment"] = request.Comment
-	query["Tid"] = request.Tid
-	query["WorkflowInstanceId"] = request.WorkflowInstanceId
+	if !tea.BoolValue(util.IsUnset(request.ApprovalType)) {
+		query["ApprovalType"] = request.ApprovalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceId)) {
+		query["WorkflowInstanceId"] = request.WorkflowInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19554,13 +19604,34 @@ func (client *Client) ChangeColumnSecLevelWithOptions(request *ChangeColumnSecLe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ColumnName"] = request.ColumnName
-	query["DbId"] = request.DbId
-	query["IsLogic"] = request.IsLogic
-	query["NewLevel"] = request.NewLevel
-	query["SchemaName"] = request.SchemaName
-	query["TableName"] = request.TableName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsLogic)) {
+		query["IsLogic"] = request.IsLogic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewLevel)) {
+		query["NewLevel"] = request.NewLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19601,9 +19672,18 @@ func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CloseReason"] = request.CloseReason
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.CloseReason)) {
+		query["CloseReason"] = request.CloseReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19654,11 +19734,26 @@ func (client *Client) CreateDataCorrectOrderWithOptions(tmpReq *CreateDataCorrec
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19709,11 +19804,26 @@ func (client *Client) CreateDataCronClearOrderWithOptions(tmpReq *CreateDataCron
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19764,11 +19874,26 @@ func (client *Client) CreateDataImportOrderWithOptions(tmpReq *CreateDataImportO
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19819,11 +19944,26 @@ func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLo
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19870,9 +20010,18 @@ func (client *Client) CreateLogicDatabaseWithOptions(tmpReq *CreateLogicDatabase
 	}
 
 	query := map[string]interface{}{}
-	query["Alias"] = request.Alias
-	query["DatabaseIds"] = request.DatabaseIdsShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		query["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseIdsShrink)) {
+		query["DatabaseIds"] = request.DatabaseIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19919,11 +20068,26 @@ func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, runtime
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["PluginType"] = request.PluginType
-	query["RelatedUserList"] = request.RelatedUserList
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserList)) {
+		query["RelatedUserList"] = request.RelatedUserList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PluginParamShrink)) {
 		body["PluginParam"] = request.PluginParamShrink
@@ -19970,10 +20134,22 @@ func (client *Client) CreateProxyWithOptions(request *CreateProxyRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Password"] = request.Password
-	query["Tid"] = request.Tid
-	query["Username"] = request.Username
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20014,11 +20190,26 @@ func (client *Client) CreateProxyAccessWithOptions(request *CreateProxyAccessReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IndepAccount"] = request.IndepAccount
-	query["IndepPassword"] = request.IndepPassword
-	query["ProxyId"] = request.ProxyId
-	query["Tid"] = request.Tid
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.IndepAccount)) {
+		query["IndepAccount"] = request.IndepAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndepPassword)) {
+		query["IndepPassword"] = request.IndepPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyId)) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20059,12 +20250,30 @@ func (client *Client) CreatePublishGroupTaskWithOptions(request *CreatePublishGr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["OrderId"] = request.OrderId
-	query["PlanTime"] = request.PlanTime
-	query["PublishStrategy"] = request.PublishStrategy
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanTime)) {
+		query["PlanTime"] = request.PlanTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishStrategy)) {
+		query["PublishStrategy"] = request.PublishStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20115,10 +20324,22 @@ func (client *Client) CreateSQLReviewOrderWithOptions(tmpReq *CreateSQLReviewOrd
 	}
 
 	query := map[string]interface{}{}
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20169,11 +20390,26 @@ func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncO
 	}
 
 	query := map[string]interface{}{}
-	query["AttachmentKey"] = request.AttachmentKey
-	query["Comment"] = request.Comment
-	query["Param"] = request.ParamShrink
-	query["RelatedUserList"] = request.RelatedUserListShrink
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20214,10 +20450,22 @@ func (client *Client) CreateUploadFileJobWithOptions(request *CreateUploadFileJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileName"] = request.FileName
-	query["FileSource"] = request.FileSource
-	query["Tid"] = request.Tid
-	query["UploadURL"] = request.UploadURL
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSource)) {
+		query["FileSource"] = request.FileSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadURL)) {
+		query["UploadURL"] = request.UploadURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20264,10 +20512,22 @@ func (client *Client) CreateUploadOSSFileJobWithOptions(tmpReq *CreateUploadOSSF
 	}
 
 	query := map[string]interface{}{}
-	query["FileName"] = request.FileName
-	query["FileSource"] = request.FileSource
-	query["Tid"] = request.Tid
-	query["UploadTarget"] = request.UploadTargetShrink
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSource)) {
+		query["FileSource"] = request.FileSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadTargetShrink)) {
+		query["UploadTarget"] = request.UploadTargetShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20308,10 +20568,22 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Host"] = request.Host
-	query["Port"] = request.Port
-	query["Sid"] = request.Sid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20352,8 +20624,14 @@ func (client *Client) DeleteLogicDatabaseWithOptions(request *DeleteLogicDatabas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogicDbId"] = request.LogicDbId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.LogicDbId)) {
+		query["LogicDbId"] = request.LogicDbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20394,9 +20672,18 @@ func (client *Client) DeleteLogicTableRouteConfigWithOptions(request *DeleteLogi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RouteKey"] = request.RouteKey
-	query["TableId"] = request.TableId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.RouteKey)) {
+		query["RouteKey"] = request.RouteKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20437,8 +20724,14 @@ func (client *Client) DeleteProxyWithOptions(request *DeleteProxyRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProxyId"] = request.ProxyId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ProxyId)) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20479,8 +20772,14 @@ func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProxyAccessId"] = request.ProxyAccessId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ProxyAccessId)) {
+		query["ProxyAccessId"] = request.ProxyAccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20521,8 +20820,14 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20563,8 +20868,14 @@ func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20611,10 +20922,22 @@ func (client *Client) EditLogicDatabaseWithOptions(tmpReq *EditLogicDatabaseRequ
 	}
 
 	query := map[string]interface{}{}
-	query["Alias"] = request.Alias
-	query["DatabaseIds"] = request.DatabaseIdsShrink
-	query["LogicDbId"] = request.LogicDbId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		query["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseIdsShrink)) {
+		query["DatabaseIds"] = request.DatabaseIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicDbId)) {
+		query["LogicDbId"] = request.LogicDbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20655,8 +20978,14 @@ func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20703,9 +21032,18 @@ func (client *Client) ExecuteDataCorrectWithOptions(tmpReq *ExecuteDataCorrectRe
 	}
 
 	query := map[string]interface{}{}
-	query["ActionDetail"] = request.ActionDetailShrink
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ActionDetailShrink)) {
+		query["ActionDetail"] = request.ActionDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20752,9 +21090,18 @@ func (client *Client) ExecuteDataExportWithOptions(tmpReq *ExecuteDataExportRequ
 	}
 
 	query := map[string]interface{}{}
-	query["ActionDetail"] = request.ActionDetailShrink
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ActionDetailShrink)) {
+		query["ActionDetail"] = request.ActionDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20795,10 +21142,22 @@ func (client *Client) ExecuteScriptWithOptions(request *ExecuteScriptRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["Script"] = request.Script
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Script)) {
+		query["Script"] = request.Script
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20839,8 +21198,14 @@ func (client *Client) ExecuteStructSyncWithOptions(request *ExecuteStructSyncReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20881,8 +21246,14 @@ func (client *Client) GetApprovalDetailWithOptions(request *GetApprovalDetailReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
-	query["WorkflowInstanceId"] = request.WorkflowInstanceId
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceId)) {
+		query["WorkflowInstanceId"] = request.WorkflowInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20923,8 +21294,14 @@ func (client *Client) GetDBTaskSQLJobLogWithOptions(request *GetDBTaskSQLJobLogR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20965,8 +21342,14 @@ func (client *Client) GetDBTopologyWithOptions(request *GetDBTopologyRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LogicDbId"] = request.LogicDbId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.LogicDbId)) {
+		query["LogicDbId"] = request.LogicDbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21013,9 +21396,18 @@ func (client *Client) GetDataCorrectBackupFilesWithOptions(tmpReq *GetDataCorrec
 	}
 
 	query := map[string]interface{}{}
-	query["ActionDetail"] = request.ActionDetailShrink
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ActionDetailShrink)) {
+		query["ActionDetail"] = request.ActionDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21056,8 +21448,14 @@ func (client *Client) GetDataCorrectOrderDetailWithOptions(request *GetDataCorre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21098,8 +21496,14 @@ func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21140,8 +21544,14 @@ func (client *Client) GetDataCorrectTaskDetailWithOptions(request *GetDataCorrec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21182,10 +21592,22 @@ func (client *Client) GetDataCronClearTaskDetailListWithOptions(request *GetData
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21226,8 +21648,14 @@ func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExport
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21268,7 +21696,10 @@ func (client *Client) GetDataExportOrderDetailWithOptions(request *GetDataExport
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		body["OrderId"] = request.OrderId
@@ -21315,11 +21746,26 @@ func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Host"] = request.Host
-	query["Port"] = request.Port
-	query["SchemaName"] = request.SchemaName
-	query["Sid"] = request.Sid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21360,10 +21806,22 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Host"] = request.Host
-	query["Port"] = request.Port
-	query["Sid"] = request.Sid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21404,8 +21862,14 @@ func (client *Client) GetLogicDatabaseWithOptions(request *GetLogicDatabaseReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21446,8 +21910,14 @@ func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21488,8 +21958,14 @@ func (client *Client) GetMetaTableDetailInfoWithOptions(request *GetMetaTableDet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21530,12 +22006,30 @@ func (client *Client) GetOpLogWithOptions(request *GetOpLogRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Module"] = request.Module
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		query["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21576,8 +22070,14 @@ func (client *Client) GetOrderBaseInfoWithOptions(request *GetOrderBaseInfoReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21618,8 +22118,14 @@ func (client *Client) GetOwnerApplyOrderDetailWithOptions(request *GetOwnerApply
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21660,8 +22166,14 @@ func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21702,8 +22214,14 @@ func (client *Client) GetPhysicalDatabaseWithOptions(request *GetPhysicalDatabas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21744,9 +22262,18 @@ func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ProxyId"] = request.ProxyId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyId)) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21787,8 +22314,14 @@ func (client *Client) GetSQLReviewCheckResultStatusWithOptions(request *GetSQLRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21829,8 +22362,14 @@ func (client *Client) GetSQLReviewOptimizeDetailWithOptions(request *GetSQLRevie
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SQLReviewQueryKey"] = request.SQLReviewQueryKey
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.SQLReviewQueryKey)) {
+		query["SQLReviewQueryKey"] = request.SQLReviewQueryKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21865,16 +22404,220 @@ func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDe
 	return _result, _err
 }
 
+func (client *Client) GetSparkJobDetailWithOptions(request *GetSparkJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkJobDetail"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkJobDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobDetail(request *GetSparkJobDetailRequest) (_result *GetSparkJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkJobDetailResponse{}
+	_body, _err := client.GetSparkJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobDriverLogWithOptions(request *GetSparkJobDriverLogRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobDriverLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkJobDriverLog"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkJobDriverLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobDriverLog(request *GetSparkJobDriverLogRequest) (_result *GetSparkJobDriverLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkJobDriverLogResponse{}
+	_body, _err := client.GetSparkJobDriverLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobExecutorLogsWithOptions(request *GetSparkJobExecutorLogsRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobExecutorLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkJobExecutorLogs"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkJobExecutorLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobExecutorLogs(request *GetSparkJobExecutorLogsRequest) (_result *GetSparkJobExecutorLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkJobExecutorLogsResponse{}
+	_body, _err := client.GetSparkJobExecutorLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobLogWithOptions(request *GetSparkJobLogRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkJobLog"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkJobLog(request *GetSparkJobLogRequest) (_result *GetSparkJobLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkJobLogResponse{}
+	_body, _err := client.GetSparkJobLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetStructSyncExecSqlDetailWithOptions(request *GetStructSyncExecSqlDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21915,11 +22658,26 @@ func (client *Client) GetStructSyncJobAnalyzeResultWithOptions(request *GetStruc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CompareType"] = request.CompareType
-	query["OrderId"] = request.OrderId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.CompareType)) {
+		query["CompareType"] = request.CompareType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21960,8 +22718,14 @@ func (client *Client) GetStructSyncJobDetailWithOptions(request *GetStructSyncJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22002,8 +22766,14 @@ func (client *Client) GetStructSyncOrderDetailWithOptions(request *GetStructSync
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22044,8 +22814,14 @@ func (client *Client) GetTableDBTopologyWithOptions(request *GetTableDBTopologyR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22086,8 +22862,14 @@ func (client *Client) GetTableTopologyWithOptions(request *GetTableTopologyReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22128,9 +22910,18 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22171,7 +22962,10 @@ func (client *Client) GetUserActiveTenantWithOptions(request *GetUserActiveTenan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22212,8 +23006,14 @@ func (client *Client) GetUserUploadFileJobWithOptions(request *GetUserUploadFile
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobKey"] = request.JobKey
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22254,16 +23054,46 @@ func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["DsType"] = request.DsType
-	query["ExpireDate"] = request.ExpireDate
-	query["InstanceId"] = request.InstanceId
-	query["Logic"] = request.Logic
-	query["PermTypes"] = request.PermTypes
-	query["TableId"] = request.TableId
-	query["TableName"] = request.TableName
-	query["Tid"] = request.Tid
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DsType)) {
+		query["DsType"] = request.DsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireDate)) {
+		query["ExpireDate"] = request.ExpireDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermTypes)) {
+		query["PermTypes"] = request.PermTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22304,8 +23134,14 @@ func (client *Client) InspectProxyAccessSecretWithOptions(request *InspectProxyA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProxyAccessId"] = request.ProxyAccessId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ProxyAccessId)) {
+		query["ProxyAccessId"] = request.ProxyAccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22340,15 +23176,72 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 	return _result, _err
 }
 
+func (client *Client) KillSparkJobWithOptions(request *KillSparkJobRequest, runtime *util.RuntimeOptions) (_result *KillSparkJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KillSparkJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &KillSparkJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) KillSparkJob(request *KillSparkJobRequest) (_result *KillSparkJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &KillSparkJobResponse{}
+	_body, _err := client.KillSparkJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtime *util.RuntimeOptions) (_result *ListColumnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Logic"] = request.Logic
-	query["TableId"] = request.TableId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22389,10 +23282,22 @@ func (client *Client) ListDBTaskSQLJobWithOptions(request *ListDBTaskSQLJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DBTaskGroupId"] = request.DBTaskGroupId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DBTaskGroupId)) {
+		query["DBTaskGroupId"] = request.DBTaskGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22433,10 +23338,22 @@ func (client *Client) ListDBTaskSQLJobDetailWithOptions(request *ListDBTaskSQLJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22477,8 +23394,14 @@ func (client *Client) ListDDLPublishRecordsWithOptions(request *ListDDLPublishRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22519,10 +23442,22 @@ func (client *Client) ListDataCorrectPreCheckDBWithOptions(request *ListDataCorr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22563,11 +23498,26 @@ func (client *Client) ListDataCorrectPreCheckSQLWithOptions(request *ListDataCor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["OrderId"] = request.OrderId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22608,13 +23558,34 @@ func (client *Client) ListDatabaseUserPermssionsWithOptions(request *ListDatabas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PermType"] = request.PermType
-	query["Tid"] = request.Tid
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermType)) {
+		query["PermType"] = request.PermType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22655,10 +23626,22 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22699,9 +23682,18 @@ func (client *Client) ListIndexesWithOptions(request *ListIndexesRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Logic"] = request.Logic
-	query["TableId"] = request.TableId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22742,13 +23734,34 @@ func (client *Client) ListInstanceLoginAuditLogWithOptions(request *ListInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OpUserName"] = request.OpUserName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchName"] = request.SearchName
-	query["StartTime"] = request.StartTime
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpUserName)) {
+		query["OpUserName"] = request.OpUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22789,11 +23802,26 @@ func (client *Client) ListInstanceUserPermissionsWithOptions(request *ListInstan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22834,15 +23862,42 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbType"] = request.DbType
-	query["EnvType"] = request.EnvType
-	query["InstanceSource"] = request.InstanceSource
-	query["InstanceState"] = request.InstanceState
-	query["NetType"] = request.NetType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchKey"] = request.SearchKey
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSource)) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceState)) {
+		query["InstanceState"] = request.InstanceState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetType)) {
+		query["NetType"] = request.NetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22883,9 +23938,18 @@ func (client *Client) ListLogicDatabasesWithOptions(request *ListLogicDatabasesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22926,8 +23990,14 @@ func (client *Client) ListLogicTableRouteConfigWithOptions(request *ListLogicTab
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableId"] = request.TableId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22968,12 +24038,30 @@ func (client *Client) ListLogicTablesWithOptions(request *ListLogicTablesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatabaseId"] = request.DatabaseId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ReturnGuid"] = request.ReturnGuid
-	query["SearchName"] = request.SearchName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnGuid)) {
+		query["ReturnGuid"] = request.ReturnGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23014,16 +24102,46 @@ func (client *Client) ListOrdersWithOptions(request *ListOrdersRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OrderResultType"] = request.OrderResultType
-	query["OrderStatus"] = request.OrderStatus
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PluginType"] = request.PluginType
-	query["SearchContent"] = request.SearchContent
-	query["SearchDateType"] = request.SearchDateType
-	query["StartTime"] = request.StartTime
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderResultType)) {
+		query["OrderResultType"] = request.OrderResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderStatus)) {
+		query["OrderStatus"] = request.OrderStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginType)) {
+		query["PluginType"] = request.PluginType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchContent)) {
+		query["SearchContent"] = request.SearchContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchDateType)) {
+		query["SearchDateType"] = request.SearchDateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23064,7 +24182,10 @@ func (client *Client) ListProxiesWithOptions(request *ListProxiesRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23105,8 +24226,14 @@ func (client *Client) ListProxyAccessesWithOptions(request *ListProxyAccessesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProxyId"] = request.ProxyId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ProxyId)) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23147,15 +24274,42 @@ func (client *Client) ListProxySQLExecAuditLogWithOptions(request *ListProxySQLE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["ExecState"] = request.ExecState
-	query["OpUserName"] = request.OpUserName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SQLType"] = request.SQLType
-	query["SearchName"] = request.SearchName
-	query["StartTime"] = request.StartTime
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecState)) {
+		query["ExecState"] = request.ExecState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpUserName)) {
+		query["OpUserName"] = request.OpUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SQLType)) {
+		query["SQLType"] = request.SQLType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23196,15 +24350,42 @@ func (client *Client) ListSQLExecAuditLogWithOptions(request *ListSQLExecAuditLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["ExecState"] = request.ExecState
-	query["OpUserName"] = request.OpUserName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchName"] = request.SearchName
-	query["SqlType"] = request.SqlType
-	query["StartTime"] = request.StartTime
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecState)) {
+		query["ExecState"] = request.ExecState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpUserName)) {
+		query["OpUserName"] = request.OpUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlType)) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23251,9 +24432,18 @@ func (client *Client) ListSQLReviewOriginSQLWithOptions(tmpReq *ListSQLReviewOri
 	}
 
 	query := map[string]interface{}{}
-	query["OrderActionDetail"] = request.OrderActionDetailShrink
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderActionDetailShrink)) {
+		query["OrderActionDetail"] = request.OrderActionDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23294,15 +24484,42 @@ func (client *Client) ListSensitiveColumnsWithOptions(request *ListSensitiveColu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ColumnName"] = request.ColumnName
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SchemaName"] = request.SchemaName
-	query["SecurityLevel"] = request.SecurityLevel
-	query["TableName"] = request.TableName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityLevel)) {
+		query["SecurityLevel"] = request.SecurityLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23343,12 +24560,30 @@ func (client *Client) ListSensitiveColumnsDetailWithOptions(request *ListSensiti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ColumnName"] = request.ColumnName
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["SchemaName"] = request.SchemaName
-	query["TableName"] = request.TableName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23389,12 +24624,30 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatabaseId"] = request.DatabaseId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ReturnGuid"] = request.ReturnGuid
-	query["SearchName"] = request.SearchName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnGuid)) {
+		query["ReturnGuid"] = request.ReturnGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23435,16 +24688,46 @@ func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermission
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatabaseName"] = request.DatabaseName
-	query["DbType"] = request.DbType
-	query["EnvType"] = request.EnvType
-	query["Logic"] = request.Logic
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PermType"] = request.PermType
-	query["SearchKey"] = request.SearchKey
-	query["Tid"] = request.Tid
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermType)) {
+		query["PermType"] = request.PermType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23485,7 +24768,10 @@ func (client *Client) ListUserTenantsWithOptions(request *ListUserTenantsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23526,12 +24812,30 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Role"] = request.Role
-	query["SearchKey"] = request.SearchKey
-	query["Tid"] = request.Tid
-	query["UserState"] = request.UserState
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserState)) {
+		query["UserState"] = request.UserState
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23572,8 +24876,14 @@ func (client *Client) ListWorkFlowNodesWithOptions(request *ListWorkFlowNodesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SearchName"] = request.SearchName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23614,8 +24924,14 @@ func (client *Client) ListWorkFlowTemplatesWithOptions(request *ListWorkFlowTemp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SearchName"] = request.SearchName
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23656,9 +24972,18 @@ func (client *Client) ModifyDataCorrectExecSQLWithOptions(request *ModifyDataCor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExecSQL"] = request.ExecSQL
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.ExecSQL)) {
+		query["ExecSQL"] = request.ExecSQL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23699,28 +25024,94 @@ func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DataLinkName"] = request.DataLinkName
-	query["DatabasePassword"] = request.DatabasePassword
-	query["DatabaseUser"] = request.DatabaseUser
-	query["DbaUid"] = request.DbaUid
-	query["DdlOnline"] = request.DdlOnline
-	query["EcsInstanceId"] = request.EcsInstanceId
-	query["EcsRegion"] = request.EcsRegion
-	query["EnvType"] = request.EnvType
-	query["ExportTimeout"] = request.ExportTimeout
-	query["Host"] = request.Host
-	query["InstanceAlias"] = request.InstanceAlias
-	query["InstanceSource"] = request.InstanceSource
-	query["InstanceType"] = request.InstanceType
-	query["NetworkType"] = request.NetworkType
-	query["Port"] = request.Port
-	query["QueryTimeout"] = request.QueryTimeout
-	query["SafeRule"] = request.SafeRule
-	query["Sid"] = request.Sid
-	query["SkipTest"] = request.SkipTest
-	query["Tid"] = request.Tid
-	query["UseDsql"] = request.UseDsql
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.DataLinkName)) {
+		query["DataLinkName"] = request.DataLinkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePassword)) {
+		query["DatabasePassword"] = request.DatabasePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		query["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbaUid)) {
+		query["DbaUid"] = request.DbaUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdlOnline)) {
+		query["DdlOnline"] = request.DdlOnline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsRegion)) {
+		query["EcsRegion"] = request.EcsRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportTimeout)) {
+		query["ExportTimeout"] = request.ExportTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSource)) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTimeout)) {
+		query["QueryTimeout"] = request.QueryTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeRule)) {
+		query["SafeRule"] = request.SafeRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
+		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDsql)) {
+		query["UseDsql"] = request.UseDsql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23761,11 +25152,26 @@ func (client *Client) RegisterUserWithOptions(request *RegisterUserRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Mobile"] = request.Mobile
-	query["RoleNames"] = request.RoleNames
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
-	query["UserNick"] = request.UserNick
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleNames)) {
+		query["RoleNames"] = request.RoleNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
+		query["UserNick"] = request.UserNick
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23806,8 +25212,14 @@ func (client *Client) RetryDataCorrectPreCheckWithOptions(request *RetryDataCorr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23848,16 +25260,46 @@ func (client *Client) RevokeUserPermissionWithOptions(request *RevokeUserPermiss
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["DsType"] = request.DsType
-	query["InstanceId"] = request.InstanceId
-	query["Logic"] = request.Logic
-	query["PermTypes"] = request.PermTypes
-	query["TableId"] = request.TableId
-	query["TableName"] = request.TableName
-	query["Tid"] = request.Tid
-	query["UserAccessId"] = request.UserAccessId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DsType)) {
+		query["DsType"] = request.DsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermTypes)) {
+		query["PermTypes"] = request.PermTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableId)) {
+		query["TableId"] = request.TableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccessId)) {
+		query["UserAccessId"] = request.UserAccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23898,14 +25340,38 @@ func (client *Client) SearchDatabaseWithOptions(request *SearchDatabaseRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbType"] = request.DbType
-	query["EnvType"] = request.EnvType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchKey"] = request.SearchKey
-	query["SearchRange"] = request.SearchRange
-	query["SearchTarget"] = request.SearchTarget
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRange)) {
+		query["SearchRange"] = request.SearchRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchTarget)) {
+		query["SearchTarget"] = request.SearchTarget
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23946,15 +25412,42 @@ func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbType"] = request.DbType
-	query["EnvType"] = request.EnvType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ReturnGuid"] = request.ReturnGuid
-	query["SearchKey"] = request.SearchKey
-	query["SearchRange"] = request.SearchRange
-	query["SearchTarget"] = request.SearchTarget
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnGuid)) {
+		query["ReturnGuid"] = request.ReturnGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchRange)) {
+		query["SearchRange"] = request.SearchRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchTarget)) {
+		query["SearchTarget"] = request.SearchTarget
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23995,10 +25488,22 @@ func (client *Client) SetOwnersWithOptions(request *SetOwnersRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerIds"] = request.OwnerIds
-	query["OwnerType"] = request.OwnerType
-	query["ResourceId"] = request.ResourceId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OwnerIds)) {
+		query["OwnerIds"] = request.OwnerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerType)) {
+		query["OwnerType"] = request.OwnerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24039,8 +25544,14 @@ func (client *Client) SubmitOrderApprovalWithOptions(request *SubmitOrderApprova
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24075,14 +25586,116 @@ func (client *Client) SubmitOrderApproval(request *SubmitOrderApprovalRequest) (
 	return _result, _err
 }
 
+func (client *Client) SubmitSparkJobWithOptions(tmpReq *SubmitSparkJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitSparkJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Arguments)) {
+		request.ArgumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Arguments, tea.String("Arguments"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Configuration)) {
+		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, tea.String("Configuration"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OssInfo))) {
+		request.OssInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OssInfo), tea.String("OssInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		body["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgumentsShrink)) {
+		body["Arguments"] = request.ArgumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationShrink)) {
+		body["Configuration"] = request.ConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MainClass)) {
+		body["MainClass"] = request.MainClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MainFile)) {
+		body["MainFile"] = request.MainFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssInfoShrink)) {
+		body["OssInfo"] = request.OssInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSparkJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSparkJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitSparkJob(request *SubmitSparkJobRequest) (_result *SubmitSparkJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSparkJobResponse{}
+	_body, _err := client.SubmitSparkJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitStructSyncOrderApprovalWithOptions(request *SubmitStructSyncOrderApprovalRequest, runtime *util.RuntimeOptions) (_result *SubmitStructSyncOrderApprovalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24123,9 +25736,18 @@ func (client *Client) SyncDatabaseMetaWithOptions(request *SyncDatabaseMetaReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbId"] = request.DbId
-	query["Logic"] = request.Logic
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24166,9 +25788,18 @@ func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IgnoreTable"] = request.IgnoreTable
-	query["InstanceId"] = request.InstanceId
-	query["Tid"] = request.Tid
+	if !tea.BoolValue(util.IsUnset(request.IgnoreTable)) {
+		query["IgnoreTable"] = request.IgnoreTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24209,28 +25840,94 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DataLinkName"] = request.DataLinkName
-	query["DatabasePassword"] = request.DatabasePassword
-	query["DatabaseUser"] = request.DatabaseUser
-	query["DbaId"] = request.DbaId
-	query["DdlOnline"] = request.DdlOnline
-	query["EcsInstanceId"] = request.EcsInstanceId
-	query["EcsRegion"] = request.EcsRegion
-	query["EnvType"] = request.EnvType
-	query["ExportTimeout"] = request.ExportTimeout
-	query["Host"] = request.Host
-	query["InstanceAlias"] = request.InstanceAlias
-	query["InstanceId"] = request.InstanceId
-	query["InstanceSource"] = request.InstanceSource
-	query["InstanceType"] = request.InstanceType
-	query["Port"] = request.Port
-	query["QueryTimeout"] = request.QueryTimeout
-	query["SafeRuleId"] = request.SafeRuleId
-	query["Sid"] = request.Sid
-	query["SkipTest"] = request.SkipTest
-	query["Tid"] = request.Tid
-	query["UseDsql"] = request.UseDsql
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.DataLinkName)) {
+		query["DataLinkName"] = request.DataLinkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePassword)) {
+		query["DatabasePassword"] = request.DatabasePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		query["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbaId)) {
+		query["DbaId"] = request.DbaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdlOnline)) {
+		query["DdlOnline"] = request.DdlOnline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsRegion)) {
+		query["EcsRegion"] = request.EcsRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportTimeout)) {
+		query["ExportTimeout"] = request.ExportTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSource)) {
+		query["InstanceSource"] = request.InstanceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTimeout)) {
+		query["QueryTimeout"] = request.QueryTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeRuleId)) {
+		query["SafeRuleId"] = request.SafeRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
+		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDsql)) {
+		query["UseDsql"] = request.UseDsql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24271,13 +25968,34 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxExecuteCount"] = request.MaxExecuteCount
-	query["MaxResultCount"] = request.MaxResultCount
-	query["Mobile"] = request.Mobile
-	query["RoleNames"] = request.RoleNames
-	query["Tid"] = request.Tid
-	query["Uid"] = request.Uid
-	query["UserNick"] = request.UserNick
+	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCount)) {
+		query["MaxExecuteCount"] = request.MaxExecuteCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResultCount)) {
+		query["MaxResultCount"] = request.MaxResultCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleNames)) {
+		query["RoleNames"] = request.RoleNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
+		query["UserNick"] = request.UserNick
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
