@@ -632,8 +632,10 @@ type CreateClusterRequest struct {
 	// RDS白名单
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
 	// 地域ID
-	RegionId *string  `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	Runtime  *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	// 集群所属资源组ID
+	ResourceGroupId *string  `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	Runtime         *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// 安全组ID，和is_enterprise_security_group二选一
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// serviceaccount token中的签发身份，即token payload中的iss字段。
@@ -967,6 +969,11 @@ func (s *CreateClusterRequest) SetRdsInstances(v []*string) *CreateClusterReques
 
 func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetResourceGroupId(v string) *CreateClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1577,6 +1584,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 部署集ID。
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	// 姐弟池期望节点数
+	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// 自定义镜像。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 操作系统镜像类型，和platform二选一
@@ -1663,6 +1672,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisk) *
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetDeploymentsetId(v string) *CreateClusterNodePoolRequestScalingGroup {
 	s.DeploymentsetId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetDesiredSize(v int64) *CreateClusterNodePoolRequestScalingGroup {
+	s.DesiredSize = &v
 	return s
 }
 
@@ -3921,6 +3935,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 部署集ID。
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	// 节点池期望节点数
+	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// 自定义镜像ID。
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型。
@@ -4009,6 +4025,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDataDisks(v [
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDeploymentsetId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.DeploymentsetId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetDesiredSize(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.DesiredSize = &v
 	return s
 }
 
@@ -4706,6 +4727,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
 	// 部署集ID。
 	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	// 节点池期望节点数
+	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// 镜像ID
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型
@@ -4794,6 +4817,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDataDisks
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDeploymentsetId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.DeploymentsetId = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetDesiredSize(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.DesiredSize = &v
 	return s
 }
 
@@ -9767,6 +9795,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	CompensateWithOnDemand *bool `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
 	// 数据盘配置。
 	DataDisks []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	// 节点池期望节点数
+	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// 自定义镜像
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// 节点付费类型。
@@ -9842,6 +9872,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetCompensateWithOnDemand(v b
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetDataDisks(v []*DataDisk) *ModifyClusterNodePoolRequestScalingGroup {
 	s.DataDisks = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetDesiredSize(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.DesiredSize = &v
 	return s
 }
 
@@ -12204,6 +12239,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resource_group_id"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Runtime))) {
