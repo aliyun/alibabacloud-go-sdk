@@ -1423,6 +1423,99 @@ func (s *DisableVpcEndpointConnectionResponse) SetBody(v *DisableVpcEndpointConn
 	return s
 }
 
+type DisableVpcEndpointZoneConnectionRequest struct {
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointId       *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplacedResource *bool   `json:"ReplacedResource,omitempty" xml:"ReplacedResource,omitempty"`
+	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DisableVpcEndpointZoneConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableVpcEndpointZoneConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetClientToken(v string) *DisableVpcEndpointZoneConnectionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetDryRun(v bool) *DisableVpcEndpointZoneConnectionRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetEndpointId(v string) *DisableVpcEndpointZoneConnectionRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetRegionId(v string) *DisableVpcEndpointZoneConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetReplacedResource(v bool) *DisableVpcEndpointZoneConnectionRequest {
+	s.ReplacedResource = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetServiceId(v string) *DisableVpcEndpointZoneConnectionRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionRequest) SetZoneId(v string) *DisableVpcEndpointZoneConnectionRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DisableVpcEndpointZoneConnectionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableVpcEndpointZoneConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableVpcEndpointZoneConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableVpcEndpointZoneConnectionResponseBody) SetRequestId(v string) *DisableVpcEndpointZoneConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableVpcEndpointZoneConnectionResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DisableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableVpcEndpointZoneConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableVpcEndpointZoneConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableVpcEndpointZoneConnectionResponse) SetHeaders(v map[string]*string) *DisableVpcEndpointZoneConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionResponse) SetBody(v *DisableVpcEndpointZoneConnectionResponseBody) *DisableVpcEndpointZoneConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type EnableVpcEndpointConnectionRequest struct {
 	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -1506,6 +1599,93 @@ func (s *EnableVpcEndpointConnectionResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *EnableVpcEndpointConnectionResponse) SetBody(v *EnableVpcEndpointConnectionResponseBody) *EnableVpcEndpointConnectionResponse {
+	s.Body = v
+	return s
+}
+
+type EnableVpcEndpointZoneConnectionRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointId  *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s EnableVpcEndpointZoneConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableVpcEndpointZoneConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetClientToken(v string) *EnableVpcEndpointZoneConnectionRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetDryRun(v bool) *EnableVpcEndpointZoneConnectionRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetEndpointId(v string) *EnableVpcEndpointZoneConnectionRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetRegionId(v string) *EnableVpcEndpointZoneConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetServiceId(v string) *EnableVpcEndpointZoneConnectionRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionRequest) SetZoneId(v string) *EnableVpcEndpointZoneConnectionRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type EnableVpcEndpointZoneConnectionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableVpcEndpointZoneConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableVpcEndpointZoneConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableVpcEndpointZoneConnectionResponseBody) SetRequestId(v string) *EnableVpcEndpointZoneConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableVpcEndpointZoneConnectionResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableVpcEndpointZoneConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableVpcEndpointZoneConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableVpcEndpointZoneConnectionResponse) SetHeaders(v map[string]*string) *EnableVpcEndpointZoneConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionResponse) SetBody(v *EnableVpcEndpointZoneConnectionResponseBody) *EnableVpcEndpointZoneConnectionResponse {
 	s.Body = v
 	return s
 }
@@ -1847,14 +2027,16 @@ func (s *GetVpcEndpointServiceAttributeResponse) SetBody(v *GetVpcEndpointServic
 }
 
 type ListVpcEndpointConnectionsRequest struct {
-	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	EndpointId       *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	EndpointOwnerId  *int64  `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
-	EniId            *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ConnectionStatus   *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	EndpointId         *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointOwnerId    *int64  `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
+	EniId              *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
 func (s ListVpcEndpointConnectionsRequest) String() string {
@@ -1897,6 +2079,16 @@ func (s *ListVpcEndpointConnectionsRequest) SetNextToken(v string) *ListVpcEndpo
 
 func (s *ListVpcEndpointConnectionsRequest) SetRegionId(v string) *ListVpcEndpointConnectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsRequest) SetReplacedResourceId(v string) *ListVpcEndpointConnectionsRequest {
+	s.ReplacedResourceId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsRequest) SetResourceId(v string) *ListVpcEndpointConnectionsRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2006,11 +2198,14 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetZones(v []*ListVp
 }
 
 type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
-	EniId      *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneDomain *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	EniId              *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	ReplacedEniId      *string `json:"ReplacedEniId,omitempty" xml:"ReplacedEniId,omitempty"`
+	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneDomain         *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneStatus         *string `json:"ZoneStatus,omitempty" xml:"ZoneStatus,omitempty"`
 }
 
 func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) String() string {
@@ -2023,6 +2218,16 @@ func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) GoString() strin
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetEniId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
 	s.EniId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetReplacedEniId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
+	s.ReplacedEniId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetReplacedResourceId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
+	s.ReplacedResourceId = &v
 	return s
 }
 
@@ -2043,6 +2248,11 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetZoneDomain(v
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetZoneId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetZoneStatus(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
+	s.ZoneStatus = &v
 	return s
 }
 
@@ -2250,13 +2460,16 @@ func (s *ListVpcEndpointServiceResourcesResponseBody) SetResources(v []*ListVpcE
 }
 
 type ListVpcEndpointServiceResourcesResponseBodyResources struct {
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoAllocatedEnabled           *bool   `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
+	Ip                             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedDeprecatedEndpointCount *int64  `json:"RelatedDeprecatedEndpointCount,omitempty" xml:"RelatedDeprecatedEndpointCount,omitempty"`
+	RelatedEndpointCount           *int64  `json:"RelatedEndpointCount,omitempty" xml:"RelatedEndpointCount,omitempty"`
+	ResourceId                     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType                   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	VSwitchId                      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListVpcEndpointServiceResourcesResponseBodyResources) String() string {
@@ -2267,6 +2480,11 @@ func (s ListVpcEndpointServiceResourcesResponseBodyResources) GoString() string 
 	return s.String()
 }
 
+func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetAutoAllocatedEnabled(v bool) *ListVpcEndpointServiceResourcesResponseBodyResources {
+	s.AutoAllocatedEnabled = &v
+	return s
+}
+
 func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetIp(v string) *ListVpcEndpointServiceResourcesResponseBodyResources {
 	s.Ip = &v
 	return s
@@ -2274,6 +2492,16 @@ func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetIp(v string) *
 
 func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetRegionId(v string) *ListVpcEndpointServiceResourcesResponseBodyResources {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetRelatedDeprecatedEndpointCount(v int64) *ListVpcEndpointServiceResourcesResponseBodyResources {
+	s.RelatedDeprecatedEndpointCount = &v
+	return s
+}
+
+func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetRelatedEndpointCount(v int64) *ListVpcEndpointServiceResourcesResponseBodyResources {
+	s.RelatedEndpointCount = &v
 	return s
 }
 
@@ -3715,6 +3943,204 @@ func (s *UpdateVpcEndpointServiceAttributeResponse) SetBody(v *UpdateVpcEndpoint
 	return s
 }
 
+type UpdateVpcEndpointServiceResourceAttributeRequest struct {
+	AutoAllocatedEnabled *bool   `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ServiceId            *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetAutoAllocatedEnabled(v bool) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.AutoAllocatedEnabled = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetClientToken(v string) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetDryRun(v bool) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetRegionId(v string) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetResourceId(v string) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetServiceId(v string) *UpdateVpcEndpointServiceResourceAttributeRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type UpdateVpcEndpointServiceResourceAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeResponseBody) SetRequestId(v string) *UpdateVpcEndpointServiceResourceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateVpcEndpointServiceResourceAttributeResponse struct {
+	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateVpcEndpointServiceResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointServiceResourceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointServiceResourceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeResponse) SetBody(v *UpdateVpcEndpointServiceResourceAttributeResponseBody) *UpdateVpcEndpointServiceResourceAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateVpcEndpointZoneConnectionResourceAttributeRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointId           *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceAllocateMode *string `json:"ResourceAllocateMode,omitempty" xml:"ResourceAllocateMode,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceReplaceMode  *string `json:"ResourceReplaceMode,omitempty" xml:"ResourceReplaceMode,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceId            *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetClientToken(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetDryRun(v bool) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetEndpointId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetRegionId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetResourceAllocateMode(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ResourceAllocateMode = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetResourceId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetResourceReplaceMode(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ResourceReplaceMode = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetResourceType(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetServiceId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetZoneId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody) SetRequestId(v string) *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateVpcEndpointZoneConnectionResourceAttributeResponse struct {
+	Headers map[string]*string                                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointZoneConnectionResourceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponse) SetBody(v *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody) *UpdateVpcEndpointZoneConnectionResourceAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3768,12 +4194,30 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3814,14 +4258,38 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["VSwitchId"] = request.VSwitchId
-	query["ZoneId"] = request.ZoneId
-	query["ip"] = request.Ip
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["ip"] = request.Ip
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3862,13 +4330,34 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3909,12 +4398,30 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["SecurityGroupId"] = request.SecurityGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3988,20 +4495,62 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointDescription"] = request.EndpointDescription
-	query["EndpointName"] = request.EndpointName
-	query["EndpointType"] = request.EndpointType
-	query["ProtectedEnabled"] = request.ProtectedEnabled
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["ServiceId"] = request.ServiceId
-	query["ServiceName"] = request.ServiceName
-	query["VpcId"] = request.VpcId
-	query["Zone"] = request.Zone
-	query["ZonePrivateIpAddressCount"] = request.ZonePrivateIpAddressCount
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointDescription)) {
+		query["EndpointDescription"] = request.EndpointDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
+		query["EndpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectedEnabled)) {
+		query["ProtectedEnabled"] = request.ProtectedEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		query["Zone"] = request.Zone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZonePrivateIpAddressCount)) {
+		query["ZonePrivateIpAddressCount"] = request.ZonePrivateIpAddressCount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4042,16 +4591,46 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["Payer"] = request.Payer
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["Resource"] = request.Resource
-	query["ServiceDescription"] = request.ServiceDescription
-	query["ServiceResourceType"] = request.ServiceResourceType
-	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
+		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Payer)) {
+		query["Payer"] = request.Payer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceResourceType)) {
+		query["ServiceResourceType"] = request.ServiceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneAffinityEnabled)) {
+		query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4092,11 +4671,26 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4137,11 +4731,26 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4182,8 +4791,14 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4224,8 +4839,14 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4266,13 +4887,34 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4313,12 +4955,30 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["SecurityGroupId"] = request.SecurityGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4359,12 +5019,30 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4399,19 +5077,112 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 	return _result, _err
 }
 
+func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *DisableVpcEndpointZoneConnectionRequest, runtime *util.RuntimeOptions) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplacedResource)) {
+		query["ReplacedResource"] = request.ReplacedResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableVpcEndpointZoneConnection"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableVpcEndpointZoneConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpointZoneConnectionRequest) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableVpcEndpointZoneConnectionResponse{}
+	_body, _err := client.DisableVpcEndpointZoneConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcEndpointConnectionRequest, runtime *util.RuntimeOptions) (_result *EnableVpcEndpointConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4446,15 +5217,92 @@ func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConn
 	return _result, _err
 }
 
+func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *EnableVpcEndpointZoneConnectionRequest, runtime *util.RuntimeOptions) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableVpcEndpointZoneConnection"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableVpcEndpointZoneConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpointZoneConnectionRequest) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableVpcEndpointZoneConnectionResponse{}
+	_body, _err := client.EnableVpcEndpointZoneConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpointAttributeRequest, runtime *util.RuntimeOptions) (_result *GetVpcEndpointAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4495,9 +5343,18 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4538,15 +5395,50 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionStatus"] = request.ConnectionStatus
-	query["EndpointId"] = request.EndpointId
-	query["EndpointOwnerId"] = request.EndpointOwnerId
-	query["EniId"] = request.EniId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionStatus)) {
+		query["ConnectionStatus"] = request.ConnectionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointOwnerId)) {
+		query["EndpointOwnerId"] = request.EndpointOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EniId)) {
+		query["EniId"] = request.EniId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplacedResourceId)) {
+		query["ReplacedResourceId"] = request.ReplacedResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4587,11 +5479,26 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndpointId"] = request.EndpointId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4632,11 +5539,26 @@ func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4677,12 +5599,30 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4723,17 +5663,50 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceBusinessStatus"] = request.ServiceBusinessStatus
-	query["ServiceId"] = request.ServiceId
-	query["ServiceName"] = request.ServiceName
-	query["ServiceResourceType"] = request.ServiceResourceType
-	query["ServiceStatus"] = request.ServiceStatus
-	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
+		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceBusinessStatus)) {
+		query["ServiceBusinessStatus"] = request.ServiceBusinessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceResourceType)) {
+		query["ServiceResourceType"] = request.ServiceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceStatus)) {
+		query["ServiceStatus"] = request.ServiceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneAffinityEnabled)) {
+		query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4774,13 +5747,34 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
-	query["ServiceName"] = request.ServiceName
-	query["ServiceType"] = request.ServiceType
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4821,11 +5815,26 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndpointId"] = request.EndpointId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4866,17 +5875,50 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionStatus"] = request.ConnectionStatus
-	query["EndpointId"] = request.EndpointId
-	query["EndpointName"] = request.EndpointName
-	query["EndpointStatus"] = request.EndpointStatus
-	query["EndpointType"] = request.EndpointType
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceName"] = request.ServiceName
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionStatus)) {
+		query["ConnectionStatus"] = request.ConnectionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
+		query["EndpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointStatus)) {
+		query["EndpointStatus"] = request.EndpointStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4917,7 +5959,10 @@ func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLink
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4958,12 +6003,30 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5004,12 +6067,30 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5050,13 +6131,34 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointDescription"] = request.EndpointDescription
-	query["EndpointId"] = request.EndpointId
-	query["EndpointName"] = request.EndpointName
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointDescription)) {
+		query["EndpointDescription"] = request.EndpointDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
+		query["EndpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5097,13 +6199,34 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["EndpointId"] = request.EndpointId
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5144,15 +6267,42 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
-	query["ClientToken"] = request.ClientToken
-	query["ConnectBandwidth"] = request.ConnectBandwidth
-	query["DryRun"] = request.DryRun
-	query["RegionId"] = request.RegionId
-	query["RegionId"] = request.RegionId
-	query["ServiceDescription"] = request.ServiceDescription
-	query["ServiceId"] = request.ServiceId
-	query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	if !tea.BoolValue(util.IsUnset(request.AutoAcceptEnabled)) {
+		query["AutoAcceptEnabled"] = request.AutoAcceptEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectBandwidth)) {
+		query["ConnectBandwidth"] = request.ConnectBandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneAffinityEnabled)) {
+		query["ZoneAffinityEnabled"] = request.ZoneAffinityEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5180,6 +6330,158 @@ func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpoi
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointServiceAttributeResponse{}
 	_body, _err := client.UpdateVpcEndpointServiceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(request *UpdateVpcEndpointServiceResourceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoAllocatedEnabled)) {
+		query["AutoAllocatedEnabled"] = request.AutoAllocatedEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVpcEndpointServiceResourceAttribute"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVpcEndpointServiceResourceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateVpcEndpointServiceResourceAttributeRequest) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateVpcEndpointServiceResourceAttributeResponse{}
+	_body, _err := client.UpdateVpcEndpointServiceResourceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOptions(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAllocateMode)) {
+		query["ResourceAllocateMode"] = request.ResourceAllocateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceReplaceMode)) {
+		query["ResourceReplaceMode"] = request.ResourceReplaceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVpcEndpointZoneConnectionResourceAttribute"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVpcEndpointZoneConnectionResourceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttribute(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateVpcEndpointZoneConnectionResourceAttributeResponse{}
+	_body, _err := client.UpdateVpcEndpointZoneConnectionResourceAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
