@@ -15,7 +15,6 @@ import (
 type CancelArtifactBuildTaskRequest struct {
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelArtifactBuildTaskRequest) String() string {
@@ -33,11 +32,6 @@ func (s *CancelArtifactBuildTaskRequest) SetBuildTaskId(v string) *CancelArtifac
 
 func (s *CancelArtifactBuildTaskRequest) SetInstanceId(v string) *CancelArtifactBuildTaskRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CancelArtifactBuildTaskRequest) SetRegionId(v string) *CancelArtifactBuildTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -96,7 +90,6 @@ func (s *CancelArtifactBuildTaskResponse) SetBody(v *CancelArtifactBuildTaskResp
 type CancelRepoBuildRecordRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -115,11 +108,6 @@ func (s *CancelRepoBuildRecordRequest) SetBuildRecordId(v string) *CancelRepoBui
 
 func (s *CancelRepoBuildRecordRequest) SetInstanceId(v string) *CancelRepoBuildRecordRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CancelRepoBuildRecordRequest) SetRegionId(v string) *CancelRepoBuildRecordRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -183,7 +171,6 @@ func (s *CancelRepoBuildRecordResponse) SetBody(v *CancelRepoBuildRecordResponse
 type CreateBuildRecordByRuleRequest struct {
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -202,11 +189,6 @@ func (s *CreateBuildRecordByRuleRequest) SetBuildRuleId(v string) *CreateBuildRe
 
 func (s *CreateBuildRecordByRuleRequest) SetInstanceId(v string) *CreateBuildRecordByRuleRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateBuildRecordByRuleRequest) SetRegionId(v string) *CreateBuildRecordByRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -278,7 +260,6 @@ type CreateChainRequest struct {
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -308,11 +289,6 @@ func (s *CreateChainRequest) SetInstanceId(v string) *CreateChainRequest {
 
 func (s *CreateChainRequest) SetName(v string) *CreateChainRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateChainRequest) SetRegionId(v string) *CreateChainRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -389,7 +365,6 @@ type CreateChartNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateChartNamespaceRequest) String() string {
@@ -417,11 +392,6 @@ func (s *CreateChartNamespaceRequest) SetInstanceId(v string) *CreateChartNamesp
 
 func (s *CreateChartNamespaceRequest) SetNamespaceName(v string) *CreateChartNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *CreateChartNamespaceRequest) SetRegionId(v string) *CreateChartNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -479,7 +449,6 @@ func (s *CreateChartNamespaceResponse) SetBody(v *CreateChartNamespaceResponseBo
 
 type CreateChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -496,11 +465,6 @@ func (s CreateChartRepositoryRequest) GoString() string {
 
 func (s *CreateChartRepositoryRequest) SetInstanceId(v string) *CreateChartRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateChartRepositoryRequest) SetRegionId(v string) *CreateChartRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -588,7 +552,6 @@ type CreateInstanceEndpointAclPolicyRequest struct {
 	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstanceEndpointAclPolicyRequest) String() string {
@@ -621,11 +584,6 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetInstanceId(v string) *Create
 
 func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *CreateInstanceEndpointAclPolicyRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *CreateInstanceEndpointAclPolicyRequest) SetRegionId(v string) *CreateInstanceEndpointAclPolicyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -682,11 +640,11 @@ func (s *CreateInstanceEndpointAclPolicyResponse) SetBody(v *CreateInstanceEndpo
 }
 
 type CreateInstanceVpcEndpointLinkedVpcRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	EnableCreateDNSRecordInPvzt *bool   `json:"EnableCreateDNSRecordInPvzt,omitempty" xml:"EnableCreateDNSRecordInPvzt,omitempty"`
+	InstanceId                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModuleName                  *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	VpcId                       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId                   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s CreateInstanceVpcEndpointLinkedVpcRequest) String() string {
@@ -697,6 +655,11 @@ func (s CreateInstanceVpcEndpointLinkedVpcRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetEnableCreateDNSRecordInPvzt(v bool) *CreateInstanceVpcEndpointLinkedVpcRequest {
+	s.EnableCreateDNSRecordInPvzt = &v
+	return s
+}
+
 func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetInstanceId(v string) *CreateInstanceVpcEndpointLinkedVpcRequest {
 	s.InstanceId = &v
 	return s
@@ -704,11 +667,6 @@ func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetInstanceId(v string) *Cre
 
 func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *CreateInstanceVpcEndpointLinkedVpcRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetRegionId(v string) *CreateInstanceVpcEndpointLinkedVpcRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -779,7 +737,6 @@ type CreateNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -807,11 +764,6 @@ func (s *CreateNamespaceRequest) SetInstanceId(v string) *CreateNamespaceRequest
 
 func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -874,7 +826,6 @@ type CreateRepoBuildRuleRequest struct {
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PushName           *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	PushType           *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -913,11 +864,6 @@ func (s *CreateRepoBuildRuleRequest) SetPushName(v string) *CreateRepoBuildRuleR
 
 func (s *CreateRepoBuildRuleRequest) SetPushType(v string) *CreateRepoBuildRuleRequest {
 	s.PushType = &v
-	return s
-}
-
-func (s *CreateRepoBuildRuleRequest) SetRegionId(v string) *CreateRepoBuildRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -992,7 +938,6 @@ type CreateRepoSourceCodeRepoRequest struct {
 	DisableCacheBuild     *bool   `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OverseaBuild          *bool   `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -1036,11 +981,6 @@ func (s *CreateRepoSourceCodeRepoRequest) SetInstanceId(v string) *CreateRepoSou
 
 func (s *CreateRepoSourceCodeRepoRequest) SetOverseaBuild(v bool) *CreateRepoSourceCodeRepoRequest {
 	s.OverseaBuild = &v
-	return s
-}
-
-func (s *CreateRepoSourceCodeRepoRequest) SetRegionId(v string) *CreateRepoSourceCodeRepoRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1104,7 +1044,6 @@ func (s *CreateRepoSourceCodeRepoResponse) SetBody(v *CreateRepoSourceCodeRepoRe
 type CreateRepoSyncRuleRequest struct {
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName            *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	SyncRuleName        *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	SyncScope           *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
@@ -1132,11 +1071,6 @@ func (s *CreateRepoSyncRuleRequest) SetInstanceId(v string) *CreateRepoSyncRuleR
 
 func (s *CreateRepoSyncRuleRequest) SetNamespaceName(v string) *CreateRepoSyncRuleRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *CreateRepoSyncRuleRequest) SetRegionId(v string) *CreateRepoSyncRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1251,7 +1185,6 @@ func (s *CreateRepoSyncRuleResponse) SetBody(v *CreateRepoSyncRuleResponseBody) 
 type CreateRepoSyncTaskRequest struct {
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Override         *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId           *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
@@ -1277,11 +1210,6 @@ func (s *CreateRepoSyncTaskRequest) SetInstanceId(v string) *CreateRepoSyncTaskR
 
 func (s *CreateRepoSyncTaskRequest) SetOverride(v bool) *CreateRepoSyncTaskRequest {
 	s.Override = &v
-	return s
-}
-
-func (s *CreateRepoSyncTaskRequest) SetRegionId(v string) *CreateRepoSyncTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1385,7 +1313,6 @@ func (s *CreateRepoSyncTaskResponse) SetBody(v *CreateRepoSyncTaskResponseBody) 
 
 type CreateRepoSyncTaskByRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -1401,11 +1328,6 @@ func (s CreateRepoSyncTaskByRuleRequest) GoString() string {
 
 func (s *CreateRepoSyncTaskByRuleRequest) SetInstanceId(v string) *CreateRepoSyncTaskByRuleRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateRepoSyncTaskByRuleRequest) SetRegionId(v string) *CreateRepoSyncTaskByRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1486,7 +1408,6 @@ type CreateRepoTagRequest struct {
 	FromTag       *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	ToTag         *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
 }
@@ -1511,11 +1432,6 @@ func (s *CreateRepoTagRequest) SetInstanceId(v string) *CreateRepoTagRequest {
 
 func (s *CreateRepoTagRequest) SetNamespaceName(v string) *CreateRepoTagRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *CreateRepoTagRequest) SetRegionId(v string) *CreateRepoTagRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1584,7 +1500,6 @@ func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRep
 type CreateRepoTagScanTaskRequest struct {
 	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -1605,11 +1520,6 @@ func (s *CreateRepoTagScanTaskRequest) SetDigest(v string) *CreateRepoTagScanTas
 
 func (s *CreateRepoTagScanTaskRequest) SetInstanceId(v string) *CreateRepoTagScanTaskRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateRepoTagScanTaskRequest) SetRegionId(v string) *CreateRepoTagScanTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1682,7 +1592,6 @@ func (s *CreateRepoTagScanTaskResponse) SetBody(v *CreateRepoTagScanTaskResponse
 
 type CreateRepoTriggerRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 	TriggerTag  *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
@@ -1700,11 +1609,6 @@ func (s CreateRepoTriggerRequest) GoString() string {
 
 func (s *CreateRepoTriggerRequest) SetInstanceId(v string) *CreateRepoTriggerRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateRepoTriggerRequest) SetRegionId(v string) *CreateRepoTriggerRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1794,7 +1698,6 @@ func (s *CreateRepoTriggerResponse) SetBody(v *CreateRepoTriggerResponseBody) *C
 type CreateRepositoryRequest struct {
 	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -1817,11 +1720,6 @@ func (s *CreateRepositoryRequest) SetDetail(v string) *CreateRepositoryRequest {
 
 func (s *CreateRepositoryRequest) SetInstanceId(v string) *CreateRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateRepositoryRequest) SetRegionId(v string) *CreateRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1911,7 +1809,6 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 type DeleteChainRequest struct {
 	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChainRequest) String() string {
@@ -1929,11 +1826,6 @@ func (s *DeleteChainRequest) SetChainId(v string) *DeleteChainRequest {
 
 func (s *DeleteChainRequest) SetInstanceId(v string) *DeleteChainRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteChainRequest) SetRegionId(v string) *DeleteChainRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1992,7 +1884,6 @@ func (s *DeleteChainResponse) SetBody(v *DeleteChainResponseBody) *DeleteChainRe
 type DeleteChartNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteChartNamespaceRequest) String() string {
@@ -2010,11 +1901,6 @@ func (s *DeleteChartNamespaceRequest) SetInstanceId(v string) *DeleteChartNamesp
 
 func (s *DeleteChartNamespaceRequest) SetNamespaceName(v string) *DeleteChartNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *DeleteChartNamespaceRequest) SetRegionId(v string) *DeleteChartNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2073,7 +1959,6 @@ func (s *DeleteChartNamespaceResponse) SetBody(v *DeleteChartNamespaceResponseBo
 type DeleteChartReleaseRequest struct {
 	Chart             *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Release           *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
@@ -2094,11 +1979,6 @@ func (s *DeleteChartReleaseRequest) SetChart(v string) *DeleteChartReleaseReques
 
 func (s *DeleteChartReleaseRequest) SetInstanceId(v string) *DeleteChartReleaseRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteChartReleaseRequest) SetRegionId(v string) *DeleteChartReleaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2171,7 +2051,6 @@ func (s *DeleteChartReleaseResponse) SetBody(v *DeleteChartReleaseResponseBody) 
 
 type DeleteChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -2186,11 +2065,6 @@ func (s DeleteChartRepositoryRequest) GoString() string {
 
 func (s *DeleteChartRepositoryRequest) SetInstanceId(v string) *DeleteChartRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteChartRepositoryRequest) SetRegionId(v string) *DeleteChartRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2258,7 +2132,6 @@ func (s *DeleteChartRepositoryResponse) SetBody(v *DeleteChartRepositoryResponse
 
 type DeleteEventCenterRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -2272,11 +2145,6 @@ func (s DeleteEventCenterRuleRequest) GoString() string {
 
 func (s *DeleteEventCenterRuleRequest) SetInstanceId(v string) *DeleteEventCenterRuleRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteEventCenterRuleRequest) SetRegionId(v string) *DeleteEventCenterRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2337,7 +2205,6 @@ type DeleteInstanceEndpointAclPolicyRequest struct {
 	Entry        *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteInstanceEndpointAclPolicyRequest) String() string {
@@ -2365,11 +2232,6 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetInstanceId(v string) *Delete
 
 func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *DeleteInstanceEndpointAclPolicyRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *DeleteInstanceEndpointAclPolicyRequest) SetRegionId(v string) *DeleteInstanceEndpointAclPolicyRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2428,7 +2290,6 @@ func (s *DeleteInstanceEndpointAclPolicyResponse) SetBody(v *DeleteInstanceEndpo
 type DeleteInstanceVpcEndpointLinkedVpcRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
@@ -2448,11 +2309,6 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetInstanceId(v string) *Del
 
 func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetModuleName(v string) *DeleteInstanceVpcEndpointLinkedVpcRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetRegionId(v string) *DeleteInstanceVpcEndpointLinkedVpcRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2521,7 +2377,6 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponse) SetBody(v *DeleteInstanceVp
 type DeleteNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteNamespaceRequest) String() string {
@@ -2539,11 +2394,6 @@ func (s *DeleteNamespaceRequest) SetInstanceId(v string) *DeleteNamespaceRequest
 
 func (s *DeleteNamespaceRequest) SetNamespaceName(v string) *DeleteNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2602,7 +2452,6 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 type DeleteRepoBuildRuleRequest struct {
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -2621,11 +2470,6 @@ func (s *DeleteRepoBuildRuleRequest) SetBuildRuleId(v string) *DeleteRepoBuildRu
 
 func (s *DeleteRepoBuildRuleRequest) SetInstanceId(v string) *DeleteRepoBuildRuleRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteRepoBuildRuleRequest) SetRegionId(v string) *DeleteRepoBuildRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2688,7 +2532,6 @@ func (s *DeleteRepoBuildRuleResponse) SetBody(v *DeleteRepoBuildRuleResponseBody
 
 type DeleteRepoSyncRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 }
 
@@ -2702,11 +2545,6 @@ func (s DeleteRepoSyncRuleRequest) GoString() string {
 
 func (s *DeleteRepoSyncRuleRequest) SetInstanceId(v string) *DeleteRepoSyncRuleRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteRepoSyncRuleRequest) SetRegionId(v string) *DeleteRepoSyncRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2769,7 +2607,6 @@ func (s *DeleteRepoSyncRuleResponse) SetBody(v *DeleteRepoSyncRuleResponseBody) 
 
 type DeleteRepoTagRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -2784,11 +2621,6 @@ func (s DeleteRepoTagRequest) GoString() string {
 
 func (s *DeleteRepoTagRequest) SetInstanceId(v string) *DeleteRepoTagRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteRepoTagRequest) SetRegionId(v string) *DeleteRepoTagRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2856,7 +2688,6 @@ func (s *DeleteRepoTagResponse) SetBody(v *DeleteRepoTagResponseBody) *DeleteRep
 
 type DeleteRepoTriggerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerId  *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
@@ -2871,11 +2702,6 @@ func (s DeleteRepoTriggerRequest) GoString() string {
 
 func (s *DeleteRepoTriggerRequest) SetInstanceId(v string) *DeleteRepoTriggerRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteRepoTriggerRequest) SetRegionId(v string) *DeleteRepoTriggerRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -2943,7 +2769,6 @@ func (s *DeleteRepoTriggerResponse) SetBody(v *DeleteRepoTriggerResponseBody) *D
 
 type DeleteRepositoryRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -2957,11 +2782,6 @@ func (s DeleteRepositoryRequest) GoString() string {
 
 func (s *DeleteRepositoryRequest) SetInstanceId(v string) *DeleteRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteRepositoryRequest) SetRegionId(v string) *DeleteRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3025,7 +2845,6 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 type GetArtifactBuildTaskRequest struct {
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetArtifactBuildTaskRequest) String() string {
@@ -3043,11 +2862,6 @@ func (s *GetArtifactBuildTaskRequest) SetBuildTaskId(v string) *GetArtifactBuild
 
 func (s *GetArtifactBuildTaskRequest) SetInstanceId(v string) *GetArtifactBuildTaskRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetArtifactBuildTaskRequest) SetRegionId(v string) *GetArtifactBuildTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3211,7 +3025,6 @@ func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBo
 
 type GetAuthorizationTokenRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAuthorizationTokenRequest) String() string {
@@ -3224,11 +3037,6 @@ func (s GetAuthorizationTokenRequest) GoString() string {
 
 func (s *GetAuthorizationTokenRequest) SetInstanceId(v string) *GetAuthorizationTokenRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetAuthorizationTokenRequest) SetRegionId(v string) *GetAuthorizationTokenRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3305,7 +3113,6 @@ func (s *GetAuthorizationTokenResponse) SetBody(v *GetAuthorizationTokenResponse
 type GetChainRequest struct {
 	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetChainRequest) String() string {
@@ -3323,11 +3130,6 @@ func (s *GetChainRequest) SetChainId(v string) *GetChainRequest {
 
 func (s *GetChainRequest) SetInstanceId(v string) *GetChainRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetChainRequest) SetRegionId(v string) *GetChainRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3637,7 +3439,6 @@ func (s *GetChainResponse) SetBody(v *GetChainResponseBody) *GetChainResponse {
 type GetChartNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetChartNamespaceRequest) String() string {
@@ -3655,11 +3456,6 @@ func (s *GetChartNamespaceRequest) SetInstanceId(v string) *GetChartNamespaceReq
 
 func (s *GetChartNamespaceRequest) SetNamespaceName(v string) *GetChartNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *GetChartNamespaceRequest) SetRegionId(v string) *GetChartNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3753,7 +3549,6 @@ func (s *GetChartNamespaceResponse) SetBody(v *GetChartNamespaceResponseBody) *G
 
 type GetChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -3768,11 +3563,6 @@ func (s GetChartRepositoryRequest) GoString() string {
 
 func (s *GetChartRepositoryRequest) SetInstanceId(v string) *GetChartRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetChartRepositoryRequest) SetRegionId(v string) *GetChartRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -3894,7 +3684,6 @@ func (s *GetChartRepositoryResponse) SetBody(v *GetChartRepositoryResponseBody) 
 
 type GetInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceRequest) String() string {
@@ -3907,11 +3696,6 @@ func (s GetInstanceRequest) GoString() string {
 
 func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetInstanceRequest) SetRegionId(v string) *GetInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4003,23 +3787,6 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 	return s
 }
 
-type GetInstanceCountRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetInstanceCountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetInstanceCountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetInstanceCountRequest) SetRegionId(v string) *GetInstanceCountRequest {
-	s.RegionId = &v
-	return s
-}
-
 type GetInstanceCountResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
@@ -4082,7 +3849,6 @@ type GetInstanceEndpointRequest struct {
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceEndpointRequest) String() string {
@@ -4105,11 +3871,6 @@ func (s *GetInstanceEndpointRequest) SetInstanceId(v string) *GetInstanceEndpoin
 
 func (s *GetInstanceEndpointRequest) SetModuleName(v string) *GetInstanceEndpointRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *GetInstanceEndpointRequest) SetRegionId(v string) *GetInstanceEndpointRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4243,7 +4004,6 @@ func (s *GetInstanceEndpointResponse) SetBody(v *GetInstanceEndpointResponseBody
 
 type GetInstanceUsageRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceUsageRequest) String() string {
@@ -4256,11 +4016,6 @@ func (s GetInstanceUsageRequest) GoString() string {
 
 func (s *GetInstanceUsageRequest) SetInstanceId(v string) *GetInstanceUsageRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetInstanceUsageRequest) SetRegionId(v string) *GetInstanceUsageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4367,7 +4122,6 @@ func (s *GetInstanceUsageResponse) SetBody(v *GetInstanceUsageResponseBody) *Get
 type GetInstanceVpcEndpointRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointRequest) String() string {
@@ -4385,11 +4139,6 @@ func (s *GetInstanceVpcEndpointRequest) SetInstanceId(v string) *GetInstanceVpcE
 
 func (s *GetInstanceVpcEndpointRequest) SetModuleName(v string) *GetInstanceVpcEndpointRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *GetInstanceVpcEndpointRequest) SetRegionId(v string) *GetInstanceVpcEndpointRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4508,7 +4257,6 @@ type GetNamespaceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetNamespaceRequest) String() string {
@@ -4531,11 +4279,6 @@ func (s *GetNamespaceRequest) SetNamespaceId(v string) *GetNamespaceRequest {
 
 func (s *GetNamespaceRequest) SetNamespaceName(v string) *GetNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *GetNamespaceRequest) SetRegionId(v string) *GetNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4630,7 +4373,6 @@ func (s *GetNamespaceResponse) SetBody(v *GetNamespaceResponseBody) *GetNamespac
 type GetRepoBuildRecordRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetRepoBuildRecordRequest) String() string {
@@ -4648,11 +4390,6 @@ func (s *GetRepoBuildRecordRequest) SetBuildRecordId(v string) *GetRepoBuildReco
 
 func (s *GetRepoBuildRecordRequest) SetInstanceId(v string) *GetRepoBuildRecordRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoBuildRecordRequest) SetRegionId(v string) *GetRepoBuildRecordRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4770,7 +4507,6 @@ func (s *GetRepoBuildRecordResponse) SetBody(v *GetRepoBuildRecordResponseBody) 
 type GetRepoBuildRecordStatusRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -4789,11 +4525,6 @@ func (s *GetRepoBuildRecordStatusRequest) SetBuildRecordId(v string) *GetRepoBui
 
 func (s *GetRepoBuildRecordStatusRequest) SetInstanceId(v string) *GetRepoBuildRecordStatusRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoBuildRecordStatusRequest) SetRegionId(v string) *GetRepoBuildRecordStatusRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4862,7 +4593,6 @@ func (s *GetRepoBuildRecordStatusResponse) SetBody(v *GetRepoBuildRecordStatusRe
 
 type GetRepoSourceCodeRepoRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -4876,11 +4606,6 @@ func (s GetRepoSourceCodeRepoRequest) GoString() string {
 
 func (s *GetRepoSourceCodeRepoRequest) SetInstanceId(v string) *GetRepoSourceCodeRepoRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoSourceCodeRepoRequest) SetRegionId(v string) *GetRepoSourceCodeRepoRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4991,7 +4716,6 @@ func (s *GetRepoSourceCodeRepoResponse) SetBody(v *GetRepoSourceCodeRepoResponse
 
 type GetRepoSyncTaskRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -5008,30 +4732,27 @@ func (s *GetRepoSyncTaskRequest) SetInstanceId(v string) *GetRepoSyncTaskRequest
 	return s
 }
 
-func (s *GetRepoSyncTaskRequest) SetRegionId(v string) *GetRepoSyncTaskRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *GetRepoSyncTaskRequest) SetSyncTaskId(v string) *GetRepoSyncTaskRequest {
 	s.SyncTaskId = &v
 	return s
 }
 
 type GetRepoSyncTaskResponseBody struct {
-	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	ImageFrom       *GetRepoSyncTaskResponseBodyImageFrom    `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	ImageTo         *GetRepoSyncTaskResponseBodyImageTo      `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
-	IsSuccess       *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	LayerTasks      []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
-	Progress        *int64                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncBatchTaskId *string                                  `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	SyncRuleId      *string                                  `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	SyncTaskId      *string                                  `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	SyncedSize      *int64                                   `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	TaskStatus      *string                                  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskTrigger     *string                                  `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
+	Code                *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CrossUser           *bool                                    `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	ImageFrom           *GetRepoSyncTaskResponseBodyImageFrom    `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	ImageTo             *GetRepoSyncTaskResponseBodyImageTo      `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	IsSuccess           *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	LayerTasks          []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
+	Progress            *int64                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RequestId           *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SyncBatchTaskId     *string                                  `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	SyncRuleId          *string                                  `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	SyncTaskId          *string                                  `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+	SyncTransAccelerate *bool                                    `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
+	SyncedSize          *int64                                   `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	TaskStatus          *string                                  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskTrigger         *string                                  `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
 func (s GetRepoSyncTaskResponseBody) String() string {
@@ -5044,6 +4765,11 @@ func (s GetRepoSyncTaskResponseBody) GoString() string {
 
 func (s *GetRepoSyncTaskResponseBody) SetCode(v string) *GetRepoSyncTaskResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBody) SetCrossUser(v bool) *GetRepoSyncTaskResponseBody {
+	s.CrossUser = &v
 	return s
 }
 
@@ -5089,6 +4815,11 @@ func (s *GetRepoSyncTaskResponseBody) SetSyncRuleId(v string) *GetRepoSyncTaskRe
 
 func (s *GetRepoSyncTaskResponseBody) SetSyncTaskId(v string) *GetRepoSyncTaskResponseBody {
 	s.SyncTaskId = &v
+	return s
+}
+
+func (s *GetRepoSyncTaskResponseBody) SetSyncTransAccelerate(v bool) *GetRepoSyncTaskResponseBody {
+	s.SyncTransAccelerate = &v
 	return s
 }
 
@@ -5261,7 +4992,6 @@ func (s *GetRepoSyncTaskResponse) SetBody(v *GetRepoSyncTaskResponseBody) *GetRe
 
 type GetRepoTagRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -5276,11 +5006,6 @@ func (s GetRepoTagRequest) GoString() string {
 
 func (s *GetRepoTagRequest) SetInstanceId(v string) *GetRepoTagRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagRequest) SetRegionId(v string) *GetRepoTagRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5391,7 +5116,6 @@ func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagRespo
 type GetRepoTagLayersRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -5411,11 +5135,6 @@ func (s *GetRepoTagLayersRequest) SetDigest(v string) *GetRepoTagLayersRequest {
 
 func (s *GetRepoTagLayersRequest) SetInstanceId(v string) *GetRepoTagLayersRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagLayersRequest) SetRegionId(v string) *GetRepoTagLayersRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5530,7 +5249,6 @@ func (s *GetRepoTagLayersResponse) SetBody(v *GetRepoTagLayersResponseBody) *Get
 
 type GetRepoTagManifestRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	SchemaVersion *int32  `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
 	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5546,11 +5264,6 @@ func (s GetRepoTagManifestRequest) GoString() string {
 
 func (s *GetRepoTagManifestRequest) SetInstanceId(v string) *GetRepoTagManifestRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagManifestRequest) SetRegionId(v string) *GetRepoTagManifestRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5822,7 +5535,6 @@ func (s *GetRepoTagManifestResponse) SetBody(v *GetRepoTagManifestResponseBody) 
 type GetRepoTagScanStatusRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5843,11 +5555,6 @@ func (s *GetRepoTagScanStatusRequest) SetDigest(v string) *GetRepoTagScanStatusR
 
 func (s *GetRepoTagScanStatusRequest) SetInstanceId(v string) *GetRepoTagScanStatusRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagScanStatusRequest) SetRegionId(v string) *GetRepoTagScanStatusRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5933,7 +5640,6 @@ func (s *GetRepoTagScanStatusResponse) SetBody(v *GetRepoTagScanStatusResponseBo
 type GetRepoTagScanSummaryRequest struct {
 	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5954,11 +5660,6 @@ func (s *GetRepoTagScanSummaryRequest) SetDigest(v string) *GetRepoTagScanSummar
 
 func (s *GetRepoTagScanSummaryRequest) SetInstanceId(v string) *GetRepoTagScanSummaryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagScanSummaryRequest) SetRegionId(v string) *GetRepoTagScanSummaryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6061,7 +5762,6 @@ func (s *GetRepoTagScanSummaryResponse) SetBody(v *GetRepoTagScanSummaryResponse
 
 type GetRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
@@ -6077,11 +5777,6 @@ func (s GetRepositoryRequest) GoString() string {
 
 func (s *GetRepositoryRequest) SetInstanceId(v string) *GetRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepositoryRequest) SetRegionId(v string) *GetRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6229,7 +5924,6 @@ type ListArtifactBuildTaskLogRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Page        *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogRequest) String() string {
@@ -6257,11 +5951,6 @@ func (s *ListArtifactBuildTaskLogRequest) SetPage(v int32) *ListArtifactBuildTas
 
 func (s *ListArtifactBuildTaskLogRequest) SetPageSize(v int32) *ListArtifactBuildTaskLogRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListArtifactBuildTaskLogRequest) SetRegionId(v string) *ListArtifactBuildTaskLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6356,7 +6045,6 @@ type ListChainRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -6381,11 +6069,6 @@ func (s *ListChainRequest) SetPageNo(v int32) *ListChainRequest {
 
 func (s *ListChainRequest) SetPageSize(v int32) *ListChainRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListChainRequest) SetRegionId(v string) *ListChainRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6538,7 +6221,6 @@ type ListChainInstanceRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -6563,11 +6245,6 @@ func (s *ListChainInstanceRequest) SetPageNo(v int32) *ListChainInstanceRequest 
 
 func (s *ListChainInstanceRequest) SetPageSize(v int32) *ListChainInstanceRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListChainInstanceRequest) SetRegionId(v string) *ListChainInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6757,7 +6434,6 @@ type ListChartNamespaceRequest struct {
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListChartNamespaceRequest) String() string {
@@ -6790,11 +6466,6 @@ func (s *ListChartNamespaceRequest) SetPageNo(v int32) *ListChartNamespaceReques
 
 func (s *ListChartNamespaceRequest) SetPageSize(v int32) *ListChartNamespaceRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListChartNamespaceRequest) SetRegionId(v string) *ListChartNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -6926,7 +6597,6 @@ type ListChartReleaseRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
@@ -6956,11 +6626,6 @@ func (s *ListChartReleaseRequest) SetPageNo(v int32) *ListChartReleaseRequest {
 
 func (s *ListChartReleaseRequest) SetPageSize(v int32) *ListChartReleaseRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListChartReleaseRequest) SetRegionId(v string) *ListChartReleaseRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7107,7 +6772,6 @@ type ListChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
@@ -7133,11 +6797,6 @@ func (s *ListChartRepositoryRequest) SetPageNo(v int32) *ListChartRepositoryRequ
 
 func (s *ListChartRepositoryRequest) SetPageSize(v int32) *ListChartRepositoryRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListChartRepositoryRequest) SetRegionId(v string) *ListChartRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7302,7 +6961,6 @@ type ListEventCenterRecordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -7331,11 +6989,6 @@ func (s *ListEventCenterRecordRequest) SetPageNo(v int32) *ListEventCenterRecord
 
 func (s *ListEventCenterRecordRequest) SetPageSize(v int32) *ListEventCenterRecordRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListEventCenterRecordRequest) SetRegionId(v string) *ListEventCenterRecordRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7614,7 +7267,6 @@ type ListInstanceRequest struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	PageNo         *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -7642,11 +7294,6 @@ func (s *ListInstanceRequest) SetPageNo(v int32) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetPageSize(v int32) *ListInstanceRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListInstanceRequest) SetRegionId(v string) *ListInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7782,7 +7429,6 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 type ListInstanceEndpointRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListInstanceEndpointRequest) String() string {
@@ -7800,11 +7446,6 @@ func (s *ListInstanceEndpointRequest) SetInstanceId(v string) *ListInstanceEndpo
 
 func (s *ListInstanceEndpointRequest) SetModuleName(v string) *ListInstanceEndpointRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *ListInstanceEndpointRequest) SetRegionId(v string) *ListInstanceEndpointRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -7977,8 +7618,7 @@ func (s *ListInstanceEndpointResponse) SetBody(v *ListInstanceEndpointResponseBo
 }
 
 type ListInstanceRegionRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s ListInstanceRegionRequest) String() string {
@@ -7991,11 +7631,6 @@ func (s ListInstanceRegionRequest) GoString() string {
 
 func (s *ListInstanceRegionRequest) SetLang(v string) *ListInstanceRegionRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *ListInstanceRegionRequest) SetRegionId(v string) *ListInstanceRegionRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8086,7 +7721,6 @@ type ListNamespaceRequest struct {
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListNamespaceRequest) String() string {
@@ -8119,11 +7753,6 @@ func (s *ListNamespaceRequest) SetPageNo(v int32) *ListNamespaceRequest {
 
 func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListNamespaceRequest) SetRegionId(v string) *ListNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8254,7 +7883,6 @@ type ListRepoBuildRecordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -8278,11 +7906,6 @@ func (s *ListRepoBuildRecordRequest) SetPageNo(v int32) *ListRepoBuildRecordRequ
 
 func (s *ListRepoBuildRecordRequest) SetPageSize(v int32) *ListRepoBuildRecordRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordRequest) SetRegionId(v string) *ListRepoBuildRecordRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8447,7 +8070,6 @@ type ListRepoBuildRecordLogRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Offset        *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -8471,11 +8093,6 @@ func (s *ListRepoBuildRecordLogRequest) SetInstanceId(v string) *ListRepoBuildRe
 
 func (s *ListRepoBuildRecordLogRequest) SetOffset(v int32) *ListRepoBuildRecordLogRequest {
 	s.Offset = &v
-	return s
-}
-
-func (s *ListRepoBuildRecordLogRequest) SetRegionId(v string) *ListRepoBuildRecordLogRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8593,7 +8210,6 @@ type ListRepoBuildRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -8617,11 +8233,6 @@ func (s *ListRepoBuildRuleRequest) SetPageNo(v int32) *ListRepoBuildRuleRequest 
 
 func (s *ListRepoBuildRuleRequest) SetPageSize(v int32) *ListRepoBuildRuleRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoBuildRuleRequest) SetRegionId(v string) *ListRepoBuildRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -8770,7 +8381,6 @@ type ListRepoSyncRuleRequest struct {
 	NamespaceName    *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	PageNo           *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName         *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	TargetRegionId   *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
@@ -8801,11 +8411,6 @@ func (s *ListRepoSyncRuleRequest) SetPageNo(v int32) *ListRepoSyncRuleRequest {
 
 func (s *ListRepoSyncRuleRequest) SetPageSize(v int32) *ListRepoSyncRuleRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoSyncRuleRequest) SetRegionId(v string) *ListRepoSyncRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9017,7 +8622,6 @@ type ListRepoSyncTaskRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	SyncRecordId      *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
@@ -9044,11 +8648,6 @@ func (s *ListRepoSyncTaskRequest) SetPageNo(v int32) *ListRepoSyncTaskRequest {
 
 func (s *ListRepoSyncTaskRequest) SetPageSize(v int32) *ListRepoSyncTaskRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoSyncTaskRequest) SetRegionId(v string) *ListRepoSyncTaskRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9126,16 +8725,17 @@ func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTask
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
-	CreateTime      *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossUser       *bool                                           `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	ImageFrom       *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	ImageTo         *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
-	ModifedTime     *int64                                          `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
-	SyncBatchTaskId *string                                         `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	SyncRuleId      *string                                         `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	SyncTaskId      *string                                         `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	TaskStatus      *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskTrigger     *string                                         `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
+	CreateTime          *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossUser           *bool                                           `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	ImageFrom           *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	ImageTo             *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	ModifedTime         *int64                                          `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	SyncBatchTaskId     *string                                         `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	SyncRuleId          *string                                         `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	SyncTaskId          *string                                         `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+	SyncTransAccelerate *bool                                           `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
+	TaskStatus          *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskTrigger         *string                                         `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
 func (s ListRepoSyncTaskResponseBodySyncTasks) String() string {
@@ -9183,6 +8783,11 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetSyncRuleId(v string) *ListRep
 
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetSyncTaskId(v string) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.SyncTaskId = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetSyncTransAccelerate(v bool) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.SyncTransAccelerate = &v
 	return s
 }
 
@@ -9305,7 +8910,6 @@ type ListRepoTagRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -9329,11 +8933,6 @@ func (s *ListRepoTagRequest) SetPageNo(v int32) *ListRepoTagRequest {
 
 func (s *ListRepoTagRequest) SetPageSize(v int32) *ListRepoTagRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoTagRequest) SetRegionId(v string) *ListRepoTagRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9476,7 +9075,6 @@ type ListRepoTagScanResultRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
@@ -9508,11 +9106,6 @@ func (s *ListRepoTagScanResultRequest) SetPageNo(v int32) *ListRepoTagScanResult
 
 func (s *ListRepoTagScanResultRequest) SetPageSize(v int32) *ListRepoTagScanResultRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepoTagScanResultRequest) SetRegionId(v string) *ListRepoTagScanResultRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9685,7 +9278,6 @@ func (s *ListRepoTagScanResultResponse) SetBody(v *ListRepoTagScanResultResponse
 
 type ListRepoTriggerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -9699,11 +9291,6 @@ func (s ListRepoTriggerRequest) GoString() string {
 
 func (s *ListRepoTriggerRequest) SetInstanceId(v string) *ListRepoTriggerRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListRepoTriggerRequest) SetRegionId(v string) *ListRepoTriggerRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -9821,7 +9408,6 @@ type ListRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
@@ -9847,11 +9433,6 @@ func (s *ListRepositoryRequest) SetPageNo(v int32) *ListRepositoryRequest {
 
 func (s *ListRepositoryRequest) SetPageSize(v int32) *ListRepositoryRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListRepositoryRequest) SetRegionId(v string) *ListRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10026,7 +9607,6 @@ func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRep
 type ResetLoginPasswordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResetLoginPasswordRequest) String() string {
@@ -10044,11 +9624,6 @@ func (s *ResetLoginPasswordRequest) SetInstanceId(v string) *ResetLoginPasswordR
 
 func (s *ResetLoginPasswordRequest) SetPassword(v string) *ResetLoginPasswordRequest {
 	s.Password = &v
-	return s
-}
-
-func (s *ResetLoginPasswordRequest) SetRegionId(v string) *ResetLoginPasswordRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10110,7 +9685,6 @@ type UpdateChainRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateChainRequest) String() string {
@@ -10143,11 +9717,6 @@ func (s *UpdateChainRequest) SetInstanceId(v string) *UpdateChainRequest {
 
 func (s *UpdateChainRequest) SetName(v string) *UpdateChainRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *UpdateChainRequest) SetRegionId(v string) *UpdateChainRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10208,7 +9777,6 @@ type UpdateChartNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateChartNamespaceRequest) String() string {
@@ -10236,11 +9804,6 @@ func (s *UpdateChartNamespaceRequest) SetInstanceId(v string) *UpdateChartNamesp
 
 func (s *UpdateChartNamespaceRequest) SetNamespaceName(v string) *UpdateChartNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *UpdateChartNamespaceRequest) SetRegionId(v string) *UpdateChartNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10298,7 +9861,6 @@ func (s *UpdateChartNamespaceResponse) SetBody(v *UpdateChartNamespaceResponseBo
 
 type UpdateChartRepositoryRequest struct {
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
@@ -10315,11 +9877,6 @@ func (s UpdateChartRepositoryRequest) GoString() string {
 
 func (s *UpdateChartRepositoryRequest) SetInstanceId(v string) *UpdateChartRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateChartRepositoryRequest) SetRegionId(v string) *UpdateChartRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10402,7 +9959,6 @@ type UpdateEventCenterRuleRequest struct {
 	EventType            *string   `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespaces           []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoNames            []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
 	RepoTagFilterPattern *string   `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	RuleId               *string   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -10447,11 +10003,6 @@ func (s *UpdateEventCenterRuleRequest) SetNamespaces(v []*string) *UpdateEventCe
 	return s
 }
 
-func (s *UpdateEventCenterRuleRequest) SetRegionId(v string) *UpdateEventCenterRuleRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *UpdateEventCenterRuleRequest) SetRepoNames(v []*string) *UpdateEventCenterRuleRequest {
 	s.RepoNames = v
 	return s
@@ -10479,7 +10030,6 @@ type UpdateEventCenterRuleShrinkRequest struct {
 	EventType            *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespacesShrink     *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoNamesShrink      *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	RuleId               *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -10521,11 +10071,6 @@ func (s *UpdateEventCenterRuleShrinkRequest) SetInstanceId(v string) *UpdateEven
 
 func (s *UpdateEventCenterRuleShrinkRequest) SetNamespacesShrink(v string) *UpdateEventCenterRuleShrinkRequest {
 	s.NamespacesShrink = &v
-	return s
-}
-
-func (s *UpdateEventCenterRuleShrinkRequest) SetRegionId(v string) *UpdateEventCenterRuleShrinkRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10607,7 +10152,6 @@ type UpdateInstanceEndpointStatusRequest struct {
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ModuleName   *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateInstanceEndpointStatusRequest) String() string {
@@ -10635,11 +10179,6 @@ func (s *UpdateInstanceEndpointStatusRequest) SetInstanceId(v string) *UpdateIns
 
 func (s *UpdateInstanceEndpointStatusRequest) SetModuleName(v string) *UpdateInstanceEndpointStatusRequest {
 	s.ModuleName = &v
-	return s
-}
-
-func (s *UpdateInstanceEndpointStatusRequest) SetRegionId(v string) *UpdateInstanceEndpointStatusRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10700,7 +10239,6 @@ type UpdateNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateNamespaceRequest) String() string {
@@ -10728,11 +10266,6 @@ func (s *UpdateNamespaceRequest) SetInstanceId(v string) *UpdateNamespaceRequest
 
 func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequest {
 	s.NamespaceName = &v
-	return s
-}
-
-func (s *UpdateNamespaceRequest) SetRegionId(v string) *UpdateNamespaceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10797,7 +10330,6 @@ type UpdateRepoBuildRuleRequest struct {
 	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10846,11 +10378,6 @@ func (s *UpdateRepoBuildRuleRequest) SetPushName(v string) *UpdateRepoBuildRuleR
 
 func (s *UpdateRepoBuildRuleRequest) SetPushType(v string) *UpdateRepoBuildRuleRequest {
 	s.PushType = &v
-	return s
-}
-
-func (s *UpdateRepoBuildRuleRequest) SetRegionId(v string) *UpdateRepoBuildRuleRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -10926,7 +10453,6 @@ type UpdateRepoSourceCodeRepoRequest struct {
 	DisableCacheBuild     *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OverseaBuild          *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10975,11 +10501,6 @@ func (s *UpdateRepoSourceCodeRepoRequest) SetInstanceId(v string) *UpdateRepoSou
 
 func (s *UpdateRepoSourceCodeRepoRequest) SetOverseaBuild(v string) *UpdateRepoSourceCodeRepoRequest {
 	s.OverseaBuild = &v
-	return s
-}
-
-func (s *UpdateRepoSourceCodeRepoRequest) SetRegionId(v string) *UpdateRepoSourceCodeRepoRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11042,7 +10563,6 @@ func (s *UpdateRepoSourceCodeRepoResponse) SetBody(v *UpdateRepoSourceCodeRepoRe
 
 type UpdateRepoTriggerRequest struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	TriggerId   *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
@@ -11061,11 +10581,6 @@ func (s UpdateRepoTriggerRequest) GoString() string {
 
 func (s *UpdateRepoTriggerRequest) SetInstanceId(v string) *UpdateRepoTriggerRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateRepoTriggerRequest) SetRegionId(v string) *UpdateRepoTriggerRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11154,7 +10669,6 @@ func (s *UpdateRepoTriggerResponse) SetBody(v *UpdateRepoTriggerResponseBody) *U
 type UpdateRepositoryRequest struct {
 	Detail          *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepoId          *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoType        *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	Summary         *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
@@ -11176,11 +10690,6 @@ func (s *UpdateRepositoryRequest) SetDetail(v string) *UpdateRepositoryRequest {
 
 func (s *UpdateRepositoryRequest) SetInstanceId(v string) *UpdateRepositoryRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateRepositoryRequest) SetRegionId(v string) *UpdateRepositoryRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -11309,8 +10818,14 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildTaskId"] = request.BuildTaskId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.BuildTaskId)) {
+		query["BuildTaskId"] = request.BuildTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11351,9 +10866,18 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRecordId"] = request.BuildRecordId
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRecordId)) {
+		query["BuildRecordId"] = request.BuildRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11394,9 +10918,18 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRuleId"] = request.BuildRuleId
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRuleId)) {
+		query["BuildRuleId"] = request.BuildRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11437,12 +10970,30 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChainConfig"] = request.ChainConfig
-	query["Description"] = request.Description
-	query["InstanceId"] = request.InstanceId
-	query["Name"] = request.Name
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.ChainConfig)) {
+		query["ChainConfig"] = request.ChainConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11483,10 +11034,22 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoCreateRepo"] = request.AutoCreateRepo
-	query["DefaultRepoType"] = request.DefaultRepoType
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
+		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
+		query["DefaultRepoType"] = request.DefaultRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11527,11 +11090,26 @@ func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepos
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["RepoType"] = request.RepoType
-	query["Summary"] = request.Summary
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoType)) {
+		query["RepoType"] = request.RepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summary)) {
+		query["Summary"] = request.Summary
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11572,11 +11150,26 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Comment"] = request.Comment
-	query["EndpointType"] = request.EndpointType
-	query["Entry"] = request.Entry
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Entry)) {
+		query["Entry"] = request.Entry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11617,10 +11210,26 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
-	query["VpcId"] = request.VpcId
-	query["VswitchId"] = request.VswitchId
+	if !tea.BoolValue(util.IsUnset(request.EnableCreateDNSRecordInPvzt)) {
+		query["EnableCreateDNSRecordInPvzt"] = request.EnableCreateDNSRecordInPvzt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11661,10 +11270,22 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoCreateRepo"] = request.AutoCreateRepo
-	query["DefaultRepoType"] = request.DefaultRepoType
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
+		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
+		query["DefaultRepoType"] = request.DefaultRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11705,13 +11326,34 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DockerfileLocation"] = request.DockerfileLocation
-	query["DockerfileName"] = request.DockerfileName
-	query["ImageTag"] = request.ImageTag
-	query["InstanceId"] = request.InstanceId
-	query["PushName"] = request.PushName
-	query["PushType"] = request.PushType
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.DockerfileLocation)) {
+		query["DockerfileLocation"] = request.DockerfileLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DockerfileName)) {
+		query["DockerfileName"] = request.DockerfileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushName)) {
+		query["PushName"] = request.PushName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushType)) {
+		query["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11752,14 +11394,38 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoBuild"] = request.AutoBuild
-	query["CodeRepoName"] = request.CodeRepoName
-	query["CodeRepoNamespaceName"] = request.CodeRepoNamespaceName
-	query["CodeRepoType"] = request.CodeRepoType
-	query["DisableCacheBuild"] = request.DisableCacheBuild
-	query["InstanceId"] = request.InstanceId
-	query["OverseaBuild"] = request.OverseaBuild
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.AutoBuild)) {
+		query["AutoBuild"] = request.AutoBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoName)) {
+		query["CodeRepoName"] = request.CodeRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoNamespaceName)) {
+		query["CodeRepoNamespaceName"] = request.CodeRepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoType)) {
+		query["CodeRepoType"] = request.CodeRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableCacheBuild)) {
+		query["DisableCacheBuild"] = request.DisableCacheBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverseaBuild)) {
+		query["OverseaBuild"] = request.OverseaBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11800,18 +11466,54 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
-	query["RepoName"] = request.RepoName
-	query["SyncRuleName"] = request.SyncRuleName
-	query["SyncScope"] = request.SyncScope
-	query["SyncTrigger"] = request.SyncTrigger
-	query["TagFilter"] = request.TagFilter
-	query["TargetInstanceId"] = request.TargetInstanceId
-	query["TargetNamespaceName"] = request.TargetNamespaceName
-	query["TargetRegionId"] = request.TargetRegionId
-	query["TargetRepoName"] = request.TargetRepoName
-	query["TargetUserId"] = request.TargetUserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncRuleName)) {
+		query["SyncRuleName"] = request.SyncRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncScope)) {
+		query["SyncScope"] = request.SyncScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncTrigger)) {
+		query["SyncTrigger"] = request.SyncTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagFilter)) {
+		query["TagFilter"] = request.TagFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		query["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNamespaceName)) {
+		query["TargetNamespaceName"] = request.TargetNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetRegionId)) {
+		query["TargetRegionId"] = request.TargetRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetRepoName)) {
+		query["TargetRepoName"] = request.TargetRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11852,16 +11554,46 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Override"] = request.Override
-	query["RepoId"] = request.RepoId
-	query["Tag"] = request.Tag
-	query["TargetInstanceId"] = request.TargetInstanceId
-	query["TargetNamespace"] = request.TargetNamespace
-	query["TargetRegionId"] = request.TargetRegionId
-	query["TargetRepoName"] = request.TargetRepoName
-	query["TargetTag"] = request.TargetTag
-	query["TargetUserId"] = request.TargetUserId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Override)) {
+		query["Override"] = request.Override
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		query["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNamespace)) {
+		query["TargetNamespace"] = request.TargetNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetRegionId)) {
+		query["TargetRegionId"] = request.TargetRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetRepoName)) {
+		query["TargetRepoName"] = request.TargetRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetTag)) {
+		query["TargetTag"] = request.TargetTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11902,10 +11634,22 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["SyncRuleId"] = request.SyncRuleId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncRuleId)) {
+		query["SyncRuleId"] = request.SyncRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11946,11 +11690,26 @@ func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FromTag"] = request.FromTag
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
-	query["RepoName"] = request.RepoName
-	query["ToTag"] = request.ToTag
+	if !tea.BoolValue(util.IsUnset(request.FromTag)) {
+		query["FromTag"] = request.FromTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToTag)) {
+		query["ToTag"] = request.ToTag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11991,11 +11750,26 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Digest"] = request.Digest
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["ScanService"] = request.ScanService
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanService)) {
+		query["ScanService"] = request.ScanService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12036,12 +11810,30 @@ func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["TriggerName"] = request.TriggerName
-	query["TriggerTag"] = request.TriggerTag
-	query["TriggerType"] = request.TriggerType
-	query["TriggerUrl"] = request.TriggerUrl
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerName)) {
+		query["TriggerName"] = request.TriggerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerTag)) {
+		query["TriggerTag"] = request.TriggerTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerUrl)) {
+		query["TriggerUrl"] = request.TriggerUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12082,13 +11874,34 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Detail"] = request.Detail
-	query["InstanceId"] = request.InstanceId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["RepoType"] = request.RepoType
-	query["Summary"] = request.Summary
-	query["TagImmutability"] = request.TagImmutability
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoType)) {
+		query["RepoType"] = request.RepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summary)) {
+		query["Summary"] = request.Summary
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagImmutability)) {
+		query["TagImmutability"] = request.TagImmutability
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12129,8 +11942,14 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChainId"] = request.ChainId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ChainId)) {
+		query["ChainId"] = request.ChainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12171,8 +11990,14 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12213,11 +12038,26 @@ func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Chart"] = request.Chart
-	query["InstanceId"] = request.InstanceId
-	query["Release"] = request.Release
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.Chart)) {
+		query["Chart"] = request.Chart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Release)) {
+		query["Release"] = request.Release
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12258,9 +12098,18 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12301,8 +12150,14 @@ func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCente
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12343,10 +12198,22 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndpointType"] = request.EndpointType
-	query["Entry"] = request.Entry
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Entry)) {
+		query["Entry"] = request.Entry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12387,10 +12254,22 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *Del
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
-	query["VpcId"] = request.VpcId
-	query["VswitchId"] = request.VswitchId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12431,8 +12310,14 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12473,9 +12358,18 @@ func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRuleId"] = request.BuildRuleId
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRuleId)) {
+		query["BuildRuleId"] = request.BuildRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12516,8 +12410,14 @@ func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SyncRuleId"] = request.SyncRuleId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncRuleId)) {
+		query["SyncRuleId"] = request.SyncRuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12558,9 +12458,18 @@ func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12601,9 +12510,18 @@ func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["TriggerId"] = request.TriggerId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerId)) {
+		query["TriggerId"] = request.TriggerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12644,8 +12562,14 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12726,7 +12650,10 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12767,8 +12694,14 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChainId"] = request.ChainId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.ChainId)) {
+		query["ChainId"] = request.ChainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12809,8 +12742,14 @@ func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12851,9 +12790,18 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12894,7 +12842,10 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12929,11 +12880,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
-func (client *Client) GetInstanceCountWithOptions(request *GetInstanceCountRequest, runtime *util.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
+func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceCount"),
@@ -12955,10 +12902,10 @@ func (client *Client) GetInstanceCountWithOptions(request *GetInstanceCountReque
 	return _result, _err
 }
 
-func (client *Client) GetInstanceCount(request *GetInstanceCountRequest) (_result *GetInstanceCountResponse, _err error) {
+func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceCountResponse{}
-	_body, _err := client.GetInstanceCountWithOptions(request, runtime)
+	_body, _err := client.GetInstanceCountWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12972,9 +12919,18 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndpointType"] = request.EndpointType
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13015,7 +12971,10 @@ func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13056,8 +13015,14 @@ func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13098,9 +13063,18 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceId"] = request.NamespaceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13141,8 +13115,14 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRecordId"] = request.BuildRecordId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.BuildRecordId)) {
+		query["BuildRecordId"] = request.BuildRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13183,9 +13163,18 @@ func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRecordId"] = request.BuildRecordId
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRecordId)) {
+		query["BuildRecordId"] = request.BuildRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13226,8 +13215,14 @@ func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13268,8 +13263,14 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SyncTaskId"] = request.SyncTaskId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncTaskId)) {
+		query["SyncTaskId"] = request.SyncTaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13350,10 +13351,22 @@ func (client *Client) GetRepoTagLayersWithOptions(request *GetRepoTagLayersReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Digest"] = request.Digest
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13394,10 +13407,22 @@ func (client *Client) GetRepoTagManifestWithOptions(request *GetRepoTagManifestR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["SchemaVersion"] = request.SchemaVersion
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaVersion)) {
+		query["SchemaVersion"] = request.SchemaVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13438,11 +13463,26 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Digest"] = request.Digest
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["ScanTaskId"] = request.ScanTaskId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanTaskId)) {
+		query["ScanTaskId"] = request.ScanTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13483,11 +13523,26 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Digest"] = request.Digest
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["ScanTaskId"] = request.ScanTaskId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanTaskId)) {
+		query["ScanTaskId"] = request.ScanTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13528,10 +13583,22 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13612,11 +13679,26 @@ func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13657,11 +13739,26 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13702,11 +13799,26 @@ func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
-	query["NamespaceStatus"] = request.NamespaceStatus
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceStatus)) {
+		query["NamespaceStatus"] = request.NamespaceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13747,12 +13859,30 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Chart"] = request.Chart
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
+	if !tea.BoolValue(util.IsUnset(request.Chart)) {
+		query["Chart"] = request.Chart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13793,12 +13923,30 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["RepoStatus"] = request.RepoStatus
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoStatus)) {
+		query["RepoStatus"] = request.RepoStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13919,10 +14067,22 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
-	query["InstanceStatus"] = request.InstanceStatus
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceStatus)) {
+		query["InstanceStatus"] = request.InstanceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13963,8 +14123,14 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14005,7 +14171,10 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Lang"] = request.Lang
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14046,11 +14215,26 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
-	query["NamespaceStatus"] = request.NamespaceStatus
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceStatus)) {
+		query["NamespaceStatus"] = request.NamespaceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14091,10 +14275,22 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14135,10 +14331,22 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRecordId"] = request.BuildRecordId
-	query["InstanceId"] = request.InstanceId
-	query["Offset"] = request.Offset
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRecordId)) {
+		query["BuildRecordId"] = request.BuildRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14179,10 +14387,22 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14223,13 +14443,34 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["TargetInstanceId"] = request.TargetInstanceId
-	query["TargetRegionId"] = request.TargetRegionId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
+		query["TargetInstanceId"] = request.TargetInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetRegionId)) {
+		query["TargetRegionId"] = request.TargetRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14270,13 +14511,34 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["SyncRecordId"] = request.SyncRecordId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncRecordId)) {
+		query["SyncRecordId"] = request.SyncRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14317,10 +14579,22 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14361,14 +14635,38 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Digest"] = request.Digest
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoId"] = request.RepoId
-	query["ScanTaskId"] = request.ScanTaskId
-	query["Severity"] = request.Severity
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanTaskId)) {
+		query["ScanTaskId"] = request.ScanTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14409,8 +14707,14 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14451,12 +14755,30 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["RepoStatus"] = request.RepoStatus
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoStatus)) {
+		query["RepoStatus"] = request.RepoStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14497,8 +14819,14 @@ func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Password"] = request.Password
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14539,11 +14867,26 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChainConfig"] = request.ChainConfig
-	query["ChainId"] = request.ChainId
-	query["Description"] = request.Description
-	query["InstanceId"] = request.InstanceId
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.ChainConfig)) {
+		query["ChainConfig"] = request.ChainConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChainId)) {
+		query["ChainId"] = request.ChainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14584,10 +14927,22 @@ func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamesp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoCreateRepo"] = request.AutoCreateRepo
-	query["DefaultRepoType"] = request.DefaultRepoType
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
+		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
+		query["DefaultRepoType"] = request.DefaultRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14628,11 +14983,26 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoName"] = request.RepoName
-	query["RepoNamespaceName"] = request.RepoNamespaceName
-	query["RepoType"] = request.RepoType
-	query["Summary"] = request.Summary
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoType)) {
+		query["RepoType"] = request.RepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summary)) {
+		query["Summary"] = request.Summary
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14683,16 +15053,46 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 	}
 
 	query := map[string]interface{}{}
-	query["EventChannel"] = request.EventChannel
-	query["EventConfig"] = request.EventConfig
-	query["EventScope"] = request.EventScope
-	query["EventType"] = request.EventType
-	query["InstanceId"] = request.InstanceId
-	query["Namespaces"] = request.NamespacesShrink
-	query["RepoNames"] = request.RepoNamesShrink
-	query["RepoTagFilterPattern"] = request.RepoTagFilterPattern
-	query["RuleId"] = request.RuleId
-	query["RuleName"] = request.RuleName
+	if !tea.BoolValue(util.IsUnset(request.EventChannel)) {
+		query["EventChannel"] = request.EventChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventConfig)) {
+		query["EventConfig"] = request.EventConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventScope)) {
+		query["EventScope"] = request.EventScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacesShrink)) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamesShrink)) {
+		query["RepoNames"] = request.RepoNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoTagFilterPattern)) {
+		query["RepoTagFilterPattern"] = request.RepoTagFilterPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14733,10 +15133,22 @@ func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Enable"] = request.Enable
-	query["EndpointType"] = request.EndpointType
-	query["InstanceId"] = request.InstanceId
-	query["ModuleName"] = request.ModuleName
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
+		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14777,10 +15189,22 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoCreateRepo"] = request.AutoCreateRepo
-	query["DefaultRepoType"] = request.DefaultRepoType
-	query["InstanceId"] = request.InstanceId
-	query["NamespaceName"] = request.NamespaceName
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
+		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
+		query["DefaultRepoType"] = request.DefaultRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14821,15 +15245,42 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuildRuleId"] = request.BuildRuleId
-	query["DockerfileLocation"] = request.DockerfileLocation
-	query["DockerfileName"] = request.DockerfileName
-	query["ImageTag"] = request.ImageTag
-	query["InstanceId"] = request.InstanceId
-	query["Platforms"] = request.Platforms
-	query["PushName"] = request.PushName
-	query["PushType"] = request.PushType
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.BuildRuleId)) {
+		query["BuildRuleId"] = request.BuildRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DockerfileLocation)) {
+		query["DockerfileLocation"] = request.DockerfileLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DockerfileName)) {
+		query["DockerfileName"] = request.DockerfileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTag)) {
+		query["ImageTag"] = request.ImageTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platforms)) {
+		query["Platforms"] = request.Platforms
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushName)) {
+		query["PushName"] = request.PushName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushType)) {
+		query["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14870,15 +15321,42 @@ func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoBuild"] = request.AutoBuild
-	query["CodeRepoId"] = request.CodeRepoId
-	query["CodeRepoName"] = request.CodeRepoName
-	query["CodeRepoNamespaceName"] = request.CodeRepoNamespaceName
-	query["CodeRepoType"] = request.CodeRepoType
-	query["DisableCacheBuild"] = request.DisableCacheBuild
-	query["InstanceId"] = request.InstanceId
-	query["OverseaBuild"] = request.OverseaBuild
-	query["RepoId"] = request.RepoId
+	if !tea.BoolValue(util.IsUnset(request.AutoBuild)) {
+		query["AutoBuild"] = request.AutoBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoId)) {
+		query["CodeRepoId"] = request.CodeRepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoName)) {
+		query["CodeRepoName"] = request.CodeRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoNamespaceName)) {
+		query["CodeRepoNamespaceName"] = request.CodeRepoNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoType)) {
+		query["CodeRepoType"] = request.CodeRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableCacheBuild)) {
+		query["DisableCacheBuild"] = request.DisableCacheBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverseaBuild)) {
+		query["OverseaBuild"] = request.OverseaBuild
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14919,13 +15397,34 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["TriggerId"] = request.TriggerId
-	query["TriggerName"] = request.TriggerName
-	query["TriggerTag"] = request.TriggerTag
-	query["TriggerType"] = request.TriggerType
-	query["TriggerUrl"] = request.TriggerUrl
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerId)) {
+		query["TriggerId"] = request.TriggerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerName)) {
+		query["TriggerName"] = request.TriggerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerTag)) {
+		query["TriggerTag"] = request.TriggerTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerUrl)) {
+		query["TriggerUrl"] = request.TriggerUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14966,12 +15465,30 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Detail"] = request.Detail
-	query["InstanceId"] = request.InstanceId
-	query["RepoId"] = request.RepoId
-	query["RepoType"] = request.RepoType
-	query["Summary"] = request.Summary
-	query["TagImmutability"] = request.TagImmutability
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoType)) {
+		query["RepoType"] = request.RepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Summary)) {
+		query["Summary"] = request.Summary
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagImmutability)) {
+		query["TagImmutability"] = request.TagImmutability
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
