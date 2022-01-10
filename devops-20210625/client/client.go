@@ -331,6 +331,289 @@ func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *Creat
 	return s
 }
 
+type CreateProjectRequest struct {
+	CustomCode         *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	Scope              *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	TemplateIdentifier *string `json:"templateIdentifier,omitempty" xml:"templateIdentifier,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetCustomCode(v string) *CreateProjectRequest {
+	s.CustomCode = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetName(v string) *CreateProjectRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetScope(v string) *CreateProjectRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetTemplateIdentifier(v string) *CreateProjectRequest {
+	s.TemplateIdentifier = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 项目信息
+	Project *CreateProjectResponseBodyProject `json:"project,omitempty" xml:"project,omitempty" type:"Struct"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetErrorCode(v string) *CreateProjectResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetErrorMsg(v string) *CreateProjectResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetProject(v *CreateProjectResponseBodyProject) *CreateProjectResponseBody {
+	s.Project = v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProjectResponseBodyProject struct {
+	// 空间大类
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 空间大类id
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 自定义编号
+	CustomCode *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 图标
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// 大图标
+	IconBig *string `json:"iconBig,omitempty" xml:"iconBig,omitempty"`
+	// 图表组，json格式字符串
+	IconGroup *string `json:"iconGroup,omitempty" xml:"iconGroup,omitempty"`
+	// 小图标
+	IconSmall *string `json:"iconSmall,omitempty" xml:"iconSmall,omitempty"`
+	// 项目id
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 项目唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 空间路径
+	IdentifierPath *string `json:"identifierPath,omitempty" xml:"identifierPath,omitempty"`
+	// 项目状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 项目名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 企业id
+	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
+	// 父项目id
+	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 可见范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 状态id
+	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	// 状态阶段
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 空间小类
+	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	// 空间小类id
+	TypeIdentifier *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+}
+
+func (s CreateProjectResponseBodyProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyProject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyProject) SetCategory(v string) *CreateProjectResponseBodyProject {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetCategoryIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetCreator(v string) *CreateProjectResponseBodyProject {
+	s.Creator = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetCustomCode(v string) *CreateProjectResponseBodyProject {
+	s.CustomCode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetDescription(v string) *CreateProjectResponseBodyProject {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetGmtCreate(v int64) *CreateProjectResponseBodyProject {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetGmtModified(v int64) *CreateProjectResponseBodyProject {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIcon(v string) *CreateProjectResponseBodyProject {
+	s.Icon = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIconBig(v string) *CreateProjectResponseBodyProject {
+	s.IconBig = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIconGroup(v string) *CreateProjectResponseBodyProject {
+	s.IconGroup = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIconSmall(v string) *CreateProjectResponseBodyProject {
+	s.IconSmall = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetId(v string) *CreateProjectResponseBodyProject {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetIdentifierPath(v string) *CreateProjectResponseBodyProject {
+	s.IdentifierPath = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetLogicalStatus(v string) *CreateProjectResponseBodyProject {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetModifier(v string) *CreateProjectResponseBodyProject {
+	s.Modifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetName(v string) *CreateProjectResponseBodyProject {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetOrganizationIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.OrganizationIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetParentIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetScope(v string) *CreateProjectResponseBodyProject {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetStatusIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetStatusStageIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetSubType(v string) *CreateProjectResponseBodyProject {
+	s.SubType = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyProject) SetTypeIdentifier(v string) *CreateProjectResponseBodyProject {
+	s.TypeIdentifier = &v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceMemberRequest struct {
 	// 用户id
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
@@ -414,6 +697,216 @@ func (s *CreateResourceMemberResponse) SetHeaders(v map[string]*string) *CreateR
 }
 
 func (s *CreateResourceMemberResponse) SetBody(v *CreateResourceMemberResponseBody) *CreateResourceMemberResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSprintRequest struct {
+	// 结束时间
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// 迭代名
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 负责人列表
+	StaffIds []*string `json:"staffIds,omitempty" xml:"staffIds,omitempty" type:"Repeated"`
+	// 开始时间
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+}
+
+func (s CreateSprintRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSprintRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSprintRequest) SetEndDate(v string) *CreateSprintRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateSprintRequest) SetName(v string) *CreateSprintRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSprintRequest) SetSpaceIdentifier(v string) *CreateSprintRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateSprintRequest) SetStaffIds(v []*string) *CreateSprintRequest {
+	s.StaffIds = v
+	return s
+}
+
+func (s *CreateSprintRequest) SetStartDate(v string) *CreateSprintRequest {
+	s.StartDate = &v
+	return s
+}
+
+type CreateSprintResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 迭代信息
+	Sprint *CreateSprintResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateSprintResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSprintResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSprintResponseBody) SetErrorCode(v string) *CreateSprintResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateSprintResponseBody) SetErrorMsg(v string) *CreateSprintResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateSprintResponseBody) SetRequestId(v string) *CreateSprintResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSprintResponseBody) SetSprint(v *CreateSprintResponseBodySprint) *CreateSprintResponseBody {
+	s.Sprint = v
+	return s
+}
+
+func (s *CreateSprintResponseBody) SetSuccess(v bool) *CreateSprintResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSprintResponseBodySprint struct {
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 结束时间
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 迭代唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 迭代名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 可见范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 开始时间
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s CreateSprintResponseBodySprint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSprintResponseBodySprint) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSprintResponseBodySprint) SetCreator(v string) *CreateSprintResponseBodySprint {
+	s.Creator = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetDescription(v string) *CreateSprintResponseBodySprint {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetEndDate(v int64) *CreateSprintResponseBodySprint {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetGmtCreate(v int64) *CreateSprintResponseBodySprint {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetGmtModified(v int64) *CreateSprintResponseBodySprint {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetIdentifier(v string) *CreateSprintResponseBodySprint {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetModifier(v string) *CreateSprintResponseBodySprint {
+	s.Modifier = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetName(v string) *CreateSprintResponseBodySprint {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetScope(v string) *CreateSprintResponseBodySprint {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetSpaceIdentifier(v string) *CreateSprintResponseBodySprint {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetStartDate(v int64) *CreateSprintResponseBodySprint {
+	s.StartDate = &v
+	return s
+}
+
+func (s *CreateSprintResponseBodySprint) SetStatus(v string) *CreateSprintResponseBodySprint {
+	s.Status = &v
+	return s
+}
+
+type CreateSprintResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSprintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSprintResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSprintResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSprintResponse) SetHeaders(v map[string]*string) *CreateSprintResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSprintResponse) SetBody(v *CreateSprintResponseBody) *CreateSprintResponse {
 	s.Body = v
 	return s
 }
@@ -1050,6 +1543,93 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 	return s
 }
 
+type DeleteProjectRequest struct {
+	// 项目id
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s DeleteProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteProjectResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBody) SetErrorCode(v string) *DeleteProjectResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetErrorMsg(v string) *DeleteProjectResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetResult(v bool) *DeleteProjectResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetSuccess(v bool) *DeleteProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteProjectResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteResourceMemberResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -1232,6 +1812,167 @@ func (s *FrozenWorkspaceResponse) SetHeaders(v map[string]*string) *FrozenWorksp
 }
 
 func (s *FrozenWorkspaceResponse) SetBody(v *FrozenWorkspaceResponseBody) *FrozenWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type GetCustomFieldOptionRequest struct {
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 工作项类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s GetCustomFieldOptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomFieldOptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomFieldOptionRequest) SetSpaceIdentifier(v string) *GetCustomFieldOptionRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionRequest) SetSpaceType(v string) *GetCustomFieldOptionRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionRequest) SetWorkitemTypeIdentifier(v string) *GetCustomFieldOptionRequest {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type GetCustomFieldOptionResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 字段值信息
+	Fileds []*GetCustomFieldOptionResponseBodyFileds `json:"fileds,omitempty" xml:"fileds,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetCustomFieldOptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomFieldOptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomFieldOptionResponseBody) SetErrorCode(v string) *GetCustomFieldOptionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBody) SetErrorMsg(v string) *GetCustomFieldOptionResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBody) SetFileds(v []*GetCustomFieldOptionResponseBodyFileds) *GetCustomFieldOptionResponseBody {
+	s.Fileds = v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBody) SetRequestId(v string) *GetCustomFieldOptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBody) SetSuccess(v bool) *GetCustomFieldOptionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomFieldOptionResponseBodyFileds struct {
+	// 展示的值
+	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
+	// 字段唯一标识
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	// 迭代唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 展示级别，数字范围1~9，数字越大，颜色越浅
+	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	// 待选值顺序
+	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
+	// 字段中文名称
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 字段英文名称
+	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+}
+
+func (s GetCustomFieldOptionResponseBodyFileds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomFieldOptionResponseBodyFileds) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetDisplayValue(v string) *GetCustomFieldOptionResponseBodyFileds {
+	s.DisplayValue = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetFieldIdentifier(v string) *GetCustomFieldOptionResponseBodyFileds {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetIdentifier(v string) *GetCustomFieldOptionResponseBodyFileds {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetLevel(v int64) *GetCustomFieldOptionResponseBodyFileds {
+	s.Level = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetPosition(v int64) *GetCustomFieldOptionResponseBodyFileds {
+	s.Position = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetValue(v string) *GetCustomFieldOptionResponseBodyFileds {
+	s.Value = &v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponseBodyFileds) SetValueEn(v string) *GetCustomFieldOptionResponseBodyFileds {
+	s.ValueEn = &v
+	return s
+}
+
+type GetCustomFieldOptionResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetCustomFieldOptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCustomFieldOptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomFieldOptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomFieldOptionResponse) SetHeaders(v map[string]*string) *GetCustomFieldOptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomFieldOptionResponse) SetBody(v *GetCustomFieldOptionResponseBody) *GetCustomFieldOptionResponse {
 	s.Body = v
 	return s
 }
@@ -3552,6 +4293,731 @@ func (s *GetVariableGroupResponse) SetHeaders(v map[string]*string) *GetVariable
 }
 
 func (s *GetVariableGroupResponse) SetBody(v *GetVariableGroupResponseBody) *GetVariableGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkItemActivityResponseBody struct {
+	// 动态信息
+	Activities []*GetWorkItemActivityResponseBodyActivities `json:"activities,omitempty" xml:"activities,omitempty" type:"Repeated"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetWorkItemActivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemActivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemActivityResponseBody) SetActivities(v []*GetWorkItemActivityResponseBodyActivities) *GetWorkItemActivityResponseBody {
+	s.Activities = v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBody) SetErrorCode(v string) *GetWorkItemActivityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBody) SetErrorMsg(v string) *GetWorkItemActivityResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBody) SetRequestId(v string) *GetWorkItemActivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBody) SetSuccess(v bool) *GetWorkItemActivityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetWorkItemActivityResponseBodyActivities struct {
+	// 动作类型
+	ActionType *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
+	// 事件id
+	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// 事件时间
+	EventTime *int64 `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// 事件类型
+	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	// 操作者
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// 父事件id
+	ParentEventId *int64 `json:"parentEventId,omitempty" xml:"parentEventId,omitempty"`
+	// 修改属性
+	Property *GetWorkItemActivityResponseBodyActivitiesProperty `json:"property,omitempty" xml:"property,omitempty" type:"Struct"`
+	// 操作对象
+	ResourceIdentifier *string `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty"`
+}
+
+func (s GetWorkItemActivityResponseBodyActivities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemActivityResponseBodyActivities) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetActionType(v string) *GetWorkItemActivityResponseBodyActivities {
+	s.ActionType = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetEventId(v int64) *GetWorkItemActivityResponseBodyActivities {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetEventTime(v int64) *GetWorkItemActivityResponseBodyActivities {
+	s.EventTime = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetEventType(v string) *GetWorkItemActivityResponseBodyActivities {
+	s.EventType = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetOperator(v string) *GetWorkItemActivityResponseBodyActivities {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetParentEventId(v int64) *GetWorkItemActivityResponseBodyActivities {
+	s.ParentEventId = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetProperty(v *GetWorkItemActivityResponseBodyActivitiesProperty) *GetWorkItemActivityResponseBodyActivities {
+	s.Property = v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivities) SetResourceIdentifier(v string) *GetWorkItemActivityResponseBodyActivities {
+	s.ResourceIdentifier = &v
+	return s
+}
+
+type GetWorkItemActivityResponseBodyActivitiesProperty struct {
+	// 属性的展示名
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 资源id
+	PropertyIdentifier *string `json:"propertyIdentifier,omitempty" xml:"propertyIdentifier,omitempty"`
+	// 属性key
+	PropertyName *string `json:"propertyName,omitempty" xml:"propertyName,omitempty"`
+	// 类型
+	PropertyType *string `json:"propertyType,omitempty" xml:"propertyType,omitempty"`
+}
+
+func (s GetWorkItemActivityResponseBodyActivitiesProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemActivityResponseBodyActivitiesProperty) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemActivityResponseBodyActivitiesProperty) SetDisplayName(v string) *GetWorkItemActivityResponseBodyActivitiesProperty {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivitiesProperty) SetPropertyIdentifier(v string) *GetWorkItemActivityResponseBodyActivitiesProperty {
+	s.PropertyIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivitiesProperty) SetPropertyName(v string) *GetWorkItemActivityResponseBodyActivitiesProperty {
+	s.PropertyName = &v
+	return s
+}
+
+func (s *GetWorkItemActivityResponseBodyActivitiesProperty) SetPropertyType(v string) *GetWorkItemActivityResponseBodyActivitiesProperty {
+	s.PropertyType = &v
+	return s
+}
+
+type GetWorkItemActivityResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWorkItemActivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkItemActivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemActivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemActivityResponse) SetHeaders(v map[string]*string) *GetWorkItemActivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkItemActivityResponse) SetBody(v *GetWorkItemActivityResponseBody) *GetWorkItemActivityResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkItemInfoResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工作项信息
+	Workitem *GetWorkItemInfoResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+}
+
+func (s GetWorkItemInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBody) SetErrorCode(v string) *GetWorkItemInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBody) SetErrorMessage(v string) *GetWorkItemInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBody) SetRequestId(v string) *GetWorkItemInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBody) SetSuccess(v bool) *GetWorkItemInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBody) SetWorkitem(v *GetWorkItemInfoResponseBodyWorkitem) *GetWorkItemInfoResponseBody {
+	s.Workitem = v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitem struct {
+	// 负责人
+	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	// 工作项的类型id
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 工作项内容
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作项唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 逻辑状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 父工作项id
+	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 编号
+	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	// 所属项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 所属项目名称
+	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	// 项目类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 状态名称
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态阶段id
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 工作项标题
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 状态更新时间
+	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	// 工作项类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetAssignedTo(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetCategoryIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetCreator(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetDocument(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Document = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetGmtCreate(v int64) *GetWorkItemInfoResponseBodyWorkitem {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetGmtModified(v int64) *GetWorkItemInfoResponseBodyWorkitem {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetLogicalStatus(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetModifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetParentIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSerialNumber(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSpaceIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSpaceName(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSpaceType(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetStatus(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetStatusStageIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSubject(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Subject = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetUpdateStatusAt(v int64) *GetWorkItemInfoResponseBodyWorkitem {
+	s.UpdateStatusAt = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type GetWorkItemInfoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWorkItemInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkItemInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponse) SetHeaders(v map[string]*string) *GetWorkItemInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkItemInfoResponse) SetBody(v *GetWorkItemInfoResponseBody) *GetWorkItemInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoRequest struct {
+	// 项目id
+	ConfigurationId *string `json:"configurationId,omitempty" xml:"configurationId,omitempty"`
+}
+
+func (s GetWorkItemWorkFlowInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoRequest) SetConfigurationId(v string) *GetWorkItemWorkFlowInfoRequest {
+	s.ConfigurationId = &v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工作项信息
+	Workflow *GetWorkItemWorkFlowInfoResponseBodyWorkflow `json:"workflow,omitempty" xml:"workflow,omitempty" type:"Struct"`
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBody) SetErrorCode(v string) *GetWorkItemWorkFlowInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBody) SetErrorMessage(v string) *GetWorkItemWorkFlowInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBody) SetRequestId(v string) *GetWorkItemWorkFlowInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBody) SetSuccess(v bool) *GetWorkItemWorkFlowInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBody) SetWorkflow(v *GetWorkItemWorkFlowInfoResponseBodyWorkflow) *GetWorkItemWorkFlowInfoResponseBody {
+	s.Workflow = v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoResponseBodyWorkflow struct {
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 工作流的默认状态
+	DefaultStatusIdentifier *string `json:"defaultStatusIdentifier,omitempty" xml:"defaultStatusIdentifier,omitempty"`
+	// 工作流的描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作流唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 工作流名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 工作流所属的团队空间或项目的identifier
+	OwnerSpaceIdentifier *string `json:"ownerSpaceIdentifier,omitempty" xml:"ownerSpaceIdentifier,omitempty"`
+	// 工作流所属的团队项目类型
+	OwnerSpaceType *string `json:"ownerSpaceType,omitempty" xml:"ownerSpaceType,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 工作流来源
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// 工作流的状态顺序
+	StatusOrder *string `json:"statusOrder,omitempty" xml:"statusOrder,omitempty"`
+	// 状态列表
+	Statuses []*GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	// 工作流的流转步骤
+	WorkflowActions []*GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions `json:"workflowActions,omitempty" xml:"workflowActions,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflow) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetCreator(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetDefaultStatusIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.DefaultStatusIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetDescription(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Description = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetGmtCreate(v int64) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetGmtModified(v int64) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetModifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetName(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetOwnerSpaceIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.OwnerSpaceIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetOwnerSpaceType(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.OwnerSpaceType = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetResourceType(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetSource(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Source = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetStatusOrder(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.StatusOrder = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetStatuses(v []*GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.Statuses = v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflow) SetWorkflowActions(v []*GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) *GetWorkItemWorkFlowInfoResponseBodyWorkflow {
+	s.WorkflowActions = v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses struct {
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 状态唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 状态名
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 资源来源
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 状态来源
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// 阶段信息-阶段的唯一标识
+	WorkflowStageIdentifier *string `json:"workflowStageIdentifier,omitempty" xml:"workflowStageIdentifier,omitempty"`
+	// 阶段信息-名称
+	WorkflowStageName *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetCreator(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetDescription(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Description = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetGmtCreate(v int64) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetGmtModified(v int64) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetModifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetName(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetResourceType(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetSource(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.Source = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetWorkflowStageIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.WorkflowStageIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses) SetWorkflowStageName(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses {
+	s.WorkflowStageName = &v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions struct {
+	// 流转步骤的id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// action的名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// action对应的下个状态的信息id
+	NextWorkflowStatusIdentifier *string `json:"nextWorkflowStatusIdentifier,omitempty" xml:"nextWorkflowStatusIdentifier,omitempty"`
+	// action对应的工作流
+	WorkflowIdentifier *string `json:"workflowIdentifier,omitempty" xml:"workflowIdentifier,omitempty"`
+	// action对应的当前状态id
+	WorkflowStatusIdentifier *string `json:"workflowStatusIdentifier,omitempty" xml:"workflowStatusIdentifier,omitempty"`
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) SetId(v int64) *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) SetName(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) SetNextWorkflowStatusIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions {
+	s.NextWorkflowStatusIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) SetWorkflowIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions {
+	s.WorkflowIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions) SetWorkflowStatusIdentifier(v string) *GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions {
+	s.WorkflowStatusIdentifier = &v
+	return s
+}
+
+type GetWorkItemWorkFlowInfoResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetWorkItemWorkFlowInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetWorkItemWorkFlowInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemWorkFlowInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemWorkFlowInfoResponse) SetHeaders(v map[string]*string) *GetWorkItemWorkFlowInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWorkItemWorkFlowInfoResponse) SetBody(v *GetWorkItemWorkFlowInfoResponseBody) *GetWorkItemWorkFlowInfoResponse {
 	s.Body = v
 	return s
 }
@@ -7484,6 +8950,188 @@ func (s *UpdatePipelineBaseInfoResponse) SetBody(v *UpdatePipelineBaseInfoRespon
 	return s
 }
 
+type UpdateProjectMemberRequest struct {
+	// 角色id
+	RoleIdentifier *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
+	// 资源id，也就是项目id
+	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
+	// 资源类型
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// 用户id
+	UserIdentifier *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
+	// 用户类型
+	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
+}
+
+func (s UpdateProjectMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectMemberRequest) SetRoleIdentifier(v string) *UpdateProjectMemberRequest {
+	s.RoleIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberRequest) SetTargetIdentifier(v string) *UpdateProjectMemberRequest {
+	s.TargetIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberRequest) SetTargetType(v string) *UpdateProjectMemberRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *UpdateProjectMemberRequest) SetUserIdentifier(v string) *UpdateProjectMemberRequest {
+	s.UserIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberRequest) SetUserType(v string) *UpdateProjectMemberRequest {
+	s.UserType = &v
+	return s
+}
+
+type UpdateProjectMemberResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 成员信息
+	Member *UpdateProjectMemberResponseBodyMember `json:"member,omitempty" xml:"member,omitempty" type:"Struct"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProjectMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectMemberResponseBody) SetErrorCode(v string) *UpdateProjectMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBody) SetErrorMsg(v string) *UpdateProjectMemberResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBody) SetMember(v *UpdateProjectMemberResponseBodyMember) *UpdateProjectMemberResponseBody {
+	s.Member = v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBody) SetRequestId(v string) *UpdateProjectMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBody) SetSuccess(v bool) *UpdateProjectMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProjectMemberResponseBodyMember struct {
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// id
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// 角色id
+	RoleIdentifier *string `json:"roleIdentifier,omitempty" xml:"roleIdentifier,omitempty"`
+	// 资源id，也就是项目id
+	TargetIdentifier *string `json:"targetIdentifier,omitempty" xml:"targetIdentifier,omitempty"`
+	// 资源类型
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// 用户id
+	UserIdentifier *string `json:"userIdentifier,omitempty" xml:"userIdentifier,omitempty"`
+	// 用户类型
+	UserType *string `json:"userType,omitempty" xml:"userType,omitempty"`
+}
+
+func (s UpdateProjectMemberResponseBodyMember) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectMemberResponseBodyMember) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetGmtCreate(v int64) *UpdateProjectMemberResponseBodyMember {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetGmtModified(v int64) *UpdateProjectMemberResponseBodyMember {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetId(v string) *UpdateProjectMemberResponseBodyMember {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetRoleIdentifier(v string) *UpdateProjectMemberResponseBodyMember {
+	s.RoleIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetTargetIdentifier(v string) *UpdateProjectMemberResponseBodyMember {
+	s.TargetIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetTargetType(v string) *UpdateProjectMemberResponseBodyMember {
+	s.TargetType = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetUserIdentifier(v string) *UpdateProjectMemberResponseBodyMember {
+	s.UserIdentifier = &v
+	return s
+}
+
+func (s *UpdateProjectMemberResponseBodyMember) SetUserType(v string) *UpdateProjectMemberResponseBodyMember {
+	s.UserType = &v
+	return s
+}
+
+type UpdateProjectMemberResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateProjectMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProjectMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectMemberResponse) SetHeaders(v map[string]*string) *UpdateProjectMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectMemberResponse) SetBody(v *UpdateProjectMemberResponseBody) *UpdateProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateResourceMemberRequest struct {
 	// 角色部署组 deployGroup   user  成员，使用权限   admin 管理员，使用编辑权限   owner 拥有者，所有权限 流水线 pipeline   owner 拥有者，所有权限   admin 查看、运行、编辑权限   member  运行权限   viewer 查看权限
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
@@ -7654,6 +9302,251 @@ func (s *UpdateVariableGroupResponse) SetHeaders(v map[string]*string) *UpdateVa
 }
 
 func (s *UpdateVariableGroupResponse) SetBody(v *UpdateVariableGroupResponseBody) *UpdateVariableGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWorkItemRequest struct {
+	// 工作项id
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 更新的字段名
+	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// 更新后的值
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s UpdateWorkItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkItemRequest) SetIdentifier(v string) *UpdateWorkItemRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemRequest) SetPropertyKey(v string) *UpdateWorkItemRequest {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *UpdateWorkItemRequest) SetPropertyValue(v string) *UpdateWorkItemRequest {
+	s.PropertyValue = &v
+	return s
+}
+
+type UpdateWorkItemResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工作项信息
+	Workitem *UpdateWorkItemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+}
+
+func (s UpdateWorkItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkItemResponseBody) SetErrorCode(v string) *UpdateWorkItemResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBody) SetErrorMessage(v string) *UpdateWorkItemResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBody) SetRequestId(v string) *UpdateWorkItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBody) SetSuccess(v bool) *UpdateWorkItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBody) SetWorkitem(v *UpdateWorkItemResponseBodyWorkitem) *UpdateWorkItemResponseBody {
+	s.Workitem = v
+	return s
+}
+
+type UpdateWorkItemResponseBodyWorkitem struct {
+	// 负责人
+	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	// 工作项的类型id
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 工作项内容
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作项唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 逻辑状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 父工作项id
+	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 编号
+	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	// 所属项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 所属项目名称
+	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	// 项目类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 状态名称
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态阶段id
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 工作项标题
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 状态更新时间
+	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	// 工作项类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s UpdateWorkItemResponseBodyWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkItemResponseBodyWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetAssignedTo(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetCategoryIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetCreator(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Creator = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetDocument(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Document = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetGmtCreate(v int64) *UpdateWorkItemResponseBodyWorkitem {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetGmtModified(v int64) *UpdateWorkItemResponseBodyWorkitem {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Identifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetLogicalStatus(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetModifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Modifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetParentIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetSerialNumber(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetSpaceIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetSpaceName(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetSpaceType(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetStatus(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetStatusStageIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetSubject(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.Subject = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetUpdateStatusAt(v int64) *UpdateWorkItemResponseBodyWorkitem {
+	s.UpdateStatusAt = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type UpdateWorkItemResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateWorkItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWorkItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkItemResponse) SetHeaders(v map[string]*string) *UpdateWorkItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkItemResponse) SetBody(v *UpdateWorkItemResponseBody) *UpdateWorkItemResponse {
 	s.Body = v
 	return s
 }
@@ -7890,6 +9783,65 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 	return _result, _err
 }
 
+func (client *Client) CreateProject(organizationId *string, request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProjectWithOptions(organizationId *string, request *CreateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomCode)) {
+		body["customCode"] = request.CustomCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIdentifier)) {
+		body["templateIdentifier"] = request.TemplateIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/createProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateResourceMember(organizationId *string, resourceType *string, resourceId *string, request *CreateResourceMemberRequest) (_result *CreateResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7935,6 +9887,69 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResourceMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSprint(organizationId *string, request *CreateSprintRequest) (_result *CreateSprintResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSprintResponse{}
+	_body, _err := client.CreateSprintWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSprintWithOptions(organizationId *string, request *CreateSprintRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSprintResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		body["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StaffIds)) {
+		body["staffIds"] = request.StaffIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["startDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSprint"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSprintResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8261,6 +10276,54 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 	return _result, _err
 }
 
+func (client *Client) DeleteProject(organizationId *string, projectId *string, request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(organizationId, projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectWithOptions(organizationId *string, projectId *string, request *DeleteProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	projectId = openapiutil.GetEncodeParam(projectId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/delete"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string) (_result *DeleteResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8368,6 +10431,62 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 		BodyType:    tea.String("json"),
 	}
 	_result = &FrozenWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCustomFieldOption(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest) (_result *GetCustomFieldOptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCustomFieldOptionResponse{}
+	_body, _err := client.GetCustomFieldOptionWithOptions(organizationId, fieldId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCustomFieldOptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	fieldId = openapiutil.GetEncodeParam(fieldId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemTypeIdentifier)) {
+		query["workitemTypeIdentifier"] = request.WorkitemTypeIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomFieldOption"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/fields/" + tea.StringValue(fieldId) + "/getCustomOption"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomFieldOptionResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8823,6 +10942,130 @@ func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *st
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetVariableGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemActivity(organizationId *string, workitemId *string) (_result *GetWorkItemActivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemActivityResponse{}
+	_body, _err := client.GetWorkItemActivityWithOptions(organizationId, workitemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemActivityWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkItemActivityResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	workitemId = openapiutil.GetEncodeParam(workitemId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkItemActivity"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/getActivity"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkItemActivityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemInfo(organizationId *string, workitemId *string) (_result *GetWorkItemInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemInfoResponse{}
+	_body, _err := client.GetWorkItemInfoWithOptions(organizationId, workitemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemInfoWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkItemInfoResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	workitemId = openapiutil.GetEncodeParam(workitemId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkItemInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkItemInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemWorkFlowInfo(organizationId *string, workitemId *string, request *GetWorkItemWorkFlowInfoRequest) (_result *GetWorkItemWorkFlowInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemWorkFlowInfoResponse{}
+	_body, _err := client.GetWorkItemWorkFlowInfoWithOptions(organizationId, workitemId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetWorkItemWorkFlowInfoWithOptions(organizationId *string, workitemId *string, request *GetWorkItemWorkFlowInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkItemWorkFlowInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	workitemId = openapiutil.GetEncodeParam(workitemId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationId)) {
+		query["configurationId"] = request.ConfigurationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWorkItemWorkFlowInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/getWorkflowInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWorkItemWorkFlowInfoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10422,6 +12665,70 @@ func (client *Client) UpdatePipelineBaseInfoWithOptions(organizationId *string, 
 	return _result, _err
 }
 
+func (client *Client) UpdateProjectMember(organizationId *string, projectId *string, request *UpdateProjectMemberRequest) (_result *UpdateProjectMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProjectMemberResponse{}
+	_body, _err := client.UpdateProjectMemberWithOptions(organizationId, projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProjectMemberWithOptions(organizationId *string, projectId *string, request *UpdateProjectMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	projectId = openapiutil.GetEncodeParam(projectId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleIdentifier)) {
+		body["roleIdentifier"] = request.RoleIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetIdentifier)) {
+		body["targetIdentifier"] = request.TargetIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["targetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdentifier)) {
+		body["userIdentifier"] = request.UserIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["userType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProjectMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/updateMember"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateResourceMember(organizationId *string, resourceType *string, resourceId *string, accountId *string, request *UpdateResourceMemberRequest) (_result *UpdateResourceMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10520,6 +12827,61 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateVariableGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkItem(organizationId *string, request *UpdateWorkItemRequest) (_result *UpdateWorkItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkItemResponse{}
+	_body, _err := client.UpdateWorkItemWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkItemWithOptions(organizationId *string, request *UpdateWorkItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWorkItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		body["identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyKey)) {
+		body["propertyKey"] = request.PropertyKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyValue)) {
+		body["propertyValue"] = request.PropertyValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkItem"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkItemResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
