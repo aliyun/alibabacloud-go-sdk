@@ -3990,16 +3990,22 @@ type GetLiveRoomResponseBodyResult struct {
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 原画HLS播放地址。
 	HlsUrl *string `json:"HlsUrl,omitempty" xml:"HlsUrl,omitempty"`
+	// https协议的原画HLS播放地址。
+	HlsUrlHttps *string `json:"HlsUrlHttps,omitempty" xml:"HlsUrlHttps,omitempty"`
 	// 直播ID。
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	// 直播拉流地址。
 	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
+	// https协议的直播拉流地址。
+	LiveUrlHttps *string `json:"LiveUrlHttps,omitempty" xml:"LiveUrlHttps,omitempty"`
 	// 公告。
 	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// 在线用户数。
 	OnlineCount *int64 `json:"OnlineCount,omitempty" xml:"OnlineCount,omitempty"`
 	// 直播回放地址。
 	PlaybackUrl *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	// https协议的直播回放地址
+	PlaybackUrlHttps *string `json:"PlaybackUrlHttps,omitempty" xml:"PlaybackUrlHttps,omitempty"`
 	// 活跃插件列表。
 	PluginInstanceInfoList []*GetLiveRoomResponseBodyResultPluginInstanceInfoList `json:"PluginInstanceInfoList,omitempty" xml:"PluginInstanceInfoList,omitempty" type:"Repeated"`
 	// 直播推流地址。
@@ -4008,6 +4014,8 @@ type GetLiveRoomResponseBodyResult struct {
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
 	// 房间ID。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// rtmp协议的播放地址
+	RtmpUrl *string `json:"RtmpUrl,omitempty" xml:"RtmpUrl,omitempty"`
 	// 直播开始时间，单位：毫秒。
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 直播状态，0-在播 1-下播。
@@ -4076,6 +4084,11 @@ func (s *GetLiveRoomResponseBodyResult) SetHlsUrl(v string) *GetLiveRoomResponse
 	return s
 }
 
+func (s *GetLiveRoomResponseBodyResult) SetHlsUrlHttps(v string) *GetLiveRoomResponseBodyResult {
+	s.HlsUrlHttps = &v
+	return s
+}
+
 func (s *GetLiveRoomResponseBodyResult) SetLiveId(v string) *GetLiveRoomResponseBodyResult {
 	s.LiveId = &v
 	return s
@@ -4083,6 +4096,11 @@ func (s *GetLiveRoomResponseBodyResult) SetLiveId(v string) *GetLiveRoomResponse
 
 func (s *GetLiveRoomResponseBodyResult) SetLiveUrl(v string) *GetLiveRoomResponseBodyResult {
 	s.LiveUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetLiveUrlHttps(v string) *GetLiveRoomResponseBodyResult {
+	s.LiveUrlHttps = &v
 	return s
 }
 
@@ -4098,6 +4116,11 @@ func (s *GetLiveRoomResponseBodyResult) SetOnlineCount(v int64) *GetLiveRoomResp
 
 func (s *GetLiveRoomResponseBodyResult) SetPlaybackUrl(v string) *GetLiveRoomResponseBodyResult {
 	s.PlaybackUrl = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetPlaybackUrlHttps(v string) *GetLiveRoomResponseBodyResult {
+	s.PlaybackUrlHttps = &v
 	return s
 }
 
@@ -4118,6 +4141,11 @@ func (s *GetLiveRoomResponseBodyResult) SetPv(v int64) *GetLiveRoomResponseBodyR
 
 func (s *GetLiveRoomResponseBodyResult) SetRoomId(v string) *GetLiveRoomResponseBodyResult {
 	s.RoomId = &v
+	return s
+}
+
+func (s *GetLiveRoomResponseBodyResult) SetRtmpUrl(v string) *GetLiveRoomResponseBodyResult {
+	s.RtmpUrl = &v
 	return s
 }
 
