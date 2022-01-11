@@ -3767,6 +3767,99 @@ func (s *DeleteTrafficMarkingPolicyResponse) SetBody(v *DeleteTrafficMarkingPoli
 	return s
 }
 
+type DeleteTransitRouterRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s DeleteTransitRouterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterRequest) SetClientToken(v string) *DeleteTransitRouterRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetDryRun(v bool) *DeleteTransitRouterRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetOwnerAccount(v string) *DeleteTransitRouterRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetOwnerId(v int64) *DeleteTransitRouterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetResourceOwnerAccount(v string) *DeleteTransitRouterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetResourceOwnerId(v int64) *DeleteTransitRouterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterRequest) SetTransitRouterId(v string) *DeleteTransitRouterRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+type DeleteTransitRouterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTransitRouterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterResponseBody) SetRequestId(v string) *DeleteTransitRouterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTransitRouterResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTransitRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTransitRouterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterResponse) SetBody(v *DeleteTransitRouterResponseBody) *DeleteTransitRouterResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTransitRouterPeerAttachmentRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -11846,8 +11939,9 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings struct {
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings) String() string {
@@ -11856,6 +11950,11 @@ func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneM
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings) SetNetworkInterfaceId(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings {
+	s.NetworkInterfaceId = &v
+	return s
 }
 
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings) SetVSwitchId(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings {
@@ -15248,14 +15347,38 @@ func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["FlowLogId"] = request.FlowLogId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15296,14 +15419,38 @@ func (client *Client) AddTraficMatchRuleToTrafficMarkingPolicyWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
-	query["TrafficMatchRules"] = request.TrafficMatchRules
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRules)) {
+		query["TrafficMatchRules"] = request.TrafficMatchRules
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15344,12 +15491,30 @@ func (client *Client) AssociateCenBandwidthPackageWithOptions(request *Associate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15390,14 +15555,38 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTableWithOptions(
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15438,15 +15627,42 @@ func (client *Client) AttachCenChildInstanceWithOptions(request *AttachCenChildI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceOwnerId"] = request.ChildInstanceOwnerId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceOwnerId)) {
+		query["ChildInstanceOwnerId"] = request.ChildInstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15487,11 +15703,26 @@ func (client *Client) CheckTransitRouterServiceWithOptions(request *CheckTransit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15532,14 +15763,38 @@ func (client *Client) CreateCenWithOptions(request *CreateCenRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProtectionLevel"] = request.ProtectionLevel
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionLevel)) {
+		query["ProtectionLevel"] = request.ProtectionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15580,22 +15835,70 @@ func (client *Client) CreateCenBandwidthPackageWithOptions(request *CreateCenBan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPay"] = request.AutoPay
-	query["AutoRenew"] = request.AutoRenew
-	query["AutoRenewDuration"] = request.AutoRenewDuration
-	query["Bandwidth"] = request.Bandwidth
-	query["BandwidthPackageChargeType"] = request.BandwidthPackageChargeType
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["GeographicRegionAId"] = request.GeographicRegionAId
-	query["GeographicRegionBId"] = request.GeographicRegionBId
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Period"] = request.Period
-	query["PricingCycle"] = request.PricingCycle
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewDuration)) {
+		query["AutoRenewDuration"] = request.AutoRenewDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BandwidthPackageChargeType)) {
+		query["BandwidthPackageChargeType"] = request.BandwidthPackageChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeographicRegionAId)) {
+		query["GeographicRegionAId"] = request.GeographicRegionAId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeographicRegionBId)) {
+		query["GeographicRegionBId"] = request.GeographicRegionBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15636,16 +15939,46 @@ func (client *Client) CreateCenChildInstanceRouteEntryToAttachmentWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteTableId"] = request.RouteTableId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15686,17 +16019,50 @@ func (client *Client) CreateCenChildInstanceRouteEntryToCenWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceAliUid"] = request.ChildInstanceAliUid
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteTableId"] = request.RouteTableId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceAliUid)) {
+		query["ChildInstanceAliUid"] = request.ChildInstanceAliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15737,17 +16103,50 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicyWithOptions(request *C
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
-	query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
-	query["TrafficQosQueues"] = request.TrafficQosQueues
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyDescription)) {
+		query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyName)) {
+		query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosQueues)) {
+		query["TrafficQosQueues"] = request.TrafficQosQueues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15788,37 +16187,130 @@ func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsPathMatchMode"] = request.AsPathMatchMode
-	query["CenId"] = request.CenId
-	query["CenRegionId"] = request.CenRegionId
-	query["CidrMatchMode"] = request.CidrMatchMode
-	query["CommunityMatchMode"] = request.CommunityMatchMode
-	query["CommunityOperateMode"] = request.CommunityOperateMode
-	query["Description"] = request.Description
-	query["DestinationChildInstanceTypes"] = request.DestinationChildInstanceTypes
-	query["DestinationCidrBlocks"] = request.DestinationCidrBlocks
-	query["DestinationInstanceIds"] = request.DestinationInstanceIds
-	query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
-	query["DestinationRouteTableIds"] = request.DestinationRouteTableIds
-	query["MapResult"] = request.MapResult
-	query["MatchAsns"] = request.MatchAsns
-	query["MatchCommunitySet"] = request.MatchCommunitySet
-	query["NextPriority"] = request.NextPriority
-	query["OperateCommunitySet"] = request.OperateCommunitySet
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Preference"] = request.Preference
-	query["PrependAsPath"] = request.PrependAsPath
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteTypes"] = request.RouteTypes
-	query["SourceChildInstanceTypes"] = request.SourceChildInstanceTypes
-	query["SourceInstanceIds"] = request.SourceInstanceIds
-	query["SourceInstanceIdsReverseMatch"] = request.SourceInstanceIdsReverseMatch
-	query["SourceRegionIds"] = request.SourceRegionIds
-	query["SourceRouteTableIds"] = request.SourceRouteTableIds
-	query["TransmitDirection"] = request.TransmitDirection
+	if !tea.BoolValue(util.IsUnset(request.AsPathMatchMode)) {
+		query["AsPathMatchMode"] = request.AsPathMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenRegionId)) {
+		query["CenRegionId"] = request.CenRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrMatchMode)) {
+		query["CidrMatchMode"] = request.CidrMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunityMatchMode)) {
+		query["CommunityMatchMode"] = request.CommunityMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunityOperateMode)) {
+		query["CommunityOperateMode"] = request.CommunityOperateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationChildInstanceTypes)) {
+		query["DestinationChildInstanceTypes"] = request.DestinationChildInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlocks)) {
+		query["DestinationCidrBlocks"] = request.DestinationCidrBlocks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIds)) {
+		query["DestinationInstanceIds"] = request.DestinationInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIdsReverseMatch)) {
+		query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRouteTableIds)) {
+		query["DestinationRouteTableIds"] = request.DestinationRouteTableIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MapResult)) {
+		query["MapResult"] = request.MapResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchAsns)) {
+		query["MatchAsns"] = request.MatchAsns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchCommunitySet)) {
+		query["MatchCommunitySet"] = request.MatchCommunitySet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPriority)) {
+		query["NextPriority"] = request.NextPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateCommunitySet)) {
+		query["OperateCommunitySet"] = request.OperateCommunitySet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Preference)) {
+		query["Preference"] = request.Preference
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrependAsPath)) {
+		query["PrependAsPath"] = request.PrependAsPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTypes)) {
+		query["RouteTypes"] = request.RouteTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceChildInstanceTypes)) {
+		query["SourceChildInstanceTypes"] = request.SourceChildInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceIds)) {
+		query["SourceInstanceIds"] = request.SourceInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceIdsReverseMatch)) {
+		query["SourceInstanceIdsReverseMatch"] = request.SourceInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegionIds)) {
+		query["SourceRegionIds"] = request.SourceRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRouteTableIds)) {
+		query["SourceRouteTableIds"] = request.SourceRouteTableIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransmitDirection)) {
+		query["TransmitDirection"] = request.TransmitDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15859,17 +16351,50 @@ func (client *Client) CreateFlowlogWithOptions(request *CreateFlowlogRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["FlowLogName"] = request.FlowLogName
-	query["LogStoreName"] = request.LogStoreName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectName"] = request.ProjectName
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		query["FlowLogName"] = request.FlowLogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15910,18 +16435,54 @@ func (client *Client) CreateTrafficMarkingPolicyWithOptions(request *CreateTraff
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["MarkingDscp"] = request.MarkingDscp
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
-	query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
-	query["TrafficMatchRules"] = request.TrafficMatchRules
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MarkingDscp)) {
+		query["MarkingDscp"] = request.MarkingDscp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyDescription)) {
+		query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyName)) {
+		query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMatchRules)) {
+		query["TrafficMatchRules"] = request.TrafficMatchRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15962,16 +16523,46 @@ func (client *Client) CreateTransitRouterWithOptions(request *CreateTransitRoute
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterDescription"] = request.TransitRouterDescription
-	query["TransitRouterName"] = request.TransitRouterName
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterDescription)) {
+		query["TransitRouterDescription"] = request.TransitRouterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterName)) {
+		query["TransitRouterName"] = request.TransitRouterName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16012,23 +16603,74 @@ func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *Crea
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
-	query["Bandwidth"] = request.Bandwidth
-	query["BandwidthType"] = request.BandwidthType
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PeerTransitRouterId"] = request.PeerTransitRouterId
-	query["PeerTransitRouterRegionId"] = request.PeerTransitRouterRegionId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BandwidthType)) {
+		query["BandwidthType"] = request.BandwidthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerTransitRouterId)) {
+		query["PeerTransitRouterId"] = request.PeerTransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerTransitRouterRegionId)) {
+		query["PeerTransitRouterRegionId"] = request.PeerTransitRouterRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16069,18 +16711,54 @@ func (client *Client) CreateTransitRouterRouteEntryWithOptions(request *CreateTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteEntryDescription"] = request.TransitRouterRouteEntryDescription
-	query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
-	query["TransitRouterRouteEntryName"] = request.TransitRouterRouteEntryName
-	query["TransitRouterRouteEntryNextHopId"] = request.TransitRouterRouteEntryNextHopId
-	query["TransitRouterRouteEntryNextHopType"] = request.TransitRouterRouteEntryNextHopType
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryDescription)) {
+		query["TransitRouterRouteEntryDescription"] = request.TransitRouterRouteEntryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryDestinationCidrBlock)) {
+		query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryName)) {
+		query["TransitRouterRouteEntryName"] = request.TransitRouterRouteEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryNextHopId)) {
+		query["TransitRouterRouteEntryNextHopId"] = request.TransitRouterRouteEntryNextHopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryNextHopType)) {
+		query["TransitRouterRouteEntryNextHopType"] = request.TransitRouterRouteEntryNextHopType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16121,15 +16799,42 @@ func (client *Client) CreateTransitRouterRouteTableWithOptions(request *CreateTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterId"] = request.TransitRouterId
-	query["TransitRouterRouteTableDescription"] = request.TransitRouterRouteTableDescription
-	query["TransitRouterRouteTableName"] = request.TransitRouterRouteTableName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableDescription)) {
+		query["TransitRouterRouteTableDescription"] = request.TransitRouterRouteTableDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableName)) {
+		query["TransitRouterRouteTableName"] = request.TransitRouterRouteTableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16170,20 +16875,62 @@ func (client *Client) CreateTransitRouterVbrAttachmentWithOptions(request *Creat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
-	query["TransitRouterId"] = request.TransitRouterId
-	query["VbrId"] = request.VbrId
-	query["VbrOwnerId"] = request.VbrOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrId)) {
+		query["VbrId"] = request.VbrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrOwnerId)) {
+		query["VbrOwnerId"] = request.VbrOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16224,21 +16971,66 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *Creat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChargeType"] = request.ChargeType
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
-	query["TransitRouterId"] = request.TransitRouterId
-	query["VpcId"] = request.VpcId
-	query["VpcOwnerId"] = request.VpcOwnerId
-	query["ZoneMappings"] = request.ZoneMappings
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcOwnerId)) {
+		query["VpcOwnerId"] = request.VpcOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16279,14 +17071,38 @@ func (client *Client) DeactiveFlowLogWithOptions(request *DeactiveFlowLogRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["FlowLogId"] = request.FlowLogId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16327,11 +17143,26 @@ func (client *Client) DeleteCenWithOptions(request *DeleteCenRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16372,11 +17203,26 @@ func (client *Client) DeleteCenBandwidthPackageWithOptions(request *DeleteCenBan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16417,16 +17263,46 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToAttachmentWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteTableId"] = request.RouteTableId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16467,17 +17343,50 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToCenWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceAliUid"] = request.ChildInstanceAliUid
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteTableId"] = request.RouteTableId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceAliUid)) {
+		query["ChildInstanceAliUid"] = request.ChildInstanceAliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16518,13 +17427,34 @@ func (client *Client) DeleteCenInterRegionTrafficQosPolicyWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyId)) {
+		query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16565,13 +17495,34 @@ func (client *Client) DeleteCenInterRegionTrafficQosQueueWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["QosQueueId"] = request.QosQueueId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueId)) {
+		query["QosQueueId"] = request.QosQueueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16612,13 +17563,34 @@ func (client *Client) DeleteCenRouteMapWithOptions(request *DeleteCenRouteMapReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenRegionId"] = request.CenRegionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteMapId"] = request.RouteMapId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenRegionId)) {
+		query["CenRegionId"] = request.CenRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteMapId)) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16659,14 +17631,38 @@ func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["FlowLogId"] = request.FlowLogId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16707,15 +17703,42 @@ func (client *Client) DeleteRouteServiceInCenWithOptions(request *DeleteRouteSer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionId"] = request.AccessRegionId
-	query["CenId"] = request.CenId
-	query["Host"] = request.Host
-	query["HostRegionId"] = request.HostRegionId
-	query["HostVpcId"] = request.HostVpcId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionId)) {
+		query["AccessRegionId"] = request.AccessRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostRegionId)) {
+		query["HostRegionId"] = request.HostRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostVpcId)) {
+		query["HostVpcId"] = request.HostVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16756,13 +17779,34 @@ func (client *Client) DeleteTrafficMarkingPolicyWithOptions(request *DeleteTraff
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16797,19 +17841,108 @@ func (client *Client) DeleteTrafficMarkingPolicy(request *DeleteTrafficMarkingPo
 	return _result, _err
 }
 
+func (client *Client) DeleteTransitRouterWithOptions(request *DeleteTransitRouterRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTransitRouter"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTransitRouterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouter(request *DeleteTransitRouterRequest) (_result *DeleteTransitRouterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTransitRouterResponse{}
+	_body, _err := client.DeleteTransitRouterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTransitRouterPeerAttachmentWithOptions(request *DeleteTransitRouterPeerAttachmentRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterPeerAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16850,17 +17983,50 @@ func (client *Client) DeleteTransitRouterRouteEntryWithOptions(request *DeleteTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
-	query["TransitRouterRouteEntryId"] = request.TransitRouterRouteEntryId
-	query["TransitRouterRouteEntryNextHopId"] = request.TransitRouterRouteEntryNextHopId
-	query["TransitRouterRouteEntryNextHopType"] = request.TransitRouterRouteEntryNextHopType
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryDestinationCidrBlock)) {
+		query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryId)) {
+		query["TransitRouterRouteEntryId"] = request.TransitRouterRouteEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryNextHopId)) {
+		query["TransitRouterRouteEntryNextHopId"] = request.TransitRouterRouteEntryNextHopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryNextHopType)) {
+		query["TransitRouterRouteEntryNextHopType"] = request.TransitRouterRouteEntryNextHopType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16901,13 +18067,34 @@ func (client *Client) DeleteTransitRouterRouteTableWithOptions(request *DeleteTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16948,13 +18135,34 @@ func (client *Client) DeleteTransitRouterVbrAttachmentWithOptions(request *Delet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16995,13 +18203,34 @@ func (client *Client) DeleteTransitRouterVpcAttachmentWithOptions(request *Delet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17042,14 +18271,38 @@ func (client *Client) DescribeCenAttachedChildInstanceAttributeWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17090,15 +18343,42 @@ func (client *Client) DescribeCenAttachedChildInstancesWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17139,15 +18419,42 @@ func (client *Client) DescribeCenBandwidthPackagesWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Filter"] = request.Filter
-	query["IncludeReservationData"] = request.IncludeReservationData
-	query["IsOrKey"] = request.IsOrKey
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeReservationData)) {
+		query["IncludeReservationData"] = request.IncludeReservationData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOrKey)) {
+		query["IsOrKey"] = request.IsOrKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17188,17 +18495,50 @@ func (client *Client) DescribeCenChildInstanceRouteEntriesWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17239,15 +18579,42 @@ func (client *Client) DescribeCenGeographicSpanRemainingBandwidthWithOptions(req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["GeographicRegionAId"] = request.GeographicRegionAId
-	query["GeographicRegionBId"] = request.GeographicRegionBId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeographicRegionAId)) {
+		query["GeographicRegionAId"] = request.GeographicRegionAId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GeographicRegionBId)) {
+		query["GeographicRegionBId"] = request.GeographicRegionBId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17288,13 +18655,34 @@ func (client *Client) DescribeCenGeographicSpansWithOptions(request *DescribeCen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GeographicSpanId"] = request.GeographicSpanId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.GeographicSpanId)) {
+		query["GeographicSpanId"] = request.GeographicSpanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17335,13 +18723,34 @@ func (client *Client) DescribeCenInterRegionBandwidthLimitsWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17382,13 +18791,34 @@ func (client *Client) DescribeCenPrivateZoneRoutesWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionId"] = request.AccessRegionId
-	query["CenId"] = request.CenId
-	query["HostRegionId"] = request.HostRegionId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionId)) {
+		query["AccessRegionId"] = request.AccessRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostRegionId)) {
+		query["HostRegionId"] = request.HostRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17429,15 +18859,42 @@ func (client *Client) DescribeCenRegionDomainRouteEntriesWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenRegionId"] = request.CenRegionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenRegionId)) {
+		query["CenRegionId"] = request.CenRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17478,16 +18935,46 @@ func (client *Client) DescribeCenRouteMapsWithOptions(request *DescribeCenRouteM
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenRegionId"] = request.CenRegionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteMapId"] = request.RouteMapId
-	query["TransmitDirection"] = request.TransmitDirection
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenRegionId)) {
+		query["CenRegionId"] = request.CenRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteMapId)) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransmitDirection)) {
+		query["TransmitDirection"] = request.TransmitDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17528,16 +19015,46 @@ func (client *Client) DescribeCenVbrHealthCheckWithOptions(request *DescribeCenV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VbrInstanceId"] = request.VbrInstanceId
-	query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
-	query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceId)) {
+		query["VbrInstanceId"] = request.VbrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceOwnerId)) {
+		query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceRegionId)) {
+		query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17578,14 +19095,38 @@ func (client *Client) DescribeCensWithOptions(request *DescribeCensRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Filter"] = request.Filter
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17626,11 +19167,26 @@ func (client *Client) DescribeChildInstanceRegionsWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProductType"] = request.ProductType
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17671,21 +19227,66 @@ func (client *Client) DescribeFlowlogsWithOptions(request *DescribeFlowlogsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["FlowLogId"] = request.FlowLogId
-	query["FlowLogName"] = request.FlowLogName
-	query["LogStoreName"] = request.LogStoreName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectName"] = request.ProjectName
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		query["FlowLogName"] = request.FlowLogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17726,13 +19327,34 @@ func (client *Client) DescribeGeographicRegionMembershipWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GeographicRegionId"] = request.GeographicRegionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.GeographicRegionId)) {
+		query["GeographicRegionId"] = request.GeographicRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17773,13 +19395,34 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProductType"] = request.ProductType
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17820,16 +19463,46 @@ func (client *Client) DescribePublishedRouteEntriesWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRouteTableId)) {
+		query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17870,17 +19543,50 @@ func (client *Client) DescribeRouteConflictWithOptions(request *DescribeRouteCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRouteTableId)) {
+		query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17921,17 +19627,50 @@ func (client *Client) DescribeRouteServicesInCenWithOptions(request *DescribeRou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionId"] = request.AccessRegionId
-	query["CenId"] = request.CenId
-	query["Host"] = request.Host
-	query["HostRegionId"] = request.HostRegionId
-	query["HostVpcId"] = request.HostVpcId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionId)) {
+		query["AccessRegionId"] = request.AccessRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostRegionId)) {
+		query["HostRegionId"] = request.HostRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostVpcId)) {
+		query["HostVpcId"] = request.HostVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17972,16 +19711,46 @@ func (client *Client) DetachCenChildInstanceWithOptions(request *DetachCenChildI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenOwnerId"] = request.CenOwnerId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceOwnerId"] = request.ChildInstanceOwnerId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenOwnerId)) {
+		query["CenOwnerId"] = request.CenOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceOwnerId)) {
+		query["ChildInstanceOwnerId"] = request.ChildInstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18022,14 +19791,38 @@ func (client *Client) DisableCenVbrHealthCheckWithOptions(request *DisableCenVbr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VbrInstanceId"] = request.VbrInstanceId
-	query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
-	query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceId)) {
+		query["VbrInstanceId"] = request.VbrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceOwnerId)) {
+		query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceRegionId)) {
+		query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18070,14 +19863,38 @@ func (client *Client) DisableTransitRouterRouteTablePropagationWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18118,14 +19935,38 @@ func (client *Client) DissociateTransitRouterAttachmentFromRouteTableWithOptions
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18166,19 +20007,58 @@ func (client *Client) EnableCenVbrHealthCheckWithOptions(request *EnableCenVbrHe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckOnly"] = request.HealthCheckOnly
-	query["HealthCheckSourceIp"] = request.HealthCheckSourceIp
-	query["HealthCheckTargetIp"] = request.HealthCheckTargetIp
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VbrInstanceId"] = request.VbrInstanceId
-	query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
-	query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckOnly)) {
+		query["HealthCheckOnly"] = request.HealthCheckOnly
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSourceIp)) {
+		query["HealthCheckSourceIp"] = request.HealthCheckSourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTargetIp)) {
+		query["HealthCheckTargetIp"] = request.HealthCheckTargetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceId)) {
+		query["VbrInstanceId"] = request.VbrInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceOwnerId)) {
+		query["VbrInstanceOwnerId"] = request.VbrInstanceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrInstanceRegionId)) {
+		query["VbrInstanceRegionId"] = request.VbrInstanceRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18219,14 +20099,38 @@ func (client *Client) EnableTransitRouterRouteTablePropagationWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18267,16 +20171,46 @@ func (client *Client) GrantInstanceToTransitRouterWithOptions(request *GrantInst
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenOwnerId"] = request.CenOwnerId
-	query["InstanceId"] = request.InstanceId
-	query["InstanceType"] = request.InstanceType
-	query["OrderType"] = request.OrderType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenOwnerId)) {
+		query["CenOwnerId"] = request.CenOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18317,17 +20251,50 @@ func (client *Client) ListCenInterRegionTrafficQosPoliciesWithOptions(request *L
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
-	query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
-	query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyDescription)) {
+		query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyId)) {
+		query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyName)) {
+		query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18368,16 +20335,46 @@ func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VpcId"] = request.VpcId
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18418,15 +20415,42 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageSize"] = request.PageSize
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18467,16 +20491,46 @@ func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTraffic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
-	query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
-	query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyDescription)) {
+		query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyName)) {
+		query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18517,11 +20571,26 @@ func (client *Client) ListTransitRouterAvailableResourceWithOptions(request *Lis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18562,16 +20631,46 @@ func (client *Client) ListTransitRouterPeerAttachmentsWithOptions(request *ListT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18612,17 +20711,50 @@ func (client *Client) ListTransitRouterRouteEntriesWithOptions(request *ListTran
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
-	query["TransitRouterRouteEntryIds"] = request.TransitRouterRouteEntryIds
-	query["TransitRouterRouteEntryNames"] = request.TransitRouterRouteEntryNames
-	query["TransitRouterRouteEntryStatus"] = request.TransitRouterRouteEntryStatus
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryDestinationCidrBlock)) {
+		query["TransitRouterRouteEntryDestinationCidrBlock"] = request.TransitRouterRouteEntryDestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryIds)) {
+		query["TransitRouterRouteEntryIds"] = request.TransitRouterRouteEntryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryNames)) {
+		query["TransitRouterRouteEntryNames"] = request.TransitRouterRouteEntryNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryStatus)) {
+		query["TransitRouterRouteEntryStatus"] = request.TransitRouterRouteEntryStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18663,14 +20795,38 @@ func (client *Client) ListTransitRouterRouteTableAssociationsWithOptions(request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18711,14 +20867,38 @@ func (client *Client) ListTransitRouterRouteTablePropagationsWithOptions(request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18759,17 +20939,50 @@ func (client *Client) ListTransitRouterRouteTablesWithOptions(request *ListTrans
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterId"] = request.TransitRouterId
-	query["TransitRouterRouteTableIds"] = request.TransitRouterRouteTableIds
-	query["TransitRouterRouteTableNames"] = request.TransitRouterRouteTableNames
-	query["TransitRouterRouteTableStatus"] = request.TransitRouterRouteTableStatus
-	query["TransitRouterRouteTableType"] = request.TransitRouterRouteTableType
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableIds)) {
+		query["TransitRouterRouteTableIds"] = request.TransitRouterRouteTableIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableNames)) {
+		query["TransitRouterRouteTableNames"] = request.TransitRouterRouteTableNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableStatus)) {
+		query["TransitRouterRouteTableStatus"] = request.TransitRouterRouteTableStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableType)) {
+		query["TransitRouterRouteTableType"] = request.TransitRouterRouteTableType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18810,16 +21023,46 @@ func (client *Client) ListTransitRouterVbrAttachmentsWithOptions(request *ListTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18860,16 +21103,46 @@ func (client *Client) ListTransitRouterVpcAttachmentsWithOptions(request *ListTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18910,15 +21183,42 @@ func (client *Client) ListTransitRoutersWithOptions(request *ListTransitRoutersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterId"] = request.TransitRouterId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18959,14 +21259,38 @@ func (client *Client) ModifyCenAttributeWithOptions(request *ModifyCenAttributeR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProtectionLevel"] = request.ProtectionLevel
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionLevel)) {
+		query["ProtectionLevel"] = request.ProtectionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19007,13 +21331,34 @@ func (client *Client) ModifyCenBandwidthPackageAttributeWithOptions(request *Mod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19054,12 +21399,30 @@ func (client *Client) ModifyCenBandwidthPackageSpecWithOptions(request *ModifyCe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19100,37 +21463,130 @@ func (client *Client) ModifyCenRouteMapWithOptions(request *ModifyCenRouteMapReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsPathMatchMode"] = request.AsPathMatchMode
-	query["CenId"] = request.CenId
-	query["CenRegionId"] = request.CenRegionId
-	query["CidrMatchMode"] = request.CidrMatchMode
-	query["CommunityMatchMode"] = request.CommunityMatchMode
-	query["CommunityOperateMode"] = request.CommunityOperateMode
-	query["Description"] = request.Description
-	query["DestinationChildInstanceTypes"] = request.DestinationChildInstanceTypes
-	query["DestinationCidrBlocks"] = request.DestinationCidrBlocks
-	query["DestinationInstanceIds"] = request.DestinationInstanceIds
-	query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
-	query["DestinationRouteTableIds"] = request.DestinationRouteTableIds
-	query["MapResult"] = request.MapResult
-	query["MatchAsns"] = request.MatchAsns
-	query["MatchCommunitySet"] = request.MatchCommunitySet
-	query["NextPriority"] = request.NextPriority
-	query["OperateCommunitySet"] = request.OperateCommunitySet
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Preference"] = request.Preference
-	query["PrependAsPath"] = request.PrependAsPath
-	query["Priority"] = request.Priority
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["RouteMapId"] = request.RouteMapId
-	query["RouteTypes"] = request.RouteTypes
-	query["SourceChildInstanceTypes"] = request.SourceChildInstanceTypes
-	query["SourceInstanceIds"] = request.SourceInstanceIds
-	query["SourceInstanceIdsReverseMatch"] = request.SourceInstanceIdsReverseMatch
-	query["SourceRegionIds"] = request.SourceRegionIds
-	query["SourceRouteTableIds"] = request.SourceRouteTableIds
+	if !tea.BoolValue(util.IsUnset(request.AsPathMatchMode)) {
+		query["AsPathMatchMode"] = request.AsPathMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenRegionId)) {
+		query["CenRegionId"] = request.CenRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CidrMatchMode)) {
+		query["CidrMatchMode"] = request.CidrMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunityMatchMode)) {
+		query["CommunityMatchMode"] = request.CommunityMatchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunityOperateMode)) {
+		query["CommunityOperateMode"] = request.CommunityOperateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationChildInstanceTypes)) {
+		query["DestinationChildInstanceTypes"] = request.DestinationChildInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlocks)) {
+		query["DestinationCidrBlocks"] = request.DestinationCidrBlocks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIds)) {
+		query["DestinationInstanceIds"] = request.DestinationInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationInstanceIdsReverseMatch)) {
+		query["DestinationInstanceIdsReverseMatch"] = request.DestinationInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRouteTableIds)) {
+		query["DestinationRouteTableIds"] = request.DestinationRouteTableIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MapResult)) {
+		query["MapResult"] = request.MapResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchAsns)) {
+		query["MatchAsns"] = request.MatchAsns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchCommunitySet)) {
+		query["MatchCommunitySet"] = request.MatchCommunitySet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPriority)) {
+		query["NextPriority"] = request.NextPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateCommunitySet)) {
+		query["OperateCommunitySet"] = request.OperateCommunitySet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Preference)) {
+		query["Preference"] = request.Preference
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrependAsPath)) {
+		query["PrependAsPath"] = request.PrependAsPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteMapId)) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTypes)) {
+		query["RouteTypes"] = request.RouteTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceChildInstanceTypes)) {
+		query["SourceChildInstanceTypes"] = request.SourceChildInstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceIds)) {
+		query["SourceInstanceIds"] = request.SourceInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceIdsReverseMatch)) {
+		query["SourceInstanceIdsReverseMatch"] = request.SourceInstanceIdsReverseMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegionIds)) {
+		query["SourceRegionIds"] = request.SourceRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRouteTableIds)) {
+		query["SourceRouteTableIds"] = request.SourceRouteTableIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19171,16 +21627,46 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["FlowLogId"] = request.FlowLogId
-	query["FlowLogName"] = request.FlowLogName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogId)) {
+		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowLogName)) {
+		query["FlowLogName"] = request.FlowLogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19221,15 +21707,42 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["NewResourceGroupId"] = request.NewResourceGroupId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19270,11 +21783,26 @@ func (client *Client) OpenTransitRouterServiceWithOptions(request *OpenTransitRo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19315,14 +21843,38 @@ func (client *Client) PublishRouteEntriesWithOptions(request *PublishRouteEntrie
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRouteTableId)) {
+		query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19363,14 +21915,38 @@ func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicyWithOptions(r
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkRuleIds"] = request.TrafficMarkRuleIds
-	query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkRuleIds)) {
+		query["TrafficMarkRuleIds"] = request.TrafficMarkRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19411,14 +21987,38 @@ func (client *Client) ReplaceTransitRouterRouteTableAssociationWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19459,17 +22059,50 @@ func (client *Client) ResolveAndRouteServiceInCenWithOptions(request *ResolveAnd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionIds"] = request.AccessRegionIds
-	query["CenId"] = request.CenId
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Host"] = request.Host
-	query["HostRegionId"] = request.HostRegionId
-	query["HostVpcId"] = request.HostVpcId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionIds)) {
+		query["AccessRegionIds"] = request.AccessRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostRegionId)) {
+		query["HostRegionId"] = request.HostRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostVpcId)) {
+		query["HostVpcId"] = request.HostVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19510,15 +22143,42 @@ func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *Revoke
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["CenOwnerId"] = request.CenOwnerId
-	query["InstanceId"] = request.InstanceId
-	query["InstanceType"] = request.InstanceType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenOwnerId)) {
+		query["CenOwnerId"] = request.CenOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19559,14 +22219,38 @@ func (client *Client) RoutePrivateZoneInCenToVpcWithOptions(request *RoutePrivat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionId"] = request.AccessRegionId
-	query["CenId"] = request.CenId
-	query["HostRegionId"] = request.HostRegionId
-	query["HostVpcId"] = request.HostVpcId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionId)) {
+		query["AccessRegionId"] = request.AccessRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostRegionId)) {
+		query["HostRegionId"] = request.HostRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostVpcId)) {
+		query["HostVpcId"] = request.HostVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19607,14 +22291,38 @@ func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BandwidthLimit"] = request.BandwidthLimit
-	query["CenId"] = request.CenId
-	query["LocalRegionId"] = request.LocalRegionId
-	query["OppositeRegionId"] = request.OppositeRegionId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.BandwidthLimit)) {
+		query["BandwidthLimit"] = request.BandwidthLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalRegionId)) {
+		query["LocalRegionId"] = request.LocalRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OppositeRegionId)) {
+		query["OppositeRegionId"] = request.OppositeRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19655,13 +22363,34 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19702,13 +22431,34 @@ func (client *Client) TempUpgradeCenBandwidthPackageSpecWithOptions(request *Tem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["EndTime"] = request.EndTime
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19749,12 +22499,30 @@ func (client *Client) UnassociateCenBandwidthPackageWithOptions(request *Unassoc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19795,12 +22563,30 @@ func (client *Client) UnroutePrivateZoneInCenToVpcWithOptions(request *UnroutePr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessRegionId"] = request.AccessRegionId
-	query["CenId"] = request.CenId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.AccessRegionId)) {
+		query["AccessRegionId"] = request.AccessRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19841,14 +22627,38 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19889,15 +22699,42 @@ func (client *Client) UpdateCenInterRegionTrafficQosPolicyAttributeWithOptions(r
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
-	query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
-	query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyDescription)) {
+		query["TrafficQosPolicyDescription"] = request.TrafficQosPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyId)) {
+		query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyName)) {
+		query["TrafficQosPolicyName"] = request.TrafficQosPolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19938,17 +22775,50 @@ func (client *Client) UpdateCenInterRegionTrafficQosQueueAttributeWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["Dscps"] = request.Dscps
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["QosQueueDescription"] = request.QosQueueDescription
-	query["QosQueueId"] = request.QosQueueId
-	query["QosQueueName"] = request.QosQueueName
-	query["RemainBandwidthPercent"] = request.RemainBandwidthPercent
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dscps)) {
+		query["Dscps"] = request.Dscps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueDescription)) {
+		query["QosQueueDescription"] = request.QosQueueDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueId)) {
+		query["QosQueueId"] = request.QosQueueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueName)) {
+		query["QosQueueName"] = request.QosQueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemainBandwidthPercent)) {
+		query["RemainBandwidthPercent"] = request.RemainBandwidthPercent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19989,15 +22859,42 @@ func (client *Client) UpdateTrafficMarkingPolicyAttributeWithOptions(request *Up
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
-	query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
-	query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyDescription)) {
+		query["TrafficMarkingPolicyDescription"] = request.TrafficMarkingPolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyName)) {
+		query["TrafficMarkingPolicyName"] = request.TrafficMarkingPolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20038,16 +22935,46 @@ func (client *Client) UpdateTransitRouterWithOptions(request *UpdateTransitRoute
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterDescription"] = request.TransitRouterDescription
-	query["TransitRouterId"] = request.TransitRouterId
-	query["TransitRouterName"] = request.TransitRouterName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterDescription)) {
+		query["TransitRouterDescription"] = request.TransitRouterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterName)) {
+		query["TransitRouterName"] = request.TransitRouterName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20088,19 +23015,58 @@ func (client *Client) UpdateTransitRouterPeerAttachmentAttributeWithOptions(requ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
-	query["Bandwidth"] = request.Bandwidth
-	query["BandwidthType"] = request.BandwidthType
-	query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BandwidthType)) {
+		query["BandwidthType"] = request.BandwidthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CenBandwidthPackageId)) {
+		query["CenBandwidthPackageId"] = request.CenBandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20141,15 +23107,42 @@ func (client *Client) UpdateTransitRouterRouteEntryWithOptions(request *UpdateTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteEntryDescription"] = request.TransitRouterRouteEntryDescription
-	query["TransitRouterRouteEntryId"] = request.TransitRouterRouteEntryId
-	query["TransitRouterRouteEntryName"] = request.TransitRouterRouteEntryName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryDescription)) {
+		query["TransitRouterRouteEntryDescription"] = request.TransitRouterRouteEntryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryId)) {
+		query["TransitRouterRouteEntryId"] = request.TransitRouterRouteEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteEntryName)) {
+		query["TransitRouterRouteEntryName"] = request.TransitRouterRouteEntryName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20190,15 +23183,42 @@ func (client *Client) UpdateTransitRouterRouteTableWithOptions(request *UpdateTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterRouteTableDescription"] = request.TransitRouterRouteTableDescription
-	query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
-	query["TransitRouterRouteTableName"] = request.TransitRouterRouteTableName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableDescription)) {
+		query["TransitRouterRouteTableDescription"] = request.TransitRouterRouteTableDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableName)) {
+		query["TransitRouterRouteTableName"] = request.TransitRouterRouteTableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20239,15 +23259,42 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttributeWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20288,15 +23335,42 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
-	query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
-	query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20337,14 +23411,38 @@ func (client *Client) WithdrawPublishedRouteEntriesWithOptions(request *Withdraw
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CenId"] = request.CenId
-	query["ChildInstanceId"] = request.ChildInstanceId
-	query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
-	query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
-	query["ChildInstanceType"] = request.ChildInstanceType
-	query["DestinationCidrBlock"] = request.DestinationCidrBlock
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceId)) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRegionId)) {
+		query["ChildInstanceRegionId"] = request.ChildInstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceRouteTableId)) {
+		query["ChildInstanceRouteTableId"] = request.ChildInstanceRouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildInstanceType)) {
+		query["ChildInstanceType"] = request.ChildInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
