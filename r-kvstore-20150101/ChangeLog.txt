@@ -1,3 +1,6 @@
+2022-01-11 Version: v1.0.6
+- Update mongodb sdk.
+
 2021-08-21 Version: v1.0.5
 - AMP version.
 
