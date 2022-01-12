@@ -2771,7 +2771,7 @@ type ListConnectionPoolAllIpsResponseBody struct {
 	MaxResults        *int32                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken         *string                                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalIpsCount     *int32                                                   `json:"TotalIpsCount,omitempty" xml:"TotalIpsCount,omitempty"`
 }
 
 func (s ListConnectionPoolAllIpsResponseBody) String() string {
@@ -2802,8 +2802,8 @@ func (s *ListConnectionPoolAllIpsResponseBody) SetRequestId(v string) *ListConne
 	return s
 }
 
-func (s *ListConnectionPoolAllIpsResponseBody) SetTotalCount(v int32) *ListConnectionPoolAllIpsResponseBody {
-	s.TotalCount = &v
+func (s *ListConnectionPoolAllIpsResponseBody) SetTotalIpsCount(v int32) *ListConnectionPoolAllIpsResponseBody {
+	s.TotalIpsCount = &v
 	return s
 }
 
@@ -3586,7 +3586,9 @@ func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetName
 }
 
 type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors struct {
+	APN                          *string `json:"APN,omitempty" xml:"APN,omitempty"`
 	CreateTime                   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ISP                          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	IoTCloudConnectorDescription *string `json:"IoTCloudConnectorDescription,omitempty" xml:"IoTCloudConnectorDescription,omitempty"`
 	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	IoTCloudConnectorName        *string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
@@ -3601,8 +3603,18 @@ func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudCo
 	return s.String()
 }
 
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetAPN(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.APN = &v
+	return s
+}
+
 func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetCreateTime(v int64) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors) SetISP(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors {
+	s.ISP = &v
 	return s
 }
 
@@ -3650,16 +3662,17 @@ func (s *ListIoTCloudConnectorGroupsResponse) SetBody(v *ListIoTCloudConnectorGr
 }
 
 type ListIoTCloudConnectorsRequest struct {
-	APN                     []*string `json:"APN,omitempty" xml:"APN,omitempty" type:"Repeated"`
-	ISP                     []*string `json:"ISP,omitempty" xml:"ISP,omitempty" type:"Repeated"`
-	IoTCloudConnectorIds    []*string `json:"IoTCloudConnectorIds,omitempty" xml:"IoTCloudConnectorIds,omitempty" type:"Repeated"`
-	IoTCloudConnectorName   []*string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty" type:"Repeated"`
-	IoTCloudConnectorStatus []*string `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty" type:"Repeated"`
-	IsInGroup               *bool     `json:"IsInGroup,omitempty" xml:"IsInGroup,omitempty"`
-	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId                   []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
+	APN                      []*string `json:"APN,omitempty" xml:"APN,omitempty" type:"Repeated"`
+	ISP                      []*string `json:"ISP,omitempty" xml:"ISP,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	IoTCloudConnectorIds     []*string `json:"IoTCloudConnectorIds,omitempty" xml:"IoTCloudConnectorIds,omitempty" type:"Repeated"`
+	IoTCloudConnectorName    []*string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty" type:"Repeated"`
+	IoTCloudConnectorStatus  []*string `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty" type:"Repeated"`
+	IsInGroup                *bool     `json:"IsInGroup,omitempty" xml:"IsInGroup,omitempty"`
+	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId                    []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
 
 func (s ListIoTCloudConnectorsRequest) String() string {
@@ -3677,6 +3690,11 @@ func (s *ListIoTCloudConnectorsRequest) SetAPN(v []*string) *ListIoTCloudConnect
 
 func (s *ListIoTCloudConnectorsRequest) SetISP(v []*string) *ListIoTCloudConnectorsRequest {
 	s.ISP = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsRequest) SetIoTCloudConnectorGroupId(v string) *ListIoTCloudConnectorsRequest {
+	s.IoTCloudConnectorGroupId = &v
 	return s
 }
 
@@ -5243,12 +5261,30 @@ func (client *Client) AddCidrToConnectionPoolWithOptions(request *AddCidrToConne
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Cidrs"] = request.Cidrs
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Cidrs)) {
+		query["Cidrs"] = request.Cidrs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5289,11 +5325,26 @@ func (client *Client) AddIoTCloudConnectorToGroupWithOptions(request *AddIoTClou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5334,13 +5385,34 @@ func (client *Client) AssociateIpWithConnectionPoolWithOptions(request *Associat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Ips"] = request.Ips
-	query["IpsFilePath"] = request.IpsFilePath
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ips)) {
+		query["Ips"] = request.Ips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpsFilePath)) {
+		query["IpsFilePath"] = request.IpsFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5381,12 +5453,30 @@ func (client *Client) AssociateVSwitchWithIoTCloudConnectorWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["VSwitchList"] = request.VSwitchList
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchList)) {
+		query["VSwitchList"] = request.VSwitchList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5427,16 +5517,46 @@ func (client *Client) CreateAuthorizationRuleWithOptions(request *CreateAuthoriz
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["ClientToken"] = request.ClientToken
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
-	query["SourceCidrs"] = request.SourceCidrs
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrs)) {
+		query["SourceCidrs"] = request.SourceCidrs
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5477,14 +5597,38 @@ func (client *Client) CreateConnectionPoolWithOptions(request *CreateConnectionP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Cidrs"] = request.Cidrs
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
-	query["ConnectionPoolName"] = request.ConnectionPoolName
-	query["Count"] = request.Count
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Cidrs)) {
+		query["Cidrs"] = request.Cidrs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolDescription)) {
+		query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolName)) {
+		query["ConnectionPoolName"] = request.ConnectionPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5525,16 +5669,46 @@ func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["ClientToken"] = request.ClientToken
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
-	query["SourceCidrs"] = request.SourceCidrs
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrs)) {
+		query["SourceCidrs"] = request.SourceCidrs
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5575,15 +5749,42 @@ func (client *Client) CreateIoTCloudConnectorWithOptions(request *CreateIoTCloud
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["APN"] = request.APN
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ISP"] = request.ISP
-	query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
-	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
-	query["RegionId"] = request.RegionId
-	query["ResourceUid"] = request.ResourceUid
-	query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
+	if !tea.BoolValue(util.IsUnset(request.APN)) {
+		query["APN"] = request.APN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ISP)) {
+		query["ISP"] = request.ISP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorDescription)) {
+		query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorName)) {
+		query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WildcardDomainEnabled)) {
+		query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5624,11 +5825,26 @@ func (client *Client) CreateIoTCloudConnectorGroupWithOptions(request *CreateIoT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["DryRun"] = request.DryRun
-	query["Name"] = request.Name
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5669,12 +5885,30 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceDescription"] = request.ServiceDescription
-	query["ServiceName"] = request.ServiceName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5715,15 +5949,42 @@ func (client *Client) CreateServiceEntryWithOptions(request *CreateServiceEntryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceEntryDescription"] = request.ServiceEntryDescription
-	query["ServiceEntryName"] = request.ServiceEntryName
-	query["ServiceId"] = request.ServiceId
-	query["Target"] = request.Target
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryDescription)) {
+		query["ServiceEntryDescription"] = request.ServiceEntryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryName)) {
+		query["ServiceEntryName"] = request.ServiceEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5764,11 +6025,26 @@ func (client *Client) DeleteAuthorizationRuleWithOptions(request *DeleteAuthoriz
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleId"] = request.AuthorizationRuleId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5809,11 +6085,26 @@ func (client *Client) DeleteConnectionPoolWithOptions(request *DeleteConnectionP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5854,11 +6145,26 @@ func (client *Client) DeleteGroupAuthorizationRuleWithOptions(request *DeleteGro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleId"] = request.AuthorizationRuleId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5899,10 +6205,22 @@ func (client *Client) DeleteIoTCloudConnectorWithOptions(request *DeleteIoTCloud
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5943,10 +6261,22 @@ func (client *Client) DeleteIoTCloudConnectorGroupWithOptions(request *DeleteIoT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5987,11 +6317,26 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6032,12 +6377,30 @@ func (client *Client) DeleteServiceEntryWithOptions(request *DeleteServiceEntryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceEntryId"] = request.ServiceEntryId
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryId)) {
+		query["ServiceEntryId"] = request.ServiceEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6078,10 +6441,22 @@ func (client *Client) DisableIoTCloudConnectorAccessLogWithOptions(request *Disa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6122,13 +6497,34 @@ func (client *Client) DissociateIpFromConnectionPoolWithOptions(request *Dissoci
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Ips"] = request.Ips
-	query["IpsFilePath"] = request.IpsFilePath
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ips)) {
+		query["Ips"] = request.Ips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpsFilePath)) {
+		query["IpsFilePath"] = request.IpsFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6169,10 +6565,22 @@ func (client *Client) DissociateVSwitchFromIoTCloudConnectorWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6213,12 +6621,30 @@ func (client *Client) EnableIoTCloudConnectorAccessLogWithOptions(request *Enabl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessLogSlsLogStore"] = request.AccessLogSlsLogStore
-	query["AccessLogSlsProject"] = request.AccessLogSlsProject
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccessLogSlsLogStore)) {
+		query["AccessLogSlsLogStore"] = request.AccessLogSlsLogStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessLogSlsProject)) {
+		query["AccessLogSlsProject"] = request.AccessLogSlsProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6259,10 +6685,22 @@ func (client *Client) GetConnectionPoolIpOperationResultWithOptions(request *Get
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["QueryRequestId"] = request.QueryRequestId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryRequestId)) {
+		query["QueryRequestId"] = request.QueryRequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6303,10 +6741,22 @@ func (client *Client) GetIoTCloudConnectorAccessLogWithOptions(request *GetIoTCl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6347,12 +6797,30 @@ func (client *Client) GetStsInfoAndOssPathWithOptions(request *GetStsInfoAndOssP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["DryRun"] = request.DryRun
-	query["FileName"] = request.FileName
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6393,8 +6861,14 @@ func (client *Client) GrantVirtualBorderRouterWithOptions(request *GrantVirtualB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["VirtualBorderRouterId"] = request.VirtualBorderRouterId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VirtualBorderRouterId)) {
+		query["VirtualBorderRouterId"] = request.VirtualBorderRouterId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6435,11 +6909,26 @@ func (client *Client) ListAPNsWithOptions(request *ListAPNsRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["APN"] = request.APN
-	query["ISP"] = request.ISP
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.APN)) {
+		query["APN"] = request.APN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ISP)) {
+		query["ISP"] = request.ISP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6480,16 +6969,46 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleIds)) {
+		query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleStatus)) {
+		query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6530,13 +7049,34 @@ func (client *Client) ListConnectionPoolAllIpsWithOptions(request *ListConnectio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Ip"] = request.Ip
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6577,12 +7117,30 @@ func (client *Client) ListConnectionPoolIpsWithOptions(request *ListConnectionPo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Ip"] = request.Ip
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6623,13 +7181,34 @@ func (client *Client) ListConnectionPoolsWithOptions(request *ListConnectionPool
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionPoolIds"] = request.ConnectionPoolIds
-	query["ConnectionPoolName"] = request.ConnectionPoolName
-	query["ConnectionPoolStatus"] = request.ConnectionPoolStatus
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolIds)) {
+		query["ConnectionPoolIds"] = request.ConnectionPoolIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolName)) {
+		query["ConnectionPoolName"] = request.ConnectionPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolStatus)) {
+		query["ConnectionPoolStatus"] = request.ConnectionPoolStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6670,16 +7249,46 @@ func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleIds)) {
+		query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleStatus)) {
+		query["AuthorizationRuleStatus"] = request.AuthorizationRuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6720,8 +7329,14 @@ func (client *Client) ListIoTCloudConnectorAvailableZonesWithOptions(request *Li
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6762,12 +7377,30 @@ func (client *Client) ListIoTCloudConnectorGroupsWithOptions(request *ListIoTClo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IoTCloudConnectorGroupIds"] = request.IoTCloudConnectorGroupIds
-	query["IoTCloudConnectorGroupName"] = request.IoTCloudConnectorGroupName
-	query["IoTCloudConnectorGroupStatus"] = request.IoTCloudConnectorGroupStatus
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupIds)) {
+		query["IoTCloudConnectorGroupIds"] = request.IoTCloudConnectorGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupName)) {
+		query["IoTCloudConnectorGroupName"] = request.IoTCloudConnectorGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupStatus)) {
+		query["IoTCloudConnectorGroupStatus"] = request.IoTCloudConnectorGroupStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6808,16 +7441,50 @@ func (client *Client) ListIoTCloudConnectorsWithOptions(request *ListIoTCloudCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["APN"] = request.APN
-	query["ISP"] = request.ISP
-	query["IoTCloudConnectorIds"] = request.IoTCloudConnectorIds
-	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
-	query["IoTCloudConnectorStatus"] = request.IoTCloudConnectorStatus
-	query["IsInGroup"] = request.IsInGroup
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.APN)) {
+		query["APN"] = request.APN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ISP)) {
+		query["ISP"] = request.ISP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorIds)) {
+		query["IoTCloudConnectorIds"] = request.IoTCloudConnectorIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorName)) {
+		query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorStatus)) {
+		query["IoTCloudConnectorStatus"] = request.IoTCloudConnectorStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsInGroup)) {
+		query["IsInGroup"] = request.IsInGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6858,8 +7525,14 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6900,13 +7573,34 @@ func (client *Client) ListServiceWithOptions(request *ListServiceRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceStatuses"] = request.ResourceStatuses
-	query["ServiceIds"] = request.ServiceIds
-	query["ServiceNames"] = request.ServiceNames
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceStatuses)) {
+		query["ResourceStatuses"] = request.ResourceStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceIds)) {
+		query["ServiceIds"] = request.ServiceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceNames)) {
+		query["ServiceNames"] = request.ServiceNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6947,16 +7641,46 @@ func (client *Client) ListServiceEntriesWithOptions(request *ListServiceEntriesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ServiceEntryIds"] = request.ServiceEntryIds
-	query["ServiceEntryName"] = request.ServiceEntryName
-	query["ServiceEntryStatus"] = request.ServiceEntryStatus
-	query["ServiceId"] = request.ServiceId
-	query["Target"] = request.Target
-	query["TargetType"] = request.TargetType
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryIds)) {
+		query["ServiceEntryIds"] = request.ServiceEntryIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryName)) {
+		query["ServiceEntryName"] = request.ServiceEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryStatus)) {
+		query["ServiceEntryStatus"] = request.ServiceEntryStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6997,7 +7721,10 @@ func (client *Client) OpenIoTCloudConnectorServiceWithOptions(request *OpenIoTCl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7038,11 +7765,26 @@ func (client *Client) RemoveIoTCloudConnectorFromGroupWithOptions(request *Remov
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7083,17 +7825,50 @@ func (client *Client) UpdateAuthorizationRuleAttributeWithOptions(request *Updat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
-	query["AuthorizationRuleId"] = request.AuthorizationRuleId
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["ClientToken"] = request.ClientToken
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
-	query["SourceCidrs"] = request.SourceCidrs
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrs)) {
+		query["SourceCidrs"] = request.SourceCidrs
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7134,15 +7909,42 @@ func (client *Client) UpdateConnectionPoolAttributeWithOptions(request *UpdateCo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Cidrs"] = request.Cidrs
-	query["ClientToken"] = request.ClientToken
-	query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
-	query["ConnectionPoolId"] = request.ConnectionPoolId
-	query["ConnectionPoolName"] = request.ConnectionPoolName
-	query["Count"] = request.Count
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Cidrs)) {
+		query["Cidrs"] = request.Cidrs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolDescription)) {
+		query["ConnectionPoolDescription"] = request.ConnectionPoolDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolId)) {
+		query["ConnectionPoolId"] = request.ConnectionPoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionPoolName)) {
+		query["ConnectionPoolName"] = request.ConnectionPoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7183,17 +7985,50 @@ func (client *Client) UpdateGroupAuthorizationRuleAttributeWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
-	query["AuthorizationRuleId"] = request.AuthorizationRuleId
-	query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	query["ClientToken"] = request.ClientToken
-	query["Destination"] = request.Destination
-	query["DestinationType"] = request.DestinationType
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["Policy"] = request.Policy
-	query["RegionId"] = request.RegionId
-	query["SourceCidrs"] = request.SourceCidrs
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrs)) {
+		query["SourceCidrs"] = request.SourceCidrs
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7234,13 +8069,34 @@ func (client *Client) UpdateIoTCloudConnectorAttributeWithOptions(request *Updat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
-	query["RegionId"] = request.RegionId
-	query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorDescription)) {
+		query["IoTCloudConnectorDescription"] = request.IoTCloudConnectorDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorName)) {
+		query["IoTCloudConnectorName"] = request.IoTCloudConnectorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WildcardDomainEnabled)) {
+		query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7281,12 +8137,30 @@ func (client *Client) UpdateIoTCloudConnectorGroupAttributeWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
-	query["Name"] = request.Name
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7327,13 +8201,34 @@ func (client *Client) UpdateServiceAttributeWithOptions(request *UpdateServiceAt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceDescription"] = request.ServiceDescription
-	query["ServiceId"] = request.ServiceId
-	query["ServiceName"] = request.ServiceName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
+		query["ServiceDescription"] = request.ServiceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7374,14 +8269,38 @@ func (client *Client) UpdateServiceEntryAttributeWithOptions(request *UpdateServ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	query["RegionId"] = request.RegionId
-	query["ServiceEntryDescription"] = request.ServiceEntryDescription
-	query["ServiceEntryId"] = request.ServiceEntryId
-	query["ServiceEntryName"] = request.ServiceEntryName
-	query["ServiceId"] = request.ServiceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryDescription)) {
+		query["ServiceEntryDescription"] = request.ServiceEntryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryId)) {
+		query["ServiceEntryId"] = request.ServiceEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceEntryName)) {
+		query["ServiceEntryName"] = request.ServiceEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
