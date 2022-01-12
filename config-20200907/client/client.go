@@ -644,7 +644,10 @@ type CreateAggregateConfigRuleRequest struct {
 	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeAccountIdsScope    *string                `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	ExcludeFolderIdsScope     *string                `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	FolderIdsScope            *string                `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
 	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
@@ -691,8 +694,23 @@ func (s *CreateAggregateConfigRuleRequest) SetDescription(v string) *CreateAggre
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetExcludeAccountIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ExcludeAccountIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetExcludeFolderIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ExcludeFolderIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetFolderIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.FolderIdsScope = &v
 	return s
 }
 
@@ -757,7 +775,10 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeAccountIdsScope    *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	ExcludeFolderIdsScope     *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	FolderIdsScope            *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
 	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
@@ -804,8 +825,23 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetDescription(v string) *Creat
 	return s
 }
 
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeAccountIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExcludeAccountIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeFolderIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExcludeFolderIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetFolderIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.FolderIdsScope = &v
 	return s
 }
 
@@ -3284,7 +3320,10 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	CreateBy                   *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy                   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
 	CreateTimestamp            *int64                                                                  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	Description                *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeAccountIdsScope     *string                                                                 `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	ExcludeFolderIdsScope      *string                                                                 `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeResourceIdsScope    *string                                                                 `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	FolderIdsScope             *string                                                                 `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
 	InputParameters            map[string]interface{}                                                  `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	ManagedRule                *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule                `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
 	MaximumExecutionFrequency  *string                                                                 `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
@@ -3352,8 +3391,23 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetDescription(v string) 
 	return s
 }
 
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeAccountIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExcludeAccountIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeFolderIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExcludeFolderIdsScope = &v
+	return s
+}
+
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeResourceIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetFolderIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.FolderIdsScope = &v
 	return s
 }
 
@@ -10696,7 +10750,10 @@ type UpdateAggregateConfigRuleRequest struct {
 	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeAccountIdsScope    *string                `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	ExcludeFolderIdsScope     *string                `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	FolderIdsScope            *string                `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
 	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
@@ -10746,8 +10803,23 @@ func (s *UpdateAggregateConfigRuleRequest) SetDescription(v string) *UpdateAggre
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetExcludeAccountIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ExcludeAccountIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetExcludeFolderIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ExcludeFolderIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetFolderIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.FolderIdsScope = &v
 	return s
 }
 
@@ -10803,7 +10875,10 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeAccountIdsScope    *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	ExcludeFolderIdsScope     *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	FolderIdsScope            *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
 	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
@@ -10853,8 +10928,23 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetDescription(v string) *Updat
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeAccountIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ExcludeAccountIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeFolderIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ExcludeFolderIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetFolderIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.FolderIdsScope = &v
 	return s
 }
 
@@ -11873,8 +11963,20 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeAccountIdsScope)) {
+		body["ExcludeAccountIdsScope"] = request.ExcludeAccountIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeFolderIdsScope)) {
+		body["ExcludeFolderIdsScope"] = request.ExcludeFolderIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderIdsScope)) {
+		body["FolderIdsScope"] = request.FolderIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
@@ -14968,8 +15070,20 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeAccountIdsScope)) {
+		body["ExcludeAccountIdsScope"] = request.ExcludeAccountIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeFolderIdsScope)) {
+		body["ExcludeFolderIdsScope"] = request.ExcludeFolderIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderIdsScope)) {
+		body["FolderIdsScope"] = request.FolderIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
