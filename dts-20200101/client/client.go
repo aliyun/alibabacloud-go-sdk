@@ -4450,6 +4450,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	DatabaseCount            *int32                                                `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
 	DbObject                 *string                                               `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
 	Delay                    *int64                                                `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DemoJob                  *bool                                                 `json:"DemoJob,omitempty" xml:"DemoJob,omitempty"`
 	DestNetType              *string                                               `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
 	DestinationEndpoint      *DescribeDtsJobDetailResponseBodyDestinationEndpoint  `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	DtsInstanceID            *string                                               `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
@@ -4535,6 +4536,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetDbObject(v string) *DescribeDtsJob
 
 func (s *DescribeDtsJobDetailResponseBody) SetDelay(v int64) *DescribeDtsJobDetailResponseBody {
 	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetDemoJob(v bool) *DescribeDtsJobDetailResponseBody {
+	s.DemoJob = &v
 	return s
 }
 
@@ -5026,17 +5032,19 @@ func (s *DescribeDtsJobsRequest) SetType(v string) *DescribeDtsJobsRequest {
 }
 
 type DescribeDtsJobsResponseBody struct {
-	DtsJobList       []*DescribeDtsJobsResponseBodyDtsJobList `json:"DtsJobList,omitempty" xml:"DtsJobList,omitempty" type:"Repeated"`
-	DynamicCode      *string                                  `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage   *string                                  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrCode          *string                                  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage       *string                                  `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	HttpStatusCode   *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	PageNumber       *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalRecordCount *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	DtsJobList       []*DescribeDtsJobsResponseBodyDtsJobList  `json:"DtsJobList,omitempty" xml:"DtsJobList,omitempty" type:"Repeated"`
+	DynamicCode      *string                                   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage   *string                                   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode          *string                                   `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage       *string                                   `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	EtlDemoList      []*DescribeDtsJobsResponseBodyEtlDemoList `json:"EtlDemoList,omitempty" xml:"EtlDemoList,omitempty" type:"Repeated"`
+	HttpStatusCode   *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobType          *string                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	PageNumber       *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                    `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalRecordCount *int32                                    `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBody) String() string {
@@ -5072,8 +5080,18 @@ func (s *DescribeDtsJobsResponseBody) SetErrMessage(v string) *DescribeDtsJobsRe
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBody) SetEtlDemoList(v []*DescribeDtsJobsResponseBodyEtlDemoList) *DescribeDtsJobsResponseBody {
+	s.EtlDemoList = v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBody) SetHttpStatusCode(v int32) *DescribeDtsJobsResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBody) SetJobType(v string) *DescribeDtsJobsResponseBody {
+	s.JobType = &v
 	return s
 }
 
@@ -6305,6 +6323,1213 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListTagList) SetTagKey(v string) *Desc
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListTagList) SetTagValue(v string) *DescribeDtsJobsResponseBodyDtsJobListTagList {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoList struct {
+	AppName                       *string                                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp                *string                                                              `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                    *string                                                              `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint         *string                                                              `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient             *string                                                              `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                    *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus                 *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus      *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                      *string                                                              `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                               `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                              `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                              `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                              `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                              `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                              `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp                  *string                                                              `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage                  *string                                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                    *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	MigrationMode                 *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	OriginType                    *string                                                              `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
+	PayType                       *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobsResponseBodyEtlDemoListPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                              `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                    *DescribeDtsJobsResponseBodyEtlDemoListRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
+	ReverseJob                    *DescribeDtsJobsResponseBodyEtlDemoListReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
+	SourceEndpoint                *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+	TagList                       []*DescribeDtsJobsResponseBodyEtlDemoListTagList                     `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetAppName(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetBeginTimestamp(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetCheckpoint(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetConsumptionCheckpoint(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ConsumptionCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetConsumptionClient(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ConsumptionClient = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetCreateTime(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDataEtlStatus(v *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DataEtlStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDataInitializationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDataSynchronizationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDbObject(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDelay(v int64) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDestinationEndpoint(v *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDtsInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDtsJobClass(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDtsJobDirection(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDtsJobId(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetDtsJobName(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetEndTimestamp(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetExpireTime(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetMigrationMode(v *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetOriginType(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.OriginType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetPayType(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetPerformance(v *DescribeDtsJobsResponseBodyEtlDemoListPerformance) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetPrecheckStatus(v *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetReserved(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetRetryState(v *DescribeDtsJobsResponseBodyEtlDemoListRetryState) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.RetryState = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetReverseJob(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.ReverseJob = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetSourceEndpoint(v *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetStructureInitializationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetTagList(v []*DescribeDtsJobsResponseBodyEtlDemoListTagList) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.TagList = v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint struct {
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetIp(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetPort(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetRegion(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) SetUserName(v string) *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListMigrationMode struct {
+	DataInitialization      *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization     *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListPerformance struct {
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPerformance) SetFlow(v string) *DescribeDtsJobsResponseBodyEtlDemoListPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPerformance) SetRps(v string) *DescribeDtsJobsResponseBodyEtlDemoListPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus struct {
+	Detail       []*DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                       `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Status       *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) SetDetail(v []*DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail struct {
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
+	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	MaxRetryTime *int32  `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	RetryCount   *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryTarget  *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	RetryTime    *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetErrMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetryCount(v int32) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetryTarget(v string) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) SetRetryTime(v int32) *DescribeDtsJobsResponseBodyEtlDemoListRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
+	Checkpoint                    *string                                                                        `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	CreateTime                    *string                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataInitializationStatus      *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                      *string                                                                        `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                         *int64                                                                         `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint           *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID                 *string                                                                        `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass                   *string                                                                        `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection               *string                                                                        `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                      *string                                                                        `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                    *string                                                                        `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	ErrorMessage                  *string                                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                    *string                                                                        `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	MigrationMode                 *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	PayType                       *string                                                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                                        `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SourceEndpoint                *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetCheckpoint(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetCreateTime(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDataInitializationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDataSynchronizationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDbObject(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDelay(v int64) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDestinationEndpoint(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDtsInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDtsJobClass(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDtsJobDirection(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDtsJobId(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetDtsJobName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetExpireTime(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetMigrationMode(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetPayType(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetPerformance(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetPrecheckStatus(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetReserved(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetSourceEndpoint(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetStructureInitializationStatus(v *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) *DescribeDtsJobsResponseBodyEtlDemoListReverseJob {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NeedUpgrade  *bool   `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint struct {
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetIp(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetPort(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetRegion(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode struct {
+	DataInitialization      *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization     *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance struct {
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Rps  *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) SetFlow(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) SetRps(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus struct {
+	Detail       []*DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                                 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Status       *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) SetDetail(v []*DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail struct {
+	CheckItem            *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	CheckResult          *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	FailedReason         *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	RepairMethod         *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint struct {
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetEngineName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetIp(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetPort(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetRegion(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) SetUserName(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint struct {
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName      *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID      *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID       *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetEngineName(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetIp(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetPort(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetRegion(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) SetUserName(v string) *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyEtlDemoListTagList struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyEtlDemoListTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListTagList) SetTagKey(v string) *DescribeDtsJobsResponseBodyEtlDemoListTagList {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoListTagList) SetTagValue(v string) *DescribeDtsJobsResponseBodyEtlDemoListTagList {
 	s.TagValue = &v
 	return s
 }
@@ -13125,7 +14350,9 @@ type ModifyDtsJobRequest struct {
 	DbList                     map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string                `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string                `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
+	ModifyTypeEnum             *string                `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
 	RegionId                   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string                `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	SynchronizationDirection   *string                `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
@@ -13157,8 +14384,18 @@ func (s *ModifyDtsJobRequest) SetEtlOperatorColumnReference(v string) *ModifyDts
 	return s
 }
 
+func (s *ModifyDtsJobRequest) SetModifyTypeEnum(v string) *ModifyDtsJobRequest {
+	s.ModifyTypeEnum = &v
+	return s
+}
+
 func (s *ModifyDtsJobRequest) SetRegionId(v string) *ModifyDtsJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobRequest) SetReserved(v string) *ModifyDtsJobRequest {
+	s.Reserved = &v
 	return s
 }
 
@@ -13172,7 +14409,9 @@ type ModifyDtsJobShrinkRequest struct {
 	DbListShrink               *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	DtsInstanceId              *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
+	ModifyTypeEnum             *string `json:"ModifyTypeEnum,omitempty" xml:"ModifyTypeEnum,omitempty"`
 	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved                   *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	SynchronizationDirection   *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
@@ -13204,8 +14443,18 @@ func (s *ModifyDtsJobShrinkRequest) SetEtlOperatorColumnReference(v string) *Mod
 	return s
 }
 
+func (s *ModifyDtsJobShrinkRequest) SetModifyTypeEnum(v string) *ModifyDtsJobShrinkRequest {
+	s.ModifyTypeEnum = &v
+	return s
+}
+
 func (s *ModifyDtsJobShrinkRequest) SetRegionId(v string) *ModifyDtsJobShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobShrinkRequest) SetReserved(v string) *ModifyDtsJobShrinkRequest {
+	s.Reserved = &v
 	return s
 }
 
@@ -16337,49 +17586,168 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Checkpoint"] = request.Checkpoint
-	query["DataInitialization"] = request.DataInitialization
-	query["DataSynchronization"] = request.DataSynchronization
-	query["DbList"] = request.DbList
-	query["DelayNotice"] = request.DelayNotice
-	query["DelayPhone"] = request.DelayPhone
-	query["DelayRuleTime"] = request.DelayRuleTime
-	query["DestinationEndpointDataBaseName"] = request.DestinationEndpointDataBaseName
-	query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
-	query["DestinationEndpointIP"] = request.DestinationEndpointIP
-	query["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
-	query["DestinationEndpointInstanceType"] = request.DestinationEndpointInstanceType
-	query["DestinationEndpointOracleSID"] = request.DestinationEndpointOracleSID
-	query["DestinationEndpointPassword"] = request.DestinationEndpointPassword
-	query["DestinationEndpointPort"] = request.DestinationEndpointPort
-	query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
-	query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["DtsJobName"] = request.DtsJobName
-	query["ErrorNotice"] = request.ErrorNotice
-	query["ErrorPhone"] = request.ErrorPhone
-	query["JobType"] = request.JobType
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["Reserve"] = request.Reserve
-	query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
-	query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
-	query["SourceEndpointIP"] = request.SourceEndpointIP
-	query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
-	query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
-	query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
-	query["SourceEndpointOwnerID"] = request.SourceEndpointOwnerID
-	query["SourceEndpointPassword"] = request.SourceEndpointPassword
-	query["SourceEndpointPort"] = request.SourceEndpointPort
-	query["SourceEndpointRegion"] = request.SourceEndpointRegion
-	query["SourceEndpointRole"] = request.SourceEndpointRole
-	query["SourceEndpointUserName"] = request.SourceEndpointUserName
-	query["StructureInitialization"] = request.StructureInitialization
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataInitialization)) {
+		query["DataInitialization"] = request.DataInitialization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSynchronization)) {
+		query["DataSynchronization"] = request.DataSynchronization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		query["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayNotice)) {
+		query["DelayNotice"] = request.DelayNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayPhone)) {
+		query["DelayPhone"] = request.DelayPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayRuleTime)) {
+		query["DelayRuleTime"] = request.DelayRuleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointDataBaseName)) {
+		query["DestinationEndpointDataBaseName"] = request.DestinationEndpointDataBaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointEngineName)) {
+		query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointIP)) {
+		query["DestinationEndpointIP"] = request.DestinationEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceID)) {
+		query["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceType)) {
+		query["DestinationEndpointInstanceType"] = request.DestinationEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointOracleSID)) {
+		query["DestinationEndpointOracleSID"] = request.DestinationEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPassword)) {
+		query["DestinationEndpointPassword"] = request.DestinationEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPort)) {
+		query["DestinationEndpointPort"] = request.DestinationEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointRegion)) {
+		query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointUserName)) {
+		query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobName)) {
+		query["DtsJobName"] = request.DtsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorNotice)) {
+		query["ErrorNotice"] = request.ErrorNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorPhone)) {
+		query["ErrorPhone"] = request.ErrorPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserve)) {
+		query["Reserve"] = request.Reserve
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
+		query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
+		query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointIP)) {
+		query["SourceEndpointIP"] = request.SourceEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceID)) {
+		query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceType)) {
+		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOracleSID)) {
+		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOwnerID)) {
+		query["SourceEndpointOwnerID"] = request.SourceEndpointOwnerID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPassword)) {
+		query["SourceEndpointPassword"] = request.SourceEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPort)) {
+		query["SourceEndpointPort"] = request.SourceEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRole)) {
+		query["SourceEndpointRole"] = request.SourceEndpointRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
+		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
+		query["StructureInitialization"] = request.StructureInitialization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureDtsJob"),
@@ -16389,7 +17757,7 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureDtsJobResponse{}
@@ -16418,16 +17786,54 @@ func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrati
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["Checkpoint"] = request.Checkpoint
-	query["MigrationJobId"] = request.MigrationJobId
-	query["MigrationJobName"] = request.MigrationJobName
-	query["MigrationReserved"] = request.MigrationReserved
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobName)) {
+		query["MigrationJobName"] = request.MigrationJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationReserved)) {
+		query["MigrationReserved"] = request.MigrationReserved
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DestinationEndpoint))) {
+		query["DestinationEndpoint"] = request.DestinationEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MigrationMode))) {
+		query["MigrationMode"] = request.MigrationMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MigrationObject)) {
+		body["MigrationObject"] = request.MigrationObject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureMigrationJob"),
@@ -16466,18 +17872,44 @@ func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["DelayAlertPhone"] = request.DelayAlertPhone
-	query["DelayAlertStatus"] = request.DelayAlertStatus
-	query["DelayOverSeconds"] = request.DelayOverSeconds
-	query["ErrorAlertPhone"] = request.ErrorAlertPhone
-	query["ErrorAlertStatus"] = request.ErrorAlertStatus
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertPhone)) {
+		query["DelayAlertPhone"] = request.DelayAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertStatus)) {
+		query["DelayAlertStatus"] = request.DelayAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayOverSeconds)) {
+		query["DelayOverSeconds"] = request.DelayOverSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertPhone)) {
+		query["ErrorAlertPhone"] = request.ErrorAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertStatus)) {
+		query["ErrorAlertStatus"] = request.ErrorAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureMigrationJobAlert"),
@@ -16487,7 +17919,7 @@ func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureMigrationJobAlertResponse{}
@@ -16516,38 +17948,124 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Checkpoint"] = request.Checkpoint
-	query["DbList"] = request.DbList
-	query["DelayNotice"] = request.DelayNotice
-	query["DelayPhone"] = request.DelayPhone
-	query["DelayRuleTime"] = request.DelayRuleTime
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["DtsJobName"] = request.DtsJobName
-	query["ErrorNotice"] = request.ErrorNotice
-	query["ErrorPhone"] = request.ErrorPhone
-	query["RegionId"] = request.RegionId
-	query["Reserve"] = request.Reserve
-	query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
-	query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
-	query["SourceEndpointIP"] = request.SourceEndpointIP
-	query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
-	query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
-	query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
-	query["SourceEndpointOwnerID"] = request.SourceEndpointOwnerID
-	query["SourceEndpointPassword"] = request.SourceEndpointPassword
-	query["SourceEndpointPort"] = request.SourceEndpointPort
-	query["SourceEndpointRegion"] = request.SourceEndpointRegion
-	query["SourceEndpointRole"] = request.SourceEndpointRole
-	query["SourceEndpointUserName"] = request.SourceEndpointUserName
-	query["SubscriptionDataTypeDDL"] = request.SubscriptionDataTypeDDL
-	query["SubscriptionDataTypeDML"] = request.SubscriptionDataTypeDML
-	query["SubscriptionInstanceNetworkType"] = request.SubscriptionInstanceNetworkType
-	query["SubscriptionInstanceVPCId"] = request.SubscriptionInstanceVPCId
-	query["SubscriptionInstanceVSwitchId"] = request.SubscriptionInstanceVSwitchId
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		query["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayNotice)) {
+		query["DelayNotice"] = request.DelayNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayPhone)) {
+		query["DelayPhone"] = request.DelayPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayRuleTime)) {
+		query["DelayRuleTime"] = request.DelayRuleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobName)) {
+		query["DtsJobName"] = request.DtsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorNotice)) {
+		query["ErrorNotice"] = request.ErrorNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorPhone)) {
+		query["ErrorPhone"] = request.ErrorPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserve)) {
+		query["Reserve"] = request.Reserve
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
+		query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
+		query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointIP)) {
+		query["SourceEndpointIP"] = request.SourceEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceID)) {
+		query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceType)) {
+		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOracleSID)) {
+		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOwnerID)) {
+		query["SourceEndpointOwnerID"] = request.SourceEndpointOwnerID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPassword)) {
+		query["SourceEndpointPassword"] = request.SourceEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPort)) {
+		query["SourceEndpointPort"] = request.SourceEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRole)) {
+		query["SourceEndpointRole"] = request.SourceEndpointRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
+		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDDL)) {
+		query["SubscriptionDataTypeDDL"] = request.SubscriptionDataTypeDDL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDML)) {
+		query["SubscriptionDataTypeDML"] = request.SubscriptionDataTypeDML
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceNetworkType)) {
+		query["SubscriptionInstanceNetworkType"] = request.SubscriptionInstanceNetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceVPCId)) {
+		query["SubscriptionInstanceVPCId"] = request.SubscriptionInstanceVPCId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceVSwitchId)) {
+		query["SubscriptionInstanceVSwitchId"] = request.SubscriptionInstanceVSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSubscription"),
@@ -16557,7 +18075,7 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureSubscriptionResponse{}
@@ -16586,15 +18104,50 @@ func (client *Client) ConfigureSubscriptionInstanceWithOptions(request *Configur
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
-	query["SubscriptionInstanceName"] = request.SubscriptionInstanceName
-	query["SubscriptionInstanceNetworkType"] = request.SubscriptionInstanceNetworkType
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceName)) {
+		query["SubscriptionInstanceName"] = request.SubscriptionInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceNetworkType)) {
+		query["SubscriptionInstanceNetworkType"] = request.SubscriptionInstanceNetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SubscriptionDataType))) {
+		query["SubscriptionDataType"] = request.SubscriptionDataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SubscriptionInstance))) {
+		query["SubscriptionInstance"] = request.SubscriptionInstance
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionObject)) {
+		body["SubscriptionObject"] = request.SubscriptionObject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSubscriptionInstance"),
@@ -16633,18 +18186,44 @@ func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *Con
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["DelayAlertPhone"] = request.DelayAlertPhone
-	query["DelayAlertStatus"] = request.DelayAlertStatus
-	query["DelayOverSeconds"] = request.DelayOverSeconds
-	query["ErrorAlertPhone"] = request.ErrorAlertPhone
-	query["ErrorAlertStatus"] = request.ErrorAlertStatus
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertPhone)) {
+		query["DelayAlertPhone"] = request.DelayAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertStatus)) {
+		query["DelayAlertStatus"] = request.DelayAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayOverSeconds)) {
+		query["DelayOverSeconds"] = request.DelayOverSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertPhone)) {
+		query["ErrorAlertPhone"] = request.ErrorAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertStatus)) {
+		query["ErrorAlertStatus"] = request.ErrorAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSubscriptionInstanceAlert"),
@@ -16654,7 +18233,7 @@ func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *Con
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureSubscriptionInstanceAlertResponse{}
@@ -16683,19 +18262,66 @@ func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["Checkpoint"] = request.Checkpoint
-	query["DataInitialization"] = request.DataInitialization
-	query["MigrationReserved"] = request.MigrationReserved
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["StructureInitialization"] = request.StructureInitialization
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
-	query["SynchronizationJobName"] = request.SynchronizationJobName
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		query["Checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataInitialization)) {
+		query["DataInitialization"] = request.DataInitialization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationReserved)) {
+		query["MigrationReserved"] = request.MigrationReserved
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
+		query["StructureInitialization"] = request.StructureInitialization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobName)) {
+		query["SynchronizationJobName"] = request.SynchronizationJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DestinationEndpoint))) {
+		query["DestinationEndpoint"] = request.DestinationEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.PartitionKey))) {
+		query["PartitionKey"] = request.PartitionKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationObjects)) {
+		body["SynchronizationObjects"] = request.SynchronizationObjects
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSynchronizationJob"),
@@ -16734,19 +18360,48 @@ func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *Confi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["DelayAlertPhone"] = request.DelayAlertPhone
-	query["DelayAlertStatus"] = request.DelayAlertStatus
-	query["DelayOverSeconds"] = request.DelayOverSeconds
-	query["ErrorAlertPhone"] = request.ErrorAlertPhone
-	query["ErrorAlertStatus"] = request.ErrorAlertStatus
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertPhone)) {
+		query["DelayAlertPhone"] = request.DelayAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayAlertStatus)) {
+		query["DelayAlertStatus"] = request.DelayAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayOverSeconds)) {
+		query["DelayOverSeconds"] = request.DelayOverSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertPhone)) {
+		query["ErrorAlertPhone"] = request.ErrorAlertPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorAlertStatus)) {
+		query["ErrorAlertStatus"] = request.ErrorAlertStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSynchronizationJobAlert"),
@@ -16756,7 +18411,7 @@ func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *Confi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureSynchronizationJobAlertResponse{}
@@ -16785,16 +18440,36 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
-	query["SynchronizationReplicatorCompareEnable"] = request.SynchronizationReplicatorCompareEnable
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationReplicatorCompareEnable)) {
+		query["SynchronizationReplicatorCompareEnable"] = request.SynchronizationReplicatorCompareEnable
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConfigureSynchronizationJobReplicatorCompare"),
@@ -16804,7 +18479,7 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(re
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ConfigureSynchronizationJobReplicatorCompareResponse{}
@@ -16833,18 +18508,44 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestDbType"] = request.DestDbType
-	query["GroupId"] = request.GroupId
-	query["JobType"] = request.JobType
-	query["Params"] = request.Params
-	query["Region"] = request.Region
-	query["RegionId"] = request.RegionId
-	query["SrcDbType"] = request.SrcDbType
-	query["Status"] = request.Status
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.DestDbType)) {
+		query["DestDbType"] = request.DestDbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcDbType)) {
+		query["SrcDbType"] = request.SrcDbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountJobByCondition"),
@@ -16854,7 +18555,7 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountJobByConditionResponse{}
@@ -16883,15 +18584,32 @@ func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConsumerGroupName"] = request.ConsumerGroupName
-	query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
-	query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupName)) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupPassword)) {
+		query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupUserName)) {
+		query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateConsumerChannel"),
@@ -16901,7 +18619,7 @@ func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerCh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateConsumerChannelResponse{}
@@ -16930,16 +18648,36 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ConsumerGroupName"] = request.ConsumerGroupName
-	query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
-	query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupName)) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupPassword)) {
+		query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupUserName)) {
+		query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateConsumerGroup"),
@@ -16949,7 +18687,7 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateConsumerGroupResponse{}
@@ -16978,27 +18716,80 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoPay"] = request.AutoPay
-	query["AutoStart"] = request.AutoStart
-	query["ComputeUnit"] = request.ComputeUnit
-	query["DatabaseCount"] = request.DatabaseCount
-	query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
-	query["DestinationRegion"] = request.DestinationRegion
-	query["FeeType"] = request.FeeType
-	query["InstanceClass"] = request.InstanceClass
-	query["JobId"] = request.JobId
-	query["PayType"] = request.PayType
-	query["Period"] = request.Period
-	query["Quantity"] = request.Quantity
-	query["RegionId"] = request.RegionId
-	query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
-	query["SourceRegion"] = request.SourceRegion
-	query["SyncArchitecture"] = request.SyncArchitecture
-	query["Type"] = request.Type
-	query["UsedTime"] = request.UsedTime
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoStart)) {
+		query["AutoStart"] = request.AutoStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComputeUnit)) {
+		query["ComputeUnit"] = request.ComputeUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseCount)) {
+		query["DatabaseCount"] = request.DatabaseCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointEngineName)) {
+		query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegion)) {
+		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeeType)) {
+		query["FeeType"] = request.FeeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
+		query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegion)) {
+		query["SourceRegion"] = request.SourceRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncArchitecture)) {
+		query["SyncArchitecture"] = request.SyncArchitecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
+		query["UsedTime"] = request.UsedTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDtsInstance"),
@@ -17008,7 +18799,7 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDtsInstanceResponse{}
@@ -17037,15 +18828,32 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DelayRuleTime"] = request.DelayRuleTime
-	query["DtsJobId"] = request.DtsJobId
-	query["Phone"] = request.Phone
-	query["RegionId"] = request.RegionId
-	query["State"] = request.State
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.DelayRuleTime)) {
+		query["DelayRuleTime"] = request.DelayRuleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateJobMonitorRule"),
@@ -17055,7 +18863,7 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateJobMonitorRuleResponse{}
@@ -17084,15 +18892,32 @@ func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobClass"] = request.MigrationJobClass
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobClass)) {
+		query["MigrationJobClass"] = request.MigrationJobClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateMigrationJob"),
@@ -17102,7 +18927,7 @@ func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMigrationJobResponse{}
@@ -17131,17 +18956,44 @@ func (client *Client) CreateSubscriptionInstanceWithOptions(request *CreateSubsc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["PayType"] = request.PayType
-	query["Period"] = request.Period
-	query["Region"] = request.Region
-	query["RegionId"] = request.RegionId
-	query["UsedTime"] = request.UsedTime
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSubscriptionInstance"),
@@ -17151,7 +19003,7 @@ func (client *Client) CreateSubscriptionInstanceWithOptions(request *CreateSubsc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSubscriptionInstanceResponse{}
@@ -17180,22 +19032,68 @@ func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["DBInstanceCount"] = request.DBInstanceCount
-	query["DestRegion"] = request.DestRegion
-	query["OwnerId"] = request.OwnerId
-	query["PayType"] = request.PayType
-	query["Period"] = request.Period
-	query["RegionId"] = request.RegionId
-	query["SourceRegion"] = request.SourceRegion
-	query["SynchronizationJobClass"] = request.SynchronizationJobClass
-	query["Topology"] = request.Topology
-	query["UsedTime"] = request.UsedTime
-	query["networkType"] = request.NetworkType
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceCount)) {
+		query["DBInstanceCount"] = request.DBInstanceCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestRegion)) {
+		query["DestRegion"] = request.DestRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegion)) {
+		query["SourceRegion"] = request.SourceRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobClass)) {
+		query["SynchronizationJobClass"] = request.SynchronizationJobClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topology)) {
+		query["Topology"] = request.Topology
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["networkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DestinationEndpoint))) {
+		query["DestinationEndpoint"] = request.DestinationEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSynchronizationJob"),
@@ -17205,7 +19103,7 @@ func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSynchronizationJobResponse{}
@@ -17234,13 +19132,24 @@ func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConsumerGroupId"] = request.ConsumerGroupId
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupId)) {
+		query["ConsumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteConsumerChannel"),
@@ -17250,7 +19159,7 @@ func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerCh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteConsumerChannelResponse{}
@@ -17279,14 +19188,28 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ConsumerGroupID"] = request.ConsumerGroupID
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupID)) {
+		query["ConsumerGroupID"] = request.ConsumerGroupID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteConsumerGroup"),
@@ -17296,7 +19219,7 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteConsumerGroupResponse{}
@@ -17325,13 +19248,24 @@ func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDtsJob"),
@@ -17341,7 +19275,7 @@ func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDtsJobResponse{}
@@ -17370,13 +19304,24 @@ func (client *Client) DeleteMigrationJobWithOptions(request *DeleteMigrationJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteMigrationJob"),
@@ -17386,7 +19331,7 @@ func (client *Client) DeleteMigrationJobWithOptions(request *DeleteMigrationJobR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMigrationJobResponse{}
@@ -17415,13 +19360,24 @@ func (client *Client) DeleteSubscriptionInstanceWithOptions(request *DeleteSubsc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSubscriptionInstance"),
@@ -17431,7 +19387,7 @@ func (client *Client) DeleteSubscriptionInstanceWithOptions(request *DeleteSubsc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSubscriptionInstanceResponse{}
@@ -17460,13 +19416,24 @@ func (client *Client) DeleteSynchronizationJobWithOptions(request *DeleteSynchro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSynchronizationJob"),
@@ -17476,7 +19443,7 @@ func (client *Client) DeleteSynchronizationJobWithOptions(request *DeleteSynchro
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSynchronizationJobResponse{}
@@ -17505,32 +19472,100 @@ func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConne
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestinationEndpointArchitecture"] = request.DestinationEndpointArchitecture
-	query["DestinationEndpointDatabaseName"] = request.DestinationEndpointDatabaseName
-	query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
-	query["DestinationEndpointIP"] = request.DestinationEndpointIP
-	query["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
-	query["DestinationEndpointInstanceType"] = request.DestinationEndpointInstanceType
-	query["DestinationEndpointOracleSID"] = request.DestinationEndpointOracleSID
-	query["DestinationEndpointPassword"] = request.DestinationEndpointPassword
-	query["DestinationEndpointPort"] = request.DestinationEndpointPort
-	query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
-	query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
-	query["RegionId"] = request.RegionId
-	query["SourceEndpointArchitecture"] = request.SourceEndpointArchitecture
-	query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
-	query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
-	query["SourceEndpointIP"] = request.SourceEndpointIP
-	query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
-	query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
-	query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
-	query["SourceEndpointPassword"] = request.SourceEndpointPassword
-	query["SourceEndpointPort"] = request.SourceEndpointPort
-	query["SourceEndpointRegion"] = request.SourceEndpointRegion
-	query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointArchitecture)) {
+		query["DestinationEndpointArchitecture"] = request.DestinationEndpointArchitecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointDatabaseName)) {
+		query["DestinationEndpointDatabaseName"] = request.DestinationEndpointDatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointEngineName)) {
+		query["DestinationEndpointEngineName"] = request.DestinationEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointIP)) {
+		query["DestinationEndpointIP"] = request.DestinationEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceID)) {
+		query["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceType)) {
+		query["DestinationEndpointInstanceType"] = request.DestinationEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointOracleSID)) {
+		query["DestinationEndpointOracleSID"] = request.DestinationEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPassword)) {
+		query["DestinationEndpointPassword"] = request.DestinationEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPort)) {
+		query["DestinationEndpointPort"] = request.DestinationEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointRegion)) {
+		query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointUserName)) {
+		query["DestinationEndpointUserName"] = request.DestinationEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointArchitecture)) {
+		query["SourceEndpointArchitecture"] = request.SourceEndpointArchitecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
+		query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointEngineName)) {
+		query["SourceEndpointEngineName"] = request.SourceEndpointEngineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointIP)) {
+		query["SourceEndpointIP"] = request.SourceEndpointIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceID)) {
+		query["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceType)) {
+		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointOracleSID)) {
+		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPassword)) {
+		query["SourceEndpointPassword"] = request.SourceEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPort)) {
+		query["SourceEndpointPort"] = request.SourceEndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
+		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeConnectionStatus"),
@@ -17540,7 +19575,7 @@ func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConne
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConnectionStatusResponse{}
@@ -17569,15 +19604,32 @@ func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsum
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ParentChannelId"] = request.ParentChannelId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentChannelId)) {
+		query["ParentChannelId"] = request.ParentChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeConsumerChannel"),
@@ -17587,7 +19639,7 @@ func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsum
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConsumerChannelResponse{}
@@ -17616,15 +19668,32 @@ func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeConsumerGroup"),
@@ -17634,7 +19703,7 @@ func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConsumerGroupResponse{}
@@ -17663,12 +19732,20 @@ func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
-	query["RegionId"] = request.RegionId
-	query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointRegion)) {
+		query["DestinationEndpointRegion"] = request.DestinationEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		query["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDTSIP"),
@@ -17678,7 +19755,7 @@ func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDTSIPResponse{}
@@ -17707,13 +19784,24 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceID"] = request.DtsInstanceID
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceID)) {
+		query["DtsInstanceID"] = request.DtsInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDtsJobDetail"),
@@ -17723,7 +19811,7 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDtsJobDetailResponse{}
@@ -17752,21 +19840,56 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
-	query["JobType"] = request.JobType
-	query["OrderColumn"] = request.OrderColumn
-	query["OrderDirection"] = request.OrderDirection
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Params"] = request.Params
-	query["Region"] = request.Region
-	query["RegionId"] = request.RegionId
-	query["Status"] = request.Status
-	query["Tags"] = request.Tags
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderColumn)) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderDirection)) {
+		query["OrderDirection"] = request.OrderDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDtsJobs"),
@@ -17776,7 +19899,7 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDtsJobsResponse{}
@@ -17805,14 +19928,28 @@ func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeEndpointSwitchStatus"),
@@ -17822,7 +19959,7 @@ func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeE
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEndpointSwitchStatusResponse{}
@@ -17851,15 +19988,32 @@ func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeInitializationStatus"),
@@ -17869,7 +20023,7 @@ func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInitializationStatusResponse{}
@@ -17898,11 +20052,16 @@ func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMoni
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeJobMonitorRule"),
@@ -17912,7 +20071,7 @@ func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMoni
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeJobMonitorRuleResponse{}
@@ -17941,14 +20100,28 @@ func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMigrationJobAlert"),
@@ -17958,7 +20131,7 @@ func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMigrationJobAlertResponse{}
@@ -17987,16 +20160,40 @@ func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMig
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MigrationMode))) {
+		query["MigrationMode"] = request.MigrationMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMigrationJobDetail"),
@@ -18006,7 +20203,7 @@ func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMig
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMigrationJobDetailResponse{}
@@ -18035,14 +20232,28 @@ func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMig
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMigrationJobStatus"),
@@ -18052,7 +20263,7 @@ func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMig
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMigrationJobStatusResponse{}
@@ -18081,16 +20292,36 @@ func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigratio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["MigrationJobName"] = request.MigrationJobName
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobName)) {
+		query["MigrationJobName"] = request.MigrationJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMigrationJobs"),
@@ -18100,7 +20331,7 @@ func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigratio
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMigrationJobsResponse{}
@@ -18129,17 +20360,40 @@ func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreChec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["JobCode"] = request.JobCode
-	query["Name"] = request.Name
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["StructPhase"] = request.StructPhase
-	query["StructType"] = request.StructType
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobCode)) {
+		query["JobCode"] = request.JobCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructPhase)) {
+		query["StructPhase"] = request.StructPhase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructType)) {
+		query["StructType"] = request.StructType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePreCheckStatus"),
@@ -18149,7 +20403,7 @@ func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreChec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePreCheckStatusResponse{}
@@ -18178,14 +20432,28 @@ func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSubscriptionInstanceAlert"),
@@ -18195,7 +20463,7 @@ func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *Desc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubscriptionInstanceAlertResponse{}
@@ -18224,13 +20492,24 @@ func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSubscriptionInstanceStatus"),
@@ -18240,7 +20519,7 @@ func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubscriptionInstanceStatusResponse{}
@@ -18269,17 +20548,40 @@ func (client *Client) DescribeSubscriptionInstancesWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceName"] = request.SubscriptionInstanceName
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceName)) {
+		query["SubscriptionInstanceName"] = request.SubscriptionInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSubscriptionInstances"),
@@ -18289,7 +20591,7 @@ func (client *Client) DescribeSubscriptionInstancesWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubscriptionInstancesResponse{}
@@ -18328,14 +20630,28 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 	}
 
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["RegionId"] = request.RegionId
-	query["Sid"] = request.Sid
-	query["SubMigrationJobIds"] = request.SubMigrationJobIdsShrink
-	query["Topics"] = request.TopicsShrink
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubMigrationJobIdsShrink)) {
+		query["SubMigrationJobIds"] = request.SubMigrationJobIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicsShrink)) {
+		query["Topics"] = request.TopicsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSubscriptionMeta"),
@@ -18345,7 +20661,7 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubscriptionMetaResponse{}
@@ -18374,15 +20690,32 @@ func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationJobAlert"),
@@ -18392,7 +20725,7 @@ func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *Descri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationJobAlertResponse{}
@@ -18421,15 +20754,32 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationJobReplicatorCompare"),
@@ -18439,7 +20789,7 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationJobReplicatorCompareResponse{}
@@ -18468,15 +20818,32 @@ func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationJobStatus"),
@@ -18486,7 +20853,7 @@ func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationJobStatusResponse{}
@@ -18515,14 +20882,28 @@ func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationJobIdListJsonStr"] = request.SynchronizationJobIdListJsonStr
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobIdListJsonStr)) {
+		query["SynchronizationJobIdListJsonStr"] = request.SynchronizationJobIdListJsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationJobStatusList"),
@@ -18532,7 +20913,7 @@ func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *D
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationJobStatusListResponse{}
@@ -18561,17 +20942,40 @@ func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["SynchronizationJobName"] = request.SynchronizationJobName
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobName)) {
+		query["SynchronizationJobName"] = request.SynchronizationJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationJobs"),
@@ -18581,7 +20985,7 @@ func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationJobsResponse{}
@@ -18610,14 +21014,28 @@ func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSynchronizationObjectModifyStatus"),
@@ -18627,7 +21045,7 @@ func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(reque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSynchronizationObjectModifyStatusResponse{}
@@ -18656,15 +21074,32 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["EndpointCenId"] = request.EndpointCenId
-	query["EndpointInstanceId"] = request.EndpointInstanceId
-	query["EndpointInstanceType"] = request.EndpointInstanceType
-	query["EndpointRegion"] = request.EndpointRegion
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointCenId)) {
+		query["EndpointCenId"] = request.EndpointCenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointInstanceId)) {
+		query["EndpointInstanceId"] = request.EndpointInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointInstanceType)) {
+		query["EndpointInstanceType"] = request.EndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointRegion)) {
+		query["EndpointRegion"] = request.EndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InitDtsRdsInstance"),
@@ -18674,7 +21109,7 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InitDtsRdsInstanceResponse{}
@@ -18703,14 +21138,28 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -18720,7 +21169,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -18749,16 +21198,36 @@ func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConsumerGroupId"] = request.ConsumerGroupId
-	query["ConsumerGroupName"] = request.ConsumerGroupName
-	query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
-	query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupId)) {
+		query["ConsumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupName)) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupPassword)) {
+		query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupUserName)) {
+		query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyConsumerChannel"),
@@ -18768,7 +21237,7 @@ func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerCh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyConsumerChannelResponse{}
@@ -18797,18 +21266,44 @@ func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyCons
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ConsumerGroupID"] = request.ConsumerGroupID
-	query["ConsumerGroupName"] = request.ConsumerGroupName
-	query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
-	query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
-	query["consumerGroupNewPassword"] = request.ConsumerGroupNewPassword
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupID)) {
+		query["ConsumerGroupID"] = request.ConsumerGroupID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupName)) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupPassword)) {
+		query["ConsumerGroupPassword"] = request.ConsumerGroupPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupUserName)) {
+		query["ConsumerGroupUserName"] = request.ConsumerGroupUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerGroupNewPassword)) {
+		query["consumerGroupNewPassword"] = request.ConsumerGroupNewPassword
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyConsumerGroupPassword"),
@@ -18818,7 +21313,7 @@ func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyCons
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyConsumerGroupPasswordResponse{}
@@ -18847,14 +21342,28 @@ func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ConsumptionTimestamp"] = request.ConsumptionTimestamp
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumptionTimestamp)) {
+		query["ConsumptionTimestamp"] = request.ConsumptionTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyConsumptionTimestamp"),
@@ -18864,7 +21373,7 @@ func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyConsumptionTimestampResponse{}
@@ -18899,13 +21408,42 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbListShrink)) {
+		body["DbList"] = request.DbListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlOperatorColumnReference)) {
+		body["EtlOperatorColumnReference"] = request.EtlOperatorColumnReference
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyTypeEnum)) {
+		body["ModifyTypeEnum"] = request.ModifyTypeEnum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserved)) {
+		body["Reserved"] = request.Reserved
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDtsJob"),
@@ -18944,12 +21482,20 @@ func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["DtsJobName"] = request.DtsJobName
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobName)) {
+		query["DtsJobName"] = request.DtsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDtsJobName"),
@@ -18959,7 +21505,7 @@ func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDtsJobNameResponse{}
@@ -18988,14 +21534,28 @@ func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPassw
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["Endpoint"] = request.Endpoint
-	query["Password"] = request.Password
-	query["RegionId"] = request.RegionId
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
+		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyDtsJobPassword"),
@@ -19005,7 +21565,7 @@ func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPassw
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDtsJobPasswordResponse{}
@@ -19034,15 +21594,32 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DbList"] = request.DbList
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionDataTypeDDL"] = request.SubscriptionDataTypeDDL
-	query["SubscriptionDataTypeDML"] = request.SubscriptionDataTypeDML
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		query["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDDL)) {
+		query["SubscriptionDataTypeDDL"] = request.SubscriptionDataTypeDDL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDML)) {
+		query["SubscriptionDataTypeDML"] = request.SubscriptionDataTypeDML
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySubscription"),
@@ -19052,7 +21629,7 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySubscriptionResponse{}
@@ -19081,14 +21658,28 @@ func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
-	query["SubscriptionObject"] = request.SubscriptionObject
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionObject)) {
+		query["SubscriptionObject"] = request.SubscriptionObject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySubscriptionObject"),
@@ -19098,7 +21689,7 @@ func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySubscriptionObjectResponse{}
@@ -19127,15 +21718,32 @@ func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySync
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
-	query["SynchronizationObjects"] = request.SynchronizationObjects
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationObjects)) {
+		query["SynchronizationObjects"] = request.SynchronizationObjects
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySynchronizationObject"),
@@ -19145,7 +21753,7 @@ func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySync
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySynchronizationObjectResponse{}
@@ -19174,14 +21782,28 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuyCount"] = request.BuyCount
-	query["ChargeType"] = request.ChargeType
-	query["DtsJobId"] = request.DtsJobId
-	query["Period"] = request.Period
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.BuyCount)) {
+		query["BuyCount"] = request.BuyCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RenewInstance"),
@@ -19191,7 +21813,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
@@ -19220,13 +21842,24 @@ func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetDtsJob"),
@@ -19236,7 +21869,7 @@ func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetDtsJobResponse{}
@@ -19265,14 +21898,28 @@ func (client *Client) ResetSynchronizationJobWithOptions(request *ResetSynchroni
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetSynchronizationJob"),
@@ -19282,7 +21929,7 @@ func (client *Client) ResetSynchronizationJobWithOptions(request *ResetSynchroni
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetSynchronizationJobResponse{}
@@ -19311,12 +21958,20 @@ func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["PrecheckItems"] = request.PrecheckItems
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrecheckItems)) {
+		query["PrecheckItems"] = request.PrecheckItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ShieldPrecheck"),
@@ -19326,7 +21981,7 @@ func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ShieldPrecheckResponse{}
@@ -19355,15 +22010,32 @@ func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["JobId"] = request.JobId
-	query["RegionId"] = request.RegionId
-	query["Skip"] = request.Skip
-	query["SkipPreCheckItems"] = request.SkipPreCheckItems
-	query["SkipPreCheckNames"] = request.SkipPreCheckNames
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Skip)) {
+		query["Skip"] = request.Skip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipPreCheckItems)) {
+		query["SkipPreCheckItems"] = request.SkipPreCheckItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipPreCheckNames)) {
+		query["SkipPreCheckNames"] = request.SkipPreCheckNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SkipPreCheck"),
@@ -19373,7 +22045,7 @@ func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SkipPreCheckResponse{}
@@ -19402,13 +22074,24 @@ func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartDtsJob"),
@@ -19418,7 +22101,7 @@ func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartDtsJobResponse{}
@@ -19447,13 +22130,24 @@ func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartMigrationJob"),
@@ -19463,7 +22157,7 @@ func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartMigrationJobResponse{}
@@ -19492,13 +22186,24 @@ func (client *Client) StartSubscriptionInstanceWithOptions(request *StartSubscri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
+		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartSubscriptionInstance"),
@@ -19508,7 +22213,7 @@ func (client *Client) StartSubscriptionInstanceWithOptions(request *StartSubscri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartSubscriptionInstanceResponse{}
@@ -19537,14 +22242,28 @@ func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchroni
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartSynchronizationJob"),
@@ -19554,7 +22273,7 @@ func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchroni
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartSynchronizationJobResponse{}
@@ -19583,13 +22302,24 @@ func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopDtsJob"),
@@ -19599,7 +22329,7 @@ func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopDtsJobResponse{}
@@ -19628,14 +22358,28 @@ func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopMigrationJob"),
@@ -19645,7 +22389,7 @@ func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopMigrationJobResponse{}
@@ -19674,13 +22418,24 @@ func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsInstanceId"] = request.DtsInstanceId
-	query["DtsJobId"] = request.DtsJobId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SuspendDtsJob"),
@@ -19690,7 +22445,7 @@ func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SuspendDtsJobResponse{}
@@ -19719,14 +22474,28 @@ func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["ClientToken"] = request.ClientToken
-	query["MigrationJobId"] = request.MigrationJobId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MigrationJobId)) {
+		query["MigrationJobId"] = request.MigrationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SuspendMigrationJob"),
@@ -19736,7 +22505,7 @@ func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SuspendMigrationJobResponse{}
@@ -19765,14 +22534,28 @@ func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynch
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SuspendSynchronizationJob"),
@@ -19782,7 +22565,7 @@ func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynch
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SuspendSynchronizationJobResponse{}
@@ -19811,14 +22594,36 @@ func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["SynchronizationDirection"] = request.SynchronizationDirection
-	query["SynchronizationJobId"] = request.SynchronizationJobId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Endpoint))) {
+		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceEndpoint))) {
+		query["SourceEndpoint"] = request.SourceEndpoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchSynchronizationEndpoint"),
@@ -19828,7 +22633,7 @@ func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchSynchronizationEndpointResponse{}
@@ -19857,13 +22662,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -19873,7 +22689,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -19902,13 +22718,24 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DtsJobId"] = request.DtsJobId
-	query["InstanceClass"] = request.InstanceClass
-	query["OrderType"] = request.OrderType
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TransferInstanceClass"),
@@ -19918,7 +22745,7 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TransferInstanceClassResponse{}
@@ -19947,14 +22774,28 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BuyCount"] = request.BuyCount
-	query["ChargeType"] = request.ChargeType
-	query["DtsJobId"] = request.DtsJobId
-	query["Period"] = request.Period
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.BuyCount)) {
+		query["BuyCount"] = request.BuyCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TransferPayType"),
@@ -19964,7 +22805,7 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TransferPayTypeResponse{}
@@ -19993,14 +22834,28 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -20010,7 +22865,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
@@ -20039,12 +22894,20 @@ func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceClass"] = request.InstanceClass
-	query["InstanceId"] = request.InstanceId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpgradeTwoWay"),
@@ -20054,7 +22917,7 @@ func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeTwoWayResponse{}
@@ -20083,13 +22946,24 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestinationRegion"] = request.DestinationRegion
-	query["Region"] = request.Region
-	query["RegionId"] = request.RegionId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegion)) {
+		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("WhiteIpList"),
@@ -20099,7 +22973,7 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &WhiteIpListResponse{}
