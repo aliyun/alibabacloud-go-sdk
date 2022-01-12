@@ -6070,10 +6070,8 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDBInstancesOverviewRequest struct {
-	ArchitectureType     *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceIds          *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	InstanceStatus       *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
@@ -6081,11 +6079,9 @@ type DescribeDBInstancesOverviewRequest struct {
 	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SearchKey            *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -6100,11 +6096,6 @@ func (s DescribeDBInstancesOverviewRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesOverviewRequest) SetArchitectureType(v string) *DescribeDBInstancesOverviewRequest {
-	s.ArchitectureType = &v
-	return s
-}
-
 func (s *DescribeDBInstancesOverviewRequest) SetChargeType(v string) *DescribeDBInstancesOverviewRequest {
 	s.ChargeType = &v
 	return s
@@ -6112,11 +6103,6 @@ func (s *DescribeDBInstancesOverviewRequest) SetChargeType(v string) *DescribeDB
 
 func (s *DescribeDBInstancesOverviewRequest) SetEngineVersion(v string) *DescribeDBInstancesOverviewRequest {
 	s.EngineVersion = &v
-	return s
-}
-
-func (s *DescribeDBInstancesOverviewRequest) SetExpireTime(v string) *DescribeDBInstancesOverviewRequest {
-	s.ExpireTime = &v
 	return s
 }
 
@@ -6155,11 +6141,6 @@ func (s *DescribeDBInstancesOverviewRequest) SetOwnerId(v int64) *DescribeDBInst
 	return s
 }
 
-func (s *DescribeDBInstancesOverviewRequest) SetRegionId(v string) *DescribeDBInstancesOverviewRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeDBInstancesOverviewRequest) SetResourceGroupId(v string) *DescribeDBInstancesOverviewRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -6172,11 +6153,6 @@ func (s *DescribeDBInstancesOverviewRequest) SetResourceOwnerAccount(v string) *
 
 func (s *DescribeDBInstancesOverviewRequest) SetResourceOwnerId(v int64) *DescribeDBInstancesOverviewRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesOverviewRequest) SetSearchKey(v string) *DescribeDBInstancesOverviewRequest {
-	s.SearchKey = &v
 	return s
 }
 
@@ -6202,9 +6178,8 @@ func (s *DescribeDBInstancesOverviewRequest) SetZoneId(v string) *DescribeDBInst
 
 type DescribeDBInstancesOverviewResponseBody struct {
 	DBInstances []*DescribeDBInstancesOverviewResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *string                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBInstancesOverviewResponseBody) String() string {
@@ -6225,12 +6200,13 @@ func (s *DescribeDBInstancesOverviewResponseBody) SetRequestId(v string) *Descri
 	return s
 }
 
-func (s *DescribeDBInstancesOverviewResponseBody) SetTotalCount(v int32) *DescribeDBInstancesOverviewResponseBody {
+func (s *DescribeDBInstancesOverviewResponseBody) SetTotalCount(v string) *DescribeDBInstancesOverviewResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type DescribeDBInstancesOverviewResponseBodyDBInstances struct {
+	CapacityUnit          *string                                                         `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	ChargeType            *string                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CreationTime          *string                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DBInstanceClass       *string                                                         `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
@@ -6263,6 +6239,11 @@ func (s DescribeDBInstancesOverviewResponseBodyDBInstances) String() string {
 
 func (s DescribeDBInstancesOverviewResponseBodyDBInstances) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstancesOverviewResponseBodyDBInstances) SetCapacityUnit(v string) *DescribeDBInstancesOverviewResponseBodyDBInstances {
+	s.CapacityUnit = &v
+	return s
 }
 
 func (s *DescribeDBInstancesOverviewResponseBodyDBInstances) SetChargeType(v string) *DescribeDBInstancesOverviewResponseBodyDBInstances {
@@ -17719,20 +17700,12 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ArchitectureType)) {
-		query["ArchitectureType"] = request.ArchitectureType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
 		query["EngineVersion"] = request.EngineVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
-		query["ExpireTime"] = request.ExpireTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
@@ -17763,10 +17736,6 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -17777,10 +17746,6 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
-		query["SearchKey"] = request.SearchKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
