@@ -3292,9 +3292,10 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes) SetSystem
 }
 
 type GetFeatureDetailsResponseBodyTerraformSupportedVersions struct {
-	ProviderVersions []*GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions `json:"ProviderVersions,omitempty" xml:"ProviderVersions,omitempty" type:"Repeated"`
-	TerraformVersion *string                                                                    `json:"TerraformVersion,omitempty" xml:"TerraformVersion,omitempty"`
-	Transform        *string                                                                    `json:"Transform,omitempty" xml:"Transform,omitempty"`
+	ProviderVersions        []*GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions `json:"ProviderVersions,omitempty" xml:"ProviderVersions,omitempty" type:"Repeated"`
+	TerraformVersion        *string                                                                    `json:"TerraformVersion,omitempty" xml:"TerraformVersion,omitempty"`
+	Transform               *string                                                                    `json:"Transform,omitempty" xml:"Transform,omitempty"`
+	UpdateAllowedTransforms []*string                                                                  `json:"UpdateAllowedTransforms,omitempty" xml:"UpdateAllowedTransforms,omitempty" type:"Repeated"`
 }
 
 func (s GetFeatureDetailsResponseBodyTerraformSupportedVersions) String() string {
@@ -3317,6 +3318,11 @@ func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetTerraformVe
 
 func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetTransform(v string) *GetFeatureDetailsResponseBodyTerraformSupportedVersions {
 	s.Transform = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTerraformSupportedVersions) SetUpdateAllowedTransforms(v []*string) *GetFeatureDetailsResponseBodyTerraformSupportedVersions {
+	s.UpdateAllowedTransforms = v
 	return s
 }
 
@@ -3820,6 +3826,10 @@ type GetStackResponseBody struct {
 	StatusReason        *string                               `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	Tags                []*GetStackResponseBodyTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateDescription *string                               `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	TemplateId          *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateScratchId   *string                               `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
+	TemplateURL         *string                               `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion     *string                               `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	TimeoutInMinutes    *int32                                `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	UpdateTime          *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -3949,6 +3959,26 @@ func (s *GetStackResponseBody) SetTags(v []*GetStackResponseBodyTags) *GetStackR
 
 func (s *GetStackResponseBody) SetTemplateDescription(v string) *GetStackResponseBody {
 	s.TemplateDescription = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTemplateId(v string) *GetStackResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTemplateScratchId(v string) *GetStackResponseBody {
+	s.TemplateScratchId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTemplateURL(v string) *GetStackResponseBody {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetTemplateVersion(v string) *GetStackResponseBody {
+	s.TemplateVersion = &v
 	return s
 }
 
