@@ -1041,9 +1041,7 @@ type QueryGateVerifyBillingPublicRequest struct {
 	AuthenticationType   *int32  `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
 	Month                *string `json:"Month,omitempty" xml:"Month,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryGateVerifyBillingPublicRequest) String() string {
@@ -1069,18 +1067,8 @@ func (s *QueryGateVerifyBillingPublicRequest) SetOwnerId(v int64) *QueryGateVeri
 	return s
 }
 
-func (s *QueryGateVerifyBillingPublicRequest) SetProdCode(v string) *QueryGateVerifyBillingPublicRequest {
-	s.ProdCode = &v
-	return s
-}
-
 func (s *QueryGateVerifyBillingPublicRequest) SetResourceOwnerAccount(v string) *QueryGateVerifyBillingPublicRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryGateVerifyBillingPublicRequest) SetResourceOwnerId(v int64) *QueryGateVerifyBillingPublicRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -1223,9 +1211,7 @@ type QueryGateVerifyStatisticPublicRequest struct {
 	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	OsType               *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SceneCode            *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
@@ -1258,18 +1244,8 @@ func (s *QueryGateVerifyStatisticPublicRequest) SetOwnerId(v int64) *QueryGateVe
 	return s
 }
 
-func (s *QueryGateVerifyStatisticPublicRequest) SetProdCode(v string) *QueryGateVerifyStatisticPublicRequest {
-	s.ProdCode = &v
-	return s
-}
-
 func (s *QueryGateVerifyStatisticPublicRequest) SetResourceOwnerAccount(v string) *QueryGateVerifyStatisticPublicRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryGateVerifyStatisticPublicRequest) SetResourceOwnerId(v int64) *QueryGateVerifyStatisticPublicRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2339,16 +2315,8 @@ func (client *Client) QueryGateVerifyBillingPublicWithOptions(request *QueryGate
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
-		query["ProdCode"] = request.ProdCode
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2407,16 +2375,8 @@ func (client *Client) QueryGateVerifyStatisticPublicWithOptions(request *QueryGa
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
-		query["ProdCode"] = request.ProdCode
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
