@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -291,6 +292,75 @@ func (s *AttachPolicyResponse) SetHeaders(v map[string]*string) *AttachPolicyRes
 }
 
 func (s *AttachPolicyResponse) SetBody(v *AttachPolicyResponseBody) *AttachPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type BindSecureMobilePhoneRequest struct {
+	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	SecureMobilePhone *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
+	VerificationCode  *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
+}
+
+func (s BindSecureMobilePhoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSecureMobilePhoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindSecureMobilePhoneRequest) SetAccountId(v string) *BindSecureMobilePhoneRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *BindSecureMobilePhoneRequest) SetSecureMobilePhone(v string) *BindSecureMobilePhoneRequest {
+	s.SecureMobilePhone = &v
+	return s
+}
+
+func (s *BindSecureMobilePhoneRequest) SetVerificationCode(v string) *BindSecureMobilePhoneRequest {
+	s.VerificationCode = &v
+	return s
+}
+
+type BindSecureMobilePhoneResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BindSecureMobilePhoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSecureMobilePhoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindSecureMobilePhoneResponseBody) SetRequestId(v string) *BindSecureMobilePhoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BindSecureMobilePhoneResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BindSecureMobilePhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindSecureMobilePhoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSecureMobilePhoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindSecureMobilePhoneResponse) SetHeaders(v map[string]*string) *BindSecureMobilePhoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindSecureMobilePhoneResponse) SetBody(v *BindSecureMobilePhoneResponseBody) *BindSecureMobilePhoneResponse {
 	s.Body = v
 	return s
 }
@@ -1893,63 +1963,6 @@ func (s *DeclineHandshakeResponse) SetBody(v *DeclineHandshakeResponseBody) *Dec
 	return s
 }
 
-type DeleteAccountRequest struct {
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-}
-
-func (s DeleteAccountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccountRequest) SetAccountId(v string) *DeleteAccountRequest {
-	s.AccountId = &v
-	return s
-}
-
-type DeleteAccountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAccountResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccountResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAccountResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteControlPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
@@ -2795,6 +2808,128 @@ func (s *EnableControlPolicyResponse) SetHeaders(v map[string]*string) *EnableCo
 }
 
 func (s *EnableControlPolicyResponse) SetBody(v *EnableControlPolicyResponseBody) *EnableControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type EnableResourceDirectoryRequest struct {
+	EnableMode          *string `json:"EnableMode,omitempty" xml:"EnableMode,omitempty"`
+	MAName              *string `json:"MAName,omitempty" xml:"MAName,omitempty"`
+	MASecureMobilePhone *string `json:"MASecureMobilePhone,omitempty" xml:"MASecureMobilePhone,omitempty"`
+	VerificationCode    *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
+}
+
+func (s EnableResourceDirectoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableResourceDirectoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableResourceDirectoryRequest) SetEnableMode(v string) *EnableResourceDirectoryRequest {
+	s.EnableMode = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryRequest) SetMAName(v string) *EnableResourceDirectoryRequest {
+	s.MAName = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryRequest) SetMASecureMobilePhone(v string) *EnableResourceDirectoryRequest {
+	s.MASecureMobilePhone = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryRequest) SetVerificationCode(v string) *EnableResourceDirectoryRequest {
+	s.VerificationCode = &v
+	return s
+}
+
+type EnableResourceDirectoryResponseBody struct {
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceDirectory *EnableResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
+}
+
+func (s EnableResourceDirectoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableResourceDirectoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableResourceDirectoryResponseBody) SetRequestId(v string) *EnableResourceDirectoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponseBody) SetResourceDirectory(v *EnableResourceDirectoryResponseBodyResourceDirectory) *EnableResourceDirectoryResponseBody {
+	s.ResourceDirectory = v
+	return s
+}
+
+type EnableResourceDirectoryResponseBodyResourceDirectory struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
+}
+
+func (s EnableResourceDirectoryResponseBodyResourceDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableResourceDirectoryResponseBodyResourceDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *EnableResourceDirectoryResponseBodyResourceDirectory) SetCreateTime(v string) *EnableResourceDirectoryResponseBodyResourceDirectory {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountId(v string) *EnableResourceDirectoryResponseBodyResourceDirectory {
+	s.MasterAccountId = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponseBodyResourceDirectory) SetMasterAccountName(v string) *EnableResourceDirectoryResponseBodyResourceDirectory {
+	s.MasterAccountName = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponseBodyResourceDirectory) SetResourceDirectoryId(v string) *EnableResourceDirectoryResponseBodyResourceDirectory {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponseBodyResourceDirectory) SetRootFolderId(v string) *EnableResourceDirectoryResponseBodyResourceDirectory {
+	s.RootFolderId = &v
+	return s
+}
+
+type EnableResourceDirectoryResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *EnableResourceDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableResourceDirectoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableResourceDirectoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableResourceDirectoryResponse) SetHeaders(v map[string]*string) *EnableResourceDirectoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableResourceDirectoryResponse) SetBody(v *EnableResourceDirectoryResponseBody) *EnableResourceDirectoryResponse {
 	s.Body = v
 	return s
 }
@@ -4588,15 +4723,16 @@ func (s *ListAccountsResponseBodyAccounts) SetAccount(v []*ListAccountsResponseB
 }
 
 type ListAccountsResponseBodyAccountsAccount struct {
-	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId             *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	JoinMethod            *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime              *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	ModifyTime            *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceDirectoryId   *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAccountsResponseBodyAccountsAccount) String() string {
@@ -4639,6 +4775,11 @@ func (s *ListAccountsResponseBodyAccountsAccount) SetModifyTime(v string) *ListA
 
 func (s *ListAccountsResponseBodyAccountsAccount) SetResourceDirectoryId(v string) *ListAccountsResponseBodyAccountsAccount {
 	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *ListAccountsResponseBodyAccountsAccount) SetResourceDirectoryPath(v string) *ListAccountsResponseBodyAccountsAccount {
+	s.ResourceDirectoryPath = &v
 	return s
 }
 
@@ -6512,9 +6653,12 @@ func (s *ListPolicyVersionsResponse) SetBody(v *ListPolicyVersionsResponseBody) 
 }
 
 type ListResourceGroupsRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -6525,6 +6669,16 @@ func (s ListResourceGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListResourceGroupsRequest) SetDisplayName(v string) *ListResourceGroupsRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetName(v string) *ListResourceGroupsRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *ListResourceGroupsRequest) SetPageNumber(v int32) *ListResourceGroupsRequest {
 	s.PageNumber = &v
 	return s
@@ -6532,6 +6686,11 @@ func (s *ListResourceGroupsRequest) SetPageNumber(v int32) *ListResourceGroupsRe
 
 func (s *ListResourceGroupsRequest) SetPageSize(v int32) *ListResourceGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceGroupId(v string) *ListResourceGroupsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8104,6 +8263,132 @@ func (s *ResendPromoteResourceAccountEmailResponse) SetBody(v *ResendPromoteReso
 	return s
 }
 
+type SendVerificationCodeForBindSecureMobilePhoneRequest struct {
+	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	SecureMobilePhone *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneRequest) SetAccountId(v string) *SendVerificationCodeForBindSecureMobilePhoneRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneRequest) SetSecureMobilePhone(v string) *SendVerificationCodeForBindSecureMobilePhoneRequest {
+	s.SecureMobilePhone = &v
+	return s
+}
+
+type SendVerificationCodeForBindSecureMobilePhoneResponseBody struct {
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneResponseBody) SetExpirationDate(v string) *SendVerificationCodeForBindSecureMobilePhoneResponseBody {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneResponseBody) SetRequestId(v string) *SendVerificationCodeForBindSecureMobilePhoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendVerificationCodeForBindSecureMobilePhoneResponse struct {
+	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendVerificationCodeForBindSecureMobilePhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForBindSecureMobilePhoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneResponse) SetHeaders(v map[string]*string) *SendVerificationCodeForBindSecureMobilePhoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendVerificationCodeForBindSecureMobilePhoneResponse) SetBody(v *SendVerificationCodeForBindSecureMobilePhoneResponseBody) *SendVerificationCodeForBindSecureMobilePhoneResponse {
+	s.Body = v
+	return s
+}
+
+type SendVerificationCodeForEnableRDRequest struct {
+	SecureMobilePhone *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
+}
+
+func (s SendVerificationCodeForEnableRDRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForEnableRDRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForEnableRDRequest) SetSecureMobilePhone(v string) *SendVerificationCodeForEnableRDRequest {
+	s.SecureMobilePhone = &v
+	return s
+}
+
+type SendVerificationCodeForEnableRDResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendVerificationCodeForEnableRDResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForEnableRDResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForEnableRDResponseBody) SetRequestId(v string) *SendVerificationCodeForEnableRDResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendVerificationCodeForEnableRDResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendVerificationCodeForEnableRDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendVerificationCodeForEnableRDResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendVerificationCodeForEnableRDResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendVerificationCodeForEnableRDResponse) SetHeaders(v map[string]*string) *SendVerificationCodeForEnableRDResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendVerificationCodeForEnableRDResponse) SetBody(v *SendVerificationCodeForEnableRDResponseBody) *SendVerificationCodeForEnableRDResponse {
+	s.Body = v
+	return s
+}
+
 type SetDefaultPolicyVersionRequest struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
@@ -8865,11 +9150,27 @@ func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HandshakeId)) {
+		query["HandshakeId"] = request.HandshakeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AcceptHandshake"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AcceptHandshakeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AcceptHandshake"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8893,11 +9194,31 @@ func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8921,11 +9242,43 @@ func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalName)) {
+		query["PrincipalName"] = request.PrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AttachPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AttachPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8944,16 +9297,84 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 	return _result, _err
 }
 
+func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobilePhoneRequest, runtime *util.RuntimeOptions) (_result *BindSecureMobilePhoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecureMobilePhone)) {
+		query["SecureMobilePhone"] = request.SecureMobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerificationCode)) {
+		query["VerificationCode"] = request.VerificationCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindSecureMobilePhone"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindSecureMobilePhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneRequest) (_result *BindSecureMobilePhoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindSecureMobilePhoneResponse{}
+	_body, _err := client.BindSecureMobilePhoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelCreateCloudAccountWithOptions(request *CancelCreateCloudAccountRequest, runtime *util.RuntimeOptions) (_result *CancelCreateCloudAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelCreateCloudAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelCreateCloudAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelCreateCloudAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8977,11 +9398,27 @@ func (client *Client) CancelHandshakeWithOptions(request *CancelHandshakeRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HandshakeId)) {
+		query["HandshakeId"] = request.HandshakeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelHandshake"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelHandshakeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelHandshake"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9005,11 +9442,27 @@ func (client *Client) CancelPromoteResourceAccountWithOptions(request *CancelPro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelPromoteResourceAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelPromoteResourceAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelPromoteResourceAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9033,11 +9486,39 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayerAccountId)) {
+		query["PayerAccountId"] = request.PayerAccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCloudAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCloudAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9061,11 +9542,39 @@ func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectScope)) {
+		query["EffectScope"] = request.EffectScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9089,11 +9598,31 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderName)) {
+		query["FolderName"] = request.FolderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFolder"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateFolderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateFolder"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9117,11 +9646,35 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9145,11 +9698,35 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SetAsDefault)) {
+		query["SetAsDefault"] = request.SetAsDefault
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicyVersion"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePolicyVersion"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9173,11 +9750,39 @@ func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountNamePrefix)) {
+		query["AccountNamePrefix"] = request.AccountNamePrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayerAccountId)) {
+		query["PayerAccountId"] = request.PayerAccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResourceAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResourceAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9201,11 +9806,31 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceGroup"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResourceGroup"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9229,11 +9854,39 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssumeRolePolicyDocument)) {
+		query["AssumeRolePolicyDocument"] = request.AssumeRolePolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSessionDuration)) {
+		query["MaxSessionDuration"] = request.MaxSessionDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9257,11 +9910,35 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomSuffix)) {
+		query["CustomSuffix"] = request.CustomSuffix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceLinkedRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceLinkedRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9285,11 +9962,27 @@ func (client *Client) DeclineHandshakeWithOptions(request *DeclineHandshakeReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HandshakeId)) {
+		query["HandshakeId"] = request.HandshakeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeclineHandshake"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeclineHandshakeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeclineHandshake"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9308,44 +10001,32 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DeleteAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9369,11 +10050,27 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["FolderId"] = request.FolderId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFolder"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFolderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteFolder"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9397,11 +10094,27 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9425,11 +10138,31 @@ func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyVersion"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePolicyVersion"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9453,11 +10186,27 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceGroup"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteResourceGroup"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9481,11 +10230,27 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9509,11 +10274,27 @@ func (client *Client) DeleteServiceLinkedRoleWithOptions(request *DeleteServiceL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceLinkedRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceLinkedRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9537,11 +10318,31 @@ func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *Dereg
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePrincipal)) {
+		query["ServicePrincipal"] = request.ServicePrincipal
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeregisterDelegatedAdministrator"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeregisterDelegatedAdministratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeregisterDelegatedAdministrator"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9562,8 +10363,19 @@ func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelega
 
 func (client *Client) DestroyResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *DestroyResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DestroyResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DestroyResourceDirectoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DestroyResourceDirectory"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9587,11 +10399,31 @@ func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9615,11 +10447,43 @@ func (client *Client) DetachPolicyWithOptions(request *DetachPolicyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalName)) {
+		query["PrincipalName"] = request.PrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetachPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetachPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9640,8 +10504,19 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 
 func (client *Client) DisableControlPolicyWithOptions(runtime *util.RuntimeOptions) (_result *DisableControlPolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DisableControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9662,8 +10537,19 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 
 func (client *Client) EnableControlPolicyWithOptions(runtime *util.RuntimeOptions) (_result *EnableControlPolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("EnableControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9682,16 +10568,88 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 	return _result, _err
 }
 
+func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResourceDirectoryRequest, runtime *util.RuntimeOptions) (_result *EnableResourceDirectoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableMode)) {
+		query["EnableMode"] = request.EnableMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MAName)) {
+		query["MAName"] = request.MAName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MASecureMobilePhone)) {
+		query["MASecureMobilePhone"] = request.MASecureMobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerificationCode)) {
+		query["VerificationCode"] = request.VerificationCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableResourceDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRequest) (_result *EnableResourceDirectoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableResourceDirectoryResponse{}
+	_body, _err := client.EnableResourceDirectoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *util.RuntimeOptions) (_result *GetAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9715,11 +10673,31 @@ func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9740,8 +10718,19 @@ func (client *Client) GetControlPolicy(request *GetControlPolicyRequest) (_resul
 
 func (client *Client) GetControlPolicyEnablementStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetControlPolicyEnablementStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetControlPolicyEnablementStatus"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetControlPolicyEnablementStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetControlPolicyEnablementStatus"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9765,11 +10754,27 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["FolderId"] = request.FolderId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFolder"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetFolderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetFolder"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9793,11 +10798,27 @@ func (client *Client) GetHandshakeWithOptions(request *GetHandshakeRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HandshakeId)) {
+		query["HandshakeId"] = request.HandshakeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHandshake"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetHandshakeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetHandshake"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9821,11 +10842,27 @@ func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPayerForAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPayerForAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPayerForAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9849,11 +10886,35 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9877,11 +10938,35 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicyVersion"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPolicyVersion"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9902,8 +10987,19 @@ func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_resul
 
 func (client *Client) GetResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *GetResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetResourceDirectoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceDirectory"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9927,11 +11023,27 @@ func (client *Client) GetResourceGroupWithOptions(request *GetResourceGroupReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceGroup"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourceGroup"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9955,11 +11067,31 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9983,11 +11115,27 @@ func (client *Client) GetServiceLinkedRoleDeletionStatusWithOptions(request *Get
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletionTaskId)) {
+		query["DeletionTaskId"] = request.DeletionTaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceLinkedRoleDeletionStatus"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceLinkedRoleDeletionStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceLinkedRoleDeletionStatus"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10008,8 +11156,19 @@ func (client *Client) GetServiceLinkedRoleDeletionStatus(request *GetServiceLink
 
 func (client *Client) InitResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *InitResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("InitResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &InitResourceDirectoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InitResourceDirectory"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10033,11 +11192,35 @@ func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *Invit
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetEntity)) {
+		query["TargetEntity"] = request.TargetEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InviteAccountToResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &InviteAccountToResourceDirectoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InviteAccountToResourceDirectory"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10061,11 +11244,31 @@ func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccounts"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccountsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccounts"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10089,11 +11292,39 @@ func (client *Client) ListAccountsForParentWithOptions(request *ListAccountsForP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeyword)) {
+		query["QueryKeyword"] = request.QueryKeyword
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccountsForParent"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccountsForParentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccountsForParent"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10117,11 +11348,27 @@ func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildId)) {
+		query["ChildId"] = request.ChildId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAncestors"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAncestorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAncestors"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10145,11 +11392,39 @@ func (client *Client) ListControlPoliciesWithOptions(request *ListControlPolicie
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListControlPolicies"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListControlPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListControlPolicies"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10173,11 +11448,31 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListControlPolicyAttachmentsForTarget"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListControlPolicyAttachmentsForTargetResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListControlPolicyAttachmentsForTarget"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10201,11 +11496,35 @@ func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelega
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePrincipal)) {
+		query["ServicePrincipal"] = request.ServicePrincipal
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDelegatedAdministrators"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDelegatedAdministratorsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDelegatedAdministrators"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10229,11 +11548,27 @@ func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDelegatedServicesForAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListDelegatedServicesForAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListDelegatedServicesForAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10257,11 +11592,39 @@ func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForPar
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeyword)) {
+		query["QueryKeyword"] = request.QueryKeyword
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFoldersForParent"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListFoldersForParentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListFoldersForParent"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10285,11 +11648,31 @@ func (client *Client) ListHandshakesForAccountWithOptions(request *ListHandshake
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHandshakesForAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListHandshakesForAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListHandshakesForAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10313,11 +11696,31 @@ func (client *Client) ListHandshakesForResourceDirectoryWithOptions(request *Lis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHandshakesForResourceDirectory"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListHandshakesForResourceDirectoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListHandshakesForResourceDirectory"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10341,11 +11744,39 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicies"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPoliciesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPolicies"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10369,11 +11800,55 @@ func (client *Client) ListPolicyAttachmentsWithOptions(request *ListPolicyAttach
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalName)) {
+		query["PrincipalName"] = request.PrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicyAttachments"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPolicyAttachmentsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPolicyAttachments"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10397,11 +11872,31 @@ func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicyVersions"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPolicyVersionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPolicyVersions"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10425,11 +11920,47 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceGroups"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResourceGroups"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10453,11 +11984,51 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResources"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResources"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10481,11 +12052,35 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoles"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRolesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRoles"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10509,11 +12104,35 @@ func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTargetAttachmentsForControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTargetAttachmentsForControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTargetAttachmentsForControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10537,11 +12156,35 @@ func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedSe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminAccountId)) {
+		query["AdminAccountId"] = request.AdminAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrustedServiceStatus"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTrustedServiceStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTrustedServiceStatus"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10565,11 +12208,31 @@ func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationFolderId)) {
+		query["DestinationFolderId"] = request.DestinationFolderId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10593,11 +12256,31 @@ func (client *Client) MoveResourcesWithOptions(request *MoveResourcesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["Resources"] = request.Resources
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResources"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveResources"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10621,11 +12304,31 @@ func (client *Client) PromoteResourceAccountWithOptions(request *PromoteResource
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PromoteResourceAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PromoteResourceAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PromoteResourceAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10649,11 +12352,31 @@ func (client *Client) RegisterDelegatedAdministratorWithOptions(request *Registe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePrincipal)) {
+		query["ServicePrincipal"] = request.ServicePrincipal
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterDelegatedAdministrator"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterDelegatedAdministratorResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RegisterDelegatedAdministrator"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10677,11 +12400,27 @@ func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveCloudAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveCloudAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveCloudAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10705,11 +12444,27 @@ func (client *Client) ResendCreateCloudAccountEmailWithOptions(request *ResendCr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResendCreateCloudAccountEmail"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResendCreateCloudAccountEmailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResendCreateCloudAccountEmail"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10733,11 +12488,27 @@ func (client *Client) ResendPromoteResourceAccountEmailWithOptions(request *Rese
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResendPromoteResourceAccountEmail"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResendPromoteResourceAccountEmailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResendPromoteResourceAccountEmail"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10756,16 +12527,128 @@ func (client *Client) ResendPromoteResourceAccountEmail(request *ResendPromoteRe
 	return _result, _err
 }
 
+func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(request *SendVerificationCodeForBindSecureMobilePhoneRequest, runtime *util.RuntimeOptions) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecureMobilePhone)) {
+		query["SecureMobilePhone"] = request.SecureMobilePhone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendVerificationCodeForBindSecureMobilePhone"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendVerificationCodeForBindSecureMobilePhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *SendVerificationCodeForBindSecureMobilePhoneRequest) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendVerificationCodeForBindSecureMobilePhoneResponse{}
+	_body, _err := client.SendVerificationCodeForBindSecureMobilePhoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVerificationCodeForEnableRDRequest, runtime *util.RuntimeOptions) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecureMobilePhone)) {
+		query["SecureMobilePhone"] = request.SecureMobilePhone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendVerificationCodeForEnableRD"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendVerificationCodeForEnableRDResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendVerificationCodeForEnableRD(request *SendVerificationCodeForEnableRDRequest) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendVerificationCodeForEnableRDResponse{}
+	_body, _err := client.SendVerificationCodeForEnableRDWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPolicyVersionRequest, runtime *util.RuntimeOptions) (_result *SetDefaultPolicyVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultPolicyVersion"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultPolicyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultPolicyVersion"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10789,11 +12672,35 @@ func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewAccountType)) {
+		query["NewAccountType"] = request.NewAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccount"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10817,11 +12724,39 @@ func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPolicyDocument)) {
+		query["NewPolicyDocument"] = request.NewPolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPolicyName)) {
+		query["NewPolicyName"] = request.NewPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateControlPolicy"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateControlPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateControlPolicy"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10845,11 +12780,31 @@ func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewFolderName)) {
+		query["NewFolderName"] = request.NewFolderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFolder"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateFolderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateFolder"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10873,11 +12828,31 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceGroup"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateResourceGroup"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10901,11 +12876,39 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewAssumeRolePolicyDocument)) {
+		query["NewAssumeRolePolicyDocument"] = request.NewAssumeRolePolicyDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewMaxSessionDuration)) {
+		query["NewMaxSessionDuration"] = request.NewMaxSessionDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRole"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRole"), tea.String("2020-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
