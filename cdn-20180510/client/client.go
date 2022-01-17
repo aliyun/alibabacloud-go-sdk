@@ -16454,9 +16454,8 @@ func (s *DescribeUserConfigsResponseBody) SetRequestId(v string) *DescribeUserCo
 }
 
 type DescribeUserConfigsResponseBodyConfigs struct {
-	GreenManagerConfig *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig `json:"GreenManagerConfig,omitempty" xml:"GreenManagerConfig,omitempty" type:"Struct"`
-	OssLogConfig       *DescribeUserConfigsResponseBodyConfigsOssLogConfig       `json:"OssLogConfig,omitempty" xml:"OssLogConfig,omitempty" type:"Struct"`
-	WafConfig          *DescribeUserConfigsResponseBodyConfigsWafConfig          `json:"WafConfig,omitempty" xml:"WafConfig,omitempty" type:"Struct"`
+	OssLogConfig *DescribeUserConfigsResponseBodyConfigsOssLogConfig `json:"OssLogConfig,omitempty" xml:"OssLogConfig,omitempty" type:"Struct"`
+	WafConfig    *DescribeUserConfigsResponseBodyConfigsWafConfig    `json:"WafConfig,omitempty" xml:"WafConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeUserConfigsResponseBodyConfigs) String() string {
@@ -16467,11 +16466,6 @@ func (s DescribeUserConfigsResponseBodyConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeUserConfigsResponseBodyConfigs) SetGreenManagerConfig(v *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig) *DescribeUserConfigsResponseBodyConfigs {
-	s.GreenManagerConfig = v
-	return s
-}
-
 func (s *DescribeUserConfigsResponseBodyConfigs) SetOssLogConfig(v *DescribeUserConfigsResponseBodyConfigsOssLogConfig) *DescribeUserConfigsResponseBodyConfigs {
 	s.OssLogConfig = v
 	return s
@@ -16479,29 +16473,6 @@ func (s *DescribeUserConfigsResponseBodyConfigs) SetOssLogConfig(v *DescribeUser
 
 func (s *DescribeUserConfigsResponseBodyConfigs) SetWafConfig(v *DescribeUserConfigsResponseBodyConfigsWafConfig) *DescribeUserConfigsResponseBodyConfigs {
 	s.WafConfig = v
-	return s
-}
-
-type DescribeUserConfigsResponseBodyConfigsGreenManagerConfig struct {
-	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-}
-
-func (s DescribeUserConfigsResponseBodyConfigsGreenManagerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserConfigsResponseBodyConfigsGreenManagerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig) SetQuota(v string) *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig {
-	s.Quota = &v
-	return s
-}
-
-func (s *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig) SetRatio(v string) *DescribeUserConfigsResponseBodyConfigsGreenManagerConfig {
-	s.Ratio = &v
 	return s
 }
 
@@ -21909,19 +21880,48 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CdnType"] = request.CdnType
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CdnType)) {
+		query["CdnType"] = request.CdnType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddCdnDomain"),
@@ -21931,7 +21931,7 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddCdnDomainResponse{}
@@ -21960,11 +21960,42 @@ func (client *Client) AddFCTriggerWithOptions(request *AddFCTriggerRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TriggerARN"] = request.TriggerARN
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
+		query["TriggerARN"] = request.TriggerARN
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventMetaName)) {
+		body["EventMetaName"] = request.EventMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventMetaVersion)) {
+		body["EventMetaVersion"] = request.EventMetaVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionARN)) {
+		body["FunctionARN"] = request.FunctionARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notes)) {
+		body["Notes"] = request.Notes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleARN)) {
+		body["RoleARN"] = request.RoleARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceARN)) {
+		body["SourceARN"] = request.SourceARN
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddFCTrigger"),
@@ -22003,19 +22034,48 @@ func (client *Client) BatchAddCdnDomainWithOptions(request *BatchAddCdnDomainReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CdnType"] = request.CdnType
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CdnType)) {
+		query["CdnType"] = request.CdnType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchAddCdnDomain"),
@@ -22025,7 +22085,7 @@ func (client *Client) BatchAddCdnDomainWithOptions(request *BatchAddCdnDomainReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchAddCdnDomainResponse{}
@@ -22054,14 +22114,28 @@ func (client *Client) BatchDeleteCdnDomainConfigWithOptions(request *BatchDelete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchDeleteCdnDomainConfig"),
@@ -22071,7 +22145,7 @@ func (client *Client) BatchDeleteCdnDomainConfigWithOptions(request *BatchDelete
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchDeleteCdnDomainConfigResponse{}
@@ -22100,14 +22174,28 @@ func (client *Client) BatchSetCdnDomainConfigWithOptions(request *BatchSetCdnDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["Functions"] = request.Functions
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchSetCdnDomainConfig"),
@@ -22117,7 +22205,7 @@ func (client *Client) BatchSetCdnDomainConfigWithOptions(request *BatchSetCdnDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchSetCdnDomainConfigResponse{}
@@ -22146,19 +22234,48 @@ func (client *Client) BatchSetCdnDomainServerCertificateWithOptions(request *Bat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["CertType"] = request.CertType
-	query["DomainName"] = request.DomainName
-	query["ForceSet"] = request.ForceSet
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["SSLPri"] = request.SSLPri
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SSLPub"] = request.SSLPub
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceSet)) {
+		query["ForceSet"] = request.ForceSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchSetCdnDomainServerCertificate"),
@@ -22168,7 +22285,7 @@ func (client *Client) BatchSetCdnDomainServerCertificateWithOptions(request *Bat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchSetCdnDomainServerCertificateResponse{}
@@ -22197,12 +22314,20 @@ func (client *Client) BatchStartCdnDomainWithOptions(request *BatchStartCdnDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchStartCdnDomain"),
@@ -22212,7 +22337,7 @@ func (client *Client) BatchStartCdnDomainWithOptions(request *BatchStartCdnDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStartCdnDomainResponse{}
@@ -22241,12 +22366,20 @@ func (client *Client) BatchStopCdnDomainWithOptions(request *BatchStopCdnDomainR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchStopCdnDomain"),
@@ -22256,7 +22389,7 @@ func (client *Client) BatchStopCdnDomainWithOptions(request *BatchStopCdnDomainR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchStopCdnDomainResponse{}
@@ -22285,15 +22418,32 @@ func (client *Client) BatchUpdateCdnDomainWithOptions(request *BatchUpdateCdnDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchUpdateCdnDomain"),
@@ -22303,7 +22453,7 @@ func (client *Client) BatchUpdateCdnDomainWithOptions(request *BatchUpdateCdnDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BatchUpdateCdnDomainResponse{}
@@ -22332,18 +22482,44 @@ func (client *Client) CreateCdnCertificateSigningRequestWithOptions(request *Cre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["City"] = request.City
-	query["CommonName"] = request.CommonName
-	query["Country"] = request.Country
-	query["Email"] = request.Email
-	query["Organization"] = request.Organization
-	query["OrganizationUnit"] = request.OrganizationUnit
-	query["OwnerId"] = request.OwnerId
-	query["SANs"] = request.SANs
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Organization)) {
+		query["Organization"] = request.Organization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
+		query["OrganizationUnit"] = request.OrganizationUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SANs)) {
+		query["SANs"] = request.SANs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCdnCertificateSigningRequest"),
@@ -22353,7 +22529,7 @@ func (client *Client) CreateCdnCertificateSigningRequestWithOptions(request *Cre
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCdnCertificateSigningRequestResponse{}
@@ -22382,10 +22558,34 @@ func (client *Client) CreateCdnDeliverTaskWithOptions(request *CreateCdnDeliverT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
+		body["Deliver"] = request.Deliver
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reports)) {
+		body["Reports"] = request.Reports
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["Schedule"] = request.Schedule
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCdnDeliverTask"),
@@ -22424,10 +22624,22 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportIds)) {
+		body["ReportIds"] = request.ReportIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCdnSubTask"),
@@ -22466,12 +22678,20 @@ func (client *Client) CreateIllegalUrlExportTaskWithOptions(request *CreateIlleg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskName"] = request.TaskName
-	query["TimePoint"] = request.TimePoint
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
+		query["TimePoint"] = request.TimePoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateIllegalUrlExportTask"),
@@ -22481,7 +22701,7 @@ func (client *Client) CreateIllegalUrlExportTaskWithOptions(request *CreateIlleg
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIllegalUrlExportTaskResponse{}
@@ -22521,7 +22741,7 @@ func (client *Client) CreateRealTimeLogDeliveryWithOptions(request *CreateRealTi
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRealTimeLogDeliveryResponse{}
@@ -22550,17 +22770,40 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["EndTime"] = request.EndTime
-	query["Group"] = request.Group
-	query["Language"] = request.Language
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TaskName"] = request.TaskName
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		query["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUsageDetailDataExportTask"),
@@ -22570,7 +22813,7 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUsageDetailDataExportTaskResponse{}
@@ -22599,14 +22842,28 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Language"] = request.Language
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TaskName"] = request.TaskName
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUserUsageDataExportTask"),
@@ -22616,7 +22873,7 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserUsageDataExportTaskResponse{}
@@ -22645,11 +22902,16 @@ func (client *Client) DeleteCdnDeliverTaskWithOptions(request *DeleteCdnDeliverT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeliverId"] = request.DeliverId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
+		query["DeliverId"] = request.DeliverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCdnDeliverTask"),
@@ -22659,7 +22921,7 @@ func (client *Client) DeleteCdnDeliverTaskWithOptions(request *DeleteCdnDeliverT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCdnDeliverTaskResponse{}
@@ -22688,13 +22950,24 @@ func (client *Client) DeleteCdnDomainWithOptions(request *DeleteCdnDomainRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCdnDomain"),
@@ -22704,7 +22977,7 @@ func (client *Client) DeleteCdnDomainWithOptions(request *DeleteCdnDomainRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCdnDomainResponse{}
@@ -22733,10 +23006,12 @@ func (client *Client) DeleteCdnSubTaskWithOptions(request *DeleteCdnSubTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCdnSubTask"),
@@ -22746,7 +23021,7 @@ func (client *Client) DeleteCdnSubTaskWithOptions(request *DeleteCdnSubTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCdnSubTaskResponse{}
@@ -22775,11 +23050,16 @@ func (client *Client) DeleteFCTriggerWithOptions(request *DeleteFCTriggerRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TriggerARN"] = request.TriggerARN
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
+		query["TriggerARN"] = request.TriggerARN
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFCTrigger"),
@@ -22789,7 +23069,7 @@ func (client *Client) DeleteFCTriggerWithOptions(request *DeleteFCTriggerRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFCTriggerResponse{}
@@ -22829,7 +23109,7 @@ func (client *Client) DeleteRealtimeLogDeliveryWithOptions(request *DeleteRealti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRealtimeLogDeliveryResponse{}
@@ -22858,13 +23138,24 @@ func (client *Client) DeleteSpecificConfigWithOptions(request *DeleteSpecificCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSpecificConfig"),
@@ -22874,7 +23165,7 @@ func (client *Client) DeleteSpecificConfigWithOptions(request *DeleteSpecificCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSpecificConfigResponse{}
@@ -22903,13 +23194,24 @@ func (client *Client) DeleteSpecificStagingConfigWithOptions(request *DeleteSpec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSpecificStagingConfig"),
@@ -22919,7 +23221,7 @@ func (client *Client) DeleteSpecificStagingConfigWithOptions(request *DeleteSpec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSpecificStagingConfigResponse{}
@@ -22948,11 +23250,16 @@ func (client *Client) DeleteUsageDetailDataExportTaskWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteUsageDetailDataExportTask"),
@@ -22962,7 +23269,7 @@ func (client *Client) DeleteUsageDetailDataExportTaskWithOptions(request *Delete
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUsageDetailDataExportTaskResponse{}
@@ -22991,11 +23298,16 @@ func (client *Client) DeleteUserUsageDataExportTaskWithOptions(request *DeleteUs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteUserUsageDataExportTask"),
@@ -23005,7 +23317,7 @@ func (client *Client) DeleteUserUsageDataExportTaskWithOptions(request *DeleteUs
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserUsageDataExportTaskResponse{}
@@ -23034,12 +23346,20 @@ func (client *Client) DescribeActiveVersionOfConfigGroupWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigGroupId"] = request.ConfigGroupId
-	query["Env"] = request.Env
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
+		query["ConfigGroupId"] = request.ConfigGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Env)) {
+		query["Env"] = request.Env
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeActiveVersionOfConfigGroup"),
@@ -23049,7 +23369,7 @@ func (client *Client) DescribeActiveVersionOfConfigGroupWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeActiveVersionOfConfigGroupResponse{}
@@ -23089,7 +23409,7 @@ func (client *Client) DescribeBlockedRegionsWithOptions(request *DescribeBlocked
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBlockedRegionsResponse{}
@@ -23118,12 +23438,20 @@ func (client *Client) DescribeCdnCertificateDetailWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnCertificateDetail"),
@@ -23133,7 +23461,7 @@ func (client *Client) DescribeCdnCertificateDetailWithOptions(request *DescribeC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnCertificateDetailResponse{}
@@ -23162,12 +23490,20 @@ func (client *Client) DescribeCdnCertificateListWithOptions(request *DescribeCdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnCertificateList"),
@@ -23177,7 +23513,7 @@ func (client *Client) DescribeCdnCertificateListWithOptions(request *DescribeCdn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnCertificateListResponse{}
@@ -23206,12 +23542,20 @@ func (client *Client) DescribeCdnDeletedDomainsWithOptions(request *DescribeCdnD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDeletedDomains"),
@@ -23221,7 +23565,7 @@ func (client *Client) DescribeCdnDeletedDomainsWithOptions(request *DescribeCdnD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDeletedDomainsResponse{}
@@ -23250,11 +23594,16 @@ func (client *Client) DescribeCdnDeliverListWithOptions(request *DescribeCdnDeli
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeliverId"] = request.DeliverId
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
+		query["DeliverId"] = request.DeliverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDeliverList"),
@@ -23264,7 +23613,7 @@ func (client *Client) DescribeCdnDeliverListWithOptions(request *DescribeCdnDeli
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDeliverListResponse{}
@@ -23293,11 +23642,16 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SSLPub"] = request.SSLPub
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDomainByCertificate"),
@@ -23307,7 +23661,7 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDomainByCertificateResponse{}
@@ -23336,14 +23690,28 @@ func (client *Client) DescribeCdnDomainConfigsWithOptions(request *DescribeCdnDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDomainConfigs"),
@@ -23353,7 +23721,7 @@ func (client *Client) DescribeCdnDomainConfigsWithOptions(request *DescribeCdnDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDomainConfigsResponse{}
@@ -23382,12 +23750,20 @@ func (client *Client) DescribeCdnDomainDetailWithOptions(request *DescribeCdnDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDomainDetail"),
@@ -23397,7 +23773,7 @@ func (client *Client) DescribeCdnDomainDetailWithOptions(request *DescribeCdnDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDomainDetailResponse{}
@@ -23426,15 +23802,32 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDomainLogs"),
@@ -23444,7 +23837,7 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDomainLogsResponse{}
@@ -23473,12 +23866,20 @@ func (client *Client) DescribeCdnDomainStagingConfigWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnDomainStagingConfig"),
@@ -23488,7 +23889,7 @@ func (client *Client) DescribeCdnDomainStagingConfigWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnDomainStagingConfigResponse{}
@@ -23517,13 +23918,24 @@ func (client *Client) DescribeCdnHttpsDomainListWithOptions(request *DescribeCdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Keyword"] = request.Keyword
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnHttpsDomainList"),
@@ -23533,7 +23945,7 @@ func (client *Client) DescribeCdnHttpsDomainListWithOptions(request *DescribeCdn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnHttpsDomainListResponse{}
@@ -23562,11 +23974,16 @@ func (client *Client) DescribeCdnRegionAndIspWithOptions(request *DescribeCdnReg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnRegionAndIsp"),
@@ -23576,7 +23993,7 @@ func (client *Client) DescribeCdnRegionAndIspWithOptions(request *DescribeCdnReg
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnRegionAndIspResponse{}
@@ -23605,17 +24022,40 @@ func (client *Client) DescribeCdnReportWithOptions(request *DescribeCdnReportReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["HttpCode"] = request.HttpCode
-	query["IsOverseas"] = request.IsOverseas
-	query["OwnerId"] = request.OwnerId
-	query["ReportId"] = request.ReportId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpCode)) {
+		query["HttpCode"] = request.HttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOverseas)) {
+		query["IsOverseas"] = request.IsOverseas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnReport"),
@@ -23625,7 +24065,7 @@ func (client *Client) DescribeCdnReportWithOptions(request *DescribeCdnReportReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnReportResponse{}
@@ -23654,11 +24094,16 @@ func (client *Client) DescribeCdnReportListWithOptions(request *DescribeCdnRepor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ReportId"] = request.ReportId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnReportList"),
@@ -23668,7 +24113,7 @@ func (client *Client) DescribeCdnReportListWithOptions(request *DescribeCdnRepor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnReportListResponse{}
@@ -23697,12 +24142,20 @@ func (client *Client) DescribeCdnSMCertificateDetailWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertIdentifier"] = request.CertIdentifier
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnSMCertificateDetail"),
@@ -23712,7 +24165,7 @@ func (client *Client) DescribeCdnSMCertificateDetailWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnSMCertificateDetailResponse{}
@@ -23741,12 +24194,20 @@ func (client *Client) DescribeCdnSMCertificateListWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnSMCertificateList"),
@@ -23756,7 +24217,7 @@ func (client *Client) DescribeCdnSMCertificateListWithOptions(request *DescribeC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnSMCertificateListResponse{}
@@ -23785,11 +24246,16 @@ func (client *Client) DescribeCdnServiceWithOptions(request *DescribeCdnServiceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnService"),
@@ -23799,7 +24265,7 @@ func (client *Client) DescribeCdnServiceWithOptions(request *DescribeCdnServiceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnServiceResponse{}
@@ -23828,10 +24294,12 @@ func (client *Client) DescribeCdnSubListWithOptions(request *DescribeCdnSubListR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnSubList"),
@@ -23841,7 +24309,7 @@ func (client *Client) DescribeCdnSubListWithOptions(request *DescribeCdnSubListR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnSubListResponse{}
@@ -23870,12 +24338,20 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserBillHistory"),
@@ -23885,7 +24361,7 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserBillHistoryResponse{}
@@ -23914,14 +24390,28 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["Dimension"] = request.Dimension
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserBillPrediction"),
@@ -23931,7 +24421,7 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserBillPredictionResponse{}
@@ -23960,12 +24450,20 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserBillType"),
@@ -23975,7 +24473,7 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserBillTypeResponse{}
@@ -24004,11 +24502,16 @@ func (client *Client) DescribeCdnUserConfigsWithOptions(request *DescribeCdnUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FunctionName"] = request.FunctionName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserConfigs"),
@@ -24018,7 +24521,7 @@ func (client *Client) DescribeCdnUserConfigsWithOptions(request *DescribeCdnUser
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserConfigsResponse{}
@@ -24047,14 +24550,28 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithOptions(request *DescribeC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FuncId"] = request.FuncId
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.FuncId)) {
+		query["FuncId"] = request.FuncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserDomainsByFunc"),
@@ -24064,7 +24581,7 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithOptions(request *DescribeC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserDomainsByFuncResponse{}
@@ -24093,11 +24610,16 @@ func (client *Client) DescribeCdnUserQuotaWithOptions(request *DescribeCdnUserQu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserQuota"),
@@ -24107,7 +24629,7 @@ func (client *Client) DescribeCdnUserQuotaWithOptions(request *DescribeCdnUserQu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserQuotaResponse{}
@@ -24136,12 +24658,20 @@ func (client *Client) DescribeCdnUserResourcePackageWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnUserResourcePackage"),
@@ -24151,7 +24681,7 @@ func (client *Client) DescribeCdnUserResourcePackageWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnUserResourcePackageResponse{}
@@ -24180,13 +24710,24 @@ func (client *Client) DescribeCdnWafDomainWithOptions(request *DescribeCdnWafDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCdnWafDomain"),
@@ -24196,7 +24737,7 @@ func (client *Client) DescribeCdnWafDomainWithOptions(request *DescribeCdnWafDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCdnWafDomainResponse{}
@@ -24236,7 +24777,7 @@ func (client *Client) DescribeCertificateInfoByIDWithOptions(request *DescribeCe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertificateInfoByIDResponse{}
@@ -24265,12 +24806,20 @@ func (client *Client) DescribeConfigGroupDetailWithOptions(request *DescribeConf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigGroupId"] = request.ConfigGroupId
-	query["ConfigGroupName"] = request.ConfigGroupName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigGroupId)) {
+		query["ConfigGroupId"] = request.ConfigGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigGroupName)) {
+		query["ConfigGroupName"] = request.ConfigGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeConfigGroupDetail"),
@@ -24280,7 +24829,7 @@ func (client *Client) DescribeConfigGroupDetailWithOptions(request *DescribeConf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConfigGroupDetailResponse{}
@@ -24309,15 +24858,32 @@ func (client *Client) DescribeConfigOfVersionWithOptions(request *DescribeConfig
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FunctionId"] = request.FunctionId
-	query["FunctionName"] = request.FunctionName
-	query["GroupId"] = request.GroupId
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
+		query["FunctionId"] = request.FunctionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeConfigOfVersion"),
@@ -24327,7 +24893,7 @@ func (client *Client) DescribeConfigOfVersionWithOptions(request *DescribeConfig
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConfigOfVersionResponse{}
@@ -24367,7 +24933,7 @@ func (client *Client) DescribeCustomLogConfigWithOptions(request *DescribeCustom
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCustomLogConfigResponse{}
@@ -24396,18 +24962,44 @@ func (client *Client) DescribeDomainAverageResponseTimeWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["DomainType"] = request.DomainType
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TimeMerge"] = request.TimeMerge
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainType)) {
+		query["DomainType"] = request.DomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeMerge)) {
+		query["TimeMerge"] = request.TimeMerge
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainAverageResponseTime"),
@@ -24417,7 +25009,7 @@ func (client *Client) DescribeDomainAverageResponseTimeWithOptions(request *Desc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainAverageResponseTimeResponse{}
@@ -24446,16 +25038,36 @@ func (client *Client) DescribeDomainBpsDataWithOptions(request *DescribeDomainBp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainBpsData"),
@@ -24465,7 +25077,7 @@ func (client *Client) DescribeDomainBpsDataWithOptions(request *DescribeDomainBp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainBpsDataResponse{}
@@ -24494,17 +25106,40 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["Layer"] = request.Layer
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainBpsDataByLayer"),
@@ -24514,7 +25149,7 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainBpsDataByLayerResponse{}
@@ -24543,14 +25178,28 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["IspNames"] = request.IspNames
-	query["LocationNames"] = request.LocationNames
-	query["OwnerId"] = request.OwnerId
-	query["TimePoint"] = request.TimePoint
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNames)) {
+		query["IspNames"] = request.IspNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNames)) {
+		query["LocationNames"] = request.LocationNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
+		query["TimePoint"] = request.TimePoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainBpsDataByTimeStamp"),
@@ -24560,7 +25209,7 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainBpsDataByTimeStampResponse{}
@@ -24589,18 +25238,44 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RuleName"] = request.RuleName
-	query["StartTime"] = request.StartTime
-	query["TriggerObject"] = request.TriggerObject
-	query["Value"] = request.Value
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerObject)) {
+		query["TriggerObject"] = request.TriggerObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainCcActivityLog"),
@@ -24610,7 +25285,7 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainCcActivityLogResponse{}
@@ -24639,11 +25314,16 @@ func (client *Client) DescribeDomainCertificateInfoWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainCertificateInfo"),
@@ -24653,7 +25333,7 @@ func (client *Client) DescribeDomainCertificateInfoWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainCertificateInfoResponse{}
@@ -24693,7 +25373,7 @@ func (client *Client) DescribeDomainCustomLogConfigWithOptions(request *Describe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainCustomLogConfigResponse{}
@@ -24733,7 +25413,7 @@ func (client *Client) DescribeDomainDetailDataByLayerWithOptions(request *Descri
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainDetailDataByLayerResponse{}
@@ -24762,14 +25442,28 @@ func (client *Client) DescribeDomainFileSizeProportionDataWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainFileSizeProportionData"),
@@ -24779,7 +25473,7 @@ func (client *Client) DescribeDomainFileSizeProportionDataWithOptions(request *D
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainFileSizeProportionDataResponse{}
@@ -24808,14 +25502,28 @@ func (client *Client) DescribeDomainHitRateDataWithOptions(request *DescribeDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainHitRateData"),
@@ -24825,7 +25533,7 @@ func (client *Client) DescribeDomainHitRateDataWithOptions(request *DescribeDoma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainHitRateDataResponse{}
@@ -24854,14 +25562,28 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainHttpCodeData"),
@@ -24871,7 +25593,7 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainHttpCodeDataResponse{}
@@ -24900,17 +25622,40 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["Layer"] = request.Layer
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainHttpCodeDataByLayer"),
@@ -24920,7 +25665,7 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainHttpCodeDataByLayerResponse{}
@@ -24949,13 +25694,24 @@ func (client *Client) DescribeDomainISPDataWithOptions(request *DescribeDomainIS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainISPData"),
@@ -24965,7 +25721,7 @@ func (client *Client) DescribeDomainISPDataWithOptions(request *DescribeDomainIS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainISPDataResponse{}
@@ -24994,15 +25750,32 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Cycle"] = request.Cycle
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["TimePoint"] = request.TimePoint
+	if !tea.BoolValue(util.IsUnset(request.Cycle)) {
+		query["Cycle"] = request.Cycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
+		query["TimePoint"] = request.TimePoint
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainMax95BpsData"),
@@ -25012,7 +25785,7 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainMax95BpsDataResponse{}
@@ -25041,13 +25814,24 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainMultiUsageData"),
@@ -25057,7 +25841,7 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainMultiUsageDataResponse{}
@@ -25086,13 +25870,24 @@ func (client *Client) DescribeDomainNamesOfVersionWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainNamesOfVersion"),
@@ -25102,7 +25897,7 @@ func (client *Client) DescribeDomainNamesOfVersionWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainNamesOfVersionResponse{}
@@ -25142,7 +25937,7 @@ func (client *Client) DescribeDomainPathDataWithOptions(request *DescribeDomainP
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainPathDataResponse{}
@@ -25171,13 +25966,24 @@ func (client *Client) DescribeDomainPvDataWithOptions(request *DescribeDomainPvD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainPvData"),
@@ -25187,7 +25993,7 @@ func (client *Client) DescribeDomainPvDataWithOptions(request *DescribeDomainPvD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainPvDataResponse{}
@@ -25216,16 +26022,36 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainQpsData"),
@@ -25235,7 +26061,7 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainQpsDataResponse{}
@@ -25264,17 +26090,40 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["Layer"] = request.Layer
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainQpsDataByLayer"),
@@ -25284,7 +26133,7 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainQpsDataByLayerResponse{}
@@ -25324,7 +26173,7 @@ func (client *Client) DescribeDomainRealTimeBpsDataWithOptions(request *Describe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeBpsDataResponse{}
@@ -25364,7 +26213,7 @@ func (client *Client) DescribeDomainRealTimeByteHitRateDataWithOptions(request *
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeByteHitRateDataResponse{}
@@ -25404,7 +26253,7 @@ func (client *Client) DescribeDomainRealTimeDetailDataWithOptions(request *Descr
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeDetailDataResponse{}
@@ -25433,15 +26282,32 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRealTimeHttpCodeData"),
@@ -25451,7 +26317,7 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeHttpCodeDataResponse{}
@@ -25491,7 +26357,7 @@ func (client *Client) DescribeDomainRealTimeQpsDataWithOptions(request *Describe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeQpsDataResponse{}
@@ -25531,7 +26397,7 @@ func (client *Client) DescribeDomainRealTimeReqHitRateDataWithOptions(request *D
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeReqHitRateDataResponse{}
@@ -25560,13 +26426,24 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRealTimeSrcBpsData"),
@@ -25576,7 +26453,7 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithOptions(request *Descr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeSrcBpsDataResponse{}
@@ -25605,15 +26482,32 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRealTimeSrcHttpCodeData"),
@@ -25623,7 +26517,7 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeSrcHttpCodeDataResponse{}
@@ -25652,13 +26546,24 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRealTimeSrcTrafficData"),
@@ -25668,7 +26573,7 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeSrcTrafficDataResponse{}
@@ -25697,15 +26602,32 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRealTimeTrafficData"),
@@ -25715,7 +26637,7 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealTimeTrafficDataResponse{}
@@ -25755,7 +26677,7 @@ func (client *Client) DescribeDomainRealtimeLogDeliveryWithOptions(request *Desc
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRealtimeLogDeliveryResponse{}
@@ -25784,13 +26706,24 @@ func (client *Client) DescribeDomainRegionDataWithOptions(request *DescribeDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainRegionData"),
@@ -25800,7 +26733,7 @@ func (client *Client) DescribeDomainRegionDataWithOptions(request *DescribeDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainRegionDataResponse{}
@@ -25829,14 +26762,28 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainReqHitRateData"),
@@ -25846,7 +26793,7 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainReqHitRateDataResponse{}
@@ -25875,14 +26822,28 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainSrcBpsData"),
@@ -25892,7 +26853,7 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainSrcBpsDataResponse{}
@@ -25921,14 +26882,28 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainSrcHttpCodeData"),
@@ -25938,7 +26913,7 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainSrcHttpCodeDataResponse{}
@@ -25967,14 +26942,28 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainSrcQpsData"),
@@ -25984,7 +26973,7 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainSrcQpsDataResponse{}
@@ -26013,14 +27002,28 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainSrcTopUrlVisit"),
@@ -26030,7 +27033,7 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainSrcTopUrlVisitResponse{}
@@ -26059,14 +27062,28 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainSrcTrafficData"),
@@ -26076,7 +27093,7 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainSrcTrafficDataResponse{}
@@ -26105,16 +27122,36 @@ func (client *Client) DescribeDomainTopClientIpVisitWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Limit"] = request.Limit
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainTopClientIpVisit"),
@@ -26124,7 +27161,7 @@ func (client *Client) DescribeDomainTopClientIpVisitWithOptions(request *Describ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainTopClientIpVisitResponse{}
@@ -26153,15 +27190,32 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["Percent"] = request.Percent
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Percent)) {
+		query["Percent"] = request.Percent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainTopReferVisit"),
@@ -26171,7 +27225,7 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainTopReferVisitResponse{}
@@ -26200,14 +27254,28 @@ func (client *Client) DescribeDomainTopUrlVisitWithOptions(request *DescribeDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainTopUrlVisit"),
@@ -26217,7 +27285,7 @@ func (client *Client) DescribeDomainTopUrlVisitWithOptions(request *DescribeDoma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainTopUrlVisitResponse{}
@@ -26246,16 +27314,36 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainTrafficData"),
@@ -26265,7 +27353,7 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainTrafficDataResponse{}
@@ -26294,18 +27382,44 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["DataProtocol"] = request.DataProtocol
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Field"] = request.Field
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataProtocol)) {
+		query["DataProtocol"] = request.DataProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		query["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainUsageData"),
@@ -26315,7 +27429,7 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainUsageDataResponse{}
@@ -26344,13 +27458,24 @@ func (client *Client) DescribeDomainUvDataWithOptions(request *DescribeDomainUvD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainUvData"),
@@ -26360,7 +27485,7 @@ func (client *Client) DescribeDomainUvDataWithOptions(request *DescribeDomainUvD
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainUvDataResponse{}
@@ -26389,12 +27514,20 @@ func (client *Client) DescribeDomainsBySourceWithOptions(request *DescribeDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainsBySource"),
@@ -26404,7 +27537,7 @@ func (client *Client) DescribeDomainsBySourceWithOptions(request *DescribeDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainsBySourceResponse{}
@@ -26433,13 +27566,24 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDomainsUsageByDay"),
@@ -26449,7 +27593,7 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDomainsUsageByDayResponse{}
@@ -26478,13 +27622,24 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeEsExceptionData"),
@@ -26494,7 +27649,7 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEsExceptionDataResponse{}
@@ -26523,13 +27678,24 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["RuleId"] = request.RuleId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeEsExecuteData"),
@@ -26539,7 +27705,7 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEsExecuteDataResponse{}
@@ -26579,7 +27745,7 @@ func (client *Client) DescribeFCTriggerWithOptions(request *DescribeFCTriggerReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeFCTriggerResponse{}
@@ -26608,11 +27774,16 @@ func (client *Client) DescribeIllegalUrlExportTaskWithOptions(request *DescribeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeIllegalUrlExportTask"),
@@ -26622,7 +27793,7 @@ func (client *Client) DescribeIllegalUrlExportTaskWithOptions(request *DescribeI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIllegalUrlExportTaskResponse{}
@@ -26651,12 +27822,20 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IP"] = request.IP
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.IP)) {
+		query["IP"] = request.IP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeIpInfo"),
@@ -26666,7 +27845,7 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpInfoResponse{}
@@ -26695,12 +27874,20 @@ func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeL2VipsByDomain"),
@@ -26710,7 +27897,7 @@ func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsB
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeL2VipsByDomainResponse{}
@@ -26739,15 +27926,32 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["EndTime"] = request.EndTime
-	query["IspNames"] = request.IspNames
-	query["LocationNames"] = request.LocationNames
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNames)) {
+		query["IspNames"] = request.IspNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNames)) {
+		query["LocationNames"] = request.LocationNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRangeDataByLocateAndIspService"),
@@ -26757,7 +27961,7 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRangeDataByLocateAndIspServiceResponse{}
@@ -26786,15 +27990,32 @@ func (client *Client) DescribeRealtimeDeliveryAccWithOptions(request *DescribeRe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["LogStore"] = request.LogStore
-	query["OwnerId"] = request.OwnerId
-	query["Project"] = request.Project
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStore)) {
+		query["LogStore"] = request.LogStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRealtimeDeliveryAcc"),
@@ -26804,7 +28025,7 @@ func (client *Client) DescribeRealtimeDeliveryAccWithOptions(request *DescribeRe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRealtimeDeliveryAccResponse{}
@@ -26833,11 +28054,16 @@ func (client *Client) DescribeRefreshQuotaWithOptions(request *DescribeRefreshQu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRefreshQuota"),
@@ -26847,7 +28073,7 @@ func (client *Client) DescribeRefreshQuotaWithOptions(request *DescribeRefreshQu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRefreshQuotaResponse{}
@@ -26876,11 +28102,16 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRefreshTaskById"),
@@ -26890,7 +28121,7 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRefreshTaskByIdResponse{}
@@ -26919,21 +28150,56 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRefreshTasks"),
@@ -26943,7 +28209,7 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRefreshTasksResponse{}
@@ -26972,10 +28238,12 @@ func (client *Client) DescribeStagingIpWithOptions(request *DescribeStagingIpReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeStagingIp"),
@@ -26985,7 +28253,7 @@ func (client *Client) DescribeStagingIpWithOptions(request *DescribeStagingIpReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStagingIpResponse{}
@@ -27014,13 +28282,24 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTagResources"),
@@ -27030,7 +28309,7 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTagResourcesResponse{}
@@ -27059,13 +28338,24 @@ func (client *Client) DescribeTopDomainsByFlowWithOptions(request *DescribeTopDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Limit"] = request.Limit
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTopDomainsByFlow"),
@@ -27075,7 +28365,7 @@ func (client *Client) DescribeTopDomainsByFlowWithOptions(request *DescribeTopDo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTopDomainsByFlowResponse{}
@@ -27104,10 +28394,12 @@ func (client *Client) DescribeUserCertificateExpireCountWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserCertificateExpireCount"),
@@ -27117,7 +28409,7 @@ func (client *Client) DescribeUserCertificateExpireCountWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserCertificateExpireCountResponse{}
@@ -27146,12 +28438,20 @@ func (client *Client) DescribeUserConfigsWithOptions(request *DescribeUserConfig
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserConfigs"),
@@ -27161,7 +28461,7 @@ func (client *Client) DescribeUserConfigsWithOptions(request *DescribeUserConfig
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserConfigsResponse{}
@@ -27190,24 +28490,68 @@ func (client *Client) DescribeUserDomainsWithOptions(request *DescribeUserDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CdnType"] = request.CdnType
-	query["ChangeEndTime"] = request.ChangeEndTime
-	query["ChangeStartTime"] = request.ChangeStartTime
-	query["CheckDomainShow"] = request.CheckDomainShow
-	query["Coverage"] = request.Coverage
-	query["DomainName"] = request.DomainName
-	query["DomainSearchType"] = request.DomainSearchType
-	query["DomainStatus"] = request.DomainStatus
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Source"] = request.Source
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.CdnType)) {
+		query["CdnType"] = request.CdnType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeEndTime)) {
+		query["ChangeEndTime"] = request.ChangeEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeStartTime)) {
+		query["ChangeStartTime"] = request.ChangeStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckDomainShow)) {
+		query["CheckDomainShow"] = request.CheckDomainShow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coverage)) {
+		query["Coverage"] = request.Coverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainSearchType)) {
+		query["DomainSearchType"] = request.DomainSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainStatus)) {
+		query["DomainStatus"] = request.DomainStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserDomains"),
@@ -27217,7 +28561,7 @@ func (client *Client) DescribeUserDomainsWithOptions(request *DescribeUserDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserDomainsResponse{}
@@ -27246,10 +28590,12 @@ func (client *Client) DescribeUserTagsWithOptions(request *DescribeUserTagsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserTags"),
@@ -27259,7 +28605,7 @@ func (client *Client) DescribeUserTagsWithOptions(request *DescribeUserTagsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserTagsResponse{}
@@ -27288,12 +28634,20 @@ func (client *Client) DescribeUserUsageDataExportTaskWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserUsageDataExportTask"),
@@ -27303,7 +28657,7 @@ func (client *Client) DescribeUserUsageDataExportTaskWithOptions(request *Descri
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserUsageDataExportTaskResponse{}
@@ -27332,12 +28686,20 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserUsageDetailDataExportTask"),
@@ -27347,7 +28709,7 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithOptions(request *
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserUsageDetailDataExportTaskResponse{}
@@ -27387,7 +28749,7 @@ func (client *Client) DescribeUserVipsByDomainWithOptions(request *DescribeUserV
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserVipsByDomainResponse{}
@@ -27416,11 +28778,16 @@ func (client *Client) DescribeVerifyContentWithOptions(request *DescribeVerifyCo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVerifyContent"),
@@ -27430,7 +28797,7 @@ func (client *Client) DescribeVerifyContentWithOptions(request *DescribeVerifyCo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyContentResponse{}
@@ -27470,7 +28837,7 @@ func (client *Client) DisableRealtimeLogDeliveryWithOptions(request *DisableReal
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableRealtimeLogDeliveryResponse{}
@@ -27510,7 +28877,7 @@ func (client *Client) EnableRealtimeLogDeliveryWithOptions(request *EnableRealti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableRealtimeLogDeliveryResponse{}
@@ -27550,7 +28917,7 @@ func (client *Client) ListDomainsByLogConfigIdWithOptions(request *ListDomainsBy
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDomainsByLogConfigIdResponse{}
@@ -27590,7 +28957,7 @@ func (client *Client) ListFCTriggerWithOptions(request *ListFCTriggerRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFCTriggerResponse{}
@@ -27630,7 +28997,7 @@ func (client *Client) ListRealtimeLogDeliveryDomainsWithOptions(request *ListRea
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRealtimeLogDeliveryDomainsResponse{}
@@ -27670,7 +29037,7 @@ func (client *Client) ListRealtimeLogDeliveryInfosWithOptions(request *ListRealt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRealtimeLogDeliveryInfosResponse{}
@@ -27710,7 +29077,7 @@ func (client *Client) ListUserCustomLogConfigWithOptions(request *ListUserCustom
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserCustomLogConfigResponse{}
@@ -27739,15 +29106,32 @@ func (client *Client) ModifyCdnDomainWithOptions(request *ModifyCdnDomainRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyCdnDomain"),
@@ -27757,7 +29141,7 @@ func (client *Client) ModifyCdnDomainWithOptions(request *ModifyCdnDomainRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyCdnDomainResponse{}
@@ -27786,12 +29170,20 @@ func (client *Client) ModifyCdnDomainSchdmByPropertyWithOptions(request *ModifyC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["Property"] = request.Property
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		query["Property"] = request.Property
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyCdnDomainSchdmByProperty"),
@@ -27801,7 +29193,7 @@ func (client *Client) ModifyCdnDomainSchdmByPropertyWithOptions(request *ModifyC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyCdnDomainSchdmByPropertyResponse{}
@@ -27841,7 +29233,7 @@ func (client *Client) ModifyDomainCustomLogConfigWithOptions(request *ModifyDoma
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDomainCustomLogConfigResponse{}
@@ -27881,7 +29273,7 @@ func (client *Client) ModifyRealtimeLogDeliveryWithOptions(request *ModifyRealti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyRealtimeLogDeliveryResponse{}
@@ -27921,7 +29313,7 @@ func (client *Client) ModifyUserCustomLogConfigWithOptions(request *ModifyUserCu
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUserCustomLogConfigResponse{}
@@ -27950,12 +29342,20 @@ func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InternetChargeType"] = request.InternetChargeType
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OpenCdnService"),
@@ -27965,7 +29365,7 @@ func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OpenCdnServiceResponse{}
@@ -27994,12 +29394,20 @@ func (client *Client) PublishStagingConfigToProductionWithOptions(request *Publi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionName"] = request.FunctionName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishStagingConfigToProduction"),
@@ -28009,7 +29417,7 @@ func (client *Client) PublishStagingConfigToProductionWithOptions(request *Publi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PublishStagingConfigToProductionResponse{}
@@ -28038,13 +29446,24 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["ObjectPath"] = request.ObjectPath
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PushObjectCache"),
@@ -28054,7 +29473,7 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &PushObjectCacheResponse{}
@@ -28083,13 +29502,24 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshObjectCaches"),
@@ -28099,7 +29529,7 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshObjectCachesResponse{}
@@ -28128,12 +29558,20 @@ func (client *Client) RollbackStagingConfigWithOptions(request *RollbackStagingC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionName"] = request.FunctionName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RollbackStagingConfig"),
@@ -28143,7 +29581,7 @@ func (client *Client) RollbackStagingConfigWithOptions(request *RollbackStagingC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RollbackStagingConfigResponse{}
@@ -28172,14 +29610,28 @@ func (client *Client) SetCcConfigWithOptions(request *SetCcConfigRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowIps"] = request.AllowIps
-	query["BlockIps"] = request.BlockIps
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AllowIps)) {
+		query["AllowIps"] = request.AllowIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlockIps)) {
+		query["BlockIps"] = request.BlockIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetCcConfig"),
@@ -28189,7 +29641,7 @@ func (client *Client) SetCcConfigWithOptions(request *SetCcConfigRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetCcConfigResponse{}
@@ -28218,12 +29670,20 @@ func (client *Client) SetCdnDomainCSRCertificateWithOptions(request *SetCdnDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ServerCertificate"] = request.ServerCertificate
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificate)) {
+		query["ServerCertificate"] = request.ServerCertificate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetCdnDomainCSRCertificate"),
@@ -28233,7 +29693,7 @@ func (client *Client) SetCdnDomainCSRCertificateWithOptions(request *SetCdnDomai
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetCdnDomainCSRCertificateResponse{}
@@ -28262,14 +29722,28 @@ func (client *Client) SetCdnDomainSMCertificateWithOptions(request *SetCdnDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertIdentifier"] = request.CertIdentifier
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetCdnDomainSMCertificate"),
@@ -28279,7 +29753,7 @@ func (client *Client) SetCdnDomainSMCertificateWithOptions(request *SetCdnDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetCdnDomainSMCertificateResponse{}
@@ -28308,12 +29782,20 @@ func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["Functions"] = request.Functions
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetCdnDomainStagingConfig"),
@@ -28323,7 +29805,7 @@ func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomain
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetCdnDomainStagingConfigResponse{}
@@ -28352,18 +29834,44 @@ func (client *Client) SetConfigOfVersionWithOptions(request *SetConfigOfVersionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["FunctionArgs"] = request.FunctionArgs
-	query["FunctionId"] = request.FunctionId
-	query["FunctionMatches"] = request.FunctionMatches
-	query["FunctionName"] = request.FunctionName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionArgs)) {
+		query["FunctionArgs"] = request.FunctionArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionId)) {
+		query["FunctionId"] = request.FunctionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionMatches)) {
+		query["FunctionMatches"] = request.FunctionMatches
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetConfigOfVersion"),
@@ -28373,7 +29881,7 @@ func (client *Client) SetConfigOfVersionWithOptions(request *SetConfigOfVersionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetConfigOfVersionResponse{}
@@ -28402,12 +29910,20 @@ func (client *Client) SetDomainGreenManagerConfigWithOptions(request *SetDomainG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomainGreenManagerConfig"),
@@ -28417,7 +29933,7 @@ func (client *Client) SetDomainGreenManagerConfigWithOptions(request *SetDomainG
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainGreenManagerConfigResponse{}
@@ -28446,18 +29962,44 @@ func (client *Client) SetDomainServerCertificateWithOptions(request *SetDomainSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["CertType"] = request.CertType
-	query["DomainName"] = request.DomainName
-	query["ForceSet"] = request.ForceSet
-	query["OwnerId"] = request.OwnerId
-	query["PrivateKey"] = request.PrivateKey
-	query["SecurityToken"] = request.SecurityToken
-	query["ServerCertificate"] = request.ServerCertificate
-	query["ServerCertificateStatus"] = request.ServerCertificateStatus
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceSet)) {
+		query["ForceSet"] = request.ForceSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificate)) {
+		query["ServerCertificate"] = request.ServerCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificateStatus)) {
+		query["ServerCertificateStatus"] = request.ServerCertificateStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDomainServerCertificate"),
@@ -28467,7 +30009,7 @@ func (client *Client) SetDomainServerCertificateWithOptions(request *SetDomainSe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDomainServerCertificateResponse{}
@@ -28496,14 +30038,28 @@ func (client *Client) SetErrorPageConfigWithOptions(request *SetErrorPageConfigR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CustomPageUrl"] = request.CustomPageUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["PageType"] = request.PageType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CustomPageUrl)) {
+		query["CustomPageUrl"] = request.CustomPageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageType)) {
+		query["PageType"] = request.PageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetErrorPageConfig"),
@@ -28513,7 +30069,7 @@ func (client *Client) SetErrorPageConfigWithOptions(request *SetErrorPageConfigR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetErrorPageConfigResponse{}
@@ -28542,15 +30098,32 @@ func (client *Client) SetFileCacheExpiredConfigWithOptions(request *SetFileCache
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheContent"] = request.CacheContent
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["TTL"] = request.TTL
-	query["Weight"] = request.Weight
+	if !tea.BoolValue(util.IsUnset(request.CacheContent)) {
+		query["CacheContent"] = request.CacheContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TTL)) {
+		query["TTL"] = request.TTL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weight)) {
+		query["Weight"] = request.Weight
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetFileCacheExpiredConfig"),
@@ -28560,7 +30133,7 @@ func (client *Client) SetFileCacheExpiredConfigWithOptions(request *SetFileCache
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetFileCacheExpiredConfigResponse{}
@@ -28589,13 +30162,24 @@ func (client *Client) SetForceRedirectConfigWithOptions(request *SetForceRedirec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["RedirectType"] = request.RedirectType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectType)) {
+		query["RedirectType"] = request.RedirectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetForceRedirectConfig"),
@@ -28605,7 +30189,7 @@ func (client *Client) SetForceRedirectConfigWithOptions(request *SetForceRedirec
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetForceRedirectConfigResponse{}
@@ -28634,15 +30218,32 @@ func (client *Client) SetForwardSchemeConfigWithOptions(request *SetForwardSchem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
-	query["SchemeOrigin"] = request.SchemeOrigin
-	query["SchemeOriginPort"] = request.SchemeOriginPort
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeOrigin)) {
+		query["SchemeOrigin"] = request.SchemeOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeOriginPort)) {
+		query["SchemeOriginPort"] = request.SchemeOriginPort
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetForwardSchemeConfig"),
@@ -28652,7 +30253,7 @@ func (client *Client) SetForwardSchemeConfigWithOptions(request *SetForwardSchem
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetForwardSchemeConfigResponse{}
@@ -28681,14 +30282,28 @@ func (client *Client) SetHttpErrorPageConfigWithOptions(request *SetHttpErrorPag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["ErrorCode"] = request.ErrorCode
-	query["OwnerId"] = request.OwnerId
-	query["PageUrl"] = request.PageUrl
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorCode)) {
+		query["ErrorCode"] = request.ErrorCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageUrl)) {
+		query["PageUrl"] = request.PageUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetHttpErrorPageConfig"),
@@ -28698,7 +30313,7 @@ func (client *Client) SetHttpErrorPageConfigWithOptions(request *SetHttpErrorPag
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetHttpErrorPageConfigResponse{}
@@ -28727,15 +30342,32 @@ func (client *Client) SetHttpHeaderConfigWithOptions(request *SetHttpHeaderConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["HeaderKey"] = request.HeaderKey
-	query["HeaderValue"] = request.HeaderValue
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeaderKey)) {
+		query["HeaderKey"] = request.HeaderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeaderValue)) {
+		query["HeaderValue"] = request.HeaderValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetHttpHeaderConfig"),
@@ -28745,7 +30377,7 @@ func (client *Client) SetHttpHeaderConfigWithOptions(request *SetHttpHeaderConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetHttpHeaderConfigResponse{}
@@ -28774,13 +30406,24 @@ func (client *Client) SetHttpsOptionConfigWithOptions(request *SetHttpsOptionCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Http2"] = request.Http2
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2)) {
+		query["Http2"] = request.Http2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetHttpsOptionConfig"),
@@ -28790,7 +30433,7 @@ func (client *Client) SetHttpsOptionConfigWithOptions(request *SetHttpsOptionCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetHttpsOptionConfigResponse{}
@@ -28819,15 +30462,32 @@ func (client *Client) SetIgnoreQueryStringConfigWithOptions(request *SetIgnoreQu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["HashKeyArgs"] = request.HashKeyArgs
-	query["KeepOssArgs"] = request.KeepOssArgs
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HashKeyArgs)) {
+		query["HashKeyArgs"] = request.HashKeyArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepOssArgs)) {
+		query["KeepOssArgs"] = request.KeepOssArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetIgnoreQueryStringConfig"),
@@ -28837,7 +30497,7 @@ func (client *Client) SetIgnoreQueryStringConfigWithOptions(request *SetIgnoreQu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetIgnoreQueryStringConfigResponse{}
@@ -28866,13 +30526,24 @@ func (client *Client) SetIpAllowListConfigWithOptions(request *SetIpAllowListCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowIps"] = request.AllowIps
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AllowIps)) {
+		query["AllowIps"] = request.AllowIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetIpAllowListConfig"),
@@ -28882,7 +30553,7 @@ func (client *Client) SetIpAllowListConfigWithOptions(request *SetIpAllowListCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetIpAllowListConfigResponse{}
@@ -28911,13 +30582,24 @@ func (client *Client) SetIpBlackListConfigWithOptions(request *SetIpBlackListCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BlockIps"] = request.BlockIps
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.BlockIps)) {
+		query["BlockIps"] = request.BlockIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetIpBlackListConfig"),
@@ -28927,7 +30609,7 @@ func (client *Client) SetIpBlackListConfigWithOptions(request *SetIpBlackListCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetIpBlackListConfigResponse{}
@@ -28956,13 +30638,24 @@ func (client *Client) SetOptimizeConfigWithOptions(request *SetOptimizeConfigReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetOptimizeConfig"),
@@ -28972,7 +30665,7 @@ func (client *Client) SetOptimizeConfigWithOptions(request *SetOptimizeConfigReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetOptimizeConfigResponse{}
@@ -29001,13 +30694,24 @@ func (client *Client) SetPageCompressConfigWithOptions(request *SetPageCompressC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetPageCompressConfig"),
@@ -29017,7 +30721,7 @@ func (client *Client) SetPageCompressConfigWithOptions(request *SetPageCompressC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetPageCompressConfigResponse{}
@@ -29046,13 +30750,24 @@ func (client *Client) SetRangeConfigWithOptions(request *SetRangeConfigRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetRangeConfig"),
@@ -29062,7 +30777,7 @@ func (client *Client) SetRangeConfigWithOptions(request *SetRangeConfigRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetRangeConfigResponse{}
@@ -29091,16 +30806,36 @@ func (client *Client) SetRefererConfigWithOptions(request *SetRefererConfigReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowEmpty"] = request.AllowEmpty
-	query["DisableAst"] = request.DisableAst
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["ReferList"] = request.ReferList
-	query["ReferType"] = request.ReferType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AllowEmpty)) {
+		query["AllowEmpty"] = request.AllowEmpty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableAst)) {
+		query["DisableAst"] = request.DisableAst
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferList)) {
+		query["ReferList"] = request.ReferList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferType)) {
+		query["ReferType"] = request.ReferType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetRefererConfig"),
@@ -29110,7 +30845,7 @@ func (client *Client) SetRefererConfigWithOptions(request *SetRefererConfigReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetRefererConfigResponse{}
@@ -29139,14 +30874,28 @@ func (client *Client) SetRemoveQueryStringConfigWithOptions(request *SetRemoveQu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliRemoveArgs"] = request.AliRemoveArgs
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["KeepOssArgs"] = request.KeepOssArgs
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.AliRemoveArgs)) {
+		query["AliRemoveArgs"] = request.AliRemoveArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepOssArgs)) {
+		query["KeepOssArgs"] = request.KeepOssArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetRemoveQueryStringConfig"),
@@ -29156,7 +30905,7 @@ func (client *Client) SetRemoveQueryStringConfigWithOptions(request *SetRemoveQu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetRemoveQueryStringConfigResponse{}
@@ -29185,17 +30934,40 @@ func (client *Client) SetReqAuthConfigWithOptions(request *SetReqAuthConfigReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthRemoteDesc"] = request.AuthRemoteDesc
-	query["AuthType"] = request.AuthType
-	query["DomainName"] = request.DomainName
-	query["Key1"] = request.Key1
-	query["Key2"] = request.Key2
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["TimeOut"] = request.TimeOut
+	if !tea.BoolValue(util.IsUnset(request.AuthRemoteDesc)) {
+		query["AuthRemoteDesc"] = request.AuthRemoteDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key1)) {
+		query["Key1"] = request.Key1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key2)) {
+		query["Key2"] = request.Key2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeOut)) {
+		query["TimeOut"] = request.TimeOut
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetReqAuthConfig"),
@@ -29205,7 +30977,7 @@ func (client *Client) SetReqAuthConfigWithOptions(request *SetReqAuthConfigReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetReqAuthConfigResponse{}
@@ -29234,15 +31006,32 @@ func (client *Client) SetReqHeaderConfigWithOptions(request *SetReqHeaderConfigR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["Key"] = request.Key
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["Value"] = request.Value
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetReqHeaderConfig"),
@@ -29252,7 +31041,7 @@ func (client *Client) SetReqHeaderConfigWithOptions(request *SetReqHeaderConfigR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetReqHeaderConfigResponse{}
@@ -29281,14 +31070,28 @@ func (client *Client) SetSourceHostConfigWithOptions(request *SetSourceHostConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackSrcDomain"] = request.BackSrcDomain
-	query["DomainName"] = request.DomainName
-	query["Enable"] = request.Enable
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BackSrcDomain)) {
+		query["BackSrcDomain"] = request.BackSrcDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetSourceHostConfig"),
@@ -29298,7 +31101,7 @@ func (client *Client) SetSourceHostConfigWithOptions(request *SetSourceHostConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetSourceHostConfigResponse{}
@@ -29327,13 +31130,24 @@ func (client *Client) SetUserGreenManagerConfigWithOptions(request *SetUserGreen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["Quota"] = request.Quota
-	query["Ratio"] = request.Ratio
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quota)) {
+		query["Quota"] = request.Quota
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ratio)) {
+		query["Ratio"] = request.Ratio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetUserGreenManagerConfig"),
@@ -29343,7 +31157,7 @@ func (client *Client) SetUserGreenManagerConfigWithOptions(request *SetUserGreen
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetUserGreenManagerConfigResponse{}
@@ -29372,16 +31186,36 @@ func (client *Client) SetWaitingRoomConfigWithOptions(request *SetWaitingRoomCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllowPct"] = request.AllowPct
-	query["DomainName"] = request.DomainName
-	query["GapTime"] = request.GapTime
-	query["MaxTimeWait"] = request.MaxTimeWait
-	query["OwnerId"] = request.OwnerId
-	query["WaitUri"] = request.WaitUri
-	query["WaitUrl"] = request.WaitUrl
+	if !tea.BoolValue(util.IsUnset(request.AllowPct)) {
+		query["AllowPct"] = request.AllowPct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GapTime)) {
+		query["GapTime"] = request.GapTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTimeWait)) {
+		query["MaxTimeWait"] = request.MaxTimeWait
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaitUri)) {
+		query["WaitUri"] = request.WaitUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WaitUrl)) {
+		query["WaitUrl"] = request.WaitUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetWaitingRoomConfig"),
@@ -29391,7 +31225,7 @@ func (client *Client) SetWaitingRoomConfigWithOptions(request *SetWaitingRoomCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetWaitingRoomConfigResponse{}
@@ -29420,12 +31254,20 @@ func (client *Client) StartCdnDomainWithOptions(request *StartCdnDomainRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartCdnDomain"),
@@ -29435,7 +31277,7 @@ func (client *Client) StartCdnDomainWithOptions(request *StartCdnDomainRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartCdnDomainResponse{}
@@ -29464,12 +31306,20 @@ func (client *Client) StopCdnDomainWithOptions(request *StopCdnDomainRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopCdnDomain"),
@@ -29479,7 +31329,7 @@ func (client *Client) StopCdnDomainWithOptions(request *StopCdnDomainRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopCdnDomainResponse{}
@@ -29508,13 +31358,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -29524,7 +31385,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -29553,14 +31414,28 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -29570,7 +31445,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
@@ -29599,10 +31474,38 @@ func (client *Client) UpdateCdnDeliverTaskWithOptions(request *UpdateCdnDeliverT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Deliver)) {
+		body["Deliver"] = request.Deliver
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverId)) {
+		body["DeliverId"] = request.DeliverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reports)) {
+		body["Reports"] = request.Reports
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["Schedule"] = request.Schedule
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCdnDeliverTask"),
@@ -29641,10 +31544,30 @@ func (client *Client) UpdateCdnSubTaskWithOptions(request *UpdateCdnSubTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportIds)) {
+		body["ReportIds"] = request.ReportIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateCdnSubTask"),
@@ -29683,11 +31606,34 @@ func (client *Client) UpdateFCTriggerWithOptions(request *UpdateFCTriggerRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["TriggerARN"] = request.TriggerARN
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerARN)) {
+		query["TriggerARN"] = request.TriggerARN
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FunctionARN)) {
+		body["FunctionARN"] = request.FunctionARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Notes)) {
+		body["Notes"] = request.Notes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleARN)) {
+		body["RoleARN"] = request.RoleARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceARN)) {
+		body["SourceARN"] = request.SourceARN
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFCTrigger"),
@@ -29726,12 +31672,20 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["VerifyType"] = request.VerifyType
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("VerifyDomainOwner"),
@@ -29741,7 +31695,7 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyDomainOwnerResponse{}
