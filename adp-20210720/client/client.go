@@ -3816,9 +3816,9 @@ func (s *GetFoundationComponentReferenceResponse) SetBody(v *GetFoundationCompon
 }
 
 type GetFoundationVersionResponseBody struct {
-	Code *string              `json:"code,omitempty" xml:"code,omitempty"`
-	Data []*FoundationVersion `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Msg  *string              `json:"msg,omitempty" xml:"msg,omitempty"`
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetFoundationVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                               `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s GetFoundationVersionResponseBody) String() string {
@@ -3834,13 +3834,80 @@ func (s *GetFoundationVersionResponseBody) SetCode(v string) *GetFoundationVersi
 	return s
 }
 
-func (s *GetFoundationVersionResponseBody) SetData(v []*FoundationVersion) *GetFoundationVersionResponseBody {
+func (s *GetFoundationVersionResponseBody) SetData(v *GetFoundationVersionResponseBodyData) *GetFoundationVersionResponseBody {
 	s.Data = v
 	return s
 }
 
 func (s *GetFoundationVersionResponseBody) SetMsg(v string) *GetFoundationVersionResponseBody {
 	s.Msg = &v
+	return s
+}
+
+type GetFoundationVersionResponseBodyData struct {
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 底座功能列表
+	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	// name，目前仅能是 “ADP 底座“
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// platforms
+	Platforms []*Platform `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	// status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// the type of foundation version,ENUM:["trident","ack"]
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// uid
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	// version
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetFoundationVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFoundationVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetDescription(v string) *GetFoundationVersionResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetFeatures(v []*string) *GetFoundationVersionResponseBodyData {
+	s.Features = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetName(v string) *GetFoundationVersionResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetPlatforms(v []*Platform) *GetFoundationVersionResponseBodyData {
+	s.Platforms = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetStatus(v string) *GetFoundationVersionResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetType(v string) *GetFoundationVersionResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetUid(v string) *GetFoundationVersionResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetVersion(v string) *GetFoundationVersionResponseBodyData {
+	s.Version = &v
 	return s
 }
 
