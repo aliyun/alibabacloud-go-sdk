@@ -3391,6 +3391,7 @@ func (s *GetResourceTypeRequest) SetResourceType(v string) *GetResourceTypeReque
 
 type GetResourceTypeResponseBody struct {
 	Attributes              map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	EntityType              *string                `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	Properties              map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	RequestId               *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceType            *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -3408,6 +3409,11 @@ func (s GetResourceTypeResponseBody) GoString() string {
 
 func (s *GetResourceTypeResponseBody) SetAttributes(v map[string]interface{}) *GetResourceTypeResponseBody {
 	s.Attributes = v
+	return s
+}
+
+func (s *GetResourceTypeResponseBody) SetEntityType(v string) *GetResourceTypeResponseBody {
+	s.EntityType = &v
 	return s
 }
 
@@ -6591,6 +6597,23 @@ func (s *ListChangeSetsResponse) SetHeaders(v map[string]*string) *ListChangeSet
 
 func (s *ListChangeSetsResponse) SetBody(v *ListChangeSetsResponseBody) *ListChangeSetsResponse {
 	s.Body = v
+	return s
+}
+
+type ListResourceTypesRequest struct {
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+}
+
+func (s ListResourceTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceTypesRequest) SetEntityType(v string) *ListResourceTypesRequest {
+	s.EntityType = &v
 	return s
 }
 
@@ -14232,8 +14255,19 @@ func (client *Client) ListChangeSets(request *ListChangeSetsRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListResourceTypesWithOptions(runtime *util.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesRequest, runtime *util.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("ListResourceTypes"),
 		Version:     tea.String("2019-09-10"),
@@ -14254,10 +14288,10 @@ func (client *Client) ListResourceTypesWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
-func (client *Client) ListResourceTypes() (_result *ListResourceTypesResponse, _err error) {
+func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_result *ListResourceTypesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceTypesResponse{}
-	_body, _err := client.ListResourceTypesWithOptions(runtime)
+	_body, _err := client.ListResourceTypesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
