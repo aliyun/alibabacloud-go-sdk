@@ -1698,6 +1698,7 @@ func (s *DescribeDomainRuleGroupRequest) SetInstanceId(v string) *DescribeDomain
 type DescribeDomainRuleGroupResponseBody struct {
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RuleGroupId *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	WafAiStatus *int32  `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
 }
 
 func (s DescribeDomainRuleGroupResponseBody) String() string {
@@ -1715,6 +1716,11 @@ func (s *DescribeDomainRuleGroupResponseBody) SetRequestId(v string) *DescribeDo
 
 func (s *DescribeDomainRuleGroupResponseBody) SetRuleGroupId(v int64) *DescribeDomainRuleGroupResponseBody {
 	s.RuleGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainRuleGroupResponseBody) SetWafAiStatus(v int32) *DescribeDomainRuleGroupResponseBody {
+	s.WafAiStatus = &v
 	return s
 }
 
@@ -3286,7 +3292,6 @@ func (s *ModifyProtectionRuleStatusResponse) SetBody(v *ModifyProtectionRuleStat
 }
 
 type MoveResourceGroupRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -3298,11 +3303,6 @@ func (s MoveResourceGroupRequest) String() string {
 
 func (s MoveResourceGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *MoveResourceGroupRequest) SetRegionId(v string) *MoveResourceGroupRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *MoveResourceGroupRequest) SetResourceGroupId(v string) *MoveResourceGroupRequest {
@@ -3365,6 +3365,7 @@ type SetDomainRuleGroupRequest struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RuleGroupId     *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	WafAiStatus     *int32  `json:"WafAiStatus,omitempty" xml:"WafAiStatus,omitempty"`
 	WafVersion      *int64  `json:"WafVersion,omitempty" xml:"WafVersion,omitempty"`
 }
 
@@ -3393,6 +3394,11 @@ func (s *SetDomainRuleGroupRequest) SetResourceGroupId(v string) *SetDomainRuleG
 
 func (s *SetDomainRuleGroupRequest) SetRuleGroupId(v int64) *SetDomainRuleGroupRequest {
 	s.RuleGroupId = &v
+	return s
+}
+
+func (s *SetDomainRuleGroupRequest) SetWafAiStatus(v int32) *SetDomainRuleGroupRequest {
+	s.WafAiStatus = &v
 	return s
 }
 
@@ -3520,11 +3526,26 @@ func (client *Client) CreateCertificateWithOptions(request *CreateCertificateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Certificate"] = request.Certificate
-	query["CertificateName"] = request.CertificateName
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["PrivateKey"] = request.PrivateKey
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		query["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateName)) {
+		query["CertificateName"] = request.CertificateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3565,9 +3586,18 @@ func (client *Client) CreateCertificateByCertificateIdWithOptions(request *Creat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertificateId"] = request.CertificateId
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3608,29 +3638,98 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessHeaderMode"] = request.AccessHeaderMode
-	query["AccessHeaders"] = request.AccessHeaders
-	query["AccessType"] = request.AccessType
-	query["CloudNativeInstances"] = request.CloudNativeInstances
-	query["ClusterType"] = request.ClusterType
-	query["ConnectionTime"] = request.ConnectionTime
-	query["Domain"] = request.Domain
-	query["Http2Port"] = request.Http2Port
-	query["HttpPort"] = request.HttpPort
-	query["HttpToUserIp"] = request.HttpToUserIp
-	query["HttpsPort"] = request.HttpsPort
-	query["HttpsRedirect"] = request.HttpsRedirect
-	query["InstanceId"] = request.InstanceId
-	query["IpFollowStatus"] = request.IpFollowStatus
-	query["IsAccessProduct"] = request.IsAccessProduct
-	query["LoadBalancing"] = request.LoadBalancing
-	query["LogHeaders"] = request.LogHeaders
-	query["ReadTime"] = request.ReadTime
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SniHost"] = request.SniHost
-	query["SniStatus"] = request.SniStatus
-	query["SourceIps"] = request.SourceIps
-	query["WriteTime"] = request.WriteTime
+	if !tea.BoolValue(util.IsUnset(request.AccessHeaderMode)) {
+		query["AccessHeaderMode"] = request.AccessHeaderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessHeaders)) {
+		query["AccessHeaders"] = request.AccessHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		query["AccessType"] = request.AccessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudNativeInstances)) {
+		query["CloudNativeInstances"] = request.CloudNativeInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionTime)) {
+		query["ConnectionTime"] = request.ConnectionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Port)) {
+		query["Http2Port"] = request.Http2Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpPort)) {
+		query["HttpPort"] = request.HttpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpToUserIp)) {
+		query["HttpToUserIp"] = request.HttpToUserIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsPort)) {
+		query["HttpsPort"] = request.HttpsPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsRedirect)) {
+		query["HttpsRedirect"] = request.HttpsRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpFollowStatus)) {
+		query["IpFollowStatus"] = request.IpFollowStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAccessProduct)) {
+		query["IsAccessProduct"] = request.IsAccessProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancing)) {
+		query["LoadBalancing"] = request.LoadBalancing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogHeaders)) {
+		query["LogHeaders"] = request.LogHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadTime)) {
+		query["ReadTime"] = request.ReadTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SniHost)) {
+		query["SniHost"] = request.SniHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SniStatus)) {
+		query["SniStatus"] = request.SniStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIps)) {
+		query["SourceIps"] = request.SourceIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WriteTime)) {
+		query["WriteTime"] = request.WriteTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3671,10 +3770,22 @@ func (client *Client) CreateProtectionModuleRuleWithOptions(request *CreateProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["Rule"] = request.Rule
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3715,8 +3826,14 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3757,8 +3874,14 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3799,10 +3922,22 @@ func (client *Client) DeleteProtectionModuleRuleWithOptions(request *DeleteProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3843,10 +3978,22 @@ func (client *Client) DescribeCertMatchStatusWithOptions(request *DescribeCertMa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Certificate"] = request.Certificate
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["PrivateKey"] = request.PrivateKey
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		query["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3887,8 +4034,14 @@ func (client *Client) DescribeCertificatesWithOptions(request *DescribeCertifica
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3929,8 +4082,14 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3971,9 +4130,18 @@ func (client *Client) DescribeDomainAdvanceConfigsWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainList"] = request.DomainList
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
+		query["DomainList"] = request.DomainList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4014,13 +4182,34 @@ func (client *Client) DescribeDomainBasicConfigsWithOptions(request *DescribeDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessType"] = request.AccessType
-	query["CloudNativeProductId"] = request.CloudNativeProductId
-	query["DomainKey"] = request.DomainKey
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		query["AccessType"] = request.AccessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudNativeProductId)) {
+		query["CloudNativeProductId"] = request.CloudNativeProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainKey)) {
+		query["DomainKey"] = request.DomainKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4061,13 +4250,34 @@ func (client *Client) DescribeDomainListWithOptions(request *DescribeDomainListR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["DomainNames"] = request.DomainNames
-	query["InstanceId"] = request.InstanceId
-	query["IsSub"] = request.IsSub
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSub)) {
+		query["IsSub"] = request.IsSub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4108,8 +4318,14 @@ func (client *Client) DescribeDomainNamesWithOptions(request *DescribeDomainName
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4150,8 +4366,14 @@ func (client *Client) DescribeDomainRuleGroupWithOptions(request *DescribeDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4192,8 +4414,14 @@ func (client *Client) DescribeInstanceInfoWithOptions(request *DescribeInstanceI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4234,8 +4462,14 @@ func (client *Client) DescribeInstanceSpecInfoWithOptions(request *DescribeInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4276,12 +4510,30 @@ func (client *Client) DescribeLogServiceStatusWithOptions(request *DescribeLogSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Region"] = request.Region
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4322,10 +4574,22 @@ func (client *Client) DescribeProtectionModuleCodeConfigWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CodeType"] = request.CodeType
-	query["CodeValue"] = request.CodeValue
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.CodeType)) {
+		query["CodeType"] = request.CodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeValue)) {
+		query["CodeValue"] = request.CodeValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4366,14 +4630,38 @@ func (client *Client) DescribeProtectionModuleRulesWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["Lang"] = request.Lang
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Query"] = request.Query
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4414,9 +4702,18 @@ func (client *Client) DescribeProtectionModuleStatusWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4457,8 +4754,14 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4499,29 +4802,98 @@ func (client *Client) ModifyDomainWithOptions(request *ModifyDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessHeaderMode"] = request.AccessHeaderMode
-	query["AccessHeaders"] = request.AccessHeaders
-	query["AccessType"] = request.AccessType
-	query["CloudNativeInstances"] = request.CloudNativeInstances
-	query["ClusterType"] = request.ClusterType
-	query["ConnectionTime"] = request.ConnectionTime
-	query["Domain"] = request.Domain
-	query["Http2Port"] = request.Http2Port
-	query["HttpPort"] = request.HttpPort
-	query["HttpToUserIp"] = request.HttpToUserIp
-	query["HttpsPort"] = request.HttpsPort
-	query["HttpsRedirect"] = request.HttpsRedirect
-	query["InstanceId"] = request.InstanceId
-	query["InstanceId"] = request.InstanceId
-	query["IpFollowStatus"] = request.IpFollowStatus
-	query["IsAccessProduct"] = request.IsAccessProduct
-	query["LoadBalancing"] = request.LoadBalancing
-	query["LogHeaders"] = request.LogHeaders
-	query["ReadTime"] = request.ReadTime
-	query["SniHost"] = request.SniHost
-	query["SniStatus"] = request.SniStatus
-	query["SourceIps"] = request.SourceIps
-	query["WriteTime"] = request.WriteTime
+	if !tea.BoolValue(util.IsUnset(request.AccessHeaderMode)) {
+		query["AccessHeaderMode"] = request.AccessHeaderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessHeaders)) {
+		query["AccessHeaders"] = request.AccessHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		query["AccessType"] = request.AccessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudNativeInstances)) {
+		query["CloudNativeInstances"] = request.CloudNativeInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionTime)) {
+		query["ConnectionTime"] = request.ConnectionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Port)) {
+		query["Http2Port"] = request.Http2Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpPort)) {
+		query["HttpPort"] = request.HttpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpToUserIp)) {
+		query["HttpToUserIp"] = request.HttpToUserIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsPort)) {
+		query["HttpsPort"] = request.HttpsPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsRedirect)) {
+		query["HttpsRedirect"] = request.HttpsRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpFollowStatus)) {
+		query["IpFollowStatus"] = request.IpFollowStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAccessProduct)) {
+		query["IsAccessProduct"] = request.IsAccessProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancing)) {
+		query["LoadBalancing"] = request.LoadBalancing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogHeaders)) {
+		query["LogHeaders"] = request.LogHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadTime)) {
+		query["ReadTime"] = request.ReadTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SniHost)) {
+		query["SniHost"] = request.SniHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SniStatus)) {
+		query["SniStatus"] = request.SniStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIps)) {
+		query["SourceIps"] = request.SourceIps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WriteTime)) {
+		query["WriteTime"] = request.WriteTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4562,9 +4934,18 @@ func (client *Client) ModifyDomainIpv6StatusWithOptions(request *ModifyDomainIpv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4605,9 +4986,18 @@ func (client *Client) ModifyLogRetrievalStatusWithOptions(request *ModifyLogRetr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4648,9 +5038,18 @@ func (client *Client) ModifyLogServiceStatusWithOptions(request *ModifyLogServic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Enabled"] = request.Enabled
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4691,10 +5090,22 @@ func (client *Client) ModifyProtectionModuleModeWithOptions(request *ModifyProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["Mode"] = request.Mode
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4735,12 +5146,30 @@ func (client *Client) ModifyProtectionModuleRuleWithOptions(request *ModifyProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["LockVersion"] = request.LockVersion
-	query["Rule"] = request.Rule
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockVersion)) {
+		query["LockVersion"] = request.LockVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4781,10 +5210,22 @@ func (client *Client) ModifyProtectionModuleStatusWithOptions(request *ModifyPro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["ModuleStatus"] = request.ModuleStatus
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleStatus)) {
+		query["ModuleStatus"] = request.ModuleStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4825,10 +5266,22 @@ func (client *Client) ModifyProtectionRuleCacheStatusWithOptions(request *Modify
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4869,12 +5322,30 @@ func (client *Client) ModifyProtectionRuleStatusWithOptions(request *ModifyProte
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DefenseType"] = request.DefenseType
-	query["Domain"] = request.Domain
-	query["InstanceId"] = request.InstanceId
-	query["LockVersion"] = request.LockVersion
-	query["RuleId"] = request.RuleId
-	query["RuleStatus"] = request.RuleStatus
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockVersion)) {
+		query["LockVersion"] = request.LockVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleStatus)) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4915,9 +5386,18 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4958,11 +5438,30 @@ func (client *Client) SetDomainRuleGroupWithOptions(request *SetDomainRuleGroupR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domains"] = request.Domains
-	query["InstanceId"] = request.InstanceId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["RuleGroupId"] = request.RuleGroupId
-	query["WafVersion"] = request.WafVersion
+	if !tea.BoolValue(util.IsUnset(request.Domains)) {
+		query["Domains"] = request.Domains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleGroupId)) {
+		query["RuleGroupId"] = request.RuleGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WafAiStatus)) {
+		query["WafAiStatus"] = request.WafAiStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WafVersion)) {
+		query["WafVersion"] = request.WafVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
