@@ -716,8 +716,10 @@ func (s *ConfirmPipelineBatchResponse) SetBody(v *ConfirmPipelineBatchResponseBo
 
 type CreateApplicationRequest struct {
 	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	AppDescription   *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// ACR 企业版实例 ID
+	AcrInstanceId  *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// 是否绑定EIP
 	AssociateEip         *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
 	AutoConfig           *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
@@ -776,6 +778,11 @@ func (s CreateApplicationRequest) GoString() string {
 
 func (s *CreateApplicationRequest) SetAcrAssumeRoleArn(v string) *CreateApplicationRequest {
 	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAcrInstanceId(v string) *CreateApplicationRequest {
+	s.AcrInstanceId = &v
 	return s
 }
 
@@ -1099,11 +1106,14 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateApplicationScalingRuleRequest struct {
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ScalingRuleEnable *bool   `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
-	ScalingRuleName   *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	ScalingRuleTimer  *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
-	ScalingRuleType   *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	ScalingRuleEnable     *bool   `json:"ScalingRuleEnable,omitempty" xml:"ScalingRuleEnable,omitempty"`
+	ScalingRuleMetric     *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
+	ScalingRuleName       *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	ScalingRuleTimer      *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	ScalingRuleType       *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleRequest) String() string {
@@ -1119,8 +1129,23 @@ func (s *CreateApplicationScalingRuleRequest) SetAppId(v string) *CreateApplicat
 	return s
 }
 
+func (s *CreateApplicationScalingRuleRequest) SetMinReadyInstanceRatio(v int32) *CreateApplicationScalingRuleRequest {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleRequest) SetMinReadyInstances(v int32) *CreateApplicationScalingRuleRequest {
+	s.MinReadyInstances = &v
+	return s
+}
+
 func (s *CreateApplicationScalingRuleRequest) SetScalingRuleEnable(v bool) *CreateApplicationScalingRuleRequest {
 	s.ScalingRuleEnable = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleRequest) SetScalingRuleMetric(v string) *CreateApplicationScalingRuleRequest {
+	s.ScalingRuleMetric = &v
 	return s
 }
 
@@ -1169,13 +1194,15 @@ func (s *CreateApplicationScalingRuleResponseBody) SetTraceId(v string) *CreateA
 }
 
 type CreateApplicationScalingRuleResponseBodyData struct {
-	AppId            *string                                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ScaleRuleEnabled *bool                                              `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                            `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                            `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Timer            *CreateApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
-	UpdateTime       *int64                                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AppId            *string                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime       *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastDisableTime  *int64                                              `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	Metric           *CreateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	ScaleRuleEnabled *bool                                               `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleName    *string                                             `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	ScaleRuleType    *string                                             `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Timer            *CreateApplicationScalingRuleResponseBodyDataTimer  `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
+	UpdateTime       *int64                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyData) String() string {
@@ -1193,6 +1220,16 @@ func (s *CreateApplicationScalingRuleResponseBodyData) SetAppId(v string) *Creat
 
 func (s *CreateApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *CreateApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyData) SetLastDisableTime(v int64) *CreateApplicationScalingRuleResponseBodyData {
+	s.LastDisableTime = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyData) SetMetric(v *CreateApplicationScalingRuleResponseBodyDataMetric) *CreateApplicationScalingRuleResponseBodyData {
+	s.Metric = v
 	return s
 }
 
@@ -1218,6 +1255,58 @@ func (s *CreateApplicationScalingRuleResponseBodyData) SetTimer(v *CreateApplica
 
 func (s *CreateApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *CreateApplicationScalingRuleResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyDataMetric struct {
+	MaxReplicas *int32                                                       `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Metrics     []*CreateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MinReplicas *int32                                                       `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyDataMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyDataMetric) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetric) SetMaxReplicas(v int32) *CreateApplicationScalingRuleResponseBodyDataMetric {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetric) SetMetrics(v []*CreateApplicationScalingRuleResponseBodyDataMetricMetrics) *CreateApplicationScalingRuleResponseBodyDataMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetric) SetMinReplicas(v int32) *CreateApplicationScalingRuleResponseBodyDataMetric {
+	s.MinReplicas = &v
+	return s
+}
+
+type CreateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
+	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+}
+
+func (s CreateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationScalingRuleResponseBodyDataMetricMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricTargetAverageUtilization(v int32) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricTargetAverageUtilization = &v
+	return s
+}
+
+func (s *CreateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricType(v string) *CreateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricType = &v
 	return s
 }
 
@@ -2469,17 +2558,18 @@ type DeployApplicationRequest struct {
 	EdasContainerVersion             *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	EnableAhas                       *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	// 是否开启发布流量灰度规则
-	EnableGreyTagRoute *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs       *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions    *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Liveness           *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	MinReadyInstances  *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc          *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	MountHost          *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	NasId              *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	EnableGreyTagRoute    *bool   `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                  *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl              *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs          *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions       *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                   *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc             *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost             *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasId                 *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	// OSS使用的AKID
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	// OSS AKID对应的secret
@@ -2608,6 +2698,11 @@ func (s *DeployApplicationRequest) SetJdk(v string) *DeployApplicationRequest {
 
 func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationRequest {
 	s.Liveness = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetMinReadyInstanceRatio(v int32) *DeployApplicationRequest {
+	s.MinReadyInstanceRatio = &v
 	return s
 }
 
@@ -3201,17 +3296,18 @@ type DescribeApplicationConfigResponseBodyData struct {
 	EdasContainerVersion *string                                                        `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
 	EnableAhas           *string                                                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	// 开启流量灰度
-	EnableGreyTagRoute *bool                                                 `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	Envs               *string                                               `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl           *string                                               `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	JarStartArgs       *string                                               `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	JarStartOptions    *string                                               `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Jdk                *string                                               `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	Liveness           *string                                               `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory             *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinReadyInstances  *int32                                                `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	MountDesc          []*DescribeApplicationConfigResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	MountHost          *string                                               `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	EnableGreyTagRoute    *bool                                                 `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                  *string                                               `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl              *string                                               `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs          *string                                               `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions       *string                                               `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                   *string                                               `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Liveness              *string                                               `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MinReadyInstanceRatio *int32                                                `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32                                                `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc             []*DescribeApplicationConfigResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	MountHost             *string                                               `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	// 对应MSE产品侧应用ID
 	MseApplicationId *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -3356,6 +3452,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetLiveness(v string) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetMemory(v int32) *DescribeApplicationConfigResponseBodyData {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetMinReadyInstanceRatio(v int32) *DescribeApplicationConfigResponseBodyData {
+	s.MinReadyInstanceRatio = &v
 	return s
 }
 
@@ -4232,6 +4333,437 @@ func (s *DescribeApplicationInstancesResponse) SetBody(v *DescribeApplicationIns
 	return s
 }
 
+type DescribeApplicationScalingRuleRequest struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleRequest) SetAppId(v string) *DescribeApplicationScalingRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleRequest) SetScalingRuleName(v string) *DescribeApplicationScalingRuleRequest {
+	s.ScalingRuleName = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBody struct {
+	Data      *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TraceId   *string                                         `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBody) SetData(v *DescribeApplicationScalingRuleResponseBodyData) *DescribeApplicationScalingRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBody) SetRequestId(v string) *DescribeApplicationScalingRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBody) SetTraceId(v string) *DescribeApplicationScalingRuleResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyData struct {
+	AppId            *string                                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime       *int64                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastDisableTime  *int64                                                `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	Metric           *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	ScaleRuleEnabled *bool                                                 `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleName    *string                                               `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	ScaleRuleType    *string                                               `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Timer            *DescribeApplicationScalingRuleResponseBodyDataTimer  `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
+	UpdateTime       *int64                                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetAppId(v string) *DescribeApplicationScalingRuleResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *DescribeApplicationScalingRuleResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetLastDisableTime(v int64) *DescribeApplicationScalingRuleResponseBodyData {
+	s.LastDisableTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetMetric(v *DescribeApplicationScalingRuleResponseBodyDataMetric) *DescribeApplicationScalingRuleResponseBodyData {
+	s.Metric = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetScaleRuleEnabled(v bool) *DescribeApplicationScalingRuleResponseBodyData {
+	s.ScaleRuleEnabled = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetScaleRuleName(v string) *DescribeApplicationScalingRuleResponseBodyData {
+	s.ScaleRuleName = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetScaleRuleType(v string) *DescribeApplicationScalingRuleResponseBodyData {
+	s.ScaleRuleType = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetTimer(v *DescribeApplicationScalingRuleResponseBodyDataTimer) *DescribeApplicationScalingRuleResponseBodyData {
+	s.Timer = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *DescribeApplicationScalingRuleResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetric struct {
+	MaxReplicas    *int32                                                              `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Metrics        []*DescribeApplicationScalingRuleResponseBodyDataMetricMetrics      `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MetricsStatus  *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus  `json:"MetricsStatus,omitempty" xml:"MetricsStatus,omitempty" type:"Struct"`
+	MinReplicas    *int32                                                              `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	ScaleDownRules *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules `json:"ScaleDownRules,omitempty" xml:"ScaleDownRules,omitempty" type:"Struct"`
+	ScaleUpRules   *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules   `json:"ScaleUpRules,omitempty" xml:"ScaleUpRules,omitempty" type:"Struct"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetric) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetMaxReplicas(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetMetrics(v []*DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetMetricsStatus(v *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.MetricsStatus = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetMinReplicas(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.MinReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetScaleDownRules(v *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.ScaleDownRules = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetScaleUpRules(v *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) *DescribeApplicationScalingRuleResponseBodyDataMetric {
+	s.ScaleUpRules = v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
+	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricTargetAverageUtilization(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricTargetAverageUtilization = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricType(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricType = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus struct {
+	CurrentMetrics      []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics   `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
+	CurrentReplicas     *int64                                                                               `json:"CurrentReplicas,omitempty" xml:"CurrentReplicas,omitempty"`
+	DesiredReplicas     *int64                                                                               `json:"DesiredReplicas,omitempty" xml:"DesiredReplicas,omitempty"`
+	LastScaleTime       *string                                                                              `json:"LastScaleTime,omitempty" xml:"LastScaleTime,omitempty"`
+	NextScaleMetrics    []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics `json:"NextScaleMetrics,omitempty" xml:"NextScaleMetrics,omitempty" type:"Repeated"`
+	NextScaleTimePeriod *int32                                                                               `json:"NextScaleTimePeriod,omitempty" xml:"NextScaleTimePeriod,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetCurrentMetrics(v []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.CurrentMetrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetCurrentReplicas(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.CurrentReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetDesiredReplicas(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.DesiredReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetLastScaleTime(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.LastScaleTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetNextScaleMetrics(v []*DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.NextScaleMetrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetNextScaleTimePeriod(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus {
+	s.NextScaleTimePeriod = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics struct {
+	CurrentValue *int64  `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) SetCurrentValue(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics {
+	s.CurrentValue = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) SetName(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics) SetType(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics {
+	s.Type = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics struct {
+	Name                           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextScaleInAverageUtilization  *int32  `json:"NextScaleInAverageUtilization,omitempty" xml:"NextScaleInAverageUtilization,omitempty"`
+	NextScaleOutAverageUtilization *int32  `json:"NextScaleOutAverageUtilization,omitempty" xml:"NextScaleOutAverageUtilization,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) SetName(v string) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) SetNextScaleInAverageUtilization(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics {
+	s.NextScaleInAverageUtilization = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics) SetNextScaleOutAverageUtilization(v int32) *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics {
+	s.NextScaleOutAverageUtilization = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules struct {
+	Disabled                   *bool  `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	Step                       *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) SetDisabled(v bool) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) SetStabilizationWindowSeconds(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules) SetStep(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules {
+	s.Step = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules struct {
+	Disabled                   *bool  `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	Step                       *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) SetDisabled(v bool) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) SetStabilizationWindowSeconds(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules) SetStep(v int64) *DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules {
+	s.Step = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataTimer struct {
+	BeginDate *string                                                         `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
+	EndDate   *string                                                         `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Period    *string                                                         `json:"Period,omitempty" xml:"Period,omitempty"`
+	Schedules []*DescribeApplicationScalingRuleResponseBodyDataTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataTimer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataTimer) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetBeginDate(v string) *DescribeApplicationScalingRuleResponseBodyDataTimer {
+	s.BeginDate = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetEndDate(v string) *DescribeApplicationScalingRuleResponseBodyDataTimer {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetPeriod(v string) *DescribeApplicationScalingRuleResponseBodyDataTimer {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) *DescribeApplicationScalingRuleResponseBodyDataTimer {
+	s.Schedules = v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponseBodyDataTimerSchedules struct {
+	AtTime         *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	TargetReplicas *int32  `json:"TargetReplicas,omitempty" xml:"TargetReplicas,omitempty"`
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) SetAtTime(v string) *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.AtTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules) SetTargetReplicas(v int32) *DescribeApplicationScalingRuleResponseBodyDataTimerSchedules {
+	s.TargetReplicas = &v
+	return s
+}
+
+type DescribeApplicationScalingRuleResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeApplicationScalingRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeApplicationScalingRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRuleResponse) SetHeaders(v map[string]*string) *DescribeApplicationScalingRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRuleResponse) SetBody(v *DescribeApplicationScalingRuleResponseBody) *DescribeApplicationScalingRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApplicationScalingRulesRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
@@ -4314,13 +4846,15 @@ func (s *DescribeApplicationScalingRulesResponseBodyData) SetTotalSize(v int32) 
 }
 
 type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules struct {
-	AppId            *string                                                                      `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ScaleRuleEnabled *bool                                                                        `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                                                      `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                                                      `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Timer            *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
-	UpdateTime       *int64                                                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AppId            *string                                                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime       *int64                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastDisableTime  *int64                                                                        `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	Metric           *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	ScaleRuleEnabled *bool                                                                         `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleName    *string                                                                       `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	ScaleRuleType    *string                                                                       `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Timer            *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer  `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
+	UpdateTime       *int64                                                                        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) String() string {
@@ -4338,6 +4872,16 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules)
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetCreateTime(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetLastDisableTime(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
+	s.LastDisableTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetMetric(v *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
+	s.Metric = v
 	return s
 }
 
@@ -4363,6 +4907,251 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules)
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetUpdateTime(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric struct {
+	MaxReplicas    *int32                                                                                      `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Metrics        []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics      `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MetricsStatus  *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus  `json:"MetricsStatus,omitempty" xml:"MetricsStatus,omitempty" type:"Struct"`
+	MinReplicas    *int32                                                                                      `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	ScaleDownRules *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules `json:"ScaleDownRules,omitempty" xml:"ScaleDownRules,omitempty" type:"Struct"`
+	ScaleUpRules   *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules   `json:"ScaleUpRules,omitempty" xml:"ScaleUpRules,omitempty" type:"Struct"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMaxReplicas(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMetrics(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMetricsStatus(v *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.MetricsStatus = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMinReplicas(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.MinReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetScaleDownRules(v *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.ScaleDownRules = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetScaleUpRules(v *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.ScaleUpRules = v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics struct {
+	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetMetricTargetAverageUtilization(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.MetricTargetAverageUtilization = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) SetMetricType(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics {
+	s.MetricType = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus struct {
+	CurrentMetrics      []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics   `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
+	CurrentReplicas     *int64                                                                                                       `json:"CurrentReplicas,omitempty" xml:"CurrentReplicas,omitempty"`
+	DesiredReplicas     *int64                                                                                                       `json:"DesiredReplicas,omitempty" xml:"DesiredReplicas,omitempty"`
+	LastScaleTime       *string                                                                                                      `json:"LastScaleTime,omitempty" xml:"LastScaleTime,omitempty"`
+	MaxReplicas         *int64                                                                                                       `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MinReplicas         *int64                                                                                                       `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	NextScaleMetrics    []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics `json:"NextScaleMetrics,omitempty" xml:"NextScaleMetrics,omitempty" type:"Repeated"`
+	NextScaleTimePeriod *int32                                                                                                       `json:"NextScaleTimePeriod,omitempty" xml:"NextScaleTimePeriod,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetCurrentMetrics(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.CurrentMetrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetCurrentReplicas(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.CurrentReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetDesiredReplicas(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.DesiredReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetLastScaleTime(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.LastScaleTime = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetMaxReplicas(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetMinReplicas(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.MinReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetNextScaleMetrics(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.NextScaleMetrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus) SetNextScaleTimePeriod(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus {
+	s.NextScaleTimePeriod = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics struct {
+	CurrentValue *int64  `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) SetCurrentValue(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics {
+	s.CurrentValue = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) SetName(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics) SetType(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics {
+	s.Type = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics struct {
+	Name                           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextScaleInAverageUtilization  *int32  `json:"NextScaleInAverageUtilization,omitempty" xml:"NextScaleInAverageUtilization,omitempty"`
+	NextScaleOutAverageUtilization *int32  `json:"NextScaleOutAverageUtilization,omitempty" xml:"NextScaleOutAverageUtilization,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) SetName(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) SetNextScaleInAverageUtilization(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics {
+	s.NextScaleInAverageUtilization = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) SetNextScaleOutAverageUtilization(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics {
+	s.NextScaleOutAverageUtilization = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules struct {
+	Disabled                   *bool  `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	Step                       *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) SetDisabled(v bool) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) SetStabilizationWindowSeconds(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules) SetStep(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules {
+	s.Step = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules struct {
+	Disabled                   *bool  `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	Step                       *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) SetDisabled(v bool) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) SetStabilizationWindowSeconds(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules) SetStep(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules {
+	s.Step = &v
 	return s
 }
 
@@ -4746,6 +5535,7 @@ type DescribeApplicationStatusResponseBodyData struct {
 	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CurrentStatus          *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
 	EnableAgent            *bool   `json:"EnableAgent,omitempty" xml:"EnableAgent,omitempty"`
+	FileSizeLimit          *int64  `json:"FileSizeLimit,omitempty" xml:"FileSizeLimit,omitempty"`
 	LastChangeOrderId      *string `json:"LastChangeOrderId,omitempty" xml:"LastChangeOrderId,omitempty"`
 	LastChangeOrderRunning *bool   `json:"LastChangeOrderRunning,omitempty" xml:"LastChangeOrderRunning,omitempty"`
 	LastChangeOrderStatus  *string `json:"LastChangeOrderStatus,omitempty" xml:"LastChangeOrderStatus,omitempty"`
@@ -4788,6 +5578,11 @@ func (s *DescribeApplicationStatusResponseBodyData) SetCurrentStatus(v string) *
 
 func (s *DescribeApplicationStatusResponseBodyData) SetEnableAgent(v bool) *DescribeApplicationStatusResponseBodyData {
 	s.EnableAgent = &v
+	return s
+}
+
+func (s *DescribeApplicationStatusResponseBodyData) SetFileSizeLimit(v int64) *DescribeApplicationStatusResponseBodyData {
+	s.FileSizeLimit = &v
 	return s
 }
 
@@ -5403,6 +6198,215 @@ func (s *DescribeConfigMapResponse) SetHeaders(v map[string]*string) *DescribeCo
 }
 
 func (s *DescribeConfigMapResponse) SetBody(v *DescribeConfigMapResponseBody) *DescribeConfigMapResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeConfigurationPriceRequest struct {
+	Cpu    *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s DescribeConfigurationPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurationPriceRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetMemory(v int32) *DescribeConfigurationPriceRequest {
+	s.Memory = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeConfigurationPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                                     `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetCode(v string) *DescribeConfigurationPriceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetData(v *DescribeConfigurationPriceResponseBodyData) *DescribeConfigurationPriceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetErrorCode(v string) *DescribeConfigurationPriceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetMessage(v string) *DescribeConfigurationPriceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetRequestId(v string) *DescribeConfigurationPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetSuccess(v bool) *DescribeConfigurationPriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBody) SetTraceId(v string) *DescribeConfigurationPriceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyData struct {
+	BagUsage *DescribeConfigurationPriceResponseBodyDataBagUsage `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
+	Order    *DescribeConfigurationPriceResponseBodyDataOrder    `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	Rules    []*DescribeConfigurationPriceResponseBodyDataRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyData) SetBagUsage(v *DescribeConfigurationPriceResponseBodyDataBagUsage) *DescribeConfigurationPriceResponseBodyData {
+	s.BagUsage = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyData) SetOrder(v *DescribeConfigurationPriceResponseBodyDataOrder) *DescribeConfigurationPriceResponseBodyData {
+	s.Order = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyData) SetRules(v []*DescribeConfigurationPriceResponseBodyDataRules) *DescribeConfigurationPriceResponseBodyData {
+	s.Rules = v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Mem *float32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataBagUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataBagUsage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetCpu(v float32) *DescribeConfigurationPriceResponseBodyDataBagUsage {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetMem(v float32) *DescribeConfigurationPriceResponseBodyDataBagUsage {
+	s.Mem = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataOrder struct {
+	DiscountAmount *float32  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	TradeAmount    *float32  `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataOrder) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetDiscountAmount(v float32) *DescribeConfigurationPriceResponseBodyDataOrder {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetOriginalAmount(v float32) *DescribeConfigurationPriceResponseBodyDataOrder {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetRuleIds(v []*string) *DescribeConfigurationPriceResponseBodyDataOrder {
+	s.RuleIds = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetTradeAmount(v float32) *DescribeConfigurationPriceResponseBodyDataOrder {
+	s.TradeAmount = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponseBodyDataRules struct {
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleDescId *int64  `json:"RuleDescId,omitempty" xml:"RuleDescId,omitempty"`
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponseBodyDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRules) SetName(v string) *DescribeConfigurationPriceResponseBodyDataRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponseBodyDataRules) SetRuleDescId(v int64) *DescribeConfigurationPriceResponseBodyDataRules {
+	s.RuleDescId = &v
+	return s
+}
+
+type DescribeConfigurationPriceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeConfigurationPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeConfigurationPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeConfigurationPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeConfigurationPriceResponse) SetHeaders(v map[string]*string) *DescribeConfigurationPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigurationPriceResponse) SetBody(v *DescribeConfigurationPriceResponseBody) *DescribeConfigurationPriceResponse {
 	s.Body = v
 	return s
 }
@@ -10675,6 +11679,7 @@ func (s *ReduceApplicationCapacityByInstanceIdsResponse) SetBody(v *ReduceApplic
 type RescaleApplicationRequest struct {
 	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
+	MinReadyInstanceRatio            *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	Replicas                         *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 }
@@ -10694,6 +11699,11 @@ func (s *RescaleApplicationRequest) SetAppId(v string) *RescaleApplicationReques
 
 func (s *RescaleApplicationRequest) SetAutoEnableApplicationScalingRule(v bool) *RescaleApplicationRequest {
 	s.AutoEnableApplicationScalingRule = &v
+	return s
+}
+
+func (s *RescaleApplicationRequest) SetMinReadyInstanceRatio(v int32) *RescaleApplicationRequest {
+	s.MinReadyInstanceRatio = &v
 	return s
 }
 
@@ -10917,8 +11927,9 @@ func (s *RescaleApplicationVerticallyResponse) SetBody(v *RescaleApplicationVert
 }
 
 type RestartApplicationRequest struct {
-	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MinReadyInstances *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 }
 
 func (s RestartApplicationRequest) String() string {
@@ -10931,6 +11942,11 @@ func (s RestartApplicationRequest) GoString() string {
 
 func (s *RestartApplicationRequest) SetAppId(v string) *RestartApplicationRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *RestartApplicationRequest) SetMinReadyInstanceRatio(v int32) *RestartApplicationRequest {
+	s.MinReadyInstanceRatio = &v
 	return s
 }
 
@@ -11152,6 +12168,7 @@ type RollbackApplicationRequest struct {
 	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AutoEnableApplicationScalingRule *string `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
 	BatchWaitTime                    *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	MinReadyInstanceRatio            *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	UpdateStrategy                   *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
 	VersionId                        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
@@ -11177,6 +12194,11 @@ func (s *RollbackApplicationRequest) SetAutoEnableApplicationScalingRule(v strin
 
 func (s *RollbackApplicationRequest) SetBatchWaitTime(v int32) *RollbackApplicationRequest {
 	s.BatchWaitTime = &v
+	return s
+}
+
+func (s *RollbackApplicationRequest) SetMinReadyInstanceRatio(v int32) *RollbackApplicationRequest {
+	s.MinReadyInstanceRatio = &v
 	return s
 }
 
@@ -11958,9 +12980,12 @@ func (s *UpdateAppSecurityGroupResponse) SetBody(v *UpdateAppSecurityGroupRespon
 }
 
 type UpdateApplicationScalingRuleRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ScalingRuleName  *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	ScalingRuleMetric     *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
+	ScalingRuleName       *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	ScalingRuleTimer      *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleRequest) String() string {
@@ -11973,6 +12998,21 @@ func (s UpdateApplicationScalingRuleRequest) GoString() string {
 
 func (s *UpdateApplicationScalingRuleRequest) SetAppId(v string) *UpdateApplicationScalingRuleRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleRequest) SetMinReadyInstanceRatio(v int32) *UpdateApplicationScalingRuleRequest {
+	s.MinReadyInstanceRatio = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleRequest) SetMinReadyInstances(v int32) *UpdateApplicationScalingRuleRequest {
+	s.MinReadyInstances = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleMetric(v string) *UpdateApplicationScalingRuleRequest {
+	s.ScalingRuleMetric = &v
 	return s
 }
 
@@ -12016,13 +13056,15 @@ func (s *UpdateApplicationScalingRuleResponseBody) SetTraceId(v string) *UpdateA
 }
 
 type UpdateApplicationScalingRuleResponseBodyData struct {
-	AppId            *string                                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CreateTime       *int64                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ScaleRuleEnabled *bool                                              `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	ScaleRuleName    *string                                            `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	ScaleRuleType    *string                                            `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	Timer            *UpdateApplicationScalingRuleResponseBodyDataTimer `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
-	UpdateTime       *int64                                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AppId            *string                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime       *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastDisableTime  *int64                                              `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
+	Metric           *UpdateApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	ScaleRuleEnabled *bool                                               `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	ScaleRuleName    *string                                             `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
+	ScaleRuleType    *string                                             `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
+	Timer            *UpdateApplicationScalingRuleResponseBodyDataTimer  `json:"Timer,omitempty" xml:"Timer,omitempty" type:"Struct"`
+	UpdateTime       *int64                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyData) String() string {
@@ -12040,6 +13082,16 @@ func (s *UpdateApplicationScalingRuleResponseBodyData) SetAppId(v string) *Updat
 
 func (s *UpdateApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *UpdateApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyData) SetLastDisableTime(v int64) *UpdateApplicationScalingRuleResponseBodyData {
+	s.LastDisableTime = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyData) SetMetric(v *UpdateApplicationScalingRuleResponseBodyDataMetric) *UpdateApplicationScalingRuleResponseBodyData {
+	s.Metric = v
 	return s
 }
 
@@ -12065,6 +13117,58 @@ func (s *UpdateApplicationScalingRuleResponseBodyData) SetTimer(v *UpdateApplica
 
 func (s *UpdateApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *UpdateApplicationScalingRuleResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyDataMetric struct {
+	MaxReplicas *int32                                                       `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	Metrics     []*UpdateApplicationScalingRuleResponseBodyDataMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	MinReplicas *int32                                                       `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyDataMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyDataMetric) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetric) SetMaxReplicas(v int32) *UpdateApplicationScalingRuleResponseBodyDataMetric {
+	s.MaxReplicas = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetric) SetMetrics(v []*UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) *UpdateApplicationScalingRuleResponseBodyDataMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetric) SetMinReplicas(v int32) *UpdateApplicationScalingRuleResponseBodyDataMetric {
+	s.MinReplicas = &v
+	return s
+}
+
+type UpdateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
+	MetricTargetAverageUtilization *int32  `json:"MetricTargetAverageUtilization,omitempty" xml:"MetricTargetAverageUtilization,omitempty"`
+	MetricType                     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricTargetAverageUtilization(v int32) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricTargetAverageUtilization = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) SetMetricType(v string) *UpdateApplicationScalingRuleResponseBodyDataMetricMetrics {
+	s.MetricType = &v
 	return s
 }
 
@@ -13413,6 +14517,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrInstanceId)) {
+		body["AcrInstanceId"] = request.AcrInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
 		body["AssociateEip"] = request.AssociateEip
 	}
@@ -13484,8 +14592,20 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
+		query["MinReadyInstances"] = request.MinReadyInstances
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScalingRuleEnable)) {
 		query["ScalingRuleEnable"] = request.ScalingRuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingRuleMetric)) {
+		query["ScalingRuleMetric"] = request.ScalingRuleMetric
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingRuleName)) {
@@ -14138,6 +15258,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["Liveness"] = request.Liveness
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
 		query["MinReadyInstances"] = request.MinReadyInstances
 	}
@@ -14542,6 +15666,56 @@ func (client *Client) DescribeApplicationInstancesWithOptions(request *DescribeA
 	return _result, _err
 }
 
+func (client *Client) DescribeApplicationScalingRule(request *DescribeApplicationScalingRuleRequest) (_result *DescribeApplicationScalingRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeApplicationScalingRuleResponse{}
+	_body, _err := client.DescribeApplicationScalingRuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeApplicationScalingRuleWithOptions(request *DescribeApplicationScalingRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeApplicationScalingRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingRuleName)) {
+		query["ScalingRuleName"] = request.ScalingRuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApplicationScalingRule"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/scale/applicationScalingRule"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApplicationScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicationScalingRulesRequest) (_result *DescribeApplicationScalingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14814,6 +15988,56 @@ func (client *Client) DescribeConfigMapWithOptions(request *DescribeConfigMapReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeConfigMapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeConfigurationPrice(request *DescribeConfigurationPriceRequest) (_result *DescribeConfigurationPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeConfigurationPriceResponse{}
+	_body, _err := client.DescribeConfigurationPriceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeConfigurationPriceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeConfigurationPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		query["Cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		query["Memory"] = request.Memory
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConfigurationPrice"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/paas/configurationPrice"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeConfigurationPriceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15394,7 +16618,7 @@ func (client *Client) DownloadFilesWithOptions(request *DownloadFilesRequest, he
 		Action:      tea.String("DownloadFiles"),
 		Version:     tea.String("2019-05-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/v1/sam/app/downloadFiles.json"),
+		Pathname:    tea.String("/pop/v1/sam/app/downloadFiles"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16356,6 +17580,10 @@ func (client *Client) RescaleApplicationWithOptions(request *RescaleApplicationR
 		query["AutoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
 		query["MinReadyInstances"] = request.MinReadyInstances
 	}
@@ -16464,6 +17692,10 @@ func (client *Client) RestartApplicationWithOptions(request *RestartApplicationR
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
 		query["MinReadyInstances"] = request.MinReadyInstances
 	}
@@ -16570,6 +17802,10 @@ func (client *Client) RollbackApplicationWithOptions(request *RollbackApplicatio
 
 	if !tea.BoolValue(util.IsUnset(request.BatchWaitTime)) {
 		query["BatchWaitTime"] = request.BatchWaitTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
@@ -16946,6 +18182,18 @@ func (client *Client) UpdateApplicationScalingRuleWithOptions(request *UpdateApp
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
+		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinReadyInstances)) {
+		query["MinReadyInstances"] = request.MinReadyInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingRuleMetric)) {
+		query["ScalingRuleMetric"] = request.ScalingRuleMetric
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScalingRuleName)) {
 		query["ScalingRuleName"] = request.ScalingRuleName
 	}
@@ -17306,7 +18554,7 @@ func (client *Client) UploadFilesWithOptions(request *UploadFilesRequest, header
 		Action:      tea.String("UploadFiles"),
 		Version:     tea.String("2019-05-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/v1/sam/app/uploadFiles.json"),
+		Pathname:    tea.String("/pop/v1/sam/app/uploadFiles"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
