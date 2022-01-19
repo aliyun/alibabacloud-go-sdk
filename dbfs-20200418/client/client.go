@@ -989,6 +989,7 @@ type GetDbfsResponseBodyDBFSInfo struct {
 	FsName           *string                               `json:"FsName,omitempty" xml:"FsName,omitempty"`
 	InstanceType     *string                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	KMSKeyId         *string                               `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	LastFailed       *string                               `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
 	LastMountTime    *string                               `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
 	LastUmountTime   *string                               `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
 	PayType          *string                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -1072,6 +1073,11 @@ func (s *GetDbfsResponseBodyDBFSInfo) SetInstanceType(v string) *GetDbfsResponse
 
 func (s *GetDbfsResponseBodyDBFSInfo) SetKMSKeyId(v string) *GetDbfsResponseBodyDBFSInfo {
 	s.KMSKeyId = &v
+	return s
+}
+
+func (s *GetDbfsResponseBodyDBFSInfo) SetLastFailed(v string) *GetDbfsResponseBodyDBFSInfo {
+	s.LastFailed = &v
 	return s
 }
 
@@ -1410,6 +1416,7 @@ type ListDbfsResponseBodyDBFSInfo struct {
 	FsName           *string                                `json:"FsName,omitempty" xml:"FsName,omitempty"`
 	InstanceType     *string                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	KMSKeyId         *string                                `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	LastFailed       *string                                `json:"LastFailed,omitempty" xml:"LastFailed,omitempty"`
 	LastMountTime    *string                                `json:"LastMountTime,omitempty" xml:"LastMountTime,omitempty"`
 	LastUmountTime   *string                                `json:"LastUmountTime,omitempty" xml:"LastUmountTime,omitempty"`
 	PayType          *string                                `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -1488,6 +1495,11 @@ func (s *ListDbfsResponseBodyDBFSInfo) SetInstanceType(v string) *ListDbfsRespon
 
 func (s *ListDbfsResponseBodyDBFSInfo) SetKMSKeyId(v string) *ListDbfsResponseBodyDBFSInfo {
 	s.KMSKeyId = &v
+	return s
+}
+
+func (s *ListDbfsResponseBodyDBFSInfo) SetLastFailed(v string) *ListDbfsResponseBodyDBFSInfo {
+	s.LastFailed = &v
 	return s
 }
 
