@@ -574,218 +574,6 @@ func (s *Dataset) SetUpdateTime(v string) *Dataset {
 	return s
 }
 
-type Face struct {
-	// Age
-	Age *int64 `json:"Age,omitempty" xml:"Age,omitempty"`
-	// AgeConfidence
-	AgeConfidence *float32 `json:"AgeConfidence,omitempty" xml:"AgeConfidence,omitempty"`
-	// Beard
-	Beard *string `json:"Beard,omitempty" xml:"Beard,omitempty"`
-	// BeardConfidence
-	BeardConfidence *float32  `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	Boundary        *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	// EmbeddingsFloat32
-	EmbeddingsFloat32 []*float32 `json:"EmbeddingsFloat32,omitempty" xml:"EmbeddingsFloat32,omitempty" type:"Repeated"`
-	// EmbeddingsInt8
-	EmbeddingsInt8 []*int32 `json:"EmbeddingsInt8,omitempty" xml:"EmbeddingsInt8,omitempty" type:"Repeated"`
-	// Emotion
-	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	// EmotionConfidence
-	EmotionConfidence *float32 `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	// FaceClusterId
-	FaceClusterId *string `json:"FaceClusterId,omitempty" xml:"FaceClusterId,omitempty"`
-	// FaceConfidence
-	FaceConfidence *float32 `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	// FaceId
-	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	// Gender
-	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	// GenderConfidence
-	GenderConfidence *float32 `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	// Glasses
-	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	// GlassesConfidence
-	GlassesConfidence *float32 `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	// Hat
-	Hat *string `json:"Hat,omitempty" xml:"Hat,omitempty"`
-	// HatConfidence
-	HatConfidence *float32  `json:"HatConfidence,omitempty" xml:"HatConfidence,omitempty"`
-	HeadPose      *HeadPose `json:"HeadPose,omitempty" xml:"HeadPose,omitempty"`
-	// LeftEye
-	LeftEye *string `json:"LeftEye,omitempty" xml:"LeftEye,omitempty"`
-	// LeftEyeConfidence
-	LeftEyeConfidence *float32 `json:"LeftEyeConfidence,omitempty" xml:"LeftEyeConfidence,omitempty"`
-	// Mask
-	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// MaskConfidence
-	MaskConfidence *float32 `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	// Mouth
-	Mouth *string `json:"Mouth,omitempty" xml:"Mouth,omitempty"`
-	// MouthConfidence
-	MouthConfidence *float32 `json:"MouthConfidence,omitempty" xml:"MouthConfidence,omitempty"`
-	// Race
-	Race *string `json:"Race,omitempty" xml:"Race,omitempty"`
-	// RaceConfidence
-	RaceConfidence *float32 `json:"RaceConfidence,omitempty" xml:"RaceConfidence,omitempty"`
-	// RightEye
-	RightEye *string `json:"RightEye,omitempty" xml:"RightEye,omitempty"`
-	// RightEyeConfidence
-	RightEyeConfidence *float32 `json:"RightEyeConfidence,omitempty" xml:"RightEyeConfidence,omitempty"`
-}
-
-func (s Face) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Face) GoString() string {
-	return s.String()
-}
-
-func (s *Face) SetAge(v int64) *Face {
-	s.Age = &v
-	return s
-}
-
-func (s *Face) SetAgeConfidence(v float32) *Face {
-	s.AgeConfidence = &v
-	return s
-}
-
-func (s *Face) SetBeard(v string) *Face {
-	s.Beard = &v
-	return s
-}
-
-func (s *Face) SetBeardConfidence(v float32) *Face {
-	s.BeardConfidence = &v
-	return s
-}
-
-func (s *Face) SetBoundary(v *Boundary) *Face {
-	s.Boundary = v
-	return s
-}
-
-func (s *Face) SetEmbeddingsFloat32(v []*float32) *Face {
-	s.EmbeddingsFloat32 = v
-	return s
-}
-
-func (s *Face) SetEmbeddingsInt8(v []*int32) *Face {
-	s.EmbeddingsInt8 = v
-	return s
-}
-
-func (s *Face) SetEmotion(v string) *Face {
-	s.Emotion = &v
-	return s
-}
-
-func (s *Face) SetEmotionConfidence(v float32) *Face {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *Face) SetFaceClusterId(v string) *Face {
-	s.FaceClusterId = &v
-	return s
-}
-
-func (s *Face) SetFaceConfidence(v float32) *Face {
-	s.FaceConfidence = &v
-	return s
-}
-
-func (s *Face) SetFaceId(v string) *Face {
-	s.FaceId = &v
-	return s
-}
-
-func (s *Face) SetGender(v string) *Face {
-	s.Gender = &v
-	return s
-}
-
-func (s *Face) SetGenderConfidence(v float32) *Face {
-	s.GenderConfidence = &v
-	return s
-}
-
-func (s *Face) SetGlasses(v string) *Face {
-	s.Glasses = &v
-	return s
-}
-
-func (s *Face) SetGlassesConfidence(v float32) *Face {
-	s.GlassesConfidence = &v
-	return s
-}
-
-func (s *Face) SetHat(v string) *Face {
-	s.Hat = &v
-	return s
-}
-
-func (s *Face) SetHatConfidence(v float32) *Face {
-	s.HatConfidence = &v
-	return s
-}
-
-func (s *Face) SetHeadPose(v *HeadPose) *Face {
-	s.HeadPose = v
-	return s
-}
-
-func (s *Face) SetLeftEye(v string) *Face {
-	s.LeftEye = &v
-	return s
-}
-
-func (s *Face) SetLeftEyeConfidence(v float32) *Face {
-	s.LeftEyeConfidence = &v
-	return s
-}
-
-func (s *Face) SetMask(v string) *Face {
-	s.Mask = &v
-	return s
-}
-
-func (s *Face) SetMaskConfidence(v float32) *Face {
-	s.MaskConfidence = &v
-	return s
-}
-
-func (s *Face) SetMouth(v string) *Face {
-	s.Mouth = &v
-	return s
-}
-
-func (s *Face) SetMouthConfidence(v float32) *Face {
-	s.MouthConfidence = &v
-	return s
-}
-
-func (s *Face) SetRace(v string) *Face {
-	s.Race = &v
-	return s
-}
-
-func (s *Face) SetRaceConfidence(v float32) *Face {
-	s.RaceConfidence = &v
-	return s
-}
-
-func (s *Face) SetRightEye(v string) *Face {
-	s.RightEye = &v
-	return s
-}
-
-func (s *Face) SetRightEyeConfidence(v float32) *Face {
-	s.RightEyeConfidence = &v
-	return s
-}
-
 type Figure struct {
 	// Age
 	Age *int64 `json:"Age,omitempty" xml:"Age,omitempty"`
@@ -1013,8 +801,8 @@ type FigureCluster struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// UpdateTime
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Version
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// VideoCount
+	VideoCount *int64 `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
 }
 
 func (s FigureCluster) String() string {
@@ -1110,8 +898,90 @@ func (s *FigureCluster) SetUpdateTime(v string) *FigureCluster {
 	return s
 }
 
-func (s *FigureCluster) SetVersion(v string) *FigureCluster {
-	s.Version = &v
+func (s *FigureCluster) SetVideoCount(v int64) *FigureCluster {
+	s.VideoCount = &v
+	return s
+}
+
+type FigureClusterForReq struct {
+	// Cover
+	Cover *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// CustomId
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// CustomLabels
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ObjectId
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+}
+
+func (s FigureClusterForReq) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FigureClusterForReq) GoString() string {
+	return s.String()
+}
+
+func (s *FigureClusterForReq) SetCover(v *FigureClusterForReqCover) *FigureClusterForReq {
+	s.Cover = v
+	return s
+}
+
+func (s *FigureClusterForReq) SetCustomId(v string) *FigureClusterForReq {
+	s.CustomId = &v
+	return s
+}
+
+func (s *FigureClusterForReq) SetCustomLabels(v map[string]interface{}) *FigureClusterForReq {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *FigureClusterForReq) SetName(v string) *FigureClusterForReq {
+	s.Name = &v
+	return s
+}
+
+func (s *FigureClusterForReq) SetObjectId(v string) *FigureClusterForReq {
+	s.ObjectId = &v
+	return s
+}
+
+type FigureClusterForReqCover struct {
+	// Figures
+	Figures []*FigureClusterForReqCoverFigures `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+}
+
+func (s FigureClusterForReqCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FigureClusterForReqCover) GoString() string {
+	return s.String()
+}
+
+func (s *FigureClusterForReqCover) SetFigures(v []*FigureClusterForReqCoverFigures) *FigureClusterForReqCover {
+	s.Figures = v
+	return s
+}
+
+type FigureClusterForReqCoverFigures struct {
+	// FigureId
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+}
+
+func (s FigureClusterForReqCoverFigures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FigureClusterForReqCoverFigures) GoString() string {
+	return s.String()
+}
+
+func (s *FigureClusterForReqCoverFigures) SetFigureId(v string) *FigureClusterForReqCoverFigures {
+	s.FigureId = &v
 	return s
 }
 
@@ -1126,20 +996,12 @@ type File struct {
 	Album *string `json:"Album,omitempty" xml:"Album,omitempty"`
 	// AlbumArtist
 	AlbumArtist *string `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
-	// Artists
-	Artists []*string `json:"Artists,omitempty" xml:"Artists,omitempty" type:"Repeated"`
-	// AudioBitrate
-	AudioBitrate *float32 `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
+	// Artist
+	Artist *string `json:"Artist,omitempty" xml:"Artist,omitempty"`
 	// AudioCovers
 	AudioCovers []*Image `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
-	// AudioDuration
-	AudioDuration *float32 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	// AudioLanguage
-	AudioLanguage *string `json:"AudioLanguage,omitempty" xml:"AudioLanguage,omitempty"`
 	// AudioStreams
 	AudioStreams []*AudioStream `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
-	// AudioTakenTime
-	AudioTakenTime *string `json:"AudioTakenTime,omitempty" xml:"AudioTakenTime,omitempty"`
 	// CacheControl
 	CacheControl *string `json:"CacheControl,omitempty" xml:"CacheControl,omitempty"`
 	// Composer
@@ -1193,6 +1055,8 @@ type File struct {
 	ImageWidth *int64 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
 	// Labels
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Language
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// LatLong
 	LatLong *string `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
 	// MediaType
@@ -1226,7 +1090,7 @@ type File struct {
 	// ObjectType
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// Orientation
-	Orientation *string `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
+	Orientation *int64 `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
 	// OwnerId
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// PageCount
@@ -1259,18 +1123,12 @@ type File struct {
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 	// UpdateTime
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// VideoBitrate
-	VideoBitrate *int64 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	// VideoDuration
-	VideoDuration *float32 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
 	// VideoHeight
 	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
 	// VideoStartTime
 	VideoStartTime *float32 `json:"VideoStartTime,omitempty" xml:"VideoStartTime,omitempty"`
 	// VideoStreams
 	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
-	// VideoTakenTime
-	VideoTakenTime *string `json:"VideoTakenTime,omitempty" xml:"VideoTakenTime,omitempty"`
 	// VideoWidth
 	VideoWidth *int64 `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
 }
@@ -1308,13 +1166,8 @@ func (s *File) SetAlbumArtist(v string) *File {
 	return s
 }
 
-func (s *File) SetArtists(v []*string) *File {
-	s.Artists = v
-	return s
-}
-
-func (s *File) SetAudioBitrate(v float32) *File {
-	s.AudioBitrate = &v
+func (s *File) SetArtist(v string) *File {
+	s.Artist = &v
 	return s
 }
 
@@ -1323,23 +1176,8 @@ func (s *File) SetAudioCovers(v []*Image) *File {
 	return s
 }
 
-func (s *File) SetAudioDuration(v float32) *File {
-	s.AudioDuration = &v
-	return s
-}
-
-func (s *File) SetAudioLanguage(v string) *File {
-	s.AudioLanguage = &v
-	return s
-}
-
 func (s *File) SetAudioStreams(v []*AudioStream) *File {
 	s.AudioStreams = v
-	return s
-}
-
-func (s *File) SetAudioTakenTime(v string) *File {
-	s.AudioTakenTime = &v
 	return s
 }
 
@@ -1478,6 +1316,11 @@ func (s *File) SetLabels(v []*Label) *File {
 	return s
 }
 
+func (s *File) SetLanguage(v string) *File {
+	s.Language = &v
+	return s
+}
+
 func (s *File) SetLatLong(v string) *File {
 	s.LatLong = &v
 	return s
@@ -1558,7 +1401,7 @@ func (s *File) SetObjectType(v string) *File {
 	return s
 }
 
-func (s *File) SetOrientation(v string) *File {
+func (s *File) SetOrientation(v int64) *File {
 	s.Orientation = &v
 	return s
 }
@@ -1643,16 +1486,6 @@ func (s *File) SetUpdateTime(v string) *File {
 	return s
 }
 
-func (s *File) SetVideoBitrate(v int64) *File {
-	s.VideoBitrate = &v
-	return s
-}
-
-func (s *File) SetVideoDuration(v float32) *File {
-	s.VideoDuration = &v
-	return s
-}
-
 func (s *File) SetVideoHeight(v int64) *File {
 	s.VideoHeight = &v
 	return s
@@ -1665,11 +1498,6 @@ func (s *File) SetVideoStartTime(v float32) *File {
 
 func (s *File) SetVideoStreams(v []*VideoStream) *File {
 	s.VideoStreams = v
-	return s
-}
-
-func (s *File) SetVideoTakenTime(v string) *File {
-	s.VideoTakenTime = &v
 	return s
 }
 
@@ -2183,6 +2011,128 @@ func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 	return s
 }
 
+type Story struct {
+	Cover *File `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// CreateTime
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// CustomFields
+	CustomFields *string `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
+	// DatasetName
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// FigureClusterIds
+	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
+	// Files
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// ObjectId
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// ObjectType
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// OwnerId
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// ProjectName
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// StoryEndTime
+	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// StoryName
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// StoryStartTime
+	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// StorySubType
+	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// StoryType
+	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// UpdateTime
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s Story) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Story) GoString() string {
+	return s.String()
+}
+
+func (s *Story) SetCover(v *File) *Story {
+	s.Cover = v
+	return s
+}
+
+func (s *Story) SetCreateTime(v string) *Story {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Story) SetCustomFields(v string) *Story {
+	s.CustomFields = &v
+	return s
+}
+
+func (s *Story) SetDatasetName(v string) *Story {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *Story) SetFigureClusterIds(v []*string) *Story {
+	s.FigureClusterIds = v
+	return s
+}
+
+func (s *Story) SetFiles(v []*File) *Story {
+	s.Files = v
+	return s
+}
+
+func (s *Story) SetObjectId(v string) *Story {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *Story) SetObjectType(v string) *Story {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *Story) SetOwnerId(v string) *Story {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *Story) SetProjectName(v string) *Story {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *Story) SetStoryEndTime(v string) *Story {
+	s.StoryEndTime = &v
+	return s
+}
+
+func (s *Story) SetStoryName(v string) *Story {
+	s.StoryName = &v
+	return s
+}
+
+func (s *Story) SetStoryStartTime(v string) *Story {
+	s.StoryStartTime = &v
+	return s
+}
+
+func (s *Story) SetStorySubType(v string) *Story {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *Story) SetStoryType(v string) *Story {
+	s.StoryType = &v
+	return s
+}
+
+func (s *Story) SetUpdateTime(v string) *Story {
+	s.UpdateTime = &v
+	return s
+}
+
 type SubtitleStream struct {
 	// Content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -2282,9 +2232,34 @@ func (s *TaskInfo) SetUserData(v string) *TaskInfo {
 	return s
 }
 
+type TimeRange struct {
+	// end time
+	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// start time
+	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s TimeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TimeRange) GoString() string {
+	return s.String()
+}
+
+func (s *TimeRange) SetEnd(v string) *TimeRange {
+	s.End = &v
+	return s
+}
+
+func (s *TimeRange) SetStart(v string) *TimeRange {
+	s.Start = &v
+	return s
+}
+
 type VideoStream struct {
 	// AverageFrameRate
-	AverageFrameRate *float32 `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
+	AverageFrameRate *string `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
 	// Bitrate
 	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// CodecLongName
@@ -2304,9 +2279,9 @@ type VideoStream struct {
 	// FrameCount
 	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
 	// FrameRate
-	FrameRate *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	FrameRate *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
 	// HasBFrames
-	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	HasBFrames *int64 `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
 	// Height
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
 	// Index
@@ -2319,6 +2294,8 @@ type VideoStream struct {
 	PixelFormat *string `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
 	// Profile
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// Rotate
+	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
 	// SampleAspectRatio
 	SampleAspectRatio *string `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
 	// StartTime
@@ -2337,7 +2314,7 @@ func (s VideoStream) GoString() string {
 	return s.String()
 }
 
-func (s *VideoStream) SetAverageFrameRate(v float32) *VideoStream {
+func (s *VideoStream) SetAverageFrameRate(v string) *VideoStream {
 	s.AverageFrameRate = &v
 	return s
 }
@@ -2387,12 +2364,12 @@ func (s *VideoStream) SetFrameCount(v int64) *VideoStream {
 	return s
 }
 
-func (s *VideoStream) SetFrameRate(v float32) *VideoStream {
+func (s *VideoStream) SetFrameRate(v string) *VideoStream {
 	s.FrameRate = &v
 	return s
 }
 
-func (s *VideoStream) SetHasBFrames(v string) *VideoStream {
+func (s *VideoStream) SetHasBFrames(v int64) *VideoStream {
 	s.HasBFrames = &v
 	return s
 }
@@ -2424,6 +2401,11 @@ func (s *VideoStream) SetPixelFormat(v string) *VideoStream {
 
 func (s *VideoStream) SetProfile(v string) *VideoStream {
 	s.Profile = &v
+	return s
+}
+
+func (s *VideoStream) SetRotate(v string) *VideoStream {
+	s.Rotate = &v
 	return s
 }
 
@@ -3059,100 +3041,6 @@ func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody
 	return s
 }
 
-type ClusterFiguresRequest struct {
-	CustomMessage       *string `json:"CustomMessage,omitempty" xml:"CustomMessage,omitempty"`
-	DatasetName         *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureType          *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
-	NotifyTopicEndpoint *string `json:"NotifyTopicEndpoint,omitempty" xml:"NotifyTopicEndpoint,omitempty"`
-	NotifyTopicName     *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-}
-
-func (s ClusterFiguresRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClusterFiguresRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ClusterFiguresRequest) SetCustomMessage(v string) *ClusterFiguresRequest {
-	s.CustomMessage = &v
-	return s
-}
-
-func (s *ClusterFiguresRequest) SetDatasetName(v string) *ClusterFiguresRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ClusterFiguresRequest) SetFigureType(v string) *ClusterFiguresRequest {
-	s.FigureType = &v
-	return s
-}
-
-func (s *ClusterFiguresRequest) SetNotifyTopicEndpoint(v string) *ClusterFiguresRequest {
-	s.NotifyTopicEndpoint = &v
-	return s
-}
-
-func (s *ClusterFiguresRequest) SetNotifyTopicName(v string) *ClusterFiguresRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *ClusterFiguresRequest) SetProjectName(v string) *ClusterFiguresRequest {
-	s.ProjectName = &v
-	return s
-}
-
-type ClusterFiguresResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ClusterFiguresResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClusterFiguresResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ClusterFiguresResponseBody) SetRequestId(v string) *ClusterFiguresResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ClusterFiguresResponseBody) SetTaskId(v string) *ClusterFiguresResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type ClusterFiguresResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClusterFiguresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ClusterFiguresResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClusterFiguresResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ClusterFiguresResponse) SetHeaders(v map[string]*string) *ClusterFiguresResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ClusterFiguresResponse) SetBody(v *ClusterFiguresResponseBody) *ClusterFiguresResponse {
-	s.Body = v
-	return s
-}
-
 type CreateBindingRequest struct {
 	// DatasetName
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -3354,6 +3242,10 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDetectVideoLabelsTaskRequest struct {
+	// NotifyEndpoint
+	NotifyEndpoint *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	// NotifyTopicName
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// SourceURI
@@ -3368,6 +3260,16 @@ func (s CreateDetectVideoLabelsTaskRequest) String() string {
 
 func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyEndpoint(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.NotifyTopicName = &v
+	return s
 }
 
 func (s *CreateDetectVideoLabelsTaskRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskRequest {
@@ -3492,6 +3394,208 @@ func (s *CreateDetectVideoLabelsTaskResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFigureClusteringTaskRequest struct {
+	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFigureClusteringTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClusteringTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetDatasetName(v string) *CreateFigureClusteringTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetNotifyEndpoint(v string) *CreateFigureClusteringTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetNotifyTopicName(v string) *CreateFigureClusteringTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetProjectName(v string) *CreateFigureClusteringTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureClusteringTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFigureClusteringTaskResponseBody struct {
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateFigureClusteringTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClusteringTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClusteringTaskResponseBody) SetEventId(v string) *CreateFigureClusteringTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskResponseBody) SetRequestId(v string) *CreateFigureClusteringTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskResponseBody) SetTaskId(v string) *CreateFigureClusteringTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateFigureClusteringTaskResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFigureClusteringTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFigureClusteringTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClusteringTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClusteringTaskResponse) SetHeaders(v map[string]*string) *CreateFigureClusteringTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskResponse) SetBody(v *CreateFigureClusteringTaskResponseBody) *CreateFigureClusteringTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFigureClustersMergingTaskRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 源cluster
+	From            *string `json:"From,omitempty" xml:"From,omitempty"`
+	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 目的cluster
+	To       *string `json:"To,omitempty" xml:"To,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFigureClustersMergingTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClustersMergingTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetDatasetName(v string) *CreateFigureClustersMergingTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetFrom(v string) *CreateFigureClustersMergingTaskRequest {
+	s.From = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetNotifyEndpoint(v string) *CreateFigureClustersMergingTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetNotifyTopicName(v string) *CreateFigureClustersMergingTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetProjectName(v string) *CreateFigureClustersMergingTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetTo(v string) *CreateFigureClustersMergingTaskRequest {
+	s.To = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetUserData(v string) *CreateFigureClustersMergingTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFigureClustersMergingTaskResponseBody struct {
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateFigureClustersMergingTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClustersMergingTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClustersMergingTaskResponseBody) SetEventId(v string) *CreateFigureClustersMergingTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskResponseBody) SetRequestId(v string) *CreateFigureClustersMergingTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskResponseBody) SetTaskId(v string) *CreateFigureClustersMergingTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateFigureClustersMergingTaskResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateFigureClustersMergingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFigureClustersMergingTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFigureClustersMergingTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFigureClustersMergingTaskResponse) SetHeaders(v map[string]*string) *CreateFigureClustersMergingTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureClustersMergingTaskResponseBody) *CreateFigureClustersMergingTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3627,7 +3731,144 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateStoryRequest struct {
+	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxFileCount    *int64  `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	MinFileCount    *int64  `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	NotifyEndpoint  *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ObjectId        *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StoryEndTime    *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	StoryName       *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	StoryStartTime  *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	StorySubType    *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	StoryType       *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+}
+
+func (s CreateStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryRequest) SetDatasetName(v string) *CreateStoryRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetMaxFileCount(v int64) *CreateStoryRequest {
+	s.MaxFileCount = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetMinFileCount(v int64) *CreateStoryRequest {
+	s.MinFileCount = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetNotifyEndpoint(v string) *CreateStoryRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetNotifyTopicName(v string) *CreateStoryRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetObjectId(v string) *CreateStoryRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetProjectName(v string) *CreateStoryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryEndTime(v string) *CreateStoryRequest {
+	s.StoryEndTime = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryName(v string) *CreateStoryRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryStartTime(v string) *CreateStoryRequest {
+	s.StoryStartTime = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStorySubType(v string) *CreateStoryRequest {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetStoryType(v string) *CreateStoryRequest {
+	s.StoryType = &v
+	return s
+}
+
+type CreateStoryResponseBody struct {
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryResponseBody) SetEventId(v string) *CreateStoryResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateStoryResponseBody) SetRequestId(v string) *CreateStoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStoryResponseBody) SetTaskId(v string) *CreateStoryResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateStoryResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryResponse) SetHeaders(v map[string]*string) *CreateStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBindingRequest struct {
+	Cleanup     *bool   `json:"Cleanup,omitempty" xml:"Cleanup,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// A short description of struct
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -3640,6 +3881,11 @@ func (s DeleteBindingRequest) String() string {
 
 func (s DeleteBindingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteBindingRequest) SetCleanup(v bool) *DeleteBindingRequest {
+	s.Cleanup = &v
+	return s
 }
 
 func (s *DeleteBindingRequest) SetDatasetName(v string) *DeleteBindingRequest {
@@ -3887,6 +4133,75 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 }
 
 func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStoryRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DeleteStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryRequest) SetDatasetName(v string) *DeleteStoryRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DeleteStoryRequest) SetObjectId(v string) *DeleteStoryRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DeleteStoryRequest) SetProjectName(v string) *DeleteStoryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DeleteStoryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryResponseBody) SetRequestId(v string) *DeleteStoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteStoryResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStoryResponse) SetHeaders(v map[string]*string) *DeleteStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryResponse {
 	s.Body = v
 	return s
 }
@@ -4373,9 +4688,9 @@ func (s *GetDetectVideoLabelsResultResponse) SetBody(v *GetDetectVideoLabelsResu
 }
 
 type GetFigureClusterRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s GetFigureClusterRequest) String() string {
@@ -4391,8 +4706,8 @@ func (s *GetFigureClusterRequest) SetDatasetName(v string) *GetFigureClusterRequ
 	return s
 }
 
-func (s *GetFigureClusterRequest) SetFigureClusterId(v string) *GetFigureClusterRequest {
-	s.FigureClusterId = &v
+func (s *GetFigureClusterRequest) SetObjectId(v string) *GetFigureClusterRequest {
+	s.ObjectId = &v
 	return s
 }
 
@@ -4525,77 +4840,6 @@ func (s *GetFileMetaResponse) SetBody(v *GetFileMetaResponseBody) *GetFileMetaRe
 	return s
 }
 
-type GetFileSignedURIRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GetFileSignedURIRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIRequest) SetProjectName(v string) *GetFileSignedURIRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *GetFileSignedURIRequest) SetURI(v string) *GetFileSignedURIRequest {
-	s.URI = &v
-	return s
-}
-
-type GetFileSignedURIResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 签名地址
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s GetFileSignedURIResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIResponseBody) SetRequestId(v string) *GetFileSignedURIResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetFileSignedURIResponseBody) SetURI(v string) *GetFileSignedURIResponseBody {
-	s.URI = &v
-	return s
-}
-
-type GetFileSignedURIResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFileSignedURIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFileSignedURIResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileSignedURIResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileSignedURIResponse) SetHeaders(v map[string]*string) *GetFileSignedURIResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileSignedURIResponse) SetBody(v *GetFileSignedURIResponseBody) *GetFileSignedURIResponse {
-	s.Body = v
-	return s
-}
-
 type GetProjectRequest struct {
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -4664,6 +4908,82 @@ func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectRespons
 }
 
 func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetStoryRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s GetStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryRequest) SetDatasetName(v string) *GetStoryRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetObjectId(v string) *GetStoryRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *GetStoryRequest) SetProjectName(v string) *GetStoryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type GetStoryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Story     *Story  `json:"Story,omitempty" xml:"Story,omitempty"`
+}
+
+func (s GetStoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryResponseBody) SetRequestId(v string) *GetStoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStoryResponseBody) SetStory(v *Story) *GetStoryResponseBody {
+	s.Story = v
+	return s
+}
+
+type GetStoryResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryResponse) SetHeaders(v map[string]*string) *GetStoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStoryResponse) SetBody(v *GetStoryResponseBody) *GetStoryResponse {
 	s.Body = v
 	return s
 }
@@ -5429,112 +5749,6 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 	return s
 }
 
-type ListFigureClustersRequest struct {
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-}
-
-func (s ListFigureClustersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFigureClustersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFigureClustersRequest) SetDatasetName(v string) *ListFigureClustersRequest {
-	s.DatasetName = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetLabels(v string) *ListFigureClustersRequest {
-	s.Labels = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetMaxResults(v int64) *ListFigureClustersRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetNextToken(v string) *ListFigureClustersRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetOrder(v string) *ListFigureClustersRequest {
-	s.Order = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetProjectName(v string) *ListFigureClustersRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListFigureClustersRequest) SetSort(v string) *ListFigureClustersRequest {
-	s.Sort = &v
-	return s
-}
-
-type ListFigureClustersResponseBody struct {
-	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
-	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListFigureClustersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFigureClustersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListFigureClustersResponseBody) SetFigureClusters(v []*FigureCluster) *ListFigureClustersResponseBody {
-	s.FigureClusters = v
-	return s
-}
-
-func (s *ListFigureClustersResponseBody) SetNextToken(v string) *ListFigureClustersResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListFigureClustersResponseBody) SetRequestId(v string) *ListFigureClustersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListFigureClustersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFigureClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFigureClustersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFigureClustersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListFigureClustersResponse) SetHeaders(v map[string]*string) *ListFigureClustersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFigureClustersResponse) SetBody(v *ListFigureClustersResponseBody) *ListFigureClustersResponse {
-	s.Body = v
-	return s
-}
-
 type ListProjectsRequest struct {
 	// 返回结果的最大个数
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -5832,6 +6046,333 @@ func (s *MergeFigureClustersResponse) SetHeaders(v map[string]*string) *MergeFig
 }
 
 func (s *MergeFigureClustersResponse) SetBody(v *MergeFigureClustersResponseBody) *MergeFigureClustersResponse {
+	s.Body = v
+	return s
+}
+
+type QueryFigureClustersRequest struct {
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 升降序
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// 排序字段
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s QueryFigureClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFigureClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFigureClustersRequest) SetCustomLabels(v string) *QueryFigureClustersRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetDatasetName(v string) *QueryFigureClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetMaxResults(v int64) *QueryFigureClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetNextToken(v string) *QueryFigureClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetOrder(v string) *QueryFigureClustersRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetProjectName(v string) *QueryFigureClustersRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetSort(v string) *QueryFigureClustersRequest {
+	s.Sort = &v
+	return s
+}
+
+type QueryFigureClustersResponseBody struct {
+	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
+	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryFigureClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFigureClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFigureClustersResponseBody) SetFigureClusters(v []*FigureCluster) *QueryFigureClustersResponseBody {
+	s.FigureClusters = v
+	return s
+}
+
+func (s *QueryFigureClustersResponseBody) SetNextToken(v string) *QueryFigureClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryFigureClustersResponseBody) SetRequestId(v string) *QueryFigureClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryFigureClustersResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryFigureClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryFigureClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFigureClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFigureClustersResponse) SetHeaders(v map[string]*string) *QueryFigureClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryFigureClustersResponse) SetBody(v *QueryFigureClustersResponseBody) *QueryFigureClustersResponse {
+	s.Body = v
+	return s
+}
+
+type QueryStoriesRequest struct {
+	CreateTimeRange     *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	DatasetName         *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterIds    []*string  `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
+	MaxResults          *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId            *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName         *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StoryEndTimeRange   *TimeRange `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	StoryName           *string    `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	StoryStartTimeRange *TimeRange `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
+	StorySubType        *string    `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	StoryType           *string    `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+}
+
+func (s QueryStoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStoriesRequest) SetCreateTimeRange(v *TimeRange) *QueryStoriesRequest {
+	s.CreateTimeRange = v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetDatasetName(v string) *QueryStoriesRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetFigureClusterIds(v []*string) *QueryStoriesRequest {
+	s.FigureClusterIds = v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetMaxResults(v int64) *QueryStoriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetNextToken(v string) *QueryStoriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetObjectId(v string) *QueryStoriesRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetProjectName(v string) *QueryStoriesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetStoryEndTimeRange(v *TimeRange) *QueryStoriesRequest {
+	s.StoryEndTimeRange = v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetStoryName(v string) *QueryStoriesRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetStoryStartTimeRange(v *TimeRange) *QueryStoriesRequest {
+	s.StoryStartTimeRange = v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetStorySubType(v string) *QueryStoriesRequest {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *QueryStoriesRequest) SetStoryType(v string) *QueryStoriesRequest {
+	s.StoryType = &v
+	return s
+}
+
+type QueryStoriesShrinkRequest struct {
+	CreateTimeRangeShrink     *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	DatasetName               *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureClusterIdsShrink    *string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty"`
+	MaxResults                *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId                  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName               *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StoryEndTimeRangeShrink   *string `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	StoryName                 *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	StoryStartTimeRangeShrink *string `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
+	StorySubType              *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	StoryType                 *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+}
+
+func (s QueryStoriesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStoriesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStoriesShrinkRequest) SetCreateTimeRangeShrink(v string) *QueryStoriesShrinkRequest {
+	s.CreateTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetDatasetName(v string) *QueryStoriesShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetFigureClusterIdsShrink(v string) *QueryStoriesShrinkRequest {
+	s.FigureClusterIdsShrink = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetMaxResults(v int64) *QueryStoriesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetNextToken(v string) *QueryStoriesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetObjectId(v string) *QueryStoriesShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetProjectName(v string) *QueryStoriesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetStoryEndTimeRangeShrink(v string) *QueryStoriesShrinkRequest {
+	s.StoryEndTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetStoryName(v string) *QueryStoriesShrinkRequest {
+	s.StoryName = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetStoryStartTimeRangeShrink(v string) *QueryStoriesShrinkRequest {
+	s.StoryStartTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetStorySubType(v string) *QueryStoriesShrinkRequest {
+	s.StorySubType = &v
+	return s
+}
+
+func (s *QueryStoriesShrinkRequest) SetStoryType(v string) *QueryStoriesShrinkRequest {
+	s.StoryType = &v
+	return s
+}
+
+type QueryStoriesResponseBody struct {
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Stories   []*Story `json:"Stories,omitempty" xml:"Stories,omitempty" type:"Repeated"`
+}
+
+func (s QueryStoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStoriesResponseBody) SetNextToken(v string) *QueryStoriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryStoriesResponseBody) SetRequestId(v string) *QueryStoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryStoriesResponseBody) SetStories(v []*Story) *QueryStoriesResponseBody {
+	s.Stories = v
+	return s
+}
+
+type QueryStoriesResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryStoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryStoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryStoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryStoriesResponse) SetHeaders(v map[string]*string) *QueryStoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryStoriesResponse) SetBody(v *QueryStoriesResponseBody) *QueryStoriesResponse {
 	s.Body = v
 	return s
 }
@@ -6428,8 +6969,7 @@ type SimpleQueryResponseBodyAggregations struct {
 	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// 聚合字段的聚合操作符
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// 聚合的统计结果
-	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SimpleQueryResponseBodyAggregations) String() string {
@@ -6455,7 +6995,7 @@ func (s *SimpleQueryResponseBodyAggregations) SetOperation(v string) *SimpleQuer
 	return s
 }
 
-func (s *SimpleQueryResponseBodyAggregations) SetValue(v float32) *SimpleQueryResponseBodyAggregations {
+func (s *SimpleQueryResponseBodyAggregations) SetValue(v string) *SimpleQueryResponseBodyAggregations {
 	s.Value = &v
 	return s
 }
@@ -6706,9 +7246,9 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 }
 
 type UpdateFigureClusterRequest struct {
-	DatasetName   *string        `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	ProjectName   *string        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName   *string              `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FigureCluster *FigureClusterForReq `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	ProjectName   *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFigureClusterRequest) String() string {
@@ -6724,7 +7264,7 @@ func (s *UpdateFigureClusterRequest) SetDatasetName(v string) *UpdateFigureClust
 	return s
 }
 
-func (s *UpdateFigureClusterRequest) SetFigureCluster(v *FigureCluster) *UpdateFigureClusterRequest {
+func (s *UpdateFigureClusterRequest) SetFigureCluster(v *FigureClusterForReq) *UpdateFigureClusterRequest {
 	s.FigureCluster = v
 	return s
 }
@@ -7107,9 +7647,18 @@ func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMeta
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URIs"] = request.URIsShrink
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URIsShrink)) {
+		query["URIs"] = request.URIsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7156,9 +7705,18 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URIs"] = request.URIsShrink
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URIsShrink)) {
+		query["URIs"] = request.URIsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7205,11 +7763,26 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["Files"] = request.FilesShrink
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		query["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7256,9 +7829,18 @@ func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMeta
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["Files"] = request.FilesShrink
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		query["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7293,61 +7875,24 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 	return _result, _err
 }
 
-func (client *Client) ClusterFiguresWithOptions(request *ClusterFiguresRequest, runtime *util.RuntimeOptions) (_result *ClusterFiguresResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["CustomMessage"] = request.CustomMessage
-	query["DatasetName"] = request.DatasetName
-	query["FigureType"] = request.FigureType
-	query["NotifyTopicEndpoint"] = request.NotifyTopicEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["ProjectName"] = request.ProjectName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ClusterFigures"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ClusterFiguresResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ClusterFigures(request *ClusterFiguresRequest) (_result *ClusterFiguresResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ClusterFiguresResponse{}
-	_body, _err := client.ClusterFiguresWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7388,15 +7933,42 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
-	query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
-	query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
-	query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
-	query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
-	query["DatasetName"] = request.DatasetName
-	query["Description"] = request.Description
-	query["ProjectName"] = request.ProjectName
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
+		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxEntityCount)) {
+		query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxFileCount)) {
+		query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxRelationCount)) {
+		query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxTotalFileSize)) {
+		query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7437,9 +8009,26 @@ func (client *Client) CreateDetectVideoLabelsTaskWithOptions(request *CreateDete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["SourceURI"] = request.SourceURI
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7474,24 +8063,188 @@ func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabe
 	return _result, _err
 }
 
+func (client *Client) CreateFigureClusteringTaskWithOptions(request *CreateFigureClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFigureClusteringTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFigureClusteringTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFigureClusteringTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFigureClusteringTask(request *CreateFigureClusteringTaskRequest) (_result *CreateFigureClusteringTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFigureClusteringTaskResponse{}
+	_body, _err := client.CreateFigureClusteringTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFigureClustersMergingTaskWithOptions(request *CreateFigureClustersMergingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFigureClustersMergingTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFigureClustersMergingTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFigureClustersMergingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFigureClustersMergingTask(request *CreateFigureClustersMergingTaskRequest) (_result *CreateFigureClustersMergingTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFigureClustersMergingTaskResponse{}
+	_body, _err := client.CreateFigureClustersMergingTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
-	query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
-	query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
-	query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
-	query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
-	query["Description"] = request.Description
-	query["EngineConcurrency"] = request.EngineConcurrency
-	query["ProjectMaxDatasetCount"] = request.ProjectMaxDatasetCount
-	query["ProjectName"] = request.ProjectName
-	query["ProjectQueriesPerSecond"] = request.ProjectQueriesPerSecond
-	query["ServiceRole"] = request.ServiceRole
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
+		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxEntityCount)) {
+		query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxFileCount)) {
+		query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxRelationCount)) {
+		query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxTotalFileSize)) {
+		query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineConcurrency)) {
+		query["EngineConcurrency"] = request.EngineConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectMaxDatasetCount)) {
+		query["ProjectMaxDatasetCount"] = request.ProjectMaxDatasetCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectQueriesPerSecond)) {
+		query["ProjectQueriesPerSecond"] = request.ProjectQueriesPerSecond
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceRole)) {
+		query["ServiceRole"] = request.ServiceRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7526,15 +8279,116 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateStoryWithOptions(request *CreateStoryRequest, runtime *util.RuntimeOptions) (_result *CreateStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFileCount)) {
+		body["MaxFileCount"] = request.MaxFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinFileCount)) {
+		body["MinFileCount"] = request.MinFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		body["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		body["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryEndTime)) {
+		body["StoryEndTime"] = request.StoryEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		body["StoryName"] = request.StoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryStartTime)) {
+		body["StoryStartTime"] = request.StoryStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorySubType)) {
+		body["StorySubType"] = request.StorySubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryType)) {
+		body["StoryType"] = request.StoryType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStory"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStoryResponse{}
+	_body, _err := client.CreateStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.Cleanup)) {
+		query["Cleanup"] = request.Cleanup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7575,8 +8429,14 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7617,9 +8477,18 @@ func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7660,7 +8529,10 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7695,15 +8567,76 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, runtime *util.RuntimeOptions) (_result *DeleteStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStory"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStoryResponse{}
+	_body, _err := client.DeleteStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectImageLabelsWithOptions(request *DetectImageLabelsRequest, runtime *util.RuntimeOptions) (_result *DetectImageLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["SourceURI"] = request.SourceURI
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7744,11 +8677,26 @@ func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProjectName"] = request.ProjectName
-	query["Query"] = request.Query
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7789,9 +8737,18 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7832,9 +8789,18 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["WithStatistics"] = request.WithStatistics
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithStatistics)) {
+		query["WithStatistics"] = request.WithStatistics
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7875,9 +8841,18 @@ func (client *Client) GetDetectVideoLabelsResultWithOptions(request *GetDetectVi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["TaskId"] = request.TaskId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7918,9 +8893,18 @@ func (client *Client) GetFigureClusterWithOptions(request *GetFigureClusterReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["FigureClusterId"] = request.FigureClusterId
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7961,9 +8945,18 @@ func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7998,56 +8991,20 @@ func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFile
 	return _result, _err
 }
 
-func (client *Client) GetFileSignedURIWithOptions(request *GetFileSignedURIRequest, runtime *util.RuntimeOptions) (_result *GetFileSignedURIResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetFileSignedURI"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetFileSignedURIResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetFileSignedURI(request *GetFileSignedURIRequest) (_result *GetFileSignedURIResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetFileSignedURIResponse{}
-	_body, _err := client.GetFileSignedURIWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["WithStatistics"] = request.WithStatistics
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithStatistics)) {
+		query["WithStatistics"] = request.WithStatistics
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8082,15 +9039,76 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	return _result, _err
 }
 
+func (client *Client) GetStoryWithOptions(request *GetStoryRequest, runtime *util.RuntimeOptions) (_result *GetStoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStory"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStoryResponse{}
+	_body, _err := client.GetStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectName"] = request.ProjectName
-	query["TaskId"] = request.TaskId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8149,21 +9167,66 @@ func (client *Client) GetWebofficeURLWithOptions(tmpReq *GetWebofficeURLRequest,
 	}
 
 	query := map[string]interface{}{}
-	query["AssumeRoleChain"] = request.AssumeRoleChainShrink
-	query["ExternalUploaded"] = request.ExternalUploaded
-	query["Filename"] = request.Filename
-	query["Hidecmb"] = request.Hidecmb
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["Password"] = request.Password
-	query["Permission"] = request.PermissionShrink
-	query["PreviewPages"] = request.PreviewPages
-	query["ProjectName"] = request.ProjectName
-	query["Referer"] = request.Referer
-	query["SourceURI"] = request.SourceURI
-	query["User"] = request.UserShrink
-	query["UserData"] = request.UserData
-	query["Watermark"] = request.WatermarkShrink
+	if !tea.BoolValue(util.IsUnset(request.AssumeRoleChainShrink)) {
+		query["AssumeRoleChain"] = request.AssumeRoleChainShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalUploaded)) {
+		query["ExternalUploaded"] = request.ExternalUploaded
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filename)) {
+		query["Filename"] = request.Filename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hidecmb)) {
+		query["Hidecmb"] = request.Hidecmb
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionShrink)) {
+		query["Permission"] = request.PermissionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewPages)) {
+		query["PreviewPages"] = request.PreviewPages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Referer)) {
+		query["Referer"] = request.Referer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserShrink)) {
+		query["User"] = request.UserShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkShrink)) {
+		query["Watermark"] = request.WatermarkShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8210,11 +9273,26 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["File"] = request.FileShrink
-	query["NotifyEndpoint"] = request.NotifyEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileShrink)) {
+		query["File"] = request.FileShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8255,10 +9333,22 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8299,10 +9389,22 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Prefix"] = request.Prefix
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8337,62 +9439,24 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 	return _result, _err
 }
 
-func (client *Client) ListFigureClustersWithOptions(request *ListFigureClustersRequest, runtime *util.RuntimeOptions) (_result *ListFigureClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["Labels"] = request.Labels
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Order"] = request.Order
-	query["ProjectName"] = request.ProjectName
-	query["Sort"] = request.Sort
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFigureClusters"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListFigureClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListFigureClusters(request *ListFigureClustersRequest) (_result *ListFigureClustersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListFigureClustersResponse{}
-	_body, _err := client.ListFigureClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Prefix"] = request.Prefix
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8433,10 +9497,22 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProjectName"] = request.ProjectName
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8477,14 +9553,38 @@ func (client *Client) MergeFigureClustersWithOptions(request *MergeFigureCluster
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterIdFrom"] = request.ClusterIdFrom
-	query["ClusterIdTo"] = request.ClusterIdTo
-	query["CustomMessage"] = request.CustomMessage
-	query["DatasetName"] = request.DatasetName
-	query["FigureType"] = request.FigureType
-	query["NotifyTopicEndpoint"] = request.NotifyTopicEndpoint
-	query["NotifyTopicName"] = request.NotifyTopicName
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.ClusterIdFrom)) {
+		query["ClusterIdFrom"] = request.ClusterIdFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterIdTo)) {
+		query["ClusterIdTo"] = request.ClusterIdTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomMessage)) {
+		query["CustomMessage"] = request.CustomMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FigureType)) {
+		query["FigureType"] = request.FigureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicEndpoint)) {
+		query["NotifyTopicEndpoint"] = request.NotifyTopicEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8519,6 +9619,180 @@ func (client *Client) MergeFigureClusters(request *MergeFigureClustersRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryFigureClustersWithOptions(request *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		query["CustomLabels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryFigureClusters"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryFigureClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryFigureClusters(request *QueryFigureClustersRequest) (_result *QueryFigureClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryFigureClustersResponse{}
+	_body, _err := client.QueryFigureClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runtime *util.RuntimeOptions) (_result *QueryStoriesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryStoriesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CreateTimeRange))) {
+		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CreateTimeRange), tea.String("CreateTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FigureClusterIds)) {
+		request.FigureClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FigureClusterIds, tea.String("FigureClusterIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StoryEndTimeRange))) {
+		request.StoryEndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StoryEndTimeRange), tea.String("StoryEndTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StoryStartTimeRange))) {
+		request.StoryStartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StoryStartTimeRange), tea.String("StoryStartTimeRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeRangeShrink)) {
+		query["CreateTimeRange"] = request.CreateTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FigureClusterIdsShrink)) {
+		query["FigureClusterIds"] = request.FigureClusterIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryEndTimeRangeShrink)) {
+		query["StoryEndTimeRange"] = request.StoryEndTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryName)) {
+		query["StoryName"] = request.StoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryStartTimeRangeShrink)) {
+		query["StoryStartTimeRange"] = request.StoryStartTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorySubType)) {
+		query["StorySubType"] = request.StorySubType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoryType)) {
+		query["StoryType"] = request.StoryType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryStories"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryStoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryStories(request *QueryStoriesRequest) (_result *QueryStoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryStoriesResponse{}
+	_body, _err := client.QueryStoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshWebofficeTokenResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8531,10 +9805,22 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 	}
 
 	query := map[string]interface{}{}
-	query["AccessToken"] = request.AccessToken
-	query["AssumeRoleChain"] = request.AssumeRoleChainShrink
-	query["ProjectName"] = request.ProjectName
-	query["RefreshToken"] = request.RefreshToken
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssumeRoleChainShrink)) {
+		query["AssumeRoleChain"] = request.AssumeRoleChainShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefreshToken)) {
+		query["RefreshToken"] = request.RefreshToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8575,9 +9861,18 @@ func (client *Client) ResumeBindingWithOptions(request *ResumeBindingRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8618,11 +9913,26 @@ func (client *Client) SemanticQueryWithOptions(request *SemanticQueryRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ProjectName"] = request.ProjectName
-	query["Query"] = request.Query
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8673,14 +9983,38 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 	}
 
 	query := map[string]interface{}{}
-	query["Aggregations"] = request.AggregationsShrink
-	query["DatasetName"] = request.DatasetName
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["Order"] = request.Order
-	query["ProjectName"] = request.ProjectName
-	query["Query"] = request.QueryShrink
-	query["Sort"] = request.Sort
+	if !tea.BoolValue(util.IsUnset(request.AggregationsShrink)) {
+		query["Aggregations"] = request.AggregationsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryShrink)) {
+		query["Query"] = request.QueryShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8721,10 +10055,22 @@ func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["ProjectName"] = request.ProjectName
-	query["Reason"] = request.Reason
-	query["URI"] = request.URI
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8765,15 +10111,42 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
-	query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
-	query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
-	query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
-	query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
-	query["DatasetName"] = request.DatasetName
-	query["Description"] = request.Description
-	query["ProjectName"] = request.ProjectName
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
+		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxEntityCount)) {
+		query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxFileCount)) {
+		query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxRelationCount)) {
+		query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxTotalFileSize)) {
+		query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8820,9 +10193,18 @@ func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureCluster
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["FigureCluster"] = request.FigureClusterShrink
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FigureClusterShrink)) {
+		query["FigureCluster"] = request.FigureClusterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8869,9 +10251,18 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 	}
 
 	query := map[string]interface{}{}
-	query["DatasetName"] = request.DatasetName
-	query["File"] = request.FileShrink
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileShrink)) {
+		query["File"] = request.FileShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8912,18 +10303,54 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
-	query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
-	query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
-	query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
-	query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
-	query["Description"] = request.Description
-	query["EngineConcurrency"] = request.EngineConcurrency
-	query["ProjectMaxDatasetCount"] = request.ProjectMaxDatasetCount
-	query["ProjectName"] = request.ProjectName
-	query["ProjectQueriesPerSecond"] = request.ProjectQueriesPerSecond
-	query["ServiceRole"] = request.ServiceRole
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
+		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxEntityCount)) {
+		query["DatasetMaxEntityCount"] = request.DatasetMaxEntityCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxFileCount)) {
+		query["DatasetMaxFileCount"] = request.DatasetMaxFileCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxRelationCount)) {
+		query["DatasetMaxRelationCount"] = request.DatasetMaxRelationCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMaxTotalFileSize)) {
+		query["DatasetMaxTotalFileSize"] = request.DatasetMaxTotalFileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineConcurrency)) {
+		query["EngineConcurrency"] = request.EngineConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectMaxDatasetCount)) {
+		query["ProjectMaxDatasetCount"] = request.ProjectMaxDatasetCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectQueriesPerSecond)) {
+		query["ProjectQueriesPerSecond"] = request.ProjectQueriesPerSecond
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceRole)) {
+		query["ServiceRole"] = request.ServiceRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
