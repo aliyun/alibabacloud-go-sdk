@@ -1,3 +1,6 @@
+2022-01-19 Version: v3.1.0
+- Clickhouse go sdk.
+
 2022-01-14 Version: v2.0.2
 - Clickhouse go sdk.
 
