@@ -272,87 +272,6 @@ func (s *AddThesaurusForApiResponse) SetBody(v *AddThesaurusForApiResponseBody) 
 	return s
 }
 
-type AddUploadDataSetRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s AddUploadDataSetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUploadDataSetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddUploadDataSetRequest) SetJsonStr(v string) *AddUploadDataSetRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type AddUploadDataSetResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddUploadDataSetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUploadDataSetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddUploadDataSetResponseBody) SetCode(v string) *AddUploadDataSetResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddUploadDataSetResponseBody) SetData(v int64) *AddUploadDataSetResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *AddUploadDataSetResponseBody) SetMessage(v string) *AddUploadDataSetResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddUploadDataSetResponseBody) SetRequestId(v string) *AddUploadDataSetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddUploadDataSetResponseBody) SetSuccess(v bool) *AddUploadDataSetResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddUploadDataSetResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddUploadDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddUploadDataSetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUploadDataSetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddUploadDataSetResponse) SetHeaders(v map[string]*string) *AddUploadDataSetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddUploadDataSetResponse) SetBody(v *AddUploadDataSetResponseBody) *AddUploadDataSetResponse {
-	s.Body = v
-	return s
-}
-
 type AssignReviewerRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -424,422 +343,6 @@ func (s *AssignReviewerResponse) SetHeaders(v map[string]*string) *AssignReviewe
 }
 
 func (s *AssignReviewerResponse) SetBody(v *AssignReviewerResponseBody) *AssignReviewerResponse {
-	s.Body = v
-	return s
-}
-
-type ConfigDataSetRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s ConfigDataSetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetRequest) SetJsonStr(v string) *ConfigDataSetRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type ConfigDataSetResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ConfigDataSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ConfigDataSetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBody) SetCode(v string) *ConfigDataSetResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBody) SetData(v *ConfigDataSetResponseBodyData) *ConfigDataSetResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBody) SetMessage(v string) *ConfigDataSetResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBody) SetRequestId(v string) *ConfigDataSetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBody) SetSuccess(v bool) *ConfigDataSetResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyData struct {
-	ChannelType      *int32                                 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	JudgeType        *int32                                 `json:"JudgeType,omitempty" xml:"JudgeType,omitempty"`
-	RoleConfigStatus *int32                                 `json:"RoleConfigStatus,omitempty" xml:"RoleConfigStatus,omitempty"`
-	RuleInfo         *ConfigDataSetResponseBodyDataRuleInfo `json:"RuleInfo,omitempty" xml:"RuleInfo,omitempty" type:"Struct"`
-	SetId            *int64                                 `json:"SetId,omitempty" xml:"SetId,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyData) SetChannelType(v int32) *ConfigDataSetResponseBodyData {
-	s.ChannelType = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyData) SetJudgeType(v int32) *ConfigDataSetResponseBodyData {
-	s.JudgeType = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyData) SetRoleConfigStatus(v int32) *ConfigDataSetResponseBodyData {
-	s.RoleConfigStatus = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyData) SetRuleInfo(v *ConfigDataSetResponseBodyDataRuleInfo) *ConfigDataSetResponseBodyData {
-	s.RuleInfo = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyData) SetSetId(v int64) *ConfigDataSetResponseBodyData {
-	s.SetId = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfo struct {
-	Conditions *ConfigDataSetResponseBodyDataRuleInfoConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Struct"`
-	Rules      *ConfigDataSetResponseBodyDataRuleInfoRules      `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfo) SetConditions(v *ConfigDataSetResponseBodyDataRuleInfoConditions) *ConfigDataSetResponseBodyDataRuleInfo {
-	s.Conditions = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfo) SetRules(v *ConfigDataSetResponseBodyDataRuleInfoRules) *ConfigDataSetResponseBodyDataRuleInfo {
-	s.Rules = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditions struct {
-	ConditionBasicInfo []*ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo `json:"ConditionBasicInfo,omitempty" xml:"ConditionBasicInfo,omitempty" type:"Repeated"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditions) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditions) SetConditionBasicInfo(v []*ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) *ConfigDataSetResponseBodyDataRuleInfoConditions {
-	s.ConditionBasicInfo = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo struct {
-	CheckRange *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange `json:"CheckRange,omitempty" xml:"CheckRange,omitempty" type:"Struct"`
-	Cid        *string                                                                      `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	Lambda     *string                                                                      `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Operators  *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators  `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Struct"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) SetCheckRange(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo {
-	s.CheckRange = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) SetCid(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo {
-	s.Cid = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) SetLambda(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo {
-	s.Lambda = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo) SetOperators(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfo {
-	s.Operators = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange struct {
-	Anchor *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor `json:"Anchor,omitempty" xml:"Anchor,omitempty" type:"Struct"`
-	Range  *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange  `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
-	Role   *string                                                                            `json:"Role,omitempty" xml:"Role,omitempty"`
-	RoleId *int32                                                                             `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) SetAnchor(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange {
-	s.Anchor = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) SetRange(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange {
-	s.Range = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) SetRole(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange {
-	s.Role = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange) SetRoleId(v int32) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRange {
-	s.RoleId = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor struct {
-	Cid      *string `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	HitTime  *int32  `json:"HitTime,omitempty" xml:"HitTime,omitempty"`
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) SetCid(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor {
-	s.Cid = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) SetHitTime(v int32) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor {
-	s.HitTime = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor) SetLocation(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeAnchor {
-	s.Location = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange struct {
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	To   *int32 `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange) SetFrom(v int32) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange {
-	s.From = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange) SetTo(v int32) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoCheckRangeRange {
-	s.To = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators struct {
-	OperatorBasicInfo []*ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo `json:"OperatorBasicInfo,omitempty" xml:"OperatorBasicInfo,omitempty" type:"Repeated"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators) SetOperatorBasicInfo(v []*ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperators {
-	s.OperatorBasicInfo = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo struct {
-	Oid   *string                                                                                           `json:"Oid,omitempty" xml:"Oid,omitempty"`
-	Param *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	Type  *string                                                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) SetOid(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo {
-	s.Oid = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) SetParam(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo {
-	s.Param = v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo) SetType(v string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfo {
-	s.Type = &v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam struct {
-	InSentence *bool                                                                                                     `json:"InSentence,omitempty" xml:"InSentence,omitempty"`
-	Keywords   *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Struct"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) SetInSentence(v bool) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam {
-	s.InSentence = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam) SetKeywords(v *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParam {
-	s.Keywords = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords struct {
-	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords) SetKeywords(v []*string) *ConfigDataSetResponseBodyDataRuleInfoConditionsConditionBasicInfoOperatorsOperatorBasicInfoParamKeywords {
-	s.Keywords = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoRules struct {
-	RuleBasicInfo []*ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo `json:"RuleBasicInfo,omitempty" xml:"RuleBasicInfo,omitempty" type:"Repeated"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoRules) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoRules) SetRuleBasicInfo(v []*ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) *ConfigDataSetResponseBodyDataRuleInfoRules {
-	s.RuleBasicInfo = v
-	return s
-}
-
-type ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo struct {
-	ExternalProperty *int32  `json:"ExternalProperty,omitempty" xml:"ExternalProperty,omitempty"`
-	Lambda           *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	Rid              *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) SetExternalProperty(v int32) *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo {
-	s.ExternalProperty = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) SetLambda(v string) *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo {
-	s.Lambda = &v
-	return s
-}
-
-func (s *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo) SetRid(v string) *ConfigDataSetResponseBodyDataRuleInfoRulesRuleBasicInfo {
-	s.Rid = &v
-	return s
-}
-
-type ConfigDataSetResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConfigDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ConfigDataSetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigDataSetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigDataSetResponse) SetHeaders(v map[string]*string) *ConfigDataSetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ConfigDataSetResponse) SetBody(v *ConfigDataSetResponseBody) *ConfigDataSetResponse {
 	s.Body = v
 	return s
 }
@@ -921,87 +424,6 @@ func (s *CreateAsrVocabResponse) SetHeaders(v map[string]*string) *CreateAsrVoca
 }
 
 func (s *CreateAsrVocabResponse) SetBody(v *CreateAsrVocabResponseBody) *CreateAsrVocabResponse {
-	s.Body = v
-	return s
-}
-
-type CreateRuleRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s CreateRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRuleRequest) SetJsonStr(v string) *CreateRuleRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type CreateRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRuleResponseBody) SetCode(v string) *CreateRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateRuleResponseBody) SetData(v int64) *CreateRuleResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateRuleResponseBody) SetMessage(v string) *CreateRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateRuleResponseBody) SetRequestId(v string) *CreateRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRuleResponseBody) SetSuccess(v bool) *CreateRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateRuleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRuleResponse) SetHeaders(v map[string]*string) *CreateRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleResponse {
 	s.Body = v
 	return s
 }
@@ -5295,700 +4717,6 @@ func (s *GetResultToReviewResponse) SetBody(v *GetResultToReviewResponseBody) *G
 	return s
 }
 
-type GetReviewInfoRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s GetReviewInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoRequest) SetJsonStr(v string) *GetReviewInfoRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type GetReviewInfoResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetReviewInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetReviewInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBody) SetCode(v string) *GetReviewInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBody) SetData(v *GetReviewInfoResponseBodyData) *GetReviewInfoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBody) SetMessage(v string) *GetReviewInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBody) SetRequestId(v string) *GetReviewInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBody) SetSuccess(v bool) *GetReviewInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyData struct {
-	AsrWordsCount          *int32                                               `json:"AsrWordsCount,omitempty" xml:"AsrWordsCount,omitempty"`
-	Audio                  *bool                                                `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	AudioURL               *string                                              `json:"AudioURL,omitempty" xml:"AudioURL,omitempty"`
-	BusinessType           *int32                                               `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Deleted                *bool                                                `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Dialogues              *GetReviewInfoResponseBodyDataDialogues              `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Struct"`
-	FileMergeName          *string                                              `json:"FileMergeName,omitempty" xml:"FileMergeName,omitempty"`
-	HandScoreInfoList      *GetReviewInfoResponseBodyDataHandScoreInfoList      `json:"HandScoreInfoList,omitempty" xml:"HandScoreInfoList,omitempty" type:"Struct"`
-	HitNumber              *int32                                               `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRuleReviewInfoList  *GetReviewInfoResponseBodyDataHitRuleReviewInfoList  `json:"HitRuleReviewInfoList,omitempty" xml:"HitRuleReviewInfoList,omitempty" type:"Struct"`
-	IsAudio                *bool                                                `json:"IsAudio,omitempty" xml:"IsAudio,omitempty"`
-	IsDeleted              *bool                                                `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	ManualScoreMappingList *GetReviewInfoResponseBodyDataManualScoreMappingList `json:"ManualScoreMappingList,omitempty" xml:"ManualScoreMappingList,omitempty" type:"Struct"`
-	NextVid                *string                                              `json:"NextVid,omitempty" xml:"NextVid,omitempty"`
-	PreVid                 *string                                              `json:"PreVid,omitempty" xml:"PreVid,omitempty"`
-	ReviewNumber           *int32                                               `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
-	TotalScore             *int32                                               `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	Vid                    *string                                              `json:"Vid,omitempty" xml:"Vid,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyData) SetAsrWordsCount(v int32) *GetReviewInfoResponseBodyData {
-	s.AsrWordsCount = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetAudio(v bool) *GetReviewInfoResponseBodyData {
-	s.Audio = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetAudioURL(v string) *GetReviewInfoResponseBodyData {
-	s.AudioURL = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetBusinessType(v int32) *GetReviewInfoResponseBodyData {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetDeleted(v bool) *GetReviewInfoResponseBodyData {
-	s.Deleted = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetDialogues(v *GetReviewInfoResponseBodyDataDialogues) *GetReviewInfoResponseBodyData {
-	s.Dialogues = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetFileMergeName(v string) *GetReviewInfoResponseBodyData {
-	s.FileMergeName = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetHandScoreInfoList(v *GetReviewInfoResponseBodyDataHandScoreInfoList) *GetReviewInfoResponseBodyData {
-	s.HandScoreInfoList = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetHitNumber(v int32) *GetReviewInfoResponseBodyData {
-	s.HitNumber = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetHitRuleReviewInfoList(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoList) *GetReviewInfoResponseBodyData {
-	s.HitRuleReviewInfoList = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetIsAudio(v bool) *GetReviewInfoResponseBodyData {
-	s.IsAudio = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetIsDeleted(v bool) *GetReviewInfoResponseBodyData {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetManualScoreMappingList(v *GetReviewInfoResponseBodyDataManualScoreMappingList) *GetReviewInfoResponseBodyData {
-	s.ManualScoreMappingList = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetNextVid(v string) *GetReviewInfoResponseBodyData {
-	s.NextVid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetPreVid(v string) *GetReviewInfoResponseBodyData {
-	s.PreVid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetReviewNumber(v int32) *GetReviewInfoResponseBodyData {
-	s.ReviewNumber = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetTotalScore(v int32) *GetReviewInfoResponseBodyData {
-	s.TotalScore = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyData) SetVid(v string) *GetReviewInfoResponseBodyData {
-	s.Vid = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataDialogues struct {
-	Dialogue []*GetReviewInfoResponseBodyDataDialoguesDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataDialogues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataDialogues) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataDialogues) SetDialogue(v []*GetReviewInfoResponseBodyDataDialoguesDialogue) *GetReviewInfoResponseBodyDataDialogues {
-	s.Dialogue = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataDialoguesDialogue struct {
-	Begin           *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	BeginTime       *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EmotionValue    *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End             *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	HourMinSec      *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity        *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SilenceDuration *int32  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SpeechRate      *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words           *string `json:"Words,omitempty" xml:"Words,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataDialoguesDialogue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataDialoguesDialogue) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetBegin(v int64) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.Begin = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetBeginTime(v string) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetEmotionValue(v int32) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetEnd(v int64) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.End = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetHourMinSec(v string) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.HourMinSec = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetIdentity(v string) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.Identity = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetRole(v string) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.Role = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetSilenceDuration(v int32) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.SilenceDuration = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetSpeechRate(v int32) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.SpeechRate = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataDialoguesDialogue) SetWords(v string) *GetReviewInfoResponseBodyDataDialoguesDialogue {
-	s.Words = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHandScoreInfoList struct {
-	ScorePo []*GetReviewInfoResponseBodyDataHandScoreInfoListScorePo `json:"ScorePo,omitempty" xml:"ScorePo,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoList) SetScorePo(v []*GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) *GetReviewInfoResponseBodyDataHandScoreInfoList {
-	s.ScorePo = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHandScoreInfoListScorePo struct {
-	ScoreId    *int64                                                           `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreInfos *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos `json:"ScoreInfos,omitempty" xml:"ScoreInfos,omitempty" type:"Struct"`
-	ScoreName  *string                                                          `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) SetScoreId(v int64) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) SetScoreInfos(v *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreInfos = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo) SetScoreName(v string) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreName = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos struct {
-	ScoreParam []*GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam `json:"ScoreParam,omitempty" xml:"ScoreParam,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos) SetScoreParam(v []*GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfos {
-	s.ScoreParam = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam struct {
-	Hit          *int32  `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	ScoreNum     *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreSubId   *int64  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-	ScoreType    *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetHit(v int32) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.Hit = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreNum(v int32) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreNum = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreSubId(v int64) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreSubId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreSubName(v string) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreSubName = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreType(v int32) *GetReviewInfoResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreType = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoList struct {
-	HitRuleReviewInfo []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo `json:"HitRuleReviewInfo,omitempty" xml:"HitRuleReviewInfo,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoList) SetHitRuleReviewInfo(v []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) *GetReviewInfoResponseBodyDataHitRuleReviewInfoList {
-	s.HitRuleReviewInfo = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo struct {
-	AutoReview           *int32                                                                                   `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
-	ConditionHitInfoList *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Struct"`
-	ReviewInfo           *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo           `json:"ReviewInfo,omitempty" xml:"ReviewInfo,omitempty" type:"Struct"`
-	Rid                  *int64                                                                                   `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName             *string                                                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleScoreType        *int32                                                                                   `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	RuleType             *int32                                                                                   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	ScoreId              *int64                                                                                   `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreSubId           *int64                                                                                   `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	TotalNumber          *int32                                                                                   `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetAutoReview(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.AutoReview = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetConditionHitInfoList(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ConditionHitInfoList = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetReviewInfo(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ReviewInfo = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRid(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.Rid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleName(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleName = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleScoreType(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleScoreType = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleType(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleType = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetScoreId(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ScoreId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetScoreSubId(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ScoreSubId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetTotalNumber(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.TotalNumber = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList struct {
-	ConditionHitInfo []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo `json:"ConditionHitInfo,omitempty" xml:"ConditionHitInfo,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) SetConditionHitInfo(v []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList {
-	s.ConditionHitInfo = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo struct {
-	Cid      *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid      `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Struct"`
-	KeyWords *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Struct"`
-	Phrase   *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase   `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetCid(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Cid = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetKeyWords(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.KeyWords = v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetPhrase(v *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Phrase = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid struct {
-	Cid []*string `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) SetCid(v []*string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid {
-	s.Cid = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords struct {
-	KeyWord []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord `json:"KeyWord,omitempty" xml:"KeyWord,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) SetKeyWord(v []*GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords {
-	s.KeyWord = v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord struct {
-	From *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Pid  *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Tid  *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetFrom(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.From = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetPid(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Pid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTid(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Tid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTo(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.To = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetVal(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Val = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase struct {
-	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Pid          *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetBegin(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Begin = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEmotionValue(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEnd(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.End = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetIdentity(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Identity = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetPid(v int32) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Pid = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetRole(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Role = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetWords(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Words = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo struct {
-	HitId *string `json:"HitId,omitempty" xml:"HitId,omitempty"`
-	Rid   *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetHitId(v string) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
-	s.HitId = &v
-	return s
-}
-
-func (s *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetRid(v int64) *GetReviewInfoResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
-	s.Rid = &v
-	return s
-}
-
-type GetReviewInfoResponseBodyDataManualScoreMappingList struct {
-	ManualScoreMappingList []*string `json:"ManualScoreMappingList,omitempty" xml:"ManualScoreMappingList,omitempty" type:"Repeated"`
-}
-
-func (s GetReviewInfoResponseBodyDataManualScoreMappingList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponseBodyDataManualScoreMappingList) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponseBodyDataManualScoreMappingList) SetManualScoreMappingList(v []*string) *GetReviewInfoResponseBodyDataManualScoreMappingList {
-	s.ManualScoreMappingList = v
-	return s
-}
-
-type GetReviewInfoResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetReviewInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetReviewInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetReviewInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetReviewInfoResponse) SetHeaders(v map[string]*string) *GetReviewInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetReviewInfoResponse) SetBody(v *GetReviewInfoResponseBody) *GetReviewInfoResponse {
-	s.Body = v
-	return s
-}
-
 type GetRuleRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -7118,265 +5846,6 @@ func (s *GetRuleDetailResponse) SetBody(v *GetRuleDetailResponseBody) *GetRuleDe
 	return s
 }
 
-type GetRuleDimensionRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s GetRuleDimensionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRuleDimensionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRuleDimensionRequest) SetJsonStr(v string) *GetRuleDimensionRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type GetRuleDimensionResponseBody struct {
-	Code              *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	CompSubTaskCount  *int32                            `json:"CompSubTaskCount,omitempty" xml:"CompSubTaskCount,omitempty"`
-	CurrentPage       *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data              *GetRuleDimensionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DataSize          *int32                            `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Message           *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize          *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReviewStatus      *int32                            `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
-	Success           *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount        *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalSubTaskCount *int32                            `json:"TotalSubTaskCount,omitempty" xml:"TotalSubTaskCount,omitempty"`
-}
-
-func (s GetRuleDimensionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRuleDimensionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRuleDimensionResponseBody) SetCode(v string) *GetRuleDimensionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetCompSubTaskCount(v int32) *GetRuleDimensionResponseBody {
-	s.CompSubTaskCount = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetCurrentPage(v int32) *GetRuleDimensionResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetData(v *GetRuleDimensionResponseBodyData) *GetRuleDimensionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetDataSize(v int32) *GetRuleDimensionResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetMessage(v string) *GetRuleDimensionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetPageSize(v int32) *GetRuleDimensionResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetRequestId(v string) *GetRuleDimensionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetReviewStatus(v int32) *GetRuleDimensionResponseBody {
-	s.ReviewStatus = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetSuccess(v bool) *GetRuleDimensionResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetTotalCount(v int32) *GetRuleDimensionResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBody) SetTotalSubTaskCount(v int32) *GetRuleDimensionResponseBody {
-	s.TotalSubTaskCount = &v
-	return s
-}
-
-type GetRuleDimensionResponseBodyData struct {
-	RuleCountInfo []*GetRuleDimensionResponseBodyDataRuleCountInfo `json:"RuleCountInfo,omitempty" xml:"RuleCountInfo,omitempty" type:"Repeated"`
-}
-
-func (s GetRuleDimensionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRuleDimensionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetRuleDimensionResponseBodyData) SetRuleCountInfo(v []*GetRuleDimensionResponseBodyDataRuleCountInfo) *GetRuleDimensionResponseBodyData {
-	s.RuleCountInfo = v
-	return s
-}
-
-type GetRuleDimensionResponseBodyDataRuleCountInfo struct {
-	CheckNumber          *int32   `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	CreateEmpid          *string  `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	CreateTime           *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HitNumber            *int32   `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRate              *float32 `json:"HitRate,omitempty" xml:"HitRate,omitempty"`
-	HitRealViolationRate *float32 `json:"HitRealViolationRate,omitempty" xml:"HitRealViolationRate,omitempty"`
-	IsDelete             *int32   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	LastUpdateEmpid      *string  `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	LastUpdateTime       *string  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	PreReviewNumber      *int32   `json:"PreReviewNumber,omitempty" xml:"PreReviewNumber,omitempty"`
-	RealViolationNumber  *int32   `json:"RealViolationNumber,omitempty" xml:"RealViolationNumber,omitempty"`
-	ReviewNumber         *int32   `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
-	Rid                  *string  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	Select               *bool    `json:"Select,omitempty" xml:"Select,omitempty"`
-	Status               *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                 *int32   `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeName             *string  `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-}
-
-func (s GetRuleDimensionResponseBodyDataRuleCountInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRuleDimensionResponseBodyDataRuleCountInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetCheckNumber(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.CheckNumber = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetCreateEmpid(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.CreateEmpid = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetCreateTime(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetHitNumber(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.HitNumber = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetHitRate(v float32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.HitRate = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetHitRealViolationRate(v float32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.HitRealViolationRate = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetIsDelete(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.IsDelete = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetLastUpdateEmpid(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.LastUpdateEmpid = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetLastUpdateTime(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.LastUpdateTime = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetName(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetPreReviewNumber(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.PreReviewNumber = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetRealViolationNumber(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.RealViolationNumber = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetReviewNumber(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.ReviewNumber = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetRid(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.Rid = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetSelect(v bool) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.Select = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetStatus(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetType(v int32) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.Type = &v
-	return s
-}
-
-func (s *GetRuleDimensionResponseBodyDataRuleCountInfo) SetTypeName(v string) *GetRuleDimensionResponseBodyDataRuleCountInfo {
-	s.TypeName = &v
-	return s
-}
-
-type GetRuleDimensionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRuleDimensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRuleDimensionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRuleDimensionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRuleDimensionResponse) SetHeaders(v map[string]*string) *GetRuleDimensionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRuleDimensionResponse) SetBody(v *GetRuleDimensionResponseBody) *GetRuleDimensionResponse {
-	s.Body = v
-	return s
-}
-
 type GetScoreInfoRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -8401,517 +6870,6 @@ func (s *GetSyncResultResponse) SetBody(v *GetSyncResultResponseBody) *GetSyncRe
 	return s
 }
 
-type GetTaskFileResultListRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s GetTaskFileResultListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListRequest) SetJsonStr(v string) *GetTaskFileResultListRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type GetTaskFileResultListResponseBody struct {
-	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *GetTaskFileResultListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DataSize   *int32                                 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetTaskFileResultListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListResponseBody) SetCode(v string) *GetTaskFileResultListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetData(v *GetTaskFileResultListResponseBodyData) *GetTaskFileResultListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetDataSize(v int32) *GetTaskFileResultListResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetMessage(v string) *GetTaskFileResultListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetPageSize(v int32) *GetTaskFileResultListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetRequestId(v string) *GetTaskFileResultListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetSuccess(v bool) *GetTaskFileResultListResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBody) SetTotalCount(v int32) *GetTaskFileResultListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type GetTaskFileResultListResponseBodyData struct {
-	TaskResultReviewInfo []*GetTaskFileResultListResponseBodyDataTaskResultReviewInfo `json:"TaskResultReviewInfo,omitempty" xml:"TaskResultReviewInfo,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskFileResultListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListResponseBodyData) SetTaskResultReviewInfo(v []*GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) *GetTaskFileResultListResponseBodyData {
-	s.TaskResultReviewInfo = v
-	return s
-}
-
-type GetTaskFileResultListResponseBodyDataTaskResultReviewInfo struct {
-	BucketName          *string                                                              `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	CheckNumber         *int32                                                               `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	DataType            *int32                                                               `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	FileMergeName       *string                                                              `json:"FileMergeName,omitempty" xml:"FileMergeName,omitempty"`
-	FileName            *string                                                              `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	HandTaskFile        *bool                                                                `json:"HandTaskFile,omitempty" xml:"HandTaskFile,omitempty"`
-	HitNumber           *int32                                                               `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRule             *bool                                                                `json:"HitRule,omitempty" xml:"HitRule,omitempty"`
-	HitRuleSet          *GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet `json:"HitRuleSet,omitempty" xml:"HitRuleSet,omitempty" type:"Struct"`
-	IsHitRule           *bool                                                                `json:"IsHitRule,omitempty" xml:"IsHitRule,omitempty"`
-	NextVid             *string                                                              `json:"NextVid,omitempty" xml:"NextVid,omitempty"`
-	PreVid              *string                                                              `json:"PreVid,omitempty" xml:"PreVid,omitempty"`
-	RealViolationNumber *int32                                                               `json:"RealViolationNumber,omitempty" xml:"RealViolationNumber,omitempty"`
-	ReviewAccuracyRate  *float32                                                             `json:"ReviewAccuracyRate,omitempty" xml:"ReviewAccuracyRate,omitempty"`
-	Status              *int32                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId              *string                                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TotalScore          *int32                                                               `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	Vid                 *string                                                              `json:"Vid,omitempty" xml:"Vid,omitempty"`
-}
-
-func (s GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetBucketName(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.BucketName = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetCheckNumber(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.CheckNumber = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetDataType(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.DataType = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetFileMergeName(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.FileMergeName = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetFileName(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.FileName = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetHandTaskFile(v bool) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.HandTaskFile = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetHitNumber(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.HitNumber = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetHitRule(v bool) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.HitRule = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetHitRuleSet(v *GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.HitRuleSet = v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetIsHitRule(v bool) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.IsHitRule = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetNextVid(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.NextVid = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetPreVid(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.PreVid = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetRealViolationNumber(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.RealViolationNumber = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetReviewAccuracyRate(v float32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.ReviewAccuracyRate = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetStatus(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetTaskId(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetTotalScore(v int32) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.TotalScore = &v
-	return s
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo) SetVid(v string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfo {
-	s.Vid = &v
-	return s
-}
-
-type GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet struct {
-	HitRuleSet []*string `json:"HitRuleSet,omitempty" xml:"HitRuleSet,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet) SetHitRuleSet(v []*string) *GetTaskFileResultListResponseBodyDataTaskResultReviewInfoHitRuleSet {
-	s.HitRuleSet = v
-	return s
-}
-
-type GetTaskFileResultListResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskFileResultListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTaskFileResultListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskFileResultListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskFileResultListResponse) SetHeaders(v map[string]*string) *GetTaskFileResultListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTaskFileResultListResponse) SetBody(v *GetTaskFileResultListResponseBody) *GetTaskFileResultListResponse {
-	s.Body = v
-	return s
-}
-
-type GetTaskRuleListRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s GetTaskRuleListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskRuleListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskRuleListRequest) SetJsonStr(v string) *GetTaskRuleListRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type GetTaskRuleListResponseBody struct {
-	Code              *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	CompSubTaskCount  *int32                           `json:"CompSubTaskCount,omitempty" xml:"CompSubTaskCount,omitempty"`
-	CurrentPage       *int32                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data              *GetTaskRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DataSize          *int32                           `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Message           *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize          *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReviewStatus      *int32                           `json:"ReviewStatus,omitempty" xml:"ReviewStatus,omitempty"`
-	Success           *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount        *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalSubTaskCount *int32                           `json:"TotalSubTaskCount,omitempty" xml:"TotalSubTaskCount,omitempty"`
-}
-
-func (s GetTaskRuleListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskRuleListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskRuleListResponseBody) SetCode(v string) *GetTaskRuleListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetCompSubTaskCount(v int32) *GetTaskRuleListResponseBody {
-	s.CompSubTaskCount = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetCurrentPage(v int32) *GetTaskRuleListResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetData(v *GetTaskRuleListResponseBodyData) *GetTaskRuleListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetDataSize(v int32) *GetTaskRuleListResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetMessage(v string) *GetTaskRuleListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetPageSize(v int32) *GetTaskRuleListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetRequestId(v string) *GetTaskRuleListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetReviewStatus(v int32) *GetTaskRuleListResponseBody {
-	s.ReviewStatus = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetSuccess(v bool) *GetTaskRuleListResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetTotalCount(v int32) *GetTaskRuleListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBody) SetTotalSubTaskCount(v int32) *GetTaskRuleListResponseBody {
-	s.TotalSubTaskCount = &v
-	return s
-}
-
-type GetTaskRuleListResponseBodyData struct {
-	RuleCountInfo []*GetTaskRuleListResponseBodyDataRuleCountInfo `json:"RuleCountInfo,omitempty" xml:"RuleCountInfo,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskRuleListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskRuleListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskRuleListResponseBodyData) SetRuleCountInfo(v []*GetTaskRuleListResponseBodyDataRuleCountInfo) *GetTaskRuleListResponseBodyData {
-	s.RuleCountInfo = v
-	return s
-}
-
-type GetTaskRuleListResponseBodyDataRuleCountInfo struct {
-	CheckNumber          *int32   `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	CreateEmpid          *string  `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	CreateTime           *int64   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	HitNumber            *int32   `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRate              *float32 `json:"HitRate,omitempty" xml:"HitRate,omitempty"`
-	HitRealViolationRate *float32 `json:"HitRealViolationRate,omitempty" xml:"HitRealViolationRate,omitempty"`
-	IsDelete             *int32   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	LastUpdateEmpid      *string  `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	LastUpdateTime       *int64   `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	PreReviewNumber      *int32   `json:"PreReviewNumber,omitempty" xml:"PreReviewNumber,omitempty"`
-	RealViolationNumber  *int32   `json:"RealViolationNumber,omitempty" xml:"RealViolationNumber,omitempty"`
-	ReviewNumber         *int32   `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
-	Rid                  *string  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	Select               *bool    `json:"Select,omitempty" xml:"Select,omitempty"`
-	Status               *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                 *int32   `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeName             *string  `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-}
-
-func (s GetTaskRuleListResponseBodyDataRuleCountInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskRuleListResponseBodyDataRuleCountInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetCheckNumber(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.CheckNumber = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetCreateEmpid(v string) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.CreateEmpid = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetCreateTime(v int64) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetHitNumber(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.HitNumber = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetHitRate(v float32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.HitRate = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetHitRealViolationRate(v float32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.HitRealViolationRate = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetIsDelete(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.IsDelete = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetLastUpdateEmpid(v string) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.LastUpdateEmpid = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetLastUpdateTime(v int64) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.LastUpdateTime = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetName(v string) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetPreReviewNumber(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.PreReviewNumber = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetRealViolationNumber(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.RealViolationNumber = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetReviewNumber(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.ReviewNumber = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetRid(v string) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.Rid = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetSelect(v bool) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.Select = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetStatus(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetType(v int32) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.Type = &v
-	return s
-}
-
-func (s *GetTaskRuleListResponseBodyDataRuleCountInfo) SetTypeName(v string) *GetTaskRuleListResponseBodyDataRuleCountInfo {
-	s.TypeName = &v
-	return s
-}
-
-type GetTaskRuleListResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTaskRuleListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskRuleListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskRuleListResponse) SetHeaders(v map[string]*string) *GetTaskRuleListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTaskRuleListResponse) SetBody(v *GetTaskRuleListResponseBody) *GetTaskRuleListResponse {
-	s.Body = v
-	return s
-}
-
 type GetThesaurusBySynonymForApiRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -9561,262 +7519,6 @@ func (s *ListAsrVocabResponse) SetHeaders(v map[string]*string) *ListAsrVocabRes
 }
 
 func (s *ListAsrVocabResponse) SetBody(v *ListAsrVocabResponseBody) *ListAsrVocabResponse {
-	s.Body = v
-	return s
-}
-
-type ListDataSetTaskRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s ListDataSetTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskRequest) SetJsonStr(v string) *ListDataSetTaskRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type ListDataSetTaskResponseBody struct {
-	Code          *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage   *int32                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data          *ListDataSetTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DataSize      *int32                           `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	IsAllcomplete *int32                           `json:"IsAllcomplete,omitempty" xml:"IsAllcomplete,omitempty"`
-	Message       *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize      *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount    *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDataSetTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBody) SetCode(v string) *ListDataSetTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetCurrentPage(v int32) *ListDataSetTaskResponseBody {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetData(v *ListDataSetTaskResponseBodyData) *ListDataSetTaskResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetDataSize(v int32) *ListDataSetTaskResponseBody {
-	s.DataSize = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetIsAllcomplete(v int32) *ListDataSetTaskResponseBody {
-	s.IsAllcomplete = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetMessage(v string) *ListDataSetTaskResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetPageSize(v int32) *ListDataSetTaskResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetRequestId(v string) *ListDataSetTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetSuccess(v bool) *ListDataSetTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBody) SetTotalCount(v int32) *ListDataSetTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDataSetTaskResponseBodyData struct {
-	PageTaskInfo []*ListDataSetTaskResponseBodyDataPageTaskInfo `json:"PageTaskInfo,omitempty" xml:"PageTaskInfo,omitempty" type:"Repeated"`
-}
-
-func (s ListDataSetTaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBodyData) SetPageTaskInfo(v []*ListDataSetTaskResponseBodyDataPageTaskInfo) *ListDataSetTaskResponseBodyData {
-	s.PageTaskInfo = v
-	return s
-}
-
-type ListDataSetTaskResponseBodyDataPageTaskInfo struct {
-	DataSetSize      *int32                                                       `json:"DataSetSize,omitempty" xml:"DataSetSize,omitempty"`
-	DataSets         *ListDataSetTaskResponseBodyDataPageTaskInfoDataSets         `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Struct"`
-	IsTaskComplete   *bool                                                        `json:"IsTaskComplete,omitempty" xml:"IsTaskComplete,omitempty"`
-	JobName          *string                                                      `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	RuleNameInfoList *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList `json:"RuleNameInfoList,omitempty" xml:"RuleNameInfoList,omitempty" type:"Struct"`
-	RuleSize         *int32                                                       `json:"RuleSize,omitempty" xml:"RuleSize,omitempty"`
-	ScheduleRatio    *float32                                                     `json:"ScheduleRatio,omitempty" xml:"ScheduleRatio,omitempty"`
-	Status           *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskComplete     *bool                                                        `json:"TaskComplete,omitempty" xml:"TaskComplete,omitempty"`
-	TaskId           *string                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetDataSetSize(v int32) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.DataSetSize = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetDataSets(v *ListDataSetTaskResponseBodyDataPageTaskInfoDataSets) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.DataSets = v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetIsTaskComplete(v bool) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.IsTaskComplete = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetJobName(v string) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.JobName = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetRuleNameInfoList(v *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.RuleNameInfoList = v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetRuleSize(v int32) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.RuleSize = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetScheduleRatio(v float32) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.ScheduleRatio = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetStatus(v int32) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetTaskComplete(v bool) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.TaskComplete = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfo) SetTaskId(v string) *ListDataSetTaskResponseBodyDataPageTaskInfo {
-	s.TaskId = &v
-	return s
-}
-
-type ListDataSetTaskResponseBodyDataPageTaskInfoDataSets struct {
-	DataSets []*string `json:"dataSets,omitempty" xml:"dataSets,omitempty" type:"Repeated"`
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoDataSets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoDataSets) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfoDataSets) SetDataSets(v []*string) *ListDataSetTaskResponseBodyDataPageTaskInfoDataSets {
-	s.DataSets = v
-	return s
-}
-
-type ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList struct {
-	RuleNameInfo []*ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo `json:"RuleNameInfo,omitempty" xml:"RuleNameInfo,omitempty" type:"Repeated"`
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList) SetRuleNameInfo(v []*ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo) *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoList {
-	s.RuleNameInfo = v
-	return s
-}
-
-type ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo struct {
-	Rid      *int32  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo) SetRid(v int32) *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo {
-	s.Rid = &v
-	return s
-}
-
-func (s *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo) SetRuleName(v string) *ListDataSetTaskResponseBodyDataPageTaskInfoRuleNameInfoListRuleNameInfo {
-	s.RuleName = &v
-	return s
-}
-
-type ListDataSetTaskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataSetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDataSetTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDataSetTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDataSetTaskResponse) SetHeaders(v map[string]*string) *ListDataSetTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDataSetTaskResponse) SetBody(v *ListDataSetTaskResponseBody) *ListDataSetTaskResponse {
 	s.Body = v
 	return s
 }
@@ -11994,81 +9696,6 @@ func (s *ListWarningConfigResponse) SetBody(v *ListWarningConfigResponseBody) *L
 	return s
 }
 
-type RemoveAndGetTaskRulesRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s RemoveAndGetTaskRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveAndGetTaskRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveAndGetTaskRulesRequest) SetJsonStr(v string) *RemoveAndGetTaskRulesRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type RemoveAndGetTaskRulesResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RemoveAndGetTaskRulesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveAndGetTaskRulesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveAndGetTaskRulesResponseBody) SetCode(v string) *RemoveAndGetTaskRulesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RemoveAndGetTaskRulesResponseBody) SetMessage(v string) *RemoveAndGetTaskRulesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RemoveAndGetTaskRulesResponseBody) SetRequestId(v string) *RemoveAndGetTaskRulesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveAndGetTaskRulesResponseBody) SetSuccess(v bool) *RemoveAndGetTaskRulesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RemoveAndGetTaskRulesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveAndGetTaskRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveAndGetTaskRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveAndGetTaskRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveAndGetTaskRulesResponse) SetHeaders(v map[string]*string) *RemoveAndGetTaskRulesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveAndGetTaskRulesResponse) SetBody(v *RemoveAndGetTaskRulesResponseBody) *RemoveAndGetTaskRulesResponse {
-	s.Body = v
-	return s
-}
-
 type RestartAsrTaskRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -12192,706 +9819,6 @@ func (s *RestartAsrTaskResponse) SetHeaders(v map[string]*string) *RestartAsrTas
 }
 
 func (s *RestartAsrTaskResponse) SetBody(v *RestartAsrTaskResponseBody) *RestartAsrTaskResponse {
-	s.Body = v
-	return s
-}
-
-type ReviewSingleResultByIdRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s ReviewSingleResultByIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdRequest) SetJsonStr(v string) *ReviewSingleResultByIdRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ReviewSingleResultByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBody) SetCode(v string) *ReviewSingleResultByIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBody) SetData(v *ReviewSingleResultByIdResponseBodyData) *ReviewSingleResultByIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBody) SetMessage(v string) *ReviewSingleResultByIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBody) SetRequestId(v string) *ReviewSingleResultByIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBody) SetSuccess(v bool) *ReviewSingleResultByIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyData struct {
-	AsrWordsCount          *int32                                                        `json:"AsrWordsCount,omitempty" xml:"AsrWordsCount,omitempty"`
-	Audio                  *bool                                                         `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	AudioURL               *string                                                       `json:"AudioURL,omitempty" xml:"AudioURL,omitempty"`
-	BusinessType           *int32                                                        `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Deleted                *bool                                                         `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Dialogues              *ReviewSingleResultByIdResponseBodyDataDialogues              `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Struct"`
-	FileMergeName          *string                                                       `json:"FileMergeName,omitempty" xml:"FileMergeName,omitempty"`
-	HandScoreInfoList      *ReviewSingleResultByIdResponseBodyDataHandScoreInfoList      `json:"HandScoreInfoList,omitempty" xml:"HandScoreInfoList,omitempty" type:"Struct"`
-	HitNumber              *int32                                                        `json:"HitNumber,omitempty" xml:"HitNumber,omitempty"`
-	HitRuleReviewInfoList  *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList  `json:"HitRuleReviewInfoList,omitempty" xml:"HitRuleReviewInfoList,omitempty" type:"Struct"`
-	IsAudio                *bool                                                         `json:"IsAudio,omitempty" xml:"IsAudio,omitempty"`
-	IsDeleted              *bool                                                         `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	ManualScoreMappingList *ReviewSingleResultByIdResponseBodyDataManualScoreMappingList `json:"ManualScoreMappingList,omitempty" xml:"ManualScoreMappingList,omitempty" type:"Struct"`
-	NextVid                *string                                                       `json:"NextVid,omitempty" xml:"NextVid,omitempty"`
-	PreVid                 *string                                                       `json:"PreVid,omitempty" xml:"PreVid,omitempty"`
-	ReviewNumber           *int32                                                        `json:"ReviewNumber,omitempty" xml:"ReviewNumber,omitempty"`
-	TotalScore             *int32                                                        `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	Vid                    *int32                                                        `json:"Vid,omitempty" xml:"Vid,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetAsrWordsCount(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.AsrWordsCount = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetAudio(v bool) *ReviewSingleResultByIdResponseBodyData {
-	s.Audio = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetAudioURL(v string) *ReviewSingleResultByIdResponseBodyData {
-	s.AudioURL = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetBusinessType(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetDeleted(v bool) *ReviewSingleResultByIdResponseBodyData {
-	s.Deleted = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetDialogues(v *ReviewSingleResultByIdResponseBodyDataDialogues) *ReviewSingleResultByIdResponseBodyData {
-	s.Dialogues = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetFileMergeName(v string) *ReviewSingleResultByIdResponseBodyData {
-	s.FileMergeName = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetHandScoreInfoList(v *ReviewSingleResultByIdResponseBodyDataHandScoreInfoList) *ReviewSingleResultByIdResponseBodyData {
-	s.HandScoreInfoList = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetHitNumber(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.HitNumber = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetHitRuleReviewInfoList(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList) *ReviewSingleResultByIdResponseBodyData {
-	s.HitRuleReviewInfoList = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetIsAudio(v bool) *ReviewSingleResultByIdResponseBodyData {
-	s.IsAudio = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetIsDeleted(v bool) *ReviewSingleResultByIdResponseBodyData {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetManualScoreMappingList(v *ReviewSingleResultByIdResponseBodyDataManualScoreMappingList) *ReviewSingleResultByIdResponseBodyData {
-	s.ManualScoreMappingList = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetNextVid(v string) *ReviewSingleResultByIdResponseBodyData {
-	s.NextVid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetPreVid(v string) *ReviewSingleResultByIdResponseBodyData {
-	s.PreVid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetReviewNumber(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.ReviewNumber = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetTotalScore(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.TotalScore = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyData) SetVid(v int32) *ReviewSingleResultByIdResponseBodyData {
-	s.Vid = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataDialogues struct {
-	Dialogue []*ReviewSingleResultByIdResponseBodyDataDialoguesDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataDialogues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataDialogues) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialogues) SetDialogue(v []*ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) *ReviewSingleResultByIdResponseBodyDataDialogues {
-	s.Dialogue = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataDialoguesDialogue struct {
-	Begin           *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	BeginTime       *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EmotionValue    *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End             *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	HourMinSec      *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Identity        *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SilenceDuration *int32  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SpeechRate      *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words           *string `json:"Words,omitempty" xml:"Words,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetBegin(v int64) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.Begin = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetBeginTime(v int64) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetEmotionValue(v int32) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetEnd(v int64) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.End = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetHourMinSec(v string) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.HourMinSec = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetIdentity(v string) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.Identity = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetRole(v string) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.Role = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetSilenceDuration(v int32) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.SilenceDuration = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetSpeechRate(v int32) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.SpeechRate = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue) SetWords(v string) *ReviewSingleResultByIdResponseBodyDataDialoguesDialogue {
-	s.Words = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHandScoreInfoList struct {
-	ScorePo []*ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo `json:"ScorePo,omitempty" xml:"ScorePo,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoList) SetScorePo(v []*ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoList {
-	s.ScorePo = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo struct {
-	ScoreId    *int64                                                                    `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreInfos *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos `json:"ScoreInfos,omitempty" xml:"ScoreInfos,omitempty" type:"Struct"`
-	ScoreName  *string                                                                   `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) SetScoreId(v int64) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) SetScoreInfos(v *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreInfos = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo) SetScoreName(v string) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePo {
-	s.ScoreName = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos struct {
-	ScoreParam []*ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam `json:"ScoreParam,omitempty" xml:"ScoreParam,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos) SetScoreParam(v []*ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfos {
-	s.ScoreParam = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam struct {
-	Hit          *int32  `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	ScoreNum     *int32  `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	ScoreSubId   *int64  `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-	ScoreType    *int32  `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetHit(v int32) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.Hit = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreNum(v int32) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreNum = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreSubId(v int64) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreSubId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreSubName(v string) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreSubName = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam) SetScoreType(v int32) *ReviewSingleResultByIdResponseBodyDataHandScoreInfoListScorePoScoreInfosScoreParam {
-	s.ScoreType = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList struct {
-	HitRuleReviewInfo []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo `json:"HitRuleReviewInfo,omitempty" xml:"HitRuleReviewInfo,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList) SetHitRuleReviewInfo(v []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoList {
-	s.HitRuleReviewInfo = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo struct {
-	AutoReview           *int32                                                                                            `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
-	Comments             *string                                                                                           `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	ConditionHitInfoList *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Struct"`
-	ReviewInfo           *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo           `json:"ReviewInfo,omitempty" xml:"ReviewInfo,omitempty" type:"Struct"`
-	Rid                  *int64                                                                                            `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName             *string                                                                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleScoreType        *int32                                                                                            `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	RuleType             *int32                                                                                            `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	ScoreId              *int64                                                                                            `json:"ScoreId,omitempty" xml:"ScoreId,omitempty"`
-	ScoreSubId           *int64                                                                                            `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	TotalNumber          *int32                                                                                            `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetAutoReview(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.AutoReview = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetComments(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.Comments = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetConditionHitInfoList(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ConditionHitInfoList = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetReviewInfo(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ReviewInfo = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRid(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.Rid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleName(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleName = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleScoreType(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleScoreType = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRuleType(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.RuleType = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetScoreId(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ScoreId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetScoreSubId(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ScoreSubId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetTotalNumber(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.TotalNumber = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList struct {
-	ConditionHitInfo []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo `json:"ConditionHitInfo,omitempty" xml:"ConditionHitInfo,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) SetConditionHitInfo(v []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList {
-	s.ConditionHitInfo = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo struct {
-	Cid      *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid      `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Struct"`
-	KeyWords *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Struct"`
-	Phrase   *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase   `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetCid(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Cid = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetKeyWords(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.KeyWords = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetPhrase(v *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Phrase = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid struct {
-	Cid []*string `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) SetCid(v []*string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid {
-	s.Cid = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords struct {
-	KeyWord []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord `json:"KeyWord,omitempty" xml:"KeyWord,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) SetKeyWord(v []*ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords {
-	s.KeyWord = v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord struct {
-	From *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Pid  *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Tid  *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetFrom(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.From = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetPid(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Pid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTid(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Tid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTo(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.To = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetVal(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Val = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase struct {
-	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Pid          *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetBegin(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Begin = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEmotionValue(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEnd(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.End = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetIdentity(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Identity = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetPid(v int32) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Pid = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetRole(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Role = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetWords(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Words = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo struct {
-	HitId *string `json:"HitId,omitempty" xml:"HitId,omitempty"`
-	Rid   *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetHitId(v string) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
-	s.HitId = &v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo) SetRid(v int64) *ReviewSingleResultByIdResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo {
-	s.Rid = &v
-	return s
-}
-
-type ReviewSingleResultByIdResponseBodyDataManualScoreMappingList struct {
-	ManualScoreMappingList []*string `json:"ManualScoreMappingList,omitempty" xml:"ManualScoreMappingList,omitempty" type:"Repeated"`
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataManualScoreMappingList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponseBodyDataManualScoreMappingList) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponseBodyDataManualScoreMappingList) SetManualScoreMappingList(v []*string) *ReviewSingleResultByIdResponseBodyDataManualScoreMappingList {
-	s.ManualScoreMappingList = v
-	return s
-}
-
-type ReviewSingleResultByIdResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReviewSingleResultByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ReviewSingleResultByIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReviewSingleResultByIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ReviewSingleResultByIdResponse) SetHeaders(v map[string]*string) *ReviewSingleResultByIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ReviewSingleResultByIdResponse) SetBody(v *ReviewSingleResultByIdResponseBody) *ReviewSingleResultByIdResponse {
 	s.Body = v
 	return s
 }
@@ -13048,122 +9975,6 @@ func (s *SubmitComplaintResponse) SetHeaders(v map[string]*string) *SubmitCompla
 }
 
 func (s *SubmitComplaintResponse) SetBody(v *SubmitComplaintResponseBody) *SubmitComplaintResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitCustomizationConfigRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s SubmitCustomizationConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCustomizationConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCustomizationConfigRequest) SetJsonStr(v string) *SubmitCustomizationConfigRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type SubmitCustomizationConfigResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitCustomizationConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitCustomizationConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCustomizationConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCustomizationConfigResponseBody) SetCode(v string) *SubmitCustomizationConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBody) SetData(v *SubmitCustomizationConfigResponseBodyData) *SubmitCustomizationConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBody) SetMessage(v string) *SubmitCustomizationConfigResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBody) SetRequestId(v string) *SubmitCustomizationConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBody) SetSuccess(v bool) *SubmitCustomizationConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitCustomizationConfigResponseBodyData struct {
-	ModeCustomizationId *string `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
-	ModelId             *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName           *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelStatus         *int32  `json:"ModelStatus,omitempty" xml:"ModelStatus,omitempty"`
-}
-
-func (s SubmitCustomizationConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCustomizationConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCustomizationConfigResponseBodyData) SetModeCustomizationId(v string) *SubmitCustomizationConfigResponseBodyData {
-	s.ModeCustomizationId = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBodyData) SetModelId(v int64) *SubmitCustomizationConfigResponseBodyData {
-	s.ModelId = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBodyData) SetModelName(v string) *SubmitCustomizationConfigResponseBodyData {
-	s.ModelName = &v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponseBodyData) SetModelStatus(v int32) *SubmitCustomizationConfigResponseBodyData {
-	s.ModelStatus = &v
-	return s
-}
-
-type SubmitCustomizationConfigResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitCustomizationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitCustomizationConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCustomizationConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCustomizationConfigResponse) SetHeaders(v map[string]*string) *SubmitCustomizationConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitCustomizationConfigResponse) SetBody(v *SubmitCustomizationConfigResponseBody) *SubmitCustomizationConfigResponse {
 	s.Body = v
 	return s
 }
@@ -13685,324 +10496,6 @@ func (s *SyncQualityCheckResponse) SetBody(v *SyncQualityCheckResponseBody) *Syn
 	return s
 }
 
-type TestRuleRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s TestRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleRequest) SetJsonStr(v string) *TestRuleRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type TestRuleResponseBody struct {
-	Code      *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TestRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s TestRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBody) SetCode(v string) *TestRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *TestRuleResponseBody) SetData(v *TestRuleResponseBodyData) *TestRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *TestRuleResponseBody) SetMessage(v string) *TestRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *TestRuleResponseBody) SetRequestId(v string) *TestRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TestRuleResponseBody) SetSuccess(v bool) *TestRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type TestRuleResponseBodyData struct {
-	HitRuleReviewInfoList *TestRuleResponseBodyDataHitRuleReviewInfoList `json:"HitRuleReviewInfoList,omitempty" xml:"HitRuleReviewInfoList,omitempty" type:"Struct"`
-	Poc                   *bool                                          `json:"Poc,omitempty" xml:"Poc,omitempty"`
-}
-
-func (s TestRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyData) SetHitRuleReviewInfoList(v *TestRuleResponseBodyDataHitRuleReviewInfoList) *TestRuleResponseBodyData {
-	s.HitRuleReviewInfoList = v
-	return s
-}
-
-func (s *TestRuleResponseBodyData) SetPoc(v bool) *TestRuleResponseBodyData {
-	s.Poc = &v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoList struct {
-	HitRuleReviewInfo []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo `json:"HitRuleReviewInfo,omitempty" xml:"HitRuleReviewInfo,omitempty" type:"Repeated"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoList) SetHitRuleReviewInfo(v []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) *TestRuleResponseBodyDataHitRuleReviewInfoList {
-	s.HitRuleReviewInfo = v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo struct {
-	ConditionHitInfoList *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Struct"`
-	Rid                  *int64                                                                              `json:"Rid,omitempty" xml:"Rid,omitempty"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetConditionHitInfoList(v *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.ConditionHitInfoList = v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetRid(v int64) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
-	s.Rid = &v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList struct {
-	ConditionHitInfo []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo `json:"ConditionHitInfo,omitempty" xml:"ConditionHitInfo,omitempty" type:"Repeated"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) SetConditionHitInfo(v []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList {
-	s.ConditionHitInfo = v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo struct {
-	Cid      *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid      `json:"Cid,omitempty" xml:"Cid,omitempty" type:"Struct"`
-	KeyWords *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Struct"`
-	Phrase   *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase   `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetCid(v *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Cid = v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetKeyWords(v *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.KeyWords = v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo) SetPhrase(v *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfo {
-	s.Phrase = v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid struct {
-	Cid []*string `json:"cid,omitempty" xml:"cid,omitempty" type:"Repeated"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid) SetCid(v []*string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoCid {
-	s.Cid = v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords struct {
-	KeyWord []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord `json:"KeyWord,omitempty" xml:"KeyWord,omitempty" type:"Repeated"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords) SetKeyWord(v []*TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWords {
-	s.KeyWord = v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord struct {
-	From *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Pid  *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Tid  *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	To   *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Val  *string `json:"Val,omitempty" xml:"Val,omitempty"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetFrom(v int32) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.From = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetPid(v int32) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Pid = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTid(v string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Tid = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetTo(v int32) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.To = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetVal(v string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
-	s.Val = &v
-	return s
-}
-
-type TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase struct {
-	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Pid          *int32  `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetBegin(v int64) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Begin = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEmotionValue(v int32) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetEnd(v int64) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.End = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetIdentity(v string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Identity = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetPid(v int32) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Pid = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetRole(v string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Role = &v
-	return s
-}
-
-func (s *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase) SetWords(v string) *TestRuleResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoPhrase {
-	s.Words = &v
-	return s
-}
-
-type TestRuleResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TestRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TestRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TestRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TestRuleResponse) SetHeaders(v map[string]*string) *TestRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TestRuleResponse) SetBody(v *TestRuleResponseBody) *TestRuleResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateAsrVocabRequest struct {
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
@@ -14080,87 +10573,6 @@ func (s *UpdateAsrVocabResponse) SetHeaders(v map[string]*string) *UpdateAsrVoca
 }
 
 func (s *UpdateAsrVocabResponse) SetBody(v *UpdateAsrVocabResponseBody) *UpdateAsrVocabResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateOnPurchaseSuccessRequest struct {
-	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-}
-
-func (s UpdateOnPurchaseSuccessRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOnPurchaseSuccessRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOnPurchaseSuccessRequest) SetJsonStr(v string) *UpdateOnPurchaseSuccessRequest {
-	s.JsonStr = &v
-	return s
-}
-
-type UpdateOnPurchaseSuccessResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateOnPurchaseSuccessResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOnPurchaseSuccessResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOnPurchaseSuccessResponseBody) SetCode(v string) *UpdateOnPurchaseSuccessResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateOnPurchaseSuccessResponseBody) SetData(v string) *UpdateOnPurchaseSuccessResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdateOnPurchaseSuccessResponseBody) SetMessage(v string) *UpdateOnPurchaseSuccessResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateOnPurchaseSuccessResponseBody) SetRequestId(v string) *UpdateOnPurchaseSuccessResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateOnPurchaseSuccessResponseBody) SetSuccess(v bool) *UpdateOnPurchaseSuccessResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateOnPurchaseSuccessResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateOnPurchaseSuccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateOnPurchaseSuccessResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOnPurchaseSuccessResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOnPurchaseSuccessResponse) SetHeaders(v map[string]*string) *UpdateOnPurchaseSuccessResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateOnPurchaseSuccessResponse) SetBody(v *UpdateOnPurchaseSuccessResponseBody) *UpdateOnPurchaseSuccessResponse {
 	s.Body = v
 	return s
 }
@@ -15892,10 +12304,12 @@ func (client *Client) AddBusinessCategoryWithOptions(request *AddBusinessCategor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddBusinessCategory"),
@@ -15905,7 +12319,7 @@ func (client *Client) AddBusinessCategoryWithOptions(request *AddBusinessCategor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddBusinessCategoryResponse{}
@@ -15934,10 +12348,12 @@ func (client *Client) AddRuleCategoryWithOptions(request *AddRuleCategoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddRuleCategory"),
@@ -15947,7 +12363,7 @@ func (client *Client) AddRuleCategoryWithOptions(request *AddRuleCategoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddRuleCategoryResponse{}
@@ -15976,10 +12392,12 @@ func (client *Client) AddThesaurusForApiWithOptions(request *AddThesaurusForApiR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddThesaurusForApi"),
@@ -15989,7 +12407,7 @@ func (client *Client) AddThesaurusForApiWithOptions(request *AddThesaurusForApiR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddThesaurusForApiResponse{}
@@ -16012,58 +12430,18 @@ func (client *Client) AddThesaurusForApi(request *AddThesaurusForApiRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) AddUploadDataSetWithOptions(request *AddUploadDataSetRequest, runtime *util.RuntimeOptions) (_result *AddUploadDataSetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddUploadDataSet"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddUploadDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddUploadDataSet(request *AddUploadDataSetRequest) (_result *AddUploadDataSetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddUploadDataSetResponse{}
-	_body, _err := client.AddUploadDataSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AssignReviewerWithOptions(request *AssignReviewerRequest, runtime *util.RuntimeOptions) (_result *AssignReviewerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AssignReviewer"),
@@ -16073,7 +12451,7 @@ func (client *Client) AssignReviewerWithOptions(request *AssignReviewerRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AssignReviewerResponse{}
@@ -16096,58 +12474,18 @@ func (client *Client) AssignReviewer(request *AssignReviewerRequest) (_result *A
 	return _result, _err
 }
 
-func (client *Client) ConfigDataSetWithOptions(request *ConfigDataSetRequest, runtime *util.RuntimeOptions) (_result *ConfigDataSetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConfigDataSet"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ConfigDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ConfigDataSet(request *ConfigDataSetRequest) (_result *ConfigDataSetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ConfigDataSetResponse{}
-	_body, _err := client.ConfigDataSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateAsrVocabWithOptions(request *CreateAsrVocabRequest, runtime *util.RuntimeOptions) (_result *CreateAsrVocabResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAsrVocab"),
@@ -16157,7 +12495,7 @@ func (client *Client) CreateAsrVocabWithOptions(request *CreateAsrVocabRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAsrVocabResponse{}
@@ -16180,58 +12518,18 @@ func (client *Client) CreateAsrVocab(request *CreateAsrVocabRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRule"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRuleResponse{}
-	_body, _err := client.CreateRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateSkillGroupConfigWithOptions(request *CreateSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *CreateSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSkillGroupConfig"),
@@ -16241,7 +12539,7 @@ func (client *Client) CreateSkillGroupConfigWithOptions(request *CreateSkillGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSkillGroupConfigResponse{}
@@ -16270,10 +12568,12 @@ func (client *Client) CreateTaskAssignRuleWithOptions(request *CreateTaskAssignR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTaskAssignRule"),
@@ -16283,7 +12583,7 @@ func (client *Client) CreateTaskAssignRuleWithOptions(request *CreateTaskAssignR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTaskAssignRuleResponse{}
@@ -16312,10 +12612,12 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUser"),
@@ -16325,7 +12627,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserResponse{}
@@ -16354,10 +12656,12 @@ func (client *Client) CreateWarningConfigWithOptions(request *CreateWarningConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateWarningConfig"),
@@ -16367,7 +12671,7 @@ func (client *Client) CreateWarningConfigWithOptions(request *CreateWarningConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateWarningConfigResponse{}
@@ -16396,10 +12700,12 @@ func (client *Client) DelRuleCategoryWithOptions(request *DelRuleCategoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DelRuleCategory"),
@@ -16409,7 +12715,7 @@ func (client *Client) DelRuleCategoryWithOptions(request *DelRuleCategoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DelRuleCategoryResponse{}
@@ -16438,10 +12744,12 @@ func (client *Client) DelThesaurusForApiWithOptions(request *DelThesaurusForApiR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DelThesaurusForApi"),
@@ -16451,7 +12759,7 @@ func (client *Client) DelThesaurusForApiWithOptions(request *DelThesaurusForApiR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DelThesaurusForApiResponse{}
@@ -16480,10 +12788,12 @@ func (client *Client) DeleteAsrVocabWithOptions(request *DeleteAsrVocabRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAsrVocab"),
@@ -16493,7 +12803,7 @@ func (client *Client) DeleteAsrVocabWithOptions(request *DeleteAsrVocabRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAsrVocabResponse{}
@@ -16522,10 +12832,12 @@ func (client *Client) DeleteBusinessCategoryWithOptions(request *DeleteBusinessC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBusinessCategory"),
@@ -16535,7 +12847,7 @@ func (client *Client) DeleteBusinessCategoryWithOptions(request *DeleteBusinessC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBusinessCategoryResponse{}
@@ -16564,10 +12876,12 @@ func (client *Client) DeleteCustomizationConfigWithOptions(request *DeleteCustom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCustomizationConfig"),
@@ -16577,7 +12891,7 @@ func (client *Client) DeleteCustomizationConfigWithOptions(request *DeleteCustom
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCustomizationConfigResponse{}
@@ -16606,10 +12920,12 @@ func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDataSet"),
@@ -16619,7 +12935,7 @@ func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDataSetResponse{}
@@ -16648,10 +12964,12 @@ func (client *Client) DeletePrecisionTaskWithOptions(request *DeletePrecisionTas
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeletePrecisionTask"),
@@ -16661,7 +12979,7 @@ func (client *Client) DeletePrecisionTaskWithOptions(request *DeletePrecisionTas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePrecisionTaskResponse{}
@@ -16690,10 +13008,12 @@ func (client *Client) DeleteScoreForApiWithOptions(request *DeleteScoreForApiReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteScoreForApi"),
@@ -16703,7 +13023,7 @@ func (client *Client) DeleteScoreForApiWithOptions(request *DeleteScoreForApiReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteScoreForApiResponse{}
@@ -16732,10 +13052,12 @@ func (client *Client) DeleteSkillGroupConfigWithOptions(request *DeleteSkillGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSkillGroupConfig"),
@@ -16745,7 +13067,7 @@ func (client *Client) DeleteSkillGroupConfigWithOptions(request *DeleteSkillGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSkillGroupConfigResponse{}
@@ -16774,10 +13096,12 @@ func (client *Client) DeleteSubScoreForApiWithOptions(request *DeleteSubScoreFor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSubScoreForApi"),
@@ -16787,7 +13111,7 @@ func (client *Client) DeleteSubScoreForApiWithOptions(request *DeleteSubScoreFor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSubScoreForApiResponse{}
@@ -16816,10 +13140,12 @@ func (client *Client) DeleteTaskAssignRuleWithOptions(request *DeleteTaskAssignR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTaskAssignRule"),
@@ -16829,7 +13155,7 @@ func (client *Client) DeleteTaskAssignRuleWithOptions(request *DeleteTaskAssignR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTaskAssignRuleResponse{}
@@ -16858,10 +13184,12 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteUser"),
@@ -16871,7 +13199,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserResponse{}
@@ -16900,10 +13228,12 @@ func (client *Client) DeleteWarningConfigWithOptions(request *DeleteWarningConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteWarningConfig"),
@@ -16913,7 +13243,7 @@ func (client *Client) DeleteWarningConfigWithOptions(request *DeleteWarningConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWarningConfigResponse{}
@@ -16942,10 +13272,12 @@ func (client *Client) EditThesaurusForApiWithOptions(request *EditThesaurusForAp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EditThesaurusForApi"),
@@ -16955,7 +13287,7 @@ func (client *Client) EditThesaurusForApiWithOptions(request *EditThesaurusForAp
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EditThesaurusForApiResponse{}
@@ -16984,10 +13316,12 @@ func (client *Client) GetAsrVocabWithOptions(request *GetAsrVocabRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAsrVocab"),
@@ -16997,7 +13331,7 @@ func (client *Client) GetAsrVocabWithOptions(request *GetAsrVocabRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsrVocabResponse{}
@@ -17026,10 +13360,12 @@ func (client *Client) GetBusinessCategoryListWithOptions(request *GetBusinessCat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBusinessCategoryList"),
@@ -17039,7 +13375,7 @@ func (client *Client) GetBusinessCategoryListWithOptions(request *GetBusinessCat
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetBusinessCategoryListResponse{}
@@ -17068,10 +13404,12 @@ func (client *Client) GetCustomizationConfigListWithOptions(request *GetCustomiz
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetCustomizationConfigList"),
@@ -17081,7 +13419,7 @@ func (client *Client) GetCustomizationConfigListWithOptions(request *GetCustomiz
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomizationConfigListResponse{}
@@ -17110,10 +13448,12 @@ func (client *Client) GetHitResultWithOptions(request *GetHitResultRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetHitResult"),
@@ -17123,7 +13463,7 @@ func (client *Client) GetHitResultWithOptions(request *GetHitResultRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetHitResultResponse{}
@@ -17152,10 +13492,12 @@ func (client *Client) GetNextResultToVerifyWithOptions(request *GetNextResultToV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNextResultToVerify"),
@@ -17165,7 +13507,7 @@ func (client *Client) GetNextResultToVerifyWithOptions(request *GetNextResultToV
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNextResultToVerifyResponse{}
@@ -17194,10 +13536,12 @@ func (client *Client) GetPrecisionTaskWithOptions(request *GetPrecisionTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPrecisionTask"),
@@ -17207,7 +13551,7 @@ func (client *Client) GetPrecisionTaskWithOptions(request *GetPrecisionTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPrecisionTaskResponse{}
@@ -17236,10 +13580,12 @@ func (client *Client) GetResultWithOptions(request *GetResultRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResult"),
@@ -17249,7 +13595,7 @@ func (client *Client) GetResultWithOptions(request *GetResultRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResultResponse{}
@@ -17278,10 +13624,12 @@ func (client *Client) GetResultCallbackWithOptions(request *GetResultCallbackReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResultCallback"),
@@ -17291,7 +13639,7 @@ func (client *Client) GetResultCallbackWithOptions(request *GetResultCallbackReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResultCallbackResponse{}
@@ -17320,10 +13668,12 @@ func (client *Client) GetResultToReviewWithOptions(request *GetResultToReviewReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResultToReview"),
@@ -17333,7 +13683,7 @@ func (client *Client) GetResultToReviewWithOptions(request *GetResultToReviewReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResultToReviewResponse{}
@@ -17356,58 +13706,18 @@ func (client *Client) GetResultToReview(request *GetResultToReviewRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) GetReviewInfoWithOptions(request *GetReviewInfoRequest, runtime *util.RuntimeOptions) (_result *GetReviewInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetReviewInfo"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetReviewInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetReviewInfo(request *GetReviewInfoRequest) (_result *GetReviewInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetReviewInfoResponse{}
-	_body, _err := client.GetReviewInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.RuntimeOptions) (_result *GetRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRule"),
@@ -17417,7 +13727,7 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRuleResponse{}
@@ -17446,10 +13756,12 @@ func (client *Client) GetRuleCategoryWithOptions(request *GetRuleCategoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRuleCategory"),
@@ -17459,7 +13771,7 @@ func (client *Client) GetRuleCategoryWithOptions(request *GetRuleCategoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRuleCategoryResponse{}
@@ -17488,10 +13800,12 @@ func (client *Client) GetRuleDetailWithOptions(request *GetRuleDetailRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRuleDetail"),
@@ -17501,7 +13815,7 @@ func (client *Client) GetRuleDetailWithOptions(request *GetRuleDetailRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRuleDetailResponse{}
@@ -17524,58 +13838,18 @@ func (client *Client) GetRuleDetail(request *GetRuleDetailRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetRuleDimensionWithOptions(request *GetRuleDimensionRequest, runtime *util.RuntimeOptions) (_result *GetRuleDimensionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRuleDimension"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRuleDimensionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRuleDimension(request *GetRuleDimensionRequest) (_result *GetRuleDimensionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRuleDimensionResponse{}
-	_body, _err := client.GetRuleDimensionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetScoreInfoWithOptions(request *GetScoreInfoRequest, runtime *util.RuntimeOptions) (_result *GetScoreInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetScoreInfo"),
@@ -17585,7 +13859,7 @@ func (client *Client) GetScoreInfoWithOptions(request *GetScoreInfoRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetScoreInfoResponse{}
@@ -17614,10 +13888,12 @@ func (client *Client) GetSkillGroupConfigWithOptions(request *GetSkillGroupConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSkillGroupConfig"),
@@ -17627,7 +13903,7 @@ func (client *Client) GetSkillGroupConfigWithOptions(request *GetSkillGroupConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSkillGroupConfigResponse{}
@@ -17656,10 +13932,12 @@ func (client *Client) GetSyncResultWithOptions(request *GetSyncResultRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSyncResult"),
@@ -17669,7 +13947,7 @@ func (client *Client) GetSyncResultWithOptions(request *GetSyncResultRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSyncResultResponse{}
@@ -17692,100 +13970,18 @@ func (client *Client) GetSyncResult(request *GetSyncResultRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetTaskFileResultListWithOptions(request *GetTaskFileResultListRequest, runtime *util.RuntimeOptions) (_result *GetTaskFileResultListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetTaskFileResultList"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetTaskFileResultListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskFileResultList(request *GetTaskFileResultListRequest) (_result *GetTaskFileResultListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskFileResultListResponse{}
-	_body, _err := client.GetTaskFileResultListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetTaskRuleListWithOptions(request *GetTaskRuleListRequest, runtime *util.RuntimeOptions) (_result *GetTaskRuleListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetTaskRuleList"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetTaskRuleListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskRuleList(request *GetTaskRuleListRequest) (_result *GetTaskRuleListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskRuleListResponse{}
-	_body, _err := client.GetTaskRuleListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetThesaurusBySynonymForApiWithOptions(request *GetThesaurusBySynonymForApiRequest, runtime *util.RuntimeOptions) (_result *GetThesaurusBySynonymForApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetThesaurusBySynonymForApi"),
@@ -17795,7 +13991,7 @@ func (client *Client) GetThesaurusBySynonymForApiWithOptions(request *GetThesaur
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetThesaurusBySynonymForApiResponse{}
@@ -17824,10 +14020,12 @@ func (client *Client) HandleComplaintWithOptions(request *HandleComplaintRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("HandleComplaint"),
@@ -17837,7 +14035,7 @@ func (client *Client) HandleComplaintWithOptions(request *HandleComplaintRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &HandleComplaintResponse{}
@@ -17866,10 +14064,12 @@ func (client *Client) InsertScoreForApiWithOptions(request *InsertScoreForApiReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InsertScoreForApi"),
@@ -17879,7 +14079,7 @@ func (client *Client) InsertScoreForApiWithOptions(request *InsertScoreForApiReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InsertScoreForApiResponse{}
@@ -17908,10 +14108,12 @@ func (client *Client) InsertSubScoreForApiWithOptions(request *InsertSubScoreFor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InsertSubScoreForApi"),
@@ -17921,7 +14123,7 @@ func (client *Client) InsertSubScoreForApiWithOptions(request *InsertSubScoreFor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InsertSubScoreForApiResponse{}
@@ -17950,10 +14152,12 @@ func (client *Client) InvalidRuleWithOptions(request *InvalidRuleRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvalidRule"),
@@ -17963,7 +14167,7 @@ func (client *Client) InvalidRuleWithOptions(request *InvalidRuleRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InvalidRuleResponse{}
@@ -17992,10 +14196,12 @@ func (client *Client) ListAsrVocabWithOptions(request *ListAsrVocabRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAsrVocab"),
@@ -18005,7 +14211,7 @@ func (client *Client) ListAsrVocabWithOptions(request *ListAsrVocabRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAsrVocabResponse{}
@@ -18028,58 +14234,18 @@ func (client *Client) ListAsrVocab(request *ListAsrVocabRequest) (_result *ListA
 	return _result, _err
 }
 
-func (client *Client) ListDataSetTaskWithOptions(request *ListDataSetTaskRequest, runtime *util.RuntimeOptions) (_result *ListDataSetTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDataSetTask"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDataSetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDataSetTask(request *ListDataSetTaskRequest) (_result *ListDataSetTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDataSetTaskResponse{}
-	_body, _err := client.ListDataSetTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListHotWordsTasksWithOptions(request *ListHotWordsTasksRequest, runtime *util.RuntimeOptions) (_result *ListHotWordsTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListHotWordsTasks"),
@@ -18089,7 +14255,7 @@ func (client *Client) ListHotWordsTasksWithOptions(request *ListHotWordsTasksReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListHotWordsTasksResponse{}
@@ -18118,10 +14284,12 @@ func (client *Client) ListPrecisionTaskWithOptions(request *ListPrecisionTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPrecisionTask"),
@@ -18131,7 +14299,7 @@ func (client *Client) ListPrecisionTaskWithOptions(request *ListPrecisionTaskReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPrecisionTaskResponse{}
@@ -18160,10 +14328,12 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRoles"),
@@ -18173,7 +14343,7 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRolesResponse{}
@@ -18202,10 +14372,12 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRules"),
@@ -18215,7 +14387,7 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRulesResponse{}
@@ -18244,10 +14416,12 @@ func (client *Client) ListSkillGroupConfigWithOptions(request *ListSkillGroupCon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSkillGroupConfig"),
@@ -18257,7 +14431,7 @@ func (client *Client) ListSkillGroupConfigWithOptions(request *ListSkillGroupCon
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupConfigResponse{}
@@ -18286,10 +14460,12 @@ func (client *Client) ListTaskAssignRulesWithOptions(request *ListTaskAssignRule
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTaskAssignRules"),
@@ -18299,7 +14475,7 @@ func (client *Client) ListTaskAssignRulesWithOptions(request *ListTaskAssignRule
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTaskAssignRulesResponse{}
@@ -18328,10 +14504,12 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListUsers"),
@@ -18341,7 +14519,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
@@ -18370,10 +14548,12 @@ func (client *Client) ListWarningConfigWithOptions(request *ListWarningConfigReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListWarningConfig"),
@@ -18383,7 +14563,7 @@ func (client *Client) ListWarningConfigWithOptions(request *ListWarningConfigReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListWarningConfigResponse{}
@@ -18406,58 +14586,18 @@ func (client *Client) ListWarningConfig(request *ListWarningConfigRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) RemoveAndGetTaskRulesWithOptions(request *RemoveAndGetTaskRulesRequest, runtime *util.RuntimeOptions) (_result *RemoveAndGetTaskRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveAndGetTaskRules"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RemoveAndGetTaskRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RemoveAndGetTaskRules(request *RemoveAndGetTaskRulesRequest) (_result *RemoveAndGetTaskRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RemoveAndGetTaskRulesResponse{}
-	_body, _err := client.RemoveAndGetTaskRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RestartAsrTaskWithOptions(request *RestartAsrTaskRequest, runtime *util.RuntimeOptions) (_result *RestartAsrTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartAsrTask"),
@@ -18467,7 +14607,7 @@ func (client *Client) RestartAsrTaskWithOptions(request *RestartAsrTaskRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RestartAsrTaskResponse{}
@@ -18490,58 +14630,18 @@ func (client *Client) RestartAsrTask(request *RestartAsrTaskRequest) (_result *R
 	return _result, _err
 }
 
-func (client *Client) ReviewSingleResultByIdWithOptions(request *ReviewSingleResultByIdRequest, runtime *util.RuntimeOptions) (_result *ReviewSingleResultByIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ReviewSingleResultById"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ReviewSingleResultByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ReviewSingleResultById(request *ReviewSingleResultByIdRequest) (_result *ReviewSingleResultByIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ReviewSingleResultByIdResponse{}
-	_body, _err := client.ReviewSingleResultByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SaveConfigDataSetWithOptions(request *SaveConfigDataSetRequest, runtime *util.RuntimeOptions) (_result *SaveConfigDataSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SaveConfigDataSet"),
@@ -18551,7 +14651,7 @@ func (client *Client) SaveConfigDataSetWithOptions(request *SaveConfigDataSetReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SaveConfigDataSetResponse{}
@@ -18580,10 +14680,12 @@ func (client *Client) SubmitComplaintWithOptions(request *SubmitComplaintRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitComplaint"),
@@ -18593,7 +14695,7 @@ func (client *Client) SubmitComplaintWithOptions(request *SubmitComplaintRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitComplaintResponse{}
@@ -18616,58 +14718,18 @@ func (client *Client) SubmitComplaint(request *SubmitComplaintRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) SubmitCustomizationConfigWithOptions(request *SubmitCustomizationConfigRequest, runtime *util.RuntimeOptions) (_result *SubmitCustomizationConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitCustomizationConfig"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitCustomizationConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitCustomizationConfig(request *SubmitCustomizationConfigRequest) (_result *SubmitCustomizationConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitCustomizationConfigResponse{}
-	_body, _err := client.SubmitCustomizationConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitPrecisionTaskWithOptions(request *SubmitPrecisionTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitPrecisionTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitPrecisionTask"),
@@ -18677,7 +14739,7 @@ func (client *Client) SubmitPrecisionTaskWithOptions(request *SubmitPrecisionTas
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitPrecisionTaskResponse{}
@@ -18706,10 +14768,12 @@ func (client *Client) SubmitQualityCheckTaskWithOptions(request *SubmitQualityCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitQualityCheckTask"),
@@ -18719,7 +14783,7 @@ func (client *Client) SubmitQualityCheckTaskWithOptions(request *SubmitQualityCh
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitQualityCheckTaskResponse{}
@@ -18748,10 +14812,12 @@ func (client *Client) SubmitReviewInfoWithOptions(request *SubmitReviewInfoReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitReviewInfo"),
@@ -18761,7 +14827,7 @@ func (client *Client) SubmitReviewInfoWithOptions(request *SubmitReviewInfoReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitReviewInfoResponse{}
@@ -18790,10 +14856,12 @@ func (client *Client) SyncQualityCheckWithOptions(request *SyncQualityCheckReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SyncQualityCheck"),
@@ -18803,7 +14871,7 @@ func (client *Client) SyncQualityCheckWithOptions(request *SyncQualityCheckReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SyncQualityCheckResponse{}
@@ -18826,58 +14894,18 @@ func (client *Client) SyncQualityCheck(request *SyncQualityCheckRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) TestRuleWithOptions(request *TestRuleRequest, runtime *util.RuntimeOptions) (_result *TestRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TestRule"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TestRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TestRule(request *TestRuleRequest) (_result *TestRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TestRuleResponse{}
-	_body, _err := client.TestRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateAsrVocabWithOptions(request *UpdateAsrVocabRequest, runtime *util.RuntimeOptions) (_result *UpdateAsrVocabResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAsrVocab"),
@@ -18887,7 +14915,7 @@ func (client *Client) UpdateAsrVocabWithOptions(request *UpdateAsrVocabRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAsrVocabResponse{}
@@ -18910,58 +14938,18 @@ func (client *Client) UpdateAsrVocab(request *UpdateAsrVocabRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UpdateOnPurchaseSuccessWithOptions(request *UpdateOnPurchaseSuccessRequest, runtime *util.RuntimeOptions) (_result *UpdateOnPurchaseSuccessResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateOnPurchaseSuccess"),
-		Version:     tea.String("2019-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateOnPurchaseSuccessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateOnPurchaseSuccess(request *UpdateOnPurchaseSuccessRequest) (_result *UpdateOnPurchaseSuccessResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateOnPurchaseSuccessResponse{}
-	_body, _err := client.UpdateOnPurchaseSuccessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRule"),
@@ -18971,7 +14959,7 @@ func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRuleResponse{}
@@ -19000,10 +14988,12 @@ func (client *Client) UpdateScoreForApiWithOptions(request *UpdateScoreForApiReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateScoreForApi"),
@@ -19013,7 +15003,7 @@ func (client *Client) UpdateScoreForApiWithOptions(request *UpdateScoreForApiReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateScoreForApiResponse{}
@@ -19042,10 +15032,12 @@ func (client *Client) UpdateSkillGroupConfigWithOptions(request *UpdateSkillGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSkillGroupConfig"),
@@ -19055,7 +15047,7 @@ func (client *Client) UpdateSkillGroupConfigWithOptions(request *UpdateSkillGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSkillGroupConfigResponse{}
@@ -19084,10 +15076,12 @@ func (client *Client) UpdateSubScoreForApiWithOptions(request *UpdateSubScoreFor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSubScoreForApi"),
@@ -19097,7 +15091,7 @@ func (client *Client) UpdateSubScoreForApiWithOptions(request *UpdateSubScoreFor
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSubScoreForApiResponse{}
@@ -19126,10 +15120,12 @@ func (client *Client) UpdateSyncQualityCheckDataWithOptions(request *UpdateSyncQ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSyncQualityCheckData"),
@@ -19139,7 +15135,7 @@ func (client *Client) UpdateSyncQualityCheckDataWithOptions(request *UpdateSyncQ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSyncQualityCheckDataResponse{}
@@ -19168,10 +15164,12 @@ func (client *Client) UpdateTaskAssignRuleWithOptions(request *UpdateTaskAssignR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTaskAssignRule"),
@@ -19181,7 +15179,7 @@ func (client *Client) UpdateTaskAssignRuleWithOptions(request *UpdateTaskAssignR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTaskAssignRuleResponse{}
@@ -19210,10 +15208,12 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateUser"),
@@ -19223,7 +15223,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserResponse{}
@@ -19252,10 +15252,12 @@ func (client *Client) UpdateUserConfigWithOptions(request *UpdateUserConfigReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateUserConfig"),
@@ -19265,7 +15267,7 @@ func (client *Client) UpdateUserConfigWithOptions(request *UpdateUserConfigReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserConfigResponse{}
@@ -19294,10 +15296,12 @@ func (client *Client) UpdateWarningConfigWithOptions(request *UpdateWarningConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateWarningConfig"),
@@ -19307,7 +15311,7 @@ func (client *Client) UpdateWarningConfigWithOptions(request *UpdateWarningConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWarningConfigResponse{}
@@ -19336,10 +15340,12 @@ func (client *Client) UploadAudioDataWithOptions(request *UploadAudioDataRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadAudioData"),
@@ -19349,7 +15355,7 @@ func (client *Client) UploadAudioDataWithOptions(request *UploadAudioDataRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadAudioDataResponse{}
@@ -19378,10 +15384,12 @@ func (client *Client) UploadDataWithOptions(request *UploadDataRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadData"),
@@ -19391,7 +15399,7 @@ func (client *Client) UploadDataWithOptions(request *UploadDataRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadDataResponse{}
@@ -19420,10 +15428,12 @@ func (client *Client) UploadDataSyncWithOptions(request *UploadDataSyncRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadDataSync"),
@@ -19433,7 +15443,7 @@ func (client *Client) UploadDataSyncWithOptions(request *UploadDataSyncRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadDataSyncResponse{}
@@ -19462,10 +15472,12 @@ func (client *Client) UploadRuleWithOptions(request *UploadRuleRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadRule"),
@@ -19475,7 +15487,7 @@ func (client *Client) UploadRuleWithOptions(request *UploadRuleRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadRuleResponse{}
@@ -19504,10 +15516,12 @@ func (client *Client) VerifyFileWithOptions(request *VerifyFileRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("VerifyFile"),
@@ -19517,7 +15531,7 @@ func (client *Client) VerifyFileWithOptions(request *VerifyFileRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyFileResponse{}
@@ -19546,10 +15560,12 @@ func (client *Client) VerifySentenceWithOptions(request *VerifySentenceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JsonStr"] = request.JsonStr
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("VerifySentence"),
@@ -19559,7 +15575,7 @@ func (client *Client) VerifySentenceWithOptions(request *VerifySentenceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &VerifySentenceResponse{}
