@@ -858,6 +858,7 @@ type ApplyNodesRequest struct {
 	InternetMaxBandWidthIn        *int32                                `json:"InternetMaxBandWidthIn,omitempty" xml:"InternetMaxBandWidthIn,omitempty"`
 	InternetMaxBandWidthOut       *int32                                `json:"InternetMaxBandWidthOut,omitempty" xml:"InternetMaxBandWidthOut,omitempty"`
 	Interval                      *int32                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	JobQueue                      *string                               `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
 	Memory                        *int32                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	PriorityStrategy              *string                               `json:"PriorityStrategy,omitempty" xml:"PriorityStrategy,omitempty"`
 	ResourceAmountType            *string                               `json:"ResourceAmountType,omitempty" xml:"ResourceAmountType,omitempty"`
@@ -947,6 +948,11 @@ func (s *ApplyNodesRequest) SetInternetMaxBandWidthOut(v int32) *ApplyNodesReque
 
 func (s *ApplyNodesRequest) SetInterval(v int32) *ApplyNodesRequest {
 	s.Interval = &v
+	return s
+}
+
+func (s *ApplyNodesRequest) SetJobQueue(v string) *ApplyNodesRequest {
+	s.JobQueue = &v
 	return s
 }
 
@@ -2977,7 +2983,6 @@ type DeleteImageRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ContainerType *string `json:"ContainerType,omitempty" xml:"ContainerType,omitempty"`
 	ImageTag      *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repository    *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
 }
 
@@ -3001,11 +3006,6 @@ func (s *DeleteImageRequest) SetContainerType(v string) *DeleteImageRequest {
 
 func (s *DeleteImageRequest) SetImageTag(v string) *DeleteImageRequest {
 	s.ImageTag = &v
-	return s
-}
-
-func (s *DeleteImageRequest) SetRegionId(v string) *DeleteImageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -4922,7 +4922,6 @@ type DescribeImageRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ContainerType *string `json:"ContainerType,omitempty" xml:"ContainerType,omitempty"`
 	ImageTag      *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repository    *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
 }
 
@@ -4946,11 +4945,6 @@ func (s *DescribeImageRequest) SetContainerType(v string) *DescribeImageRequest 
 
 func (s *DescribeImageRequest) SetImageTag(v string) *DescribeImageRequest {
 	s.ImageTag = &v
-	return s
-}
-
-func (s *DescribeImageRequest) SetRegionId(v string) *DescribeImageRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -5774,63 +5768,6 @@ func (s *DescribePriceResponse) SetHeaders(v map[string]*string) *DescribePriceR
 }
 
 func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribePriceResponse {
-	s.Body = v
-	return s
-}
-
-type EcdDeleteDesktopsRequest struct {
-	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-}
-
-func (s EcdDeleteDesktopsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EcdDeleteDesktopsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EcdDeleteDesktopsRequest) SetDesktopId(v []*string) *EcdDeleteDesktopsRequest {
-	s.DesktopId = v
-	return s
-}
-
-type EcdDeleteDesktopsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s EcdDeleteDesktopsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EcdDeleteDesktopsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EcdDeleteDesktopsResponseBody) SetRequestId(v string) *EcdDeleteDesktopsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type EcdDeleteDesktopsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EcdDeleteDesktopsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EcdDeleteDesktopsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EcdDeleteDesktopsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EcdDeleteDesktopsResponse) SetHeaders(v map[string]*string) *EcdDeleteDesktopsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EcdDeleteDesktopsResponse) SetBody(v *EcdDeleteDesktopsResponseBody) *EcdDeleteDesktopsResponse {
 	s.Body = v
 	return s
 }
@@ -7155,233 +7092,6 @@ func (s *GetGWSConnectTicketResponse) SetBody(v *GetGWSConnectTicketResponseBody
 	return s
 }
 
-type GetHealthMonitorLogsRequest struct {
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EnableReverse *bool   `json:"EnableReverse,omitempty" xml:"EnableReverse,omitempty"`
-	EndTime       *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	StartTime     *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s GetHealthMonitorLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsRequest) SetClusterId(v string) *GetHealthMonitorLogsRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsRequest) SetEnableReverse(v bool) *GetHealthMonitorLogsRequest {
-	s.EnableReverse = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsRequest) SetEndTime(v int32) *GetHealthMonitorLogsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsRequest) SetFilter(v string) *GetHealthMonitorLogsRequest {
-	s.Filter = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsRequest) SetStartTime(v int32) *GetHealthMonitorLogsRequest {
-	s.StartTime = &v
-	return s
-}
-
-type GetHealthMonitorLogsResponseBody struct {
-	LogInfo   *GetHealthMonitorLogsResponseBodyLogInfo `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetHealthMonitorLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponseBody) SetLogInfo(v *GetHealthMonitorLogsResponseBodyLogInfo) *GetHealthMonitorLogsResponseBody {
-	s.LogInfo = v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBody) SetRequestId(v string) *GetHealthMonitorLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetHealthMonitorLogsResponseBodyLogInfo struct {
-	Logs []*GetHealthMonitorLogsResponseBodyLogInfoLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfo) SetLogs(v []*GetHealthMonitorLogsResponseBodyLogInfoLogs) *GetHealthMonitorLogsResponseBodyLogInfo {
-	s.Logs = v
-	return s
-}
-
-type GetHealthMonitorLogsResponseBodyLogInfoLogs struct {
-	CheckList        *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList `json:"CheckList,omitempty" xml:"CheckList,omitempty" type:"Struct"`
-	HealthId         *string                                               `json:"HealthId,omitempty" xml:"HealthId,omitempty"`
-	HostName         *string                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InstanceId       *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemDescription  *string                                               `json:"ItemDescription,omitempty" xml:"ItemDescription,omitempty"`
-	ItemName         *string                                               `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	Level            *string                                               `json:"Level,omitempty" xml:"Level,omitempty"`
-	SceneDescription *string                                               `json:"SceneDescription,omitempty" xml:"SceneDescription,omitempty"`
-	SceneName        *string                                               `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	Time             *int32                                                `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogs) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetCheckList(v *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.CheckList = v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetHealthId(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.HealthId = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetHostName(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.HostName = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetInstanceId(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetItemDescription(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.ItemDescription = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetItemName(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.ItemName = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetLevel(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.Level = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetSceneDescription(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.SceneDescription = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetSceneName(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.SceneName = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogs) SetTime(v int32) *GetHealthMonitorLogsResponseBodyLogInfoLogs {
-	s.Time = &v
-	return s
-}
-
-type GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList struct {
-	CheckList []*GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList `json:"CheckList,omitempty" xml:"CheckList,omitempty" type:"Repeated"`
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList) SetCheckList(v []*GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckList {
-	s.CheckList = v
-	return s
-}
-
-type GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList struct {
-	CheckDescription *string `json:"CheckDescription,omitempty" xml:"CheckDescription,omitempty"`
-	CheckInfo        *string `json:"CheckInfo,omitempty" xml:"CheckInfo,omitempty"`
-	CheckName        *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
-	CheckSolution    *string `json:"CheckSolution,omitempty" xml:"CheckSolution,omitempty"`
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) SetCheckDescription(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList {
-	s.CheckDescription = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) SetCheckInfo(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList {
-	s.CheckInfo = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) SetCheckName(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList {
-	s.CheckName = &v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList) SetCheckSolution(v string) *GetHealthMonitorLogsResponseBodyLogInfoLogsCheckListCheckList {
-	s.CheckSolution = &v
-	return s
-}
-
-type GetHealthMonitorLogsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetHealthMonitorLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetHealthMonitorLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHealthMonitorLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetHealthMonitorLogsResponse) SetHeaders(v map[string]*string) *GetHealthMonitorLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetHealthMonitorLogsResponse) SetBody(v *GetHealthMonitorLogsResponseBody) *GetHealthMonitorLogsResponse {
-	s.Body = v
-	return s
-}
-
 type GetHybridClusterConfigRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Node      *string `json:"Node,omitempty" xml:"Node,omitempty"`
@@ -7700,169 +7410,6 @@ func (s *GetVisualServiceStatusResponse) SetHeaders(v map[string]*string) *GetVi
 }
 
 func (s *GetVisualServiceStatusResponse) SetBody(v *GetVisualServiceStatusResponseBody) *GetVisualServiceStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetWorkbenchTokenRequest struct {
-	AccountSessionTicket *string `json:"AccountSessionTicket,omitempty" xml:"AccountSessionTicket,omitempty"`
-	AccountUid           *string `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	UserName             *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserPassword         *string `json:"UserPassword,omitempty" xml:"UserPassword,omitempty"`
-}
-
-func (s GetWorkbenchTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkbenchTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkbenchTokenRequest) SetAccountSessionTicket(v string) *GetWorkbenchTokenRequest {
-	s.AccountSessionTicket = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetAccountUid(v string) *GetWorkbenchTokenRequest {
-	s.AccountUid = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetClusterId(v string) *GetWorkbenchTokenRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetInstanceId(v string) *GetWorkbenchTokenRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetPort(v int32) *GetWorkbenchTokenRequest {
-	s.Port = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetUserName(v string) *GetWorkbenchTokenRequest {
-	s.UserName = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenRequest) SetUserPassword(v string) *GetWorkbenchTokenRequest {
-	s.UserPassword = &v
-	return s
-}
-
-type GetWorkbenchTokenResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Root      *GetWorkbenchTokenResponseBodyRoot `json:"root,omitempty" xml:"root,omitempty" type:"Struct"`
-}
-
-func (s GetWorkbenchTokenResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkbenchTokenResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkbenchTokenResponseBody) SetRequestId(v string) *GetWorkbenchTokenResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBody) SetRoot(v *GetWorkbenchTokenResponseBodyRoot) *GetWorkbenchTokenResponseBody {
-	s.Root = v
-	return s
-}
-
-type GetWorkbenchTokenResponseBodyRoot struct {
-	InstanceLoginView *GetWorkbenchTokenResponseBodyRootInstanceLoginView `json:"instanceLoginView,omitempty" xml:"instanceLoginView,omitempty" type:"Struct"`
-}
-
-func (s GetWorkbenchTokenResponseBodyRoot) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkbenchTokenResponseBodyRoot) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkbenchTokenResponseBodyRoot) SetInstanceLoginView(v *GetWorkbenchTokenResponseBodyRootInstanceLoginView) *GetWorkbenchTokenResponseBodyRoot {
-	s.InstanceLoginView = v
-	return s
-}
-
-type GetWorkbenchTokenResponseBodyRootInstanceLoginView struct {
-	BaseViewUrl     *string `json:"baseViewUrl,omitempty" xml:"baseViewUrl,omitempty"`
-	DefaultViewUrl  *string `json:"defaultViewUrl,omitempty" xml:"defaultViewUrl,omitempty"`
-	FileTreeViewUrl *string `json:"fileTreeViewUrl,omitempty" xml:"fileTreeViewUrl,omitempty"`
-	RdpViewUrl      *string `json:"rdpViewUrl,omitempty" xml:"rdpViewUrl,omitempty"`
-	TerminalViewUrl *string `json:"terminalViewUrl,omitempty" xml:"terminalViewUrl,omitempty"`
-	ViewName        *string `json:"viewName,omitempty" xml:"viewName,omitempty"`
-}
-
-func (s GetWorkbenchTokenResponseBodyRootInstanceLoginView) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkbenchTokenResponseBodyRootInstanceLoginView) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetBaseViewUrl(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.BaseViewUrl = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetDefaultViewUrl(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.DefaultViewUrl = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetFileTreeViewUrl(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.FileTreeViewUrl = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetRdpViewUrl(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.RdpViewUrl = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetTerminalViewUrl(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.TerminalViewUrl = &v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponseBodyRootInstanceLoginView) SetViewName(v string) *GetWorkbenchTokenResponseBodyRootInstanceLoginView {
-	s.ViewName = &v
-	return s
-}
-
-type GetWorkbenchTokenResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWorkbenchTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetWorkbenchTokenResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWorkbenchTokenResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetWorkbenchTokenResponse) SetHeaders(v map[string]*string) *GetWorkbenchTokenResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetWorkbenchTokenResponse) SetBody(v *GetWorkbenchTokenResponseBody) *GetWorkbenchTokenResponse {
 	s.Body = v
 	return s
 }
@@ -12442,11 +11989,10 @@ func (s *ListNodesByQueueResponse) SetBody(v *ListNodesByQueueResponseBody) *Lis
 }
 
 type ListNodesNoPagingRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	HostName     *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	OnlyDetached *bool   `json:"OnlyDetached,omitempty" xml:"OnlyDetached,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Sequence     *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	HostName  *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Role      *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Sequence  *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s ListNodesNoPagingRequest) String() string {
@@ -12464,11 +12010,6 @@ func (s *ListNodesNoPagingRequest) SetClusterId(v string) *ListNodesNoPagingRequ
 
 func (s *ListNodesNoPagingRequest) SetHostName(v string) *ListNodesNoPagingRequest {
 	s.HostName = &v
-	return s
-}
-
-func (s *ListNodesNoPagingRequest) SetOnlyDetached(v bool) *ListNodesNoPagingRequest {
-	s.OnlyDetached = &v
 	return s
 }
 
@@ -14077,7 +13618,6 @@ type ModifyImageGatewayConfigRequest struct {
 	DefaultRepoLocation    *string                                `json:"DefaultRepoLocation,omitempty" xml:"DefaultRepoLocation,omitempty"`
 	ImageExpirationTimeout *string                                `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
 	PullUpdateTimeout      *int32                                 `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
-	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Repo                   []*ModifyImageGatewayConfigRequestRepo `json:"Repo,omitempty" xml:"Repo,omitempty" type:"Repeated"`
 }
 
@@ -14126,11 +13666,6 @@ func (s *ModifyImageGatewayConfigRequest) SetImageExpirationTimeout(v string) *M
 
 func (s *ModifyImageGatewayConfigRequest) SetPullUpdateTimeout(v int32) *ModifyImageGatewayConfigRequest {
 	s.PullUpdateTimeout = &v
-	return s
-}
-
-func (s *ModifyImageGatewayConfigRequest) SetRegionId(v string) *ModifyImageGatewayConfigRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -18426,9 +17961,18 @@ func (client *Client) DescribeGWSClusterPolicyWithOptions(request *DescribeGWSCl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsyncMode"] = request.AsyncMode
-	query["ClusterId"] = request.ClusterId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18823,46 +18367,6 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	return _result, _err
 }
 
-func (client *Client) EcdDeleteDesktopsWithOptions(request *EcdDeleteDesktopsRequest, runtime *util.RuntimeOptions) (_result *EcdDeleteDesktopsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EcdDeleteDesktops"),
-		Version:     tea.String("2018-04-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EcdDeleteDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EcdDeleteDesktops(request *EcdDeleteDesktopsRequest) (_result *EcdDeleteDesktopsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EcdDeleteDesktopsResponse{}
-	_body, _err := client.EcdDeleteDesktopsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) EditJobTemplateWithOptions(request *EditJobTemplateRequest, runtime *util.RuntimeOptions) (_result *EditJobTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19143,46 +18647,6 @@ func (client *Client) GetGWSConnectTicket(request *GetGWSConnectTicketRequest) (
 	return _result, _err
 }
 
-func (client *Client) GetHealthMonitorLogsWithOptions(request *GetHealthMonitorLogsRequest, runtime *util.RuntimeOptions) (_result *GetHealthMonitorLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetHealthMonitorLogs"),
-		Version:     tea.String("2018-04-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetHealthMonitorLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetHealthMonitorLogs(request *GetHealthMonitorLogsRequest) (_result *GetHealthMonitorLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetHealthMonitorLogsResponse{}
-	_body, _err := client.GetHealthMonitorLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetHybridClusterConfigWithOptions(request *GetHybridClusterConfigRequest, runtime *util.RuntimeOptions) (_result *GetHybridClusterConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19336,46 +18800,6 @@ func (client *Client) GetVisualServiceStatus(request *GetVisualServiceStatusRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVisualServiceStatusResponse{}
 	_body, _err := client.GetVisualServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetWorkbenchTokenWithOptions(request *GetWorkbenchTokenRequest, runtime *util.RuntimeOptions) (_result *GetWorkbenchTokenResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetWorkbenchToken"),
-		Version:     tea.String("2018-04-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetWorkbenchTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetWorkbenchToken(request *GetWorkbenchTokenRequest) (_result *GetWorkbenchTokenResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetWorkbenchTokenResponse{}
-	_body, _err := client.GetWorkbenchTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21208,13 +20632,34 @@ func (client *Client) SetGWSClusterPolicyWithOptions(request *SetGWSClusterPolic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsyncMode"] = request.AsyncMode
-	query["Clipboard"] = request.Clipboard
-	query["ClusterId"] = request.ClusterId
-	query["LocalDrive"] = request.LocalDrive
-	query["UdpPort"] = request.UdpPort
-	query["UsbRedirect"] = request.UsbRedirect
-	query["Watermark"] = request.Watermark
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
+		query["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdpPort)) {
+		query["UdpPort"] = request.UdpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbRedirect)) {
+		query["UsbRedirect"] = request.UsbRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermark)) {
+		query["Watermark"] = request.Watermark
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
