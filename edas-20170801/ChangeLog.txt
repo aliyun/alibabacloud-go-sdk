@@ -1,3 +1,6 @@
+2022-01-21 Version: v0.1.2
+- Update all pop definitions.
+
 2021-08-05 Version: v0.1.1
 - Support delete slb listener.
 
