@@ -11718,6 +11718,8 @@ func (s *ListILMPoliciesResponse) SetBody(v *ListILMPoliciesResponseBody) *ListI
 
 type ListIndexTemplatesRequest struct {
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
+	Page          *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	Size          *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListIndexTemplatesRequest) String() string {
@@ -11730,6 +11732,16 @@ func (s ListIndexTemplatesRequest) GoString() string {
 
 func (s *ListIndexTemplatesRequest) SetIndexTemplate(v string) *ListIndexTemplatesRequest {
 	s.IndexTemplate = &v
+	return s
+}
+
+func (s *ListIndexTemplatesRequest) SetPage(v int32) *ListIndexTemplatesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListIndexTemplatesRequest) SetSize(v int32) *ListIndexTemplatesRequest {
+	s.Size = &v
 	return s
 }
 
@@ -16618,9 +16630,10 @@ func (s *RunPipelinesResponse) SetBody(v *RunPipelinesResponseBody) *RunPipeline
 }
 
 type ShrinkNodeRequest struct {
-	ClientToken  *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	IgnoreStatus *bool   `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	NodeType     *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body         []*ShrinkNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ClientToken  *string                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IgnoreStatus *bool                    `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
+	NodeType     *string                  `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s ShrinkNodeRequest) String() string {
@@ -16629,6 +16642,11 @@ func (s ShrinkNodeRequest) String() string {
 
 func (s ShrinkNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ShrinkNodeRequest) SetBody(v []*ShrinkNodeRequestBody) *ShrinkNodeRequest {
+	s.Body = v
+	return s
 }
 
 func (s *ShrinkNodeRequest) SetClientToken(v string) *ShrinkNodeRequest {
@@ -16643,6 +16661,35 @@ func (s *ShrinkNodeRequest) SetIgnoreStatus(v bool) *ShrinkNodeRequest {
 
 func (s *ShrinkNodeRequest) SetNodeType(v string) *ShrinkNodeRequest {
 	s.NodeType = &v
+	return s
+}
+
+type ShrinkNodeRequestBody struct {
+	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ShrinkNodeRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShrinkNodeRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ShrinkNodeRequestBody) SetHost(v string) *ShrinkNodeRequestBody {
+	s.Host = &v
+	return s
+}
+
+func (s *ShrinkNodeRequestBody) SetPort(v int32) *ShrinkNodeRequestBody {
+	s.Port = &v
+	return s
+}
+
+func (s *ShrinkNodeRequestBody) SetZoneId(v string) *ShrinkNodeRequestBody {
+	s.ZoneId = &v
 	return s
 }
 
@@ -17066,8 +17113,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TransferNodeRequest struct {
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	NodeType    *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body        []*TransferNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ClientToken *string                    `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NodeType    *string                    `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s TransferNodeRequest) String() string {
@@ -17078,6 +17126,11 @@ func (s TransferNodeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TransferNodeRequest) SetBody(v []*TransferNodeRequestBody) *TransferNodeRequest {
+	s.Body = v
+	return s
+}
+
 func (s *TransferNodeRequest) SetClientToken(v string) *TransferNodeRequest {
 	s.ClientToken = &v
 	return s
@@ -17085,6 +17138,35 @@ func (s *TransferNodeRequest) SetClientToken(v string) *TransferNodeRequest {
 
 func (s *TransferNodeRequest) SetNodeType(v string) *TransferNodeRequest {
 	s.NodeType = &v
+	return s
+}
+
+type TransferNodeRequestBody struct {
+	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s TransferNodeRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferNodeRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferNodeRequestBody) SetHost(v string) *TransferNodeRequestBody {
+	s.Host = &v
+	return s
+}
+
+func (s *TransferNodeRequestBody) SetPort(v int32) *TransferNodeRequestBody {
+	s.Port = &v
+	return s
+}
+
+func (s *TransferNodeRequestBody) SetZoneId(v string) *TransferNodeRequestBody {
+	s.ZoneId = &v
 	return s
 }
 
@@ -21359,8 +21441,9 @@ func (s *ValidateConnectionResponse) SetBody(v *ValidateConnectionResponseBody) 
 }
 
 type ValidateShrinkNodesRequest struct {
-	IgnoreStatus *bool   `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	NodeType     *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body         []*ValidateShrinkNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	IgnoreStatus *bool                             `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
+	NodeType     *string                           `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s ValidateShrinkNodesRequest) String() string {
@@ -21371,6 +21454,11 @@ func (s ValidateShrinkNodesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ValidateShrinkNodesRequest) SetBody(v []*ValidateShrinkNodesRequestBody) *ValidateShrinkNodesRequest {
+	s.Body = v
+	return s
+}
+
 func (s *ValidateShrinkNodesRequest) SetIgnoreStatus(v bool) *ValidateShrinkNodesRequest {
 	s.IgnoreStatus = &v
 	return s
@@ -21378,6 +21466,35 @@ func (s *ValidateShrinkNodesRequest) SetIgnoreStatus(v bool) *ValidateShrinkNode
 
 func (s *ValidateShrinkNodesRequest) SetNodeType(v string) *ValidateShrinkNodesRequest {
 	s.NodeType = &v
+	return s
+}
+
+type ValidateShrinkNodesRequestBody struct {
+	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ValidateShrinkNodesRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateShrinkNodesRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateShrinkNodesRequestBody) SetHost(v string) *ValidateShrinkNodesRequestBody {
+	s.Host = &v
+	return s
+}
+
+func (s *ValidateShrinkNodesRequestBody) SetPort(v int32) *ValidateShrinkNodesRequestBody {
+	s.Port = &v
+	return s
+}
+
+func (s *ValidateShrinkNodesRequestBody) SetZoneId(v string) *ValidateShrinkNodesRequestBody {
+	s.ZoneId = &v
 	return s
 }
 
@@ -21497,7 +21614,8 @@ func (s *ValidateSlrPermissionResponse) SetBody(v *ValidateSlrPermissionResponse
 }
 
 type ValidateTransferableNodesRequest struct {
-	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body     []*ValidateTransferableNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	NodeType *string                                 `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s ValidateTransferableNodesRequest) String() string {
@@ -21508,8 +21626,42 @@ func (s ValidateTransferableNodesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ValidateTransferableNodesRequest) SetBody(v []*ValidateTransferableNodesRequestBody) *ValidateTransferableNodesRequest {
+	s.Body = v
+	return s
+}
+
 func (s *ValidateTransferableNodesRequest) SetNodeType(v string) *ValidateTransferableNodesRequest {
 	s.NodeType = &v
+	return s
+}
+
+type ValidateTransferableNodesRequestBody struct {
+	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	Port   *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ValidateTransferableNodesRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateTransferableNodesRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateTransferableNodesRequestBody) SetHost(v string) *ValidateTransferableNodesRequestBody {
+	s.Host = &v
+	return s
+}
+
+func (s *ValidateTransferableNodesRequestBody) SetPort(v int32) *ValidateTransferableNodesRequestBody {
+	s.Port = &v
+	return s
+}
+
+func (s *ValidateTransferableNodesRequestBody) SetZoneId(v string) *ValidateTransferableNodesRequestBody {
+	s.ZoneId = &v
 	return s
 }
 
@@ -26120,6 +26272,14 @@ func (client *Client) ListIndexTemplatesWithOptions(InstanceId *string, request 
 		query["indexTemplate"] = request.IndexTemplate
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -28109,6 +28269,7 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ShrinkNode"),
@@ -28429,6 +28590,7 @@ func (client *Client) TransferNodeWithOptions(InstanceId *string, request *Trans
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TransferNode"),
@@ -30644,6 +30806,7 @@ func (client *Client) ValidateShrinkNodesWithOptions(InstanceId *string, request
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateShrinkNodes"),
@@ -30741,6 +30904,7 @@ func (client *Client) ValidateTransferableNodesWithOptions(InstanceId *string, r
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateTransferableNodes"),
