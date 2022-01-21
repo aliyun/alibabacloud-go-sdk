@@ -1,3 +1,6 @@
+2022-01-21 Version: v1.0.0
+- Report Metadata via POP.
+
 2022-01-21 Version: v0.1.2
 - Update all pop definitions.
 
