@@ -88,10 +88,14 @@ func (s *CloneFlowResponse) SetBody(v *CloneFlowResponseBody) *CloneFlowResponse
 }
 
 type CloneFlowJobRequest struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 克隆的目标作业ID。您可以调用ListFlowJob查看。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 克隆的目标作业名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 克隆的目标作业所属项目。您可以调用ListFlowProject查看项目的ID。
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CloneFlowJobRequest) String() string {
@@ -123,7 +127,9 @@ func (s *CloneFlowJobRequest) SetRegionId(v string) *CloneFlowJobRequest {
 }
 
 type CloneFlowJobResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 新产生的作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1304,26 +1310,46 @@ func (s *CreateFlowEditLockResponse) SetBody(v *CreateFlowEditLockResponseBody) 
 }
 
 type CreateFlowJobRequest struct {
-	Adhoc           *bool                               `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	AlertConf       *string                             `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	ClientToken     *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId       *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CustomVariables *string                             `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvConf         *string                             `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	FailAct         *string                             `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	Mode            *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	MonitorConf     *string                             `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamConf       *string                             `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	Params          *string                             `json:"Params,omitempty" xml:"Params,omitempty"`
-	ParentCategory  *string                             `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
-	ProjectId       *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceList    []*CreateFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	RetryPolicy     *string                             `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	RunConf         *string                             `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	Type            *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否临时查询。
+	Adhoc *bool `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	// 保留参数。
+	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	// 保留参数。
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 集群ID。您可以调用ListClusters查看集群的ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 自定义变量。
+	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	// 作业的描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
+	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	// 作业的名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 作业内容。
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// 父目录ID。您可以调用DescribeFlowCategory查看。
+	ParentCategory *string `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 保留参数。
+	ResourceList []*CreateFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// 重试策略，保留参数。
+	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFlowJobRequest) String() string {
@@ -1435,8 +1461,10 @@ func (s *CreateFlowJobRequest) SetType(v string) *CreateFlowJobRequest {
 }
 
 type CreateFlowJobRequestResourceList struct {
+	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 保留参数。
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s CreateFlowJobRequestResourceList) String() string {
@@ -1458,7 +1486,9 @@ func (s *CreateFlowJobRequestResourceList) SetPath(v string) *CreateFlowJobReque
 }
 
 type CreateFlowJobResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1504,11 +1534,16 @@ func (s *CreateFlowJobResponse) SetBody(v *CreateFlowJobResponseBody) *CreateFlo
 }
 
 type CreateFlowProjectRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 项目描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 项目名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 产品类型，固定值DATABRICKS_DATAINSIGHT
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1551,7 +1586,9 @@ func (s *CreateFlowProjectRequest) SetResourceGroupId(v string) *CreateFlowProje
 }
 
 type CreateFlowProjectResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 项目ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4112,9 +4149,12 @@ func (s *DescribeFlowInstanceResponse) SetBody(v *DescribeFlowInstanceResponseBo
 }
 
 type DescribeFlowJobRequest struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业ID。您可以调用ListFlowJob查看作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeFlowJobRequest) String() string {
@@ -4141,33 +4181,59 @@ func (s *DescribeFlowJobRequest) SetRegionId(v string) *DescribeFlowJobRequest {
 }
 
 type DescribeFlowJobResponseBody struct {
-	Adhoc             *string                                  `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	AlertConf         *string                                  `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	CategoryId        *string                                  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomVariables   *string                                  `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	Description       *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EditLockDetail    *string                                  `json:"EditLockDetail,omitempty" xml:"EditLockDetail,omitempty"`
-	EnvConf           *string                                  `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	FailAct           *string                                  `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	GmtCreate         *int64                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified       *int64                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	KnoxPassword      *string                                  `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
-	KnoxUser          *string                                  `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
-	LastInstanceId    *string                                  `json:"LastInstanceId,omitempty" xml:"LastInstanceId,omitempty"`
-	MaxRetry          *int32                                   `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	MaxRunningTimeSec *int64                                   `json:"MaxRunningTimeSec,omitempty" xml:"MaxRunningTimeSec,omitempty"`
-	Mode              *string                                  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	MonitorConf       *string                                  `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	Name              *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamConf         *string                                  `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	Params            *string                                  `json:"Params,omitempty" xml:"Params,omitempty"`
-	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceList      *DescribeFlowJobResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
-	RetryInterval     *int64                                   `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	RetryPolicy       *string                                  `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	RunConf           *string                                  `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	Type              *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否临时查询。
+	Adhoc *string `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	// 报警配置。
+	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	// 作业所在目录ID。
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 自定义变量。
+	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	// 作业的描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 保留参数。
+	EditLockDetail *string `json:"EditLockDetail,omitempty" xml:"EditLockDetail,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 创建时间。
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 最后修改时间。
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Knox的用户密码，执行Zeppelin Notebook时必须提供。
+	KnoxPassword *string `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
+	// Knox的用户名，执行Zeppelin Notebook时必须提供。
+	KnoxUser *string `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
+	// 最后一次执行的实例ID。
+	LastInstanceId *string `json:"LastInstanceId,omitempty" xml:"LastInstanceId,omitempty"`
+	// 最大重试次数。
+	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// 保留参数。
+	MaxRunningTimeSec *int64 `json:"MaxRunningTimeSec,omitempty" xml:"MaxRunningTimeSec,omitempty"`
+	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
+	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	// 作业名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 作业内容。
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// 请求ID。
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceList *DescribeFlowJobResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
+	// 重试间隔 0~300（秒）。
+	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// 重试策略，保留参数。
+	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeFlowJobResponseBody) String() string {
@@ -4331,8 +4397,10 @@ func (s *DescribeFlowJobResponseBodyResourceList) SetResource(v []*DescribeFlowJ
 }
 
 type DescribeFlowJobResponseBodyResourceListResource struct {
+	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 保留参数。
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeFlowJobResponseBodyResourceListResource) String() string {
@@ -5751,9 +5819,12 @@ func (s *KillFlowResponse) SetBody(v *KillFlowResponseBody) *KillFlowResponse {
 }
 
 type KillFlowJobRequest struct {
+	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
 	JobInstanceId *string `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s KillFlowJobRequest) String() string {
@@ -5780,7 +5851,9 @@ func (s *KillFlowJobRequest) SetRegionId(v string) *KillFlowJobRequest {
 }
 
 type KillFlowJobResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 返回执行结果，包含如下：true（执行成功），false（执行失败）
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6254,16 +6327,26 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFlowRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Periodic   *bool   `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 集群ID。您可以调用ListClusters查看集群的ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 工作流ID。您可以调用ListFlowInstance查看工作流ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业ID。您可以调用ListFlowJob查看。
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 工作流名称。您可以调用ListFlowInstance查看。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页查询数量。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 是否调度。
+	Periodic *bool `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 状态：  STOP_SCHEDULE（停止调度） UNDER_SCHEDULE（调度中）
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListFlowRequest) String() string {
@@ -6325,11 +6408,16 @@ func (s *ListFlowRequest) SetStatus(v string) *ListFlowRequest {
 }
 
 type ListFlowResponseBody struct {
-	Flow       *ListFlowResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	PageNumber *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	// 工作流列表
+	Flow *ListFlowResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
+	// 页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页数量。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数。
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowResponseBody) String() string {
@@ -6537,10 +6625,15 @@ func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
 }
 
 type ListFlowClusterRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 当前页码，从1开始。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时设置的每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID。您可以调用ListResourceGroups查看资源组ID。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6578,11 +6671,16 @@ func (s *ListFlowClusterRequest) SetResourceGroupId(v string) *ListFlowClusterRe
 }
 
 type ListFlowClusterResponseBody struct {
-	Clusters   *ListFlowClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
-	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 集群列表。
+	Clusters *ListFlowClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
+	// 当前页码，从1开始。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFlowClusterResponseBody) String() string {
@@ -6636,21 +6734,36 @@ func (s *ListFlowClusterResponseBodyClusters) SetClusterInfo(v []*ListFlowCluste
 }
 
 type ListFlowClusterResponseBodyClustersClusterInfo struct {
-	ChargeType          *string                                                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateResource      *string                                                      `json:"CreateResource,omitempty" xml:"CreateResource,omitempty"`
-	CreateTime          *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime         *int64                                                       `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FailReason          *ListFlowClusterResponseBodyClustersClusterInfoFailReason    `json:"FailReason,omitempty" xml:"FailReason,omitempty" type:"Struct"`
-	HasUncompletedOrder *bool                                                        `json:"HasUncompletedOrder,omitempty" xml:"HasUncompletedOrder,omitempty"`
-	Id                  *string                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	K8sClusterId        *string                                                      `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	Name                *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderList           *string                                                      `json:"OrderList,omitempty" xml:"OrderList,omitempty"`
-	OrderTaskInfo       *ListFlowClusterResponseBodyClustersClusterInfoOrderTaskInfo `json:"OrderTaskInfo,omitempty" xml:"OrderTaskInfo,omitempty" type:"Struct"`
-	Period              *int32                                                       `json:"Period,omitempty" xml:"Period,omitempty"`
-	RunningTime         *int32                                                       `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	Status              *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 付费类型。PostPaid: 按量付费，PrePaid：包年包月集群。
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// 资源。
+	CreateResource *string `json:"CreateResource,omitempty" xml:"CreateResource,omitempty"`
+	// 创建时间。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 过期时间。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 集群失败原因。
+	FailReason *ListFlowClusterResponseBodyClustersClusterInfoFailReason `json:"FailReason,omitempty" xml:"FailReason,omitempty" type:"Struct"`
+	// 是否有未完成订单。
+	HasUncompletedOrder *bool `json:"HasUncompletedOrder,omitempty" xml:"HasUncompletedOrder,omitempty"`
+	// 集群ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 保留字段。
+	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// 集群名字。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 订单列表
+	OrderList *string `json:"OrderList,omitempty" xml:"OrderList,omitempty"`
+	// 订单任务信息。
+	OrderTaskInfo *ListFlowClusterResponseBodyClustersClusterInfoOrderTaskInfo `json:"OrderTaskInfo,omitempty" xml:"OrderTaskInfo,omitempty" type:"Struct"`
+	// 包年包月时间（包月数有：1、2、3、4、5、6、7、8、9、12、24、36）。ChargeType=PrePaid 时，必填。
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 运行时间，单位：秒。
+	RunningTime *int32 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
+	// 集群状态。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 集群类型。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowClusterResponseBodyClustersClusterInfo) String() string {
@@ -6737,8 +6850,11 @@ func (s *ListFlowClusterResponseBodyClustersClusterInfo) SetType(v string) *List
 }
 
 type ListFlowClusterResponseBodyClustersClusterInfoFailReason struct {
+	// 错误码。
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 错误原因。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6766,9 +6882,12 @@ func (s *ListFlowClusterResponseBodyClustersClusterInfoFailReason) SetRequestId(
 }
 
 type ListFlowClusterResponseBodyClustersClusterInfoOrderTaskInfo struct {
-	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
-	OrderIdList  *string `json:"OrderIdList,omitempty" xml:"OrderIdList,omitempty"`
-	TargetCount  *int32  `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
+	// 当前数量。
+	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	// 订单列表。
+	OrderIdList *string `json:"OrderIdList,omitempty" xml:"OrderIdList,omitempty"`
+	// 目标数量。
+	TargetCount *int32 `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
 }
 
 func (s ListFlowClusterResponseBodyClustersClusterInfoOrderTaskInfo) String() string {
@@ -6818,8 +6937,11 @@ func (s *ListFlowClusterResponse) SetBody(v *ListFlowClusterResponseBody) *ListF
 }
 
 type ListFlowClusterAllRequest struct {
-	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 产品类型。固定值DATABRICKS_INSIGHT。
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID。您可以调用ListResourceGroups查看资源组ID。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6847,11 +6969,16 @@ func (s *ListFlowClusterAllRequest) SetResourceGroupId(v string) *ListFlowCluste
 }
 
 type ListFlowClusterAllResponseBody struct {
-	Clusters   *ListFlowClusterAllResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 集群列表。
+	Clusters *ListFlowClusterAllResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
+	// 当前页码，从1开始。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFlowClusterAllResponseBody) String() string {
@@ -6905,21 +7032,36 @@ func (s *ListFlowClusterAllResponseBodyClusters) SetClusterInfo(v []*ListFlowClu
 }
 
 type ListFlowClusterAllResponseBodyClustersClusterInfo struct {
-	ChargeType          *string                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateResource      *string                                                         `json:"CreateResource,omitempty" xml:"CreateResource,omitempty"`
-	CreateTime          *int64                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime         *int64                                                          `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FailReason          *ListFlowClusterAllResponseBodyClustersClusterInfoFailReason    `json:"FailReason,omitempty" xml:"FailReason,omitempty" type:"Struct"`
-	HasUncompletedOrder *bool                                                           `json:"HasUncompletedOrder,omitempty" xml:"HasUncompletedOrder,omitempty"`
-	Id                  *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	K8sClusterId        *string                                                         `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	Name                *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderList           *string                                                         `json:"OrderList,omitempty" xml:"OrderList,omitempty"`
-	OrderTaskInfo       *ListFlowClusterAllResponseBodyClustersClusterInfoOrderTaskInfo `json:"OrderTaskInfo,omitempty" xml:"OrderTaskInfo,omitempty" type:"Struct"`
-	Period              *int32                                                          `json:"Period,omitempty" xml:"Period,omitempty"`
-	RunningTime         *int32                                                          `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	Status              *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 付费类型。PostPaid: 按量付费，PrePaid：包年包月集群。
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// 资源。
+	CreateResource *string `json:"CreateResource,omitempty" xml:"CreateResource,omitempty"`
+	// 创建时间。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 过期时间。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 集群失败原因。
+	FailReason *ListFlowClusterAllResponseBodyClustersClusterInfoFailReason `json:"FailReason,omitempty" xml:"FailReason,omitempty" type:"Struct"`
+	// 是否有未完成订单。
+	HasUncompletedOrder *bool `json:"HasUncompletedOrder,omitempty" xml:"HasUncompletedOrder,omitempty"`
+	// 集群ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 保留字段。
+	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	// 集群名字。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 订单列表
+	OrderList *string `json:"OrderList,omitempty" xml:"OrderList,omitempty"`
+	// 订单任务信息。
+	OrderTaskInfo *ListFlowClusterAllResponseBodyClustersClusterInfoOrderTaskInfo `json:"OrderTaskInfo,omitempty" xml:"OrderTaskInfo,omitempty" type:"Struct"`
+	// 包年包月时间（包月数有：1、2、3、4、5、6、7、8、9、12、24、36）。ChargeType=PrePaid 时，必填。
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 运行时间，单位：秒。
+	RunningTime *int32 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
+	// 集群状态。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 集群类型。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowClusterAllResponseBodyClustersClusterInfo) String() string {
@@ -7006,8 +7148,11 @@ func (s *ListFlowClusterAllResponseBodyClustersClusterInfo) SetType(v string) *L
 }
 
 type ListFlowClusterAllResponseBodyClustersClusterInfoFailReason struct {
+	// 错误码。
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 错误原因。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7035,9 +7180,12 @@ func (s *ListFlowClusterAllResponseBodyClustersClusterInfoFailReason) SetRequest
 }
 
 type ListFlowClusterAllResponseBodyClustersClusterInfoOrderTaskInfo struct {
-	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
-	OrderIdList  *string `json:"OrderIdList,omitempty" xml:"OrderIdList,omitempty"`
-	TargetCount  *int32  `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
+	// 当前数量。
+	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	// 订单列表。
+	OrderIdList *string `json:"OrderIdList,omitempty" xml:"OrderIdList,omitempty"`
+	// 目标数量。
+	TargetCount *int32 `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
 }
 
 func (s ListFlowClusterAllResponseBodyClustersClusterInfoOrderTaskInfo) String() string {
@@ -7961,15 +8109,24 @@ func (s *ListFlowInstanceResponse) SetBody(v *ListFlowInstanceResponseBody) *Lis
 }
 
 type ListFlowJobHistoryRequest struct {
-	Id         *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobType    *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId  *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 作业ID。您可以调用ListFlowJob查看作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 当前页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 状态列表。取值如下：SUBMITTED, RUNNING, SUCCESS, FAILED, KILL_FAILED, KILL_SUCCESS
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	TimeRange  *string   `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+	// 查询的时间范围参数，参数列表：type: range，from: 开始时间（long型时间戳），to: 结束时间（long型时间戳）
+	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
 func (s ListFlowJobHistoryRequest) String() string {
@@ -8026,11 +8183,16 @@ func (s *ListFlowJobHistoryRequest) SetTimeRange(v string) *ListFlowJobHistoryRe
 }
 
 type ListFlowJobHistoryResponseBody struct {
+	// 作业实例列表。
 	NodeInstances *ListFlowJobHistoryResponseBodyNodeInstances `json:"NodeInstances,omitempty" xml:"NodeInstances,omitempty" type:"Struct"`
-	PageNumber    *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total         *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// 当前页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时设置的每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 记录总数。
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowJobHistoryResponseBody) String() string {
@@ -8084,32 +8246,58 @@ func (s *ListFlowJobHistoryResponseBodyNodeInstances) SetNodeInstance(v []*ListF
 }
 
 type ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EnvConf        *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	ExternalId     *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	ExternalInfo   *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 运行结束时间。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 启动器的application的ID。
+	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	// 外部信息。例如，运行作业的错误诊断信息。
+	ExternalInfo *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	// 实例对应的Container的状态：SUBMITTED, RUNNING, SUCCESS, FAIL, KILL_FAIL, KILL_SUCCESS
 	ExternalStatus *string `json:"ExternalStatus,omitempty" xml:"ExternalStatus,omitempty"`
-	FailAct        *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HostName       *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName        *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobParams      *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	JobType        *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MaxRetry       *int32  `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	ParamConf      *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Retries        *int32  `json:"Retries,omitempty" xml:"Retries,omitempty"`
-	RetryInterval  *int64  `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	RunConf        *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Pending        *bool   `json:"pending,omitempty" xml:"pending,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 创建时间。
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 创建时间。
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 保留参数。
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// 作业实例ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业ID。
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 作业名称。
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// 作业内容。
+	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// 作业类型。
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 最大重试次数。
+	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// 保留参数。
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 重试次数。
+	Retries *int32 `json:"Retries,omitempty" xml:"Retries,omitempty"`
+	// 重试间隔 0-300（秒）。
+	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 运行开始时间。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 实例的执行状态：PREP：准备启动，SUBMITTING：提交中，RUNNING：运行中DONE：已完成，OK：执行成功，FAILED：执行失败，KILLED：已终止，KILL_FAILED：终止失败，START_RETRY：开始重试
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 节点类型：JOB：作业，CLUSTER：集群，START：开始，END：结束
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否结束。
+	Pending *bool `json:"pending,omitempty" xml:"pending,omitempty"`
 }
 
 func (s ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) String() string {
@@ -8274,14 +8462,22 @@ func (s *ListFlowJobHistoryResponse) SetBody(v *ListFlowJobHistoryResponseBody) 
 }
 
 type ListFlowJobsRequest struct {
-	Adhoc      *bool   `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否为临时查询。用于过滤作业。
+	Adhoc *bool `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	// 作业ID。您可以调用ListFlowJob查看作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 当前页数。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页的作业数量。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 作业类型。用于过滤作业，支持的类型有：SPARK，SPARK_STREAMING，ZEPPELIN。
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowJobsRequest) String() string {
@@ -8333,11 +8529,15 @@ func (s *ListFlowJobsRequest) SetType(v string) *ListFlowJobsRequest {
 }
 
 type ListFlowJobsResponseBody struct {
-	JobList    *ListFlowJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                           `json:"Total,omitempty" xml:"Total,omitempty"`
+	JobList *ListFlowJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Struct"`
+	// 当前页数。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页的作业数量。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 作业数量。
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowJobsResponseBody) String() string {
@@ -8391,27 +8591,47 @@ func (s *ListFlowJobsResponseBodyJobList) SetJob(v []*ListFlowJobsResponseBodyJo
 }
 
 type ListFlowJobsResponseBodyJobListJob struct {
-	Adhoc              *string                                         `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
-	AlertConf          *string                                         `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	CategoryId         *string                                         `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CustomVariables    *string                                         `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	Description        *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvConf            *string                                         `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	FailAct            *string                                         `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	GmtCreate          *int64                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *int64                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                 *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastInstanceDetail *string                                         `json:"LastInstanceDetail,omitempty" xml:"LastInstanceDetail,omitempty"`
-	MaxRetry           *int32                                          `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	Mode               *string                                         `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	MonitorConf        *string                                         `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	Name               *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamConf          *string                                         `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	Params             *string                                         `json:"Params,omitempty" xml:"Params,omitempty"`
-	ResourceList       *ListFlowJobsResponseBodyJobListJobResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
-	RetryInterval      *int64                                          `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	RunConf            *string                                         `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
-	Type               *string                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否临时查询。
+	Adhoc *string `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	// 报警配置。
+	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	// 作业所在目录ID。
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 自定义变量。
+	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	// 作业的描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 创建时间。
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 最后修改时间。
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 最后一次执行的实例ID。
+	LastInstanceDetail *string `json:"LastInstanceDetail,omitempty" xml:"LastInstanceDetail,omitempty"`
+	// 最大重试次数。
+	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
+	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	// 作业名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 作业内容。
+	Params       *string                                         `json:"Params,omitempty" xml:"Params,omitempty"`
+	ResourceList *ListFlowJobsResponseBodyJobListJobResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Struct"`
+	// 重试间隔 0~300（秒）。
+	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFlowJobsResponseBodyJobListJob) String() string {
@@ -8545,8 +8765,10 @@ func (s *ListFlowJobsResponseBodyJobListJobResourceList) SetResource(v []*ListFl
 }
 
 type ListFlowJobsResponseBodyJobListJobResourceListResource struct {
+	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 保留参数。
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ListFlowJobsResponseBodyJobListJobResourceListResource) String() string {
@@ -9334,12 +9556,19 @@ func (s *ListFlowProjectUserResponse) SetBody(v *ListFlowProjectUserResponseBody
 }
 
 type ListFlowProjectsRequest struct {
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType     *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目名称，用于过滤项目
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 页码，用于分页
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页数量
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 产品类型。固定值DATABIRCKS_DATAINSIGHT
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 项目ID。您可以调用ListFlowProjects查看项目的ID
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -9387,11 +9616,16 @@ func (s *ListFlowProjectsRequest) SetResourceGroupId(v string) *ListFlowProjects
 }
 
 type ListFlowProjectsResponseBody struct {
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Projects   *ListFlowProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Struct"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	// 页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页数量
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 项目列表
+	Projects *ListFlowProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Struct"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListFlowProjectsResponseBody) String() string {
@@ -9445,12 +9679,18 @@ func (s *ListFlowProjectsResponseBodyProjects) SetProject(v []*ListFlowProjectsR
 }
 
 type ListFlowProjectsResponseBodyProjectsProject struct {
+	// 项目描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 创建时间戳
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间戳
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 项目ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 项目名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 主账号ID
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListFlowProjectsResponseBodyProjectsProject) String() string {
@@ -9510,289 +9750,6 @@ func (s *ListFlowProjectsResponse) SetHeaders(v map[string]*string) *ListFlowPro
 }
 
 func (s *ListFlowProjectsResponse) SetBody(v *ListFlowProjectsResponseBody) *ListFlowProjectsResponse {
-	s.Body = v
-	return s
-}
-
-type ListFlowsRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Periodic   *bool   `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListFlowsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFlowsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFlowsRequest) SetClusterId(v string) *ListFlowsRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetId(v string) *ListFlowsRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetJobId(v string) *ListFlowsRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetName(v string) *ListFlowsRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetPageNumber(v int32) *ListFlowsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetPageSize(v int32) *ListFlowsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetPeriodic(v bool) *ListFlowsRequest {
-	s.Periodic = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetProjectId(v string) *ListFlowsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetRegionId(v string) *ListFlowsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListFlowsRequest) SetStatus(v string) *ListFlowsRequest {
-	s.Status = &v
-	return s
-}
-
-type ListFlowsResponseBody struct {
-	Flow       *ListFlowsResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	PageNumber *int32                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                     `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s ListFlowsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFlowsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListFlowsResponseBody) SetFlow(v *ListFlowsResponseBodyFlow) *ListFlowsResponseBody {
-	s.Flow = v
-	return s
-}
-
-func (s *ListFlowsResponseBody) SetPageNumber(v int32) *ListFlowsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListFlowsResponseBody) SetPageSize(v int32) *ListFlowsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListFlowsResponseBody) SetRequestId(v string) *ListFlowsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBody) SetTotal(v int32) *ListFlowsResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListFlowsResponseBodyFlow struct {
-	Flow []*ListFlowsResponseBodyFlowFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Repeated"`
-}
-
-func (s ListFlowsResponseBodyFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFlowsResponseBodyFlow) GoString() string {
-	return s.String()
-}
-
-func (s *ListFlowsResponseBodyFlow) SetFlow(v []*ListFlowsResponseBodyFlowFlow) *ListFlowsResponseBodyFlow {
-	s.Flow = v
-	return s
-}
-
-type ListFlowsResponseBodyFlowFlow struct {
-	AlertConf               *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	AlertDingDingGroupBizId *string `json:"AlertDingDingGroupBizId,omitempty" xml:"AlertDingDingGroupBizId,omitempty"`
-	AlertUserGroupBizId     *string `json:"AlertUserGroupBizId,omitempty" xml:"AlertUserGroupBizId,omitempty"`
-	CategoryId              *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateCluster           *bool   `json:"CreateCluster,omitempty" xml:"CreateCluster,omitempty"`
-	CronExpr                *string `json:"CronExpr,omitempty" xml:"CronExpr,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndSchedule             *int64  `json:"EndSchedule,omitempty" xml:"EndSchedule,omitempty"`
-	GmtCreate               *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified             *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Graph                   *string `json:"Graph,omitempty" xml:"Graph,omitempty"`
-	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Periodic                *bool   `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
-	ProjectId               *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartSchedule           *int64  `json:"StartSchedule,omitempty" xml:"StartSchedule,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListFlowsResponseBodyFlowFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFlowsResponseBodyFlowFlow) GoString() string {
-	return s.String()
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetAlertConf(v string) *ListFlowsResponseBodyFlowFlow {
-	s.AlertConf = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetAlertDingDingGroupBizId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.AlertDingDingGroupBizId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetAlertUserGroupBizId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.AlertUserGroupBizId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetCategoryId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.CategoryId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetClusterId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetCreateCluster(v bool) *ListFlowsResponseBodyFlowFlow {
-	s.CreateCluster = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetCronExpr(v string) *ListFlowsResponseBodyFlowFlow {
-	s.CronExpr = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetDescription(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Description = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetEndSchedule(v int64) *ListFlowsResponseBodyFlowFlow {
-	s.EndSchedule = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetGmtCreate(v int64) *ListFlowsResponseBodyFlowFlow {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetGmtModified(v int64) *ListFlowsResponseBodyFlowFlow {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetGraph(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Graph = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetHostName(v string) *ListFlowsResponseBodyFlowFlow {
-	s.HostName = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Id = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetName(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Name = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetPeriodic(v bool) *ListFlowsResponseBodyFlowFlow {
-	s.Periodic = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetProjectId(v string) *ListFlowsResponseBodyFlowFlow {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetStartSchedule(v int64) *ListFlowsResponseBodyFlowFlow {
-	s.StartSchedule = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetStatus(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Status = &v
-	return s
-}
-
-func (s *ListFlowsResponseBodyFlowFlow) SetType(v string) *ListFlowsResponseBodyFlowFlow {
-	s.Type = &v
-	return s
-}
-
-type ListFlowsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFlowsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFlowsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListFlowsResponse) SetHeaders(v map[string]*string) *ListFlowsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFlowsResponse) SetBody(v *ListFlowsResponseBody) *ListFlowsResponse {
 	s.Body = v
 	return s
 }
@@ -10361,25 +10318,44 @@ func (s *ModifyFlowForWebResponse) SetBody(v *ModifyFlowForWebResponseBody) *Mod
 }
 
 type ModifyFlowJobRequest struct {
-	AlertConf       *string                             `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
-	ClusterId       *string                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CustomVariables *string                             `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvConf         *string                             `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
-	FailAct         *string                             `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
-	Id              *string                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	KnoxPassword    *string                             `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
-	KnoxUser        *string                             `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
-	Mode            *string                             `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	MonitorConf     *string                             `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
-	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamConf       *string                             `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
-	Params          *string                             `json:"Params,omitempty" xml:"Params,omitempty"`
-	ProjectId       *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId        *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceList    []*ModifyFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	RetryPolicy     *string                             `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
-	RunConf         *string                             `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 保留参数。
+	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	// 集群ID。您可以调用ListClusters查看集群的ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 自定义变量。
+	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	// 修改后的作业描述。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 需要修改的作业的ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Knox的用户密码，执行Zeppelin Notebook时必须提供。
+	KnoxPassword *string `json:"KnoxPassword,omitempty" xml:"KnoxPassword,omitempty"`
+	// Knox的用户名，执行Zeppelin Notebook时必须提供。
+	KnoxUser *string `json:"KnoxUser,omitempty" xml:"KnoxUser,omitempty"`
+	// 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
+	MonitorConf *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	// 修改后的作业名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 作业内容。如果是spark作业，该参数的内容会作为spark-submit的参数。
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 保留参数。
+	ResourceList []*ModifyFlowJobRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// 重试策略，保留参数。
+	RetryPolicy *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
 }
 
 func (s ModifyFlowJobRequest) String() string {
@@ -10486,8 +10462,10 @@ func (s *ModifyFlowJobRequest) SetRunConf(v string) *ModifyFlowJobRequest {
 }
 
 type ModifyFlowJobRequestResourceList struct {
+	// 保留参数。
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// 保留参数。
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ModifyFlowJobRequestResourceList) String() string {
@@ -10509,7 +10487,9 @@ func (s *ModifyFlowJobRequestResourceList) SetPath(v string) *ModifyFlowJobReque
 }
 
 type ModifyFlowJobResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// API调用结果：true（修改成功），false（修改失败）
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10885,10 +10865,14 @@ func (s *ReleaseClusterResponse) SetBody(v *ReleaseClusterResponseBody) *Release
 }
 
 type RerunFlowRequest struct {
+	// 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ReRunFail      *bool   `json:"ReRunFail,omitempty" xml:"ReRunFail,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 是否只重试失败节点。
+	ReRunFail *bool `json:"ReRunFail,omitempty" xml:"ReRunFail,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RerunFlowRequest) String() string {
@@ -10920,7 +10904,9 @@ func (s *RerunFlowRequest) SetRegionId(v string) *RerunFlowRequest {
 }
 
 type RerunFlowResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 返回执行结果，包含如下：true: 重试工作流成功，false: 重试工作流失败。
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11059,9 +11045,12 @@ func (s *RestoreFlowEntitySnapshotResponse) SetBody(v *RestoreFlowEntitySnapshot
 }
 
 type ResumeFlowRequest struct {
+	// 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ResumeFlowRequest) String() string {
@@ -11088,7 +11077,9 @@ func (s *ResumeFlowRequest) SetRegionId(v string) *ResumeFlowRequest {
 }
 
 type ResumeFlowResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 返回执行结果。
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11134,9 +11125,12 @@ func (s *ResumeFlowResponse) SetBody(v *ResumeFlowResponseBody) *ResumeFlowRespo
 }
 
 type StartFlowRequest struct {
+	// 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartFlowRequest) String() string {
@@ -11163,7 +11157,9 @@ func (s *StartFlowRequest) SetRegionId(v string) *StartFlowRequest {
 }
 
 type StartFlowResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 返回执行结果，包含如下：true: 启动成功，false: 启动失败。
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11209,10 +11205,14 @@ func (s *StartFlowResponse) SetBody(v *StartFlowResponseBody) *StartFlowResponse
 }
 
 type SubmitFlowRequest struct {
-	Conf      *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// 配置信息{"key":"value"}格式。  本示例中cyctime表示实际调度运行的时间（长整型时间戳）。
+	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	// 工作流ID。您可以调用ListFlowInstance查看工作流ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitFlowRequest) String() string {
@@ -11244,10 +11244,14 @@ func (s *SubmitFlowRequest) SetRegionId(v string) *SubmitFlowRequest {
 }
 
 type SubmitFlowResponseBody struct {
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 过期参数。
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 工作流实例ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 过期参数。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitFlowResponseBody) String() string {
@@ -11302,12 +11306,18 @@ func (s *SubmitFlowResponse) SetBody(v *SubmitFlowResponseBody) *SubmitFlowRespo
 }
 
 type SubmitFlowJobRequest struct {
+	// 集群ID。您可以调用ListClusters查看集群的ID。
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Conf      *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
-	HostName  *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 配置参数信息：{"key1":"value1"}。key为params的参数值会覆盖实际作业中运行的内容。
+	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	// 保留参数。
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// 作业ID。您可以调用ListFlowJob查看作业ID。
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SubmitFlowJobRequest) String() string {
@@ -11349,7 +11359,9 @@ func (s *SubmitFlowJobRequest) SetRegionId(v string) *SubmitFlowJobRequest {
 }
 
 type SubmitFlowJobResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 运行的作业实例ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11395,9 +11407,12 @@ func (s *SubmitFlowJobResponse) SetBody(v *SubmitFlowJobResponseBody) *SubmitFlo
 }
 
 type SuspendFlowRequest struct {
+	// 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
 	FlowInstanceId *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SuspendFlowRequest) String() string {
@@ -11424,7 +11439,9 @@ func (s *SuspendFlowRequest) SetRegionId(v string) *SuspendFlowRequest {
 }
 
 type SuspendFlowResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 返回执行结果。
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11538,9 +11555,18 @@ func (client *Client) CloneFlowWithOptions(request *CloneFlowRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11581,10 +11607,22 @@ func (client *Client) CloneFlowJobWithOptions(request *CloneFlowJobRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11625,11 +11663,26 @@ func (client *Client) CommitFlowEntitySnapshotWithOptions(request *CommitFlowEnt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityId"] = request.EntityId
-	query["EntityType"] = request.EntityType
-	query["Message"] = request.Message
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11670,53 +11723,194 @@ func (client *Client) CreateClusterV2WithOptions(request *CreateClusterV2Request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthorizeContent"] = request.AuthorizeContent
-	query["Auto"] = request.Auto
-	query["AutoPayOrder"] = request.AutoPayOrder
-	query["BootstrapAction"] = request.BootstrapAction
-	query["ChargeType"] = request.ChargeType
-	query["ClickHouseConf"] = request.ClickHouseConf
-	query["ClientToken"] = request.ClientToken
-	query["ClusterType"] = request.ClusterType
-	query["Config"] = request.Config
-	query["Configurations"] = request.Configurations
-	query["DepositType"] = request.DepositType
-	query["EmrVer"] = request.EmrVer
-	query["EnableEas"] = request.EnableEas
-	query["EnableHighAvailability"] = request.EnableHighAvailability
-	query["EnableSsh"] = request.EnableSsh
-	query["ExtraAttributes"] = request.ExtraAttributes
-	query["HostComponentInfo"] = request.HostComponentInfo
-	query["HostGroup"] = request.HostGroup
-	query["InitCustomHiveMetaDB"] = request.InitCustomHiveMetaDB
-	query["InstanceGeneration"] = request.InstanceGeneration
-	query["IsOpenPublicIp"] = request.IsOpenPublicIp
-	query["KeyPairName"] = request.KeyPairName
-	query["LogPath"] = request.LogPath
-	query["MachineType"] = request.MachineType
-	query["MasterPwd"] = request.MasterPwd
-	query["MetaStoreConf"] = request.MetaStoreConf
-	query["MetaStoreType"] = request.MetaStoreType
-	query["Name"] = request.Name
-	query["NetType"] = request.NetType
-	query["Period"] = request.Period
-	query["PromotionInfo"] = request.PromotionInfo
-	query["RegionId"] = request.RegionId
-	query["RelatedClusterId"] = request.RelatedClusterId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SecurityGroupName"] = request.SecurityGroupName
-	query["ServiceInfo"] = request.ServiceInfo
-	query["Tag"] = request.Tag
-	query["UseCustomHiveMetaDB"] = request.UseCustomHiveMetaDB
-	query["UseLocalMetaDb"] = request.UseLocalMetaDb
-	query["UserDefinedEmrEcsRole"] = request.UserDefinedEmrEcsRole
-	query["UserInfo"] = request.UserInfo
-	query["VSwitchId"] = request.VSwitchId
-	query["VpcId"] = request.VpcId
-	query["WhiteListType"] = request.WhiteListType
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeContent)) {
+		query["AuthorizeContent"] = request.AuthorizeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Auto)) {
+		query["Auto"] = request.Auto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoPayOrder)) {
+		query["AutoPayOrder"] = request.AutoPayOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BootstrapAction)) {
+		query["BootstrapAction"] = request.BootstrapAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClickHouseConf)) {
+		query["ClickHouseConf"] = request.ClickHouseConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Configurations)) {
+		query["Configurations"] = request.Configurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepositType)) {
+		query["DepositType"] = request.DepositType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmrVer)) {
+		query["EmrVer"] = request.EmrVer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableEas)) {
+		query["EnableEas"] = request.EnableEas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableHighAvailability)) {
+		query["EnableHighAvailability"] = request.EnableHighAvailability
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSsh)) {
+		query["EnableSsh"] = request.EnableSsh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraAttributes)) {
+		query["ExtraAttributes"] = request.ExtraAttributes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostComponentInfo)) {
+		query["HostComponentInfo"] = request.HostComponentInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroup)) {
+		query["HostGroup"] = request.HostGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitCustomHiveMetaDB)) {
+		query["InitCustomHiveMetaDB"] = request.InitCustomHiveMetaDB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGeneration)) {
+		query["InstanceGeneration"] = request.InstanceGeneration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOpenPublicIp)) {
+		query["IsOpenPublicIp"] = request.IsOpenPublicIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogPath)) {
+		query["LogPath"] = request.LogPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineType)) {
+		query["MachineType"] = request.MachineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterPwd)) {
+		query["MasterPwd"] = request.MasterPwd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaStoreConf)) {
+		query["MetaStoreConf"] = request.MetaStoreConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaStoreType)) {
+		query["MetaStoreType"] = request.MetaStoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetType)) {
+		query["NetType"] = request.NetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromotionInfo)) {
+		query["PromotionInfo"] = request.PromotionInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedClusterId)) {
+		query["RelatedClusterId"] = request.RelatedClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInfo)) {
+		query["ServiceInfo"] = request.ServiceInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseCustomHiveMetaDB)) {
+		query["UseCustomHiveMetaDB"] = request.UseCustomHiveMetaDB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseLocalMetaDb)) {
+		query["UseLocalMetaDb"] = request.UseLocalMetaDb
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDefinedEmrEcsRole)) {
+		query["UserDefinedEmrEcsRole"] = request.UserDefinedEmrEcsRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInfo)) {
+		query["UserInfo"] = request.UserInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhiteListType)) {
+		query["WhiteListType"] = request.WhiteListType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11757,24 +11951,78 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AlertConf"] = request.AlertConf
-	query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
-	query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
-	query["Application"] = request.Application
-	query["ClientToken"] = request.ClientToken
-	query["ClusterId"] = request.ClusterId
-	query["CreateCluster"] = request.CreateCluster
-	query["CronExpression"] = request.CronExpression
-	query["Description"] = request.Description
-	query["EndSchedule"] = request.EndSchedule
-	query["HostName"] = request.HostName
-	query["Name"] = request.Name
-	query["Namespace"] = request.Namespace
-	query["ParentCategory"] = request.ParentCategory
-	query["ParentFlowList"] = request.ParentFlowList
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["StartSchedule"] = request.StartSchedule
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertDingDingGroupBizId)) {
+		query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUserGroupBizId)) {
+		query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Application)) {
+		query["Application"] = request.Application
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateCluster)) {
+		query["CreateCluster"] = request.CreateCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpression)) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndSchedule)) {
+		query["EndSchedule"] = request.EndSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategory)) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFlowList)) {
+		query["ParentFlowList"] = request.ParentFlowList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSchedule)) {
+		query["StartSchedule"] = request.StartSchedule
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11815,12 +12063,30 @@ func (client *Client) CreateFlowCategoryWithOptions(request *CreateFlowCategoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Name"] = request.Name
-	query["ParentId"] = request.ParentId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11861,10 +12127,22 @@ func (client *Client) CreateFlowEditLockWithOptions(request *CreateFlowEditLockR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityId"] = request.EntityId
-	query["Force"] = request.Force
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11905,26 +12183,86 @@ func (client *Client) CreateFlowJobWithOptions(request *CreateFlowJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Adhoc"] = request.Adhoc
-	query["AlertConf"] = request.AlertConf
-	query["ClientToken"] = request.ClientToken
-	query["ClusterId"] = request.ClusterId
-	query["CustomVariables"] = request.CustomVariables
-	query["Description"] = request.Description
-	query["EnvConf"] = request.EnvConf
-	query["FailAct"] = request.FailAct
-	query["Mode"] = request.Mode
-	query["MonitorConf"] = request.MonitorConf
-	query["Name"] = request.Name
-	query["ParamConf"] = request.ParamConf
-	query["Params"] = request.Params
-	query["ParentCategory"] = request.ParentCategory
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceList"] = request.ResourceList
-	query["RetryPolicy"] = request.RetryPolicy
-	query["RunConf"] = request.RunConf
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Adhoc)) {
+		query["Adhoc"] = request.Adhoc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomVariables)) {
+		query["CustomVariables"] = request.CustomVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvConf)) {
+		query["EnvConf"] = request.EnvConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailAct)) {
+		query["FailAct"] = request.FailAct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorConf)) {
+		query["MonitorConf"] = request.MonitorConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamConf)) {
+		query["ParamConf"] = request.ParamConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategory)) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceList)) {
+		query["ResourceList"] = request.ResourceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryPolicy)) {
+		query["RetryPolicy"] = request.RetryPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunConf)) {
+		query["RunConf"] = request.RunConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11965,12 +12303,30 @@ func (client *Client) CreateFlowProjectWithOptions(request *CreateFlowProjectReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["ProductType"] = request.ProductType
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12011,15 +12367,42 @@ func (client *Client) CreateFlowProjectClusterSettingWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ClusterId"] = request.ClusterId
-	query["DefaultQueue"] = request.DefaultQueue
-	query["DefaultUser"] = request.DefaultUser
-	query["HostList"] = request.HostList
-	query["ProjectId"] = request.ProjectId
-	query["QueueList"] = request.QueueList
-	query["RegionId"] = request.RegionId
-	query["UserList"] = request.UserList
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultQueue)) {
+		query["DefaultQueue"] = request.DefaultQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultUser)) {
+		query["DefaultUser"] = request.DefaultUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostList)) {
+		query["HostList"] = request.HostList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueList)) {
+		query["QueueList"] = request.QueueList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserList)) {
+		query["UserList"] = request.UserList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12060,10 +12443,22 @@ func (client *Client) CreateFlowProjectUserWithOptions(request *CreateFlowProjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["User"] = request.User
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12104,9 +12499,18 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12147,9 +12551,18 @@ func (client *Client) DeleteFlowCategoryWithOptions(request *DeleteFlowCategoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12190,9 +12603,18 @@ func (client *Client) DeleteFlowEditLockWithOptions(request *DeleteFlowEditLockR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityId"] = request.EntityId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12233,8 +12655,14 @@ func (client *Client) DeleteFlowProjectWithOptions(request *DeleteFlowProjectReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12275,9 +12703,18 @@ func (client *Client) DeleteFlowProjectClusterSettingWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12318,9 +12755,18 @@ func (client *Client) DeleteFlowProjectUserWithOptions(request *DeleteFlowProjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["UserName"] = request.UserName
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12361,9 +12807,18 @@ func (client *Client) DescribeClusterV2WithOptions(request *DescribeClusterV2Req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12404,9 +12859,18 @@ func (client *Client) DescribeFlowWithOptions(request *DescribeFlowRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12447,12 +12911,30 @@ func (client *Client) DescribeFlowCategoryTreeWithOptions(request *DescribeFlowC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["Keyword"] = request.Keyword
-	query["Mode"] = request.Mode
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12493,9 +12975,18 @@ func (client *Client) DescribeFlowInstanceWithOptions(request *DescribeFlowInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12536,9 +13027,18 @@ func (client *Client) DescribeFlowJobWithOptions(request *DescribeFlowJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12579,9 +13079,18 @@ func (client *Client) DescribeFlowNodeInstanceWithOptions(request *DescribeFlowN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12622,14 +13131,38 @@ func (client *Client) DescribeFlowNodeInstanceContainerLogWithOptions(request *D
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ContainerId"] = request.ContainerId
-	query["Length"] = request.Length
-	query["LogName"] = request.LogName
-	query["NodeInstanceId"] = request.NodeInstanceId
-	query["Offset"] = request.Offset
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["Length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogName)) {
+		query["LogName"] = request.LogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceId)) {
+		query["NodeInstanceId"] = request.NodeInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12670,16 +13203,46 @@ func (client *Client) DescribeFlowNodeInstanceLauncherLogWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Length"] = request.Length
-	query["Lines"] = request.Lines
-	query["NodeInstanceId"] = request.NodeInstanceId
-	query["Offset"] = request.Offset
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Reverse"] = request.Reverse
-	query["Start"] = request.Start
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["Length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lines)) {
+		query["Lines"] = request.Lines
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceId)) {
+		query["NodeInstanceId"] = request.NodeInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12720,8 +13283,14 @@ func (client *Client) DescribeFlowProjectWithOptions(request *DescribeFlowProjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12762,9 +13331,18 @@ func (client *Client) DescribeFlowProjectClusterSettingWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12805,15 +13383,42 @@ func (client *Client) DescribeFlowSLAWithOptions(request *DescribeFlowSLARequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["From"] = request.From
-	query["Metrics"] = request.Metrics
-	query["PeriodType"] = request.PeriodType
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["To"] = request.To
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12854,9 +13459,18 @@ func (client *Client) DescribeFlowVariableCollectionWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityId"] = request.EntityId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12897,21 +13511,66 @@ func (client *Client) GetFlowAuditLogsWithOptions(request *GetFlowAuditLogsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentSize"] = request.CurrentSize
-	query["EntityGroupId"] = request.EntityGroupId
-	query["EntityId"] = request.EntityId
-	query["EntityType"] = request.EntityType
-	query["Limit"] = request.Limit
-	query["Operation"] = request.Operation
-	query["OperatorId"] = request.OperatorId
-	query["OrderField"] = request.OrderField
-	query["OrderMode"] = request.OrderMode
-	query["PageCount"] = request.PageCount
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
+		query["CurrentSize"] = request.CurrentSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityGroupId)) {
+		query["EntityGroupId"] = request.EntityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		query["Operation"] = request.Operation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		query["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
+		query["OrderMode"] = request.OrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
+		query["PageCount"] = request.PageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12952,9 +13611,18 @@ func (client *Client) KillFlowWithOptions(request *KillFlowRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowInstanceId"] = request.FlowInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FlowInstanceId)) {
+		query["FlowInstanceId"] = request.FlowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12995,9 +13663,18 @@ func (client *Client) KillFlowJobWithOptions(request *KillFlowJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobInstanceId"] = request.JobInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.JobInstanceId)) {
+		query["JobInstanceId"] = request.JobInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13038,21 +13715,66 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterTypeList"] = request.ClusterTypeList
-	query["CreateType"] = request.CreateType
-	query["DefaultStatus"] = request.DefaultStatus
-	query["DepositType"] = request.DepositType
-	query["ExpiredTagList"] = request.ExpiredTagList
-	query["IsDesc"] = request.IsDesc
-	query["MachineType"] = request.MachineType
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StatusList"] = request.StatusList
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.ClusterTypeList)) {
+		query["ClusterTypeList"] = request.ClusterTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateType)) {
+		query["CreateType"] = request.CreateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultStatus)) {
+		query["DefaultStatus"] = request.DefaultStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepositType)) {
+		query["DepositType"] = request.DepositType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiredTagList)) {
+		query["ExpiredTagList"] = request.ExpiredTagList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDesc)) {
+		query["IsDesc"] = request.IsDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineType)) {
+		query["MachineType"] = request.MachineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13093,16 +13815,46 @@ func (client *Client) ListFlowWithOptions(request *ListFlowRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["Id"] = request.Id
-	query["JobId"] = request.JobId
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Periodic"] = request.Periodic
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Periodic)) {
+		query["Periodic"] = request.Periodic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13143,11 +13895,26 @@ func (client *Client) ListFlowClusterWithOptions(request *ListFlowClusterRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13188,9 +13955,18 @@ func (client *Client) ListFlowClusterAllWithOptions(request *ListFlowClusterAllR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProductType"] = request.ProductType
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13231,10 +14007,22 @@ func (client *Client) ListFlowClusterAllHostsWithOptions(request *ListFlowCluste
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13275,10 +14063,22 @@ func (client *Client) ListFlowClusterHostWithOptions(request *ListFlowClusterHos
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13319,20 +14119,62 @@ func (client *Client) ListFlowEntitySnapshotWithOptions(request *ListFlowEntityS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CommitterId"] = request.CommitterId
-	query["CurrentSize"] = request.CurrentSize
-	query["EntityGroupId"] = request.EntityGroupId
-	query["EntityId"] = request.EntityId
-	query["EntityType"] = request.EntityType
-	query["Limit"] = request.Limit
-	query["OrderField"] = request.OrderField
-	query["OrderMode"] = request.OrderMode
-	query["PageCount"] = request.PageCount
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Revision"] = request.Revision
+	if !tea.BoolValue(util.IsUnset(request.CommitterId)) {
+		query["CommitterId"] = request.CommitterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
+		query["CurrentSize"] = request.CurrentSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityGroupId)) {
+		query["EntityGroupId"] = request.EntityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
+		query["OrderMode"] = request.OrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
+		query["PageCount"] = request.PageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revision)) {
+		query["Revision"] = request.Revision
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13373,19 +14215,58 @@ func (client *Client) ListFlowInstanceWithOptions(request *ListFlowInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowId"] = request.FlowId
-	query["FlowName"] = request.FlowName
-	query["Id"] = request.Id
-	query["InstanceId"] = request.InstanceId
-	query["OrderBy"] = request.OrderBy
-	query["OrderType"] = request.OrderType
-	query["Owner"] = request.Owner
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["StatusList"] = request.StatusList
-	query["TimeRange"] = request.TimeRange
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		query["FlowName"] = request.FlowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["TimeRange"] = request.TimeRange
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13426,15 +14307,42 @@ func (client *Client) ListFlowJobHistoryWithOptions(request *ListFlowJobHistoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["InstanceId"] = request.InstanceId
-	query["JobType"] = request.JobType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["StatusList"] = request.StatusList
-	query["TimeRange"] = request.TimeRange
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["TimeRange"] = request.TimeRange
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13475,14 +14383,38 @@ func (client *Client) ListFlowJobsWithOptions(request *ListFlowJobsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Adhoc"] = request.Adhoc
-	query["Id"] = request.Id
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Adhoc)) {
+		query["Adhoc"] = request.Adhoc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13523,11 +14455,26 @@ func (client *Client) ListFlowNodeInstanceContainerStatusWithOptions(request *Li
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeInstanceId"] = request.NodeInstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceId)) {
+		query["NodeInstanceId"] = request.NodeInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13568,12 +14515,30 @@ func (client *Client) ListFlowNodeSqlResultWithOptions(request *ListFlowNodeSqlR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Length"] = request.Length
-	query["NodeInstanceId"] = request.NodeInstanceId
-	query["Offset"] = request.Offset
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["SqlIndex"] = request.SqlIndex
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["Length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceId)) {
+		query["NodeInstanceId"] = request.NodeInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlIndex)) {
+		query["SqlIndex"] = request.SqlIndex
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13614,10 +14579,22 @@ func (client *Client) ListFlowProjectClusterSettingWithOptions(request *ListFlow
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13658,10 +14635,22 @@ func (client *Client) ListFlowProjectUserWithOptions(request *ListFlowProjectUse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13702,13 +14691,34 @@ func (client *Client) ListFlowProjectsWithOptions(request *ListFlowProjectsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProductType"] = request.ProductType
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13736,56 +14746,6 @@ func (client *Client) ListFlowProjects(request *ListFlowProjectsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFlowProjectsResponse{}
 	_body, _err := client.ListFlowProjectsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, runtime *util.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["Id"] = request.Id
-	query["JobId"] = request.JobId
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Periodic"] = request.Periodic
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["Status"] = request.Status
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFlows"),
-		Version:     tea.String("2020-06-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListFlowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListFlowsResponse{}
-	_body, _err := client.ListFlowsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13839,25 +14799,82 @@ func (client *Client) ModifyFlowWithOptions(request *ModifyFlowRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AlertConf"] = request.AlertConf
-	query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
-	query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
-	query["Application"] = request.Application
-	query["ClusterId"] = request.ClusterId
-	query["CreateCluster"] = request.CreateCluster
-	query["CronExpr"] = request.CronExpr
-	query["Description"] = request.Description
-	query["EndSchedule"] = request.EndSchedule
-	query["HostName"] = request.HostName
-	query["Id"] = request.Id
-	query["Name"] = request.Name
-	query["ParentCategory"] = request.ParentCategory
-	query["ParentFlowList"] = request.ParentFlowList
-	query["Periodic"] = request.Periodic
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["StartSchedule"] = request.StartSchedule
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertDingDingGroupBizId)) {
+		query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUserGroupBizId)) {
+		query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Application)) {
+		query["Application"] = request.Application
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateCluster)) {
+		query["CreateCluster"] = request.CreateCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpr)) {
+		query["CronExpr"] = request.CronExpr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndSchedule)) {
+		query["EndSchedule"] = request.EndSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategory)) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFlowList)) {
+		query["ParentFlowList"] = request.ParentFlowList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Periodic)) {
+		query["Periodic"] = request.Periodic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSchedule)) {
+		query["StartSchedule"] = request.StartSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13898,11 +14915,26 @@ func (client *Client) ModifyFlowCategoryWithOptions(request *ModifyFlowCategoryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["Name"] = request.Name
-	query["ParentId"] = request.ParentId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13943,26 +14975,86 @@ func (client *Client) ModifyFlowForWebWithOptions(request *ModifyFlowForWebReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AlertConf"] = request.AlertConf
-	query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
-	query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
-	query["ClusterId"] = request.ClusterId
-	query["CreateCluster"] = request.CreateCluster
-	query["CronExpr"] = request.CronExpr
-	query["Description"] = request.Description
-	query["EndSchedule"] = request.EndSchedule
-	query["Graph"] = request.Graph
-	query["HostName"] = request.HostName
-	query["Id"] = request.Id
-	query["Name"] = request.Name
-	query["Namespace"] = request.Namespace
-	query["ParentCategory"] = request.ParentCategory
-	query["ParentFlowList"] = request.ParentFlowList
-	query["Periodic"] = request.Periodic
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["StartSchedule"] = request.StartSchedule
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertDingDingGroupBizId)) {
+		query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUserGroupBizId)) {
+		query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateCluster)) {
+		query["CreateCluster"] = request.CreateCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpr)) {
+		query["CronExpr"] = request.CronExpr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndSchedule)) {
+		query["EndSchedule"] = request.EndSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Graph)) {
+		query["Graph"] = request.Graph
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategory)) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFlowList)) {
+		query["ParentFlowList"] = request.ParentFlowList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Periodic)) {
+		query["Periodic"] = request.Periodic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSchedule)) {
+		query["StartSchedule"] = request.StartSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14003,25 +15095,82 @@ func (client *Client) ModifyFlowJobWithOptions(request *ModifyFlowJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AlertConf"] = request.AlertConf
-	query["ClusterId"] = request.ClusterId
-	query["CustomVariables"] = request.CustomVariables
-	query["Description"] = request.Description
-	query["EnvConf"] = request.EnvConf
-	query["FailAct"] = request.FailAct
-	query["Id"] = request.Id
-	query["KnoxPassword"] = request.KnoxPassword
-	query["KnoxUser"] = request.KnoxUser
-	query["Mode"] = request.Mode
-	query["MonitorConf"] = request.MonitorConf
-	query["Name"] = request.Name
-	query["ParamConf"] = request.ParamConf
-	query["Params"] = request.Params
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
-	query["ResourceList"] = request.ResourceList
-	query["RetryPolicy"] = request.RetryPolicy
-	query["RunConf"] = request.RunConf
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomVariables)) {
+		query["CustomVariables"] = request.CustomVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvConf)) {
+		query["EnvConf"] = request.EnvConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailAct)) {
+		query["FailAct"] = request.FailAct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnoxPassword)) {
+		query["KnoxPassword"] = request.KnoxPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnoxUser)) {
+		query["KnoxUser"] = request.KnoxUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorConf)) {
+		query["MonitorConf"] = request.MonitorConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamConf)) {
+		query["ParamConf"] = request.ParamConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceList)) {
+		query["ResourceList"] = request.ResourceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryPolicy)) {
+		query["RetryPolicy"] = request.RetryPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunConf)) {
+		query["RunConf"] = request.RunConf
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14062,10 +15211,22 @@ func (client *Client) ModifyFlowProjectWithOptions(request *ModifyFlowProjectReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14106,14 +15267,38 @@ func (client *Client) ModifyFlowProjectClusterSettingWithOptions(request *Modify
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["DefaultQueue"] = request.DefaultQueue
-	query["DefaultUser"] = request.DefaultUser
-	query["HostList"] = request.HostList
-	query["ProjectId"] = request.ProjectId
-	query["QueueList"] = request.QueueList
-	query["RegionId"] = request.RegionId
-	query["UserList"] = request.UserList
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultQueue)) {
+		query["DefaultQueue"] = request.DefaultQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultUser)) {
+		query["DefaultUser"] = request.DefaultUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostList)) {
+		query["HostList"] = request.HostList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueList)) {
+		query["QueueList"] = request.QueueList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserList)) {
+		query["UserList"] = request.UserList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14154,9 +15339,18 @@ func (client *Client) ModifyFlowVariableCollectionWithOptions(request *ModifyFlo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Data"] = request.Data
-	query["RegionId"] = request.RegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14197,10 +15391,22 @@ func (client *Client) ReleaseClusterWithOptions(request *ReleaseClusterRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ForceRelease"] = request.ForceRelease
-	query["Id"] = request.Id
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.ForceRelease)) {
+		query["ForceRelease"] = request.ForceRelease
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14241,10 +15447,22 @@ func (client *Client) RerunFlowWithOptions(request *RerunFlowRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowInstanceId"] = request.FlowInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["ReRunFail"] = request.ReRunFail
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FlowInstanceId)) {
+		query["FlowInstanceId"] = request.FlowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReRunFail)) {
+		query["ReRunFail"] = request.ReRunFail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14285,12 +15503,30 @@ func (client *Client) RestoreFlowEntitySnapshotWithOptions(request *RestoreFlowE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityId"] = request.EntityId
-	query["EntityType"] = request.EntityType
-	query["OperatorId"] = request.OperatorId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Revision"] = request.Revision
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		query["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revision)) {
+		query["Revision"] = request.Revision
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14331,9 +15567,18 @@ func (client *Client) ResumeFlowWithOptions(request *ResumeFlowRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowInstanceId"] = request.FlowInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FlowInstanceId)) {
+		query["FlowInstanceId"] = request.FlowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14374,9 +15619,18 @@ func (client *Client) StartFlowWithOptions(request *StartFlowRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowInstanceId"] = request.FlowInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FlowInstanceId)) {
+		query["FlowInstanceId"] = request.FlowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14417,10 +15671,22 @@ func (client *Client) SubmitFlowWithOptions(request *SubmitFlowRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Conf"] = request.Conf
-	query["FlowId"] = request.FlowId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.Conf)) {
+		query["Conf"] = request.Conf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14461,12 +15727,30 @@ func (client *Client) SubmitFlowJobWithOptions(request *SubmitFlowJobRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["Conf"] = request.Conf
-	query["HostName"] = request.HostName
-	query["JobId"] = request.JobId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conf)) {
+		query["Conf"] = request.Conf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14507,9 +15791,18 @@ func (client *Client) SuspendFlowWithOptions(request *SuspendFlowRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowInstanceId"] = request.FlowInstanceId
-	query["ProjectId"] = request.ProjectId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.FlowInstanceId)) {
+		query["FlowInstanceId"] = request.FlowInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
