@@ -12049,6 +12049,7 @@ type ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList struct {
 	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
 	SqlReviewStatus   *string `json:"SqlReviewStatus,omitempty" xml:"SqlReviewStatus,omitempty"`
 	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	TableNames        *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
 }
 
 func (s ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) String() string {
@@ -12086,6 +12087,11 @@ func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetSqlReviewStat
 
 func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetSqlType(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
 	s.SqlType = &v
+	return s
+}
+
+func (s *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList) SetTableNames(v string) *ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList {
+	s.TableNames = &v
 	return s
 }
 
@@ -17387,6 +17393,100 @@ func (s *ModifyDataCorrectExecSQLResponse) SetBody(v *ModifyDataCorrectExecSQLRe
 	return s
 }
 
+type PauseDataCorrectSQLJobRequest struct {
+	JobId   *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s PauseDataCorrectSQLJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataCorrectSQLJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataCorrectSQLJobRequest) SetJobId(v int64) *PauseDataCorrectSQLJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobRequest) SetOrderId(v int64) *PauseDataCorrectSQLJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobRequest) SetTid(v int64) *PauseDataCorrectSQLJobRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobRequest) SetType(v string) *PauseDataCorrectSQLJobRequest {
+	s.Type = &v
+	return s
+}
+
+type PauseDataCorrectSQLJobResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PauseDataCorrectSQLJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataCorrectSQLJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataCorrectSQLJobResponseBody) SetErrorCode(v string) *PauseDataCorrectSQLJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobResponseBody) SetErrorMessage(v string) *PauseDataCorrectSQLJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobResponseBody) SetRequestId(v string) *PauseDataCorrectSQLJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobResponseBody) SetSuccess(v bool) *PauseDataCorrectSQLJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PauseDataCorrectSQLJobResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PauseDataCorrectSQLJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PauseDataCorrectSQLJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseDataCorrectSQLJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseDataCorrectSQLJobResponse) SetHeaders(v map[string]*string) *PauseDataCorrectSQLJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PauseDataCorrectSQLJobResponse) SetBody(v *PauseDataCorrectSQLJobResponseBody) *PauseDataCorrectSQLJobResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterInstanceRequest struct {
 	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
 	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
@@ -17683,6 +17783,100 @@ func (s *RegisterUserResponse) SetHeaders(v map[string]*string) *RegisterUserRes
 }
 
 func (s *RegisterUserResponse) SetBody(v *RegisterUserResponseBody) *RegisterUserResponse {
+	s.Body = v
+	return s
+}
+
+type RestartDataCorrectSQLJobRequest struct {
+	JobId   *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RestartDataCorrectSQLJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataCorrectSQLJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataCorrectSQLJobRequest) SetJobId(v int64) *RestartDataCorrectSQLJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobRequest) SetOrderId(v int64) *RestartDataCorrectSQLJobRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobRequest) SetTid(v int64) *RestartDataCorrectSQLJobRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobRequest) SetType(v string) *RestartDataCorrectSQLJobRequest {
+	s.Type = &v
+	return s
+}
+
+type RestartDataCorrectSQLJobResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RestartDataCorrectSQLJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataCorrectSQLJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataCorrectSQLJobResponseBody) SetErrorCode(v string) *RestartDataCorrectSQLJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobResponseBody) SetErrorMessage(v string) *RestartDataCorrectSQLJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobResponseBody) SetRequestId(v string) *RestartDataCorrectSQLJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobResponseBody) SetSuccess(v bool) *RestartDataCorrectSQLJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RestartDataCorrectSQLJobResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RestartDataCorrectSQLJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartDataCorrectSQLJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDataCorrectSQLJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDataCorrectSQLJobResponse) SetHeaders(v map[string]*string) *RestartDataCorrectSQLJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartDataCorrectSQLJobResponse) SetBody(v *RestartDataCorrectSQLJobResponseBody) *RestartDataCorrectSQLJobResponse {
 	s.Body = v
 	return s
 }
@@ -25018,6 +25212,62 @@ func (client *Client) ModifyDataCorrectExecSQL(request *ModifyDataCorrectExecSQL
 	return _result, _err
 }
 
+func (client *Client) PauseDataCorrectSQLJobWithOptions(request *PauseDataCorrectSQLJobRequest, runtime *util.RuntimeOptions) (_result *PauseDataCorrectSQLJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseDataCorrectSQLJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PauseDataCorrectSQLJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequest) (_result *PauseDataCorrectSQLJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PauseDataCorrectSQLJobResponse{}
+	_body, _err := client.PauseDataCorrectSQLJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *util.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25199,6 +25449,62 @@ func (client *Client) RegisterUser(request *RegisterUserRequest) (_result *Regis
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterUserResponse{}
 	_body, _err := client.RegisterUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestartDataCorrectSQLJobWithOptions(request *RestartDataCorrectSQLJobRequest, runtime *util.RuntimeOptions) (_result *RestartDataCorrectSQLJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartDataCorrectSQLJob"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartDataCorrectSQLJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartDataCorrectSQLJob(request *RestartDataCorrectSQLJobRequest) (_result *RestartDataCorrectSQLJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartDataCorrectSQLJobResponse{}
+	_body, _err := client.RestartDataCorrectSQLJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
