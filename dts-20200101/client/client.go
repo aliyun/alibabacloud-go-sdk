@@ -2349,141 +2349,6 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 	return s
 }
 
-type CreateDedicatedClusterMonitorRuleRequest struct {
-	CpuAlarmThreshold  *int64  `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	DiskAlarmThreshold *int64  `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
-	DuAlarmThreshold   *int64  `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemAlarmThreshold  *int64  `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
-	NoticeSwitch       *int64  `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
-	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Phones             *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s CreateDedicatedClusterMonitorRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDedicatedClusterMonitorRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetCpuAlarmThreshold(v int64) *CreateDedicatedClusterMonitorRuleRequest {
-	s.CpuAlarmThreshold = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetDedicatedClusterId(v string) *CreateDedicatedClusterMonitorRuleRequest {
-	s.DedicatedClusterId = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetDiskAlarmThreshold(v int64) *CreateDedicatedClusterMonitorRuleRequest {
-	s.DiskAlarmThreshold = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetDuAlarmThreshold(v int64) *CreateDedicatedClusterMonitorRuleRequest {
-	s.DuAlarmThreshold = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetInstanceId(v string) *CreateDedicatedClusterMonitorRuleRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetMemAlarmThreshold(v int64) *CreateDedicatedClusterMonitorRuleRequest {
-	s.MemAlarmThreshold = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetNoticeSwitch(v int64) *CreateDedicatedClusterMonitorRuleRequest {
-	s.NoticeSwitch = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetOwnerId(v string) *CreateDedicatedClusterMonitorRuleRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetPhones(v string) *CreateDedicatedClusterMonitorRuleRequest {
-	s.Phones = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleRequest) SetRegionId(v string) *CreateDedicatedClusterMonitorRuleRequest {
-	s.RegionId = &v
-	return s
-}
-
-type CreateDedicatedClusterMonitorRuleResponseBody struct {
-	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateDedicatedClusterMonitorRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDedicatedClusterMonitorRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetErrCode(v string) *CreateDedicatedClusterMonitorRuleResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetErrMessage(v string) *CreateDedicatedClusterMonitorRuleResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetHttpStatusCode(v string) *CreateDedicatedClusterMonitorRuleResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetRequestId(v string) *CreateDedicatedClusterMonitorRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponseBody) SetSuccess(v string) *CreateDedicatedClusterMonitorRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateDedicatedClusterMonitorRuleResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDedicatedClusterMonitorRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDedicatedClusterMonitorRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponse) SetHeaders(v map[string]*string) *CreateDedicatedClusterMonitorRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDedicatedClusterMonitorRuleResponse) SetBody(v *CreateDedicatedClusterMonitorRuleResponseBody) *CreateDedicatedClusterMonitorRuleResponse {
-	s.Body = v
-	return s
-}
-
 type CreateDtsInstanceRequest struct {
 	AutoPay                       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoStart                     *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
@@ -4539,141 +4404,6 @@ func (s *DescribeDTSIPResponse) SetBody(v *DescribeDTSIPResponseBody) *DescribeD
 	return s
 }
 
-type DescribeDedicatedClusterMonitorRuleRequest struct {
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeDedicatedClusterMonitorRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterMonitorRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleRequest) SetDedicatedClusterId(v string) *DescribeDedicatedClusterMonitorRuleRequest {
-	s.DedicatedClusterId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleRequest) SetOwnerId(v string) *DescribeDedicatedClusterMonitorRuleRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleRequest) SetRegionId(v string) *DescribeDedicatedClusterMonitorRuleRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeDedicatedClusterMonitorRuleResponseBody struct {
-	CpuAlarmThreshold  *string `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	DiskAlarmThreshold *string `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
-	DuAlarmThreshold   *string `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
-	ErrCode            *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage         *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	HttpStatusCode     *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MemAlarmThreshold  *string `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
-	NoticeSwitch       *string `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
-	Phones             *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeDedicatedClusterMonitorRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterMonitorRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetCpuAlarmThreshold(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.CpuAlarmThreshold = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetDedicatedClusterId(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.DedicatedClusterId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetDiskAlarmThreshold(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.DiskAlarmThreshold = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetDuAlarmThreshold(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.DuAlarmThreshold = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetErrCode(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetErrMessage(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetHttpStatusCode(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetMemAlarmThreshold(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.MemAlarmThreshold = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetNoticeSwitch(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.NoticeSwitch = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetPhones(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.Phones = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetRequestId(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponseBody) SetSuccess(v string) *DescribeDedicatedClusterMonitorRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeDedicatedClusterMonitorRuleResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDedicatedClusterMonitorRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDedicatedClusterMonitorRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDedicatedClusterMonitorRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponse) SetHeaders(v map[string]*string) *DescribeDedicatedClusterMonitorRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDedicatedClusterMonitorRuleResponse) SetBody(v *DescribeDedicatedClusterMonitorRuleResponseBody) *DescribeDedicatedClusterMonitorRuleResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDtsJobDetailRequest struct {
 	DtsInstanceID            *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
 	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
@@ -5309,7 +5039,6 @@ type DescribeDtsJobsResponseBody struct {
 	ErrMessage       *string                                   `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	EtlDemoList      []*DescribeDtsJobsResponseBodyEtlDemoList `json:"EtlDemoList,omitempty" xml:"EtlDemoList,omitempty" type:"Repeated"`
 	HttpStatusCode   *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobType          *string                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	PageNumber       *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageRecordCount  *int32                                    `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5360,11 +5089,6 @@ func (s *DescribeDtsJobsResponseBody) SetHttpStatusCode(v int32) *DescribeDtsJob
 	return s
 }
 
-func (s *DescribeDtsJobsResponseBody) SetJobType(v string) *DescribeDtsJobsResponseBody {
-	s.JobType = &v
-	return s
-}
-
 func (s *DescribeDtsJobsResponseBody) SetPageNumber(v int32) *DescribeDtsJobsResponseBody {
 	s.PageNumber = &v
 	return s
@@ -5391,26 +5115,28 @@ func (s *DescribeDtsJobsResponseBody) SetTotalRecordCount(v int32) *DescribeDtsJ
 }
 
 type DescribeDtsJobsResponseBodyDtsJobList struct {
-	AppName                       *string                                                             `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp                *string                                                             `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                    *string                                                             `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint         *string                                                             `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient             *string                                                             `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                    *string                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus                 *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus      *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DbObject                      *string                                                             `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                         *int64                                                              `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestinationEndpoint           *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID                 *string                                                             `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass                   *string                                                             `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	DtsJobDirection               *string                                                             `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId                      *string                                                             `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName                    *string                                                             `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp                  *string                                                             `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage                  *string                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ExpireTime                    *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	AppName                   *string                                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                         `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                         `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                         `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                         `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                  *string                                                         `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                          `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                         `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                         `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection           *string                                                         `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                  *string                                                         `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                *string                                                         `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp              *string                                                         `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                *string                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// DTS任务类型
+	JobType                       *string                                                             `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyDtsJobListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                             `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -5530,6 +5256,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetErrorMessage(v string) *Descr
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetExpireTime(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetJobType(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.JobType = &v
 	return s
 }
 
@@ -6598,26 +6329,28 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListTagList) SetTagValue(v string) *De
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoList struct {
-	AppName                       *string                                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTimestamp                *string                                                              `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	Checkpoint                    *string                                                              `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	ConsumptionCheckpoint         *string                                                              `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	ConsumptionClient             *string                                                              `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	CreateTime                    *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataEtlStatus                 *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus                 `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	DataInitializationStatus      *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	DbObject                      *string                                                              `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	Delay                         *int64                                                               `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	DestinationEndpoint           *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	DtsInstanceID                 *string                                                              `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobClass                   *string                                                              `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	DtsJobDirection               *string                                                              `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	DtsJobId                      *string                                                              `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	DtsJobName                    *string                                                              `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	EndTimestamp                  *string                                                              `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	ErrorMessage                  *string                                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ExpireTime                    *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	AppName                   *string                                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                          `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                          `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                          `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                          `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DbObject                  *string                                                          `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                           `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                          `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                          `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	DtsJobDirection           *string                                                          `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId                  *string                                                          `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName                *string                                                          `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp              *string                                                          `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage              *string                                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime                *string                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// DtsJob类型
+	JobType                       *string                                                              `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                              `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -6737,6 +6470,11 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetErrorMessage(v string) *Desc
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetExpireTime(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetJobType(v string) *DescribeDtsJobsResponseBodyEtlDemoList {
+	s.JobType = &v
 	return s
 }
 
@@ -18986,86 +18724,6 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 	return _result, _err
 }
 
-func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *CreateDedicatedClusterMonitorRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedClusterMonitorRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CpuAlarmThreshold)) {
-		query["CpuAlarmThreshold"] = request.CpuAlarmThreshold
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
-		query["DedicatedClusterId"] = request.DedicatedClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DiskAlarmThreshold)) {
-		query["DiskAlarmThreshold"] = request.DiskAlarmThreshold
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DuAlarmThreshold)) {
-		query["DuAlarmThreshold"] = request.DuAlarmThreshold
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MemAlarmThreshold)) {
-		query["MemAlarmThreshold"] = request.MemAlarmThreshold
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NoticeSwitch)) {
-		query["NoticeSwitch"] = request.NoticeSwitch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phones)) {
-		query["Phones"] = request.Phones
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDedicatedClusterMonitorRule"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDedicatedClusterMonitorRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicatedClusterMonitorRuleRequest) (_result *CreateDedicatedClusterMonitorRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDedicatedClusterMonitorRuleResponse{}
-	_body, _err := client.CreateDedicatedClusterMonitorRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDtsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20127,58 +19785,6 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDTSIPResponse{}
 	_body, _err := client.DescribeDTSIPWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *DescribeDedicatedClusterMonitorRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedClusterMonitorRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
-		query["DedicatedClusterId"] = request.DedicatedClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDedicatedClusterMonitorRule"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDedicatedClusterMonitorRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedicatedClusterMonitorRuleRequest) (_result *DescribeDedicatedClusterMonitorRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDedicatedClusterMonitorRuleResponse{}
-	_body, _err := client.DescribeDedicatedClusterMonitorRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
