@@ -3582,109 +3582,6 @@ func (s *DetectLivingFaceResponse) SetBody(v *DetectLivingFaceResponseBody) *Det
 	return s
 }
 
-type DetectMaskRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s DetectMaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMaskRequest) SetImageURL(v string) *DetectMaskRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type DetectMaskAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s DetectMaskAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMaskAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMaskAdvanceRequest) SetImageURLObject(v io.Reader) *DetectMaskAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type DetectMaskResponseBody struct {
-	Data      *DetectMaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DetectMaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMaskResponseBody) SetData(v *DetectMaskResponseBodyData) *DetectMaskResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DetectMaskResponseBody) SetRequestId(v string) *DetectMaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DetectMaskResponseBodyData struct {
-	FaceProbability *float32 `json:"FaceProbability,omitempty" xml:"FaceProbability,omitempty"`
-	Mask            *int32   `json:"Mask,omitempty" xml:"Mask,omitempty"`
-}
-
-func (s DetectMaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMaskResponseBodyData) SetFaceProbability(v float32) *DetectMaskResponseBodyData {
-	s.FaceProbability = &v
-	return s
-}
-
-func (s *DetectMaskResponseBodyData) SetMask(v int32) *DetectMaskResponseBodyData {
-	s.Mask = &v
-	return s
-}
-
-type DetectMaskResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DetectMaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectMaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DetectMaskResponse) SetHeaders(v map[string]*string) *DetectMaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DetectMaskResponse) SetBody(v *DetectMaskResponseBody) *DetectMaskResponse {
-	s.Body = v
-	return s
-}
-
 type DetectPedestrianRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
@@ -10443,8 +10340,25 @@ func (client *Client) AddBodyTraceWithOptions(tmpReq *AddBodyTraceRequest, runti
 		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		body["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraData)) {
+		body["ExtraData"] = request.ExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImagesShrink)) {
+		body["Images"] = request.ImagesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		body["PersonId"] = request.PersonId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddBodyTrace"),
@@ -10482,8 +10396,37 @@ func (client *Client) AddFaceWithOptions(request *AddFaceRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraData)) {
+		body["ExtraData"] = request.ExtraData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityScoreThreshold)) {
+		body["QualityScoreThreshold"] = request.QualityScoreThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimilarityScoreThresholdBetweenEntity)) {
+		body["SimilarityScoreThresholdBetweenEntity"] = request.SimilarityScoreThresholdBetweenEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimilarityScoreThresholdInEntity)) {
+		body["SimilarityScoreThresholdInEntity"] = request.SimilarityScoreThresholdInEntity
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddFace"),
@@ -10627,8 +10570,21 @@ func (client *Client) AddFaceEntityWithOptions(request *AddFaceEntityRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddFaceEntity"),
@@ -10666,8 +10622,17 @@ func (client *Client) AddFaceImageTemplateWithOptions(request *AddFaceImageTempl
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddFaceImageTemplate"),
@@ -10817,8 +10782,33 @@ func (client *Client) BatchAddFacesWithOptions(tmpReq *BatchAddFacesRequest, run
 		request.FacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Faces, tea.String("Faces"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacesShrink)) {
+		body["Faces"] = request.FacesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityScoreThreshold)) {
+		body["QualityScoreThreshold"] = request.QualityScoreThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimilarityScoreThresholdBetweenEntity)) {
+		body["SimilarityScoreThresholdBetweenEntity"] = request.SimilarityScoreThresholdBetweenEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimilarityScoreThresholdInEntity)) {
+		body["SimilarityScoreThresholdInEntity"] = request.SimilarityScoreThresholdInEntity
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchAddFaces"),
@@ -10874,8 +10864,57 @@ func (client *Client) BeautifyBodyWithOptions(tmpReq *BeautifyBodyRequest, runti
 		request.PoseListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PoseList, tea.String("PoseList"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgeRangeShrink)) {
+		body["AgeRange"] = request.AgeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyBoxesShrink)) {
+		body["BodyBoxes"] = request.BodyBoxesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Custom)) {
+		body["Custom"] = request.Custom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceListShrink)) {
+		body["FaceList"] = request.FaceListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FemaleLiquifyDegree)) {
+		body["FemaleLiquifyDegree"] = request.FemaleLiquifyDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsPregnant)) {
+		body["IsPregnant"] = request.IsPregnant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LengthenDegree)) {
+		body["LengthenDegree"] = request.LengthenDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaleLiquifyDegree)) {
+		body["MaleLiquifyDegree"] = request.MaleLiquifyDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalHeight)) {
+		body["OriginalHeight"] = request.OriginalHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalWidth)) {
+		body["OriginalWidth"] = request.OriginalWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoseListShrink)) {
+		body["PoseList"] = request.PoseListShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BeautifyBody"),
@@ -11019,8 +11058,13 @@ func (client *Client) BlurFaceWithOptions(request *BlurFaceRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BlurFace"),
@@ -11164,8 +11208,13 @@ func (client *Client) BodyPostureWithOptions(request *BodyPostureRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BodyPosture"),
@@ -11309,8 +11358,29 @@ func (client *Client) CompareFaceWithOptions(request *CompareFaceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageDataA)) {
+		body["ImageDataA"] = request.ImageDataA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageDataB)) {
+		body["ImageDataB"] = request.ImageDataB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLA)) {
+		body["ImageURLA"] = request.ImageURLA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLB)) {
+		body["ImageURLB"] = request.ImageURLB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityScoreThreshold)) {
+		body["QualityScoreThreshold"] = request.QualityScoreThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CompareFace"),
@@ -11348,8 +11418,17 @@ func (client *Client) CountCrowdWithOptions(request *CountCrowdRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsShow)) {
+		body["IsShow"] = request.IsShow
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountCrowd"),
@@ -11493,8 +11572,13 @@ func (client *Client) CreateBodyDbWithOptions(request *CreateBodyDbRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateBodyDb"),
@@ -11532,8 +11616,17 @@ func (client *Client) CreateBodyPersonWithOptions(request *CreateBodyPersonReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		body["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateBodyPerson"),
@@ -11571,8 +11664,13 @@ func (client *Client) CreateFaceDbWithOptions(request *CreateFaceDbRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateFaceDb"),
@@ -11610,8 +11708,13 @@ func (client *Client) DeleteBodyDbWithOptions(request *DeleteBodyDbRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBodyDb"),
@@ -11649,8 +11752,17 @@ func (client *Client) DeleteBodyPersonWithOptions(request *DeleteBodyPersonReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		body["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonId)) {
+		body["PersonId"] = request.PersonId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBodyPerson"),
@@ -11688,8 +11800,17 @@ func (client *Client) DeleteFaceWithOptions(request *DeleteFaceRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceId)) {
+		body["FaceId"] = request.FaceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFace"),
@@ -11727,8 +11848,13 @@ func (client *Client) DeleteFaceDbWithOptions(request *DeleteFaceDbRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFaceDb"),
@@ -11766,8 +11892,17 @@ func (client *Client) DeleteFaceEntityWithOptions(request *DeleteFaceEntityReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFaceEntity"),
@@ -11805,8 +11940,17 @@ func (client *Client) DeleteFaceImageTemplateWithOptions(request *DeleteFaceImag
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFaceImageTemplate"),
@@ -11844,8 +11988,13 @@ func (client *Client) DetectBodyCountWithOptions(request *DetectBodyCountRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectBodyCount"),
@@ -11989,8 +12138,13 @@ func (client *Client) DetectCelebrityWithOptions(request *DetectCelebrityRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectCelebrity"),
@@ -12134,8 +12288,13 @@ func (client *Client) DetectChefCapWithOptions(request *DetectChefCapRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectChefCap"),
@@ -12279,8 +12438,29 @@ func (client *Client) DetectFaceWithOptions(request *DetectFaceRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Landmark)) {
+		body["Landmark"] = request.Landmark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFaceNumber)) {
+		body["MaxFaceNumber"] = request.MaxFaceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pose)) {
+		body["Pose"] = request.Pose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quality)) {
+		body["Quality"] = request.Quality
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectFace"),
@@ -12424,8 +12604,25 @@ func (client *Client) DetectIPCPedestrianWithOptions(request *DetectIPCPedestria
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageData)) {
+		body["ImageData"] = request.ImageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["Width"] = request.Width
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectIPCPedestrian"),
@@ -12569,8 +12766,13 @@ func (client *Client) DetectLivingFaceWithOptions(request *DetectLivingFaceReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		body["Tasks"] = request.Tasks
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectLivingFace"),
@@ -12603,158 +12805,18 @@ func (client *Client) DetectLivingFace(request *DetectLivingFaceRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DetectMaskWithOptions(request *DetectMaskRequest, runtime *util.RuntimeOptions) (_result *DetectMaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DetectMask"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DetectMaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DetectMask(request *DetectMaskRequest) (_result *DetectMaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetectMaskResponse{}
-	_body, _err := client.DetectMaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DetectMaskAdvance(request *DetectMaskAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectMaskResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("facebody"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	detectMaskReq := &DetectMaskRequest{}
-	openapiutil.Convert(request, detectMaskReq)
-	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
-			Content:     request.ImageURLObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		detectMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	}
-
-	detectMaskResp, _err := client.DetectMaskWithOptions(detectMaskReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = detectMaskResp
-	return _result, _err
-}
-
 func (client *Client) DetectPedestrianWithOptions(request *DetectPedestrianRequest, runtime *util.RuntimeOptions) (_result *DetectPedestrianResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectPedestrian"),
@@ -12904,8 +12966,21 @@ func (client *Client) DetectPedestrianIntrusionWithOptions(tmpReq *DetectPedestr
 		request.DetectRegionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DetectRegion, tea.String("DetectRegion"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DetectRegionShrink)) {
+		body["DetectRegion"] = request.DetectRegionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionType)) {
+		body["RegionType"] = request.RegionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectPedestrianIntrusion"),
@@ -13049,8 +13124,13 @@ func (client *Client) DetectVideoLivingFaceWithOptions(request *DetectVideoLivin
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DetectVideoLivingFace"),
@@ -13194,8 +13274,13 @@ func (client *Client) EnhanceFaceWithOptions(request *EnhanceFaceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnhanceFace"),
@@ -13339,8 +13424,17 @@ func (client *Client) ExtractFingerPrintWithOptions(request *ExtractFingerPrintR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageData)) {
+		body["ImageData"] = request.ImageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExtractFingerPrint"),
@@ -13484,8 +13578,21 @@ func (client *Client) ExtractPedestrianFeatureAttrWithOptions(request *ExtractPe
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		body["ServiceVersion"] = request.ServiceVersion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExtractPedestrianFeatureAttr"),
@@ -13629,8 +13736,21 @@ func (client *Client) ExtractPedestrianFeatureAttributeWithOptions(request *Extr
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlList)) {
+		body["UrlList"] = request.UrlList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExtractPedestrianFeatureAttribute"),
@@ -13668,8 +13788,25 @@ func (client *Client) FaceBeautyWithOptions(request *FaceBeautyRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sharp)) {
+		body["Sharp"] = request.Sharp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Smooth)) {
+		body["Smooth"] = request.Smooth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.White)) {
+		body["White"] = request.White
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceBeauty"),
@@ -13813,8 +13950,21 @@ func (client *Client) FaceFilterWithOptions(request *FaceFilterRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strength)) {
+		body["Strength"] = request.Strength
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceFilter"),
@@ -13958,8 +14108,25 @@ func (client *Client) FaceMakeupWithOptions(request *FaceMakeupRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MakeupType)) {
+		body["MakeupType"] = request.MakeupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strength)) {
+		body["Strength"] = request.Strength
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceMakeup"),
@@ -14103,8 +14270,21 @@ func (client *Client) FaceTidyupWithOptions(request *FaceTidyupRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShapeType)) {
+		body["ShapeType"] = request.ShapeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strength)) {
+		body["Strength"] = request.Strength
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("FaceTidyup"),
@@ -14248,8 +14428,21 @@ func (client *Client) GenRealPersonVerificationTokenWithOptions(request *GenReal
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateName)) {
+		body["CertificateName"] = request.CertificateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateNumber)) {
+		body["CertificateNumber"] = request.CertificateNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaInfo)) {
+		body["MetaInfo"] = request.MetaInfo
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenRealPersonVerificationToken"),
@@ -14288,11 +14481,16 @@ func (client *Client) GenerateHumanAnimeStyleWithOptions(request *GenerateHumanA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AlgoType"] = request.AlgoType
-	query["ImageURL"] = request.ImageURL
+	if !tea.BoolValue(util.IsUnset(request.AlgoType)) {
+		query["AlgoType"] = request.AlgoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateHumanAnimeStyle"),
@@ -14302,7 +14500,7 @@ func (client *Client) GenerateHumanAnimeStyleWithOptions(request *GenerateHumanA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateHumanAnimeStyleResponse{}
@@ -14436,8 +14634,17 @@ func (client *Client) GenerateHumanSketchStyleWithOptions(request *GenerateHuman
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnType)) {
+		body["ReturnType"] = request.ReturnType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateHumanSketchStyle"),
@@ -14593,7 +14800,7 @@ func (client *Client) GetBodyPersonWithOptions(request *GetBodyPersonRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetBodyPersonResponse{}
@@ -14621,8 +14828,17 @@ func (client *Client) GetFaceEntityWithOptions(request *GetFaceEntityRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFaceEntity"),
@@ -14660,8 +14876,17 @@ func (client *Client) GetRealPersonVerificationResultWithOptions(request *GetRea
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaterialHash)) {
+		body["MaterialHash"] = request.MaterialHash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerificationToken)) {
+		body["VerificationToken"] = request.VerificationToken
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRealPersonVerificationResult"),
@@ -14699,8 +14924,13 @@ func (client *Client) HandPostureWithOptions(request *HandPostureRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("HandPosture"),
@@ -14844,8 +15074,17 @@ func (client *Client) LiquifyFaceWithOptions(request *LiquifyFaceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlimDegree)) {
+		body["SlimDegree"] = request.SlimDegree
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("LiquifyFace"),
@@ -15001,7 +15240,7 @@ func (client *Client) ListBodyDbsWithOptions(request *ListBodyDbsRequest, runtim
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListBodyDbsResponse{}
@@ -15041,7 +15280,7 @@ func (client *Client) ListBodyPersonWithOptions(request *ListBodyPersonRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListBodyPersonResponse{}
@@ -15074,7 +15313,7 @@ func (client *Client) ListFaceDbsWithOptions(runtime *util.RuntimeOptions) (_res
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFaceDbsResponse{}
@@ -15102,8 +15341,37 @@ func (client *Client) ListFaceEntitiesWithOptions(request *ListFaceEntitiesReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityIdPrefix)) {
+		body["EntityIdPrefix"] = request.EntityIdPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		body["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFaceEntities"),
@@ -15141,8 +15409,21 @@ func (client *Client) MergeImageFaceWithOptions(request *MergeImageFaceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MergeImageFace"),
@@ -15286,8 +15567,17 @@ func (client *Client) MonitorExaminationWithOptions(request *MonitorExaminationR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("MonitorExamination"),
@@ -15431,8 +15721,13 @@ func (client *Client) PedestrianDetectAttributeWithOptions(request *PedestrianDe
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PedestrianDetectAttribute"),
@@ -15588,7 +15883,7 @@ func (client *Client) QueryFaceImageTemplateWithOptions(request *QueryFaceImageT
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFaceImageTemplateResponse{}
@@ -15616,8 +15911,25 @@ func (client *Client) RecognizeActionWithOptions(request *RecognizeActionRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoData)) {
+		body["VideoData"] = request.VideoData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizeAction"),
@@ -15655,8 +15967,13 @@ func (client *Client) RecognizeExpressionWithOptions(request *RecognizeExpressio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizeExpression"),
@@ -15800,8 +16117,49 @@ func (client *Client) RecognizeFaceWithOptions(request *RecognizeFaceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Age)) {
+		body["Age"] = request.Age
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Beauty)) {
+		body["Beauty"] = request.Beauty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		body["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["Gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Glass)) {
+		body["Glass"] = request.Glass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hat)) {
+		body["Hat"] = request.Hat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		body["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFaceNumber)) {
+		body["MaxFaceNumber"] = request.MaxFaceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quality)) {
+		body["Quality"] = request.Quality
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizeFace"),
@@ -15945,8 +16303,21 @@ func (client *Client) RecognizeHandGestureWithOptions(request *RecognizeHandGest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GestureType)) {
+		body["GestureType"] = request.GestureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizeHandGesture"),
@@ -16090,8 +16461,13 @@ func (client *Client) RecognizePublicFaceWithOptions(request *RecognizePublicFac
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["Task"] = request.Task
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizePublicFace"),
@@ -16129,8 +16505,21 @@ func (client *Client) RetouchBodyWithOptions(request *RetouchBodyRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LengthenDegree)) {
+		body["LengthenDegree"] = request.LengthenDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlimDegree)) {
+		body["SlimDegree"] = request.SlimDegree
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RetouchBody"),
@@ -16274,8 +16663,21 @@ func (client *Client) RetouchSkinWithOptions(request *RetouchSkinRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetouchDegree)) {
+		body["RetouchDegree"] = request.RetouchDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhiteningDegree)) {
+		body["WhiteningDegree"] = request.WhiteningDegree
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RetouchSkin"),
@@ -16425,8 +16827,25 @@ func (client *Client) SearchBodyTraceWithOptions(tmpReq *SearchBodyTraceRequest,
 		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		body["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImagesShrink)) {
+		body["Images"] = request.ImagesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinScore)) {
+		body["MinScore"] = request.MinScore
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchBodyTrace"),
@@ -16464,8 +16883,33 @@ func (client *Client) SearchFaceWithOptions(request *SearchFaceRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbNames)) {
+		body["DbNames"] = request.DbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFaceNum)) {
+		body["MaxFaceNum"] = request.MaxFaceNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityScoreThreshold)) {
+		body["QualityScoreThreshold"] = request.QualityScoreThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchFace"),
@@ -16609,8 +17053,29 @@ func (client *Client) SwapFacialFeaturesWithOptions(request *SwapFacialFeaturesR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EditPart)) {
+		body["EditPart"] = request.EditPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceImageData)) {
+		body["SourceImageData"] = request.SourceImageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceImageURL)) {
+		body["SourceImageURL"] = request.SourceImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageData)) {
+		body["TargetImageData"] = request.TargetImageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageURL)) {
+		body["TargetImageURL"] = request.TargetImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwapFacialFeatures"),
@@ -16648,8 +17113,21 @@ func (client *Client) UpdateFaceEntityWithOptions(request *UpdateFaceEntityReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFaceEntity"),
@@ -16687,8 +17165,25 @@ func (client *Client) VerifyFaceMaskWithOptions(request *VerifyFaceMaskRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageData)) {
+		body["ImageData"] = request.ImageData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefData)) {
+		body["RefData"] = request.RefData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefUrl)) {
+		body["RefUrl"] = request.RefUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("VerifyFaceMask"),
