@@ -391,139 +391,6 @@ func (s *AddSmsTemplateResponse) SetBody(v *AddSmsTemplateResponseBody) *AddSmsT
 	return s
 }
 
-type CreateCardSmsTemplateRequest struct {
-	Memo         *string                `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	Template     map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
-	TemplateName *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s CreateCardSmsTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCardSmsTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCardSmsTemplateRequest) SetMemo(v string) *CreateCardSmsTemplateRequest {
-	s.Memo = &v
-	return s
-}
-
-func (s *CreateCardSmsTemplateRequest) SetTemplate(v map[string]interface{}) *CreateCardSmsTemplateRequest {
-	s.Template = v
-	return s
-}
-
-func (s *CreateCardSmsTemplateRequest) SetTemplateName(v string) *CreateCardSmsTemplateRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type CreateCardSmsTemplateShrinkRequest struct {
-	Memo           *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s CreateCardSmsTemplateShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCardSmsTemplateShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCardSmsTemplateShrinkRequest) SetMemo(v string) *CreateCardSmsTemplateShrinkRequest {
-	s.Memo = &v
-	return s
-}
-
-func (s *CreateCardSmsTemplateShrinkRequest) SetTemplateShrink(v string) *CreateCardSmsTemplateShrinkRequest {
-	s.TemplateShrink = &v
-	return s
-}
-
-func (s *CreateCardSmsTemplateShrinkRequest) SetTemplateName(v string) *CreateCardSmsTemplateShrinkRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type CreateCardSmsTemplateResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateCardSmsTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCardSmsTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCardSmsTemplateResponseBody) SetCode(v string) *CreateCardSmsTemplateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateCardSmsTemplateResponseBody) SetData(v *CreateCardSmsTemplateResponseBodyData) *CreateCardSmsTemplateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateCardSmsTemplateResponseBody) SetRequestId(v string) *CreateCardSmsTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateCardSmsTemplateResponseBody) SetSuccess(v bool) *CreateCardSmsTemplateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateCardSmsTemplateResponseBodyData struct {
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-}
-
-func (s CreateCardSmsTemplateResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCardSmsTemplateResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCardSmsTemplateResponseBodyData) SetTemplateCode(v string) *CreateCardSmsTemplateResponseBodyData {
-	s.TemplateCode = &v
-	return s
-}
-
-type CreateCardSmsTemplateResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCardSmsTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCardSmsTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCardSmsTemplateResponse) SetHeaders(v map[string]*string) *CreateCardSmsTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCardSmsTemplateResponse) SetBody(v *CreateCardSmsTemplateResponseBody) *CreateCardSmsTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteShortUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -793,227 +660,6 @@ func (s *DeleteSmsTemplateResponse) SetHeaders(v map[string]*string) *DeleteSmsT
 }
 
 func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *DeleteSmsTemplateResponse {
-	s.Body = v
-	return s
-}
-
-type GetMediaResourceIdRequest struct {
-	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	FileSize     *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	OssKey       *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-}
-
-func (s GetMediaResourceIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaResourceIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaResourceIdRequest) SetExtendInfo(v string) *GetMediaResourceIdRequest {
-	s.ExtendInfo = &v
-	return s
-}
-
-func (s *GetMediaResourceIdRequest) SetFileSize(v int64) *GetMediaResourceIdRequest {
-	s.FileSize = &v
-	return s
-}
-
-func (s *GetMediaResourceIdRequest) SetMemo(v string) *GetMediaResourceIdRequest {
-	s.Memo = &v
-	return s
-}
-
-func (s *GetMediaResourceIdRequest) SetOssKey(v string) *GetMediaResourceIdRequest {
-	s.OssKey = &v
-	return s
-}
-
-func (s *GetMediaResourceIdRequest) SetResourceType(v int32) *GetMediaResourceIdRequest {
-	s.ResourceType = &v
-	return s
-}
-
-type GetMediaResourceIdResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetMediaResourceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetMediaResourceIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaResourceIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaResourceIdResponseBody) SetCode(v string) *GetMediaResourceIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetMediaResourceIdResponseBody) SetData(v *GetMediaResourceIdResponseBodyData) *GetMediaResourceIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetMediaResourceIdResponseBody) SetRequestId(v string) *GetMediaResourceIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMediaResourceIdResponseBody) SetSuccess(v bool) *GetMediaResourceIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetMediaResourceIdResponseBodyData struct {
-	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-}
-
-func (s GetMediaResourceIdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaResourceIdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaResourceIdResponseBodyData) SetResourceId(v int64) *GetMediaResourceIdResponseBodyData {
-	s.ResourceId = &v
-	return s
-}
-
-type GetMediaResourceIdResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMediaResourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaResourceIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaResourceIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaResourceIdResponse) SetHeaders(v map[string]*string) *GetMediaResourceIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaResourceIdResponse) SetBody(v *GetMediaResourceIdResponseBody) *GetMediaResourceIdResponse {
-	s.Body = v
-	return s
-}
-
-type GetOSSInfoForCardTemplateResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetOSSInfoForCardTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetOSSInfoForCardTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOSSInfoForCardTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBody) SetCode(v string) *GetOSSInfoForCardTemplateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBody) SetData(v *GetOSSInfoForCardTemplateResponseBodyData) *GetOSSInfoForCardTemplateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBody) SetRequestId(v string) *GetOSSInfoForCardTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBody) SetSuccess(v bool) *GetOSSInfoForCardTemplateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetOSSInfoForCardTemplateResponseBodyData struct {
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Signature   *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-}
-
-func (s GetOSSInfoForCardTemplateResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOSSInfoForCardTemplateResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetAccessKeyId(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetAliUid(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.AliUid = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetExpireTime(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetHost(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.Host = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetPolicy(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.Policy = &v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponseBodyData) SetSignature(v string) *GetOSSInfoForCardTemplateResponseBodyData {
-	s.Signature = &v
-	return s
-}
-
-type GetOSSInfoForCardTemplateResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOSSInfoForCardTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetOSSInfoForCardTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOSSInfoForCardTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetOSSInfoForCardTemplateResponse) SetHeaders(v map[string]*string) *GetOSSInfoForCardTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOSSInfoForCardTemplateResponse) SetBody(v *GetOSSInfoForCardTemplateResponseBody) *GetOSSInfoForCardTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -1473,98 +1119,6 @@ func (s *ModifySmsTemplateResponse) SetBody(v *ModifySmsTemplateResponseBody) *M
 	return s
 }
 
-type QueryCardSmsTemplateRequest struct {
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-}
-
-func (s QueryCardSmsTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardSmsTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardSmsTemplateRequest) SetTemplateCode(v string) *QueryCardSmsTemplateRequest {
-	s.TemplateCode = &v
-	return s
-}
-
-type QueryCardSmsTemplateResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryCardSmsTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardSmsTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardSmsTemplateResponseBody) SetCode(v string) *QueryCardSmsTemplateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryCardSmsTemplateResponseBody) SetData(v *QueryCardSmsTemplateResponseBodyData) *QueryCardSmsTemplateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryCardSmsTemplateResponseBody) SetRequestId(v string) *QueryCardSmsTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryCardSmsTemplateResponseBody) SetSuccess(v bool) *QueryCardSmsTemplateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryCardSmsTemplateResponseBodyData struct {
-	Templates []map[string]interface{} `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-}
-
-func (s QueryCardSmsTemplateResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardSmsTemplateResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardSmsTemplateResponseBodyData) SetTemplates(v []map[string]interface{}) *QueryCardSmsTemplateResponseBodyData {
-	s.Templates = v
-	return s
-}
-
-type QueryCardSmsTemplateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryCardSmsTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardSmsTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardSmsTemplateResponse) SetHeaders(v map[string]*string) *QueryCardSmsTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryCardSmsTemplateResponse) SetBody(v *QueryCardSmsTemplateResponseBody) *QueryCardSmsTemplateResponse {
-	s.Body = v
-	return s
-}
-
 type QuerySendDetailsRequest struct {
 	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -1760,6 +1314,187 @@ func (s *QuerySendDetailsResponse) SetHeaders(v map[string]*string) *QuerySendDe
 }
 
 func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *QuerySendDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySendStatisticsRequest struct {
+	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	IsGlobe              *int32  `json:"IsGlobe,omitempty" xml:"IsGlobe,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s QuerySendStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendStatisticsRequest) SetEndDate(v string) *QuerySendStatisticsRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetIsGlobe(v int32) *QuerySendStatisticsRequest {
+	s.IsGlobe = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetOwnerId(v int64) *QuerySendStatisticsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetPageIndex(v int32) *QuerySendStatisticsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetPageSize(v int32) *QuerySendStatisticsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetResourceOwnerAccount(v string) *QuerySendStatisticsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetResourceOwnerId(v int64) *QuerySendStatisticsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QuerySendStatisticsRequest) SetStartDate(v string) *QuerySendStatisticsRequest {
+	s.StartDate = &v
+	return s
+}
+
+type QuerySendStatisticsResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QuerySendStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QuerySendStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendStatisticsResponseBody) SetCode(v string) *QuerySendStatisticsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBody) SetData(v *QuerySendStatisticsResponseBodyData) *QuerySendStatisticsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBody) SetMessage(v string) *QuerySendStatisticsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBody) SetRequestId(v string) *QuerySendStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QuerySendStatisticsResponseBodyData struct {
+	TargetList []*QuerySendStatisticsResponseBodyDataTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	TotalSize  *int64                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s QuerySendStatisticsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendStatisticsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendStatisticsResponseBodyData) SetTargetList(v []*QuerySendStatisticsResponseBodyDataTargetList) *QuerySendStatisticsResponseBodyData {
+	s.TargetList = v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBodyData) SetTotalSize(v int64) *QuerySendStatisticsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type QuerySendStatisticsResponseBodyDataTargetList struct {
+	NoRespondedCount      *int64  `json:"NoRespondedCount,omitempty" xml:"NoRespondedCount,omitempty"`
+	RespondedFailCount    *int64  `json:"RespondedFailCount,omitempty" xml:"RespondedFailCount,omitempty"`
+	RespondedSuccessCount *int64  `json:"RespondedSuccessCount,omitempty" xml:"RespondedSuccessCount,omitempty"`
+	SendDate              *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	TotalCount            *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QuerySendStatisticsResponseBodyDataTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendStatisticsResponseBodyDataTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendStatisticsResponseBodyDataTargetList) SetNoRespondedCount(v int64) *QuerySendStatisticsResponseBodyDataTargetList {
+	s.NoRespondedCount = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBodyDataTargetList) SetRespondedFailCount(v int64) *QuerySendStatisticsResponseBodyDataTargetList {
+	s.RespondedFailCount = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBodyDataTargetList) SetRespondedSuccessCount(v int64) *QuerySendStatisticsResponseBodyDataTargetList {
+	s.RespondedSuccessCount = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBodyDataTargetList) SetSendDate(v string) *QuerySendStatisticsResponseBodyDataTargetList {
+	s.SendDate = &v
+	return s
+}
+
+func (s *QuerySendStatisticsResponseBodyDataTargetList) SetTotalCount(v int64) *QuerySendStatisticsResponseBodyDataTargetList {
+	s.TotalCount = &v
+	return s
+}
+
+type QuerySendStatisticsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySendStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySendStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySendStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySendStatisticsResponse) SetHeaders(v map[string]*string) *QuerySendStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySendStatisticsResponse) SetBody(v *QuerySendStatisticsResponseBody) *QuerySendStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -2027,6 +1762,181 @@ func (s *QuerySmsSignResponse) SetBody(v *QuerySmsSignResponseBody) *QuerySmsSig
 	return s
 }
 
+type QuerySmsSignListRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QuerySmsSignListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsSignListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsSignListRequest) SetOwnerId(v int64) *QuerySmsSignListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySmsSignListRequest) SetPageIndex(v int32) *QuerySmsSignListRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QuerySmsSignListRequest) SetPageSize(v int32) *QuerySmsSignListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySmsSignListRequest) SetResourceOwnerAccount(v string) *QuerySmsSignListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySmsSignListRequest) SetResourceOwnerId(v int64) *QuerySmsSignListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QuerySmsSignListResponseBody struct {
+	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsSignList []*QuerySmsSignListResponseBodySmsSignList `json:"SmsSignList,omitempty" xml:"SmsSignList,omitempty" type:"Repeated"`
+}
+
+func (s QuerySmsSignListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsSignListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsSignListResponseBody) SetCode(v string) *QuerySmsSignListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBody) SetMessage(v string) *QuerySmsSignListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBody) SetRequestId(v string) *QuerySmsSignListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBody) SetSmsSignList(v []*QuerySmsSignListResponseBodySmsSignList) *QuerySmsSignListResponseBody {
+	s.SmsSignList = v
+	return s
+}
+
+type QuerySmsSignListResponseBodySmsSignList struct {
+	AuditStatus  *string                                        `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	BusinessType *string                                        `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CreateDate   *string                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	OrderId      *string                                        `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Reason       *QuerySmsSignListResponseBodySmsSignListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	SignName     *string                                        `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s QuerySmsSignListResponseBodySmsSignList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsSignListResponseBodySmsSignList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetAuditStatus(v string) *QuerySmsSignListResponseBodySmsSignList {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetBusinessType(v string) *QuerySmsSignListResponseBodySmsSignList {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetCreateDate(v string) *QuerySmsSignListResponseBodySmsSignList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetOrderId(v string) *QuerySmsSignListResponseBodySmsSignList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetReason(v *QuerySmsSignListResponseBodySmsSignListReason) *QuerySmsSignListResponseBodySmsSignList {
+	s.Reason = v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignList) SetSignName(v string) *QuerySmsSignListResponseBodySmsSignList {
+	s.SignName = &v
+	return s
+}
+
+type QuerySmsSignListResponseBodySmsSignListReason struct {
+	RejectDate    *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
+	RejectInfo    *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	RejectSubInfo *string `json:"RejectSubInfo,omitempty" xml:"RejectSubInfo,omitempty"`
+}
+
+func (s QuerySmsSignListResponseBodySmsSignListReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsSignListResponseBodySmsSignListReason) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignListReason) SetRejectDate(v string) *QuerySmsSignListResponseBodySmsSignListReason {
+	s.RejectDate = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignListReason) SetRejectInfo(v string) *QuerySmsSignListResponseBodySmsSignListReason {
+	s.RejectInfo = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBodySmsSignListReason) SetRejectSubInfo(v string) *QuerySmsSignListResponseBodySmsSignListReason {
+	s.RejectSubInfo = &v
+	return s
+}
+
+type QuerySmsSignListResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySmsSignListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySmsSignListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsSignListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsSignListResponse) SetHeaders(v map[string]*string) *QuerySmsSignListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsSignListResponse) SetBody(v *QuerySmsSignListResponseBody) *QuerySmsSignListResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySmsTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2156,6 +2066,193 @@ func (s *QuerySmsTemplateResponse) SetBody(v *QuerySmsTemplateResponseBody) *Que
 	return s
 }
 
+type QuerySmsTemplateListRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QuerySmsTemplateListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsTemplateListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsTemplateListRequest) SetOwnerId(v int64) *QuerySmsTemplateListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListRequest) SetPageIndex(v int32) *QuerySmsTemplateListRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListRequest) SetPageSize(v int32) *QuerySmsTemplateListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListRequest) SetResourceOwnerAccount(v string) *QuerySmsTemplateListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListRequest) SetResourceOwnerId(v int64) *QuerySmsTemplateListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QuerySmsTemplateListResponseBody struct {
+	Code            *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message         *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsTemplateList []*QuerySmsTemplateListResponseBodySmsTemplateList `json:"SmsTemplateList,omitempty" xml:"SmsTemplateList,omitempty" type:"Repeated"`
+}
+
+func (s QuerySmsTemplateListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsTemplateListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetCode(v string) *QuerySmsTemplateListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetMessage(v string) *QuerySmsTemplateListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetRequestId(v string) *QuerySmsTemplateListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetSmsTemplateList(v []*QuerySmsTemplateListResponseBodySmsTemplateList) *QuerySmsTemplateListResponseBody {
+	s.SmsTemplateList = v
+	return s
+}
+
+type QuerySmsTemplateListResponseBodySmsTemplateList struct {
+	AuditStatus     *string                                                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CreateDate      *string                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	OrderId         *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Reason          *QuerySmsTemplateListResponseBodySmsTemplateListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	TemplateCode    *string                                                `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateContent *string                                                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	TemplateName    *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateType    *int32                                                 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s QuerySmsTemplateListResponseBodySmsTemplateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsTemplateListResponseBodySmsTemplateList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetAuditStatus(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetCreateDate(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetOrderId(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetReason(v *QuerySmsTemplateListResponseBodySmsTemplateListReason) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.Reason = v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateCode(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateContent(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateName(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateType(v int32) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.TemplateType = &v
+	return s
+}
+
+type QuerySmsTemplateListResponseBodySmsTemplateListReason struct {
+	RejectDate    *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
+	RejectInfo    *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	RejectSubInfo *string `json:"RejectSubInfo,omitempty" xml:"RejectSubInfo,omitempty"`
+}
+
+func (s QuerySmsTemplateListResponseBodySmsTemplateListReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsTemplateListResponseBodySmsTemplateListReason) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateListReason) SetRejectDate(v string) *QuerySmsTemplateListResponseBodySmsTemplateListReason {
+	s.RejectDate = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateListReason) SetRejectInfo(v string) *QuerySmsTemplateListResponseBodySmsTemplateListReason {
+	s.RejectInfo = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateListReason) SetRejectSubInfo(v string) *QuerySmsTemplateListResponseBodySmsTemplateListReason {
+	s.RejectSubInfo = &v
+	return s
+}
+
+type QuerySmsTemplateListResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySmsTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySmsTemplateListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsTemplateListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsTemplateListResponse) SetHeaders(v map[string]*string) *QuerySmsTemplateListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponse) SetBody(v *QuerySmsTemplateListResponseBody) *QuerySmsTemplateListResponse {
+	s.Body = v
+	return s
+}
+
 type SendBatchSmsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhoneNumberJson      *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
@@ -2269,211 +2366,6 @@ func (s *SendBatchSmsResponse) SetHeaders(v map[string]*string) *SendBatchSmsRes
 }
 
 func (s *SendBatchSmsResponse) SetBody(v *SendBatchSmsResponseBody) *SendBatchSmsResponse {
-	s.Body = v
-	return s
-}
-
-type SendCardSmsRequest struct {
-	CardObjects          []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
-	CardTemplateCode     *string                          `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
-	DigitalTemplateCode  *string                          `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
-	DigitalTemplateParam *string                          `json:"DigitalTemplateParam,omitempty" xml:"DigitalTemplateParam,omitempty"`
-	FallbackType         *string                          `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
-	OutId                *string                          `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	SignName             *string                          `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SmsTemplateCode      *string                          `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam     *string                          `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	SmsUpExtendCode      *string                          `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-}
-
-func (s SendCardSmsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCardSmsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SendCardSmsRequest) SetCardObjects(v []*SendCardSmsRequestCardObjects) *SendCardSmsRequest {
-	s.CardObjects = v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetCardTemplateCode(v string) *SendCardSmsRequest {
-	s.CardTemplateCode = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetDigitalTemplateCode(v string) *SendCardSmsRequest {
-	s.DigitalTemplateCode = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetDigitalTemplateParam(v string) *SendCardSmsRequest {
-	s.DigitalTemplateParam = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetFallbackType(v string) *SendCardSmsRequest {
-	s.FallbackType = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetOutId(v string) *SendCardSmsRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetSignName(v string) *SendCardSmsRequest {
-	s.SignName = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetSmsTemplateCode(v string) *SendCardSmsRequest {
-	s.SmsTemplateCode = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetSmsTemplateParam(v string) *SendCardSmsRequest {
-	s.SmsTemplateParam = &v
-	return s
-}
-
-func (s *SendCardSmsRequest) SetSmsUpExtendCode(v string) *SendCardSmsRequest {
-	s.SmsUpExtendCode = &v
-	return s
-}
-
-type SendCardSmsRequestCardObjects struct {
-	CustomUrl  *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
-	DyncParams *string `json:"dyncParams,omitempty" xml:"dyncParams,omitempty"`
-	Mobile     *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-}
-
-func (s SendCardSmsRequestCardObjects) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCardSmsRequestCardObjects) GoString() string {
-	return s.String()
-}
-
-func (s *SendCardSmsRequestCardObjects) SetCustomUrl(v string) *SendCardSmsRequestCardObjects {
-	s.CustomUrl = &v
-	return s
-}
-
-func (s *SendCardSmsRequestCardObjects) SetDyncParams(v string) *SendCardSmsRequestCardObjects {
-	s.DyncParams = &v
-	return s
-}
-
-func (s *SendCardSmsRequestCardObjects) SetMobile(v string) *SendCardSmsRequestCardObjects {
-	s.Mobile = &v
-	return s
-}
-
-type SendCardSmsResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SendCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SendCardSmsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCardSmsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SendCardSmsResponseBody) SetCode(v string) *SendCardSmsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBody) SetData(v *SendCardSmsResponseBodyData) *SendCardSmsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SendCardSmsResponseBody) SetRequestId(v string) *SendCardSmsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBody) SetSuccess(v bool) *SendCardSmsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SendCardSmsResponseBodyData struct {
-	BizCardId       *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	BizDigitalId    *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
-	BizSmsId        *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	CardTmpState    *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	MediaMobiles    *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
-	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
-}
-
-func (s SendCardSmsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCardSmsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SendCardSmsResponseBodyData) SetBizCardId(v string) *SendCardSmsResponseBodyData {
-	s.BizCardId = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBodyData) SetBizDigitalId(v string) *SendCardSmsResponseBodyData {
-	s.BizDigitalId = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBodyData) SetBizSmsId(v string) *SendCardSmsResponseBodyData {
-	s.BizSmsId = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBodyData) SetCardTmpState(v int32) *SendCardSmsResponseBodyData {
-	s.CardTmpState = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBodyData) SetMediaMobiles(v string) *SendCardSmsResponseBodyData {
-	s.MediaMobiles = &v
-	return s
-}
-
-func (s *SendCardSmsResponseBodyData) SetNotMediaMobiles(v string) *SendCardSmsResponseBodyData {
-	s.NotMediaMobiles = &v
-	return s
-}
-
-type SendCardSmsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SendCardSmsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendCardSmsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SendCardSmsResponse) SetHeaders(v map[string]*string) *SendCardSmsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SendCardSmsResponse) SetBody(v *SendCardSmsResponseBody) *SendCardSmsResponse {
 	s.Body = v
 	return s
 }
@@ -2911,12 +2803,34 @@ func (client *Client) AddShortUrlWithOptions(request *AddShortUrlRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDays)) {
+		body["EffectiveDays"] = request.EffectiveDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShortUrlName)) {
+		body["ShortUrlName"] = request.ShortUrlName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceUrl)) {
+		body["SourceUrl"] = request.SourceUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddShortUrl"),
@@ -2955,15 +2869,38 @@ func (client *Client) AddSmsSignWithOptions(request *AddSmsSignRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["Remark"] = request.Remark
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignName"] = request.SignName
-	query["SignSource"] = request.SignSource
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
+		query["SignSource"] = request.SignSource
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SignFileList)) {
+		body["SignFileList"] = request.SignFileList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSmsSign"),
@@ -3002,16 +2939,36 @@ func (client *Client) AddSmsTemplateWithOptions(request *AddSmsTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["Remark"] = request.Remark
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateContent"] = request.TemplateContent
-	query["TemplateName"] = request.TemplateName
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSmsTemplate"),
@@ -3021,7 +2978,7 @@ func (client *Client) AddSmsTemplateWithOptions(request *AddSmsTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSmsTemplateResponse{}
@@ -3044,68 +3001,32 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 	return _result, _err
 }
 
-func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateCardSmsTemplateShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Template)) {
-		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, tea.String("Template"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	query["Memo"] = request.Memo
-	query["Template"] = request.TemplateShrink
-	query["TemplateName"] = request.TemplateName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCardSmsTemplate"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateCardSmsTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateRequest) (_result *CreateCardSmsTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCardSmsTemplateResponse{}
-	_body, _err := client.CreateCardSmsTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, runtime *util.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceUrl)) {
+		body["SourceUrl"] = request.SourceUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteShortUrl"),
@@ -3144,13 +3065,24 @@ func (client *Client) DeleteSmsSignWithOptions(request *DeleteSmsSignRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignName"] = request.SignName
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSmsSign"),
@@ -3160,7 +3092,7 @@ func (client *Client) DeleteSmsSignWithOptions(request *DeleteSmsSignRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSmsSignResponse{}
@@ -3189,13 +3121,24 @@ func (client *Client) DeleteSmsTemplateWithOptions(request *DeleteSmsTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateCode"] = request.TemplateCode
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSmsTemplate"),
@@ -3205,7 +3148,7 @@ func (client *Client) DeleteSmsTemplateWithOptions(request *DeleteSmsTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSmsTemplateResponse{}
@@ -3228,104 +3171,54 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) GetMediaResourceIdWithOptions(request *GetMediaResourceIdRequest, runtime *util.RuntimeOptions) (_result *GetMediaResourceIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ExtendInfo"] = request.ExtendInfo
-	query["FileSize"] = request.FileSize
-	query["Memo"] = request.Memo
-	query["OssKey"] = request.OssKey
-	query["ResourceType"] = request.ResourceType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMediaResourceId"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMediaResourceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMediaResourceId(request *GetMediaResourceIdRequest) (_result *GetMediaResourceIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetMediaResourceIdResponse{}
-	_body, _err := client.GetMediaResourceIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetOSSInfoForCardTemplateWithOptions(runtime *util.RuntimeOptions) (_result *GetOSSInfoForCardTemplateResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("GetOSSInfoForCardTemplate"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetOSSInfoForCardTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetOSSInfoForCardTemplateResponse{}
-	_body, _err := client.GetOSSInfoForCardTemplateWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["OwnerId"] = request.OwnerId
-	query["PageSize"] = request.PageSize
-	query["ProdCode"] = request.ProdCode
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		query["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -3335,7 +3228,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -3364,15 +3257,38 @@ func (client *Client) ModifySmsSignWithOptions(request *ModifySmsSignRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["Remark"] = request.Remark
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignName"] = request.SignName
-	query["SignSource"] = request.SignSource
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
+		query["SignSource"] = request.SignSource
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SignFileList)) {
+		body["SignFileList"] = request.SignFileList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySmsSign"),
@@ -3411,17 +3327,40 @@ func (client *Client) ModifySmsTemplateWithOptions(request *ModifySmsTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["Remark"] = request.Remark
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateCode"] = request.TemplateCode
-	query["TemplateContent"] = request.TemplateContent
-	query["TemplateName"] = request.TemplateName
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySmsTemplate"),
@@ -3431,7 +3370,7 @@ func (client *Client) ModifySmsTemplateWithOptions(request *ModifySmsTemplateReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySmsTemplateResponse{}
@@ -3454,65 +3393,46 @@ func (client *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) QueryCardSmsTemplateWithOptions(request *QueryCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *QueryCardSmsTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["TemplateCode"] = request.TemplateCode
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCardSmsTemplate"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryCardSmsTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryCardSmsTemplate(request *QueryCardSmsTemplateRequest) (_result *QueryCardSmsTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryCardSmsTemplateResponse{}
-	_body, _err := client.QueryCardSmsTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *util.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BizId"] = request.BizId
-	query["CurrentPage"] = request.CurrentPage
-	query["OwnerId"] = request.OwnerId
-	query["PageSize"] = request.PageSize
-	query["PhoneNumber"] = request.PhoneNumber
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SendDate"] = request.SendDate
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendDate)) {
+		query["SendDate"] = request.SendDate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySendDetails"),
@@ -3522,7 +3442,7 @@ func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySendDetailsResponse{}
@@ -3545,18 +3465,104 @@ func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) QuerySendStatisticsWithOptions(request *QuerySendStatisticsRequest, runtime *util.RuntimeOptions) (_result *QuerySendStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGlobe)) {
+		query["IsGlobe"] = request.IsGlobe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySendStatistics"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySendStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySendStatistics(request *QuerySendStatisticsRequest) (_result *QuerySendStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySendStatisticsResponse{}
+	_body, _err := client.QuerySendStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryShortUrlWithOptions(request *QueryShortUrlRequest, runtime *util.RuntimeOptions) (_result *QueryShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ShortUrl)) {
+		body["ShortUrl"] = request.ShortUrl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryShortUrl"),
@@ -3595,13 +3601,24 @@ func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignName"] = request.SignName
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySmsSign"),
@@ -3611,7 +3628,7 @@ func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySmsSignResponse{}
@@ -3634,19 +3651,90 @@ func (client *Client) QuerySmsSign(request *QuerySmsSignRequest) (_result *Query
 	return _result, _err
 }
 
+func (client *Client) QuerySmsSignListWithOptions(request *QuerySmsSignListRequest, runtime *util.RuntimeOptions) (_result *QuerySmsSignListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmsSignList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmsSignListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySmsSignList(request *QuerySmsSignListRequest) (_result *QuerySmsSignListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmsSignListResponse{}
+	_body, _err := client.QuerySmsSignListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySmsTemplateWithOptions(request *QuerySmsTemplateRequest, runtime *util.RuntimeOptions) (_result *QuerySmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateCode"] = request.TemplateCode
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySmsTemplate"),
@@ -3656,7 +3744,7 @@ func (client *Client) QuerySmsTemplateWithOptions(request *QuerySmsTemplateReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySmsTemplateResponse{}
@@ -3679,23 +3767,106 @@ func (client *Client) QuerySmsTemplate(request *QuerySmsTemplateRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) QuerySmsTemplateListWithOptions(request *QuerySmsTemplateListRequest, runtime *util.RuntimeOptions) (_result *QuerySmsTemplateListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmsTemplateList"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmsTemplateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest) (_result *QuerySmsTemplateListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmsTemplateListResponse{}
+	_body, _err := client.QuerySmsTemplateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runtime *util.RuntimeOptions) (_result *SendBatchSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNumberJson"] = request.PhoneNumberJson
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignNameJson"] = request.SignNameJson
-	query["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
-	query["TemplateCode"] = request.TemplateCode
-	query["TemplateParamJson"] = request.TemplateParamJson
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberJson)) {
+		query["PhoneNumberJson"] = request.PhoneNumberJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignNameJson)) {
+		query["SignNameJson"] = request.SignNameJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCodeJson)) {
+		query["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParamJson)) {
+		query["TemplateParamJson"] = request.TemplateParamJson
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SendBatchSms"),
@@ -3705,7 +3876,7 @@ func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SendBatchSmsResponse{}
@@ -3728,75 +3899,50 @@ func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendB
 	return _result, _err
 }
 
-func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtime *util.RuntimeOptions) (_result *SendCardSmsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["CardObjects"] = request.CardObjects
-	query["CardTemplateCode"] = request.CardTemplateCode
-	query["DigitalTemplateCode"] = request.DigitalTemplateCode
-	query["DigitalTemplateParam"] = request.DigitalTemplateParam
-	query["FallbackType"] = request.FallbackType
-	query["OutId"] = request.OutId
-	query["SignName"] = request.SignName
-	query["SmsTemplateCode"] = request.SmsTemplateCode
-	query["SmsTemplateParam"] = request.SmsTemplateParam
-	query["SmsUpExtendCode"] = request.SmsUpExtendCode
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SendCardSms"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SendCardSmsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCardSmsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SendCardSmsResponse{}
-	_body, _err := client.SendCardSmsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *util.RuntimeOptions) (_result *SendSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OutId"] = request.OutId
-	query["OwnerId"] = request.OwnerId
-	query["PhoneNumbers"] = request.PhoneNumbers
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SignName"] = request.SignName
-	query["SmsUpExtendCode"] = request.SmsUpExtendCode
-	query["TemplateCode"] = request.TemplateCode
-	query["TemplateParam"] = request.TemplateParam
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCode)) {
+		query["SmsUpExtendCode"] = request.SmsUpExtendCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParam)) {
+		query["TemplateParam"] = request.TemplateParam
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SendSms"),
@@ -3806,7 +3952,7 @@ func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SendSmsResponse{}
@@ -3835,17 +3981,40 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ProdCode"] = request.ProdCode
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		query["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -3855,7 +4024,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -3884,18 +4053,44 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["OwnerId"] = request.OwnerId
-	query["ProdCode"] = request.ProdCode
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		query["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -3905,7 +4100,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
