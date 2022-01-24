@@ -543,6 +543,8 @@ type CreateApiRequest struct {
 	ApiName              *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	AppCodeAuthType      *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendEnable        *bool   `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
+	BackendId            *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	ConstantParameters   *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableInternet      *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
@@ -591,6 +593,16 @@ func (s *CreateApiRequest) SetAppCodeAuthType(v string) *CreateApiRequest {
 
 func (s *CreateApiRequest) SetAuthType(v string) *CreateApiRequest {
 	s.AuthType = &v
+	return s
+}
+
+func (s *CreateApiRequest) SetBackendEnable(v bool) *CreateApiRequest {
+	s.BackendEnable = &v
+	return s
+}
+
+func (s *CreateApiRequest) SetBackendId(v string) *CreateApiRequest {
+	s.BackendId = &v
 	return s
 }
 
@@ -1108,6 +1120,180 @@ func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse 
 }
 
 func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBackendRequest struct {
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateBackendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendRequest) SetBackendName(v string) *CreateBackendRequest {
+	s.BackendName = &v
+	return s
+}
+
+func (s *CreateBackendRequest) SetBackendType(v string) *CreateBackendRequest {
+	s.BackendType = &v
+	return s
+}
+
+func (s *CreateBackendRequest) SetDescription(v string) *CreateBackendRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBackendRequest) SetSecurityToken(v string) *CreateBackendRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateBackendResponseBody struct {
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendResponseBody) SetBackendId(v string) *CreateBackendResponseBody {
+	s.BackendId = &v
+	return s
+}
+
+func (s *CreateBackendResponseBody) SetRequestId(v string) *CreateBackendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackendResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBackendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBackendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendResponse) SetHeaders(v map[string]*string) *CreateBackendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackendResponse) SetBody(v *CreateBackendResponseBody) *CreateBackendResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBackendModelRequest struct {
+	BackendId        *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
+	BackendType      *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s CreateBackendModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendModelRequest) SetBackendId(v string) *CreateBackendModelRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *CreateBackendModelRequest) SetBackendModelData(v string) *CreateBackendModelRequest {
+	s.BackendModelData = &v
+	return s
+}
+
+func (s *CreateBackendModelRequest) SetBackendType(v string) *CreateBackendModelRequest {
+	s.BackendType = &v
+	return s
+}
+
+func (s *CreateBackendModelRequest) SetDescription(v string) *CreateBackendModelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBackendModelRequest) SetSecurityToken(v string) *CreateBackendModelRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateBackendModelRequest) SetStageName(v string) *CreateBackendModelRequest {
+	s.StageName = &v
+	return s
+}
+
+type CreateBackendModelResponseBody struct {
+	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackendModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendModelResponseBody) SetBackendModelId(v string) *CreateBackendModelResponseBody {
+	s.BackendModelId = &v
+	return s
+}
+
+func (s *CreateBackendModelResponseBody) SetRequestId(v string) *CreateBackendModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackendModelResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateBackendModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBackendModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackendModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackendModelResponse) SetHeaders(v map[string]*string) *CreateBackendModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackendModelResponse) SetBody(v *CreateBackendModelResponseBody) *CreateBackendModelResponse {
 	s.Body = v
 	return s
 }
@@ -2386,6 +2572,150 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 	return s
 }
 
+type DeleteBackendRequest struct {
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteBackendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendRequest) SetBackendId(v string) *DeleteBackendRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DeleteBackendRequest) SetSecurityToken(v string) *DeleteBackendRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteBackendResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendResponseBody) SetRequestId(v string) *DeleteBackendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackendResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBackendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBackendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendResponse) SetHeaders(v map[string]*string) *DeleteBackendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackendResponse) SetBody(v *DeleteBackendResponseBody) *DeleteBackendResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBackendModelRequest struct {
+	BackendId      *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DeleteBackendModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendModelRequest) SetBackendId(v string) *DeleteBackendModelRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DeleteBackendModelRequest) SetBackendModelId(v string) *DeleteBackendModelRequest {
+	s.BackendModelId = &v
+	return s
+}
+
+func (s *DeleteBackendModelRequest) SetSecurityToken(v string) *DeleteBackendModelRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DeleteBackendModelRequest) SetStageName(v string) *DeleteBackendModelRequest {
+	s.StageName = &v
+	return s
+}
+
+type DeleteBackendModelResponseBody struct {
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackendModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendModelResponseBody) SetOperationId(v string) *DeleteBackendModelResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *DeleteBackendModelResponseBody) SetRequestId(v string) *DeleteBackendModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackendModelResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteBackendModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBackendModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackendModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackendModelResponse) SetHeaders(v map[string]*string) *DeleteBackendModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackendModelResponse) SetBody(v *DeleteBackendModelResponseBody) *DeleteBackendModelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -3359,6 +3689,8 @@ type DescribeApiResponseBody struct {
 	ApiName                *string                                        `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	AppCodeAuthType        *string                                        `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	AuthType               *string                                        `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendConfig          *DescribeApiResponseBodyBackendConfig          `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
+	BackendEnable          *bool                                          `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
 	ConstantParameters     *DescribeApiResponseBodyConstantParameters     `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
 	CreatedTime            *string                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	CustomSystemParameters *DescribeApiResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
@@ -3420,6 +3752,16 @@ func (s *DescribeApiResponseBody) SetAppCodeAuthType(v string) *DescribeApiRespo
 
 func (s *DescribeApiResponseBody) SetAuthType(v string) *DescribeApiResponseBody {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DescribeApiResponseBody) SetBackendConfig(v *DescribeApiResponseBodyBackendConfig) *DescribeApiResponseBody {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *DescribeApiResponseBody) SetBackendEnable(v bool) *DescribeApiResponseBody {
+	s.BackendEnable = &v
 	return s
 }
 
@@ -3565,6 +3907,35 @@ func (s *DescribeApiResponseBody) SetVisibility(v string) *DescribeApiResponseBo
 
 func (s *DescribeApiResponseBody) SetWebSocketApiType(v string) *DescribeApiResponseBody {
 	s.WebSocketApiType = &v
+	return s
+}
+
+type DescribeApiResponseBodyBackendConfig struct {
+	BackendId   *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+}
+
+func (s DescribeApiResponseBodyBackendConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiResponseBodyBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiResponseBodyBackendConfig) SetBackendId(v string) *DescribeApiResponseBodyBackendConfig {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyBackendConfig) SetBackendName(v string) *DescribeApiResponseBodyBackendConfig {
+	s.BackendName = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyBackendConfig) SetBackendType(v string) *DescribeApiResponseBodyBackendConfig {
+	s.BackendType = &v
 	return s
 }
 
@@ -6074,6 +6445,8 @@ type DescribeApiHistoryResponseBody struct {
 	ApiName                *string                                               `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	AppCodeAuthType        *string                                               `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	AuthType               *string                                               `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendConfig          *DescribeApiHistoryResponseBodyBackendConfig          `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
+	BackendEnable          *bool                                                 `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
 	ConstantParameters     *DescribeApiHistoryResponseBodyConstantParameters     `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
 	CustomSystemParameters *DescribeApiHistoryResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
 	DeployedTime           *string                                               `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
@@ -6134,6 +6507,16 @@ func (s *DescribeApiHistoryResponseBody) SetAppCodeAuthType(v string) *DescribeA
 
 func (s *DescribeApiHistoryResponseBody) SetAuthType(v string) *DescribeApiHistoryResponseBody {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBody) SetBackendConfig(v *DescribeApiHistoryResponseBodyBackendConfig) *DescribeApiHistoryResponseBody {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBody) SetBackendEnable(v bool) *DescribeApiHistoryResponseBody {
+	s.BackendEnable = &v
 	return s
 }
 
@@ -6274,6 +6657,35 @@ func (s *DescribeApiHistoryResponseBody) SetVisibility(v string) *DescribeApiHis
 
 func (s *DescribeApiHistoryResponseBody) SetWebSocketApiType(v string) *DescribeApiHistoryResponseBody {
 	s.WebSocketApiType = &v
+	return s
+}
+
+type DescribeApiHistoryResponseBodyBackendConfig struct {
+	BackendId   *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+}
+
+func (s DescribeApiHistoryResponseBodyBackendConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiHistoryResponseBodyBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiHistoryResponseBodyBackendConfig) SetBackendId(v string) *DescribeApiHistoryResponseBodyBackendConfig {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyBackendConfig) SetBackendName(v string) *DescribeApiHistoryResponseBodyBackendConfig {
+	s.BackendName = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyBackendConfig) SetBackendType(v string) *DescribeApiHistoryResponseBodyBackendConfig {
+	s.BackendType = &v
 	return s
 }
 
@@ -8777,6 +9189,181 @@ func (s *DescribeApisByAppResponse) SetBody(v *DescribeApisByAppResponseBody) *D
 	return s
 }
 
+type DescribeApisByBackendRequest struct {
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DescribeApisByBackendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByBackendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByBackendRequest) SetBackendId(v string) *DescribeApisByBackendRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeApisByBackendRequest) SetPageNumber(v int32) *DescribeApisByBackendRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisByBackendRequest) SetPageSize(v int32) *DescribeApisByBackendRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisByBackendRequest) SetSecurityToken(v string) *DescribeApisByBackendRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeApisByBackendRequest) SetStageName(v string) *DescribeApisByBackendRequest {
+	s.StageName = &v
+	return s
+}
+
+type DescribeApisByBackendResponseBody struct {
+	ApiInfoList *DescribeApisByBackendResponseBodyApiInfoList `json:"ApiInfoList,omitempty" xml:"ApiInfoList,omitempty" type:"Struct"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisByBackendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByBackendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByBackendResponseBody) SetApiInfoList(v *DescribeApisByBackendResponseBodyApiInfoList) *DescribeApisByBackendResponseBody {
+	s.ApiInfoList = v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBody) SetPageNumber(v int32) *DescribeApisByBackendResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBody) SetPageSize(v int32) *DescribeApisByBackendResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBody) SetRequestId(v string) *DescribeApisByBackendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBody) SetTotalCount(v int32) *DescribeApisByBackendResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisByBackendResponseBodyApiInfoList struct {
+	ApiInfo []*DescribeApisByBackendResponseBodyApiInfoListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeApisByBackendResponseBodyApiInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByBackendResponseBodyApiInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoList) SetApiInfo(v []*DescribeApisByBackendResponseBodyApiInfoListApiInfo) *DescribeApisByBackendResponseBodyApiInfoList {
+	s.ApiInfo = v
+	return s
+}
+
+type DescribeApisByBackendResponseBodyApiInfoListApiInfo struct {
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s DescribeApisByBackendResponseBodyApiInfoListApiInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByBackendResponseBodyApiInfoListApiInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetApiId(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetApiName(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetDescription(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetGroupId(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetGroupName(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetMethod(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeApisByBackendResponseBodyApiInfoListApiInfo) SetPath(v string) *DescribeApisByBackendResponseBodyApiInfoListApiInfo {
+	s.Path = &v
+	return s
+}
+
+type DescribeApisByBackendResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeApisByBackendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeApisByBackendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByBackendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByBackendResponse) SetHeaders(v map[string]*string) *DescribeApisByBackendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisByBackendResponse) SetBody(v *DescribeApisByBackendResponseBody) *DescribeApisByBackendResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisByIpControlRequest struct {
 	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -10342,6 +10929,503 @@ func (s *DescribeAuthorizedAppsResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeAuthorizedAppsResponse) SetBody(v *DescribeAuthorizedAppsResponseBody) *DescribeAuthorizedAppsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackendInfoRequest struct {
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeBackendInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoRequest) SetBackendId(v string) *DescribeBackendInfoRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoRequest) SetSecurityToken(v string) *DescribeBackendInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBody struct {
+	BackendInfo *DescribeBackendInfoResponseBodyBackendInfo `json:"BackendInfo,omitempty" xml:"BackendInfo,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBody) SetBackendInfo(v *DescribeBackendInfoResponseBodyBackendInfo) *DescribeBackendInfoResponseBody {
+	s.BackendInfo = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBody) SetRequestId(v string) *DescribeBackendInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfo struct {
+	BackendId     *string                                                    `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendModels []*DescribeBackendInfoResponseBodyBackendInfoBackendModels `json:"BackendModels,omitempty" xml:"BackendModels,omitempty" type:"Repeated"`
+	BackendName   *string                                                    `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string                                                    `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreatedTime   *string                                                    `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description   *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime  *string                                                    `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetBackendId(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetBackendModels(v []*DescribeBackendInfoResponseBodyBackendInfoBackendModels) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.BackendModels = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetBackendName(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.BackendName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetBackendType(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.BackendType = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetCreatedTime(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetDescription(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfo) SetModifiedTime(v string) *DescribeBackendInfoResponseBodyBackendInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModels struct {
+	BackendConfig  *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
+	BackendModelId *string                                                               `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate      *string                                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string                                                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	StageModeId    *string                                                               `json:"StageModeId,omitempty" xml:"StageModeId,omitempty"`
+	StageName      *string                                                               `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetBackendConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.BackendConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetBackendModelId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.BackendModelId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetDescription(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetGmtCreate(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetGmtModified(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageModeId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.StageModeId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModels {
+	s.StageName = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
+	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
+	OssConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig             `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
+	ServiceAddress        *string                                                                                    `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
+	Type                  *string                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpcConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig             `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetFunctionComputeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.FunctionComputeConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetOssConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.OssConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetServiceAddress(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.ServiceAddress = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetType(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetVpcConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.VpcConfig = v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig struct {
+	FcBaseUrl        *string `json:"FcBaseUrl,omitempty" xml:"FcBaseUrl,omitempty"`
+	FcRegionId       *string `json:"FcRegionId,omitempty" xml:"FcRegionId,omitempty"`
+	FcType           *string `json:"FcType,omitempty" xml:"FcType,omitempty"`
+	FunctionName     *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	OnlyBusinessPath *bool   `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
+	Qualifier        *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
+	RoleArn          *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetFcBaseUrl(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.FcBaseUrl = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetFcRegionId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.FcRegionId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetFcType(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.FcType = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetFunctionName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetOnlyBusinessPath(v bool) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.OnlyBusinessPath = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetQualifier(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetRoleArn(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) SetServiceName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig {
+	s.ServiceName = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig struct {
+	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig) SetBucketName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig) SetOssRegionId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig {
+	s.OssRegionId = &v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port        *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcScheme   *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetInstanceId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetPort(v int64) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetVpcAccessId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.VpcAccessId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetVpcId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) SetVpcScheme(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig {
+	s.VpcScheme = &v
+	return s
+}
+
+type DescribeBackendInfoResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackendInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackendInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponse) SetHeaders(v map[string]*string) *DescribeBackendInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponse) SetBody(v *DescribeBackendInfoResponseBody) *DescribeBackendInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackendListRequest struct {
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeBackendListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendListRequest) SetBackendName(v string) *DescribeBackendListRequest {
+	s.BackendName = &v
+	return s
+}
+
+func (s *DescribeBackendListRequest) SetBackendType(v string) *DescribeBackendListRequest {
+	s.BackendType = &v
+	return s
+}
+
+func (s *DescribeBackendListRequest) SetPageNumber(v int32) *DescribeBackendListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackendListRequest) SetPageSize(v int32) *DescribeBackendListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackendListRequest) SetSecurityToken(v string) *DescribeBackendListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeBackendListResponseBody struct {
+	BackendInfoList []*DescribeBackendListResponseBodyBackendInfoList `json:"BackendInfoList,omitempty" xml:"BackendInfoList,omitempty" type:"Repeated"`
+	PageNumber      *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeBackendListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendListResponseBody) SetBackendInfoList(v []*DescribeBackendListResponseBodyBackendInfoList) *DescribeBackendListResponseBody {
+	s.BackendInfoList = v
+	return s
+}
+
+func (s *DescribeBackendListResponseBody) SetPageNumber(v int32) *DescribeBackendListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBody) SetPageSize(v int32) *DescribeBackendListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBody) SetRequestId(v string) *DescribeBackendListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBody) SetTotalCount(v int32) *DescribeBackendListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeBackendListResponseBodyBackendInfoList struct {
+	BackendId    *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName  *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType  *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+}
+
+func (s DescribeBackendListResponseBodyBackendInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendListResponseBodyBackendInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetBackendId(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetBackendName(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.BackendName = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetBackendType(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.BackendType = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetCreatedTime(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetDescription(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeBackendListResponseBodyBackendInfoList) SetModifiedTime(v string) *DescribeBackendListResponseBodyBackendInfoList {
+	s.ModifiedTime = &v
+	return s
+}
+
+type DescribeBackendListResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackendListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackendListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendListResponse) SetHeaders(v map[string]*string) *DescribeBackendListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackendListResponse) SetBody(v *DescribeBackendListResponseBody) *DescribeBackendListResponse {
 	s.Body = v
 	return s
 }
@@ -15036,6 +16120,157 @@ func (s *DescribeTrafficControlsByApiResponse) SetBody(v *DescribeTrafficControl
 	return s
 }
 
+type DescribeUpdateBackendTaskRequest struct {
+	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeUpdateBackendTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdateBackendTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdateBackendTaskRequest) SetOperationUid(v string) *DescribeUpdateBackendTaskRequest {
+	s.OperationUid = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskRequest) SetSecurityToken(v string) *DescribeUpdateBackendTaskRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeUpdateBackendTaskResponseBody struct {
+	ApiUpdateBackendResults *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults `json:"ApiUpdateBackendResults,omitempty" xml:"ApiUpdateBackendResults,omitempty" type:"Struct"`
+	RequestId               *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUpdateBackendTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdateBackendTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdateBackendTaskResponseBody) SetApiUpdateBackendResults(v *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) *DescribeUpdateBackendTaskResponseBody {
+	s.ApiUpdateBackendResults = v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBody) SetRequestId(v string) *DescribeUpdateBackendTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults struct {
+	ApiUpdateBackendResult []*DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult `json:"ApiUpdateBackendResult,omitempty" xml:"ApiUpdateBackendResult,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) SetApiUpdateBackendResult(v []*DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults {
+	s.ApiUpdateBackendResult = v
+	return s
+}
+
+type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult struct {
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	BackendId    *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
+}
+
+func (s DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetApiName(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetApiUid(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.ApiUid = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetBackendId(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetErrorMsg(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetGroupId(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetGroupName(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetStageId(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.StageId = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetStageName(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult) SetUpdateStatus(v string) *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult {
+	s.UpdateStatus = &v
+	return s
+}
+
+type DescribeUpdateBackendTaskResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUpdateBackendTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUpdateBackendTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUpdateBackendTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUpdateBackendTaskResponse) SetHeaders(v map[string]*string) *DescribeUpdateBackendTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUpdateBackendTaskResponse) SetBody(v *DescribeUpdateBackendTaskResponseBody) *DescribeUpdateBackendTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUpdateVpcInfoTaskRequest struct {
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -16404,6 +17639,8 @@ type ModifyApiRequest struct {
 	ApiName              *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	AppCodeAuthType      *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendEnable        *bool   `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
+	BackendId            *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	ConstantParameters   *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableInternet      *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
@@ -16457,6 +17694,16 @@ func (s *ModifyApiRequest) SetAppCodeAuthType(v string) *ModifyApiRequest {
 
 func (s *ModifyApiRequest) SetAuthType(v string) *ModifyApiRequest {
 	s.AuthType = &v
+	return s
+}
+
+func (s *ModifyApiRequest) SetBackendEnable(v bool) *ModifyApiRequest {
+	s.BackendEnable = &v
+	return s
+}
+
+func (s *ModifyApiRequest) SetBackendId(v string) *ModifyApiRequest {
+	s.BackendId = &v
 	return s
 }
 
@@ -16956,6 +18203,186 @@ func (s *ModifyAppResponse) SetHeaders(v map[string]*string) *ModifyAppResponse 
 }
 
 func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBackendRequest struct {
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyBackendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendRequest) SetBackendId(v string) *ModifyBackendRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *ModifyBackendRequest) SetBackendName(v string) *ModifyBackendRequest {
+	s.BackendName = &v
+	return s
+}
+
+func (s *ModifyBackendRequest) SetBackendType(v string) *ModifyBackendRequest {
+	s.BackendType = &v
+	return s
+}
+
+func (s *ModifyBackendRequest) SetDescription(v string) *ModifyBackendRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyBackendRequest) SetSecurityToken(v string) *ModifyBackendRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyBackendResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendResponseBody) SetRequestId(v string) *ModifyBackendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackendResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyBackendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBackendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendResponse) SetHeaders(v map[string]*string) *ModifyBackendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackendResponse) SetBody(v *ModifyBackendResponseBody) *ModifyBackendResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBackendModelRequest struct {
+	BackendId        *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
+	BackendModelId   *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	BackendType      *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s ModifyBackendModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendModelRequest) SetBackendId(v string) *ModifyBackendModelRequest {
+	s.BackendId = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetBackendModelData(v string) *ModifyBackendModelRequest {
+	s.BackendModelData = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetBackendModelId(v string) *ModifyBackendModelRequest {
+	s.BackendModelId = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetBackendType(v string) *ModifyBackendModelRequest {
+	s.BackendType = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetDescription(v string) *ModifyBackendModelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetSecurityToken(v string) *ModifyBackendModelRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyBackendModelRequest) SetStageName(v string) *ModifyBackendModelRequest {
+	s.StageName = &v
+	return s
+}
+
+type ModifyBackendModelResponseBody struct {
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackendModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendModelResponseBody) SetOperationId(v string) *ModifyBackendModelResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ModifyBackendModelResponseBody) SetRequestId(v string) *ModifyBackendModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackendModelResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyBackendModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBackendModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackendModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackendModelResponse) SetHeaders(v map[string]*string) *ModifyBackendModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackendModelResponse) SetBody(v *ModifyBackendModelResponseBody) *ModifyBackendModelResponse {
 	s.Body = v
 	return s
 }
@@ -20323,6 +21750,14 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["AuthType"] = request.AuthType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BackendEnable)) {
+		query["BackendEnable"] = request.BackendEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
 		query["ConstantParameters"] = request.ConstantParameters
 	}
@@ -20626,6 +22061,126 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppResponse{}
 	_body, _err := client.CreateAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBackendWithOptions(request *CreateBackendRequest, runtime *util.RuntimeOptions) (_result *CreateBackendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendName)) {
+		query["BackendName"] = request.BackendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
+		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackend"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBackend(request *CreateBackendRequest) (_result *CreateBackendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackendResponse{}
+	_body, _err := client.CreateBackendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBackendModelWithOptions(request *CreateBackendModelRequest, runtime *util.RuntimeOptions) (_result *CreateBackendModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendModelData)) {
+		query["BackendModelData"] = request.BackendModelData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
+		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackendModel"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackendModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBackendModel(request *CreateBackendModelRequest) (_result *CreateBackendModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackendModelResponse{}
+	_body, _err := client.CreateBackendModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21426,6 +22981,110 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
 	_body, _err := client.DeleteAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBackendWithOptions(request *DeleteBackendRequest, runtime *util.RuntimeOptions) (_result *DeleteBackendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackend"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBackend(request *DeleteBackendRequest) (_result *DeleteBackendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackendResponse{}
+	_body, _err := client.DeleteBackendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBackendModelWithOptions(request *DeleteBackendModelRequest, runtime *util.RuntimeOptions) (_result *DeleteBackendModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendModelId)) {
+		query["BackendModelId"] = request.BackendModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackendModel"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackendModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBackendModel(request *DeleteBackendModelRequest) (_result *DeleteBackendModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackendModelResponse{}
+	_body, _err := client.DeleteBackendModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23045,6 +24704,66 @@ func (client *Client) DescribeApisByApp(request *DescribeApisByAppRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeApisByBackendWithOptions(request *DescribeApisByBackendRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByBackendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisByBackend"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisByBackendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApisByBackend(request *DescribeApisByBackendRequest) (_result *DescribeApisByBackendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisByBackendResponse{}
+	_body, _err := client.DescribeApisByBackendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisByIpControlRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByIpControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23578,6 +25297,114 @@ func (client *Client) DescribeAuthorizedApps(request *DescribeAuthorizedAppsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuthorizedAppsResponse{}
 	_body, _err := client.DescribeAuthorizedAppsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackendInfoWithOptions(request *DescribeBackendInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeBackendInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackendInfo"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackendInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackendInfo(request *DescribeBackendInfoRequest) (_result *DescribeBackendInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackendInfoResponse{}
+	_body, _err := client.DescribeBackendInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBackendListWithOptions(request *DescribeBackendListRequest, runtime *util.RuntimeOptions) (_result *DescribeBackendListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendName)) {
+		query["BackendName"] = request.BackendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
+		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackendList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackendListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackendList(request *DescribeBackendListRequest) (_result *DescribeBackendListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackendListResponse{}
+	_body, _err := client.DescribeBackendListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24897,6 +26724,54 @@ func (client *Client) DescribeTrafficControlsByApi(request *DescribeTrafficContr
 	return _result, _err
 }
 
+func (client *Client) DescribeUpdateBackendTaskWithOptions(request *DescribeUpdateBackendTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdateBackendTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperationUid)) {
+		query["OperationUid"] = request.OperationUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUpdateBackendTask"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUpdateBackendTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUpdateBackendTask(request *DescribeUpdateBackendTaskRequest) (_result *DescribeUpdateBackendTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUpdateBackendTaskResponse{}
+	_body, _err := client.DescribeUpdateBackendTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpdateVpcInfoTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeUpdateVpcInfoTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25295,6 +27170,14 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 		query["AuthType"] = request.AuthType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BackendEnable)) {
+		query["BackendEnable"] = request.BackendEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
 		query["ConstantParameters"] = request.ConstantParameters
 	}
@@ -25610,6 +27493,134 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
 	_body, _err := client.ModifyAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBackendWithOptions(request *ModifyBackendRequest, runtime *util.RuntimeOptions) (_result *ModifyBackendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendName)) {
+		query["BackendName"] = request.BackendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
+		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackend"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBackendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBackend(request *ModifyBackendRequest) (_result *ModifyBackendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackendResponse{}
+	_body, _err := client.ModifyBackendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBackendModelWithOptions(request *ModifyBackendModelRequest, runtime *util.RuntimeOptions) (_result *ModifyBackendModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackendId)) {
+		query["BackendId"] = request.BackendId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendModelData)) {
+		query["BackendModelData"] = request.BackendModelData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendModelId)) {
+		query["BackendModelId"] = request.BackendModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
+		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackendModel"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBackendModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBackendModel(request *ModifyBackendModelRequest) (_result *ModifyBackendModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackendModelResponse{}
+	_body, _err := client.ModifyBackendModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
