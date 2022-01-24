@@ -1,3 +1,6 @@
+2022-01-24 Version: v3.0.0
+- The data service provides task-policy interface.
+
 2021-12-23 Version: v3.0.0
 - The data service provides task-policy interface.
 

@@ -758,6 +758,323 @@ func (s *AddAiotPersonTableItemsResponse) SetBody(v *AddAiotPersonTableItemsResp
 	return s
 }
 
+type AddAiotPersonTableItemsForTablesRequest struct {
+	PersonTableItemList []*AddAiotPersonTableItemsForTablesRequestPersonTableItemList `json:"PersonTableItemList,omitempty" xml:"PersonTableItemList,omitempty" type:"Repeated"`
+	PersonTableList     []*AddAiotPersonTableItemsForTablesRequestPersonTableList     `json:"PersonTableList,omitempty" xml:"PersonTableList,omitempty" type:"Repeated"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequest) SetPersonTableItemList(v []*AddAiotPersonTableItemsForTablesRequestPersonTableItemList) *AddAiotPersonTableItemsForTablesRequest {
+	s.PersonTableItemList = v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequest) SetPersonTableList(v []*AddAiotPersonTableItemsForTablesRequestPersonTableList) *AddAiotPersonTableItemsForTablesRequest {
+	s.PersonTableList = v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesRequestPersonTableItemList struct {
+	IdentificationList []*AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList `json:"IdentificationList,omitempty" xml:"IdentificationList,omitempty" type:"Repeated"`
+	IdentificationNum  *int64                                                                          `json:"IdentificationNum,omitempty" xml:"IdentificationNum,omitempty"`
+	ImageList          []*AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList          `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
+	ImageNum           *int64                                                                          `json:"ImageNum,omitempty" xml:"ImageNum,omitempty"`
+	PersonCode         *string                                                                         `json:"PersonCode,omitempty" xml:"PersonCode,omitempty"`
+	PersonId           *string                                                                         `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	PersonName         *string                                                                         `json:"PersonName,omitempty" xml:"PersonName,omitempty"`
+	Remarks            *string                                                                         `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemList) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetIdentificationList(v []*AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.IdentificationList = v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetIdentificationNum(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.IdentificationNum = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetImageList(v []*AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.ImageList = v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetImageNum(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.ImageNum = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetPersonCode(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.PersonCode = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetPersonId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.PersonId = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetPersonName(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.PersonName = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemList) SetRemarks(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemList {
+	s.Remarks = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList struct {
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Type   *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList) SetNumber(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList {
+	s.Number = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList) SetType(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListIdentificationList {
+	s.Type = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList struct {
+	Data        *string                                                                         `json:"Data,omitempty" xml:"Data,omitempty"`
+	DeviceId    *string                                                                         `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventSort   *string                                                                         `json:"EventSort,omitempty" xml:"EventSort,omitempty"`
+	FeatureInfo *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo `json:"FeatureInfo,omitempty" xml:"FeatureInfo,omitempty" type:"Struct"`
+	FileFormat  *string                                                                         `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	Height      *int64                                                                          `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageId     *string                                                                         `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ShotTime    *string                                                                         `json:"ShotTime,omitempty" xml:"ShotTime,omitempty"`
+	Size        *int64                                                                          `json:"Size,omitempty" xml:"Size,omitempty"`
+	StoragePath *string                                                                         `json:"StoragePath,omitempty" xml:"StoragePath,omitempty"`
+	Type        *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	Width       *int64                                                                          `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetData(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.Data = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetDeviceId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetEventSort(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.EventSort = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetFeatureInfo(v *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.FeatureInfo = v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetFileFormat(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.FileFormat = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetHeight(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.Height = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetImageId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.ImageId = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetShotTime(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.ShotTime = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetSize(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.Size = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetStoragePath(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.StoragePath = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetType(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.Type = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList) SetWidth(v int64) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageList {
+	s.Width = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo struct {
+	AlgorithmType    *string `json:"AlgorithmType,omitempty" xml:"AlgorithmType,omitempty"`
+	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	FeatureData      *string `json:"FeatureData,omitempty" xml:"FeatureData,omitempty"`
+	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ObjectId         *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	TabIed           *string `json:"TabIed,omitempty" xml:"TabIed,omitempty"`
+	Vendor           *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetAlgorithmType(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.AlgorithmType = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetAlgorithmVersion(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetFeatureData(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.FeatureData = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetImageId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.ImageId = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetObjectId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetTabIed(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.TabIed = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo) SetVendor(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableItemListImageListFeatureInfo {
+	s.Vendor = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesRequestPersonTableList struct {
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PersonTableId *string `json:"PersonTableId,omitempty" xml:"PersonTableId,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesRequestPersonTableList) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableList) SetId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableList {
+	s.Id = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesRequestPersonTableList) SetPersonTableId(v string) *AddAiotPersonTableItemsForTablesRequestPersonTableList {
+	s.PersonTableId = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddAiotPersonTableItemsForTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesResponseBody) SetCode(v string) *AddAiotPersonTableItemsForTablesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesResponseBody) SetMessage(v string) *AddAiotPersonTableItemsForTablesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesResponseBody) SetRequestId(v string) *AddAiotPersonTableItemsForTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddAiotPersonTableItemsForTablesResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddAiotPersonTableItemsForTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddAiotPersonTableItemsForTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAiotPersonTableItemsForTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAiotPersonTableItemsForTablesResponse) SetHeaders(v map[string]*string) *AddAiotPersonTableItemsForTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAiotPersonTableItemsForTablesResponse) SetBody(v *AddAiotPersonTableItemsForTablesResponseBody) *AddAiotPersonTableItemsForTablesResponse {
+	s.Body = v
+	return s
+}
+
 type AddAiotVehicleTableItemsRequest struct {
 	Id               *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
 	VehicleTableId   *string                                          `json:"VehicleTableId,omitempty" xml:"VehicleTableId,omitempty"`
@@ -29495,6 +29812,57 @@ func (client *Client) AddAiotPersonTableItems(request *AddAiotPersonTableItemsRe
 	return _result, _err
 }
 
+func (client *Client) AddAiotPersonTableItemsForTablesWithOptions(request *AddAiotPersonTableItemsForTablesRequest, runtime *util.RuntimeOptions) (_result *AddAiotPersonTableItemsForTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PersonTableItemList)) {
+		bodyFlat["PersonTableItemList"] = request.PersonTableItemList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonTableList)) {
+		bodyFlat["PersonTableList"] = request.PersonTableList
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAiotPersonTableItemsForTables"),
+		Version:     tea.String("2020-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddAiotPersonTableItemsForTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddAiotPersonTableItemsForTables(request *AddAiotPersonTableItemsForTablesRequest) (_result *AddAiotPersonTableItemsForTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAiotPersonTableItemsForTablesResponse{}
+	_body, _err := client.AddAiotPersonTableItemsForTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddAiotVehicleTableItemsWithOptions(tmpReq *AddAiotVehicleTableItemsRequest, runtime *util.RuntimeOptions) (_result *AddAiotVehicleTableItemsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -32614,7 +32982,10 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectIds"] = request.ProjectIds
+	if !tea.BoolValue(util.IsUnset(request.ProjectIds)) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34120,8 +34491,14 @@ func (client *Client) GetCatalogListWithOptions(request *GetCatalogListRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CorpId"] = request.CorpId
-	query["IsvSubId"] = request.IsvSubId
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		query["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvSubId)) {
+		query["IsvSubId"] = request.IsvSubId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36203,10 +36580,22 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurrentPage"] = request.CurrentPage
-	query["InstanceName"] = request.InstanceName
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36795,8 +37184,14 @@ func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CorpId"] = request.CorpId
-	query["IsvSubId"] = request.IsvSubId
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		query["CorpId"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvSubId)) {
+		query["IsvSubId"] = request.IsvSubId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37135,10 +37530,22 @@ func (client *Client) PushBillsWithOptions(request *PushBillsRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["Method"] = request.Method
-	query["StartDate"] = request.StartDate
-	query["YieldId"] = request.YieldId
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YieldId)) {
+		query["YieldId"] = request.YieldId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
