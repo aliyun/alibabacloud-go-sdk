@@ -1581,6 +1581,10 @@ type CreateRuleRequestRuleActions struct {
 	RedirectConfig *CreateRuleRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	// 内部重定向动作配置
 	RewriteConfig *CreateRuleRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	// 流量限速
+	TrafficLimitConfig *CreateRuleRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// 流量镜像
+	TrafficMirrorConfig *CreateRuleRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// 转发规则动作类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -1623,6 +1627,16 @@ func (s *CreateRuleRequestRuleActions) SetRewriteConfig(v *CreateRuleRequestRule
 	return s
 }
 
+func (s *CreateRuleRequestRuleActions) SetTrafficLimitConfig(v *CreateRuleRequestRuleActionsTrafficLimitConfig) *CreateRuleRequestRuleActions {
+	s.TrafficLimitConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActions) SetTrafficMirrorConfig(v *CreateRuleRequestRuleActionsTrafficMirrorConfig) *CreateRuleRequestRuleActions {
+	s.TrafficMirrorConfig = v
+	return s
+}
+
 func (s *CreateRuleRequestRuleActions) SetType(v string) *CreateRuleRequestRuleActions {
 	s.Type = &v
 	return s
@@ -1661,6 +1675,8 @@ func (s *CreateRuleRequestRuleActionsFixedResponseConfig) SetHttpCode(v string) 
 }
 
 type CreateRuleRequestRuleActionsForwardGroupConfig struct {
+	// 服务器组之间会话保持
+	ServerGroupStickySession *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// 转发到的目的服务器组列表
 	ServerGroupTuples []*CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
@@ -1673,8 +1689,38 @@ func (s CreateRuleRequestRuleActionsForwardGroupConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRuleRequestRuleActionsForwardGroupConfig) SetServerGroupStickySession(v *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession) *CreateRuleRequestRuleActionsForwardGroupConfig {
+	s.ServerGroupStickySession = v
+	return s
+}
+
 func (s *CreateRuleRequestRuleActionsForwardGroupConfig) SetServerGroupTuples(v []*CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) *CreateRuleRequestRuleActionsForwardGroupConfig {
 	s.ServerGroupTuples = v
+	return s
+}
+
+type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
+	// 是否开启会话保持
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 超时时间
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession) SetEnabled(v bool) *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession) SetTimeout(v int32) *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Timeout = &v
 	return s
 }
 
@@ -1813,6 +1859,82 @@ func (s *CreateRuleRequestRuleActionsRewriteConfig) SetQuery(v string) *CreateRu
 	return s
 }
 
+type CreateRuleRequestRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsTrafficLimitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsTrafficLimitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsTrafficLimitConfig) SetQPS(v int32) *CreateRuleRequestRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
+type CreateRuleRequestRuleActionsTrafficMirrorConfig struct {
+	// 镜像至服务器组
+	MirrorGroupConfig *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+	// 镜像目标类型
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) *CreateRuleRequestRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsTrafficMirrorConfig) SetTargetType(v string) *CreateRuleRequestRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
+	return s
+}
+
+type CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
 type CreateRuleRequestRuleConditions struct {
 	// Cookie条件配置
 	CookieConfig *CreateRuleRequestRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
@@ -1826,6 +1948,8 @@ type CreateRuleRequestRuleConditions struct {
 	PathConfig *CreateRuleRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// 查询字符串条件配置
 	QueryStringConfig *CreateRuleRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	// 基于源IP业务流量匹配
+	SourceIpConfig *CreateRuleRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// 条件类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -1865,6 +1989,11 @@ func (s *CreateRuleRequestRuleConditions) SetPathConfig(v *CreateRuleRequestRule
 
 func (s *CreateRuleRequestRuleConditions) SetQueryStringConfig(v *CreateRuleRequestRuleConditionsQueryStringConfig) *CreateRuleRequestRuleConditions {
 	s.QueryStringConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleConditions) SetSourceIpConfig(v *CreateRuleRequestRuleConditionsSourceIpConfig) *CreateRuleRequestRuleConditions {
+	s.SourceIpConfig = v
 	return s
 }
 
@@ -2038,6 +2167,24 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfigValues) SetValue(v stri
 	return s
 }
 
+type CreateRuleRequestRuleConditionsSourceIpConfig struct {
+	// 基于源IP业务流量匹配
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRuleRequestRuleConditionsSourceIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleConditionsSourceIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleConditionsSourceIpConfig) SetValues(v []*string) *CreateRuleRequestRuleConditionsSourceIpConfig {
+	s.Values = v
+	return s
+}
+
 type CreateRuleResponseBody struct {
 	// 异步任务Id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -2191,6 +2338,10 @@ type CreateRulesRequestRulesRuleActions struct {
 	RedirectConfig *CreateRulesRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	// 内部重定向动作配置
 	RewriteConfig *CreateRulesRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	// 流量限速
+	TrafficLimitConfig *CreateRulesRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// 流量镜像
+	TrafficMirrorConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// 转发规则动作类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -2233,6 +2384,16 @@ func (s *CreateRulesRequestRulesRuleActions) SetRewriteConfig(v *CreateRulesRequ
 	return s
 }
 
+func (s *CreateRulesRequestRulesRuleActions) SetTrafficLimitConfig(v *CreateRulesRequestRulesRuleActionsTrafficLimitConfig) *CreateRulesRequestRulesRuleActions {
+	s.TrafficLimitConfig = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActions) SetTrafficMirrorConfig(v *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) *CreateRulesRequestRulesRuleActions {
+	s.TrafficMirrorConfig = v
+	return s
+}
+
 func (s *CreateRulesRequestRulesRuleActions) SetType(v string) *CreateRulesRequestRulesRuleActions {
 	s.Type = &v
 	return s
@@ -2271,6 +2432,8 @@ func (s *CreateRulesRequestRulesRuleActionsFixedResponseConfig) SetHttpCode(v st
 }
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfig struct {
+	// 服务器组之间会话保持
+	ServerGroupStickySession *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// 转发到的目的服务器组列表
 	ServerGroupTuples []*CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
@@ -2283,8 +2446,38 @@ func (s CreateRulesRequestRulesRuleActionsForwardGroupConfig) GoString() string 
 	return s.String()
 }
 
+func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfig) SetServerGroupStickySession(v *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) *CreateRulesRequestRulesRuleActionsForwardGroupConfig {
+	s.ServerGroupStickySession = v
+	return s
+}
+
 func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfig) SetServerGroupTuples(v []*CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) *CreateRulesRequestRulesRuleActionsForwardGroupConfig {
 	s.ServerGroupTuples = v
+	return s
+}
+
+type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
+	// 是否开启会话保持
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 超时时间
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetEnabled(v bool) *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetTimeout(v int32) *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Timeout = &v
 	return s
 }
 
@@ -2423,6 +2616,82 @@ func (s *CreateRulesRequestRulesRuleActionsRewriteConfig) SetQuery(v string) *Cr
 	return s
 }
 
+type CreateRulesRequestRulesRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficLimitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficLimitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *CreateRulesRequestRulesRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
+type CreateRulesRequestRulesRuleActionsTrafficMirrorConfig struct {
+	// 镜像至服务器组
+	MirrorGroupConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+	// 镜像目标类型
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig) SetTargetType(v string) *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
+	return s
+}
+
+type CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
 type CreateRulesRequestRulesRuleConditions struct {
 	// Cookie条件配置
 	CookieConfig *CreateRulesRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
@@ -2438,6 +2707,8 @@ type CreateRulesRequestRulesRuleConditions struct {
 	QueryStringConfig *CreateRulesRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	// 返回HTTP标头
 	ResponseHeaderConfig *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	// 基于源IP业务流量匹配
+	SourceIpConfig *CreateRulesRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// 条件类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -2482,6 +2753,11 @@ func (s *CreateRulesRequestRulesRuleConditions) SetQueryStringConfig(v *CreateRu
 
 func (s *CreateRulesRequestRulesRuleConditions) SetResponseHeaderConfig(v *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) *CreateRulesRequestRulesRuleConditions {
 	s.ResponseHeaderConfig = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleConditions) SetSourceIpConfig(v *CreateRulesRequestRulesRuleConditionsSourceIpConfig) *CreateRulesRequestRulesRuleConditions {
+	s.SourceIpConfig = v
 	return s
 }
 
@@ -2676,6 +2952,24 @@ func (s *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) SetKey(v str
 }
 
 func (s *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) SetValues(v []*string) *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type CreateRulesRequestRulesRuleConditionsSourceIpConfig struct {
+	// 基于源IP业务流量匹配
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRulesRequestRulesRuleConditionsSourceIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleConditionsSourceIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleConditionsSourceIpConfig) SetValues(v []*string) *CreateRulesRequestRulesRuleConditionsSourceIpConfig {
 	s.Values = v
 	return s
 }
@@ -2878,6 +3172,8 @@ type CreateServerGroupRequest struct {
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 	// 服务器组类型
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// 服务器名称
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// 会话保持配置
 	StickySessionConfig *CreateServerGroupRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 	// VpcId
@@ -2929,6 +3225,11 @@ func (s *CreateServerGroupRequest) SetServerGroupName(v string) *CreateServerGro
 
 func (s *CreateServerGroupRequest) SetServerGroupType(v string) *CreateServerGroupRequest {
 	s.ServerGroupType = &v
+	return s
+}
+
+func (s *CreateServerGroupRequest) SetServiceName(v string) *CreateServerGroupRequest {
+	s.ServiceName = &v
 	return s
 }
 
@@ -9258,6 +9559,8 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
 	// 服务器组类型
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// 服务器名称
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// 会话保持配置
 	StickySessionConfig *ListServerGroupsResponseBodyServerGroupsStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 	// 标签列表
@@ -9328,6 +9631,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetServerGroupStatus(v string
 
 func (s *ListServerGroupsResponseBodyServerGroups) SetServerGroupType(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.ServerGroupType = &v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroups) SetServiceName(v string) *ListServerGroupsResponseBodyServerGroups {
+	s.ServiceName = &v
 	return s
 }
 
@@ -12136,6 +12444,10 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	RedirectConfig *UpdateRuleAttributeRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	// 内部重定向动作配置
 	RewriteConfig *UpdateRuleAttributeRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	// 流量限速
+	TrafficLimitConfig *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// 流量镜像
+	TrafficMirrorConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// 转发规则动作类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -12178,6 +12490,16 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetRewriteConfig(v *UpdateRuleAt
 	return s
 }
 
+func (s *UpdateRuleAttributeRequestRuleActions) SetTrafficLimitConfig(v *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) *UpdateRuleAttributeRequestRuleActions {
+	s.TrafficLimitConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActions) SetTrafficMirrorConfig(v *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) *UpdateRuleAttributeRequestRuleActions {
+	s.TrafficMirrorConfig = v
+	return s
+}
+
 func (s *UpdateRuleAttributeRequestRuleActions) SetType(v string) *UpdateRuleAttributeRequestRuleActions {
 	s.Type = &v
 	return s
@@ -12216,6 +12538,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfig struct {
+	// 服务器组之间会话保持
+	ServerGroupStickySession *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// 转发到的目的服务器组列表
 	ServerGroupTuples []*UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
@@ -12228,8 +12552,38 @@ func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) GoString() stri
 	return s.String()
 }
 
+func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) SetServerGroupStickySession(v *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig {
+	s.ServerGroupStickySession = v
+	return s
+}
+
 func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) SetServerGroupTuples(v []*UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig {
 	s.ServerGroupTuples = v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
+	// 是否开启会话保持
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 超时时间
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession) SetEnabled(v bool) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession) SetTimeout(v int32) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Timeout = &v
 	return s
 }
 
@@ -12368,6 +12722,82 @@ func (s *UpdateRuleAttributeRequestRuleActionsRewriteConfig) SetQuery(v string) 
 	return s
 }
 
+type UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig) SetQPS(v int32) *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig struct {
+	// 镜像至服务器组
+	MirrorGroupConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+	// 镜像目标类型
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) SetTargetType(v string) *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
 type UpdateRuleAttributeRequestRuleConditions struct {
 	// Cookie条件配置
 	CookieConfig *UpdateRuleAttributeRequestRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
@@ -12381,6 +12811,8 @@ type UpdateRuleAttributeRequestRuleConditions struct {
 	PathConfig *UpdateRuleAttributeRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// 查询字符串条件配置
 	QueryStringConfig *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	// 基于源IP业务流量匹配
+	SourceIpConfig *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// 条件类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -12420,6 +12852,11 @@ func (s *UpdateRuleAttributeRequestRuleConditions) SetPathConfig(v *UpdateRuleAt
 
 func (s *UpdateRuleAttributeRequestRuleConditions) SetQueryStringConfig(v *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig) *UpdateRuleAttributeRequestRuleConditions {
 	s.QueryStringConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditions) SetSourceIpConfig(v *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) *UpdateRuleAttributeRequestRuleConditions {
+	s.SourceIpConfig = v
 	return s
 }
 
@@ -12590,6 +13027,24 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetKey
 
 func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetValue(v string) *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues {
 	s.Value = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleConditionsSourceIpConfig struct {
+	// 基于源IP业务流量匹配
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) SetValues(v []*string) *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig {
+	s.Values = v
 	return s
 }
 
@@ -13593,6 +14048,8 @@ type UpdateServerGroupAttributeRequest struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// Acl名称
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	// 服务器名称
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// 会话保持配置
 	StickySessionConfig *UpdateServerGroupAttributeRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 }
@@ -13632,6 +14089,11 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupId(v string) *UpdateSe
 
 func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *UpdateServerGroupAttributeRequest {
 	s.ServerGroupName = &v
+	return s
+}
+
+func (s *UpdateServerGroupAttributeRequest) SetServiceName(v string) *UpdateServerGroupAttributeRequest {
+	s.ServiceName = &v
 	return s
 }
 
@@ -14015,10 +14477,22 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclEntries"] = request.AclEntries
-	query["AclId"] = request.AclId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
+	if !tea.BoolValue(util.IsUnset(request.AclEntries)) {
+		query["AclEntries"] = request.AclEntries
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14059,10 +14533,22 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ServerGroupId"] = request.ServerGroupId
-	query["Servers"] = request.Servers
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Servers)) {
+		query["Servers"] = request.Servers
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14103,10 +14589,22 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
-	query["ServerGroupId"] = request.ServerGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateId)) {
+		query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14147,11 +14645,26 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclIds"] = request.AclIds
-	query["AclType"] = request.AclType
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.AclIds)) {
+		query["AclIds"] = request.AclIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclType)) {
+		query["AclType"] = request.AclType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14192,10 +14705,22 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Certificates"] = request.Certificates
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.Certificates)) {
+		query["Certificates"] = request.Certificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14236,11 +14761,26 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BandwidthPackageId"] = request.BandwidthPackageId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.BandwidthPackageId)) {
+		query["BandwidthPackageId"] = request.BandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14281,10 +14821,22 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclName"] = request.AclName
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.AclName)) {
+		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14325,20 +14877,62 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckCodes"] = request.HealthCheckCodes
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckHost"] = request.HealthCheckHost
-	query["HealthCheckHttpVersion"] = request.HealthCheckHttpVersion
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckPath"] = request.HealthCheckPath
-	query["HealthCheckProtocol"] = request.HealthCheckProtocol
-	query["HealthCheckTemplateName"] = request.HealthCheckTemplateName
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckCodes)) {
+		query["HealthCheckCodes"] = request.HealthCheckCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHost)) {
+		query["HealthCheckHost"] = request.HealthCheckHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpVersion)) {
+		query["HealthCheckHttpVersion"] = request.HealthCheckHttpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckPath)) {
+		query["HealthCheckPath"] = request.HealthCheckPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckProtocol)) {
+		query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateName)) {
+		query["HealthCheckTemplateName"] = request.HealthCheckTemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14379,23 +14973,74 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CaCertificates"] = request.CaCertificates
-	query["CaEnabled"] = request.CaEnabled
-	query["Certificates"] = request.Certificates
-	query["ClientToken"] = request.ClientToken
-	query["DefaultActions"] = request.DefaultActions
-	query["DryRun"] = request.DryRun
-	query["GzipEnabled"] = request.GzipEnabled
-	query["Http2Enabled"] = request.Http2Enabled
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerDescription"] = request.ListenerDescription
-	query["ListenerPort"] = request.ListenerPort
-	query["ListenerProtocol"] = request.ListenerProtocol
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["QuicConfig"] = request.QuicConfig
-	query["RequestTimeout"] = request.RequestTimeout
-	query["SecurityPolicyId"] = request.SecurityPolicyId
-	query["XForwardedForConfig"] = request.XForwardedForConfig
+	if !tea.BoolValue(util.IsUnset(request.CaCertificates)) {
+		query["CaCertificates"] = request.CaCertificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CaEnabled)) {
+		query["CaEnabled"] = request.CaEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Certificates)) {
+		query["Certificates"] = request.Certificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultActions)) {
+		query["DefaultActions"] = request.DefaultActions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GzipEnabled)) {
+		query["GzipEnabled"] = request.GzipEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Enabled)) {
+		query["Http2Enabled"] = request.Http2Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerDescription)) {
+		query["ListenerDescription"] = request.ListenerDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerProtocol)) {
+		query["ListenerProtocol"] = request.ListenerProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.QuicConfig))) {
+		query["QuicConfig"] = request.QuicConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.XForwardedForConfig))) {
+		query["XForwardedForConfig"] = request.XForwardedForConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14436,18 +15081,54 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AddressAllocatedMode"] = request.AddressAllocatedMode
-	query["AddressType"] = request.AddressType
-	query["ClientToken"] = request.ClientToken
-	query["DeletionProtectionEnabled"] = request.DeletionProtectionEnabled
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerBillingConfig"] = request.LoadBalancerBillingConfig
-	query["LoadBalancerEdition"] = request.LoadBalancerEdition
-	query["LoadBalancerName"] = request.LoadBalancerName
-	query["ModificationProtectionConfig"] = request.ModificationProtectionConfig
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["VpcId"] = request.VpcId
-	query["ZoneMappings"] = request.ZoneMappings
+	if !tea.BoolValue(util.IsUnset(request.AddressAllocatedMode)) {
+		query["AddressAllocatedMode"] = request.AddressAllocatedMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtectionEnabled)) {
+		query["DeletionProtectionEnabled"] = request.DeletionProtectionEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LoadBalancerBillingConfig))) {
+		query["LoadBalancerBillingConfig"] = request.LoadBalancerBillingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerEdition)) {
+		query["LoadBalancerEdition"] = request.LoadBalancerEdition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerName)) {
+		query["LoadBalancerName"] = request.LoadBalancerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModificationProtectionConfig))) {
+		query["ModificationProtectionConfig"] = request.ModificationProtectionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14488,13 +15169,34 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
-	query["Priority"] = request.Priority
-	query["RuleActions"] = request.RuleActions
-	query["RuleConditions"] = request.RuleConditions
-	query["RuleName"] = request.RuleName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleActions)) {
+		query["RuleActions"] = request.RuleActions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConditions)) {
+		query["RuleConditions"] = request.RuleConditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14535,10 +15237,22 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
-	query["Rules"] = request.Rules
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		query["Rules"] = request.Rules
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14579,12 +15293,30 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Ciphers"] = request.Ciphers
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityPolicyName"] = request.SecurityPolicyName
-	query["TLSVersions"] = request.TLSVersions
+	if !tea.BoolValue(util.IsUnset(request.Ciphers)) {
+		query["Ciphers"] = request.Ciphers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyName)) {
+		query["SecurityPolicyName"] = request.SecurityPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TLSVersions)) {
+		query["TLSVersions"] = request.TLSVersions
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14625,16 +15357,50 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckConfig"] = request.HealthCheckConfig
-	query["Protocol"] = request.Protocol
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Scheduler"] = request.Scheduler
-	query["ServerGroupName"] = request.ServerGroupName
-	query["ServerGroupType"] = request.ServerGroupType
-	query["StickySessionConfig"] = request.StickySessionConfig
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
+		query["HealthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupName)) {
+		query["ServerGroupName"] = request.ServerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupType)) {
+		query["ServerGroupType"] = request.ServerGroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.StickySessionConfig))) {
+		query["StickySessionConfig"] = request.StickySessionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14675,9 +15441,18 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclId"] = request.AclId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14718,9 +15493,18 @@ func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckTemplateIds"] = request.HealthCheckTemplateIds
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateIds)) {
+		query["HealthCheckTemplateIds"] = request.HealthCheckTemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14761,9 +15545,18 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14804,9 +15597,18 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14847,9 +15649,18 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14890,9 +15701,18 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RuleIds"] = request.RuleIds
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleIds)) {
+		query["RuleIds"] = request.RuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14933,9 +15753,18 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["SecurityPolicyId"] = request.SecurityPolicyId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14976,9 +15805,18 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ServerGroupId"] = request.ServerGroupId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15019,7 +15857,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15093,11 +15934,26 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BandwidthPackageId"] = request.BandwidthPackageId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RegionId"] = request.RegionId
+	if !tea.BoolValue(util.IsUnset(request.BandwidthPackageId)) {
+		query["BandwidthPackageId"] = request.BandwidthPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15138,9 +15994,18 @@ func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDelet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ResourceId"] = request.ResourceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15181,9 +16046,18 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15224,10 +16098,22 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclIds"] = request.AclIds
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.AclIds)) {
+		query["AclIds"] = request.AclIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15268,10 +16154,22 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Certificates"] = request.Certificates
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.Certificates)) {
+		query["Certificates"] = request.Certificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15312,9 +16210,18 @@ func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ResourceId"] = request.ResourceId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15355,11 +16262,26 @@ func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoad
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["LogProject"] = request.LogProject
-	query["LogStore"] = request.LogStore
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogProject)) {
+		query["LogProject"] = request.LogProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStore)) {
+		query["LogStore"] = request.LogStore
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15400,7 +16322,10 @@ func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHea
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateId)) {
+		query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15441,7 +16366,10 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15482,10 +16410,22 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IncludeRule"] = request.IncludeRule
-	query["ListenerId"] = request.ListenerId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.IncludeRule)) {
+		query["IncludeRule"] = request.IncludeRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15526,7 +16466,10 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15567,9 +16510,18 @@ func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclId"] = request.AclId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15610,7 +16562,10 @@ func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclIds"] = request.AclIds
+	if !tea.BoolValue(util.IsUnset(request.AclIds)) {
+		query["AclIds"] = request.AclIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15651,11 +16606,26 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclIds"] = request.AclIds
-	query["AclNames"] = request.AclNames
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.AclIds)) {
+		query["AclIds"] = request.AclIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclNames)) {
+		query["AclNames"] = request.AclNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15696,14 +16666,38 @@ func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiName"] = request.ApiName
-	query["BeginTime"] = request.BeginTime
-	query["EndTime"] = request.EndTime
-	query["JobIds"] = request.JobIds
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceIds"] = request.ResourceIds
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15744,10 +16738,22 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["HealthCheckTemplateIds"] = request.HealthCheckTemplateIds
-	query["HealthCheckTemplateNames"] = request.HealthCheckTemplateNames
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateIds)) {
+		query["HealthCheckTemplateIds"] = request.HealthCheckTemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateNames)) {
+		query["HealthCheckTemplateNames"] = request.HealthCheckTemplateNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15788,10 +16794,22 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertificateType"] = request.CertificateType
-	query["ListenerId"] = request.ListenerId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.CertificateType)) {
+		query["CertificateType"] = request.CertificateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15832,11 +16850,26 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerIds"] = request.ListenerIds
-	query["ListenerProtocol"] = request.ListenerProtocol
-	query["LoadBalancerIds"] = request.LoadBalancerIds
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.ListenerIds)) {
+		query["ListenerIds"] = request.ListenerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerProtocol)) {
+		query["ListenerProtocol"] = request.ListenerProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerIds)) {
+		query["LoadBalancerIds"] = request.LoadBalancerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15877,18 +16910,54 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AddressType"] = request.AddressType
-	query["LoadBalancerBussinessStatus"] = request.LoadBalancerBussinessStatus
-	query["LoadBalancerIds"] = request.LoadBalancerIds
-	query["LoadBalancerNames"] = request.LoadBalancerNames
-	query["LoadBalancerStatus"] = request.LoadBalancerStatus
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["PayType"] = request.PayType
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["Tag"] = request.Tag
-	query["VpcIds"] = request.VpcIds
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerBussinessStatus)) {
+		query["LoadBalancerBussinessStatus"] = request.LoadBalancerBussinessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerIds)) {
+		query["LoadBalancerIds"] = request.LoadBalancerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerNames)) {
+		query["LoadBalancerNames"] = request.LoadBalancerNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerStatus)) {
+		query["LoadBalancerStatus"] = request.LoadBalancerStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcIds)) {
+		query["VpcIds"] = request.VpcIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15929,11 +16998,26 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerIds"] = request.ListenerIds
-	query["LoadBalancerIds"] = request.LoadBalancerIds
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["RuleIds"] = request.RuleIds
+	if !tea.BoolValue(util.IsUnset(request.ListenerIds)) {
+		query["ListenerIds"] = request.ListenerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerIds)) {
+		query["LoadBalancerIds"] = request.LoadBalancerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleIds)) {
+		query["RuleIds"] = request.RuleIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15974,11 +17058,26 @@ func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPolic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityPolicyIds"] = request.SecurityPolicyIds
-	query["SecurityPolicyNames"] = request.SecurityPolicyNames
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyIds)) {
+		query["SecurityPolicyIds"] = request.SecurityPolicyIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyNames)) {
+		query["SecurityPolicyNames"] = request.SecurityPolicyNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16019,7 +17118,10 @@ func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecuri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityPolicyIds"] = request.SecurityPolicyIds
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyIds)) {
+		query["SecurityPolicyIds"] = request.SecurityPolicyIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16060,11 +17162,26 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ServerGroupId"] = request.ServerGroupId
-	query["ServerIds"] = request.ServerIds
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerIds)) {
+		query["ServerIds"] = request.ServerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16105,13 +17222,34 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["ServerGroupIds"] = request.ServerGroupIds
-	query["ServerGroupNames"] = request.ServerGroupNames
-	query["Tag"] = request.Tag
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupIds)) {
+		query["ServerGroupIds"] = request.ServerGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupNames)) {
+		query["ServerGroupNames"] = request.ServerGroupNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16185,11 +17323,26 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["Keyword"] = request.Keyword
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16230,11 +17383,26 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16275,11 +17443,26 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16320,9 +17503,18 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NewResourceGroupId"] = request.NewResourceGroupId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16363,10 +17555,22 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclId"] = request.AclId
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["Entries"] = request.Entries
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Entries)) {
+		query["Entries"] = request.Entries
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16407,10 +17611,22 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ServerGroupId"] = request.ServerGroupId
-	query["Servers"] = request.Servers
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Servers)) {
+		query["Servers"] = request.Servers
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16451,11 +17667,26 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AddedServers"] = request.AddedServers
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["RemovedServers"] = request.RemovedServers
-	query["ServerGroupId"] = request.ServerGroupId
+	if !tea.BoolValue(util.IsUnset(request.AddedServers)) {
+		query["AddedServers"] = request.AddedServers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemovedServers)) {
+		query["RemovedServers"] = request.RemovedServers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16496,9 +17727,18 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16539,9 +17779,18 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16582,9 +17831,18 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16625,10 +17883,22 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16669,10 +17939,22 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AclId"] = request.AclId
-	query["AclName"] = request.AclName
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclName)) {
+		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16713,21 +17995,66 @@ func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *Upd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckCodes"] = request.HealthCheckCodes
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckHost"] = request.HealthCheckHost
-	query["HealthCheckHttpVersion"] = request.HealthCheckHttpVersion
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckPath"] = request.HealthCheckPath
-	query["HealthCheckProtocol"] = request.HealthCheckProtocol
-	query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
-	query["HealthCheckTemplateName"] = request.HealthCheckTemplateName
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckCodes)) {
+		query["HealthCheckCodes"] = request.HealthCheckCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHost)) {
+		query["HealthCheckHost"] = request.HealthCheckHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpVersion)) {
+		query["HealthCheckHttpVersion"] = request.HealthCheckHttpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckPath)) {
+		query["HealthCheckPath"] = request.HealthCheckPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckProtocol)) {
+		query["HealthCheckProtocol"] = request.HealthCheckProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateId)) {
+		query["HealthCheckTemplateId"] = request.HealthCheckTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTemplateName)) {
+		query["HealthCheckTemplateName"] = request.HealthCheckTemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16768,21 +18095,66 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CaCertificates"] = request.CaCertificates
-	query["CaEnabled"] = request.CaEnabled
-	query["Certificates"] = request.Certificates
-	query["ClientToken"] = request.ClientToken
-	query["DefaultActions"] = request.DefaultActions
-	query["DryRun"] = request.DryRun
-	query["GzipEnabled"] = request.GzipEnabled
-	query["Http2Enabled"] = request.Http2Enabled
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerDescription"] = request.ListenerDescription
-	query["ListenerId"] = request.ListenerId
-	query["QuicConfig"] = request.QuicConfig
-	query["RequestTimeout"] = request.RequestTimeout
-	query["SecurityPolicyId"] = request.SecurityPolicyId
-	query["XForwardedForConfig"] = request.XForwardedForConfig
+	if !tea.BoolValue(util.IsUnset(request.CaCertificates)) {
+		query["CaCertificates"] = request.CaCertificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CaEnabled)) {
+		query["CaEnabled"] = request.CaEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Certificates)) {
+		query["Certificates"] = request.Certificates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultActions)) {
+		query["DefaultActions"] = request.DefaultActions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GzipEnabled)) {
+		query["GzipEnabled"] = request.GzipEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Http2Enabled)) {
+		query["Http2Enabled"] = request.Http2Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerDescription)) {
+		query["ListenerDescription"] = request.ListenerDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.QuicConfig))) {
+		query["QuicConfig"] = request.QuicConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.XForwardedForConfig))) {
+		query["XForwardedForConfig"] = request.XForwardedForConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16823,11 +18195,26 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessLogRecordCustomizedHeadersEnabled"] = request.AccessLogRecordCustomizedHeadersEnabled
-	query["AccessLogTracingConfig"] = request.AccessLogTracingConfig
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ListenerId"] = request.ListenerId
+	if !tea.BoolValue(util.IsUnset(request.AccessLogRecordCustomizedHeadersEnabled)) {
+		query["AccessLogRecordCustomizedHeadersEnabled"] = request.AccessLogRecordCustomizedHeadersEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.AccessLogTracingConfig))) {
+		query["AccessLogTracingConfig"] = request.AccessLogTracingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16868,11 +18255,26 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AddressType"] = request.AddressType
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["ZoneMappings"] = request.ZoneMappings
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16913,11 +18315,26 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["LoadBalancerName"] = request.LoadBalancerName
-	query["ModificationProtectionConfig"] = request.ModificationProtectionConfig
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerName)) {
+		query["LoadBalancerName"] = request.LoadBalancerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModificationProtectionConfig))) {
+		query["ModificationProtectionConfig"] = request.ModificationProtectionConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16958,10 +18375,22 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerEdition"] = request.LoadBalancerEdition
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerEdition)) {
+		query["LoadBalancerEdition"] = request.LoadBalancerEdition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17002,10 +18431,22 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["ZoneMappings"] = request.ZoneMappings
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17046,13 +18487,34 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["Priority"] = request.Priority
-	query["RuleActions"] = request.RuleActions
-	query["RuleConditions"] = request.RuleConditions
-	query["RuleId"] = request.RuleId
-	query["RuleName"] = request.RuleName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleActions)) {
+		query["RuleActions"] = request.RuleActions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConditions)) {
+		query["RuleConditions"] = request.RuleConditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17093,9 +18555,18 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["Rules"] = request.Rules
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		query["Rules"] = request.Rules
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17136,12 +18607,30 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Ciphers"] = request.Ciphers
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["SecurityPolicyId"] = request.SecurityPolicyId
-	query["SecurityPolicyName"] = request.SecurityPolicyName
-	query["TLSVersions"] = request.TLSVersions
+	if !tea.BoolValue(util.IsUnset(request.Ciphers)) {
+		query["Ciphers"] = request.Ciphers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
+		query["SecurityPolicyId"] = request.SecurityPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyName)) {
+		query["SecurityPolicyName"] = request.SecurityPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TLSVersions)) {
+		query["TLSVersions"] = request.TLSVersions
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17182,13 +18671,38 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["HealthCheckConfig"] = request.HealthCheckConfig
-	query["Scheduler"] = request.Scheduler
-	query["ServerGroupId"] = request.ServerGroupId
-	query["ServerGroupName"] = request.ServerGroupName
-	query["StickySessionConfig"] = request.StickySessionConfig
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.HealthCheckConfig))) {
+		query["HealthCheckConfig"] = request.HealthCheckConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupName)) {
+		query["ServerGroupName"] = request.ServerGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.StickySessionConfig))) {
+		query["StickySessionConfig"] = request.StickySessionConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17229,10 +18743,22 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["DryRun"] = request.DryRun
-	query["ServerGroupId"] = request.ServerGroupId
-	query["Servers"] = request.Servers
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
+		query["ServerGroupId"] = request.ServerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Servers)) {
+		query["Servers"] = request.Servers
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
