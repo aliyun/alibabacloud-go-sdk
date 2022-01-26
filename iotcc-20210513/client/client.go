@@ -2081,6 +2081,181 @@ func (s *GetConnectionPoolIpOperationResultResponse) SetBody(v *GetConnectionPoo
 	return s
 }
 
+type GetDiagnoseResultForSingleCardRequest struct {
+	DiagnoseTaskId *string `json:"DiagnoseTaskId,omitempty" xml:"DiagnoseTaskId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardRequest) SetDiagnoseTaskId(v string) *GetDiagnoseResultForSingleCardRequest {
+	s.DiagnoseTaskId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardRequest) SetRegionId(v string) *GetDiagnoseResultForSingleCardRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBody struct {
+	BeginTime           *int64                                                    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CardIp              *string                                                   `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
+	Destination         *string                                                   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DiagnoseItem        []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem `json:"DiagnoseItem,omitempty" xml:"DiagnoseItem,omitempty" type:"Repeated"`
+	EndTime             *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrorResult         []*GetDiagnoseResultForSingleCardResponseBodyErrorResult  `json:"ErrorResult,omitempty" xml:"ErrorResult,omitempty" type:"Repeated"`
+	Iccid               *string                                                   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	IoTCloudConnectorId *string                                                   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status              *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetBeginTime(v int64) *GetDiagnoseResultForSingleCardResponseBody {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetCardIp(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.CardIp = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetDestination(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.Destination = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetDiagnoseItem(v []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) *GetDiagnoseResultForSingleCardResponseBody {
+	s.DiagnoseItem = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetEndTime(v int64) *GetDiagnoseResultForSingleCardResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetErrorResult(v []*GetDiagnoseResultForSingleCardResponseBodyErrorResult) *GetDiagnoseResultForSingleCardResponseBody {
+	s.ErrorResult = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetIccid(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetIoTCloudConnectorId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetRequestId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetStatus(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem struct {
+	Part   *string `json:"Part,omitempty" xml:"Part,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetPart(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem {
+	s.Part = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetStatus(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem {
+	s.Status = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBodyErrorResult struct {
+	ErrorDes        *string `json:"ErrorDes,omitempty" xml:"ErrorDes,omitempty"`
+	ErrorLevel      *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
+	ErrorPart       *string `json:"ErrorPart,omitempty" xml:"ErrorPart,omitempty"`
+	ErrorSuggestion *string `json:"ErrorSuggestion,omitempty" xml:"ErrorSuggestion,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorDes(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorDes = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorLevel(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorLevel = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorPart(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorPart = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorSuggestion(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorSuggestion = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDiagnoseResultForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetHeaders(v map[string]*string) *GetDiagnoseResultForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetBody(v *GetDiagnoseResultForSingleCardResponseBody) *GetDiagnoseResultForSingleCardResponse {
+	s.Body = v
+	return s
+}
+
 type GetIoTCloudConnectorAccessLogRequest struct {
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -3171,6 +3346,164 @@ func (s *ListConnectionPoolsResponse) SetHeaders(v map[string]*string) *ListConn
 }
 
 func (s *ListConnectionPoolsResponse) SetBody(v *ListConnectionPoolsResponseBody) *ListConnectionPoolsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardRequest struct {
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetIoTCloudConnectorId(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetMaxResults(v int32) *ListDiagnoseInfoForSingleCardRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetNextToken(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetRegionId(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetSource(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetSourceType(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponseBody struct {
+	DiagnoseInfo []*ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo `json:"DiagnoseInfo,omitempty" xml:"DiagnoseInfo,omitempty" type:"Repeated"`
+	MaxResults   *int64                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *int64                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetDiagnoseInfo(v []*ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.DiagnoseInfo = v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetMaxResults(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetNextToken(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetRequestId(v string) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo struct {
+	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CardIp              *string `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
+	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Iccid               *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetBeginTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetCardIp(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.CardIp = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestination(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetEndTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIccid(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Iccid = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIoTCloudConnectorId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetStatus(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Status = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDiagnoseInfoForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetHeaders(v map[string]*string) *ListDiagnoseInfoForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetBody(v *ListDiagnoseInfoForSingleCardResponseBody) *ListDiagnoseInfoForSingleCardResponse {
 	s.Body = v
 	return s
 }
@@ -4475,6 +4808,117 @@ func (s *RemoveIoTCloudConnectorFromGroupResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *RemoveIoTCloudConnectorFromGroupResponse) SetBody(v *RemoveIoTCloudConnectorFromGroupResponseBody) *RemoveIoTCloudConnectorFromGroupResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardRequest struct {
+	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid         *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetBeginTime(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetDestination(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetDestinationType(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetEndTime(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetIoTCloudConnectorId(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetRegionId(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetResourceUid(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetSource(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetSourceType(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.SourceType = &v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardResponseBody struct {
+	DiagnoseTaskId *string `json:"DiagnoseTaskId,omitempty" xml:"DiagnoseTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponseBody) SetDiagnoseTaskId(v string) *SubmitDiagnoseTaskForSingleCardResponseBody {
+	s.DiagnoseTaskId = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponseBody) SetRequestId(v string) *SubmitDiagnoseTaskForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubmitDiagnoseTaskForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetHeaders(v map[string]*string) *SubmitDiagnoseTaskForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetBody(v *SubmitDiagnoseTaskForSingleCardResponseBody) *SubmitDiagnoseTaskForSingleCardResponse {
 	s.Body = v
 	return s
 }
@@ -6735,6 +7179,54 @@ func (client *Client) GetConnectionPoolIpOperationResult(request *GetConnectionP
 	return _result, _err
 }
 
+func (client *Client) GetDiagnoseResultForSingleCardWithOptions(request *GetDiagnoseResultForSingleCardRequest, runtime *util.RuntimeOptions) (_result *GetDiagnoseResultForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnoseTaskId)) {
+		query["DiagnoseTaskId"] = request.DiagnoseTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiagnoseResultForSingleCard"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDiagnoseResultForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiagnoseResultForSingleCard(request *GetDiagnoseResultForSingleCardRequest) (_result *GetDiagnoseResultForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiagnoseResultForSingleCardResponse{}
+	_body, _err := client.GetDiagnoseResultForSingleCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetIoTCloudConnectorAccessLogWithOptions(request *GetIoTCloudConnectorAccessLogRequest, runtime *util.RuntimeOptions) (_result *GetIoTCloudConnectorAccessLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7236,6 +7728,70 @@ func (client *Client) ListConnectionPools(request *ListConnectionPoolsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConnectionPoolsResponse{}
 	_body, _err := client.ListConnectionPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDiagnoseInfoForSingleCardWithOptions(request *ListDiagnoseInfoForSingleCardRequest, runtime *util.RuntimeOptions) (_result *ListDiagnoseInfoForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnoseInfoForSingleCard"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDiagnoseInfoForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDiagnoseInfoForSingleCard(request *ListDiagnoseInfoForSingleCardRequest) (_result *ListDiagnoseInfoForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiagnoseInfoForSingleCardResponse{}
+	_body, _err := client.ListDiagnoseInfoForSingleCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7812,6 +8368,82 @@ func (client *Client) RemoveIoTCloudConnectorFromGroup(request *RemoveIoTCloudCo
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveIoTCloudConnectorFromGroupResponse{}
 	_body, _err := client.RemoveIoTCloudConnectorFromGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDiagnoseTaskForSingleCardWithOptions(request *SubmitDiagnoseTaskForSingleCardRequest, runtime *util.RuntimeOptions) (_result *SubmitDiagnoseTaskForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDiagnoseTaskForSingleCard"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDiagnoseTaskForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDiagnoseTaskForSingleCard(request *SubmitDiagnoseTaskForSingleCardRequest) (_result *SubmitDiagnoseTaskForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDiagnoseTaskForSingleCardResponse{}
+	_body, _err := client.SubmitDiagnoseTaskForSingleCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
