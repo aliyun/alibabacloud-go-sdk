@@ -37,6 +37,7 @@ func (s *GetTaskResultRequest) SetTaskId(v string) *GetTaskResultRequest {
 
 type GetTaskResultResponseBody struct {
 	BizDuration *int32                           `json:"BizDuration,omitempty" xml:"BizDuration,omitempty"`
+	RecDuration *int32                           `json:"RecDuration,omitempty" xml:"RecDuration,omitempty"`
 	RequestId   *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result      *GetTaskResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	SolveTime   *int64                           `json:"SolveTime,omitempty" xml:"SolveTime,omitempty"`
@@ -55,6 +56,11 @@ func (s GetTaskResultResponseBody) GoString() string {
 
 func (s *GetTaskResultResponseBody) SetBizDuration(v int32) *GetTaskResultResponseBody {
 	s.BizDuration = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBody) SetRecDuration(v int32) *GetTaskResultResponseBody {
+	s.RecDuration = &v
 	return s
 }
 
