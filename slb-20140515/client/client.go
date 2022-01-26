@@ -2419,7 +2419,6 @@ type CreateTLSCipherPolicyRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TLSVersions          []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
-	AccessKeyId          *string   `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 }
 
 func (s CreateTLSCipherPolicyRequest) String() string {
@@ -2467,11 +2466,6 @@ func (s *CreateTLSCipherPolicyRequest) SetResourceOwnerId(v int64) *CreateTLSCip
 
 func (s *CreateTLSCipherPolicyRequest) SetTLSVersions(v []*string) *CreateTLSCipherPolicyRequest {
 	s.TLSVersions = v
-	return s
-}
-
-func (s *CreateTLSCipherPolicyRequest) SetAccessKeyId(v string) *CreateTLSCipherPolicyRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -3405,7 +3399,6 @@ type DeleteTLSCipherPolicyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TLSCipherPolicyId    *string `json:"TLSCipherPolicyId,omitempty" xml:"TLSCipherPolicyId,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 }
 
 func (s DeleteTLSCipherPolicyRequest) String() string {
@@ -3443,11 +3436,6 @@ func (s *DeleteTLSCipherPolicyRequest) SetResourceOwnerId(v int64) *DeleteTLSCip
 
 func (s *DeleteTLSCipherPolicyRequest) SetTLSCipherPolicyId(v string) *DeleteTLSCipherPolicyRequest {
 	s.TLSCipherPolicyId = &v
-	return s
-}
-
-func (s *DeleteTLSCipherPolicyRequest) SetAccessKeyId(v string) *DeleteTLSCipherPolicyRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -9909,7 +9897,6 @@ type ListTLSCipherPoliciesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TLSCipherPolicyId    *string `json:"TLSCipherPolicyId,omitempty" xml:"TLSCipherPolicyId,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 }
 
 func (s ListTLSCipherPoliciesRequest) String() string {
@@ -9967,11 +9954,6 @@ func (s *ListTLSCipherPoliciesRequest) SetResourceOwnerId(v int64) *ListTLSCiphe
 
 func (s *ListTLSCipherPoliciesRequest) SetTLSCipherPolicyId(v string) *ListTLSCipherPoliciesRequest {
 	s.TLSCipherPolicyId = &v
-	return s
-}
-
-func (s *ListTLSCipherPoliciesRequest) SetAccessKeyId(v string) *ListTLSCipherPoliciesRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -13627,7 +13609,6 @@ type SetTLSCipherPolicyAttributeRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TLSCipherPolicyId    *string   `json:"TLSCipherPolicyId,omitempty" xml:"TLSCipherPolicyId,omitempty"`
 	TLSVersions          []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
-	AccessKeyId          *string   `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
 }
 
 func (s SetTLSCipherPolicyAttributeRequest) String() string {
@@ -13680,11 +13661,6 @@ func (s *SetTLSCipherPolicyAttributeRequest) SetTLSCipherPolicyId(v string) *Set
 
 func (s *SetTLSCipherPolicyAttributeRequest) SetTLSVersions(v []*string) *SetTLSCipherPolicyAttributeRequest {
 	s.TLSVersions = v
-	return s
-}
-
-func (s *SetTLSCipherPolicyAttributeRequest) SetAccessKeyId(v string) *SetTLSCipherPolicyAttributeRequest {
-	s.AccessKeyId = &v
 	return s
 }
 
@@ -16305,10 +16281,6 @@ func (client *Client) CreateTLSCipherPolicyWithOptions(request *CreateTLSCipherP
 		query["TLSVersions"] = request.TLSVersions
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AccessKeyId)) {
-		query["access_key_id"] = request.AccessKeyId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16963,10 +16935,6 @@ func (client *Client) DeleteTLSCipherPolicyWithOptions(request *DeleteTLSCipherP
 
 	if !tea.BoolValue(util.IsUnset(request.TLSCipherPolicyId)) {
 		query["TLSCipherPolicyId"] = request.TLSCipherPolicyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessKeyId)) {
-		query["access_key_id"] = request.AccessKeyId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18899,10 +18867,6 @@ func (client *Client) ListTLSCipherPoliciesWithOptions(request *ListTLSCipherPol
 
 	if !tea.BoolValue(util.IsUnset(request.TLSCipherPolicyId)) {
 		query["TLSCipherPolicyId"] = request.TLSCipherPolicyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessKeyId)) {
-		query["access_key_id"] = request.AccessKeyId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21211,10 +21175,6 @@ func (client *Client) SetTLSCipherPolicyAttributeWithOptions(request *SetTLSCiph
 
 	if !tea.BoolValue(util.IsUnset(request.TLSVersions)) {
 		query["TLSVersions"] = request.TLSVersions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessKeyId)) {
-		query["access_key_id"] = request.AccessKeyId
 	}
 
 	req := &openapi.OpenApiRequest{
