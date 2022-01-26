@@ -2199,7 +2199,7 @@ func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetStatus(v str
 }
 
 type GetDiagnoseResultForSingleCardResponseBodyErrorResult struct {
-	ErrorDes        *string `json:"ErrorDes,omitempty" xml:"ErrorDes,omitempty"`
+	ErrorDesc       *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
 	ErrorLevel      *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
 	ErrorPart       *string `json:"ErrorPart,omitempty" xml:"ErrorPart,omitempty"`
 	ErrorSuggestion *string `json:"ErrorSuggestion,omitempty" xml:"ErrorSuggestion,omitempty"`
@@ -2213,8 +2213,8 @@ func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) GoString() string
 	return s.String()
 }
 
-func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorDes(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
-	s.ErrorDes = &v
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorDesc(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorDesc = &v
 	return s
 }
 
