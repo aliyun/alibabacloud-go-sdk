@@ -3400,8 +3400,9 @@ func (s *ListDiagnoseInfoForSingleCardRequest) SetSourceType(v string) *ListDiag
 type ListDiagnoseInfoForSingleCardResponseBody struct {
 	DiagnoseInfo []*ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo `json:"DiagnoseInfo,omitempty" xml:"DiagnoseInfo,omitempty" type:"Repeated"`
 	MaxResults   *int64                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *int64                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken    *string                                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDiagnoseInfoForSingleCardResponseBody) String() string {
@@ -3422,7 +3423,7 @@ func (s *ListDiagnoseInfoForSingleCardResponseBody) SetMaxResults(v int64) *List
 	return s
 }
 
-func (s *ListDiagnoseInfoForSingleCardResponseBody) SetNextToken(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetNextToken(v string) *ListDiagnoseInfoForSingleCardResponseBody {
 	s.NextToken = &v
 	return s
 }
@@ -3432,14 +3433,21 @@ func (s *ListDiagnoseInfoForSingleCardResponseBody) SetRequestId(v string) *List
 	return s
 }
 
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetTotalCount(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo struct {
 	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	CardIp              *string `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
 	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DiagnoseTime        *int64  `json:"DiagnoseTime,omitempty" xml:"DiagnoseTime,omitempty"`
 	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Iccid               *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) String() string {
@@ -3465,6 +3473,11 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestination(v
 	return s
 }
 
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDiagnoseTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.DiagnoseTime = &v
+	return s
+}
+
 func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetEndTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
 	s.EndTime = &v
 	return s
@@ -3482,6 +3495,11 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIoTCloudConne
 
 func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetStatus(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetTaskId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.TaskId = &v
 	return s
 }
 
