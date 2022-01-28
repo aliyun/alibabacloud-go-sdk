@@ -4596,6 +4596,116 @@ func (s *GetCampaignResponse) SetBody(v *GetCampaignResponseBody) *GetCampaignRe
 	return s
 }
 
+type GetCaseFileUploadUrlRequest struct {
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetCaseFileUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCaseFileUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCaseFileUploadUrlRequest) SetFileName(v string) *GetCaseFileUploadUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlRequest) SetInstanceId(v string) *GetCaseFileUploadUrlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetCaseFileUploadUrlResponseBody struct {
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetCaseFileUploadUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCaseFileUploadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCaseFileUploadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCaseFileUploadUrlResponseBody) SetCode(v string) *GetCaseFileUploadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponseBody) SetData(v *GetCaseFileUploadUrlResponseBodyData) *GetCaseFileUploadUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponseBody) SetHttpStatusCode(v int32) *GetCaseFileUploadUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponseBody) SetMessage(v string) *GetCaseFileUploadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponseBody) SetRequestId(v string) *GetCaseFileUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCaseFileUploadUrlResponseBodyData struct {
+	CaseFileKey *string `json:"CaseFileKey,omitempty" xml:"CaseFileKey,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetCaseFileUploadUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCaseFileUploadUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCaseFileUploadUrlResponseBodyData) SetCaseFileKey(v string) *GetCaseFileUploadUrlResponseBodyData {
+	s.CaseFileKey = &v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponseBodyData) SetUrl(v string) *GetCaseFileUploadUrlResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GetCaseFileUploadUrlResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetCaseFileUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCaseFileUploadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCaseFileUploadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCaseFileUploadUrlResponse) SetHeaders(v map[string]*string) *GetCaseFileUploadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCaseFileUploadUrlResponse) SetBody(v *GetCaseFileUploadUrlResponseBody) *GetCaseFileUploadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetHistoricalCallerReportRequest struct {
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -6084,13 +6194,17 @@ func (s *GetLoginDetailsResponseBody) SetRequestId(v string) *GetLoginDetailsRes
 
 type GetLoginDetailsResponseBodyData struct {
 	AgentServerUrl *string `json:"AgentServerUrl,omitempty" xml:"AgentServerUrl,omitempty"`
+	DeviceExt      *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
 	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceState    *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
 	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Extension      *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Signature2     *string `json:"Signature2,omitempty" xml:"Signature2,omitempty"`
 	SipServerUrl   *string `json:"SipServerUrl,omitempty" xml:"SipServerUrl,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserKey        *string `json:"UserKey,omitempty" xml:"UserKey,omitempty"`
+	UserKey2       *string `json:"UserKey2,omitempty" xml:"UserKey2,omitempty"`
 	WorkMode       *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
@@ -6107,8 +6221,18 @@ func (s *GetLoginDetailsResponseBodyData) SetAgentServerUrl(v string) *GetLoginD
 	return s
 }
 
+func (s *GetLoginDetailsResponseBodyData) SetDeviceExt(v string) *GetLoginDetailsResponseBodyData {
+	s.DeviceExt = &v
+	return s
+}
+
 func (s *GetLoginDetailsResponseBodyData) SetDeviceId(v string) *GetLoginDetailsResponseBodyData {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetDeviceState(v string) *GetLoginDetailsResponseBodyData {
+	s.DeviceState = &v
 	return s
 }
 
@@ -6127,6 +6251,11 @@ func (s *GetLoginDetailsResponseBodyData) SetSignature(v string) *GetLoginDetail
 	return s
 }
 
+func (s *GetLoginDetailsResponseBodyData) SetSignature2(v string) *GetLoginDetailsResponseBodyData {
+	s.Signature2 = &v
+	return s
+}
+
 func (s *GetLoginDetailsResponseBodyData) SetSipServerUrl(v string) *GetLoginDetailsResponseBodyData {
 	s.SipServerUrl = &v
 	return s
@@ -6139,6 +6268,11 @@ func (s *GetLoginDetailsResponseBodyData) SetUserId(v string) *GetLoginDetailsRe
 
 func (s *GetLoginDetailsResponseBodyData) SetUserKey(v string) *GetLoginDetailsResponseBodyData {
 	s.UserKey = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetUserKey2(v string) *GetLoginDetailsResponseBodyData {
+	s.UserKey2 = &v
 	return s
 }
 
@@ -6938,6 +7072,9 @@ func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyData struct {
+	DeviceExt   *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
+	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Extension   *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
@@ -6956,6 +7093,21 @@ func (s GetUserResponseBodyData) String() string {
 
 func (s GetUserResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetUserResponseBodyData) SetDeviceExt(v string) *GetUserResponseBodyData {
+	s.DeviceExt = &v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetDeviceId(v string) *GetUserResponseBodyData {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetDeviceState(v string) *GetUserResponseBodyData {
+	s.DeviceState = &v
+	return s
 }
 
 func (s *GetUserResponseBodyData) SetDisplayName(v string) *GetUserResponseBodyData {
@@ -18690,9 +18842,13 @@ func (s *ListUsersResponseBodyData) SetTotalCount(v int32) *ListUsersResponseBod
 }
 
 type ListUsersResponseBodyDataList struct {
+	DeviceExt                  *string                                                    `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
+	DeviceId                   *string                                                    `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceState                *string                                                    `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
 	DisplayId                  *string                                                    `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
 	DisplayName                *string                                                    `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email                      *string                                                    `json:"Email,omitempty" xml:"Email,omitempty"`
+	Extension                  *string                                                    `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	LoginName                  *string                                                    `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	Mobile                     *string                                                    `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	PersonalOutboundNumberList []*ListUsersResponseBodyDataListPersonalOutboundNumberList `json:"PersonalOutboundNumberList,omitempty" xml:"PersonalOutboundNumberList,omitempty" type:"Repeated"`
@@ -18713,6 +18869,21 @@ func (s ListUsersResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
+func (s *ListUsersResponseBodyDataList) SetDeviceExt(v string) *ListUsersResponseBodyDataList {
+	s.DeviceExt = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyDataList) SetDeviceId(v string) *ListUsersResponseBodyDataList {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyDataList) SetDeviceState(v string) *ListUsersResponseBodyDataList {
+	s.DeviceState = &v
+	return s
+}
+
 func (s *ListUsersResponseBodyDataList) SetDisplayId(v string) *ListUsersResponseBodyDataList {
 	s.DisplayId = &v
 	return s
@@ -18725,6 +18896,11 @@ func (s *ListUsersResponseBodyDataList) SetDisplayName(v string) *ListUsersRespo
 
 func (s *ListUsersResponseBodyDataList) SetEmail(v string) *ListUsersResponseBodyDataList {
 	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyDataList) SetExtension(v string) *ListUsersResponseBodyDataList {
+	s.Extension = &v
 	return s
 }
 
@@ -21411,6 +21587,105 @@ func (s *RegisterDeviceResponse) SetBody(v *RegisterDeviceResponseBody) *Registe
 	return s
 }
 
+type RegisterDevicesRequest struct {
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	UserIdListJson *string `json:"UserIdListJson,omitempty" xml:"UserIdListJson,omitempty"`
+}
+
+func (s RegisterDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDevicesRequest) SetDeviceId(v string) *RegisterDevicesRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *RegisterDevicesRequest) SetInstanceId(v string) *RegisterDevicesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RegisterDevicesRequest) SetPassword(v string) *RegisterDevicesRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *RegisterDevicesRequest) SetUserIdListJson(v string) *RegisterDevicesRequest {
+	s.UserIdListJson = &v
+	return s
+}
+
+type RegisterDevicesResponseBody struct {
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDevicesResponseBody) SetCode(v string) *RegisterDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RegisterDevicesResponseBody) SetHttpStatusCode(v int32) *RegisterDevicesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RegisterDevicesResponseBody) SetMessage(v string) *RegisterDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RegisterDevicesResponseBody) SetParams(v []*string) *RegisterDevicesResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *RegisterDevicesResponseBody) SetRequestId(v string) *RegisterDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterDevicesResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterDevicesResponse) SetHeaders(v map[string]*string) *RegisterDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterDevicesResponse) SetBody(v *RegisterDevicesResponseBody) *RegisterDevicesResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseCallRequest struct {
 	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -21501,6 +21776,7 @@ func (s *ReleaseCallResponseBody) SetRequestId(v string) *ReleaseCallResponseBod
 
 type ReleaseCallResponseBodyData struct {
 	CallContext *ReleaseCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	ContextId   *int64                                  `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
 	UserContext *ReleaseCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -21514,6 +21790,11 @@ func (s ReleaseCallResponseBodyData) GoString() string {
 
 func (s *ReleaseCallResponseBodyData) SetCallContext(v *ReleaseCallResponseBodyDataCallContext) *ReleaseCallResponseBodyData {
 	s.CallContext = v
+	return s
+}
+
+func (s *ReleaseCallResponseBodyData) SetContextId(v int64) *ReleaseCallResponseBodyData {
+	s.ContextId = &v
 	return s
 }
 
@@ -27115,6 +27396,54 @@ func (client *Client) GetCampaign(request *GetCampaignRequest) (_result *GetCamp
 	return _result, _err
 }
 
+func (client *Client) GetCaseFileUploadUrlWithOptions(request *GetCaseFileUploadUrlRequest, runtime *util.RuntimeOptions) (_result *GetCaseFileUploadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCaseFileUploadUrl"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCaseFileUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCaseFileUploadUrl(request *GetCaseFileUploadUrlRequest) (_result *GetCaseFileUploadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCaseFileUploadUrlResponse{}
+	_body, _err := client.GetCaseFileUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetHistoricalCallerReportWithOptions(request *GetHistoricalCallerReportRequest, runtime *util.RuntimeOptions) (_result *GetHistoricalCallerReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30842,6 +31171,62 @@ func (client *Client) RegisterDevice(request *RegisterDeviceRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterDeviceResponse{}
 	_body, _err := client.RegisterDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterDevicesWithOptions(request *RegisterDevicesRequest, runtime *util.RuntimeOptions) (_result *RegisterDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdListJson)) {
+		query["UserIdListJson"] = request.UserIdListJson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterDevices"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterDevices(request *RegisterDevicesRequest) (_result *RegisterDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterDevicesResponse{}
+	_body, _err := client.RegisterDevicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
