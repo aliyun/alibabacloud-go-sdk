@@ -558,6 +558,7 @@ type CreateDBInstanceRequest struct {
 	DatabaseNames         *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
 	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	HiddenZoneId          *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -569,6 +570,7 @@ type CreateDBInstanceRequest struct {
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RestoreTime           *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	SecondaryZoneId       *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SrcDBInstanceId       *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
@@ -656,6 +658,11 @@ func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetHiddenZoneId(v string) *CreateDBInstanceRequest {
+	s.HiddenZoneId = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetNetworkType(v string) *CreateDBInstanceRequest {
 	s.NetworkType = &v
 	return s
@@ -708,6 +715,11 @@ func (s *CreateDBInstanceRequest) SetResourceOwnerId(v int64) *CreateDBInstanceR
 
 func (s *CreateDBInstanceRequest) SetRestoreTime(v string) *CreateDBInstanceRequest {
 	s.RestoreTime = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetSecondaryZoneId(v string) *CreateDBInstanceRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -6079,6 +6091,7 @@ type DescribeDBInstancesOverviewRequest struct {
 	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6138,6 +6151,11 @@ func (s *DescribeDBInstancesOverviewRequest) SetOwnerAccount(v string) *Describe
 
 func (s *DescribeDBInstancesOverviewRequest) SetOwnerId(v int64) *DescribeDBInstancesOverviewRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesOverviewRequest) SetRegionId(v string) *DescribeDBInstancesOverviewRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7474,9 +7492,17 @@ func (s *DescribeMongoDBLogConfigRequest) SetSecurityToken(v string) *DescribeMo
 }
 
 type DescribeMongoDBLogConfigResponseBody struct {
+	EnableAudit                *bool   `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
 	IsEtlMetaExist             *int32  `json:"IsEtlMetaExist,omitempty" xml:"IsEtlMetaExist,omitempty"`
 	IsUserProjectLogstoreExist *int32  `json:"IsUserProjectLogstoreExist,omitempty" xml:"IsUserProjectLogstoreExist,omitempty"`
+	PreserveStorageForStandard *int64  `json:"PreserveStorageForStandard,omitempty" xml:"PreserveStorageForStandard,omitempty"`
+	PreserveStorageForTrail    *int64  `json:"PreserveStorageForTrail,omitempty" xml:"PreserveStorageForTrail,omitempty"`
 	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceType                *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	TtlForStandard             *int64  `json:"TtlForStandard,omitempty" xml:"TtlForStandard,omitempty"`
+	TtlForTrail                *int64  `json:"TtlForTrail,omitempty" xml:"TtlForTrail,omitempty"`
+	UsedStorageForStandard     *int64  `json:"UsedStorageForStandard,omitempty" xml:"UsedStorageForStandard,omitempty"`
+	UsedStorageForTrail        *int64  `json:"UsedStorageForTrail,omitempty" xml:"UsedStorageForTrail,omitempty"`
 	UserProjectName            *string `json:"UserProjectName,omitempty" xml:"UserProjectName,omitempty"`
 }
 
@@ -7486,6 +7512,11 @@ func (s DescribeMongoDBLogConfigResponseBody) String() string {
 
 func (s DescribeMongoDBLogConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetEnableAudit(v bool) *DescribeMongoDBLogConfigResponseBody {
+	s.EnableAudit = &v
+	return s
 }
 
 func (s *DescribeMongoDBLogConfigResponseBody) SetIsEtlMetaExist(v int32) *DescribeMongoDBLogConfigResponseBody {
@@ -7498,8 +7529,43 @@ func (s *DescribeMongoDBLogConfigResponseBody) SetIsUserProjectLogstoreExist(v i
 	return s
 }
 
+func (s *DescribeMongoDBLogConfigResponseBody) SetPreserveStorageForStandard(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.PreserveStorageForStandard = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetPreserveStorageForTrail(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.PreserveStorageForTrail = &v
+	return s
+}
+
 func (s *DescribeMongoDBLogConfigResponseBody) SetRequestId(v string) *DescribeMongoDBLogConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetServiceType(v string) *DescribeMongoDBLogConfigResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetTtlForStandard(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.TtlForStandard = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetTtlForTrail(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.TtlForTrail = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetUsedStorageForStandard(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.UsedStorageForStandard = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetUsedStorageForTrail(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.UsedStorageForTrail = &v
 	return s
 }
 
@@ -11513,6 +11579,7 @@ func (s *ModifyAuditLogFilterResponse) SetBody(v *ModifyAuditLogFilterResponseBo
 }
 
 type ModifyAuditPolicyRequest struct {
+	AuditLogSwitchSource *string `json:"AuditLogSwitchSource,omitempty" xml:"AuditLogSwitchSource,omitempty"`
 	AuditStatus          *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -11520,6 +11587,7 @@ type ModifyAuditPolicyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ServiceType          *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	StoragePeriod        *int32  `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
 }
 
@@ -11529,6 +11597,11 @@ func (s ModifyAuditPolicyRequest) String() string {
 
 func (s ModifyAuditPolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyAuditPolicyRequest) SetAuditLogSwitchSource(v string) *ModifyAuditPolicyRequest {
+	s.AuditLogSwitchSource = &v
+	return s
 }
 
 func (s *ModifyAuditPolicyRequest) SetAuditStatus(v string) *ModifyAuditPolicyRequest {
@@ -11563,6 +11636,11 @@ func (s *ModifyAuditPolicyRequest) SetResourceOwnerId(v int64) *ModifyAuditPolic
 
 func (s *ModifyAuditPolicyRequest) SetSecurityToken(v string) *ModifyAuditPolicyRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyAuditPolicyRequest) SetServiceType(v string) *ModifyAuditPolicyRequest {
+	s.ServiceType = &v
 	return s
 }
 
@@ -15388,6 +15466,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HiddenZoneId)) {
+		query["HiddenZoneId"] = request.HiddenZoneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
 		query["NetworkType"] = request.NetworkType
 	}
@@ -15430,6 +15512,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreTime)) {
 		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryZoneId)) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
@@ -17736,6 +17822,10 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -19868,6 +19958,10 @@ func (client *Client) ModifyAuditPolicyWithOptions(request *ModifyAuditPolicyReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuditLogSwitchSource)) {
+		query["AuditLogSwitchSource"] = request.AuditLogSwitchSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AuditStatus)) {
 		query["AuditStatus"] = request.AuditStatus
 	}
@@ -19894,6 +19988,10 @@ func (client *Client) ModifyAuditPolicyWithOptions(request *ModifyAuditPolicyReq
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StoragePeriod)) {
