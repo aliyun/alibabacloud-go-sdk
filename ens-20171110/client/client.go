@@ -1731,10 +1731,14 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateDiskRequest struct {
-	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// 磁盘种类 高效云盘:cloud_efficiency 全闪云盘:cloud_ssd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 节点ID
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// 实例付费方式，取值 PrePaid:预付费，包年包月 PostPaid:按量付费。目前只支持：PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Size               *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 磁盘大小,单位GB
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -1766,9 +1770,12 @@ func (s *CreateDiskRequest) SetSize(v string) *CreateDiskRequest {
 }
 
 type CreateDiskResponseBody struct {
+	// 实列ID集合
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 订单id,多个以逗号分割，可以直接跳转到收银行台 只有预付费返回订单号，后付费不返回
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// 请求唯一ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiskResponseBody) String() string {
@@ -2066,6 +2073,70 @@ func (s *CreateEipInstanceResponse) SetHeaders(v map[string]*string) *CreateEipI
 }
 
 func (s *CreateEipInstanceResponse) SetBody(v *CreateEipInstanceResponseBody) *CreateEipInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateElbBuyOrderRequest struct {
+	OrderDetails *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
+}
+
+func (s CreateElbBuyOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElbBuyOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElbBuyOrderRequest) SetOrderDetails(v string) *CreateElbBuyOrderRequest {
+	s.OrderDetails = &v
+	return s
+}
+
+type CreateElbBuyOrderResponseBody struct {
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateElbBuyOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElbBuyOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElbBuyOrderResponseBody) SetLoadBalancerIds(v []*string) *CreateElbBuyOrderResponseBody {
+	s.LoadBalancerIds = v
+	return s
+}
+
+func (s *CreateElbBuyOrderResponseBody) SetRequestId(v string) *CreateElbBuyOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateElbBuyOrderResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateElbBuyOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateElbBuyOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElbBuyOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElbBuyOrderResponse) SetHeaders(v map[string]*string) *CreateElbBuyOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateElbBuyOrderResponse) SetBody(v *CreateElbBuyOrderResponseBody) *CreateElbBuyOrderResponse {
 	s.Body = v
 	return s
 }
@@ -6403,6 +6474,7 @@ type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
 	ID         *string `json:"ID,omitempty" xml:"ID,omitempty"`
 	IP         *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	ISP        *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	ImageID    *string `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
 	Mac        *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
 	RegionID   *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
 	Server     *string `json:"Server,omitempty" xml:"Server,omitempty"`
@@ -6435,6 +6507,11 @@ func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetIP(v string) *
 
 func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetISP(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
 	s.ISP = &v
+	return s
+}
+
+func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetImageID(v string) *DescribeDeviceServiceResponseBodyResourceDetailInfos {
+	s.ImageID = &v
 	return s
 }
 
@@ -7037,6 +7114,105 @@ func (s *DescribeEipAddressesResponse) SetHeaders(v map[string]*string) *Describ
 }
 
 func (s *DescribeEipAddressesResponse) SetBody(v *DescribeEipAddressesResponseBody) *DescribeEipAddressesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeElbAvailableResourceInfoResponseBody struct {
+	ElbAvailableResourceInfo []*DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo `json:"ElbAvailableResourceInfo,omitempty" xml:"ElbAvailableResourceInfo,omitempty" type:"Repeated"`
+	RequestId                *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeElbAvailableResourceInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElbAvailableResourceInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBody) SetElbAvailableResourceInfo(v []*DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) *DescribeElbAvailableResourceInfoResponseBody {
+	s.ElbAvailableResourceInfo = v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBody) SetRequestId(v string) *DescribeElbAvailableResourceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct {
+	Area             *string   `json:"Area,omitempty" xml:"Area,omitempty"`
+	CanBuyCount      *string   `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
+	EnName           *string   `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	EnsRegionId      *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	LoadBalancerSpec []*string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty" type:"Repeated"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Province         *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetArea(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.Area = &v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetCanBuyCount(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.CanBuyCount = &v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetEnName(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.EnName = &v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetEnsRegionId(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetLoadBalancerSpec(v []*string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.LoadBalancerSpec = v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetName(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetProvince(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.Province = &v
+	return s
+}
+
+type DescribeElbAvailableResourceInfoResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeElbAvailableResourceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeElbAvailableResourceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElbAvailableResourceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElbAvailableResourceInfoResponse) SetHeaders(v map[string]*string) *DescribeElbAvailableResourceInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeElbAvailableResourceInfoResponse) SetBody(v *DescribeElbAvailableResourceInfoResponseBody) *DescribeElbAvailableResourceInfoResponse {
 	s.Body = v
 	return s
 }
@@ -11267,6 +11443,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	LoadBalancerSpec          *string                                                               `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 	LoadBalancerStatus        *string                                                               `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	NetworkId                 *string                                                               `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	PayType                   *string                                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -11347,6 +11524,11 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerStatus(v stri
 
 func (s *DescribeLoadBalancerAttributeResponseBody) SetNetworkId(v string) *DescribeLoadBalancerAttributeResponseBody {
 	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetPayType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.PayType = &v
 	return s
 }
 
@@ -11833,6 +12015,111 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 	return s
 }
 
+type DescribeLoadBalancerSpecRequest struct {
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+}
+
+func (s DescribeLoadBalancerSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerSpecRequest) SetLoadBalancerSpec(v string) *DescribeLoadBalancerSpecRequest {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+type DescribeLoadBalancerSpecResponseBody struct {
+	LoadBalancerSpecs []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs `json:"LoadBalancerSpecs,omitempty" xml:"LoadBalancerSpecs,omitempty" type:"Repeated"`
+	PageNumber        *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeLoadBalancerSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerSpecResponseBody) SetLoadBalancerSpecs(v []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs) *DescribeLoadBalancerSpecResponseBody {
+	s.LoadBalancerSpecs = v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponseBody) SetPageNumber(v int32) *DescribeLoadBalancerSpecResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponseBody) SetPageSize(v int32) *DescribeLoadBalancerSpecResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponseBody) SetRequestId(v string) *DescribeLoadBalancerSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponseBody) SetTotalCount(v int32) *DescribeLoadBalancerSpecResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs struct {
+	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+}
+
+func (s DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs) SetDisplayName(v string) *DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs) SetLoadBalancerSpec(v string) *DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs {
+	s.LoadBalancerSpec = &v
+	return s
+}
+
+type DescribeLoadBalancerSpecResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoadBalancerSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoadBalancerSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoadBalancerSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoadBalancerSpecResponse) SetHeaders(v map[string]*string) *DescribeLoadBalancerSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoadBalancerSpecResponse) SetBody(v *DescribeLoadBalancerSpecResponseBody) *DescribeLoadBalancerSpecResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLoadBalancerTCPListenerAttributeRequest struct {
 	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -12304,6 +12591,7 @@ type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -12352,6 +12640,11 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBala
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetNetworkId(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetPayType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.PayType = &v
 	return s
 }
 
@@ -13826,7 +14119,6 @@ func (s *DescribeReservedResourceResponse) SetBody(v *DescribeReservedResourceRe
 
 type DescribeSecurityGroupAttributeRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSecurityGroupAttributeRequest) String() string {
@@ -13839,11 +14131,6 @@ func (s DescribeSecurityGroupAttributeRequest) GoString() string {
 
 func (s *DescribeSecurityGroupAttributeRequest) SetSecurityGroupId(v string) *DescribeSecurityGroupAttributeRequest {
 	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeSecurityGroupAttributeRequest) SetVersion(v string) *DescribeSecurityGroupAttributeRequest {
-	s.Version = &v
 	return s
 }
 
@@ -13907,6 +14194,7 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissions) SetPermission(v 
 
 type DescribeSecurityGroupAttributeResponseBodyPermissionsPermission struct {
 	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
@@ -13927,6 +14215,11 @@ func (s DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) GoStrin
 
 func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetCreationTime(v string) *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetDescription(v string) *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission {
+	s.Description = &v
 	return s
 }
 
@@ -20943,8 +21236,14 @@ func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequ
 	}
 
 	query := map[string]interface{}{}
-	query["BackendServers"] = request.BackendServersShrink
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.BackendServersShrink)) {
+		query["BackendServers"] = request.BackendServersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21025,9 +21324,18 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoStart"] = request.AutoStart
-	query["InstanceId"] = request.InstanceId
-	query["Networks"] = request.Networks
+	if !tea.BoolValue(util.IsUnset(request.AutoStart)) {
+		query["AutoStart"] = request.AutoStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Networks)) {
+		query["Networks"] = request.Networks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21068,10 +21376,22 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Count"] = request.Count
-	query["EnsRegionId"] = request.EnsRegionId
-	query["MinCount"] = request.MinCount
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinCount)) {
+		query["MinCount"] = request.MinCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21112,10 +21432,22 @@ func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddres
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Eip"] = request.Eip
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Eip)) {
+		query["Eip"] = request.Eip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdInternetIp)) {
+		query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21156,9 +21488,18 @@ func (client *Client) AssociateEnsEipAddressWithOptions(request *AssociateEnsEip
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllocationId"] = request.AllocationId
-	query["InstanceId"] = request.InstanceId
-	query["InstanceType"] = request.InstanceType
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21199,9 +21540,18 @@ func (client *Client) AttachDiskWithOptions(request *AttachDiskRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeleteWithInstance"] = request.DeleteWithInstance
-	query["DiskId"] = request.DiskId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.DeleteWithInstance)) {
+		query["DeleteWithInstance"] = request.DeleteWithInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21242,9 +21592,18 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Scripts"] = request.Scripts
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scripts)) {
+		query["Scripts"] = request.Scripts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21285,14 +21644,38 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpProtocol"] = request.IpProtocol
-	query["Policy"] = request.Policy
-	query["PortRange"] = request.PortRange
-	query["Priority"] = request.Priority
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SourceCidrIp"] = request.SourceCidrIp
-	query["SourcePortRange"] = request.SourcePortRange
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePortRange)) {
+		query["SourcePortRange"] = request.SourcePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21333,14 +21716,38 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestCidrIp"] = request.DestCidrIp
-	query["IpProtocol"] = request.IpProtocol
-	query["Policy"] = request.Policy
-	query["PortRange"] = request.PortRange
-	query["Priority"] = request.Priority
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SourcePortRange"] = request.SourcePortRange
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.DestCidrIp)) {
+		query["DestCidrIp"] = request.DestCidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePortRange)) {
+		query["SourcePortRange"] = request.SourcePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21381,8 +21788,14 @@ func (client *Client) CheckQuotaWithOptions(request *CheckQuotaRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliUid"] = request.AliUid
-	query["GroupUuid"] = request.GroupUuid
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceAttribute)) {
 		body["ResourceAttribute"] = request.ResourceAttribute
@@ -21439,9 +21852,18 @@ func (client *Client) ConfigureSecurityGroupPermissionsWithOptions(tmpReq *Confi
 	}
 
 	query := map[string]interface{}{}
-	query["AuthorizePermissions"] = request.AuthorizePermissionsShrink
-	query["RevokePermissions"] = request.RevokePermissionsShrink
-	query["SecurityGroupId"] = request.SecurityGroupId
+	if !tea.BoolValue(util.IsUnset(request.AuthorizePermissionsShrink)) {
+		query["AuthorizePermissions"] = request.AuthorizePermissionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokePermissionsShrink)) {
+		query["RevokePermissions"] = request.RevokePermissionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21482,8 +21904,14 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Template"] = request.Template
-	query["Timeout"] = request.Timeout
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["Template"] = request.Template
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21524,10 +21952,22 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceChargeType"] = request.InstanceChargeType
-	query["Size"] = request.Size
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21568,7 +22008,10 @@ func (client *Client) CreateDiskBuyOrderWithOptions(request *CreateDiskBuyOrderR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderDetails"] = request.OrderDetails
+	if !tea.BoolValue(util.IsUnset(request.OrderDetails)) {
+		query["OrderDetails"] = request.OrderDetails
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21609,11 +22052,26 @@ func (client *Client) CreateEPInstanceWithOptions(request *CreateEPInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceName"] = request.EPNInstanceName
-	query["EPNInstanceType"] = request.EPNInstanceType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
-	query["NetworkingModel"] = request.NetworkingModel
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceName)) {
+		query["EPNInstanceName"] = request.EPNInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceType)) {
+		query["EPNInstanceType"] = request.EPNInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
+		query["NetworkingModel"] = request.NetworkingModel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21654,12 +22112,30 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Bandwidth"] = request.Bandwidth
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceChargeType"] = request.InstanceChargeType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["Isp"] = request.Isp
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21694,15 +22170,68 @@ func (client *Client) CreateEipInstance(request *CreateEipInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateElbBuyOrderWithOptions(request *CreateElbBuyOrderRequest, runtime *util.RuntimeOptions) (_result *CreateElbBuyOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderDetails)) {
+		query["OrderDetails"] = request.OrderDetails
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateElbBuyOrder"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateElbBuyOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateElbBuyOrder(request *CreateElbBuyOrderRequest) (_result *CreateElbBuyOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateElbBuyOrderResponse{}
+	_body, _err := client.CreateElbBuyOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateEnsServiceWithOptions(request *CreateEnsServiceRequest, runtime *util.RuntimeOptions) (_result *CreateEnsServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsServiceId"] = request.EnsServiceId
-	query["OrderType"] = request.OrderType
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsServiceId)) {
+		query["EnsServiceId"] = request.EnsServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21743,11 +22272,26 @@ func (client *Client) CreateEpnInstanceWithOptions(request *CreateEpnInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceName"] = request.EPNInstanceName
-	query["EPNInstanceType"] = request.EPNInstanceType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
-	query["NetworkingModel"] = request.NetworkingModel
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceName)) {
+		query["EPNInstanceName"] = request.EPNInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceType)) {
+		query["EPNInstanceType"] = request.EPNInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
+		query["NetworkingModel"] = request.NetworkingModel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21788,10 +22332,22 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeleteAfterImageUpload"] = request.DeleteAfterImageUpload
-	query["ImageName"] = request.ImageName
-	query["InstanceId"] = request.InstanceId
-	query["product"] = request.Product
+	if !tea.BoolValue(util.IsUnset(request.DeleteAfterImageUpload)) {
+		query["DeleteAfterImageUpload"] = request.DeleteAfterImageUpload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["product"] = request.Product
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21832,26 +22388,94 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoRenew"] = request.AutoRenew
-	query["AutoRenewPeriod"] = request.AutoRenewPeriod
-	query["EnsRegionId"] = request.EnsRegionId
-	query["HostName"] = request.HostName
-	query["ImageId"] = request.ImageId
-	query["InstanceName"] = request.InstanceName
-	query["InstanceType"] = request.InstanceType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["IpType"] = request.IpType
-	query["KeyPairName"] = request.KeyPairName
-	query["OwnerId"] = request.OwnerId
-	query["Password"] = request.Password
-	query["PaymentType"] = request.PaymentType
-	query["Period"] = request.Period
-	query["PrivateIpAddress"] = request.PrivateIpAddress
-	query["PublicIpIdentification"] = request.PublicIpIdentification
-	query["Quantity"] = request.Quantity
-	query["UniqueSuffix"] = request.UniqueSuffix
-	query["UserData"] = request.UserData
-	query["VSwitchId"] = request.VSwitchId
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		query["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIpIdentification)) {
+		query["PublicIpIdentification"] = request.PublicIpIdentification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueSuffix)) {
+		query["UniqueSuffix"] = request.UniqueSuffix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		query["DataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SystemDisk))) {
+		query["SystemDisk"] = request.SystemDisk
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21892,8 +22516,14 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["KeyPairName"] = request.KeyPairName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21934,12 +22564,30 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["LoadBalancerName"] = request.LoadBalancerName
-	query["LoadBalancerSpec"] = request.LoadBalancerSpec
-	query["NetworkId"] = request.NetworkId
-	query["PayType"] = request.PayType
-	query["VSwitchId"] = request.VSwitchId
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerName)) {
+		query["LoadBalancerName"] = request.LoadBalancerName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerSpec)) {
+		query["LoadBalancerSpec"] = request.LoadBalancerSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21980,25 +22628,82 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["ForwardPort"] = request.ForwardPort
-	query["HealthCheck"] = request.HealthCheck
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerForward"] = request.ListenerForward
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RequestTimeout"] = request.RequestTimeout
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
-	query["XForwardedFor"] = request.XForwardedFor
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardPort)) {
+		query["ForwardPort"] = request.ForwardPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheck)) {
+		query["HealthCheck"] = request.HealthCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerForward)) {
+		query["ListenerForward"] = request.ListenerForward
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor)) {
+		query["XForwardedFor"] = request.XForwardedFor
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22039,28 +22744,94 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Cookie"] = request.Cookie
-	query["CookieTimeout"] = request.CookieTimeout
-	query["Description"] = request.Description
-	query["ForwardPort"] = request.ForwardPort
-	query["HealthCheck"] = request.HealthCheck
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerForward"] = request.ListenerForward
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RequestTimeout"] = request.RequestTimeout
-	query["Scheduler"] = request.Scheduler
-	query["ServerCertificateId"] = request.ServerCertificateId
-	query["StickySessionType"] = request.StickySessionType
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.Cookie)) {
+		query["Cookie"] = request.Cookie
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CookieTimeout)) {
+		query["CookieTimeout"] = request.CookieTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardPort)) {
+		query["ForwardPort"] = request.ForwardPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheck)) {
+		query["HealthCheck"] = request.HealthCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerForward)) {
+		query["ListenerForward"] = request.ListenerForward
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificateId)) {
+		query["ServerCertificateId"] = request.ServerCertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StickySessionType)) {
+		query["StickySessionType"] = request.StickySessionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22101,23 +22872,74 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackendServerPort"] = request.BackendServerPort
-	query["Description"] = request.Description
-	query["EipTransmit"] = request.EipTransmit
-	query["EstablishedTimeout"] = request.EstablishedTimeout
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckType"] = request.HealthCheckType
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["PersistenceTimeout"] = request.PersistenceTimeout
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.BackendServerPort)) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipTransmit)) {
+		query["EipTransmit"] = request.EipTransmit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EstablishedTimeout)) {
+		query["EstablishedTimeout"] = request.EstablishedTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectTimeout)) {
+		query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckType)) {
+		query["HealthCheckType"] = request.HealthCheckType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersistenceTimeout)) {
+		query["PersistenceTimeout"] = request.PersistenceTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22158,19 +22980,58 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackendServerPort"] = request.BackendServerPort
-	query["Description"] = request.Description
-	query["EipTransmit"] = request.EipTransmit
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
-	query["HealthCheckExp"] = request.HealthCheckExp
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckReq"] = request.HealthCheckReq
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.BackendServerPort)) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipTransmit)) {
+		query["EipTransmit"] = request.EipTransmit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectTimeout)) {
+		query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckExp)) {
+		query["HealthCheckExp"] = request.HealthCheckExp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckReq)) {
+		query["HealthCheckReq"] = request.HealthCheckReq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22211,10 +23072,22 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CidrBlock"] = request.CidrBlock
-	query["Description"] = request.Description
-	query["EnsRegionId"] = request.EnsRegionId
-	query["NetworkName"] = request.NetworkName
+	if !tea.BoolValue(util.IsUnset(request.CidrBlock)) {
+		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		query["NetworkName"] = request.NetworkName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22255,9 +23128,18 @@ func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["SecurityGroupName"] = request.SecurityGroupName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22298,12 +23180,30 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CidrBlock"] = request.CidrBlock
-	query["Description"] = request.Description
-	query["EnsRegionId"] = request.EnsRegionId
-	query["NetworkId"] = request.NetworkId
-	query["VSwitchName"] = request.VSwitchName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.CidrBlock)) {
+		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
+		query["VSwitchName"] = request.VSwitchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22344,10 +23244,22 @@ func (client *Client) CreateVmAndSaveStockWithOptions(request *CreateVmAndSaveSt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliUid"] = request.AliUid
-	query["GroupUuid"] = request.GroupUuid
-	query["Tenant"] = request.Tenant
-	query["WorkloadUuid"] = request.WorkloadUuid
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
+		query["Tenant"] = request.Tenant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
+		query["WorkloadUuid"] = request.WorkloadUuid
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceAttribute)) {
 		body["ResourceAttribute"] = request.ResourceAttribute
@@ -22394,8 +23306,14 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Timeout"] = request.Timeout
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22476,7 +23394,10 @@ func (client *Client) DeleteEpnInstanceWithOptions(request *DeleteEpnInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22517,8 +23438,14 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["KeyPairName"] = request.KeyPairName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22559,8 +23486,14 @@ func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22601,7 +23534,10 @@ func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NetworkId"] = request.NetworkId
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22642,8 +23578,14 @@ func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22684,8 +23626,14 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VSwitchId"] = request.VSwitchId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22726,8 +23674,14 @@ func (client *Client) DeleteVmWithOptions(request *DeleteVmRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliUid"] = request.AliUid
-	query["WorkloadUuid"] = request.WorkloadUuid
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
+		query["WorkloadUuid"] = request.WorkloadUuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22768,10 +23722,22 @@ func (client *Client) DescribeApplicationWithOptions(request *DescribeApplicatio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AppVersions"] = request.AppVersions
-	query["Level"] = request.Level
-	query["OutDetailStatParams"] = request.OutDetailStatParams
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersions)) {
+		query["AppVersions"] = request.AppVersions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDetailStatParams)) {
+		query["OutDetailStatParams"] = request.OutDetailStatParams
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22812,8 +23778,14 @@ func (client *Client) DescribeApplicationResourceSummaryWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Level"] = request.Level
-	query["ResourceType"] = request.ResourceType
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22854,7 +23826,10 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22895,7 +23870,10 @@ func (client *Client) DescribeAvailableResourceInfoWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22936,7 +23914,10 @@ func (client *Client) DescribeBandWithdChargeTypeWithOptions(request *DescribeBa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22977,11 +23958,26 @@ func (client *Client) DescribeBandwitdhByInternetChargeTypeWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Isp"] = request.Isp
-	query["StartTime"] = request.StartTime
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23095,8 +24091,14 @@ func (client *Client) DescribeCreatePrePaidInstanceResultWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23137,14 +24139,38 @@ func (client *Client) DescribeDataDistResultWithOptions(request *DescribeDataDis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["DataNames"] = request.DataNames
-	query["DataVersions"] = request.DataVersions
-	query["InstanceIds"] = request.InstanceIds
-	query["MaxDate"] = request.MaxDate
-	query["MinDate"] = request.MinDate
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataNames)) {
+		query["DataNames"] = request.DataNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataVersions)) {
+		query["DataVersions"] = request.DataVersions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDate)) {
+		query["MaxDate"] = request.MaxDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDate)) {
+		query["MinDate"] = request.MinDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23225,14 +24251,38 @@ func (client *Client) DescribeDataPushResultWithOptions(request *DescribeDataPus
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["DataNames"] = request.DataNames
-	query["DataVersions"] = request.DataVersions
-	query["MaxDate"] = request.MaxDate
-	query["MinDate"] = request.MinDate
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["RegionIds"] = request.RegionIds
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataNames)) {
+		query["DataNames"] = request.DataNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataVersions)) {
+		query["DataVersions"] = request.DataVersions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDate)) {
+		query["MaxDate"] = request.MaxDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDate)) {
+		query["MinDate"] = request.MinDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIds)) {
+		query["RegionIds"] = request.RegionIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23313,19 +24363,58 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["DiskChargeType"] = request.DiskChargeType
-	query["DiskId"] = request.DiskId
-	query["DiskIds"] = request.DiskIds
-	query["DiskName"] = request.DiskName
-	query["DiskType"] = request.DiskType
-	query["EnsRegionId"] = request.EnsRegionId
-	query["EnsRegionIds"] = request.EnsRegionIds
-	query["OrderByParams"] = request.OrderByParams
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Status"] = request.Status
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskChargeType)) {
+		query["DiskChargeType"] = request.DiskChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
+		query["DiskIds"] = request.DiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskName)) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
+		query["OrderByParams"] = request.OrderByParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23366,9 +24455,18 @@ func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddres
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Eips"] = request.Eips
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Eips)) {
+		query["Eips"] = request.Eips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23403,18 +24501,69 @@ func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeElbAvailableResourceInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeElbAvailableResourceInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeElbAvailableResourceInfo"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeElbAvailableResourceInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeElbAvailableResourceInfo() (_result *DescribeElbAvailableResourceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeElbAvailableResourceInfoResponse{}
+	_body, _err := client.DescribeElbAvailableResourceInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEipAddressesRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsEipAddressesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllocationId"] = request.AllocationId
-	query["AssociatedInstanceId"] = request.AssociatedInstanceId
-	query["AssociatedInstanceType"] = request.AssociatedInstanceType
-	query["EipAddress"] = request.EipAddress
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssociatedInstanceId)) {
+		query["AssociatedInstanceId"] = request.AssociatedInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssociatedInstanceType)) {
+		query["AssociatedInstanceType"] = request.AssociatedInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipAddress)) {
+		query["EipAddress"] = request.EipAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23455,9 +24604,18 @@ func (client *Client) DescribeEnsNetDistrictWithOptions(request *DescribeEnsNetD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NetDistrictCode"] = request.NetDistrictCode
-	query["NetLevelCode"] = request.NetLevelCode
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.NetDistrictCode)) {
+		query["NetDistrictCode"] = request.NetDistrictCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetLevelCode)) {
+		query["NetLevelCode"] = request.NetLevelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23498,7 +24656,10 @@ func (client *Client) DescribeEnsNetLevelWithOptions(request *DescribeEnsNetLeve
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23539,9 +24700,18 @@ func (client *Client) DescribeEnsNetSaleDistrictWithOptions(request *DescribeEns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NetDistrictCode"] = request.NetDistrictCode
-	query["NetLevelCode"] = request.NetLevelCode
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.NetDistrictCode)) {
+		query["NetDistrictCode"] = request.NetDistrictCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetLevelCode)) {
+		query["NetLevelCode"] = request.NetLevelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23582,8 +24752,14 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithOptions(request *DescribeEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23624,12 +24800,30 @@ func (client *Client) DescribeEnsRegionIdResourceWithOptions(request *DescribeEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Isp"] = request.Isp
-	query["OrderByParams"] = request.OrderByParams
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
+		query["OrderByParams"] = request.OrderByParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23670,8 +24864,14 @@ func (client *Client) DescribeEnsRegionsWithOptions(request *DescribeEnsRegionsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23752,15 +24952,42 @@ func (client *Client) DescribeEpnBandWidthDataWithOptions(request *DescribeEpnBa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["EndTime"] = request.EndTime
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceId"] = request.InstanceId
-	query["Isp"] = request.Isp
-	query["NetworkingModel"] = request.NetworkingModel
-	query["Period"] = request.Period
-	query["StartTime"] = request.StartTime
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
+		query["NetworkingModel"] = request.NetworkingModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23801,12 +25028,30 @@ func (client *Client) DescribeEpnBandwitdhByInternetChargeTypeWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Isp"] = request.Isp
-	query["NetworkingModel"] = request.NetworkingModel
-	query["StartTime"] = request.StartTime
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
+		query["NetworkingModel"] = request.NetworkingModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23847,7 +25092,10 @@ func (client *Client) DescribeEpnInstanceAttributeWithOptions(request *DescribeE
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23888,10 +25136,22 @@ func (client *Client) DescribeEpnInstancesWithOptions(request *DescribeEpnInstan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["EPNInstanceName"] = request.EPNInstanceName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceName)) {
+		query["EPNInstanceName"] = request.EPNInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23932,9 +25192,18 @@ func (client *Client) DescribeEpnMeasurementDataWithOptions(request *DescribeEpn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["StartDate"] = request.StartDate
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23975,10 +25244,22 @@ func (client *Client) DescribeExportImageInfoWithOptions(request *DescribeExport
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ImageId"] = request.ImageId
-	query["ImageName"] = request.ImageName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24019,8 +25300,14 @@ func (client *Client) DescribeExportImageStatusWithOptions(request *DescribeExpo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ImageId"] = request.ImageId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24061,8 +25348,14 @@ func (client *Client) DescribeImageInfosWithOptions(request *DescribeImageInfosR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OsType"] = request.OsType
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		query["OsType"] = request.OsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24103,10 +25396,22 @@ func (client *Client) DescribeImageSharePermissionWithOptions(request *DescribeI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliyunId"] = request.AliyunId
-	query["ImageId"] = request.ImageId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AliyunId)) {
+		query["AliyunId"] = request.AliyunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24147,14 +25452,38 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["ImageId"] = request.ImageId
-	query["ImageName"] = request.ImageName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Status"] = request.Status
-	query["Version"] = request.Version
-	query["product"] = request.Product
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["product"] = request.Product
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24195,9 +25524,18 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceIds"] = request.InstanceIds
-	query["OwnerId"] = request.OwnerId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24238,11 +25576,26 @@ func (client *Client) DescribeInstanceMonitorDataWithOptions(request *DescribeIn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["InstanceId"] = request.InstanceId
-	query["Period"] = request.Period
-	query["StartTime"] = request.StartTime
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24283,7 +25636,10 @@ func (client *Client) DescribeInstanceSpecWithOptions(request *DescribeInstanceS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24324,7 +25680,10 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24365,7 +25724,10 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24406,23 +25768,74 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["EnsRegionIds"] = request.EnsRegionIds
-	query["EnsServiceId"] = request.EnsServiceId
-	query["ImageId"] = request.ImageId
-	query["InstanceId"] = request.InstanceId
-	query["InstanceIds"] = request.InstanceIds
-	query["InstanceName"] = request.InstanceName
-	query["InstanceResourceType"] = request.InstanceResourceType
-	query["NetworkId"] = request.NetworkId
-	query["OrderByParams"] = request.OrderByParams
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SearchKey"] = request.SearchKey
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["Status"] = request.Status
-	query["VSwitchId"] = request.VSwitchId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsServiceId)) {
+		query["EnsServiceId"] = request.EnsServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceResourceType)) {
+		query["InstanceResourceType"] = request.InstanceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
+		query["OrderByParams"] = request.OrderByParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24463,10 +25876,22 @@ func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["KeyPairName"] = request.KeyPairName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24506,7 +25931,11 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24515,7 +25944,7 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -24547,8 +25976,14 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24589,8 +26024,14 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24625,14 +26066,60 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 	return _result, _err
 }
 
+func (client *Client) DescribeLoadBalancerSpecWithOptions(request *DescribeLoadBalancerSpecRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLoadBalancerSpec"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLoadBalancerSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoadBalancerSpec(request *DescribeLoadBalancerSpecRequest) (_result *DescribeLoadBalancerSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoadBalancerSpecResponse{}
+	_body, _err := client.DescribeLoadBalancerSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(request *DescribeLoadBalancerTCPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerTCPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24673,8 +26160,14 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24755,9 +26248,18 @@ func (client *Client) DescribeMeasurementDataWithOptions(request *DescribeMeasur
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["StartDate"] = request.StartDate
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24798,7 +26300,10 @@ func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetwo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NetworkId"] = request.NetworkId
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24839,12 +26344,30 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetw
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceId"] = request.InstanceId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["PrimaryIpAddress"] = request.PrimaryIpAddress
-	query["VSwitchId"] = request.VSwitchId
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryIpAddress)) {
+		query["PrimaryIpAddress"] = request.PrimaryIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24885,11 +26408,26 @@ func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["NetworkId"] = request.NetworkId
-	query["NetworkName"] = request.NetworkName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		query["NetworkName"] = request.NetworkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24930,11 +26468,26 @@ func (client *Client) DescribePrePaidInstanceStockWithOptions(request *DescribeP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DataDiskSize"] = request.DataDiskSize
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceSpec"] = request.InstanceSpec
-	query["SystemDiskSize"] = request.SystemDiskSize
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.DataDiskSize)) {
+		query["DataDiskSize"] = request.DataDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24975,12 +26528,38 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceType"] = request.InstanceType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["Period"] = request.Period
-	query["Quantity"] = request.Quantity
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		query["DataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SystemDisk))) {
+		query["SystemDisk"] = request.SystemDisk
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25061,7 +26640,10 @@ func (client *Client) DescribeReservedResourceWithOptions(request *DescribeReser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25102,8 +26684,10 @@ func (client *Client) DescribeSecurityGroupAttributeWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25144,11 +26728,26 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SecurityGroupName"] = request.SecurityGroupName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25189,9 +26788,18 @@ func (client *Client) DescribeServcieScheduleWithOptions(request *DescribeServci
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["PodConfigName"] = request.PodConfigName
-	query["Uuid"] = request.Uuid
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodConfigName)) {
+		query["PodConfigName"] = request.PodConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25232,13 +26840,34 @@ func (client *Client) DescribeUserBandWidthDataWithOptions(request *DescribeUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceId"] = request.InstanceId
-	query["Isp"] = request.Isp
-	query["Period"] = request.Period
-	query["StartTime"] = request.StartTime
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isp)) {
+		query["Isp"] = request.Isp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25279,14 +26908,38 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EnsRegionId"] = request.EnsRegionId
-	query["NetworkId"] = request.NetworkId
-	query["OrderByParams"] = request.OrderByParams
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["VSwitchId"] = request.VSwitchId
-	query["VSwitchName"] = request.VSwitchName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
+		query["OrderByParams"] = request.OrderByParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
+		query["VSwitchName"] = request.VSwitchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25327,8 +26980,14 @@ func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DiskId"] = request.DiskId
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25369,9 +27028,18 @@ func (client *Client) DistApplicationDataWithOptions(request *DistApplicationDat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Data"] = request.Data
-	query["DistStrategy"] = request.DistStrategy
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistStrategy)) {
+		query["DistStrategy"] = request.DistStrategy
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25412,9 +27080,18 @@ func (client *Client) ExportBillDetailDataWithOptions(request *ExportBillDetailD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["StartDate"] = request.StartDate
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25455,12 +27132,30 @@ func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ImageId"] = request.ImageId
-	query["OSSBucket"] = request.OSSBucket
-	query["OSSPrefix"] = request.OSSPrefix
-	query["OSSRegionId"] = request.OSSRegionId
-	query["RoleName"] = request.RoleName
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSBucket)) {
+		query["OSSBucket"] = request.OSSBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSPrefix)) {
+		query["OSSPrefix"] = request.OSSPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSRegionId)) {
+		query["OSSRegionId"] = request.OSSRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25501,9 +27196,18 @@ func (client *Client) ExportMeasurementDataWithOptions(request *ExportMeasuremen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["StartDate"] = request.StartDate
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25624,9 +27328,18 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["KeyPairName"] = request.KeyPairName
-	query["PublicKeyBody"] = request.PublicKeyBody
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKeyBody)) {
+		query["PublicKeyBody"] = request.PublicKeyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25667,8 +27380,14 @@ func (client *Client) JoinPublicIpsToEpnInstanceWithOptions(request *JoinPublicI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["InstanceInfos"] = request.InstanceInfos
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceInfos)) {
+		query["InstanceInfos"] = request.InstanceInfos
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25709,9 +27428,18 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25752,8 +27480,14 @@ func (client *Client) JoinVSwitchesToEpnInstanceWithOptions(request *JoinVSwitch
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["VSwitchesInfo"] = request.VSwitchesInfo
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchesInfo)) {
+		query["VSwitchesInfo"] = request.VSwitchesInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25794,9 +27528,18 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25837,14 +27580,38 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppVersions"] = request.AppVersions
-	query["ClusterNames"] = request.ClusterNames
-	query["Level"] = request.Level
-	query["MaxDate"] = request.MaxDate
-	query["MinDate"] = request.MinDate
-	query["OutAppInfoParams"] = request.OutAppInfoParams
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppVersions)) {
+		query["AppVersions"] = request.AppVersions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterNames)) {
+		query["ClusterNames"] = request.ClusterNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDate)) {
+		query["MaxDate"] = request.MaxDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDate)) {
+		query["MinDate"] = request.MinDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutAppInfoParams)) {
+		query["OutAppInfoParams"] = request.OutAppInfoParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25885,9 +27652,18 @@ func (client *Client) MigrateVmWithOptions(request *MigrateVmRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupUuid"] = request.GroupUuid
-	query["InstanceIds"] = request.InstanceIds
-	query["Tenant"] = request.Tenant
+	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
+		query["Tenant"] = request.Tenant
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Instances)) {
 		body["Instances"] = request.Instances
@@ -25934,10 +27710,22 @@ func (client *Client) ModifyEnsEipAddressAttributeWithOptions(request *ModifyEns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllocationId"] = request.AllocationId
-	query["Bandwidth"] = request.Bandwidth
-	query["Description"] = request.Description
-	query["Name"] = request.Name
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25978,10 +27766,22 @@ func (client *Client) ModifyEpnInstanceWithOptions(request *ModifyEpnInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["EPNInstanceName"] = request.EPNInstanceName
-	query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
-	query["NetworkingModel"] = request.NetworkingModel
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceName)) {
+		query["EPNInstanceName"] = request.EPNInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
+		query["NetworkingModel"] = request.NetworkingModel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26022,10 +27822,22 @@ func (client *Client) ModifyImageAttributeWithOptions(request *ModifyImageAttrib
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ImageId"] = request.ImageId
-	query["ImageName"] = request.ImageName
-	query["Version"] = request.Version
-	query["product"] = request.Product
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["product"] = request.Product
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26066,9 +27878,18 @@ func (client *Client) ModifyImageSharePermissionWithOptions(request *ModifyImage
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AddAccounts"] = request.AddAccounts
-	query["ImageId"] = request.ImageId
-	query["RemoveAccounts"] = request.RemoveAccounts
+	if !tea.BoolValue(util.IsUnset(request.AddAccounts)) {
+		query["AddAccounts"] = request.AddAccounts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveAccounts)) {
+		query["RemoveAccounts"] = request.RemoveAccounts
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26109,10 +27930,22 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["InstanceName"] = request.InstanceName
-	query["Password"] = request.Password
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26153,11 +27986,26 @@ func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *Modif
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AutoRenew"] = request.AutoRenew
-	query["Duration"] = request.Duration
-	query["InstanceIds"] = request.InstanceIds
-	query["OwnerId"] = request.OwnerId
-	query["RenewalStatus"] = request.RenewalStatus
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalStatus)) {
+		query["RenewalStatus"] = request.RenewalStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26198,8 +28046,14 @@ func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoad
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["LoadBalancerName"] = request.LoadBalancerName
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerName)) {
+		query["LoadBalancerName"] = request.LoadBalancerName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26240,9 +28094,18 @@ func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["NetworkId"] = request.NetworkId
-	query["NetworkName"] = request.NetworkName
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		query["NetworkName"] = request.NetworkName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26283,9 +28146,18 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SecurityGroupName"] = request.SecurityGroupName
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26326,9 +28198,18 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["VSwitchId"] = request.VSwitchId
-	query["VSwitchName"] = request.VSwitchName
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
+		query["VSwitchName"] = request.VSwitchName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26369,21 +28250,66 @@ func (client *Client) PreCreateEnsServiceWithOptions(request *PreCreateEnsServic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BandwidthType"] = request.BandwidthType
-	query["BuyResourcesDetail"] = request.BuyResourcesDetail
-	query["DataDiskSize"] = request.DataDiskSize
-	query["EnsServiceName"] = request.EnsServiceName
-	query["ImageId"] = request.ImageId
-	query["InstanceBandwithdLimit"] = request.InstanceBandwithdLimit
-	query["InstanceSpec"] = request.InstanceSpec
-	query["KeyPairName"] = request.KeyPairName
-	query["NetLevel"] = request.NetLevel
-	query["Password"] = request.Password
-	query["SchedulingPriceStrategy"] = request.SchedulingPriceStrategy
-	query["SchedulingStrategy"] = request.SchedulingStrategy
-	query["SystemDiskSize"] = request.SystemDiskSize
-	query["UserData"] = request.UserData
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.BandwidthType)) {
+		query["BandwidthType"] = request.BandwidthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyResourcesDetail)) {
+		query["BuyResourcesDetail"] = request.BuyResourcesDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDiskSize)) {
+		query["DataDiskSize"] = request.DataDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsServiceName)) {
+		query["EnsServiceName"] = request.EnsServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBandwithdLimit)) {
+		query["InstanceBandwithdLimit"] = request.InstanceBandwithdLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetLevel)) {
+		query["NetLevel"] = request.NetLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulingPriceStrategy)) {
+		query["SchedulingPriceStrategy"] = request.SchedulingPriceStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulingStrategy)) {
+		query["SchedulingStrategy"] = request.SchedulingStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26424,10 +28350,22 @@ func (client *Client) PushApplicationDataWithOptions(request *PushApplicationDat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Data"] = request.Data
-	query["PushStrategy"] = request.PushStrategy
-	query["Timeout"] = request.Timeout
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushStrategy)) {
+		query["PushStrategy"] = request.PushStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26468,9 +28406,18 @@ func (client *Client) ReInitDiskWithOptions(request *ReInitDiskRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DiskId"] = request.DiskId
-	query["ImageId"] = request.ImageId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26511,9 +28458,18 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ForceStop"] = request.ForceStop
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26554,9 +28510,18 @@ func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Eips"] = request.Eips
-	query["EnsRegionId"] = request.EnsRegionId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Eips)) {
+		query["Eips"] = request.Eips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26597,7 +28562,10 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26638,8 +28606,14 @@ func (client *Client) ReleasePostPaidInstanceWithOptions(request *ReleasePostPai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26680,8 +28654,14 @@ func (client *Client) ReleasePrePaidInstanceWithOptions(request *ReleasePrePaidI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26728,8 +28708,14 @@ func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServe
 	}
 
 	query := map[string]interface{}{}
-	query["BackendServers"] = request.BackendServersShrink
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.BackendServersShrink)) {
+		query["BackendServers"] = request.BackendServersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26770,8 +28756,14 @@ func (client *Client) RemovePublicIpsFromEpnInstanceWithOptions(request *RemoveP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["InstanceInfos"] = request.InstanceInfos
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceInfos)) {
+		query["InstanceInfos"] = request.InstanceInfos
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26812,8 +28804,14 @@ func (client *Client) RemoveVSwitchesFromEpnInstanceWithOptions(request *RemoveV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
-	query["VSwitchesInfo"] = request.VSwitchesInfo
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchesInfo)) {
+		query["VSwitchesInfo"] = request.VSwitchesInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26894,12 +28892,30 @@ func (client *Client) RescaleApplicationWithOptions(request *RescaleApplicationR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["RescaleLevel"] = request.RescaleLevel
-	query["RescaleType"] = request.RescaleType
-	query["ResourceSelector"] = request.ResourceSelector
-	query["Timeout"] = request.Timeout
-	query["ToAppVersion"] = request.ToAppVersion
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RescaleLevel)) {
+		query["RescaleLevel"] = request.RescaleLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RescaleType)) {
+		query["RescaleType"] = request.RescaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSelector)) {
+		query["ResourceSelector"] = request.ResourceSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToAppVersion)) {
+		query["ToAppVersion"] = request.ToAppVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26940,14 +28956,38 @@ func (client *Client) RescaleDeviceServiceWithOptions(request *RescaleDeviceServ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ImageId"] = request.ImageId
-	query["IpType"] = request.IpType
-	query["RescaleLevel"] = request.RescaleLevel
-	query["RescaleType"] = request.RescaleType
-	query["ResourceSpec"] = request.ResourceSpec
-	query["ServiceId"] = request.ServiceId
-	query["Timeout"] = request.Timeout
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		query["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RescaleLevel)) {
+		query["RescaleLevel"] = request.RescaleLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RescaleType)) {
+		query["RescaleType"] = request.RescaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSpec)) {
+		query["ResourceSpec"] = request.ResourceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceInfo)) {
 		body["ResourceInfo"] = request.ResourceInfo
@@ -27078,14 +29118,38 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IpProtocol"] = request.IpProtocol
-	query["Policy"] = request.Policy
-	query["PortRange"] = request.PortRange
-	query["Priority"] = request.Priority
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SourceCidrIp"] = request.SourceCidrIp
-	query["SourcePortRange"] = request.SourcePortRange
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePortRange)) {
+		query["SourcePortRange"] = request.SourcePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27126,14 +29190,38 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestCidrIp"] = request.DestCidrIp
-	query["IpProtocol"] = request.IpProtocol
-	query["Policy"] = request.Policy
-	query["PortRange"] = request.PortRange
-	query["Priority"] = request.Priority
-	query["SecurityGroupId"] = request.SecurityGroupId
-	query["SourcePortRange"] = request.SourcePortRange
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.DestCidrIp)) {
+		query["DestCidrIp"] = request.DestCidrIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcePortRange)) {
+		query["SourcePortRange"] = request.SourcePortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27174,10 +29262,22 @@ func (client *Client) RollbackApplicationWithOptions(request *RollbackApplicatio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["FromAppVersion"] = request.FromAppVersion
-	query["Timeout"] = request.Timeout
-	query["ToAppVersion"] = request.ToAppVersion
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromAppVersion)) {
+		query["FromAppVersion"] = request.FromAppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToAppVersion)) {
+		query["ToAppVersion"] = request.ToAppVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27228,32 +29328,110 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 	}
 
 	query := map[string]interface{}{}
-	query["Amount"] = request.Amount
-	query["AutoRenew"] = request.AutoRenew
-	query["Carrier"] = request.Carrier
-	query["DataDisk"] = request.DataDiskShrink
-	query["EnsRegionId"] = request.EnsRegionId
-	query["HostName"] = request.HostName
-	query["ImageId"] = request.ImageId
-	query["InstanceChargeType"] = request.InstanceChargeType
-	query["InstanceName"] = request.InstanceName
-	query["InstanceType"] = request.InstanceType
-	query["InternetChargeType"] = request.InternetChargeType
-	query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
-	query["KeyPairName"] = request.KeyPairName
-	query["NetDistrictCode"] = request.NetDistrictCode
-	query["NetWorkId"] = request.NetWorkId
-	query["Password"] = request.Password
-	query["Period"] = request.Period
-	query["PrivateIpAddress"] = request.PrivateIpAddress
-	query["ScheduleAreaLevel"] = request.ScheduleAreaLevel
-	query["SchedulingPriceStrategy"] = request.SchedulingPriceStrategy
-	query["SchedulingStrategy"] = request.SchedulingStrategy
-	query["SecurityId"] = request.SecurityId
-	query["SystemDisk"] = request.SystemDiskShrink
-	query["UniqueSuffix"] = request.UniqueSuffix
-	query["UserData"] = request.UserData
-	query["VSwitchId"] = request.VSwitchId
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Carrier)) {
+		query["Carrier"] = request.Carrier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDiskShrink)) {
+		query["DataDisk"] = request.DataDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetDistrictCode)) {
+		query["NetDistrictCode"] = request.NetDistrictCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetWorkId)) {
+		query["NetWorkId"] = request.NetWorkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleAreaLevel)) {
+		query["ScheduleAreaLevel"] = request.ScheduleAreaLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulingPriceStrategy)) {
+		query["SchedulingPriceStrategy"] = request.SchedulingPriceStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulingStrategy)) {
+		query["SchedulingStrategy"] = request.SchedulingStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityId)) {
+		query["SecurityId"] = request.SecurityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
+		query["SystemDisk"] = request.SystemDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueSuffix)) {
+		query["UniqueSuffix"] = request.UniqueSuffix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27294,15 +29472,42 @@ func (client *Client) RunServiceScheduleWithOptions(request *RunServiceScheduleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["ClientIp"] = request.ClientIp
-	query["Directorys"] = request.Directorys
-	query["PodConfigName"] = request.PodConfigName
-	query["PreLockedTimeout"] = request.PreLockedTimeout
-	query["ScheduleStrategy"] = request.ScheduleStrategy
-	query["ServiceAction"] = request.ServiceAction
-	query["ServiceCommands"] = request.ServiceCommands
-	query["Uuid"] = request.Uuid
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Directorys)) {
+		query["Directorys"] = request.Directorys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodConfigName)) {
+		query["PodConfigName"] = request.PodConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreLockedTimeout)) {
+		query["PreLockedTimeout"] = request.PreLockedTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleStrategy)) {
+		query["ScheduleStrategy"] = request.ScheduleStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAction)) {
+		query["ServiceAction"] = request.ServiceAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCommands)) {
+		query["ServiceCommands"] = request.ServiceCommands
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27343,14 +29548,38 @@ func (client *Client) SchedulePodWithOptions(request *SchedulePodRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AliUid"] = request.AliUid
-	query["AreaCodes"] = request.AreaCodes
-	query["GroupUuid"] = request.GroupUuid
-	query["Isps"] = request.Isps
-	query["Labels"] = request.Labels
-	query["Regions"] = request.Regions
-	query["Tenant"] = request.Tenant
-	query["WorkloadUuid"] = request.WorkloadUuid
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AreaCodes)) {
+		query["AreaCodes"] = request.AreaCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Isps)) {
+		query["Isps"] = request.Isps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
+		query["Tenant"] = request.Tenant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
+		query["WorkloadUuid"] = request.WorkloadUuid
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Requirements)) {
 		body["Requirements"] = request.Requirements
@@ -27407,8 +29636,14 @@ func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequ
 	}
 
 	query := map[string]interface{}{}
-	query["BackendServers"] = request.BackendServersShrink
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.BackendServersShrink)) {
+		query["BackendServers"] = request.BackendServersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27449,22 +29684,70 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["HealthCheck"] = request.HealthCheck
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RequestTimeout"] = request.RequestTimeout
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheck)) {
+		query["HealthCheck"] = request.HealthCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27505,23 +29788,74 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["HealthCheck"] = request.HealthCheck
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckMethod"] = request.HealthCheckMethod
-	query["HealthCheckTimeout"] = request.HealthCheckTimeout
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["IdleTimeout"] = request.IdleTimeout
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["RequestTimeout"] = request.RequestTimeout
-	query["Scheduler"] = request.Scheduler
-	query["ServerCertificateId"] = request.ServerCertificateId
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheck)) {
+		query["HealthCheck"] = request.HealthCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckMethod)) {
+		query["HealthCheckMethod"] = request.HealthCheckMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckTimeout)) {
+		query["HealthCheckTimeout"] = request.HealthCheckTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerCertificateId)) {
+		query["ServerCertificateId"] = request.ServerCertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27562,8 +29896,14 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["LoadBalancerStatus"] = request.LoadBalancerStatus
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerStatus)) {
+		query["LoadBalancerStatus"] = request.LoadBalancerStatus
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27604,22 +29944,70 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["EipTransmit"] = request.EipTransmit
-	query["EstablishedTimeout"] = request.EstablishedTimeout
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
-	query["HealthCheckDomain"] = request.HealthCheckDomain
-	query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckType"] = request.HealthCheckType
-	query["HealthCheckURI"] = request.HealthCheckURI
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["PersistenceTimeout"] = request.PersistenceTimeout
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipTransmit)) {
+		query["EipTransmit"] = request.EipTransmit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EstablishedTimeout)) {
+		query["EstablishedTimeout"] = request.EstablishedTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectTimeout)) {
+		query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckDomain)) {
+		query["HealthCheckDomain"] = request.HealthCheckDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckHttpCode)) {
+		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckType)) {
+		query["HealthCheckType"] = request.HealthCheckType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckURI)) {
+		query["HealthCheckURI"] = request.HealthCheckURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersistenceTimeout)) {
+		query["PersistenceTimeout"] = request.PersistenceTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27660,18 +30048,54 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["EipTransmit"] = request.EipTransmit
-	query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
-	query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
-	query["HealthCheckExp"] = request.HealthCheckExp
-	query["HealthCheckInterval"] = request.HealthCheckInterval
-	query["HealthCheckReq"] = request.HealthCheckReq
-	query["HealthyThreshold"] = request.HealthyThreshold
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
-	query["Scheduler"] = request.Scheduler
-	query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipTransmit)) {
+		query["EipTransmit"] = request.EipTransmit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectPort)) {
+		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectTimeout)) {
+		query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckExp)) {
+		query["HealthCheckExp"] = request.HealthCheckExp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
+		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckReq)) {
+		query["HealthCheckReq"] = request.HealthCheckReq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
+		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
+		query["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnhealthyThreshold)) {
+		query["UnhealthyThreshold"] = request.UnhealthyThreshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27712,7 +30136,10 @@ func (client *Client) StartEpnInstanceWithOptions(request *StartEpnInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27753,8 +30180,14 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27795,8 +30228,14 @@ func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBal
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27837,7 +30276,10 @@ func (client *Client) StopEpnInstanceWithOptions(request *StopEpnInstanceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EPNInstanceId"] = request.EPNInstanceId
+	if !tea.BoolValue(util.IsUnset(request.EPNInstanceId)) {
+		query["EPNInstanceId"] = request.EPNInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27878,9 +30320,18 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ForceStop"] = request.ForceStop
-	query["InstanceId"] = request.InstanceId
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27921,8 +30372,14 @@ func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ListenerPort"] = request.ListenerPort
-	query["LoadBalancerId"] = request.LoadBalancerId
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27963,7 +30420,10 @@ func (client *Client) UnAssociateEnsEipAddressWithOptions(request *UnAssociateEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AllocationId"] = request.AllocationId
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28004,10 +30464,22 @@ func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Eip"] = request.Eip
-	query["EnsRegionId"] = request.EnsRegionId
-	query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
-	query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Eip)) {
+		query["Eip"] = request.Eip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdInternetIp)) {
+		query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28048,9 +30520,18 @@ func (client *Client) UpgradeApplicationWithOptions(request *UpgradeApplicationR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Template"] = request.Template
-	query["Timeout"] = request.Timeout
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["Template"] = request.Template
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

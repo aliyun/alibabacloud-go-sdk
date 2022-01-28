@@ -1,9 +1,9 @@
-module github.com/alibabacloud-go/ens-20171110/v2
+module github.com/alibabacloud-go/ens-20171110/v3
 
 go 1.15
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi v0.1.13
+	github.com/alibabacloud-go/darabonba-openapi v0.1.14
 	github.com/alibabacloud-go/endpoint-util v1.1.0
 	github.com/alibabacloud-go/openapi-util v0.0.10
 	github.com/alibabacloud-go/tea v1.1.17
