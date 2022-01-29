@@ -413,8 +413,6 @@ func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBod
 }
 
 type CreateProjectResponseBodyProject struct {
-	// 空间大类
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// 空间大类id
 	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
 	// 创建人id
@@ -429,18 +427,8 @@ type CreateProjectResponseBodyProject struct {
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// 图标
 	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 大图标
-	IconBig *string `json:"iconBig,omitempty" xml:"iconBig,omitempty"`
-	// 图表组，json格式字符串
-	IconGroup *string `json:"iconGroup,omitempty" xml:"iconGroup,omitempty"`
-	// 小图标
-	IconSmall *string `json:"iconSmall,omitempty" xml:"iconSmall,omitempty"`
-	// 项目id
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// 项目唯一标识符
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 空间路径
-	IdentifierPath *string `json:"identifierPath,omitempty" xml:"identifierPath,omitempty"`
 	// 项目状态
 	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
 	// 修改人
@@ -449,16 +437,12 @@ type CreateProjectResponseBodyProject struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 企业id
 	OrganizationIdentifier *string `json:"organizationIdentifier,omitempty" xml:"organizationIdentifier,omitempty"`
-	// 父项目id
-	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
 	// 可见范围
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	// 状态id
 	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
 	// 状态阶段
 	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
-	// 空间小类
-	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
 	// 空间小类id
 	TypeIdentifier *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
 }
@@ -469,11 +453,6 @@ func (s CreateProjectResponseBodyProject) String() string {
 
 func (s CreateProjectResponseBodyProject) GoString() string {
 	return s.String()
-}
-
-func (s *CreateProjectResponseBodyProject) SetCategory(v string) *CreateProjectResponseBodyProject {
-	s.Category = &v
-	return s
 }
 
 func (s *CreateProjectResponseBodyProject) SetCategoryIdentifier(v string) *CreateProjectResponseBodyProject {
@@ -511,33 +490,8 @@ func (s *CreateProjectResponseBodyProject) SetIcon(v string) *CreateProjectRespo
 	return s
 }
 
-func (s *CreateProjectResponseBodyProject) SetIconBig(v string) *CreateProjectResponseBodyProject {
-	s.IconBig = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyProject) SetIconGroup(v string) *CreateProjectResponseBodyProject {
-	s.IconGroup = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyProject) SetIconSmall(v string) *CreateProjectResponseBodyProject {
-	s.IconSmall = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyProject) SetId(v string) *CreateProjectResponseBodyProject {
-	s.Id = &v
-	return s
-}
-
 func (s *CreateProjectResponseBodyProject) SetIdentifier(v string) *CreateProjectResponseBodyProject {
 	s.Identifier = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyProject) SetIdentifierPath(v string) *CreateProjectResponseBodyProject {
-	s.IdentifierPath = &v
 	return s
 }
 
@@ -561,11 +515,6 @@ func (s *CreateProjectResponseBodyProject) SetOrganizationIdentifier(v string) *
 	return s
 }
 
-func (s *CreateProjectResponseBodyProject) SetParentIdentifier(v string) *CreateProjectResponseBodyProject {
-	s.ParentIdentifier = &v
-	return s
-}
-
 func (s *CreateProjectResponseBodyProject) SetScope(v string) *CreateProjectResponseBodyProject {
 	s.Scope = &v
 	return s
@@ -578,11 +527,6 @@ func (s *CreateProjectResponseBodyProject) SetStatusIdentifier(v string) *Create
 
 func (s *CreateProjectResponseBodyProject) SetStatusStageIdentifier(v string) *CreateProjectResponseBodyProject {
 	s.StatusStageIdentifier = &v
-	return s
-}
-
-func (s *CreateProjectResponseBodyProject) SetSubType(v string) *CreateProjectResponseBodyProject {
-	s.SubType = &v
 	return s
 }
 
@@ -1106,6 +1050,360 @@ func (s *CreateVariableGroupResponse) SetBody(v *CreateVariableGroupResponseBody
 	return s
 }
 
+type CreateWorkitemRequest struct {
+	// 工作项负责人的id，或者企业中的用户名
+	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	// 工作项的类型id，比如：Bug、Task对应id
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 工作项内容
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 内容格式
+	DescriptionFormat *string `json:"descriptionFormat,omitempty" xml:"descriptionFormat,omitempty"`
+	// 自定义字段
+	FieldValueList []*CreateWorkitemRequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
+	// 参与人id列表，或者企业名称列表
+	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
+	// 项目id
+	Space *string `json:"space,omitempty" xml:"space,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 资源类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 要关联迭代
+	Sprint []*string `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
+	// 标题
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 抄送人id列表
+	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
+	// 验证者id列表，或者企业名称列表
+	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
+	// 工作项小类型id
+	WorkitemType *string `json:"workitemType,omitempty" xml:"workitemType,omitempty"`
+}
+
+func (s CreateWorkitemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemRequest) SetAssignedTo(v string) *CreateWorkitemRequest {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetCategory(v string) *CreateWorkitemRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetDescription(v string) *CreateWorkitemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetDescriptionFormat(v string) *CreateWorkitemRequest {
+	s.DescriptionFormat = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetFieldValueList(v []*CreateWorkitemRequestFieldValueList) *CreateWorkitemRequest {
+	s.FieldValueList = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetParticipant(v []*string) *CreateWorkitemRequest {
+	s.Participant = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetSpace(v string) *CreateWorkitemRequest {
+	s.Space = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetSpaceIdentifier(v string) *CreateWorkitemRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetSpaceType(v string) *CreateWorkitemRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetSprint(v []*string) *CreateWorkitemRequest {
+	s.Sprint = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetSubject(v string) *CreateWorkitemRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetTracker(v []*string) *CreateWorkitemRequest {
+	s.Tracker = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetVerifier(v []*string) *CreateWorkitemRequest {
+	s.Verifier = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetWorkitemType(v string) *CreateWorkitemRequest {
+	s.WorkitemType = &v
+	return s
+}
+
+type CreateWorkitemRequestFieldValueList struct {
+	// 字段唯一标识
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	// 字段值，写入时使用
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 工作项的唯一标识
+	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s CreateWorkitemRequestFieldValueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemRequestFieldValueList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemRequestFieldValueList) SetFieldIdentifier(v string) *CreateWorkitemRequestFieldValueList {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemRequestFieldValueList) SetValue(v string) *CreateWorkitemRequestFieldValueList {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateWorkitemRequestFieldValueList) SetWorkitemIdentifier(v string) *CreateWorkitemRequestFieldValueList {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type CreateWorkitemResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工作项信息
+	Workitem *CreateWorkitemResponseBodyWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" type:"Struct"`
+}
+
+func (s CreateWorkitemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemResponseBody) SetErrorCode(v string) *CreateWorkitemResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBody) SetErrorMsg(v string) *CreateWorkitemResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBody) SetRequestId(v string) *CreateWorkitemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBody) SetSuccess(v bool) *CreateWorkitemResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBody) SetWorkitem(v *CreateWorkitemResponseBodyWorkitem) *CreateWorkitemResponseBody {
+	s.Workitem = v
+	return s
+}
+
+type CreateWorkitemResponseBodyWorkitem struct {
+	// 负责人
+	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	// 工作项的类型id
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 工作项内容
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作项唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 逻辑状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 父工作项id
+	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 编号
+	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	// 所属项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 所属项目名称
+	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	// 项目类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 状态名称
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态阶段id
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 工作项标题
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 状态更新时间
+	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	// 工作项类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s CreateWorkitemResponseBodyWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemResponseBodyWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetAssignedTo(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetCategoryIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetCreator(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Creator = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetDocument(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Document = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetGmtCreate(v int64) *CreateWorkitemResponseBodyWorkitem {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetGmtModified(v int64) *CreateWorkitemResponseBodyWorkitem {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetLogicalStatus(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetModifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Modifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetParentIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetSerialNumber(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetSpaceIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetSpaceName(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetSpaceType(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetStatus(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetStatusStageIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetSubject(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.Subject = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetUpdateStatusAt(v int64) *CreateWorkitemResponseBodyWorkitem {
+	s.UpdateStatusAt = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type CreateWorkitemResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateWorkitemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWorkitemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemResponse) SetHeaders(v map[string]*string) *CreateWorkitemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWorkitemResponse) SetBody(v *CreateWorkitemResponseBody) *CreateWorkitemResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceRequest struct {
 	// 代码来源URL（当前仅支持云效 Codeup 来源）
 	CodeUrl *string `json:"codeUrl,omitempty" xml:"codeUrl,omitempty"`
@@ -1544,8 +1842,7 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 }
 
 type DeleteProjectRequest struct {
-	// 项目id
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 }
 
 func (s DeleteProjectRequest) String() string {
@@ -1556,8 +1853,8 @@ func (s DeleteProjectRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
-	s.ProjectId = &v
+func (s *DeleteProjectRequest) SetIdentifier(v string) *DeleteProjectRequest {
+	s.Identifier = &v
 	return s
 }
 
@@ -3780,6 +4077,166 @@ func (s *GetProjectInfoResponse) SetHeaders(v map[string]*string) *GetProjectInf
 }
 
 func (s *GetProjectInfoResponse) SetBody(v *GetProjectInfoResponseBody) *GetProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetSprintInfoResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 迭代信息
+	Sprint  *GetSprintInfoResponseBodySprint `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Struct"`
+	Success *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetSprintInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSprintInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSprintInfoResponseBody) SetErrorCode(v string) *GetSprintInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBody) SetErrorMessage(v string) *GetSprintInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBody) SetRequestId(v string) *GetSprintInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBody) SetSprint(v *GetSprintInfoResponseBodySprint) *GetSprintInfoResponseBody {
+	s.Sprint = v
+	return s
+}
+
+func (s *GetSprintInfoResponseBody) SetSuccess(v bool) *GetSprintInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSprintInfoResponseBodySprint struct {
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 结束时间
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 迭代唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 迭代名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 可见范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 开始时间
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetSprintInfoResponseBodySprint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSprintInfoResponseBodySprint) GoString() string {
+	return s.String()
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetCreator(v string) *GetSprintInfoResponseBodySprint {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetDescription(v string) *GetSprintInfoResponseBodySprint {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetEndDate(v int64) *GetSprintInfoResponseBodySprint {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetGmtCreate(v int64) *GetSprintInfoResponseBodySprint {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetGmtModified(v int64) *GetSprintInfoResponseBodySprint {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetIdentifier(v string) *GetSprintInfoResponseBodySprint {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetModifier(v string) *GetSprintInfoResponseBodySprint {
+	s.Modifier = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetName(v string) *GetSprintInfoResponseBodySprint {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetScope(v string) *GetSprintInfoResponseBodySprint {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetSpaceIdentifier(v string) *GetSprintInfoResponseBodySprint {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetStartDate(v int64) *GetSprintInfoResponseBodySprint {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetSprintInfoResponseBodySprint) SetStatus(v string) *GetSprintInfoResponseBodySprint {
+	s.Status = &v
+	return s
+}
+
+type GetSprintInfoResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSprintInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSprintInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSprintInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSprintInfoResponse) SetHeaders(v map[string]*string) *GetSprintInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSprintInfoResponse) SetBody(v *GetSprintInfoResponseBody) *GetSprintInfoResponse {
 	s.Body = v
 	return s
 }
@@ -6773,6 +7230,637 @@ func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) 
 	return s
 }
 
+type ListProjectTemplatesRequest struct {
+	// 模板类型
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+}
+
+func (s ListProjectTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectTemplatesRequest) SetCategory(v string) *ListProjectTemplatesRequest {
+	s.Category = &v
+	return s
+}
+
+type ListProjectTemplatesResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 项目模板信息
+	Templates []*ListProjectTemplatesResponseBodyTemplates `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectTemplatesResponseBody) SetErrorCode(v string) *ListProjectTemplatesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBody) SetErrorMsg(v string) *ListProjectTemplatesResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBody) SetRequestId(v string) *ListProjectTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBody) SetSuccess(v bool) *ListProjectTemplatesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBody) SetTemplates(v []*ListProjectTemplatesResponseBodyTemplates) *ListProjectTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+type ListProjectTemplatesResponseBodyTemplates struct {
+	CopyFrom *string `json:"copyFrom,omitempty" xml:"copyFrom,omitempty"`
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 模板封面
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// 模板唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 模板名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 模板英文名称
+	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
+	// 所属资源类型
+	ResourceCategory *string `json:"resourceCategory,omitempty" xml:"resourceCategory,omitempty"`
+	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	SpaceIdentifier  *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	SpaceType        *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 模板类型 0-system/4-custom/16-instance
+	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListProjectTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetCopyFrom(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.CopyFrom = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetCreator(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetDescription(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetGmtCreate(v int64) *ListProjectTemplatesResponseBodyTemplates {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetGmtModified(v int64) *ListProjectTemplatesResponseBodyTemplates {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetIcon(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetIdentifier(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetModifier(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetName(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetNameEn(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.NameEn = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetResourceCategory(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.ResourceCategory = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetResourceType(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetSpaceIdentifier(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetSpaceType(v string) *ListProjectTemplatesResponseBodyTemplates {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListProjectTemplatesResponseBodyTemplates) SetType(v int64) *ListProjectTemplatesResponseBodyTemplates {
+	s.Type = &v
+	return s
+}
+
+type ListProjectTemplatesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectTemplatesResponse) SetHeaders(v map[string]*string) *ListProjectTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectTemplatesResponse) SetBody(v *ListProjectTemplatesResponseBody) *ListProjectTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectWorkitemTypesRequest struct {
+	// 工作项类型
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 空间类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+}
+
+func (s ListProjectWorkitemTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectWorkitemTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectWorkitemTypesRequest) SetCategory(v string) *ListProjectWorkitemTypesRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesRequest) SetSpaceType(v string) *ListProjectWorkitemTypesRequest {
+	s.SpaceType = &v
+	return s
+}
+
+type ListProjectWorkitemTypesResponseBody struct {
+	// 错误返回码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误返回信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// openapi平台的request id
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 接口是否正常返回
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工作项类型
+	WorkitemTypes []*ListProjectWorkitemTypesResponseBodyWorkitemTypes `json:"workitemTypes,omitempty" xml:"workitemTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectWorkitemTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectWorkitemTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectWorkitemTypesResponseBody) SetErrorCode(v string) *ListProjectWorkitemTypesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBody) SetErrorMessage(v string) *ListProjectWorkitemTypesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBody) SetRequestId(v string) *ListProjectWorkitemTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBody) SetSuccess(v bool) *ListProjectWorkitemTypesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBody) SetWorkitemTypes(v []*ListProjectWorkitemTypesResponseBodyWorkitemTypes) *ListProjectWorkitemTypesResponseBody {
+	s.WorkitemTypes = v
+	return s
+}
+
+type ListProjectWorkitemTypesResponseBodyWorkitemTypes struct {
+	// 添加到项目中的添加人
+	AddUser *string `json:"addUser,omitempty" xml:"addUser,omitempty"`
+	// 工作项类型
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 工作项类型创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 在项目中是否为默认类型
+	DefaultType *bool `json:"defaultType,omitempty" xml:"defaultType,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否启用
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// 添加到项目中的时间
+	GmtAdd *int64 `json:"gmtAdd,omitempty" xml:"gmtAdd,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 工作项类型id
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 工作项类型的名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 工作项类型的英文名称
+	NameEn *string `json:"nameEn,omitempty" xml:"nameEn,omitempty"`
+	// 是否系统默认
+	SystemDefault *bool `json:"systemDefault,omitempty" xml:"systemDefault,omitempty"`
+}
+
+func (s ListProjectWorkitemTypesResponseBodyWorkitemTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectWorkitemTypesResponseBodyWorkitemTypes) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetAddUser(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.AddUser = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetCategoryIdentifier(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetCreator(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetDefaultType(v bool) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.DefaultType = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetDescription(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetEnable(v bool) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetGmtAdd(v int64) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.GmtAdd = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetGmtCreate(v int64) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetIdentifier(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetName(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetNameEn(v string) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.NameEn = &v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponseBodyWorkitemTypes) SetSystemDefault(v bool) *ListProjectWorkitemTypesResponseBodyWorkitemTypes {
+	s.SystemDefault = &v
+	return s
+}
+
+type ListProjectWorkitemTypesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectWorkitemTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectWorkitemTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectWorkitemTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectWorkitemTypesResponse) SetHeaders(v map[string]*string) *ListProjectWorkitemTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectWorkitemTypesResponse) SetBody(v *ListProjectWorkitemTypesResponseBody) *ListProjectWorkitemTypesResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectsRequest struct {
+	// 项目类型
+	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
+	Conditions      *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
+	ExtraConditions *string `json:"extraConditions,omitempty" xml:"extraConditions,omitempty"`
+	// 每页最大返回数量，0-200，默认值20
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页中的起始序列
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 公开类型
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+}
+
+func (s ListProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequest) SetCategory(v string) *ListProjectsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetConditions(v string) *ListProjectsRequest {
+	s.Conditions = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetExtraConditions(v string) *ListProjectsRequest {
+	s.ExtraConditions = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetMaxResults(v int64) *ListProjectsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetNextToken(v string) *ListProjectsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetScope(v string) *ListProjectsRequest {
+	s.Scope = &v
+	return s
+}
+
+type ListProjectsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 每页数量
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页Token，没有下一页则为空
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 项目信息
+	Projects []*ListProjectsResponseBodyProjects `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 总数
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBody) SetErrorCode(v string) *ListProjectsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetErrorMsg(v string) *ListProjectsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetMaxResults(v int64) *ListProjectsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetNextToken(v string) *ListProjectsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetProjects(v []*ListProjectsResponseBodyProjects) *ListProjectsResponseBody {
+	s.Projects = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetSuccess(v bool) *ListProjectsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetTotalCount(v int64) *ListProjectsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectsResponseBodyProjects struct {
+	// 类型
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 自定义编号
+	CustomCode *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
+	// 删除时间
+	DeleteTime *int64 `json:"deleteTime,omitempty" xml:"deleteTime,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 项目封面
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// 项目唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 逻辑状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 项目名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 公开还是私有
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 状态阶段
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 类型id
+	TypeIdentifier *string `json:"typeIdentifier,omitempty" xml:"typeIdentifier,omitempty"`
+}
+
+func (s ListProjectsResponseBodyProjects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyProjects) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyProjects) SetCategoryIdentifier(v string) *ListProjectsResponseBodyProjects {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetCreator(v string) *ListProjectsResponseBodyProjects {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetCustomCode(v string) *ListProjectsResponseBodyProjects {
+	s.CustomCode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetDeleteTime(v int64) *ListProjectsResponseBodyProjects {
+	s.DeleteTime = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetDescription(v string) *ListProjectsResponseBodyProjects {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetGmtCreate(v int64) *ListProjectsResponseBodyProjects {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetIcon(v string) *ListProjectsResponseBodyProjects {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetIdentifier(v string) *ListProjectsResponseBodyProjects {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetLogicalStatus(v string) *ListProjectsResponseBodyProjects {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetName(v string) *ListProjectsResponseBodyProjects {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetScope(v string) *ListProjectsResponseBodyProjects {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetStatusStageIdentifier(v string) *ListProjectsResponseBodyProjects {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyProjects) SetTypeIdentifier(v string) *ListProjectsResponseBodyProjects {
+	s.TypeIdentifier = &v
+	return s
+}
+
+type ListProjectsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceMembersResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -7003,6 +8091,230 @@ func (s *ListServiceConnectionsResponse) SetHeaders(v map[string]*string) *ListS
 }
 
 func (s *ListServiceConnectionsResponse) SetBody(v *ListServiceConnectionsResponseBody) *ListServiceConnectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSprintsRequest struct {
+	// 每页最大返回数量，0-200，默认值20
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页中的起始序列
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+}
+
+func (s ListSprintsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSprintsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSprintsRequest) SetMaxResults(v int64) *ListSprintsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSprintsRequest) SetNextToken(v string) *ListSprintsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSprintsRequest) SetSpaceIdentifier(v string) *ListSprintsRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListSprintsRequest) SetSpaceType(v string) *ListSprintsRequest {
+	s.SpaceType = &v
+	return s
+}
+
+type ListSprintsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 每页数量
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页Token，没有下一页则为空
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 迭代信息
+	Sprints []*ListSprintsResponseBodySprints `json:"sprints,omitempty" xml:"sprints,omitempty" type:"Repeated"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 总数
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListSprintsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSprintsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSprintsResponseBody) SetErrorCode(v string) *ListSprintsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetErrorMsg(v string) *ListSprintsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetMaxResults(v int64) *ListSprintsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetNextToken(v string) *ListSprintsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetRequestId(v string) *ListSprintsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetSprints(v []*ListSprintsResponseBodySprints) *ListSprintsResponseBody {
+	s.Sprints = v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetSuccess(v bool) *ListSprintsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSprintsResponseBody) SetTotalCount(v int64) *ListSprintsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSprintsResponseBodySprints struct {
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 结束时间
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 迭代唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 迭代名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 可见范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 开始时间
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// 状态，未开始:Todo, 进行中:Doing, 已完成:Done
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListSprintsResponseBodySprints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSprintsResponseBodySprints) GoString() string {
+	return s.String()
+}
+
+func (s *ListSprintsResponseBodySprints) SetCreator(v string) *ListSprintsResponseBodySprints {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetDescription(v string) *ListSprintsResponseBodySprints {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetEndDate(v int64) *ListSprintsResponseBodySprints {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetGmtCreate(v int64) *ListSprintsResponseBodySprints {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetGmtModified(v int64) *ListSprintsResponseBodySprints {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetIdentifier(v string) *ListSprintsResponseBodySprints {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetModifier(v string) *ListSprintsResponseBodySprints {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetName(v string) *ListSprintsResponseBodySprints {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetScope(v string) *ListSprintsResponseBodySprints {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetSpaceIdentifier(v string) *ListSprintsResponseBodySprints {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetStartDate(v int64) *ListSprintsResponseBodySprints {
+	s.StartDate = &v
+	return s
+}
+
+func (s *ListSprintsResponseBodySprints) SetStatus(v string) *ListSprintsResponseBodySprints {
+	s.Status = &v
+	return s
+}
+
+type ListSprintsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSprintsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSprintsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSprintsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSprintsResponse) SetHeaders(v map[string]*string) *ListSprintsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSprintsResponse) SetBody(v *ListSprintsResponseBody) *ListSprintsResponse {
 	s.Body = v
 	return s
 }
@@ -7256,6 +8568,493 @@ func (s *ListVariableGroupsResponse) SetHeaders(v map[string]*string) *ListVaria
 }
 
 func (s *ListVariableGroupsResponse) SetBody(v *ListVariableGroupsResponseBody) *ListVariableGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkItemAllFieldsRequest struct {
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 资源类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 工作项类型id，工作项类型的列表和id可以从ListProjectWorkitemType中获取
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s ListWorkItemAllFieldsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemAllFieldsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemAllFieldsRequest) SetSpaceIdentifier(v string) *ListWorkItemAllFieldsRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsRequest) SetSpaceType(v string) *ListWorkItemAllFieldsRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsRequest) SetWorkitemTypeIdentifier(v string) *ListWorkItemAllFieldsRequest {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type ListWorkItemAllFieldsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 字段信息
+	Fields []*ListWorkItemAllFieldsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListWorkItemAllFieldsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemAllFieldsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemAllFieldsResponseBody) SetErrorCode(v string) *ListWorkItemAllFieldsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBody) SetErrorMsg(v string) *ListWorkItemAllFieldsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBody) SetFields(v []*ListWorkItemAllFieldsResponseBodyFields) *ListWorkItemAllFieldsResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBody) SetRequestId(v string) *ListWorkItemAllFieldsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBody) SetSuccess(v bool) *ListWorkItemAllFieldsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkItemAllFieldsResponseBodyFields struct {
+	// 字段类型
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// 创建人id
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 默认值
+	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 字段格式
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 字段唯一标识符
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 是否必填
+	IsRequired *bool `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	// 创建时是否展示
+	IsShowWhenCreate *bool `json:"isShowWhenCreate,omitempty" xml:"isShowWhenCreate,omitempty"`
+	// 是否是系统必须字段，比如：负责人、状态等。
+	IsSystemRequired *bool `json:"isSystemRequired,omitempty" xml:"isSystemRequired,omitempty"`
+	// 联动的服务，比如：迭代 迭代服务开启/关闭，这个字段字段加进/剔除出对应的模板； 字段模板里，这类字段不能手动添加或删除
+	LinkWithService *string `json:"linkWithService,omitempty" xml:"linkWithService,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 字段名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 待选值
+	Options []*ListWorkItemAllFieldsResponseBodyFieldsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
+	// 区分不同的适用对象
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 区分不同的类型，如系统字段、用户自定义字段
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListWorkItemAllFieldsResponseBodyFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemAllFieldsResponseBodyFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetClassName(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.ClassName = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetCreator(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetDefaultValue(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetDescription(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetFormat(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Format = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetGmtCreate(v int64) *ListWorkItemAllFieldsResponseBodyFields {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetGmtModified(v int64) *ListWorkItemAllFieldsResponseBodyFields {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetIdentifier(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetIsRequired(v bool) *ListWorkItemAllFieldsResponseBodyFields {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetIsShowWhenCreate(v bool) *ListWorkItemAllFieldsResponseBodyFields {
+	s.IsShowWhenCreate = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetIsSystemRequired(v bool) *ListWorkItemAllFieldsResponseBodyFields {
+	s.IsSystemRequired = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetLinkWithService(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.LinkWithService = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetModifier(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetName(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetOptions(v []*ListWorkItemAllFieldsResponseBodyFieldsOptions) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Options = v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetResourceType(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFields) SetType(v string) *ListWorkItemAllFieldsResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+type ListWorkItemAllFieldsResponseBodyFieldsOptions struct {
+	// 根据语言环境获取当前展示的值
+	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
+	// 字段唯一标识
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	// 待选值的唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 展示级别，数字范围1~9，数字越大，颜色越浅。
+	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	// 待选值顺序
+	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
+	// 待选值中文名称
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 待选值英文名称
+	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+}
+
+func (s ListWorkItemAllFieldsResponseBodyFieldsOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemAllFieldsResponseBodyFieldsOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetDisplayValue(v string) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.DisplayValue = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetFieldIdentifier(v string) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetIdentifier(v string) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetLevel(v int64) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.Level = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetPosition(v int64) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.Position = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetValue(v string) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.Value = &v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponseBodyFieldsOptions) SetValueEn(v string) *ListWorkItemAllFieldsResponseBodyFieldsOptions {
+	s.ValueEn = &v
+	return s
+}
+
+type ListWorkItemAllFieldsResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkItemAllFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkItemAllFieldsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemAllFieldsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemAllFieldsResponse) SetHeaders(v map[string]*string) *ListWorkItemAllFieldsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkItemAllFieldsResponse) SetBody(v *ListWorkItemAllFieldsResponseBody) *ListWorkItemAllFieldsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkItemWorkFlowStatusRequest struct {
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 空间类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 工作项大类型
+	WorkitemCategoryIdentifier *string `json:"workitemCategoryIdentifier,omitempty" xml:"workitemCategoryIdentifier,omitempty"`
+	// 工作项小类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s ListWorkItemWorkFlowStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemWorkFlowStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemWorkFlowStatusRequest) SetSpaceIdentifier(v string) *ListWorkItemWorkFlowStatusRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusRequest) SetSpaceType(v string) *ListWorkItemWorkFlowStatusRequest {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusRequest) SetWorkitemCategoryIdentifier(v string) *ListWorkItemWorkFlowStatusRequest {
+	s.WorkitemCategoryIdentifier = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusRequest) SetWorkitemTypeIdentifier(v string) *ListWorkItemWorkFlowStatusRequest {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type ListWorkItemWorkFlowStatusResponseBody struct {
+	// 错误返回码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误返回信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// openapi平台的request id
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 工作流状态
+	Statuses []*ListWorkItemWorkFlowStatusResponseBodyStatuses `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	// 接口是否正常返回
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListWorkItemWorkFlowStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemWorkFlowStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBody) SetErrorCode(v string) *ListWorkItemWorkFlowStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBody) SetErrorMessage(v string) *ListWorkItemWorkFlowStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBody) SetRequestId(v string) *ListWorkItemWorkFlowStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBody) SetStatuses(v []*ListWorkItemWorkFlowStatusResponseBodyStatuses) *ListWorkItemWorkFlowStatusResponseBody {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBody) SetSuccess(v bool) *ListWorkItemWorkFlowStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkItemWorkFlowStatusResponseBodyStatuses struct {
+	// 状态的创建人
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 更新时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作流状态id
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 修改人
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 工作流状态名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 状态作用的资源类型
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 状态来源
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// 阶段信息-阶段的唯一标识
+	WorkflowStageIdentifier *string `json:"workflowStageIdentifier,omitempty" xml:"workflowStageIdentifier,omitempty"`
+	// 阶段信息-名称
+	WorkflowStageName *string `json:"workflowStageName,omitempty" xml:"workflowStageName,omitempty"`
+}
+
+func (s ListWorkItemWorkFlowStatusResponseBodyStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemWorkFlowStatusResponseBodyStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetCreator(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetDescription(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetGmtCreate(v int64) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetGmtModified(v int64) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetIdentifier(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetModifier(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetName(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetResourceType(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetSource(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.Source = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetWorkflowStageIdentifier(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.WorkflowStageIdentifier = &v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponseBodyStatuses) SetWorkflowStageName(v string) *ListWorkItemWorkFlowStatusResponseBodyStatuses {
+	s.WorkflowStageName = &v
+	return s
+}
+
+type ListWorkItemWorkFlowStatusResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkItemWorkFlowStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkItemWorkFlowStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkItemWorkFlowStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkItemWorkFlowStatusResponse) SetHeaders(v map[string]*string) *ListWorkItemWorkFlowStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStatusResponseBody) *ListWorkItemWorkFlowStatusResponse {
 	s.Body = v
 	return s
 }
@@ -10050,6 +11849,105 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 	return _result, _err
 }
 
+func (client *Client) CreateWorkitem(organizationId *string, request *CreateWorkitemRequest) (_result *CreateWorkitemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkitemResponse{}
+	_body, _err := client.CreateWorkitemWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWorkitemWithOptions(organizationId *string, request *CreateWorkitemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWorkitemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignedTo)) {
+		body["assignedTo"] = request.AssignedTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DescriptionFormat)) {
+		body["descriptionFormat"] = request.DescriptionFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValueList)) {
+		body["fieldValueList"] = request.FieldValueList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Participant)) {
+		body["participant"] = request.Participant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Space)) {
+		body["space"] = request.Space
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		body["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		body["spaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sprint)) {
+		body["sprint"] = request.Sprint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tracker)) {
+		body["tracker"] = request.Tracker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verifier)) {
+		body["verifier"] = request.Verifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemType)) {
+		body["workitemType"] = request.WorkitemType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWorkitem"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWorkitemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10276,11 +12174,11 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 	return _result, _err
 }
 
-func (client *Client) DeleteProject(organizationId *string, projectId *string, request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteProject(organizationId *string, request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(organizationId, projectId, request, headers, runtime)
+	_body, _err := client.DeleteProjectWithOptions(organizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10288,27 +12186,26 @@ func (client *Client) DeleteProject(organizationId *string, projectId *string, r
 	return _result, _err
 }
 
-func (client *Client) DeleteProjectWithOptions(organizationId *string, projectId *string, request *DeleteProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteProjectWithOptions(organizationId *string, request *DeleteProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	organizationId = openapiutil.GetEncodeParam(organizationId)
-	projectId = openapiutil.GetEncodeParam(projectId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		body["projectId"] = request.ProjectId
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["identifier"] = request.Identifier
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProject"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/delete"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/delete"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -10865,6 +12762,44 @@ func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectI
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSprintInfo(organizationId *string, sprintId *string) (_result *GetSprintInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSprintInfoResponse{}
+	_body, _err := client.GetSprintInfoWithOptions(organizationId, sprintId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSprintInfoWithOptions(organizationId *string, sprintId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSprintInfoResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	sprintId = openapiutil.GetEncodeParam(sprintId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSprintInfo"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/" + tea.StringValue(sprintId) + "/getSprintinfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSprintInfoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11609,6 +13544,172 @@ func (client *Client) ListProjectMembersWithOptions(organizationId *string, proj
 	return _result, _err
 }
 
+func (client *Client) ListProjectTemplates(organizationId *string, request *ListProjectTemplatesRequest) (_result *ListProjectTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectTemplatesResponse{}
+	_body, _err := client.ListProjectTemplatesWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectTemplatesWithOptions(organizationId *string, request *ListProjectTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectTemplates"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/listTemplates"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectWorkitemTypes(organizationId *string, projectId *string, request *ListProjectWorkitemTypesRequest) (_result *ListProjectWorkitemTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectWorkitemTypesResponse{}
+	_body, _err := client.ListProjectWorkitemTypesWithOptions(organizationId, projectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectWorkitemTypesWithOptions(organizationId *string, projectId *string, request *ListProjectWorkitemTypesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectWorkitemTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	projectId = openapiutil.GetEncodeParam(projectId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectWorkitemTypes"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/getWorkitemType"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectWorkitemTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjects(organizationId *string, request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectsWithOptions(organizationId *string, request *ListProjectsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conditions)) {
+		query["conditions"] = request.Conditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraConditions)) {
+		query["extraConditions"] = request.ExtraConditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjects"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/listProjects"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListResourceMembers(organizationId *string, resourceType *string, resourceId *string) (_result *ListResourceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11695,6 +13796,65 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 	return _result, _err
 }
 
+func (client *Client) ListSprints(organizationId *string, request *ListSprintsRequest) (_result *ListSprintsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSprintsResponse{}
+	_body, _err := client.ListSprintsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSprintsWithOptions(organizationId *string, request *ListSprintsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSprintsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSprints"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSprintsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListVariableGroups(organizationId *string, request *ListVariableGroupsRequest) (_result *ListVariableGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11746,6 +13906,120 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVariableGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkItemAllFields(organizationId *string, request *ListWorkItemAllFieldsRequest) (_result *ListWorkItemAllFieldsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkItemAllFieldsResponse{}
+	_body, _err := client.ListWorkItemAllFieldsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkItemAllFieldsWithOptions(organizationId *string, request *ListWorkItemAllFieldsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkItemAllFieldsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemTypeIdentifier)) {
+		query["workitemTypeIdentifier"] = request.WorkitemTypeIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkItemAllFields"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/fields/listAll"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkItemAllFieldsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkItemWorkFlowStatus(organizationId *string, request *ListWorkItemWorkFlowStatusRequest) (_result *ListWorkItemWorkFlowStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkItemWorkFlowStatusResponse{}
+	_body, _err := client.ListWorkItemWorkFlowStatusWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *string, request *ListWorkItemWorkFlowStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkItemWorkFlowStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemCategoryIdentifier)) {
+		query["workitemCategoryIdentifier"] = request.WorkitemCategoryIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkitemTypeIdentifier)) {
+		query["workitemTypeIdentifier"] = request.WorkitemTypeIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkItemWorkFlowStatus"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/workflow/listWorkflowStatus"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkItemWorkFlowStatusResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
