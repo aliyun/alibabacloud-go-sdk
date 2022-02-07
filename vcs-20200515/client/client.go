@@ -1240,9 +1240,9 @@ func (s *AddAiotVehicleTableItemsResponse) SetBody(v *AddAiotVehicleTableItemsRe
 }
 
 type AddCameraForInstanceRequest struct {
-	// 设备id
+	// 设备Id
 	CameraIds []*string `json:"CameraIds,omitempty" xml:"CameraIds,omitempty" type:"Repeated"`
-	// 实例id
+	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1265,9 +1265,9 @@ func (s *AddCameraForInstanceRequest) SetInstanceId(v string) *AddCameraForInsta
 }
 
 type AddCameraForInstanceShrinkRequest struct {
-	// 设备id
+	// 设备Id
 	CameraIdsShrink *string `json:"CameraIds,omitempty" xml:"CameraIds,omitempty"`
-	// 实例id
+	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3321,7 +3321,7 @@ func (s *ControlAiotDeviceResponse) SetBody(v *ControlAiotDeviceResponseBody) *C
 }
 
 type CreateAIInstanceRequest struct {
-	// 算子id
+	// 算子Id
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	// 算法名称
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
@@ -3333,7 +3333,7 @@ type CreateAIInstanceRequest struct {
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 所属项目id
+	// 所属项目Id
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// ScheduleType为EVERY_WEEK、EVERY_MONTH时必填
 	ScheduleCycleDates []*int64 `json:"ScheduleCycleDates,omitempty" xml:"ScheduleCycleDates,omitempty" type:"Repeated"`
@@ -3434,7 +3434,7 @@ func (s *CreateAIInstanceRequestScheduleTimes) SetStartTime(v string) *CreateAII
 }
 
 type CreateAIInstanceShrinkRequest struct {
-	// 算子id
+	// 算子Id
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	// 算法名称
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
@@ -3446,7 +3446,7 @@ type CreateAIInstanceShrinkRequest struct {
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// 所属项目id
+	// 所属项目Id
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// ScheduleType为EVERY_WEEK、EVERY_MONTH时必填
 	ScheduleCycleDatesShrink *string `json:"ScheduleCycleDates,omitempty" xml:"ScheduleCycleDates,omitempty"`
@@ -3563,7 +3563,7 @@ func (s *CreateAIInstanceResponseBody) SetRequestId(v string) *CreateAIInstanceR
 type CreateAIInstanceResponseBodyData struct {
 	// 当前实例ACU使用量
 	AcuUsed *int64 `json:"AcuUsed,omitempty" xml:"AcuUsed,omitempty"`
-	// 实例id
+	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -17122,6 +17122,7 @@ func (s *ListAccessNumberResponse) SetBody(v *ListAccessNumberResponseBody) *Lis
 }
 
 type ListAlgorithmNamesByDeviceIdsRequest struct {
+	// 设备ID集合，多个的话以逗号分隔，最大支持200个
 	GbIds *string `json:"GbIds,omitempty" xml:"GbIds,omitempty"`
 }
 
@@ -17139,11 +17140,14 @@ func (s *ListAlgorithmNamesByDeviceIdsRequest) SetGbIds(v string) *ListAlgorithm
 }
 
 type ListAlgorithmNamesByDeviceIdsResponseBody struct {
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListAlgorithmNamesByDeviceIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 返回结果编码  200：获取成功  Failed：获取失败  Retry：按需拉流模式，正在建立取流连接，请稍后重试
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAlgorithmNamesByDeviceIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 返回结果消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAlgorithmNamesByDeviceIdsResponseBody) String() string {
@@ -17180,8 +17184,10 @@ func (s *ListAlgorithmNamesByDeviceIdsResponseBody) SetSuccess(v bool) *ListAlgo
 }
 
 type ListAlgorithmNamesByDeviceIdsResponseBodyData struct {
+	// 设备ID对应呗计算的算法名称集合
 	AlgorithmNames []*string `json:"AlgorithmNames,omitempty" xml:"AlgorithmNames,omitempty" type:"Repeated"`
-	GbId           *string   `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// 设备ID
+	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
 }
 
 func (s ListAlgorithmNamesByDeviceIdsResponseBodyData) String() string {
@@ -22470,105 +22476,6 @@ func (s *PeekNvrResponse) SetBody(v *PeekNvrResponseBody) *PeekNvrResponse {
 	return s
 }
 
-type PushBillsRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Method    *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	YieldId   *string `json:"YieldId,omitempty" xml:"YieldId,omitempty"`
-}
-
-func (s PushBillsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PushBillsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PushBillsRequest) SetEndDate(v string) *PushBillsRequest {
-	s.EndDate = &v
-	return s
-}
-
-func (s *PushBillsRequest) SetMethod(v string) *PushBillsRequest {
-	s.Method = &v
-	return s
-}
-
-func (s *PushBillsRequest) SetStartDate(v string) *PushBillsRequest {
-	s.StartDate = &v
-	return s
-}
-
-func (s *PushBillsRequest) SetYieldId(v string) *PushBillsRequest {
-	s.YieldId = &v
-	return s
-}
-
-type PushBillsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PushBillsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PushBillsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PushBillsResponseBody) SetCode(v string) *PushBillsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PushBillsResponseBody) SetData(v string) *PushBillsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *PushBillsResponseBody) SetMessage(v string) *PushBillsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PushBillsResponseBody) SetRequestId(v string) *PushBillsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PushBillsResponseBody) SetSuccess(v bool) *PushBillsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PushBillsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PushBillsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PushBillsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PushBillsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PushBillsResponse) SetHeaders(v map[string]*string) *PushBillsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PushBillsResponse) SetBody(v *PushBillsResponseBody) *PushBillsResponse {
-	s.Body = v
-	return s
-}
-
 type RaiseDevicesStorageRequest struct {
 	Json *string `json:"Json,omitempty" xml:"Json,omitempty"`
 }
@@ -23395,170 +23302,6 @@ func (s *RemoveWatchItemsResponse) SetHeaders(v map[string]*string) *RemoveWatch
 }
 
 func (s *RemoveWatchItemsResponse) SetBody(v *RemoveWatchItemsResponseBody) *RemoveWatchItemsResponse {
-	s.Body = v
-	return s
-}
-
-type ReportDeviceCapacityRequest struct {
-	AudioFormat      *string                                        `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
-	DeviceSn         *string                                        `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
-	DeviceTimeStamp  *string                                        `json:"DeviceTimeStamp,omitempty" xml:"DeviceTimeStamp,omitempty"`
-	Latitude         *string                                        `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	Longitude        *string                                        `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	PTZCapacity      *string                                        `json:"PTZCapacity,omitempty" xml:"PTZCapacity,omitempty"`
-	PresetNum        *string                                        `json:"PresetNum,omitempty" xml:"PresetNum,omitempty"`
-	StreamCapacities []*ReportDeviceCapacityRequestStreamCapacities `json:"StreamCapacities,omitempty" xml:"StreamCapacities,omitempty" type:"Repeated"`
-}
-
-func (s ReportDeviceCapacityRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportDeviceCapacityRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ReportDeviceCapacityRequest) SetAudioFormat(v string) *ReportDeviceCapacityRequest {
-	s.AudioFormat = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetDeviceSn(v string) *ReportDeviceCapacityRequest {
-	s.DeviceSn = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetDeviceTimeStamp(v string) *ReportDeviceCapacityRequest {
-	s.DeviceTimeStamp = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetLatitude(v string) *ReportDeviceCapacityRequest {
-	s.Latitude = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetLongitude(v string) *ReportDeviceCapacityRequest {
-	s.Longitude = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetPTZCapacity(v string) *ReportDeviceCapacityRequest {
-	s.PTZCapacity = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetPresetNum(v string) *ReportDeviceCapacityRequest {
-	s.PresetNum = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequest) SetStreamCapacities(v []*ReportDeviceCapacityRequestStreamCapacities) *ReportDeviceCapacityRequest {
-	s.StreamCapacities = v
-	return s
-}
-
-type ReportDeviceCapacityRequestStreamCapacities struct {
-	BitrateRange   *string `json:"BitrateRange,omitempty" xml:"BitrateRange,omitempty"`
-	EncodeFormat   *string `json:"EncodeFormat,omitempty" xml:"EncodeFormat,omitempty"`
-	GovLengthRange *string `json:"GovLengthRange,omitempty" xml:"GovLengthRange,omitempty"`
-	MaxFrameRate   *string `json:"MaxFrameRate,omitempty" xml:"MaxFrameRate,omitempty"`
-	MaxStream      *string `json:"MaxStream,omitempty" xml:"MaxStream,omitempty"`
-	Resolution     *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-}
-
-func (s ReportDeviceCapacityRequestStreamCapacities) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportDeviceCapacityRequestStreamCapacities) GoString() string {
-	return s.String()
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetBitrateRange(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.BitrateRange = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetEncodeFormat(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.EncodeFormat = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetGovLengthRange(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.GovLengthRange = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetMaxFrameRate(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.MaxFrameRate = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetMaxStream(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.MaxStream = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityRequestStreamCapacities) SetResolution(v string) *ReportDeviceCapacityRequestStreamCapacities {
-	s.Resolution = &v
-	return s
-}
-
-type ReportDeviceCapacityResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetryInterval *string `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-}
-
-func (s ReportDeviceCapacityResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportDeviceCapacityResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ReportDeviceCapacityResponseBody) SetCode(v string) *ReportDeviceCapacityResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityResponseBody) SetMessage(v string) *ReportDeviceCapacityResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityResponseBody) SetRequestId(v string) *ReportDeviceCapacityResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ReportDeviceCapacityResponseBody) SetRetryInterval(v string) *ReportDeviceCapacityResponseBody {
-	s.RetryInterval = &v
-	return s
-}
-
-type ReportDeviceCapacityResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportDeviceCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ReportDeviceCapacityResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReportDeviceCapacityResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ReportDeviceCapacityResponse) SetHeaders(v map[string]*string) *ReportDeviceCapacityResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ReportDeviceCapacityResponse) SetBody(v *ReportDeviceCapacityResponseBody) *ReportDeviceCapacityResponse {
 	s.Body = v
 	return s
 }
@@ -37524,62 +37267,6 @@ func (client *Client) PeekNvr(request *PeekNvrRequest) (_result *PeekNvrResponse
 	return _result, _err
 }
 
-func (client *Client) PushBillsWithOptions(request *PushBillsRequest, runtime *util.RuntimeOptions) (_result *PushBillsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
-		query["EndDate"] = request.EndDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Method)) {
-		query["Method"] = request.Method
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
-		query["StartDate"] = request.StartDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.YieldId)) {
-		query["YieldId"] = request.YieldId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PushBills"),
-		Version:     tea.String("2020-05-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PushBillsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PushBills(request *PushBillsRequest) (_result *PushBillsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PushBillsResponse{}
-	_body, _err := client.PushBillsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RaiseDevicesStorageWithOptions(request *RaiseDevicesStorageRequest, runtime *util.RuntimeOptions) (_result *RaiseDevicesStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37887,78 +37574,6 @@ func (client *Client) RemoveWatchItems(request *RemoveWatchItemsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveWatchItemsResponse{}
 	_body, _err := client.RemoveWatchItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ReportDeviceCapacityWithOptions(request *ReportDeviceCapacityRequest, runtime *util.RuntimeOptions) (_result *ReportDeviceCapacityResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
-		body["AudioFormat"] = request.AudioFormat
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DeviceSn)) {
-		body["DeviceSn"] = request.DeviceSn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DeviceTimeStamp)) {
-		body["DeviceTimeStamp"] = request.DeviceTimeStamp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Latitude)) {
-		body["Latitude"] = request.Latitude
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Longitude)) {
-		body["Longitude"] = request.Longitude
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PTZCapacity)) {
-		body["PTZCapacity"] = request.PTZCapacity
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PresetNum)) {
-		body["PresetNum"] = request.PresetNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamCapacities)) {
-		body["StreamCapacities"] = request.StreamCapacities
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ReportDeviceCapacity"),
-		Version:     tea.String("2020-05-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ReportDeviceCapacityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ReportDeviceCapacity(request *ReportDeviceCapacityRequest) (_result *ReportDeviceCapacityResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ReportDeviceCapacityResponse{}
-	_body, _err := client.ReportDeviceCapacityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
