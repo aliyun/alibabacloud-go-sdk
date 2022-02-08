@@ -1,3 +1,6 @@
+2022-02-08 Version: v1.0.7
+- Generated golang 2020-02-02 for polardbx.
+
 2021-12-30 Version: v1.0.6
 - Fixed some bugs.
 

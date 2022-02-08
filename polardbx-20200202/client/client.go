@@ -707,8 +707,12 @@ type CreateDBInstanceRequest struct {
 	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	PrimaryDBInstanceName *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
+	PrimaryZone           *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZone         *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	TertiaryZone          *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	TopologyType          *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
 	UsedTime              *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	VPCId                 *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -773,6 +777,11 @@ func (s *CreateDBInstanceRequest) SetPrimaryDBInstanceName(v string) *CreateDBIn
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetPrimaryZone(v string) *CreateDBInstanceRequest {
+	s.PrimaryZone = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetRegionId(v string) *CreateDBInstanceRequest {
 	s.RegionId = &v
 	return s
@@ -780,6 +789,21 @@ func (s *CreateDBInstanceRequest) SetRegionId(v string) *CreateDBInstanceRequest
 
 func (s *CreateDBInstanceRequest) SetResourceGroupId(v string) *CreateDBInstanceRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetSecondaryZone(v string) *CreateDBInstanceRequest {
+	s.SecondaryZone = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetTertiaryZone(v string) *CreateDBInstanceRequest {
+	s.TertiaryZone = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetTopologyType(v string) *CreateDBInstanceRequest {
+	s.TopologyType = &v
 	return s
 }
 
@@ -3352,24 +3376,29 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) SetMai
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct {
-	CharacterType               *string                                                                             `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	ConnectionIp                []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
-	DBInstanceConnType          *int32                                                                              `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-	DBInstanceCreateTime        *string                                                                             `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
-	DBInstanceDescription       *string                                                                             `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId                *string                                                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceName              *string                                                                             `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBInstanceStatus            *int32                                                                              `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStatusDescription *string                                                                             `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
-	DiskSize                    *int64                                                                              `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Engine                      *string                                                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion               *string                                                                             `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	LockMode                    *int32                                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason                  *string                                                                             `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime             *string                                                                             `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime           *string                                                                             `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MaxConnections              *int32                                                                              `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MaxIops                     *int32                                                                              `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
+	Activated                   *bool                                                                                `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	Azone                       *string                                                                              `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	AzoneRoleList               []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
+	CharacterType               *string                                                                              `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	ConnectionIp                []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp  `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
+	DBInstanceConnType          *int32                                                                               `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	DBInstanceCreateTime        *string                                                                              `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	DBInstanceDescription       *string                                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId                *string                                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceName              *string                                                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceStatus            *int32                                                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStatusDescription *string                                                                              `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
+	DiskSize                    *int64                                                                               `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	Engine                      *string                                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion               *string                                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	LockMode                    *int32                                                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason                  *string                                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTime             *string                                                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime           *string                                                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MaxConnections              *int32                                                                               `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIops                     *int32                                                                               `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
+	Region                      *string                                                                              `json:"Region,omitempty" xml:"Region,omitempty"`
+	Role                        *string                                                                              `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) String() string {
@@ -3378,6 +3407,21 @@ func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) St
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetActivated(v bool) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.Activated = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetAzone(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.Azone = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetAzoneRoleList(v []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.AzoneRoleList = v
+	return s
 }
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetCharacterType(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
@@ -3467,6 +3511,39 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) S
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetMaxIops(v int32) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
 	s.MaxIops = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetRegion(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetRole(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.Role = &v
+	return s
+}
+
+type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {
+	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	Role  *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) SetAzone(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList {
+	s.Azone = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) SetRole(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList {
+	s.Role = &v
 	return s
 }
 
@@ -6527,10 +6604,11 @@ func (s *ModifyDBInstanceClassResponse) SetBody(v *ModifyDBInstanceClassResponse
 }
 
 type ModifyDBInstanceConfigRequest struct {
-	ConfigName     *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ConfigName      *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigRequest) String() string {
@@ -6558,6 +6636,11 @@ func (s *ModifyDBInstanceConfigRequest) SetDBInstanceName(v string) *ModifyDBIns
 
 func (s *ModifyDBInstanceConfigRequest) SetRegionId(v string) *ModifyDBInstanceConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetResourceGroupId(v string) *ModifyDBInstanceConfigRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8557,12 +8640,28 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["PrimaryDBInstanceName"] = request.PrimaryDBInstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZone)) {
+		query["PrimaryZone"] = request.PrimaryZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryZone)) {
+		query["SecondaryZone"] = request.SecondaryZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TertiaryZone)) {
+		query["TertiaryZone"] = request.TertiaryZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopologyType)) {
+		query["TopologyType"] = request.TopologyType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
@@ -10572,6 +10671,10 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
