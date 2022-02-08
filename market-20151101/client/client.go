@@ -359,10 +359,12 @@ func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderRe
 }
 
 type CreateRateRequest struct {
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustomerLabels *string `json:"CustomerLabels,omitempty" xml:"CustomerLabels,omitempty"`
+	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Score          *string `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s CreateRateRequest) String() string {
@@ -378,8 +380,18 @@ func (s *CreateRateRequest) SetContent(v string) *CreateRateRequest {
 	return s
 }
 
+func (s *CreateRateRequest) SetCustomerLabels(v string) *CreateRateRequest {
+	s.CustomerLabels = &v
+	return s
+}
+
 func (s *CreateRateRequest) SetOrderId(v string) *CreateRateRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *CreateRateRequest) SetPackageVersion(v string) *CreateRateRequest {
+	s.PackageVersion = &v
 	return s
 }
 
@@ -3976,6 +3988,7 @@ type DescribeRateResponseBody struct {
 	AdditionalExplaintion    *string `json:"AdditionalExplaintion,omitempty" xml:"AdditionalExplaintion,omitempty"`
 	AliUid                   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	Content                  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustomerLabels           *string `json:"CustomerLabels,omitempty" xml:"CustomerLabels,omitempty"`
 	Explaintion              *string `json:"Explaintion,omitempty" xml:"Explaintion,omitempty"`
 	GmtAdditional            *int64  `json:"GmtAdditional,omitempty" xml:"GmtAdditional,omitempty"`
 	GmtAdditionalExplaintion *int64  `json:"GmtAdditionalExplaintion,omitempty" xml:"GmtAdditionalExplaintion,omitempty"`
@@ -3984,6 +3997,7 @@ type DescribeRateResponseBody struct {
 	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OrderId                  *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PackageVersion           *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
 	ProductId                *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Score                    *string `json:"Score,omitempty" xml:"Score,omitempty"`
@@ -4015,6 +4029,11 @@ func (s *DescribeRateResponseBody) SetAliUid(v int64) *DescribeRateResponseBody 
 
 func (s *DescribeRateResponseBody) SetContent(v string) *DescribeRateResponseBody {
 	s.Content = &v
+	return s
+}
+
+func (s *DescribeRateResponseBody) SetCustomerLabels(v string) *DescribeRateResponseBody {
+	s.CustomerLabels = &v
 	return s
 }
 
@@ -4055,6 +4074,11 @@ func (s *DescribeRateResponseBody) SetInstanceId(v string) *DescribeRateResponse
 
 func (s *DescribeRateResponseBody) SetOrderId(v string) *DescribeRateResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *DescribeRateResponseBody) SetPackageVersion(v string) *DescribeRateResponseBody {
+	s.PackageVersion = &v
 	return s
 }
 
@@ -5762,8 +5786,16 @@ func (client *Client) CreateRateWithOptions(request *CreateRateRequest, runtime 
 		query["Content"] = request.Content
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomerLabels)) {
+		query["CustomerLabels"] = request.CustomerLabels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageVersion)) {
+		query["PackageVersion"] = request.PackageVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
