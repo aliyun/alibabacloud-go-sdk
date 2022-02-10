@@ -1693,6 +1693,8 @@ func (s *ListDbfsAttachableEcsInstancesResponseBody) SetRequestId(v string) *Lis
 type ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo struct {
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	Label              *string `json:"label,omitempty" xml:"label,omitempty"`
 	Value              *string `json:"value,omitempty" xml:"value,omitempty"`
 }
@@ -1712,6 +1714,16 @@ func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetInstanceType
 
 func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetOSName(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
 	s.OSName = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetStatus(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetZoneId(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.ZoneId = &v
 	return s
 }
 
