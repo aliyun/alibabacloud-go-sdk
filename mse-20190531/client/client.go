@@ -13,6 +13,10 @@ import (
 )
 
 type GatewayOption struct {
+	// 是否禁用http
+	DisableHttp2Alpn *bool `json:"DisableHttp2Alpn,omitempty" xml:"DisableHttp2Alpn,omitempty"`
+	// 是否开启硬件加速
+	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
 	// 日志配置详情
 	LogConfigDetails *GatewayOptionLogConfigDetails `json:"LogConfigDetails,omitempty" xml:"LogConfigDetails,omitempty" type:"Struct"`
 	// xtrace config option
@@ -25,6 +29,16 @@ func (s GatewayOption) String() string {
 
 func (s GatewayOption) GoString() string {
 	return s.String()
+}
+
+func (s *GatewayOption) SetDisableHttp2Alpn(v bool) *GatewayOption {
+	s.DisableHttp2Alpn = &v
+	return s
+}
+
+func (s *GatewayOption) SetEnableHardwareAcceleration(v bool) *GatewayOption {
+	s.EnableHardwareAcceleration = &v
+	return s
 }
 
 func (s *GatewayOption) SetLogConfigDetails(v *GatewayOptionLogConfigDetails) *GatewayOption {
