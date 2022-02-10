@@ -4405,9 +4405,11 @@ func (s *DescribeDTSIPResponse) SetBody(v *DescribeDTSIPResponseBody) *DescribeD
 }
 
 type DescribeDtsJobDetailRequest struct {
-	DtsInstanceID            *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 是否返回所有的同步子任务
+	SyncSubJobHistory        *bool   `json:"SyncSubJobHistory,omitempty" xml:"SyncSubJobHistory,omitempty"`
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
@@ -4431,6 +4433,11 @@ func (s *DescribeDtsJobDetailRequest) SetDtsJobId(v string) *DescribeDtsJobDetai
 
 func (s *DescribeDtsJobDetailRequest) SetRegionId(v string) *DescribeDtsJobDetailRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailRequest) SetSyncSubJobHistory(v bool) *DescribeDtsJobDetailRequest {
+	s.SyncSubJobHistory = &v
 	return s
 }
 
@@ -4468,17 +4475,21 @@ type DescribeDtsJobDetailResponseBody struct {
 	FinishTime               *string                                               `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	GroupId                  *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	HttpStatusCode           *int32                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobType                  *string                                               `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MigrationMode            *DescribeDtsJobDetailResponseBodyMigrationMode        `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	PayType                  *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RequestId                *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Reserved                 *string                                               `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	SourceEndpoint           *DescribeDtsJobDetailResponseBodySourceEndpoint       `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
 	Status                   *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubDistributedJob        []*DescribeDtsJobDetailResponseBodySubDistributedJob  `json:"SubDistributedJob,omitempty" xml:"SubDistributedJob,omitempty" type:"Repeated"`
+	SubSyncJob               []*DescribeDtsJobDetailResponseBodySubSyncJob         `json:"SubSyncJob,omitempty" xml:"SubSyncJob,omitempty" type:"Repeated"`
 	SubscribeTopic           *string                                               `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
 	SubscriptionDataType     *DescribeDtsJobDetailResponseBodySubscriptionDataType `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
 	SubscriptionHost         *DescribeDtsJobDetailResponseBodySubscriptionHost     `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
 	Success                  *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	SynchronizationDirection *string                                               `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TaskType                 *string                                               `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDtsJobDetailResponseBody) String() string {
@@ -4629,6 +4640,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetHttpStatusCode(v int32) *DescribeD
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBody) SetJobType(v string) *DescribeDtsJobDetailResponseBody {
+	s.JobType = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBody) SetMigrationMode(v *DescribeDtsJobDetailResponseBodyMigrationMode) *DescribeDtsJobDetailResponseBody {
 	s.MigrationMode = v
 	return s
@@ -4659,6 +4675,16 @@ func (s *DescribeDtsJobDetailResponseBody) SetStatus(v string) *DescribeDtsJobDe
 	return s
 }
 
+func (s *DescribeDtsJobDetailResponseBody) SetSubDistributedJob(v []*DescribeDtsJobDetailResponseBodySubDistributedJob) *DescribeDtsJobDetailResponseBody {
+	s.SubDistributedJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetSubSyncJob(v []*DescribeDtsJobDetailResponseBodySubSyncJob) *DescribeDtsJobDetailResponseBody {
+	s.SubSyncJob = v
+	return s
+}
+
 func (s *DescribeDtsJobDetailResponseBody) SetSubscribeTopic(v string) *DescribeDtsJobDetailResponseBody {
 	s.SubscribeTopic = &v
 	return s
@@ -4681,6 +4707,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetSuccess(v bool) *DescribeDtsJobDet
 
 func (s *DescribeDtsJobDetailResponseBody) SetSynchronizationDirection(v string) *DescribeDtsJobDetailResponseBody {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetTaskType(v string) *DescribeDtsJobDetailResponseBody {
+	s.TaskType = &v
 	return s
 }
 
@@ -4870,6 +4901,3974 @@ func (s *DescribeDtsJobDetailResponseBodySourceEndpoint) SetSslSolutionEnum(v st
 
 func (s *DescribeDtsJobDetailResponseBodySourceEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySourceEndpoint {
 	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJob struct {
+	AppName                   *string                                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                                     `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                                     `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                                     `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                                     `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount             *int32                                                                      `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                  *string                                                                     `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                                      `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType               *string                                                                     `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                                     `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                                     `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	// 请使用
+	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	// 返回结果中新增jobType字段
+	JobType       *string                                                         `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	OriginType                    *string                                                                         `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
+	PayType                       *string                                                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                                         `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                    *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
+	ReverseJob                    *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
+	SourceEndpoint                *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+	SubSyncJob                    []interface{}                                                                   `json:"SubSyncJob,omitempty" xml:"SubSyncJob,omitempty" type:"Repeated"`
+	SubscribeTopic                *string                                                                         `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
+	SubscriptionDataType          *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType          `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
+	SubscriptionHost              *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost              `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
+	SynchronizationDirection      *string                                                                         `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TagList                       []*DescribeDtsJobDetailResponseBodySubDistributedJobTagList                     `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TaskType                      *string                                                                         `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetAppName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetConsumptionCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.ConsumptionCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetConsumptionClient(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.ConsumptionClient = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetCreateTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDataEtlStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DataEtlStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDataInitializationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDataSynchronizationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDatabaseCount(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DatabaseCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDbObject(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDelay(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDestNetType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DestNetType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDestinationEndpoint(v *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDtsInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDtsJobClass(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDtsJobDirection(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDtsJobId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetDtsJobName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetEndTimestamp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetEtlCalculator(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetExpireTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetFinishTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetGroupId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetIsDemoJob(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.IsDemoJob = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetJobType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetOriginType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.OriginType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetPayType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetPerformance(v *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetPrecheckStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetReserved(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetRetryState(v *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.RetryState = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetReverseJob(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.ReverseJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSourceEndpoint(v *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetStructureInitializationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSubSyncJob(v []interface{}) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SubSyncJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSubscribeTopic(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SubscribeTopic = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSubscriptionDataType(v *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SubscriptionDataType = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSubscriptionHost(v *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SubscriptionHost = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetSynchronizationDirection(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetTagList(v []*DescribeDtsJobDetailResponseBodySubDistributedJobTagList) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.TagList = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetTaskType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJob {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode struct {
+	DataExtractTransformLoad *bool `json:"DataExtractTransformLoad,omitempty" xml:"DataExtractTransformLoad,omitempty"`
+	DataInitialization       *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization      *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization  *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) SetDataExtractTransformLoad(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode {
+	s.DataExtractTransformLoad = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobPerformance struct {
+	// 每秒同步的流量，单位为：MB/s
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// 每秒同步的记录数
+	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) SetFlow(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance) SetRps(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus struct {
+	Detail       []*DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                                  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetDetail(v []*DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail struct {
+	// 预检查项
+	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	// 检查项的描述
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// 错误原因
+	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// 修复方法
+	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobRetryState struct {
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 最大重试时间,单位秒
+	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	// 模块名称 reader/store/writer/full/struct
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// 已重试次数
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// srcDB/destDB/metaDB/dstore
+	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	// 已重试时间,单位秒
+	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	// 是否重试中
+	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetErrMsg(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetJobId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetModule(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetRetryCount(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetRetryTarget(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState) SetRetrying(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobRetryState {
+	s.Retrying = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob struct {
+	AppName                   *string                                                                               `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                                               `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                                               `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                                               `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                                               `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount             *int32                                                                                `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                  *string                                                                               `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                                                `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType               *string                                                                               `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                                               `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                                               `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	// 请使用
+	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	// 返回结果中新增jobType字段
+	JobType       *string                                                                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	OriginType                    *string                                                                                   `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
+	PayType                       *string                                                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                                                   `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                    *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
+	ReverseJob                    interface{}                                                                               `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty"`
+	SourceEndpoint                *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+	SubscribeTopic                *string                                                                                   `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
+	SubscriptionDataType          *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType          `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
+	SubscriptionHost              *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost              `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
+	SynchronizationDirection      *string                                                                                   `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TagList                       []*DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList                     `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TaskType                      *string                                                                                   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetAppName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetConsumptionCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.ConsumptionCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetConsumptionClient(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.ConsumptionClient = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetCreateTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDataEtlStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DataEtlStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDataInitializationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDataSynchronizationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDatabaseCount(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DatabaseCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDbObject(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDelay(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDestNetType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DestNetType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDestinationEndpoint(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDtsInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDtsJobClass(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDtsJobDirection(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDtsJobId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetDtsJobName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetEndTimestamp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetEtlCalculator(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetExpireTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetFinishTime(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetGroupId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetIsDemoJob(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.IsDemoJob = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetJobType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetOriginType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.OriginType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetPayType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetPerformance(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetPrecheckStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetReserved(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetRetryState(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.RetryState = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetReverseJob(v interface{}) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.ReverseJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetSourceEndpoint(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetStructureInitializationStatus(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetSubscribeTopic(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.SubscribeTopic = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetSubscriptionDataType(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.SubscriptionDataType = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetSubscriptionHost(v *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.SubscriptionHost = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetSynchronizationDirection(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetTagList(v []*DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.TagList = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetTaskType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode struct {
+	DataExtractTransformLoad *bool `json:"DataExtractTransformLoad,omitempty" xml:"DataExtractTransformLoad,omitempty"`
+	DataInitialization       *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization      *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization  *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) SetDataExtractTransformLoad(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode {
+	s.DataExtractTransformLoad = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance struct {
+	// 每秒同步的流量，单位为：MB/s
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// 每秒同步的记录数
+	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) SetFlow(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance) SetRps(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus struct {
+	Detail       []*DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                                            `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) SetDetail(v []*DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail struct {
+	// 预检查项
+	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	// 检查项的描述
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// 错误原因
+	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// 修复方法
+	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState struct {
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 最大重试时间,单位秒
+	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	// 模块名称 reader/store/writer/full/struct
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// 已重试次数
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// srcDB/destDB/metaDB/dstore
+	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	// 已重试时间,单位秒
+	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	// 是否重试中
+	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetErrMsg(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetJobId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetModule(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetRetryCount(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetRetryTarget(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState) SetRetrying(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState {
+	s.Retrying = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType struct {
+	Ddl *bool `json:"Ddl,omitempty" xml:"Ddl,omitempty"`
+	Dml *bool `json:"Dml,omitempty" xml:"Dml,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType) SetDdl(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType {
+	s.Ddl = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType) SetDml(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionDataType {
+	s.Dml = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost struct {
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicHost  *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	VpcHost     *string `json:"VpcHost,omitempty" xml:"VpcHost,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) SetPrivateHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) SetPublicHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost) SetVpcHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSubscriptionHost {
+	s.VpcHost = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList struct {
+	// 用户id
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 标签操作者
+	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 主键
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// region_id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// dts instance id
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// 0为public，1为private (Public, Private, All)
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 任务所在region，注意一般是dts的目标端region
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
+	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	// 标签键tagkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签值tagvalue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetAliUid(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetCreator(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetGmtCreate(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetGmtModified(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetId(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetRegionId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetResourceId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetResourceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetScope(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetSrcRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetTagCategory(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.TagCategory = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetTagKey(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList) SetTagValue(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType struct {
+	Ddl *bool `json:"Ddl,omitempty" xml:"Ddl,omitempty"`
+	Dml *bool `json:"Dml,omitempty" xml:"Dml,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType) SetDdl(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType {
+	s.Ddl = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType) SetDml(v bool) *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionDataType {
+	s.Dml = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost struct {
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicHost  *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	VpcHost     *string `json:"VpcHost,omitempty" xml:"VpcHost,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) SetPrivateHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) SetPublicHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost) SetVpcHost(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobSubscriptionHost {
+	s.VpcHost = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubDistributedJobTagList struct {
+	// 用户id
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 标签操作者
+	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 主键
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// region_id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// dts instance id
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// 0为public，1为private (Public, Private, All)
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 任务所在region，注意一般是dts的目标端region
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
+	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	// 标签键tagkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签值tagvalue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubDistributedJobTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetAliUid(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetCreator(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetGmtCreate(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetGmtModified(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetId(v int64) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetRegionId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetResourceId(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetResourceType(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetScope(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetSrcRegion(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetTagCategory(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.TagCategory = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetTagKey(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubDistributedJobTagList) SetTagValue(v string) *DescribeDtsJobDetailResponseBodySubDistributedJobTagList {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJob struct {
+	AppName                   *string                                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                              `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                              `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                              `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                              `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount             *int32                                                               `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                  *string                                                              `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                               `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType               *string                                                              `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                              `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                              `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	// 请使用
+	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	// 返回结果中新增jobType字段
+	JobType       *string                                                  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	OriginType                    *string                                                                  `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
+	PayType                       *string                                                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobDetailResponseBodySubSyncJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                                  `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                    *DescribeDtsJobDetailResponseBodySubSyncJobRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
+	ReverseJob                    *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob                    `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
+	SourceEndpoint                *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+	SubSyncJob                    []interface{}                                                            `json:"SubSyncJob,omitempty" xml:"SubSyncJob,omitempty" type:"Repeated"`
+	SubscribeTopic                *string                                                                  `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
+	SubscriptionDataType          *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType          `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
+	SubscriptionHost              *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost              `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
+	SynchronizationDirection      *string                                                                  `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TagList                       []*DescribeDtsJobDetailResponseBodySubSyncJobTagList                     `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TaskType                      *string                                                                  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetAppName(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetConsumptionCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.ConsumptionCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetConsumptionClient(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.ConsumptionClient = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetCreateTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDataEtlStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DataEtlStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDataInitializationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDataSynchronizationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDatabaseCount(v int32) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DatabaseCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDbObject(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDelay(v int64) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDestNetType(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DestNetType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDestinationEndpoint(v *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDtsInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDtsJobClass(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDtsJobDirection(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDtsJobId(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetDtsJobName(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetEndTimestamp(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetEtlCalculator(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetExpireTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetFinishTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetGroupId(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetIsDemoJob(v bool) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.IsDemoJob = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetJobType(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetOriginType(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.OriginType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetPayType(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetPerformance(v *DescribeDtsJobDetailResponseBodySubSyncJobPerformance) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetPrecheckStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetReserved(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetRetryState(v *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.RetryState = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetReverseJob(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.ReverseJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSourceEndpoint(v *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetStructureInitializationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSubSyncJob(v []interface{}) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SubSyncJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSubscribeTopic(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SubscribeTopic = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSubscriptionDataType(v *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SubscriptionDataType = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSubscriptionHost(v *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SubscriptionHost = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetSynchronizationDirection(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetTagList(v []*DescribeDtsJobDetailResponseBodySubSyncJobTagList) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.TagList = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetTaskType(v string) *DescribeDtsJobDetailResponseBodySubSyncJob {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode struct {
+	DataExtractTransformLoad *bool `json:"DataExtractTransformLoad,omitempty" xml:"DataExtractTransformLoad,omitempty"`
+	DataInitialization       *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization      *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization  *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) SetDataExtractTransformLoad(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode {
+	s.DataExtractTransformLoad = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobPerformance struct {
+	// 每秒同步的流量，单位为：MB/s
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// 每秒同步的记录数
+	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPerformance) SetFlow(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPerformance) SetRps(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus struct {
+	Detail       []*DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetDetail(v []*DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail struct {
+	// 预检查项
+	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	// 检查项的描述
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// 错误原因
+	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// 修复方法
+	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobRetryState struct {
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 最大重试时间,单位秒
+	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	// 模块名称 reader/store/writer/full/struct
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// 已重试次数
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// srcDB/destDB/metaDB/dstore
+	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	// 已重试时间,单位秒
+	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	// 是否重试中
+	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetErrMsg(v string) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetJobId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetModule(v string) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetRetryCount(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetRetryTarget(v string) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobRetryState) SetRetrying(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobRetryState {
+	s.Retrying = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJob struct {
+	AppName                   *string                                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BeginTimestamp            *string                                                                        `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	Checkpoint                *string                                                                        `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	ConsumptionCheckpoint     *string                                                                        `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
+	ConsumptionClient         *string                                                                        `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CreateTime                *string                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataEtlStatus             *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
+	DataInitializationStatus  *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
+	DataSynchronizationStatus *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
+	DatabaseCount             *int32                                                                         `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
+	DbObject                  *string                                                                        `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	Delay                     *int64                                                                         `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	DestNetType               *string                                                                        `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
+	DestinationEndpoint       *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
+	DtsInstanceID             *string                                                                        `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	DtsJobClass               *string                                                                        `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
+	// 请使用
+	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName      *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	EndTimestamp    *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	ErrorMessage    *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	EtlCalculator   *string `json:"EtlCalculator,omitempty" xml:"EtlCalculator,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FinishTime      *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsDemoJob       *bool   `json:"IsDemoJob,omitempty" xml:"IsDemoJob,omitempty"`
+	// 返回结果中新增jobType字段
+	JobType       *string                                                            `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MigrationMode *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
+	// 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
+	OriginType                    *string                                                                            `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
+	PayType                       *string                                                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Performance                   *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
+	PrecheckStatus                *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus                `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
+	Reserved                      *string                                                                            `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RetryState                    *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState                    `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
+	ReverseJob                    interface{}                                                                        `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty"`
+	SourceEndpoint                *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint                `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
+	Status                        *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructureInitializationStatus *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
+	SubscribeTopic                *string                                                                            `json:"SubscribeTopic,omitempty" xml:"SubscribeTopic,omitempty"`
+	SubscriptionDataType          *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType          `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
+	SubscriptionHost              *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost              `json:"SubscriptionHost,omitempty" xml:"SubscriptionHost,omitempty" type:"Struct"`
+	SynchronizationDirection      *string                                                                            `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	TagList                       []*DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList                     `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TaskType                      *string                                                                            `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetAppName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetConsumptionCheckpoint(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.ConsumptionCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetConsumptionClient(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.ConsumptionClient = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetCreateTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDataEtlStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DataEtlStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDataInitializationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DataInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDataSynchronizationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DataSynchronizationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDatabaseCount(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DatabaseCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDbObject(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDelay(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDestNetType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DestNetType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDestinationEndpoint(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DestinationEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDtsInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DtsInstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDtsJobClass(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DtsJobClass = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDtsJobDirection(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DtsJobDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDtsJobId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetDtsJobName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetEndTimestamp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetEtlCalculator(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.EtlCalculator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetExpireTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetFinishTime(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetGroupId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetIsDemoJob(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.IsDemoJob = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetJobType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetMigrationMode(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.MigrationMode = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetOriginType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.OriginType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetPayType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetPerformance(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.Performance = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetPrecheckStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.PrecheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetReserved(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.Reserved = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetRetryState(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.RetryState = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetReverseJob(v interface{}) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.ReverseJob = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetSourceEndpoint(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.SourceEndpoint = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetStructureInitializationStatus(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.StructureInitializationStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetSubscribeTopic(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.SubscribeTopic = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetSubscriptionDataType(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.SubscriptionDataType = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetSubscriptionHost(v *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.SubscriptionHost = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetSynchronizationDirection(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetTagList(v []*DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.TagList = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetTaskType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode struct {
+	DataExtractTransformLoad *bool `json:"DataExtractTransformLoad,omitempty" xml:"DataExtractTransformLoad,omitempty"`
+	DataInitialization       *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
+	DataSynchronization      *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	StructureInitialization  *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) SetDataExtractTransformLoad(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode {
+	s.DataExtractTransformLoad = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode {
+	s.DataInitialization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode {
+	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode) SetStructureInitialization(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobMigrationMode {
+	s.StructureInitialization = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance struct {
+	// 每秒同步的流量，单位为：MB/s
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	// 每秒同步的记录数
+	Rps *string `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) SetFlow(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance {
+	s.Flow = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance) SetRps(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance {
+	s.Rps = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus struct {
+	Detail       []*DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	ErrorMessage *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string                                                                     `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) SetDetail(v []*DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail struct {
+	// 预检查项
+	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	// 检查项的描述
+	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
+	// 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// 错误原因
+	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
+	// 修复方法
+	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) SetCheckItem(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) SetCheckItemDescription(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail {
+	s.CheckItemDescription = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) SetCheckResult(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) SetFailedReason(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail {
+	s.FailedReason = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail) SetRepairMethod(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail {
+	s.RepairMethod = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState struct {
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 最大重试时间,单位秒
+	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
+	// 模块名称 reader/store/writer/full/struct
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// 已重试次数
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// srcDB/destDB/metaDB/dstore
+	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
+	// 已重试时间,单位秒
+	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
+	// 是否重试中
+	Retrying *bool `json:"Retrying,omitempty" xml:"Retrying,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetErrMsg(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetJobId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetMaxRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetModule(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetRetryCount(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetRetryTarget(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.RetryTarget = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetRetryTime(v int32) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.RetryTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState) SetRetrying(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState {
+	s.Retrying = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType struct {
+	Ddl *bool `json:"Ddl,omitempty" xml:"Ddl,omitempty"`
+	Dml *bool `json:"Dml,omitempty" xml:"Dml,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType) SetDdl(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType {
+	s.Ddl = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType) SetDml(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionDataType {
+	s.Dml = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost struct {
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicHost  *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	VpcHost     *string `json:"VpcHost,omitempty" xml:"VpcHost,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) SetPrivateHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) SetPublicHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost) SetVpcHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSubscriptionHost {
+	s.VpcHost = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList struct {
+	// 用户id
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 标签操作者
+	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 主键
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// region_id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// dts instance id
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// 0为public，1为private (Public, Private, All)
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 任务所在region，注意一般是dts的目标端region
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
+	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	// 标签键tagkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签值tagvalue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetAliUid(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetCreator(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetGmtCreate(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetGmtModified(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetId(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetRegionId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetResourceId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetResourceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetScope(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetSrcRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetTagCategory(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.TagCategory = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetTagKey(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList) SetTagValue(v string) *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint struct {
+	AliyunUid    *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EngineName   *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	InstanceID   *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OracleSID    *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
+	SslSolutionEnum *string `json:"SslSolutionEnum,omitempty" xml:"SslSolutionEnum,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetDatabaseName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetEngineName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.EngineName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetInstanceID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetInstanceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetIp(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetOracleSID(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.OracleSID = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetPort(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetSslSolutionEnum(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.SslSolutionEnum = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint) SetUserName(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint {
+	s.UserName = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 是否显示提升升级规格
+	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	// 迁移进度
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// 已经完成迁移的表数量
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) SetErrorMessage(v string) *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) SetNeedUpgrade(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) SetPercent(v string) *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) SetProgress(v string) *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus) SetStatus(v string) *DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType struct {
+	Ddl *bool `json:"Ddl,omitempty" xml:"Ddl,omitempty"`
+	Dml *bool `json:"Dml,omitempty" xml:"Dml,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType) SetDdl(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType {
+	s.Ddl = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType) SetDml(v bool) *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionDataType {
+	s.Dml = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost struct {
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	PublicHost  *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
+	VpcHost     *string `json:"VpcHost,omitempty" xml:"VpcHost,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) SetPrivateHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost {
+	s.PrivateHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) SetPublicHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost {
+	s.PublicHost = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost) SetVpcHost(v string) *DescribeDtsJobDetailResponseBodySubSyncJobSubscriptionHost {
+	s.VpcHost = &v
+	return s
+}
+
+type DescribeDtsJobDetailResponseBodySubSyncJobTagList struct {
+	// 用户id
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 标签操作者
+	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 主键
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// region_id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// dts instance id
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// 0为public，1为private (Public, Private, All)
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// 任务所在region，注意一般是dts的目标端region
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
+	TagCategory *string `json:"TagCategory,omitempty" xml:"TagCategory,omitempty"`
+	// 标签键tagkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// 标签值tagvalue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobDetailResponseBodySubSyncJobTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetAliUid(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetCreator(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetGmtCreate(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetGmtModified(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetId(v int64) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetRegionId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetResourceId(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetResourceType(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetScope(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetSrcRegion(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetTagCategory(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.TagCategory = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetTagKey(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodySubSyncJobTagList) SetTagValue(v string) *DescribeDtsJobDetailResponseBodySubSyncJobTagList {
+	s.TagValue = &v
 	return s
 }
 
@@ -19808,6 +23807,10 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncSubJobHistory)) {
+		query["SyncSubJobHistory"] = request.SyncSubJobHistory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
