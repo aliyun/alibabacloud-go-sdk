@@ -3432,6 +3432,105 @@ func (s *DeleteDtsJobResponse) SetBody(v *DeleteDtsJobResponseBody) *DeleteDtsJo
 	return s
 }
 
+type DeleteDtsJobsRequest struct {
+	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDtsJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDtsJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDtsJobsRequest) SetDtsJobIds(v string) *DeleteDtsJobsRequest {
+	s.DtsJobIds = &v
+	return s
+}
+
+func (s *DeleteDtsJobsRequest) SetRegionId(v string) *DeleteDtsJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDtsJobsResponseBody struct {
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDtsJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDtsJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDtsJobsResponseBody) SetDynamicCode(v string) *DeleteDtsJobsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetDynamicMessage(v string) *DeleteDtsJobsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetErrCode(v string) *DeleteDtsJobsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetErrMessage(v string) *DeleteDtsJobsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetHttpStatusCode(v int32) *DeleteDtsJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetRequestId(v string) *DeleteDtsJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDtsJobsResponseBody) SetSuccess(v bool) *DeleteDtsJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDtsJobsResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDtsJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDtsJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDtsJobsResponse) SetHeaders(v map[string]*string) *DeleteDtsJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDtsJobsResponse) SetBody(v *DeleteDtsJobsResponseBody) *DeleteDtsJobsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMigrationJobRequest struct {
 	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
@@ -4400,6 +4499,218 @@ func (s *DescribeDTSIPResponse) SetHeaders(v map[string]*string) *DescribeDTSIPR
 }
 
 func (s *DescribeDTSIPResponse) SetBody(v *DescribeDTSIPResponseBody) *DescribeDTSIPResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDtsEtlJobVersionInfoRequest struct {
+	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDtsEtlJobVersionInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsEtlJobVersionInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetDtsInstanceId(v string) *DescribeDtsEtlJobVersionInfoRequest {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetDtsJobId(v string) *DescribeDtsEtlJobVersionInfoRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetPageNumber(v int32) *DescribeDtsEtlJobVersionInfoRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetPageSize(v int32) *DescribeDtsEtlJobVersionInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetRegionId(v string) *DescribeDtsEtlJobVersionInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDtsEtlJobVersionInfoResponseBody struct {
+	DtsEtlJobVersionInfos []*DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos `json:"DtsEtlJobVersionInfos,omitempty" xml:"DtsEtlJobVersionInfos,omitempty" type:"Repeated"`
+	DynamicCode           *string                                                          `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage        *string                                                          `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode               *string                                                          `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage            *string                                                          `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode        *string                                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	PageNumber            *int32                                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount       *int32                                                           `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId             *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalRecordCount      *int32                                                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetDtsEtlJobVersionInfos(v []*DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.DtsEtlJobVersionInfos = v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetDynamicCode(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetDynamicMessage(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetErrCode(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetErrMessage(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetHttpStatusCode(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetPageNumber(v int32) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetPageRecordCount(v int32) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetRequestId(v string) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetSuccess(v bool) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBody) SetTotalRecordCount(v int32) *DescribeDtsEtlJobVersionInfoResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator        *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorName    *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	DtsInstanceId  *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId       *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobName     *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	SafeCheckpoint *string `json:"SafeCheckpoint,omitempty" xml:"SafeCheckpoint,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version        *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetCreateTime(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetCreator(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetCreatorName(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetDtsInstanceId(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetDtsJobId(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetDtsJobName(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.DtsJobName = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetModifyTime(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetSafeCheckpoint(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.SafeCheckpoint = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetStatus(v string) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos) SetVersion(v int32) *DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos {
+	s.Version = &v
+	return s
+}
+
+type DescribeDtsEtlJobVersionInfoResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDtsEtlJobVersionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsEtlJobVersionInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponse) SetHeaders(v map[string]*string) *DescribeDtsEtlJobVersionInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoResponse) SetBody(v *DescribeDtsEtlJobVersionInfoResponseBody) *DescribeDtsEtlJobVersionInfoResponse {
 	s.Body = v
 	return s
 }
@@ -11564,6 +11875,200 @@ func (s *DescribeDtsJobsResponse) SetBody(v *DescribeDtsJobsResponseBody) *Descr
 	return s
 }
 
+type DescribeDtsServiceLogRequest struct {
+	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubJobType *string `json:"SubJobType,omitempty" xml:"SubJobType,omitempty"`
+}
+
+func (s DescribeDtsServiceLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsServiceLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsServiceLogRequest) SetDtsJobId(v string) *DescribeDtsServiceLogRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetEndTime(v int64) *DescribeDtsServiceLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetKeyword(v string) *DescribeDtsServiceLogRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetPageNumber(v int32) *DescribeDtsServiceLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetPageSize(v int32) *DescribeDtsServiceLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetRegionId(v string) *DescribeDtsServiceLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetStartTime(v int64) *DescribeDtsServiceLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetStatus(v string) *DescribeDtsServiceLogRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetSubJobType(v string) *DescribeDtsServiceLogRequest {
+	s.SubJobType = &v
+	return s
+}
+
+type DescribeDtsServiceLogResponseBody struct {
+	DynamicCode        *string                                                `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string                                                `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode            *string                                                `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage         *string                                                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode     *int32                                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	PageNumber         *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount    *int32                                                 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId          *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceLogContexts []*DescribeDtsServiceLogResponseBodyServiceLogContexts `json:"ServiceLogContexts,omitempty" xml:"ServiceLogContexts,omitempty" type:"Repeated"`
+	Success            *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalRecordCount   *int64                                                 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeDtsServiceLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsServiceLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetDynamicCode(v string) *DescribeDtsServiceLogResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetDynamicMessage(v string) *DescribeDtsServiceLogResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetErrCode(v string) *DescribeDtsServiceLogResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetErrMessage(v string) *DescribeDtsServiceLogResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetHttpStatusCode(v int32) *DescribeDtsServiceLogResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetPageNumber(v int32) *DescribeDtsServiceLogResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetPageRecordCount(v int32) *DescribeDtsServiceLogResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetRequestId(v string) *DescribeDtsServiceLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetServiceLogContexts(v []*DescribeDtsServiceLogResponseBodyServiceLogContexts) *DescribeDtsServiceLogResponseBody {
+	s.ServiceLogContexts = v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetSuccess(v bool) *DescribeDtsServiceLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBody) SetTotalRecordCount(v int64) *DescribeDtsServiceLogResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeDtsServiceLogResponseBodyServiceLogContexts struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	State   *string `json:"State,omitempty" xml:"State,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeDtsServiceLogResponseBodyServiceLogContexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsServiceLogResponseBodyServiceLogContexts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsServiceLogResponseBodyServiceLogContexts) SetContext(v string) *DescribeDtsServiceLogResponseBodyServiceLogContexts {
+	s.Context = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBodyServiceLogContexts) SetState(v string) *DescribeDtsServiceLogResponseBodyServiceLogContexts {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponseBodyServiceLogContexts) SetTime(v string) *DescribeDtsServiceLogResponseBodyServiceLogContexts {
+	s.Time = &v
+	return s
+}
+
+type DescribeDtsServiceLogResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDtsServiceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDtsServiceLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsServiceLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsServiceLogResponse) SetHeaders(v map[string]*string) *DescribeDtsServiceLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDtsServiceLogResponse) SetBody(v *DescribeDtsServiceLogResponseBody) *DescribeDtsServiceLogResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEndpointSwitchStatusRequest struct {
 	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -11671,6 +12176,158 @@ func (s *DescribeEndpointSwitchStatusResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *DescribeEndpointSwitchStatusResponse) SetBody(v *DescribeEndpointSwitchStatusResponseBody) *DescribeEndpointSwitchStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEtlJobLogsRequest struct {
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEtlJobLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEtlJobLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEtlJobLogsRequest) SetDtsJobId(v string) *DescribeEtlJobLogsRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsRequest) SetRegionId(v string) *DescribeEtlJobLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEtlJobLogsResponseBody struct {
+	DynamicCode    *string                                         `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                         `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string                                         `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string                                         `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	EtlRunningLogs []*DescribeEtlJobLogsResponseBodyEtlRunningLogs `json:"EtlRunningLogs,omitempty" xml:"EtlRunningLogs,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeEtlJobLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEtlJobLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetDynamicCode(v string) *DescribeEtlJobLogsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetDynamicMessage(v string) *DescribeEtlJobLogsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetErrCode(v string) *DescribeEtlJobLogsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetErrMessage(v string) *DescribeEtlJobLogsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetEtlRunningLogs(v []*DescribeEtlJobLogsResponseBodyEtlRunningLogs) *DescribeEtlJobLogsResponseBody {
+	s.EtlRunningLogs = v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetHttpStatusCode(v int32) *DescribeEtlJobLogsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetRequestId(v string) *DescribeEtlJobLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBody) SetSuccess(v bool) *DescribeEtlJobLogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeEtlJobLogsResponseBodyEtlRunningLogs struct {
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentKey  *string `json:"ContentKey,omitempty" xml:"ContentKey,omitempty"`
+	EtlId       *string `json:"EtlId,omitempty" xml:"EtlId,omitempty"`
+	LogDatetime *string `json:"LogDatetime,omitempty" xml:"LogDatetime,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeEtlJobLogsResponseBodyEtlRunningLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEtlJobLogsResponseBodyEtlRunningLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetContent(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetContentKey(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.ContentKey = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetEtlId(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.EtlId = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetLogDatetime(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.LogDatetime = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetStatus(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponseBodyEtlRunningLogs) SetUserId(v string) *DescribeEtlJobLogsResponseBodyEtlRunningLogs {
+	s.UserId = &v
+	return s
+}
+
+type DescribeEtlJobLogsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEtlJobLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEtlJobLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEtlJobLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEtlJobLogsResponse) SetHeaders(v map[string]*string) *DescribeEtlJobLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEtlJobLogsResponse) SetBody(v *DescribeEtlJobLogsResponseBody) *DescribeEtlJobLogsResponse {
 	s.Body = v
 	return s
 }
@@ -17704,6 +18361,246 @@ func (s *DescribeSynchronizationObjectModifyStatusResponse) SetBody(v *DescribeS
 	return s
 }
 
+type DescribeTagKeysRequest struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeTagKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysRequest) SetCategory(v string) *DescribeTagKeysRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetPageNumber(v int32) *DescribeTagKeysRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetPageSize(v int32) *DescribeTagKeysRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetRegionId(v string) *DescribeTagKeysRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetResourceId(v string) *DescribeTagKeysRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetResourceType(v string) *DescribeTagKeysRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeTagKeysResponseBody struct {
+	Category   *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys    []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTagKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysResponseBody) SetCategory(v string) *DescribeTagKeysResponseBody {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeTagKeysResponseBody) SetPageNumber(v int32) *DescribeTagKeysResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTagKeysResponseBody) SetPageSize(v int32) *DescribeTagKeysResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTagKeysResponseBody) SetRequestId(v string) *DescribeTagKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTagKeysResponseBody) SetTagKeys(v []*string) *DescribeTagKeysResponseBody {
+	s.TagKeys = v
+	return s
+}
+
+func (s *DescribeTagKeysResponseBody) SetTotalCount(v int32) *DescribeTagKeysResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTagKeysResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTagKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagKeysResponse) SetHeaders(v map[string]*string) *DescribeTagKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagKeysResponse) SetBody(v *DescribeTagKeysResponseBody) *DescribeTagKeysResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTagValuesRequest struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeTagValuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesRequest) SetCategory(v string) *DescribeTagValuesRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetKey(v string) *DescribeTagValuesRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetPageNumber(v int32) *DescribeTagValuesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetPageSize(v int32) *DescribeTagValuesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetRegionId(v string) *DescribeTagValuesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetResourceId(v string) *DescribeTagValuesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetResourceType(v string) *DescribeTagValuesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeTagValuesResponseBody struct {
+	Category   *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagValues  []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTagValuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesResponseBody) SetCategory(v string) *DescribeTagValuesResponseBody {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetPageNumber(v int32) *DescribeTagValuesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetPageSize(v int32) *DescribeTagValuesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetRequestId(v string) *DescribeTagValuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetTagValues(v []*string) *DescribeTagValuesResponseBody {
+	s.TagValues = v
+	return s
+}
+
+func (s *DescribeTagValuesResponseBody) SetTotalCount(v int32) *DescribeTagValuesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTagValuesResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTagValuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTagValuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTagValuesResponse) SetHeaders(v map[string]*string) *DescribeTagValuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagValuesResponse) SetBody(v *DescribeTagValuesResponseBody) *DescribeTagValuesResponse {
+	s.Body = v
+	return s
+}
+
 type InitDtsRdsInstanceRequest struct {
 	DtsInstanceId        *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	EndpointCenId        *string `json:"EndpointCenId,omitempty" xml:"EndpointCenId,omitempty"`
@@ -19783,6 +20680,105 @@ func (s *StartDtsJobResponse) SetBody(v *StartDtsJobResponseBody) *StartDtsJobRe
 	return s
 }
 
+type StartDtsJobsRequest struct {
+	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartDtsJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDtsJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartDtsJobsRequest) SetDtsJobIds(v string) *StartDtsJobsRequest {
+	s.DtsJobIds = &v
+	return s
+}
+
+func (s *StartDtsJobsRequest) SetRegionId(v string) *StartDtsJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartDtsJobsResponseBody struct {
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartDtsJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDtsJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartDtsJobsResponseBody) SetDynamicCode(v string) *StartDtsJobsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetDynamicMessage(v string) *StartDtsJobsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetErrCode(v string) *StartDtsJobsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetErrMessage(v string) *StartDtsJobsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetHttpStatusCode(v int32) *StartDtsJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetRequestId(v string) *StartDtsJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartDtsJobsResponseBody) SetSuccess(v bool) *StartDtsJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartDtsJobsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartDtsJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDtsJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartDtsJobsResponse) SetHeaders(v map[string]*string) *StartDtsJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartDtsJobsResponse) SetBody(v *StartDtsJobsResponseBody) *StartDtsJobsResponse {
+	s.Body = v
+	return s
+}
+
 type StartMigrationJobRequest struct {
 	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
@@ -20185,6 +21181,105 @@ func (s *StopDtsJobResponse) SetBody(v *StopDtsJobResponseBody) *StopDtsJobRespo
 	return s
 }
 
+type StopDtsJobsRequest struct {
+	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopDtsJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDtsJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopDtsJobsRequest) SetDtsJobIds(v string) *StopDtsJobsRequest {
+	s.DtsJobIds = &v
+	return s
+}
+
+func (s *StopDtsJobsRequest) SetRegionId(v string) *StopDtsJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopDtsJobsResponseBody struct {
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopDtsJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDtsJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopDtsJobsResponseBody) SetDynamicCode(v string) *StopDtsJobsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetDynamicMessage(v string) *StopDtsJobsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetErrCode(v string) *StopDtsJobsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetErrMessage(v string) *StopDtsJobsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetHttpStatusCode(v int32) *StopDtsJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetRequestId(v string) *StopDtsJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopDtsJobsResponseBody) SetSuccess(v bool) *StopDtsJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopDtsJobsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopDtsJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDtsJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopDtsJobsResponse) SetHeaders(v map[string]*string) *StopDtsJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopDtsJobsResponse) SetBody(v *StopDtsJobsResponseBody) *StopDtsJobsResponse {
+	s.Body = v
+	return s
+}
+
 type StopMigrationJobRequest struct {
 	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -20280,6 +21375,146 @@ func (s *StopMigrationJobResponse) SetHeaders(v map[string]*string) *StopMigrati
 }
 
 func (s *StopMigrationJobResponse) SetBody(v *StopMigrationJobResponseBody) *StopMigrationJobResponse {
+	s.Body = v
+	return s
+}
+
+type SummaryJobDetailRequest struct {
+	DtsInstanceId            *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	JobCode                  *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+}
+
+func (s SummaryJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SummaryJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SummaryJobDetailRequest) SetDtsInstanceId(v string) *SummaryJobDetailRequest {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetDtsJobId(v string) *SummaryJobDetailRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetJobCode(v string) *SummaryJobDetailRequest {
+	s.JobCode = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetRegionId(v string) *SummaryJobDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetSynchronizationDirection(v string) *SummaryJobDetailRequest {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+type SummaryJobDetailResponseBody struct {
+	Code                   *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode         *int32                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	JobId                  *string                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ProgressSummaryDetails []*SummaryJobDetailResponseBodyProgressSummaryDetails `json:"ProgressSummaryDetails,omitempty" xml:"ProgressSummaryDetails,omitempty" type:"Repeated"`
+	RequestId              *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SummaryJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SummaryJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SummaryJobDetailResponseBody) SetCode(v string) *SummaryJobDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBody) SetHttpStatusCode(v int32) *SummaryJobDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBody) SetJobId(v string) *SummaryJobDetailResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBody) SetProgressSummaryDetails(v []*SummaryJobDetailResponseBodyProgressSummaryDetails) *SummaryJobDetailResponseBody {
+	s.ProgressSummaryDetails = v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBody) SetRequestId(v string) *SummaryJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBody) SetSuccess(v bool) *SummaryJobDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SummaryJobDetailResponseBodyProgressSummaryDetails struct {
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	State      *int32  `json:"State,omitempty" xml:"State,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SummaryJobDetailResponseBodyProgressSummaryDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SummaryJobDetailResponseBodyProgressSummaryDetails) GoString() string {
+	return s.String()
+}
+
+func (s *SummaryJobDetailResponseBodyProgressSummaryDetails) SetKey(v string) *SummaryJobDetailResponseBodyProgressSummaryDetails {
+	s.Key = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBodyProgressSummaryDetails) SetState(v int32) *SummaryJobDetailResponseBodyProgressSummaryDetails {
+	s.State = &v
+	return s
+}
+
+func (s *SummaryJobDetailResponseBodyProgressSummaryDetails) SetTotalCount(v int64) *SummaryJobDetailResponseBodyProgressSummaryDetails {
+	s.TotalCount = &v
+	return s
+}
+
+type SummaryJobDetailResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SummaryJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SummaryJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SummaryJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SummaryJobDetailResponse) SetHeaders(v map[string]*string) *SummaryJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SummaryJobDetailResponse) SetBody(v *SummaryJobDetailResponseBody) *SummaryJobDetailResponse {
 	s.Body = v
 	return s
 }
@@ -20391,6 +21626,105 @@ func (s *SuspendDtsJobResponse) SetHeaders(v map[string]*string) *SuspendDtsJobR
 }
 
 func (s *SuspendDtsJobResponse) SetBody(v *SuspendDtsJobResponseBody) *SuspendDtsJobResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendDtsJobsRequest struct {
+	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SuspendDtsJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDtsJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDtsJobsRequest) SetDtsJobIds(v string) *SuspendDtsJobsRequest {
+	s.DtsJobIds = &v
+	return s
+}
+
+func (s *SuspendDtsJobsRequest) SetRegionId(v string) *SuspendDtsJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SuspendDtsJobsResponseBody struct {
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SuspendDtsJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDtsJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDtsJobsResponseBody) SetDynamicCode(v string) *SuspendDtsJobsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetDynamicMessage(v string) *SuspendDtsJobsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetErrCode(v string) *SuspendDtsJobsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetErrMessage(v string) *SuspendDtsJobsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetHttpStatusCode(v int32) *SuspendDtsJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetRequestId(v string) *SuspendDtsJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendDtsJobsResponseBody) SetSuccess(v bool) *SuspendDtsJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SuspendDtsJobsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SuspendDtsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuspendDtsJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendDtsJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendDtsJobsResponse) SetHeaders(v map[string]*string) *SuspendDtsJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendDtsJobsResponse) SetBody(v *SuspendDtsJobsResponseBody) *SuspendDtsJobsResponse {
 	s.Body = v
 	return s
 }
@@ -23311,6 +24645,54 @@ func (client *Client) DeleteDtsJob(request *DeleteDtsJobRequest) (_result *Delet
 	return _result, _err
 }
 
+func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, runtime *util.RuntimeOptions) (_result *DeleteDtsJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobIds)) {
+		query["DtsJobIds"] = request.DtsJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDtsJobs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDtsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDtsJobs(request *DeleteDtsJobsRequest) (_result *DeleteDtsJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDtsJobsResponse{}
+	_body, _err := client.DeleteDtsJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMigrationJobWithOptions(request *DeleteMigrationJobRequest, runtime *util.RuntimeOptions) (_result *DeleteMigrationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23791,6 +25173,66 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 	return _result, _err
 }
 
+func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeDtsEtlJobVersionInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsEtlJobVersionInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDtsEtlJobVersionInfo"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDtsEtlJobVersionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVersionInfoRequest) (_result *DescribeDtsEtlJobVersionInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDtsEtlJobVersionInfoResponse{}
+	_body, _err := client.DescribeDtsEtlJobVersionInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsJobDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23939,6 +25381,82 @@ func (client *Client) DescribeDtsJobs(request *DescribeDtsJobsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServiceLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsServiceLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubJobType)) {
+		query["SubJobType"] = request.SubJobType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDtsServiceLog"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDtsServiceLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDtsServiceLog(request *DescribeDtsServiceLogRequest) (_result *DescribeDtsServiceLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDtsServiceLogResponse{}
+	_body, _err := client.DescribeDtsServiceLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeEndpointSwitchStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeEndpointSwitchStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23992,6 +25510,54 @@ func (client *Client) DescribeEndpointSwitchStatus(request *DescribeEndpointSwit
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEndpointSwitchStatusResponse{}
 	_body, _err := client.DescribeEndpointSwitchStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeEtlJobLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEtlJobLogs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEtlJobLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_result *DescribeEtlJobLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEtlJobLogsResponse{}
+	_body, _err := client.DescribeEtlJobLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25085,6 +26651,138 @@ func (client *Client) DescribeSynchronizationObjectModifyStatus(request *Describ
 	return _result, _err
 }
 
+func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTagKeys"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result *DescribeTagKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTagKeysResponse{}
+	_body, _err := client.DescribeTagKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesRequest, runtime *util.RuntimeOptions) (_result *DescribeTagValuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTagValues"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_result *DescribeTagValuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTagValuesResponse{}
+	_body, _err := client.DescribeTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceRequest, runtime *util.RuntimeOptions) (_result *InitDtsRdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26141,6 +27839,54 @@ func (client *Client) StartDtsJob(request *StartDtsJobRequest) (_result *StartDt
 	return _result, _err
 }
 
+func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runtime *util.RuntimeOptions) (_result *StartDtsJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobIds)) {
+		query["DtsJobIds"] = request.DtsJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartDtsJobs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartDtsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartDtsJobs(request *StartDtsJobsRequest) (_result *StartDtsJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartDtsJobsResponse{}
+	_body, _err := client.StartDtsJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobRequest, runtime *util.RuntimeOptions) (_result *StartMigrationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26369,6 +28115,54 @@ func (client *Client) StopDtsJob(request *StopDtsJobRequest) (_result *StopDtsJo
 	return _result, _err
 }
 
+func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtime *util.RuntimeOptions) (_result *StopDtsJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobIds)) {
+		query["DtsJobIds"] = request.DtsJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopDtsJobs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopDtsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopDtsJobs(request *StopDtsJobsRequest) (_result *StopDtsJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopDtsJobsResponse{}
+	_body, _err := client.StopDtsJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobRequest, runtime *util.RuntimeOptions) (_result *StopMigrationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26429,6 +28223,66 @@ func (client *Client) StopMigrationJob(request *StopMigrationJobRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailRequest, runtime *util.RuntimeOptions) (_result *SummaryJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobCode)) {
+		query["JobCode"] = request.JobCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SummaryJobDetail"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SummaryJobDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SummaryJobDetail(request *SummaryJobDetailRequest) (_result *SummaryJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SummaryJobDetailResponse{}
+	_body, _err := client.SummaryJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, runtime *util.RuntimeOptions) (_result *SuspendDtsJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26478,6 +28332,54 @@ func (client *Client) SuspendDtsJob(request *SuspendDtsJobRequest) (_result *Sus
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendDtsJobResponse{}
 	_body, _err := client.SuspendDtsJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, runtime *util.RuntimeOptions) (_result *SuspendDtsJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobIds)) {
+		query["DtsJobIds"] = request.DtsJobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendDtsJobs"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendDtsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuspendDtsJobs(request *SuspendDtsJobsRequest) (_result *SuspendDtsJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendDtsJobsResponse{}
+	_body, _err := client.SuspendDtsJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
