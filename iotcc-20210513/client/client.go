@@ -3442,10 +3442,13 @@ type ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo struct {
 	BeginTime           *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	CardIp              *string `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
 	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DiagnoseTime        *int64  `json:"DiagnoseTime,omitempty" xml:"DiagnoseTime,omitempty"`
 	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Iccid               *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -3473,6 +3476,11 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestination(v
 	return s
 }
 
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestinationType(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.DestinationType = &v
+	return s
+}
+
 func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDiagnoseTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
 	s.DiagnoseTime = &v
 	return s
@@ -3490,6 +3498,16 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIccid(v strin
 
 func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIoTCloudConnectorId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
 	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetSource(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetSourceType(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.SourceType = &v
 	return s
 }
 
