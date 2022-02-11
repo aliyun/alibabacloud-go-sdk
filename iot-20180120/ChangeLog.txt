@@ -1,3 +1,7 @@
+2022-02-11 Version: v3.0.1
+- Add OTA API, including ReupgradeOTATask.
+
+
 2022-01-07 Version: v3.0.0
 - Iot_20180120 TeaDSL sdk.
 
