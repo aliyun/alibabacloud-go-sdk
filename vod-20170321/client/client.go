@@ -361,6 +361,118 @@ func (s *AddEditingProjectResponse) SetBody(v *AddEditingProjectResponseBody) *A
 	return s
 }
 
+type AddFileInfoRequest struct {
+	// 应用
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 文件业务类型
+	BusinessType *int64 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 文件类型
+	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// 文件oss地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// 文件标题
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// 媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s AddFileInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFileInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddFileInfoRequest) SetAppId(v string) *AddFileInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *AddFileInfoRequest) SetBusinessType(v int64) *AddFileInfoRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *AddFileInfoRequest) SetFileType(v int64) *AddFileInfoRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *AddFileInfoRequest) SetFileUrl(v string) *AddFileInfoRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *AddFileInfoRequest) SetFilename(v string) *AddFileInfoRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *AddFileInfoRequest) SetMediaId(v string) *AddFileInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+type AddFileInfoResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 文件Id
+	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddFileInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFileInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddFileInfoResponseBody) SetCode(v string) *AddFileInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddFileInfoResponseBody) SetFileId(v string) *AddFileInfoResponseBody {
+	s.FileId = &v
+	return s
+}
+
+func (s *AddFileInfoResponseBody) SetRequestId(v string) *AddFileInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddFileInfoResponseBody) SetSuccess(v string) *AddFileInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddFileInfoResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddFileInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFileInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddFileInfoResponse) SetHeaders(v map[string]*string) *AddFileInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddFileInfoResponse) SetBody(v *AddFileInfoResponseBody) *AddFileInfoResponse {
+	s.Body = v
+	return s
+}
+
 type AddTranscodeTemplateGroupRequest struct {
 	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2291,6 +2403,82 @@ func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageRespo
 }
 
 func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaInfoRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s DeleteMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfoRequest) SetAppId(v string) *DeleteMediaInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteMediaInfoRequest) SetMediaId(v string) *DeleteMediaInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+type DeleteMediaInfoResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfoResponseBody) SetCode(v string) *DeleteMediaInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteMediaInfoResponseBody) SetRequestId(v string) *DeleteMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMediaInfoResponseBody) SetSuccess(v string) *DeleteMediaInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMediaInfoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaInfoResponse) SetHeaders(v map[string]*string) *DeleteMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaInfoResponse) SetBody(v *DeleteMediaInfoResponseBody) *DeleteMediaInfoResponse {
 	s.Body = v
 	return s
 }
@@ -12384,6 +12572,8 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetPlayInfo(v []*GetPlayInfoRespon
 }
 
 type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
+	// 颜色位深
+	BitDepth     *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
 	Bitrate      *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Definition   *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
@@ -12413,6 +12603,11 @@ func (s GetPlayInfoResponseBodyPlayInfoListPlayInfo) String() string {
 
 func (s GetPlayInfoResponseBodyPlayInfoListPlayInfo) GoString() string {
 	return s.String()
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetBitDepth(v int32) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.BitDepth = &v
+	return s
 }
 
 func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetBitrate(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
@@ -16943,6 +17138,160 @@ func (s *ListWatermarkResponse) SetHeaders(v map[string]*string) *ListWatermarkR
 }
 
 func (s *ListWatermarkResponse) SetBody(v *ListWatermarkResponseBody) *ListWatermarkResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyMediaInfoRequest struct {
+	// OSS存储地址
+	AiLabelUrl *string `json:"AiLabelUrl,omitempty" xml:"AiLabelUrl,omitempty"`
+	// 应用
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 媒资业务类型
+	BusinessType *int64 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 分类ID
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// 描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 动态数据
+	DynamicData *string `json:"DynamicData,omitempty" xml:"DynamicData,omitempty"`
+	// 元数据实体ID
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 智能标签，json结构
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// 媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 媒资类型
+	MediaType *int64 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// 媒资来源
+	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 视频标签
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ModifyMediaInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMediaInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMediaInfoRequest) SetAiLabelUrl(v string) *ModifyMediaInfoRequest {
+	s.AiLabelUrl = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetAppId(v string) *ModifyMediaInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetBusinessType(v int64) *ModifyMediaInfoRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetCateId(v int64) *ModifyMediaInfoRequest {
+	s.CateId = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetDescription(v string) *ModifyMediaInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetDynamicData(v string) *ModifyMediaInfoRequest {
+	s.DynamicData = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetEntityId(v string) *ModifyMediaInfoRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetLabel(v string) *ModifyMediaInfoRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetMediaId(v string) *ModifyMediaInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetMediaType(v int64) *ModifyMediaInfoRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetSource(v int64) *ModifyMediaInfoRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetTags(v string) *ModifyMediaInfoRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ModifyMediaInfoRequest) SetTitle(v string) *ModifyMediaInfoRequest {
+	s.Title = &v
+	return s
+}
+
+type ModifyMediaInfoResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyMediaInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMediaInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMediaInfoResponseBody) SetCode(v string) *ModifyMediaInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyMediaInfoResponseBody) SetRequestId(v string) *ModifyMediaInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyMediaInfoResponseBody) SetSuccess(v string) *ModifyMediaInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyMediaInfoResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyMediaInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMediaInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMediaInfoResponse) SetHeaders(v map[string]*string) *ModifyMediaInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyMediaInfoResponse) SetBody(v *ModifyMediaInfoResponseBody) *ModifyMediaInfoResponse {
 	s.Body = v
 	return s
 }
@@ -21824,9 +22173,18 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateConfig"] = request.TemplateConfig
-	query["TemplateName"] = request.TemplateName
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfig)) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21867,9 +22225,18 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateName"] = request.CateName
-	query["ParentId"] = request.ParentId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.CateName)) {
+		query["CateName"] = request.CateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21910,15 +22277,42 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["Division"] = request.Division
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Timeline"] = request.Timeline
-	query["Title"] = request.Title
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Division)) {
+		query["Division"] = request.Division
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		query["Timeline"] = request.Timeline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21953,16 +22347,92 @@ func (client *Client) AddEditingProject(request *AddEditingProjectRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) AddFileInfoWithOptions(request *AddFileInfoRequest, runtime *util.RuntimeOptions) (_result *AddFileInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filename)) {
+		query["Filename"] = request.Filename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddFileInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddFileInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddFileInfo(request *AddFileInfoRequest) (_result *AddFileInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddFileInfoResponse{}
+	_body, _err := client.AddFileInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscodeTemplateGroupRequest, runtime *util.RuntimeOptions) (_result *AddTranscodeTemplateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Name"] = request.Name
-	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
-	query["TranscodeTemplateList"] = request.TranscodeTemplateList
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateGroupId)) {
+		query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateList)) {
+		query["TranscodeTemplateList"] = request.TranscodeTemplateList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22003,14 +22473,38 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CheckUrl"] = request.CheckUrl
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["Scope"] = request.Scope
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.CheckUrl)) {
+		query["CheckUrl"] = request.CheckUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22051,10 +22545,22 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["Name"] = request.Name
-	query["TemplateConfig"] = request.TemplateConfig
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfig)) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22095,11 +22601,26 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["FileUrl"] = request.FileUrl
-	query["Name"] = request.Name
-	query["Type"] = request.Type
-	query["WatermarkConfig"] = request.WatermarkConfig
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkConfig)) {
+		query["WatermarkConfig"] = request.WatermarkConfig
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22140,10 +22661,22 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["IdentityName"] = request.IdentityName
-	query["IdentityType"] = request.IdentityType
-	query["PolicyNames"] = request.PolicyNames
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityName)) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyNames)) {
+		query["PolicyNames"] = request.PolicyNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22184,11 +22717,26 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["Functions"] = request.Functions
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Functions)) {
+		query["Functions"] = request.Functions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22229,9 +22777,18 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22272,9 +22829,18 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainNames"] = request.DomainNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22315,8 +22881,14 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["UploadUrls"] = request.UploadUrls
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadUrls)) {
+		query["UploadUrls"] = request.UploadUrls
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22357,8 +22929,14 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Description"] = request.Description
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22399,7 +22977,10 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuditContent"] = request.AuditContent
+	if !tea.BoolValue(util.IsUnset(request.AuditContent)) {
+		query["AuditContent"] = request.AuditContent
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22440,17 +23021,50 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["BusinessType"] = request.BusinessType
-	query["CateIds"] = request.CateIds
-	query["Description"] = request.Description
-	query["FileName"] = request.FileName
-	query["FileSize"] = request.FileSize
-	query["MediaExt"] = request.MediaExt
-	query["StorageLocation"] = request.StorageLocation
-	query["Tags"] = request.Tags
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
+		query["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSize)) {
+		query["FileSize"] = request.FileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaExt)) {
+		query["MediaExt"] = request.MediaExt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22491,15 +23105,42 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CateId"] = request.CateId
-	query["Description"] = request.Description
-	query["ImageExt"] = request.ImageExt
-	query["ImageType"] = request.ImageType
-	query["StorageLocation"] = request.StorageLocation
-	query["Tags"] = request.Tags
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageExt)) {
+		query["ImageExt"] = request.ImageExt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22540,18 +23181,54 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["CateId"] = request.CateId
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["FileName"] = request.FileName
-	query["FileSize"] = request.FileSize
-	query["StorageLocation"] = request.StorageLocation
-	query["Tags"] = request.Tags
-	query["TemplateGroupId"] = request.TemplateGroupId
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
-	query["WorkflowId"] = request.WorkflowId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSize)) {
+		query["FileSize"] = request.FileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateGroupId)) {
+		query["TemplateGroupId"] = request.TemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22632,7 +23309,10 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AIImageInfoIds"] = request.AIImageInfoIds
+	if !tea.BoolValue(util.IsUnset(request.AIImageInfoIds)) {
+		query["AIImageInfoIds"] = request.AIImageInfoIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22673,7 +23353,10 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22714,7 +23397,10 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22755,7 +23441,10 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaIds"] = request.MediaIds
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22796,7 +23485,10 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22837,8 +23529,14 @@ func (client *Client) DeleteDynamicImageWithOptions(request *DeleteDynamicImageR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DynamicImageIds"] = request.DynamicImageIds
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.DynamicImageIds)) {
+		query["DynamicImageIds"] = request.DynamicImageIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22879,11 +23577,26 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectIds"] = request.ProjectIds
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIds)) {
+		query["ProjectIds"] = request.ProjectIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22924,11 +23637,26 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DeleteImageType"] = request.DeleteImageType
-	query["ImageIds"] = request.ImageIds
-	query["ImageType"] = request.ImageType
-	query["ImageURLs"] = request.ImageURLs
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.DeleteImageType)) {
+		query["DeleteImageType"] = request.DeleteImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageIds)) {
+		query["ImageIds"] = request.ImageIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLs)) {
+		query["ImageURLs"] = request.ImageURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22963,14 +23691,68 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 	return _result, _err
 }
 
+func (client *Client) DeleteMediaInfoWithOptions(request *DeleteMediaInfoRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaInfo(request *DeleteMediaInfoRequest) (_result *DeleteMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaInfoResponse{}
+	_body, _err := client.DeleteMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCallbackRequest, runtime *util.RuntimeOptions) (_result *DeleteMessageCallbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerAccount"] = request.OwnerAccount
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23011,8 +23793,14 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Force"] = request.Force
-	query["VideoIds"] = request.VideoIds
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoIds)) {
+		query["VideoIds"] = request.VideoIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23053,9 +23841,18 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["MediaType"] = request.MediaType
-	query["OwnerAccount"] = request.OwnerAccount
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23096,8 +23893,14 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23138,9 +23941,18 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ForceDelGroup"] = request.ForceDelGroup
-	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
-	query["TranscodeTemplateIds"] = request.TranscodeTemplateIds
+	if !tea.BoolValue(util.IsUnset(request.ForceDelGroup)) {
+		query["ForceDelGroup"] = request.ForceDelGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateGroupId)) {
+		query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateIds)) {
+		query["TranscodeTemplateIds"] = request.TranscodeTemplateIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23181,7 +23993,10 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoIds"] = request.VideoIds
+	if !tea.BoolValue(util.IsUnset(request.VideoIds)) {
+		query["VideoIds"] = request.VideoIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23222,10 +24037,22 @@ func (client *Client) DeleteVodDomainWithOptions(request *DeleteVodDomainRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23306,10 +24133,22 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConfigId"] = request.ConfigId
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23350,7 +24189,10 @@ func (client *Client) DeleteVodTemplateWithOptions(request *DeleteVodTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VodTemplateId"] = request.VodTemplateId
+	if !tea.BoolValue(util.IsUnset(request.VodTemplateId)) {
+		query["VodTemplateId"] = request.VodTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23391,7 +24233,10 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["WatermarkId"] = request.WatermarkId
+	if !tea.BoolValue(util.IsUnset(request.WatermarkId)) {
+		query["WatermarkId"] = request.WatermarkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23432,10 +24277,22 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BizDate"] = request.BizDate
-	query["OwnerId"] = request.OwnerId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		query["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23476,9 +24333,18 @@ func (client *Client) DescribePlayUserAvgWithOptions(request *DescribePlayUserAv
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23519,9 +24385,18 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23562,10 +24437,22 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23606,11 +24493,26 @@ func (client *Client) DescribeVodAIDataWithOptions(request *DescribeVodAIDataReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AIType"] = request.AIType
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AIType)) {
+		query["AIType"] = request.AIType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23651,9 +24553,18 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23694,13 +24605,34 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23741,8 +24673,14 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23783,10 +24721,22 @@ func (client *Client) DescribeVodDomainConfigsWithOptions(request *DescribeVodDo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["FunctionNames"] = request.FunctionNames
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionNames)) {
+		query["FunctionNames"] = request.FunctionNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23827,9 +24777,18 @@ func (client *Client) DescribeVodDomainDetailWithOptions(request *DescribeVodDom
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23870,12 +24829,30 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -23956,11 +24933,26 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24001,11 +24993,26 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24046,13 +25053,34 @@ func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["IspNameEn"] = request.IspNameEn
-	query["LocationNameEn"] = request.LocationNameEn
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24093,13 +25121,34 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Area"] = request.Area
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["Field"] = request.Field
-	query["OwnerId"] = request.OwnerId
-	query["StartTime"] = request.StartTime
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		query["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24140,8 +25189,14 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24182,17 +25237,50 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24233,12 +25321,30 @@ func (client *Client) DescribeVodStorageDataWithOptions(request *DescribeVodStor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["StartTime"] = request.StartTime
-	query["Storage"] = request.Storage
-	query["StorageType"] = request.StorageType
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24279,10 +25385,22 @@ func (client *Client) DescribeVodTagResourcesWithOptions(request *DescribeVodTag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24323,13 +25441,34 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["Interval"] = request.Interval
-	query["OwnerId"] = request.OwnerId
-	query["Region"] = request.Region
-	query["Specification"] = request.Specification
-	query["StartTime"] = request.StartTime
-	query["Storage"] = request.Storage
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24370,14 +25509,38 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["DomainSearchType"] = request.DomainSearchType
-	query["DomainStatus"] = request.DomainStatus
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainSearchType)) {
+		query["DomainSearchType"] = request.DomainSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainStatus)) {
+		query["DomainStatus"] = request.DomainStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24418,7 +25581,10 @@ func (client *Client) DescribeVodUserTagsWithOptions(request *DescribeVodUserTag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24459,8 +25625,14 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24501,10 +25673,22 @@ func (client *Client) DetachAppPolicyFromIdentityWithOptions(request *DetachAppP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["IdentityName"] = request.IdentityName
-	query["IdentityType"] = request.IdentityType
-	query["PolicyNames"] = request.PolicyNames
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityName)) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyNames)) {
+		query["PolicyNames"] = request.PolicyNames
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24625,11 +25809,26 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24670,7 +25869,10 @@ func (client *Client) GetAIMediaAuditJobWithOptions(request *GetAIMediaAuditJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24711,7 +25913,10 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24752,11 +25957,26 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24797,7 +26017,10 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppIds"] = request.AppIds
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24838,9 +26061,18 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthTimeout"] = request.AuthTimeout
-	query["MediaIds"] = request.MediaIds
-	query["OutputType"] = request.OutputType
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		query["OutputType"] = request.OutputType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24881,10 +26113,22 @@ func (client *Client) GetAuditHistoryWithOptions(request *GetAuditHistoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["SortBy"] = request.SortBy
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24925,11 +26169,26 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["SortBy"] = request.SortBy
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24970,7 +26229,10 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25011,11 +26273,26 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectId"] = request.ProjectId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25056,13 +26333,34 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaterialType"] = request.MaterialType
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectId"] = request.ProjectId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.MaterialType)) {
+		query["MaterialType"] = request.MaterialType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25103,9 +26401,18 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthTimeout"] = request.AuthTimeout
-	query["ImageId"] = request.ImageId
-	query["OutputType"] = request.OutputType
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		query["OutputType"] = request.OutputType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25146,12 +26453,30 @@ func (client *Client) GetMediaAuditAudioResultDetailWithOptions(request *GetMedi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNo"] = request.PageNo
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25192,7 +26517,10 @@ func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25233,8 +26561,14 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["PageNo"] = request.PageNo
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25275,7 +26609,10 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25316,11 +26653,26 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25361,8 +26713,14 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["OwnerAccount"] = request.OwnerAccount
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25403,10 +26761,22 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AdditionType"] = request.AdditionType
-	query["AuthTimeout"] = request.AuthTimeout
-	query["OutputType"] = request.OutputType
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.AdditionType)) {
+		query["AdditionType"] = request.AdditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		query["OutputType"] = request.OutputType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25447,16 +26817,46 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AdditionType"] = request.AdditionType
-	query["AuthTimeout"] = request.AuthTimeout
-	query["Definition"] = request.Definition
-	query["Formats"] = request.Formats
-	query["OutputType"] = request.OutputType
-	query["PlayConfig"] = request.PlayConfig
-	query["ReAuthInfo"] = request.ReAuthInfo
-	query["ResultType"] = request.ResultType
-	query["StreamType"] = request.StreamType
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.AdditionType)) {
+		query["AdditionType"] = request.AdditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		query["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Formats)) {
+		query["Formats"] = request.Formats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		query["OutputType"] = request.OutputType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayConfig)) {
+		query["PlayConfig"] = request.PlayConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReAuthInfo)) {
+		query["ReAuthInfo"] = request.ReAuthInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
+		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25497,7 +26897,10 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoIds"] = request.VideoIds
+	if !tea.BoolValue(util.IsUnset(request.VideoIds)) {
+		query["VideoIds"] = request.VideoIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25538,7 +26941,10 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TranscodeTaskId"] = request.TranscodeTaskId
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTaskId)) {
+		query["TranscodeTaskId"] = request.TranscodeTaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25579,7 +26985,10 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateGroupId)) {
+		query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25620,8 +27029,14 @@ func (client *Client) GetURLUploadInfosWithOptions(request *GetURLUploadInfosReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["UploadURLs"] = request.UploadURLs
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadURLs)) {
+		query["UploadURLs"] = request.UploadURLs
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25662,8 +27077,14 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaIds"] = request.MediaIds
-	query["MediaType"] = request.MediaType
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25704,7 +27125,10 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25745,7 +27169,10 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoIds"] = request.VideoIds
+	if !tea.BoolValue(util.IsUnset(request.VideoIds)) {
+		query["VideoIds"] = request.VideoIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25786,14 +27213,38 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["EndTime"] = request.EndTime
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["StorageLocation"] = request.StorageLocation
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25834,9 +27285,18 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApiVersion"] = request.ApiVersion
-	query["AuthInfoTimeout"] = request.AuthInfoTimeout
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.ApiVersion)) {
+		query["ApiVersion"] = request.ApiVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthInfoTimeout)) {
+		query["AuthInfoTimeout"] = request.AuthInfoTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25877,7 +27337,10 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VodTemplateId"] = request.VodTemplateId
+	if !tea.BoolValue(util.IsUnset(request.VodTemplateId)) {
+		query["VodTemplateId"] = request.VodTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25918,7 +27381,10 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["WatermarkId"] = request.WatermarkId
+	if !tea.BoolValue(util.IsUnset(request.WatermarkId)) {
+		query["WatermarkId"] = request.WatermarkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25959,7 +27425,10 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26000,11 +27469,26 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26045,7 +27529,10 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26086,9 +27573,18 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26129,9 +27625,18 @@ func (client *Client) ListAppPoliciesForIdentityWithOptions(request *ListAppPoli
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["IdentityName"] = request.IdentityName
-	query["IdentityType"] = request.IdentityType
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityName)) {
+		query["IdentityName"] = request.IdentityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26172,7 +27677,10 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityGroupName"] = request.SecurityGroupName
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26213,7 +27721,10 @@ func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26254,14 +27765,38 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["DomainName"] = request.DomainName
-	query["EndTime"] = request.EndTime
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
-	query["StreamName"] = request.StreamName
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
+		query["StreamName"] = request.StreamName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26302,11 +27837,26 @@ func (client *Client) ListMediaDNADeleteJobWithOptions(request *ListMediaDNADele
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobIds"] = request.JobIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26347,11 +27897,26 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AuthTimeout"] = request.AuthTimeout
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["SnapshotType"] = request.SnapshotType
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotType)) {
+		query["SnapshotType"] = request.SnapshotType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26392,11 +27957,26 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26437,7 +28017,10 @@ func (client *Client) ListTranscodeTemplateGroupWithOptions(request *ListTransco
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26558,8 +28141,14 @@ func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["TemplateType"] = request.TemplateType
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26600,7 +28189,10 @@ func (client *Client) ListWatermarkWithOptions(request *ListWatermarkRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26635,15 +28227,116 @@ func (client *Client) ListWatermark(request *ListWatermarkRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ModifyMediaInfoWithOptions(request *ModifyMediaInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyMediaInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AiLabelUrl)) {
+		query["AiLabelUrl"] = request.AiLabelUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicData)) {
+		query["DynamicData"] = request.DynamicData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMediaInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyMediaInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (_result *ModifyMediaInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyMediaInfoResponse{}
+	_body, _err := client.ModifyMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) MoveAppResourceWithOptions(request *MoveAppResourceRequest, runtime *util.RuntimeOptions) (_result *MoveAppResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ResourceIds"] = request.ResourceIds
-	query["ResourceType"] = request.ResourceType
-	query["TargetAppId"] = request.TargetAppId
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetAppId)) {
+		query["TargetAppId"] = request.TargetAppId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26684,9 +28377,18 @@ func (client *Client) PreloadVodObjectCachesWithOptions(request *PreloadVodObjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ObjectPath"] = request.ObjectPath
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26727,17 +28429,50 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["MediaMetadata"] = request.MediaMetadata
-	query["OwnerId"] = request.OwnerId
-	query["ProduceConfig"] = request.ProduceConfig
-	query["ProjectId"] = request.ProjectId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Timeline"] = request.Timeline
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMetadata)) {
+		query["MediaMetadata"] = request.MediaMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProduceConfig)) {
+		query["ProduceConfig"] = request.ProduceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		query["Timeline"] = request.Timeline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26778,10 +28513,22 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26822,10 +28569,22 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ObjectPath"] = request.ObjectPath
-	query["ObjectType"] = request.ObjectType
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
+		query["ObjectPath"] = request.ObjectPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26866,10 +28625,22 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegisterMetadatas"] = request.RegisterMetadatas
-	query["TemplateGroupId"] = request.TemplateGroupId
-	query["UserData"] = request.UserData
-	query["WorkflowId"] = request.WorkflowId
+	if !tea.BoolValue(util.IsUnset(request.RegisterMetadatas)) {
+		query["RegisterMetadatas"] = request.RegisterMetadatas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateGroupId)) {
+		query["TemplateGroupId"] = request.TemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26910,17 +28681,50 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SortBy"] = request.SortBy
-	query["StartTime"] = request.StartTime
-	query["Status"] = request.Status
-	query["Title"] = request.Title
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26961,13 +28765,34 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Fields"] = request.Fields
-	query["Match"] = request.Match
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["ScrollToken"] = request.ScrollToken
-	query["SearchType"] = request.SearchType
-	query["SortBy"] = request.SortBy
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		query["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Match)) {
+		query["Match"] = request.Match
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScrollToken)) {
+		query["ScrollToken"] = request.ScrollToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
+		query["SearchType"] = request.SearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27008,9 +28833,18 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Ips"] = request.Ips
-	query["OperateMode"] = request.OperateMode
-	query["SecurityGroupName"] = request.SecurityGroupName
+	if !tea.BoolValue(util.IsUnset(request.Ips)) {
+		query["Ips"] = request.Ips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateMode)) {
+		query["OperateMode"] = request.OperateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
+		query["SecurityGroupName"] = request.SecurityGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27051,13 +28885,34 @@ func (client *Client) SetCrossdomainContentWithOptions(request *SetCrossdomainCo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Content"] = request.Content
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["ResourceRealOwnerId"] = request.ResourceRealOwnerId
-	query["StorageLocation"] = request.StorageLocation
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRealOwnerId)) {
+		query["ResourceRealOwnerId"] = request.ResourceRealOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27098,7 +28953,10 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27139,7 +28997,10 @@ func (client *Client) SetDefaultTranscodeTemplateGroupWithOptions(request *SetDe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateGroupId)) {
+		query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27180,7 +29041,10 @@ func (client *Client) SetDefaultWatermarkWithOptions(request *SetDefaultWatermar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["WatermarkId"] = request.WatermarkId
+	if !tea.BoolValue(util.IsUnset(request.WatermarkId)) {
+		query["WatermarkId"] = request.WatermarkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27221,12 +29085,30 @@ func (client *Client) SetEditingProjectMaterialsWithOptions(request *SetEditingP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaterialIds"] = request.MaterialIds
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectId"] = request.ProjectId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MaterialIds)) {
+		query["MaterialIds"] = request.MaterialIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27267,15 +29149,42 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AuthKey"] = request.AuthKey
-	query["AuthSwitch"] = request.AuthSwitch
-	query["CallbackType"] = request.CallbackType
-	query["CallbackURL"] = request.CallbackURL
-	query["EventTypeList"] = request.EventTypeList
-	query["MnsEndpoint"] = request.MnsEndpoint
-	query["MnsQueueName"] = request.MnsQueueName
-	query["OwnerAccount"] = request.OwnerAccount
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthKey)) {
+		query["AuthKey"] = request.AuthKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthSwitch)) {
+		query["AuthSwitch"] = request.AuthSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackType)) {
+		query["CallbackType"] = request.CallbackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackURL)) {
+		query["CallbackURL"] = request.CallbackURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventTypeList)) {
+		query["EventTypeList"] = request.EventTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsEndpoint)) {
+		query["MnsEndpoint"] = request.MnsEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsQueueName)) {
+		query["MnsQueueName"] = request.MnsQueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27316,13 +29225,34 @@ func (client *Client) SetVodDomainCertificateWithOptions(request *SetVodDomainCe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CertName"] = request.CertName
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SSLPri"] = request.SSLPri
-	query["SSLProtocol"] = request.SSLProtocol
-	query["SSLPub"] = request.SSLPub
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPri)) {
+		query["SSLPri"] = request.SSLPri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLProtocol)) {
+		query["SSLProtocol"] = request.SSLProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SSLPub)) {
+		query["SSLPub"] = request.SSLPub
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27363,13 +29293,34 @@ func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAud
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["TemplateId"] = request.TemplateId
+	if !tea.BoolValue(util.IsUnset(request.MediaAuditConfiguration)) {
+		query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27410,14 +29361,38 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AIPipelineId"] = request.AIPipelineId
-	query["AITemplateId"] = request.AITemplateId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["UserData"] = request.UserData
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.AIPipelineId)) {
+		query["AIPipelineId"] = request.AIPipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AITemplateId)) {
+		query["AITemplateId"] = request.AITemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27458,14 +29433,38 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Config"] = request.Config
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Types"] = request.Types
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["Types"] = request.Types
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27506,11 +29505,26 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
-	query["MediaId"] = request.MediaId
-	query["MediaType"] = request.MediaType
-	query["TemplateId"] = request.TemplateId
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.MediaAuditConfiguration)) {
+		query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27551,9 +29565,18 @@ func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicIma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DynamicImageTemplateId"] = request.DynamicImageTemplateId
-	query["OverrideParams"] = request.OverrideParams
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.DynamicImageTemplateId)) {
+		query["DynamicImageTemplateId"] = request.DynamicImageTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverrideParams)) {
+		query["OverrideParams"] = request.OverrideParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27594,19 +29617,58 @@ func (client *Client) SubmitLiveEditingWithOptions(request *SubmitLiveEditingReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Clips"] = request.Clips
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["DomainName"] = request.DomainName
-	query["MediaMetadata"] = request.MediaMetadata
-	query["OwnerId"] = request.OwnerId
-	query["ProduceConfig"] = request.ProduceConfig
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["StreamName"] = request.StreamName
-	query["Title"] = request.Title
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Clips)) {
+		query["Clips"] = request.Clips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMetadata)) {
+		query["MediaMetadata"] = request.MediaMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProduceConfig)) {
+		query["ProduceConfig"] = request.ProduceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
+		query["StreamName"] = request.StreamName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27647,11 +29709,26 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27692,8 +29769,14 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PreprocessType"] = request.PreprocessType
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.PreprocessType)) {
+		query["PreprocessType"] = request.PreprocessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27734,15 +29817,42 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Count"] = request.Count
-	query["Height"] = request.Height
-	query["Interval"] = request.Interval
-	query["SnapshotTemplateId"] = request.SnapshotTemplateId
-	query["SpecifiedOffsetTime"] = request.SpecifiedOffsetTime
-	query["SpriteSnapshotConfig"] = request.SpriteSnapshotConfig
-	query["UserData"] = request.UserData
-	query["VideoId"] = request.VideoId
-	query["Width"] = request.Width
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		query["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotTemplateId)) {
+		query["SnapshotTemplateId"] = request.SnapshotTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecifiedOffsetTime)) {
+		query["SpecifiedOffsetTime"] = request.SpecifiedOffsetTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpriteSnapshotConfig)) {
+		query["SpriteSnapshotConfig"] = request.SpriteSnapshotConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		query["Width"] = request.Width
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27783,13 +29893,34 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EncryptConfig"] = request.EncryptConfig
-	query["OverrideParams"] = request.OverrideParams
-	query["PipelineId"] = request.PipelineId
-	query["Priority"] = request.Priority
-	query["TemplateGroupId"] = request.TemplateGroupId
-	query["UserData"] = request.UserData
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.EncryptConfig)) {
+		query["EncryptConfig"] = request.EncryptConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverrideParams)) {
+		query["OverrideParams"] = request.OverrideParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateGroupId)) {
+		query["TemplateGroupId"] = request.TemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27830,8 +29961,14 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MediaId"] = request.MediaId
-	query["WorkflowId"] = request.WorkflowId
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27872,10 +30009,22 @@ func (client *Client) TagVodResourcesWithOptions(request *TagVodResourcesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27916,11 +30065,26 @@ func (client *Client) UnTagVodResourcesWithOptions(request *UnTagVodResourcesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["OwnerId"] = request.OwnerId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceType"] = request.ResourceType
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27961,9 +30125,18 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateConfig"] = request.TemplateConfig
-	query["TemplateId"] = request.TemplateId
-	query["TemplateName"] = request.TemplateName
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfig)) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28004,10 +30177,22 @@ func (client *Client) UpdateAppInfoWithOptions(request *UpdateAppInfoRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["AppName"] = request.AppName
-	query["Description"] = request.Description
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28048,7 +30233,10 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UpdateContent"] = request.UpdateContent
+	if !tea.BoolValue(util.IsUnset(request.UpdateContent)) {
+		query["UpdateContent"] = request.UpdateContent
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28089,8 +30277,14 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["CateName"] = request.CateName
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CateName)) {
+		query["CateName"] = request.CateName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28131,15 +30325,42 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ProjectId"] = request.ProjectId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["Timeline"] = request.Timeline
-	query["Title"] = request.Title
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		query["Timeline"] = request.Timeline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28180,7 +30401,10 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UpdateContent"] = request.UpdateContent
+	if !tea.BoolValue(util.IsUnset(request.UpdateContent)) {
+		query["UpdateContent"] = request.UpdateContent
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28221,8 +30445,14 @@ func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JobId"] = request.JobId
-	query["MediaId"] = request.MediaId
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28263,10 +30493,22 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Locked"] = request.Locked
-	query["Name"] = request.Name
-	query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
-	query["TranscodeTemplateList"] = request.TranscodeTemplateList
+	if !tea.BoolValue(util.IsUnset(request.Locked)) {
+		query["Locked"] = request.Locked
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateGroupId)) {
+		query["TranscodeTemplateGroupId"] = request.TranscodeTemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TranscodeTemplateList)) {
+		query["TranscodeTemplateList"] = request.TranscodeTemplateList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28307,12 +30549,30 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CateId"] = request.CateId
-	query["CoverURL"] = request.CoverURL
-	query["Description"] = request.Description
-	query["Tags"] = request.Tags
-	query["Title"] = request.Title
-	query["VideoId"] = request.VideoId
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
+		query["CoverURL"] = request.CoverURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28353,7 +30613,10 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UpdateContent"] = request.UpdateContent
+	if !tea.BoolValue(util.IsUnset(request.UpdateContent)) {
+		query["UpdateContent"] = request.UpdateContent
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28394,11 +30657,26 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["Sources"] = request.Sources
-	query["TopLevelDomain"] = request.TopLevelDomain
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sources)) {
+		query["Sources"] = request.Sources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopLevelDomain)) {
+		query["TopLevelDomain"] = request.TopLevelDomain
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28439,9 +30717,18 @@ func (client *Client) UpdateVodTemplateWithOptions(request *UpdateVodTemplateReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["TemplateConfig"] = request.TemplateConfig
-	query["VodTemplateId"] = request.VodTemplateId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfig)) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VodTemplateId)) {
+		query["VodTemplateId"] = request.VodTemplateId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28482,9 +30769,18 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["WatermarkConfig"] = request.WatermarkConfig
-	query["WatermarkId"] = request.WatermarkId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkConfig)) {
+		query["WatermarkConfig"] = request.WatermarkConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkId)) {
+		query["WatermarkId"] = request.WatermarkId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28525,13 +30821,34 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppId"] = request.AppId
-	query["StorageLocation"] = request.StorageLocation
-	query["TemplateGroupId"] = request.TemplateGroupId
-	query["UploadMetadatas"] = request.UploadMetadatas
-	query["UploadURLs"] = request.UploadURLs
-	query["UserData"] = request.UserData
-	query["WorkflowId"] = request.WorkflowId
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateGroupId)) {
+		query["TemplateGroupId"] = request.TemplateGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMetadatas)) {
+		query["UploadMetadatas"] = request.UploadMetadatas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadURLs)) {
+		query["UploadURLs"] = request.UploadURLs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28572,12 +30889,30 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Definition"] = request.Definition
-	query["FileExtension"] = request.FileExtension
-	query["HDRType"] = request.HDRType
-	query["MediaId"] = request.MediaId
-	query["StreamURL"] = request.StreamURL
-	query["UserData"] = request.UserData
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		query["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileExtension)) {
+		query["FileExtension"] = request.FileExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HDRType)) {
+		query["HDRType"] = request.HDRType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamURL)) {
+		query["StreamURL"] = request.StreamURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28618,9 +30953,18 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DomainName"] = request.DomainName
-	query["OwnerId"] = request.OwnerId
-	query["VerifyType"] = request.VerifyType
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
