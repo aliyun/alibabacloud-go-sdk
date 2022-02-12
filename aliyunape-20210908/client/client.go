@@ -169,6 +169,163 @@ func (s *ApeInnerCommonApiResponse) SetBody(v *ApeInnerCommonApiResponseBody) *A
 	return s
 }
 
+type ApeProvinceStationRefRequest struct {
+	// adcode
+	Adcode *int64 `json:"Adcode,omitempty" xml:"Adcode,omitempty"`
+	// appName
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// city
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// cnty
+	Cnty *string `json:"Cnty,omitempty" xml:"Cnty,omitempty"`
+	// country
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// offset
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// pageSize
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// provinceCode
+	ProvinceCode *int64 `json:"ProvinceCode,omitempty" xml:"ProvinceCode,omitempty"`
+	// provinceName
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// stationName
+	StationName *string `json:"StationName,omitempty" xml:"StationName,omitempty"`
+}
+
+func (s ApeProvinceStationRefRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeProvinceStationRefRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApeProvinceStationRefRequest) SetAdcode(v int64) *ApeProvinceStationRefRequest {
+	s.Adcode = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetAppName(v string) *ApeProvinceStationRefRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetCity(v string) *ApeProvinceStationRefRequest {
+	s.City = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetCnty(v string) *ApeProvinceStationRefRequest {
+	s.Cnty = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetCountry(v string) *ApeProvinceStationRefRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetOffset(v int32) *ApeProvinceStationRefRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetPageSize(v int32) *ApeProvinceStationRefRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetProvinceCode(v int64) *ApeProvinceStationRefRequest {
+	s.ProvinceCode = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetProvinceName(v string) *ApeProvinceStationRefRequest {
+	s.ProvinceName = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefRequest) SetStationName(v string) *ApeProvinceStationRefRequest {
+	s.StationName = &v
+	return s
+}
+
+type ApeProvinceStationRefResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// rt
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ApeProvinceStationRefResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeProvinceStationRefResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetCode(v string) *ApeProvinceStationRefResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetData(v interface{}) *ApeProvinceStationRefResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetMessage(v string) *ApeProvinceStationRefResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetRequestId(v string) *ApeProvinceStationRefResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetRt(v int64) *ApeProvinceStationRefResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponseBody) SetSuccess(v bool) *ApeProvinceStationRefResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApeProvinceStationRefResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApeProvinceStationRefResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApeProvinceStationRefResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApeProvinceStationRefResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApeProvinceStationRefResponse) SetHeaders(v map[string]*string) *ApeProvinceStationRefResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApeProvinceStationRefResponse) SetBody(v *ApeProvinceStationRefResponseBody) *ApeProvinceStationRefResponse {
+	s.Body = v
+	return s
+}
+
 type HistoricalRequest struct {
 	// endTime
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -815,7 +972,7 @@ func (client *Client) ApeInnerCommonApiWithOptions(request *ApeInnerCommonApiReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ApeInnerCommonApiResponse{}
@@ -838,21 +995,118 @@ func (client *Client) ApeInnerCommonApi(request *ApeInnerCommonApiRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ApeProvinceStationRefWithOptions(request *ApeProvinceStationRefRequest, runtime *util.RuntimeOptions) (_result *ApeProvinceStationRefResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Adcode)) {
+		query["Adcode"] = request.Adcode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cnty)) {
+		query["Cnty"] = request.Cnty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvinceCode)) {
+		query["ProvinceCode"] = request.ProvinceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvinceName)) {
+		query["ProvinceName"] = request.ProvinceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StationName)) {
+		query["StationName"] = request.StationName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApeProvinceStationRef"),
+		Version:     tea.String("2021-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApeProvinceStationRefResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApeProvinceStationRef(request *ApeProvinceStationRefRequest) (_result *ApeProvinceStationRefResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApeProvinceStationRefResponse{}
+	_body, _err := client.ApeProvinceStationRefWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) HistoricalWithOptions(request *HistoricalRequest, runtime *util.RuntimeOptions) (_result *HistoricalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["OrderId"] = request.OrderId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["StartTime"] = request.StartTime
-	query["Station"] = request.Station
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Station)) {
+		query["Station"] = request.Station
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Historical"),
@@ -862,7 +1116,7 @@ func (client *Client) HistoricalWithOptions(request *HistoricalRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &HistoricalResponse{}
@@ -891,12 +1145,20 @@ func (client *Client) StationDayWithOptions(request *StationDayRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
-	query["StartForecast"] = request.StartForecast
-	query["Station"] = request.Station
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartForecast)) {
+		query["StartForecast"] = request.StartForecast
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Station)) {
+		query["Station"] = request.Station
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StationDay"),
@@ -906,7 +1168,7 @@ func (client *Client) StationDayWithOptions(request *StationDayRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StationDayResponse{}
@@ -935,13 +1197,24 @@ func (client *Client) WeatherforecastWithOptions(request *WeatherforecastRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Lat"] = request.Lat
-	query["Lon"] = request.Lon
-	query["OrderId"] = request.OrderId
-	query["StartForecast"] = request.StartForecast
+	if !tea.BoolValue(util.IsUnset(request.Lat)) {
+		query["Lat"] = request.Lat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lon)) {
+		query["Lon"] = request.Lon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartForecast)) {
+		query["StartForecast"] = request.StartForecast
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Weatherforecast"),
@@ -951,7 +1224,7 @@ func (client *Client) WeatherforecastWithOptions(request *WeatherforecastRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &WeatherforecastResponse{}
@@ -980,13 +1253,24 @@ func (client *Client) WeatherforecastTimeWithOptions(request *WeatherforecastTim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurHour"] = request.CurHour
-	query["Lat"] = request.Lat
-	query["Lon"] = request.Lon
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.CurHour)) {
+		query["CurHour"] = request.CurHour
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lat)) {
+		query["Lat"] = request.Lat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lon)) {
+		query["Lon"] = request.Lon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("WeatherforecastTime"),
@@ -996,7 +1280,7 @@ func (client *Client) WeatherforecastTimeWithOptions(request *WeatherforecastTim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &WeatherforecastTimeResponse{}
@@ -1025,13 +1309,24 @@ func (client *Client) WeathermonitorWithOptions(request *WeathermonitorRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CurHour"] = request.CurHour
-	query["OrderId"] = request.OrderId
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.CurHour)) {
+		query["CurHour"] = request.CurHour
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("Weathermonitor"),
@@ -1041,7 +1336,7 @@ func (client *Client) WeathermonitorWithOptions(request *WeathermonitorRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &WeathermonitorResponse{}
