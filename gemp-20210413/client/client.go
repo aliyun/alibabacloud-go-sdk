@@ -406,12 +406,16 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
+	// 是否支持群通知
+	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
 	// 升级通知策略
 	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	// 升级通知对象id列表
 	NoticeObjects []*int64 `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
 	// 通知时间
 	NoticeTime *string `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	// 服务组id
+	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -420,6 +424,11 @@ func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) 
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetEnableWebhook(v bool) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.EnableWebhook = &v
+	return s
 }
 
 func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeChannels(v []*string) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
@@ -434,6 +443,11 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 
 func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeTime(v string) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeTime = &v
+	return s
+}
+
+func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetServiceGroupIds(v []*int64) *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.ServiceGroupIds = v
 	return s
 }
 
@@ -875,6 +889,8 @@ type CreateProblemRequest struct {
 	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
 	// 进展摘要
 	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// 进展摘要富文本id
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
 	// 恢复时间
 	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
 	// 所属服务
@@ -943,6 +959,11 @@ func (s *CreateProblemRequest) SetProblemStatus(v string) *CreateProblemRequest 
 
 func (s *CreateProblemRequest) SetProgressSummary(v string) *CreateProblemRequest {
 	s.ProgressSummary = &v
+	return s
+}
+
+func (s *CreateProblemRequest) SetProgressSummaryRichTextId(v int64) *CreateProblemRequest {
+	s.ProgressSummaryRichTextId = &v
 	return s
 }
 
@@ -1600,11 +1621,125 @@ func (s *CreateProblemTimelinesResponse) SetBody(v *CreateProblemTimelinesRespon
 	return s
 }
 
+type CreateRichTextRequest struct {
+	// 资源id
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 资源类型
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 文本内容
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+}
+
+func (s CreateRichTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRichTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRichTextRequest) SetInstanceId(v int64) *CreateRichTextRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRichTextRequest) SetInstanceType(v string) *CreateRichTextRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateRichTextRequest) SetRichText(v string) *CreateRichTextRequest {
+	s.RichText = &v
+	return s
+}
+
+type CreateRichTextResponseBody struct {
+	// data
+	Data *CreateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateRichTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRichTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRichTextResponseBody) SetData(v *CreateRichTextResponseBodyData) *CreateRichTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateRichTextResponseBody) SetRequestId(v string) *CreateRichTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRichTextResponseBodyData struct {
+	// 资源id
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 资源类型
+	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 富文本内容
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+}
+
+func (s CreateRichTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRichTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRichTextResponseBodyData) SetInstanceId(v int64) *CreateRichTextResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRichTextResponseBodyData) SetInstanceType(v int64) *CreateRichTextResponseBodyData {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateRichTextResponseBodyData) SetRichText(v string) *CreateRichTextResponseBodyData {
+	s.RichText = &v
+	return s
+}
+
+type CreateRichTextResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRichTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRichTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRichTextResponse) SetHeaders(v map[string]*string) *CreateRichTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRichTextResponse) SetBody(v *CreateRichTextResponseBody) *CreateRichTextResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRouteRuleRequest struct {
 	// 事件分派对象ID（服务组ID 或用户ID）
 	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
 	// 事件分派对象类型 SERVICEGROUP服务组 USER 单个用户
 	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// 子规则关系AND,OR
+	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
 	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// 影响程度 LOW-一般 HIGH-严重
@@ -1646,6 +1781,11 @@ func (s *CreateRouteRuleRequest) SetAssignObjectId(v int64) *CreateRouteRuleRequ
 
 func (s *CreateRouteRuleRequest) SetAssignObjectType(v string) *CreateRouteRuleRequest {
 	s.AssignObjectType = &v
+	return s
+}
+
+func (s *CreateRouteRuleRequest) SetChildRuleRelation(v string) *CreateRouteRuleRequest {
+	s.ChildRuleRelation = &v
 	return s
 }
 
@@ -1710,6 +1850,8 @@ func (s *CreateRouteRuleRequest) SetTimeWindowUnit(v string) *CreateRouteRuleReq
 }
 
 type CreateRouteRuleRequestRouteChildRules struct {
+	// 0-与，1-或
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
 	// 条件
 	Conditions []*CreateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// 监控源ID
@@ -1722,6 +1864,11 @@ func (s CreateRouteRuleRequestRouteChildRules) String() string {
 
 func (s CreateRouteRuleRequestRouteChildRules) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRouteRuleRequestRouteChildRules) SetChildConditionRelation(v int64) *CreateRouteRuleRequestRouteChildRules {
+	s.ChildConditionRelation = &v
+	return s
 }
 
 func (s *CreateRouteRuleRequestRouteChildRules) SetConditions(v []*CreateRouteRuleRequestRouteChildRulesConditions) *CreateRouteRuleRequestRouteChildRules {
@@ -1935,6 +2082,8 @@ type CreateServiceGroupRequest struct {
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// ENABLE 启用 DISABLE 禁用
 	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// 监控源消息模版
+	MonitorSourceTemplates []*CreateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
 	// 服务描述
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
 	// 服务小组名称
@@ -1965,6 +2114,11 @@ func (s *CreateServiceGroupRequest) SetEnableWebhook(v string) *CreateServiceGro
 	return s
 }
 
+func (s *CreateServiceGroupRequest) SetMonitorSourceTemplates(v []*CreateServiceGroupRequestMonitorSourceTemplates) *CreateServiceGroupRequest {
+	s.MonitorSourceTemplates = v
+	return s
+}
+
 func (s *CreateServiceGroupRequest) SetServiceGroupDescription(v string) *CreateServiceGroupRequest {
 	s.ServiceGroupDescription = &v
 	return s
@@ -1987,6 +2141,45 @@ func (s *CreateServiceGroupRequest) SetWebhookLink(v string) *CreateServiceGroup
 
 func (s *CreateServiceGroupRequest) SetWebhookType(v string) *CreateServiceGroupRequest {
 	s.WebhookType = &v
+	return s
+}
+
+type CreateServiceGroupRequestMonitorSourceTemplates struct {
+	// 监控源ID
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// 监控源名字
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// 模板内容
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// 消息模版ID
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateServiceGroupRequestMonitorSourceTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceGroupRequestMonitorSourceTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetMonitorSourceId(v int64) *CreateServiceGroupRequestMonitorSourceTemplates {
+	s.MonitorSourceId = &v
+	return s
+}
+
+func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetMonitorSourceName(v string) *CreateServiceGroupRequestMonitorSourceTemplates {
+	s.MonitorSourceName = &v
+	return s
+}
+
+func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetTemplateContent(v string) *CreateServiceGroupRequestMonitorSourceTemplates {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64) *CreateServiceGroupRequestMonitorSourceTemplates {
+	s.TemplateId = &v
 	return s
 }
 
@@ -4655,6 +4848,325 @@ func (s *FinishProblemResponse) SetBody(v *FinishProblemResponseBody) *FinishPro
 	return s
 }
 
+type GeneratePictureLinkRequest struct {
+	// keys
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// 故障id
+	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+}
+
+func (s GeneratePictureLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureLinkRequest) SetKeys(v []*string) *GeneratePictureLinkRequest {
+	s.Keys = v
+	return s
+}
+
+func (s *GeneratePictureLinkRequest) SetProblemId(v int64) *GeneratePictureLinkRequest {
+	s.ProblemId = &v
+	return s
+}
+
+type GeneratePictureLinkResponseBody struct {
+	Data *GeneratePictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GeneratePictureLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureLinkResponseBody) SetData(v *GeneratePictureLinkResponseBodyData) *GeneratePictureLinkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GeneratePictureLinkResponseBody) SetRequestId(v string) *GeneratePictureLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GeneratePictureLinkResponseBodyData struct {
+	// array
+	Links []*GeneratePictureLinkResponseBodyDataLinks `json:"links,omitempty" xml:"links,omitempty" type:"Repeated"`
+}
+
+func (s GeneratePictureLinkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureLinkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureLinkResponseBodyData) SetLinks(v []*GeneratePictureLinkResponseBodyDataLinks) *GeneratePictureLinkResponseBodyData {
+	s.Links = v
+	return s
+}
+
+type GeneratePictureLinkResponseBodyDataLinks struct {
+	// oss key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// url
+	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+}
+
+func (s GeneratePictureLinkResponseBodyDataLinks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureLinkResponseBodyDataLinks) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureLinkResponseBodyDataLinks) SetKey(v string) *GeneratePictureLinkResponseBodyDataLinks {
+	s.Key = &v
+	return s
+}
+
+func (s *GeneratePictureLinkResponseBodyDataLinks) SetLink(v string) *GeneratePictureLinkResponseBodyDataLinks {
+	s.Link = &v
+	return s
+}
+
+type GeneratePictureLinkResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GeneratePictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GeneratePictureLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureLinkResponse) SetHeaders(v map[string]*string) *GeneratePictureLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GeneratePictureLinkResponse) SetBody(v *GeneratePictureLinkResponseBody) *GeneratePictureLinkResponse {
+	s.Body = v
+	return s
+}
+
+type GeneratePictureUploadSignRequest struct {
+	// 文件
+	Files []*GeneratePictureUploadSignRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// 资源id
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 资源类型
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+}
+
+func (s GeneratePictureUploadSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignRequest) SetFiles(v []*GeneratePictureUploadSignRequestFiles) *GeneratePictureUploadSignRequest {
+	s.Files = v
+	return s
+}
+
+func (s *GeneratePictureUploadSignRequest) SetInstanceId(v int64) *GeneratePictureUploadSignRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignRequest) SetInstanceType(v string) *GeneratePictureUploadSignRequest {
+	s.InstanceType = &v
+	return s
+}
+
+type GeneratePictureUploadSignRequestFiles struct {
+	// 文件名称
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// 文件大小
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// 文件类型
+	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+}
+
+func (s GeneratePictureUploadSignRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignRequestFiles) SetFileName(v string) *GeneratePictureUploadSignRequestFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignRequestFiles) SetFileSize(v int64) *GeneratePictureUploadSignRequestFiles {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignRequestFiles) SetFileType(v string) *GeneratePictureUploadSignRequestFiles {
+	s.FileType = &v
+	return s
+}
+
+type GeneratePictureUploadSignResponseBody struct {
+	// data
+	Data *GeneratePictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GeneratePictureUploadSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignResponseBody) SetData(v *GeneratePictureUploadSignResponseBodyData) *GeneratePictureUploadSignResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBody) SetRequestId(v string) *GeneratePictureUploadSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GeneratePictureUploadSignResponseBodyData struct {
+	// accessKeyId
+	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	// oss bucket name
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// files
+	Files []*GeneratePictureUploadSignResponseBodyDataFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// policy
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// signature
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// url
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GeneratePictureUploadSignResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetAccessKeyId(v string) *GeneratePictureUploadSignResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetBucketName(v string) *GeneratePictureUploadSignResponseBodyData {
+	s.BucketName = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetFiles(v []*GeneratePictureUploadSignResponseBodyDataFiles) *GeneratePictureUploadSignResponseBodyData {
+	s.Files = v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetPolicy(v string) *GeneratePictureUploadSignResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetSignature(v string) *GeneratePictureUploadSignResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyData) SetUrl(v string) *GeneratePictureUploadSignResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GeneratePictureUploadSignResponseBodyDataFiles struct {
+	// 文件名称
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// 文件大小
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// 文件类型
+	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	// oss key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+}
+
+func (s GeneratePictureUploadSignResponseBodyDataFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignResponseBodyDataFiles) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetFileName(v string) *GeneratePictureUploadSignResponseBodyDataFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetFileSize(v int64) *GeneratePictureUploadSignResponseBodyDataFiles {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetFileType(v string) *GeneratePictureUploadSignResponseBodyDataFiles {
+	s.FileType = &v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetKey(v string) *GeneratePictureUploadSignResponseBodyDataFiles {
+	s.Key = &v
+	return s
+}
+
+type GeneratePictureUploadSignResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GeneratePictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GeneratePictureUploadSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GeneratePictureUploadSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GeneratePictureUploadSignResponse) SetHeaders(v map[string]*string) *GeneratePictureUploadSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GeneratePictureUploadSignResponse) SetBody(v *GeneratePictureUploadSignResponseBody) *GeneratePictureUploadSignResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateProblemPictureLinkRequest struct {
 	// oss key
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
@@ -5070,6 +5582,8 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanCondi
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies struct {
+	// 是否支持群通知
+	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
 	// 升级计划类型
 	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 	// 通知对象渠道
@@ -5078,6 +5592,8 @@ type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategie
 	NoticeObjectList []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	// 通知时间
 	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	// 服务组列表
+	ServiceGroups []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -5086,6 +5602,11 @@ func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrate
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) GoString() string {
 	return s.String()
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetEnableWebhook(v bool) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
+	s.EnableWebhook = &v
+	return s
 }
 
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetEscalationPlanType(v string) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
@@ -5105,6 +5626,11 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetNoticeTime(v int64) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeTime = &v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) SetServiceGroups(v []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies {
+	s.ServiceGroups = v
 	return s
 }
 
@@ -5130,6 +5656,31 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList) SetNoticeObjectName(v string) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList {
 	s.NoticeObjectName = &v
+	return s
+}
+
+type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups struct {
+	// 服务组id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 服务组名称
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+}
+
+func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups) SetId(v int64) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups {
+	s.Id = &v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups) SetServiceGroupName(v string) *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups {
+	s.ServiceGroupName = &v
 	return s
 }
 
@@ -5474,12 +6025,18 @@ type GetIncidentResponseBodyData struct {
 	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
 	// 是否升级 是 否
 	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	// 通知渠道
+	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
 	// 故障Id
 	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	// 故障编号
 	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
 	// 关联服务描述
 	RelatedServiceDescription *string `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
+	// 关联服服务id
+	RelatedServiceGroupId *int64 `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
+	// 关联服务组名称
+	RelatedServiceGroupName *string `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
 	// 关联服务ID
 	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	// 关联服务名称
@@ -5568,6 +6125,11 @@ func (s *GetIncidentResponseBodyData) SetIsUpgrade(v bool) *GetIncidentResponseB
 	return s
 }
 
+func (s *GetIncidentResponseBodyData) SetNotifyChannels(v []*string) *GetIncidentResponseBodyData {
+	s.NotifyChannels = v
+	return s
+}
+
 func (s *GetIncidentResponseBodyData) SetProblemId(v int64) *GetIncidentResponseBodyData {
 	s.ProblemId = &v
 	return s
@@ -5580,6 +6142,16 @@ func (s *GetIncidentResponseBodyData) SetProblemNumber(v string) *GetIncidentRes
 
 func (s *GetIncidentResponseBodyData) SetRelatedServiceDescription(v string) *GetIncidentResponseBodyData {
 	s.RelatedServiceDescription = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetRelatedServiceGroupId(v int64) *GetIncidentResponseBodyData {
+	s.RelatedServiceGroupId = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetRelatedServiceGroupName(v string) *GetIncidentResponseBodyData {
+	s.RelatedServiceGroupName = &v
 	return s
 }
 
@@ -6047,6 +6619,8 @@ type GetProblemResponseBodyData struct {
 	ProblemStatus *int32 `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
 	// 进展摘要
 	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// 进展摘要富文本id
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
 	// 恢复时间
 	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
 	// 关联服务ID
@@ -6178,6 +6752,11 @@ func (s *GetProblemResponseBodyData) SetProblemStatus(v int32) *GetProblemRespon
 
 func (s *GetProblemResponseBodyData) SetProgressSummary(v string) *GetProblemResponseBodyData {
 	s.ProgressSummary = &v
+	return s
+}
+
+func (s *GetProblemResponseBodyData) SetProgressSummaryRichTextId(v int64) *GetProblemResponseBodyData {
+	s.ProgressSummaryRichTextId = &v
 	return s
 }
 
@@ -7215,6 +7794,8 @@ type GetProblemPreviewResponseBodyDataProblem struct {
 	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
 	// 进展摘要
 	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// 富文本id
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
 	// 恢复时间
 	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
 	// 关联服务ID
@@ -7298,6 +7879,11 @@ func (s *GetProblemPreviewResponseBodyDataProblem) SetProblemStatus(v string) *G
 
 func (s *GetProblemPreviewResponseBodyDataProblem) SetProgressSummary(v string) *GetProblemPreviewResponseBodyDataProblem {
 	s.ProgressSummary = &v
+	return s
+}
+
+func (s *GetProblemPreviewResponseBodyDataProblem) SetProgressSummaryRichTextId(v int64) *GetProblemPreviewResponseBodyDataProblem {
+	s.ProgressSummaryRichTextId = &v
 	return s
 }
 
@@ -7627,6 +8213,117 @@ func (s *GetResourceStatisticsResponse) SetBody(v *GetResourceStatisticsResponse
 	return s
 }
 
+type GetRichTextRequest struct {
+	// 资源类型
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 资源id
+	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+}
+
+func (s GetRichTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRichTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRichTextRequest) SetInstanceId(v int64) *GetRichTextRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRichTextRequest) SetInstanceType(v string) *GetRichTextRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetRichTextRequest) SetRichTextId(v int64) *GetRichTextRequest {
+	s.RichTextId = &v
+	return s
+}
+
+type GetRichTextResponseBody struct {
+	// data
+	Data *GetRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetRichTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRichTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRichTextResponseBody) SetData(v *GetRichTextResponseBodyData) *GetRichTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetRichTextResponseBody) SetRequestId(v string) *GetRichTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetRichTextResponseBodyData struct {
+	// 资源id
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 资源类型
+	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 富文本内容
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+}
+
+func (s GetRichTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRichTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetRichTextResponseBodyData) SetInstanceId(v int64) *GetRichTextResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRichTextResponseBodyData) SetInstanceType(v int64) *GetRichTextResponseBodyData {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetRichTextResponseBodyData) SetRichText(v string) *GetRichTextResponseBodyData {
+	s.RichText = &v
+	return s
+}
+
+type GetRichTextResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRichTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRichTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRichTextResponse) SetHeaders(v map[string]*string) *GetRichTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRichTextResponse) SetBody(v *GetRichTextResponseBody) *GetRichTextResponse {
+	s.Body = v
+	return s
+}
+
 type GetRouteRuleRequest struct {
 	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
@@ -7684,6 +8381,8 @@ type GetRouteRuleResponseBodyData struct {
 	AssignObjectName *string `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
 	// 事件分派对象类型 SERVICEGROUP 服务组  USER 单个用户
 	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// 子规则关系，0与，1或
+	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
 	// 创建时间
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// 影响程度  LOW一般  HIGH-严重
@@ -7736,6 +8435,11 @@ func (s *GetRouteRuleResponseBodyData) SetAssignObjectName(v string) *GetRouteRu
 
 func (s *GetRouteRuleResponseBodyData) SetAssignObjectType(v string) *GetRouteRuleResponseBodyData {
 	s.AssignObjectType = &v
+	return s
+}
+
+func (s *GetRouteRuleResponseBodyData) SetChildRuleRelation(v string) *GetRouteRuleResponseBodyData {
+	s.ChildRuleRelation = &v
 	return s
 }
 
@@ -7815,9 +8519,12 @@ func (s *GetRouteRuleResponseBodyData) SetUpdateTime(v string) *GetRouteRuleResp
 }
 
 type GetRouteRuleResponseBodyDataEventRouteChildRules struct {
+	// 子条件计算关系，0-与，1-或
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
 	// 子规则ID
-	ChildRouteRuleId *int64                                                        `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
-	Conditions       []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	ChildRouteRuleId *int64 `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
+	// 条件
+	Conditions []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// 是否有效得规则true有效 false无效
 	IsValidChildRule *bool `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
 	// 集成配置ID
@@ -7836,6 +8543,11 @@ func (s GetRouteRuleResponseBodyDataEventRouteChildRules) String() string {
 
 func (s GetRouteRuleResponseBodyDataEventRouteChildRules) GoString() string {
 	return s.String()
+}
+
+func (s *GetRouteRuleResponseBodyDataEventRouteChildRules) SetChildConditionRelation(v int64) *GetRouteRuleResponseBodyDataEventRouteChildRules {
+	s.ChildConditionRelation = &v
+	return s
 }
 
 func (s *GetRouteRuleResponseBodyDataEventRouteChildRules) SetChildRouteRuleId(v int64) *GetRouteRuleResponseBodyDataEventRouteChildRules {
@@ -10249,6 +10961,8 @@ type ListAlertsRequest struct {
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// 服务id
 	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	// 流转规则名字
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// 开始时间
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
@@ -10293,6 +11007,11 @@ func (s *ListAlertsRequest) SetPageSize(v int64) *ListAlertsRequest {
 
 func (s *ListAlertsRequest) SetRelatedServiceId(v int64) *ListAlertsRequest {
 	s.RelatedServiceId = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetRuleName(v string) *ListAlertsRequest {
+	s.RuleName = &v
 	return s
 }
 
@@ -10352,6 +11071,8 @@ type ListAlertsResponseBodyData struct {
 	AlertId *int64 `json:"alertId,omitempty" xml:"alertId,omitempty"`
 	// 告警优先级  1，2，3，4  对应 p1,p2,p3,p4
 	AlertLevel *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
+	// 报警编号
+	AlertNumber *string `json:"alertNumber,omitempty" xml:"alertNumber,omitempty"`
 	// 报警源
 	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
 	// 创建时间
@@ -10362,6 +11083,8 @@ type ListAlertsResponseBodyData struct {
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
 	// 关联流转规则ID
 	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// 流转规则名字
+	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 	// 收敛量
 	SourceEventCount *int64 `json:"sourceEventCount,omitempty" xml:"sourceEventCount,omitempty"`
 	// 报警标题
@@ -10383,6 +11106,11 @@ func (s *ListAlertsResponseBodyData) SetAlertId(v int64) *ListAlertsResponseBody
 
 func (s *ListAlertsResponseBodyData) SetAlertLevel(v string) *ListAlertsResponseBodyData {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyData) SetAlertNumber(v string) *ListAlertsResponseBodyData {
+	s.AlertNumber = &v
 	return s
 }
 
@@ -10408,6 +11136,11 @@ func (s *ListAlertsResponseBodyData) SetRelatedServiceName(v string) *ListAlerts
 
 func (s *ListAlertsResponseBodyData) SetRouteRuleId(v int64) *ListAlertsResponseBodyData {
 	s.RouteRuleId = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyData) SetRouteRuleName(v string) *ListAlertsResponseBodyData {
+	s.RouteRuleName = &v
 	return s
 }
 
@@ -10910,6 +11643,8 @@ func (s *ListDataReportForServiceGroupResponseBody) SetTotalCount(v int64) *List
 type ListDataReportForServiceGroupResponseBodyData struct {
 	// 升级事件数量
 	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	// 事件完结数
+	FinishIncidentCount *int64 `json:"finishIncidentCount,omitempty" xml:"finishIncidentCount,omitempty"`
 	// 完结率
 	FinishProportion *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
 	// 事件数量
@@ -10938,6 +11673,11 @@ func (s ListDataReportForServiceGroupResponseBodyData) GoString() string {
 
 func (s *ListDataReportForServiceGroupResponseBodyData) SetEscalationIncidentCount(v int64) *ListDataReportForServiceGroupResponseBodyData {
 	s.EscalationIncidentCount = &v
+	return s
+}
+
+func (s *ListDataReportForServiceGroupResponseBodyData) SetFinishIncidentCount(v int64) *ListDataReportForServiceGroupResponseBodyData {
+	s.FinishIncidentCount = &v
 	return s
 }
 
@@ -11631,6 +12371,8 @@ type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPla
 	NoticeObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	// 延迟时间
 	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	// 通知群
+	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
 	// 开始时间
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// 规则触发状态
@@ -11662,6 +12404,11 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) SetNoticeTime(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan {
 	s.NoticeTime = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) SetServiceGroupList(v []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan {
+	s.ServiceGroupList = v
 	return s
 }
 
@@ -11707,6 +12454,31 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 	return s
 }
 
+type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList struct {
+	// 服务组id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 服务组名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList) SetId(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList) SetName(v string) *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList {
+	s.Name = &v
+	return s
+}
+
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan struct {
 	// 升级策略类型 UN_ACKNOWLEDGE
 	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
@@ -11716,6 +12488,8 @@ type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan str
 	NoticeObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
 	// 延迟时间
 	NoticeTime *int32 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	// 消息群
+	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
 	// 开始时间
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// 规则触发状态
@@ -11747,6 +12521,11 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) SetNoticeTime(v int32) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan {
 	s.NoticeTime = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) SetServiceGroupList(v []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan {
+	s.ServiceGroupList = v
 	return s
 }
 
@@ -11789,6 +12568,31 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 
 func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList) SetNoticeObjectPhone(v string) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList {
 	s.NoticeObjectPhone = &v
+	return s
+}
+
+type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList struct {
+	// 服务组id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 服务组名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList) SetId(v int64) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList) SetName(v string) *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList {
+	s.Name = &v
 	return s
 }
 
@@ -12304,6 +13108,8 @@ type ListIncidentsRequest struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// 关联服务ID
 	RelationServiceId *int64 `json:"relationServiceId,omitempty" xml:"relationServiceId,omitempty"`
+	// 流转规则名字
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 }
 
 func (s ListIncidentsRequest) String() string {
@@ -12361,6 +13167,11 @@ func (s *ListIncidentsRequest) SetPageSize(v int32) *ListIncidentsRequest {
 
 func (s *ListIncidentsRequest) SetRelationServiceId(v int64) *ListIncidentsRequest {
 	s.RelationServiceId = &v
+	return s
+}
+
+func (s *ListIncidentsRequest) SetRuleName(v string) *ListIncidentsRequest {
+	s.RuleName = &v
 	return s
 }
 
@@ -12436,7 +13247,8 @@ type ListIncidentsResponseBodyData struct {
 	// 关联服务名称
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
 	// 流转规则ID
-	RouteRuleId   *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// 流转规则
 	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
 
@@ -13905,6 +14717,8 @@ type ListRouteRulesRequest struct {
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// 页的大小
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 路由类型：0触发事件 1仅触发报警 r
+	RouteType *int64 `json:"routeType,omitempty" xml:"routeType,omitempty"`
 	// 规则名称
 	RuleName []byte `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// 服务名称
@@ -13931,6 +14745,11 @@ func (s *ListRouteRulesRequest) SetPageNumber(v int32) *ListRouteRulesRequest {
 
 func (s *ListRouteRulesRequest) SetPageSize(v int32) *ListRouteRulesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListRouteRulesRequest) SetRouteType(v int64) *ListRouteRulesRequest {
+	s.RouteType = &v
 	return s
 }
 
@@ -14005,6 +14824,8 @@ type ListRouteRulesResponseBodyData struct {
 	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
 	// 命中次数
 	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	// 监控源名称
+	MonitorSourceNames *string `json:"monitorSourceNames,omitempty" xml:"monitorSourceNames,omitempty"`
 	// 关联服务ID
 	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	// 服务名称
@@ -14065,6 +14886,11 @@ func (s *ListRouteRulesResponseBodyData) SetIncidentLevel(v string) *ListRouteRu
 
 func (s *ListRouteRulesResponseBodyData) SetMatchCount(v int64) *ListRouteRulesResponseBodyData {
 	s.MatchCount = &v
+	return s
+}
+
+func (s *ListRouteRulesResponseBodyData) SetMonitorSourceNames(v string) *ListRouteRulesResponseBodyData {
+	s.MonitorSourceNames = &v
 	return s
 }
 
@@ -14132,6 +14958,132 @@ func (s *ListRouteRulesResponse) SetHeaders(v map[string]*string) *ListRouteRule
 }
 
 func (s *ListRouteRulesResponse) SetBody(v *ListRouteRulesResponseBody) *ListRouteRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceGroupMonitorSourceTemplatesRequest struct {
+	// 幂等号
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 服务组ID
+	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesRequest) SetClientToken(v string) *ListServiceGroupMonitorSourceTemplatesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesRequest) SetRequestId(v string) *ListServiceGroupMonitorSourceTemplatesRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesRequest) SetServiceGroupId(v int64) *ListServiceGroupMonitorSourceTemplatesRequest {
+	s.ServiceGroupId = &v
+	return s
+}
+
+type ListServiceGroupMonitorSourceTemplatesResponseBody struct {
+	// data
+	Data []*ListServiceGroupMonitorSourceTemplatesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBody) SetData(v []*ListServiceGroupMonitorSourceTemplatesResponseBodyData) *ListServiceGroupMonitorSourceTemplatesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBody) SetRequestId(v string) *ListServiceGroupMonitorSourceTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListServiceGroupMonitorSourceTemplatesResponseBodyData struct {
+	// 字段
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// 监控源ID
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// 监控报警源名字
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// 模板内容
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// 消息模版ID
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetFields(v []*string) *ListServiceGroupMonitorSourceTemplatesResponseBodyData {
+	s.Fields = v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetMonitorSourceId(v int64) *ListServiceGroupMonitorSourceTemplatesResponseBodyData {
+	s.MonitorSourceId = &v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetMonitorSourceName(v string) *ListServiceGroupMonitorSourceTemplatesResponseBodyData {
+	s.MonitorSourceName = &v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetTemplateContent(v string) *ListServiceGroupMonitorSourceTemplatesResponseBodyData {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetTemplateId(v int64) *ListServiceGroupMonitorSourceTemplatesResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+type ListServiceGroupMonitorSourceTemplatesResponse struct {
+	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListServiceGroupMonitorSourceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupMonitorSourceTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetHeaders(v map[string]*string) *ListServiceGroupMonitorSourceTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetBody(v *ListServiceGroupMonitorSourceTemplatesResponseBody) *ListServiceGroupMonitorSourceTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -15264,6 +16216,153 @@ func (s *ListSubscriptionsResponse) SetBody(v *ListSubscriptionsResponseBody) *L
 	return s
 }
 
+type ListTrendForSourceEventRequest struct {
+	// 结束时间
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// 报警ID
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 类型
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 开始时间
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// 时间单位毫秒
+	TimeUnit *int64 `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s ListTrendForSourceEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrendForSourceEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrendForSourceEventRequest) SetEndTime(v string) *ListTrendForSourceEventRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventRequest) SetInstanceId(v int64) *ListTrendForSourceEventRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventRequest) SetInstanceType(v string) *ListTrendForSourceEventRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventRequest) SetRequestId(v string) *ListTrendForSourceEventRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventRequest) SetStartTime(v string) *ListTrendForSourceEventRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventRequest) SetTimeUnit(v int64) *ListTrendForSourceEventRequest {
+	s.TimeUnit = &v
+	return s
+}
+
+type ListTrendForSourceEventResponseBody struct {
+	// 统计列表
+	Data []*ListTrendForSourceEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListTrendForSourceEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrendForSourceEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrendForSourceEventResponseBody) SetData(v []*ListTrendForSourceEventResponseBodyData) *ListTrendForSourceEventResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponseBody) SetRequestId(v string) *ListTrendForSourceEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTrendForSourceEventResponseBodyData struct {
+	// 收敛率
+	ConvergenceRate *string `json:"convergenceRate,omitempty" xml:"convergenceRate,omitempty"`
+	// 最大持续时长
+	MaxSustainTime *int64 `json:"maxSustainTime,omitempty" xml:"maxSustainTime,omitempty"`
+	// 是否跨天
+	SkipDay *bool `json:"skipDay,omitempty" xml:"skipDay,omitempty"`
+	// 按监控源分组统计数据
+	SourceEventsStatMap map[string]interface{} `json:"sourceEventsStatMap,omitempty" xml:"sourceEventsStatMap,omitempty"`
+	// 时间单位
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s ListTrendForSourceEventResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrendForSourceEventResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrendForSourceEventResponseBodyData) SetConvergenceRate(v string) *ListTrendForSourceEventResponseBodyData {
+	s.ConvergenceRate = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponseBodyData) SetMaxSustainTime(v int64) *ListTrendForSourceEventResponseBodyData {
+	s.MaxSustainTime = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponseBodyData) SetSkipDay(v bool) *ListTrendForSourceEventResponseBodyData {
+	s.SkipDay = &v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponseBodyData) SetSourceEventsStatMap(v map[string]interface{}) *ListTrendForSourceEventResponseBodyData {
+	s.SourceEventsStatMap = v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponseBodyData) SetUnit(v string) *ListTrendForSourceEventResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type ListTrendForSourceEventResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTrendForSourceEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTrendForSourceEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrendForSourceEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrendForSourceEventResponse) SetHeaders(v map[string]*string) *ListTrendForSourceEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTrendForSourceEventResponse) SetBody(v *ListTrendForSourceEventResponseBody) *ListTrendForSourceEventResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserSerivceGroupsRequest struct {
 	// clientToken
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
@@ -16196,12 +17295,16 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
+	// 是否支持群通知
+	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
 	// 通知渠道
 	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
 	// 通知对象id
 	NoticeObjects []*int64 `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
 	// 通知时间
 	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	// 服务组id
+	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -16210,6 +17313,11 @@ func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) 
 
 func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetEnableWebhook(v bool) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.EnableWebhook = &v
+	return s
 }
 
 func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeChannels(v []*string) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
@@ -16224,6 +17332,11 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 
 func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetNoticeTime(v int64) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
 	s.NoticeTime = &v
+	return s
+}
+
+func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) SetServiceGroupIds(v []*int64) *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies {
+	s.ServiceGroupIds = v
 	return s
 }
 
@@ -16498,6 +17611,8 @@ type UpdateProblemRequest struct {
 	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
 	// 进展摘要
 	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	// 进展摘要富文本id
+	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
 	// 所属服务
 	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 	// 应急协同组
@@ -16544,6 +17659,11 @@ func (s *UpdateProblemRequest) SetProblemName(v string) *UpdateProblemRequest {
 
 func (s *UpdateProblemRequest) SetProgressSummary(v string) *UpdateProblemRequest {
 	s.ProgressSummary = &v
+	return s
+}
+
+func (s *UpdateProblemRequest) SetProgressSummaryRichTextId(v int64) *UpdateProblemRequest {
+	s.ProgressSummaryRichTextId = &v
 	return s
 }
 
@@ -17158,11 +18278,118 @@ func (s *UpdateProblemTimelineResponse) SetBody(v *UpdateProblemTimelineResponse
 	return s
 }
 
+type UpdateRichTextRequest struct {
+	// 资源id
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 资源类型
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// 文本内容
+	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	// 富文本id
+	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+}
+
+func (s UpdateRichTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRichTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRichTextRequest) SetInstanceId(v int64) *UpdateRichTextRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateRichTextRequest) SetInstanceType(v string) *UpdateRichTextRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateRichTextRequest) SetRichText(v string) *UpdateRichTextRequest {
+	s.RichText = &v
+	return s
+}
+
+func (s *UpdateRichTextRequest) SetRichTextId(v int64) *UpdateRichTextRequest {
+	s.RichTextId = &v
+	return s
+}
+
+type UpdateRichTextResponseBody struct {
+	// data
+	Data *UpdateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateRichTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRichTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRichTextResponseBody) SetData(v *UpdateRichTextResponseBodyData) *UpdateRichTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateRichTextResponseBody) SetRequestId(v string) *UpdateRichTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRichTextResponseBodyData struct {
+	// 富文本id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s UpdateRichTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRichTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRichTextResponseBodyData) SetId(v int64) *UpdateRichTextResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type UpdateRichTextResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRichTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRichTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRichTextResponse) SetHeaders(v map[string]*string) *UpdateRichTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRichTextResponse) SetBody(v *UpdateRichTextResponseBody) *UpdateRichTextResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateRouteRuleRequest struct {
 	// 事件分派对象ID（服务组ID 或用户ID）
 	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
 	// 事件分派对象类型 SERVICEGROUP服务组  USER 单个用户
 	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	// AND
+	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
 	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// 影响程度 LOW-一般 HIGH-严重
@@ -17204,6 +18431,11 @@ func (s *UpdateRouteRuleRequest) SetAssignObjectId(v int64) *UpdateRouteRuleRequ
 
 func (s *UpdateRouteRuleRequest) SetAssignObjectType(v string) *UpdateRouteRuleRequest {
 	s.AssignObjectType = &v
+	return s
+}
+
+func (s *UpdateRouteRuleRequest) SetChildRuleRelation(v string) *UpdateRouteRuleRequest {
+	s.ChildRuleRelation = &v
 	return s
 }
 
@@ -17268,6 +18500,8 @@ func (s *UpdateRouteRuleRequest) SetTimeWindowUnit(v string) *UpdateRouteRuleReq
 }
 
 type UpdateRouteRuleRequestRouteChildRules struct {
+	// 子条件计算关系
+	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
 	// 子规则ID 不填表示新增
 	ChildRouteRuleId *int64 `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
 	// 条件
@@ -17284,6 +18518,11 @@ func (s UpdateRouteRuleRequestRouteChildRules) String() string {
 
 func (s UpdateRouteRuleRequestRouteChildRules) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRouteRuleRequestRouteChildRules) SetChildConditionRelation(v int64) *UpdateRouteRuleRequestRouteChildRules {
+	s.ChildConditionRelation = &v
+	return s
 }
 
 func (s *UpdateRouteRuleRequestRouteChildRules) SetChildRouteRuleId(v int64) *UpdateRouteRuleRequestRouteChildRules {
@@ -17476,6 +18715,8 @@ type UpdateServiceGroupRequest struct {
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// ENABLE 启用 DISABLE 禁用
 	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	// 监控源模版列表
+	MonitorSourceTemplates []*UpdateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
 	// 服务描述
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
 	// 服务组ID
@@ -17508,6 +18749,11 @@ func (s *UpdateServiceGroupRequest) SetEnableWebhook(v string) *UpdateServiceGro
 	return s
 }
 
+func (s *UpdateServiceGroupRequest) SetMonitorSourceTemplates(v []*UpdateServiceGroupRequestMonitorSourceTemplates) *UpdateServiceGroupRequest {
+	s.MonitorSourceTemplates = v
+	return s
+}
+
 func (s *UpdateServiceGroupRequest) SetServiceGroupDescription(v string) *UpdateServiceGroupRequest {
 	s.ServiceGroupDescription = &v
 	return s
@@ -17535,6 +18781,45 @@ func (s *UpdateServiceGroupRequest) SetWebhookLink(v string) *UpdateServiceGroup
 
 func (s *UpdateServiceGroupRequest) SetWebhookType(v string) *UpdateServiceGroupRequest {
 	s.WebhookType = &v
+	return s
+}
+
+type UpdateServiceGroupRequestMonitorSourceTemplates struct {
+	// 监控报警源Id
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// 监控报警源
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	// 消息模版内容
+	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	// 消息模版ID
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s UpdateServiceGroupRequestMonitorSourceTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceGroupRequestMonitorSourceTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetMonitorSourceId(v int64) *UpdateServiceGroupRequestMonitorSourceTemplates {
+	s.MonitorSourceId = &v
+	return s
+}
+
+func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetMonitorSourceName(v string) *UpdateServiceGroupRequestMonitorSourceTemplates {
+	s.MonitorSourceName = &v
+	return s
+}
+
+func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetTemplateContent(v string) *UpdateServiceGroupRequestMonitorSourceTemplates {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64) *UpdateServiceGroupRequestMonitorSourceTemplates {
+	s.TemplateId = &v
 	return s
 }
 
@@ -18487,6 +19772,221 @@ func (s *UpdateUserGuideStatusResponse) SetBody(v *UpdateUserGuideStatusResponse
 	return s
 }
 
+type VerifyRouteRuleRequest struct {
+	// 规则id
+	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	// 测试告警
+	TestSourceEvents []*VerifyRouteRuleRequestTestSourceEvents `json:"testSourceEvents,omitempty" xml:"testSourceEvents,omitempty" type:"Repeated"`
+}
+
+func (s VerifyRouteRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleRequest) SetRouteRuleId(v int64) *VerifyRouteRuleRequest {
+	s.RouteRuleId = &v
+	return s
+}
+
+func (s *VerifyRouteRuleRequest) SetTestSourceEvents(v []*VerifyRouteRuleRequestTestSourceEvents) *VerifyRouteRuleRequest {
+	s.TestSourceEvents = v
+	return s
+}
+
+type VerifyRouteRuleRequestTestSourceEvents struct {
+	// 告警内容
+	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	// 告警上报时间
+	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	// 监控告警源ID
+	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	// 监控告警源名称
+	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+}
+
+func (s VerifyRouteRuleRequestTestSourceEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleRequestTestSourceEvents) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleRequestTestSourceEvents) SetEventJson(v string) *VerifyRouteRuleRequestTestSourceEvents {
+	s.EventJson = &v
+	return s
+}
+
+func (s *VerifyRouteRuleRequestTestSourceEvents) SetEventTime(v string) *VerifyRouteRuleRequestTestSourceEvents {
+	s.EventTime = &v
+	return s
+}
+
+func (s *VerifyRouteRuleRequestTestSourceEvents) SetMonitorSourceId(v int64) *VerifyRouteRuleRequestTestSourceEvents {
+	s.MonitorSourceId = &v
+	return s
+}
+
+func (s *VerifyRouteRuleRequestTestSourceEvents) SetMonitorSourceName(v string) *VerifyRouteRuleRequestTestSourceEvents {
+	s.MonitorSourceName = &v
+	return s
+}
+
+type VerifyRouteRuleResponseBody struct {
+	// 验证结果
+	Data *VerifyRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s VerifyRouteRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleResponseBody) SetData(v *VerifyRouteRuleResponseBodyData) *VerifyRouteRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBody) SetRequestId(v string) *VerifyRouteRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyRouteRuleResponseBodyData struct {
+	// 升级策略名称
+	EscalationPlans []*VerifyRouteRuleResponseBodyDataEscalationPlans `json:"escalationPlans,omitempty" xml:"escalationPlans,omitempty" type:"Repeated"`
+	// 验证是否成功
+	IsValidRule *bool `json:"isValidRule,omitempty" xml:"isValidRule,omitempty"`
+	// 验证失败监控源ID
+	MonitorSourceIds []*int64 `json:"monitorSourceIds,omitempty" xml:"monitorSourceIds,omitempty" type:"Repeated"`
+	// 订阅名称
+	NotifySubscriptionNames []*VerifyRouteRuleResponseBodyDataNotifySubscriptionNames `json:"notifySubscriptionNames,omitempty" xml:"notifySubscriptionNames,omitempty" type:"Repeated"`
+	// 流转规则验证失败的原因
+	RouteRuleFailReason []*string `json:"routeRuleFailReason,omitempty" xml:"routeRuleFailReason,omitempty" type:"Repeated"`
+	// 事件或者报警
+	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+}
+
+func (s VerifyRouteRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetEscalationPlans(v []*VerifyRouteRuleResponseBodyDataEscalationPlans) *VerifyRouteRuleResponseBodyData {
+	s.EscalationPlans = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetIsValidRule(v bool) *VerifyRouteRuleResponseBodyData {
+	s.IsValidRule = &v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetMonitorSourceIds(v []*int64) *VerifyRouteRuleResponseBodyData {
+	s.MonitorSourceIds = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetNotifySubscriptionNames(v []*VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) *VerifyRouteRuleResponseBodyData {
+	s.NotifySubscriptionNames = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetRouteRuleFailReason(v []*string) *VerifyRouteRuleResponseBodyData {
+	s.RouteRuleFailReason = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyData) SetRouteType(v string) *VerifyRouteRuleResponseBodyData {
+	s.RouteType = &v
+	return s
+}
+
+type VerifyRouteRuleResponseBodyDataEscalationPlans struct {
+	// 升级计划ID
+	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	// 升级计划名称
+	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+}
+
+func (s VerifyRouteRuleResponseBodyDataEscalationPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleResponseBodyDataEscalationPlans) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleResponseBodyDataEscalationPlans) SetEscalationPlanId(v int64) *VerifyRouteRuleResponseBodyDataEscalationPlans {
+	s.EscalationPlanId = &v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyDataEscalationPlans) SetEscalationPlanName(v string) *VerifyRouteRuleResponseBodyDataEscalationPlans {
+	s.EscalationPlanName = &v
+	return s
+}
+
+type VerifyRouteRuleResponseBodyDataNotifySubscriptionNames struct {
+	// 订阅ID
+	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	// 订阅名称
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) SetSubscriptionId(v int64) *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames {
+	s.SubscriptionId = &v
+	return s
+}
+
+func (s *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) SetTitle(v string) *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames {
+	s.Title = &v
+	return s
+}
+
+type VerifyRouteRuleResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *VerifyRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyRouteRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyRouteRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyRouteRuleResponse) SetHeaders(v map[string]*string) *VerifyRouteRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyRouteRuleResponse) SetBody(v *VerifyRouteRuleResponseBody) *VerifyRouteRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DataValue struct {
 	Code        *string `json:"code,omitempty" xml:"code,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -18629,8 +20129,19 @@ func (client *Client) AddProblemServiceGroupWithOptions(request *AddProblemServi
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddProblemServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/addServiceGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AddProblemServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("AddProblemServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/addServiceGroup"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18680,8 +20191,19 @@ func (client *Client) CancelProblemWithOptions(request *CancelProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/cancel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CancelProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("CancelProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/cancel"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18723,8 +20245,19 @@ func (client *Client) CheckWebhookWithOptions(request *CheckWebhookRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckWebhook"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/check/webhook"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CheckWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("CheckWebhook"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/check/webhook"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18762,8 +20295,19 @@ func (client *Client) ConfirmIntegrationConfigWithOptions(request *ConfirmIntegr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/confirm"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ConfirmIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("ConfirmIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/confirm"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18813,8 +20357,19 @@ func (client *Client) CreateEscalationPlanWithOptions(request *CreateEscalationP
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18880,8 +20435,19 @@ func (client *Client) CreateIncidentWithOptions(request *CreateIncidentRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/manualSave"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/manualSave"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18923,8 +20489,19 @@ func (client *Client) CreateIncidentSubtotalWithOptions(request *CreateIncidentS
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIncidentSubtotal"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/save/subtotal"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateIncidentSubtotalResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateIncidentSubtotal"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/save/subtotal"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18962,8 +20539,19 @@ func (client *Client) CreateIntegrationConfigWithOptions(request *CreateIntegrat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19033,6 +20621,10 @@ func (client *Client) CreateProblemWithOptions(request *CreateProblemRequest, he
 		body["progressSummary"] = request.ProgressSummary
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProgressSummaryRichTextId)) {
+		body["progressSummaryRichTextId"] = request.ProgressSummaryRichTextId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RecoveryTime)) {
 		body["recoveryTime"] = request.RecoveryTime
 	}
@@ -19049,8 +20641,19 @@ func (client *Client) CreateProblemWithOptions(request *CreateProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/upgrade"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19108,8 +20711,19 @@ func (client *Client) CreateProblemEffectionServiceWithOptions(request *CreatePr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblemEffectionService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/effectionService/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemEffectionServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblemEffectionService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/effectionService/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19179,8 +20793,19 @@ func (client *Client) CreateProblemMeasureWithOptions(request *CreateProblemMeas
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblemMeasure"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/improvement/measure/save"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemMeasureResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblemMeasure"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/improvement/measure/save"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19222,8 +20847,19 @@ func (client *Client) CreateProblemSubtotalWithOptions(request *CreateProblemSub
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblemSubtotal"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/save/subtotal"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemSubtotalResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblemSubtotal"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/save/subtotal"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19273,8 +20909,19 @@ func (client *Client) CreateProblemTimelineWithOptions(request *CreateProblemTim
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblemTimeline"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/timeline/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemTimelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblemTimeline"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/timeline/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19316,8 +20963,73 @@ func (client *Client) CreateProblemTimelinesWithOptions(request *CreateProblemTi
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProblemTimelines"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/timeline/batchCreate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateProblemTimelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateProblemTimelines"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/timeline/batchCreate"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRichText(request *CreateRichTextRequest) (_result *CreateRichTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRichTextResponse{}
+	_body, _err := client.CreateRichTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRichTextWithOptions(request *CreateRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRichTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RichText)) {
+		body["richText"] = request.RichText
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRichText"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/rich/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRichTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19349,6 +21061,10 @@ func (client *Client) CreateRouteRuleWithOptions(request *CreateRouteRuleRequest
 
 	if !tea.BoolValue(util.IsUnset(request.AssignObjectType)) {
 		body["assignObjectType"] = request.AssignObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildRuleRelation)) {
+		body["childRuleRelation"] = request.ChildRuleRelation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -19403,8 +21119,19 @@ func (client *Client) CreateRouteRuleWithOptions(request *CreateRouteRuleRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/save"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/save"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19446,8 +21173,19 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/save"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/save"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19481,6 +21219,10 @@ func (client *Client) CreateServiceGroupWithOptions(request *CreateServiceGroupR
 		body["enableWebhook"] = request.EnableWebhook
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MonitorSourceTemplates)) {
+		body["monitorSourceTemplates"] = request.MonitorSourceTemplates
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceGroupDescription)) {
 		body["serviceGroupDescription"] = request.ServiceGroupDescription
 	}
@@ -19505,8 +21247,19 @@ func (client *Client) CreateServiceGroupWithOptions(request *CreateServiceGroupR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/insert"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/insert"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19556,8 +21309,19 @@ func (client *Client) CreateServiceGroupSchedulingWithOptions(request *CreateSer
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceGroupScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/save"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceGroupSchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateServiceGroupScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/save"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19631,8 +21395,19 @@ func (client *Client) CreateSubscriptionWithOptions(request *CreateSubscriptionR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19670,8 +21445,19 @@ func (client *Client) CreateTenantApplicationWithOptions(request *CreateTenantAp
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTenantApplication"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/mobileApp/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateTenantApplicationResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateTenantApplication"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/mobileApp/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19721,8 +21507,19 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/create"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19760,8 +21557,19 @@ func (client *Client) DeleteEscalationPlanWithOptions(request *DeleteEscalationP
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19799,8 +21607,19 @@ func (client *Client) DeleteIncidentWithOptions(request *DeleteIncidentRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19838,8 +21657,19 @@ func (client *Client) DeleteIntegrationConfigWithOptions(request *DeleteIntegrat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19877,8 +21707,19 @@ func (client *Client) DeleteProblemWithOptions(request *DeleteProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19920,8 +21761,19 @@ func (client *Client) DeleteProblemEffectionServiceWithOptions(request *DeletePr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProblemEffectionService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/effectionService/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteProblemEffectionServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProblemEffectionService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/effectionService/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19963,8 +21815,19 @@ func (client *Client) DeleteProblemMeasureWithOptions(request *DeleteProblemMeas
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProblemMeasure"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/improvement/measure/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteProblemMeasureResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProblemMeasure"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/improvement/measure/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20006,8 +21869,19 @@ func (client *Client) DeleteProblemTimelineWithOptions(request *DeleteProblemTim
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProblemTimeline"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/timeline/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteProblemTimelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteProblemTimeline"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/timeline/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20045,8 +21919,19 @@ func (client *Client) DeleteRouteRuleWithOptions(request *DeleteRouteRuleRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20084,8 +21969,19 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20123,8 +22019,19 @@ func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20174,8 +22081,19 @@ func (client *Client) DeleteServiceGroupUserWithOptions(request *DeleteServiceGr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceGroupUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/deleteServiceGroupUser"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteServiceGroupUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteServiceGroupUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/deleteServiceGroupUser"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20209,8 +22127,19 @@ func (client *Client) DeleteSubscriptionWithOptions(request *DeleteSubscriptionR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20248,8 +22177,19 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20291,8 +22231,19 @@ func (client *Client) DeliverIncidentWithOptions(request *DeliverIncidentRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeliverIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/deliver"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeliverIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeliverIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/deliver"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20330,8 +22281,19 @@ func (client *Client) DisableEscalationPlanWithOptions(request *DisableEscalatio
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("DisableEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/disable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20369,8 +22331,19 @@ func (client *Client) DisableIntegrationConfigWithOptions(request *DisableIntegr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("DisableIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/disable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20408,8 +22381,19 @@ func (client *Client) DisableRouteRuleWithOptions(request *DisableRouteRuleReque
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("DisableRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/disable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20447,8 +22431,19 @@ func (client *Client) DisableServiceGroupWebhookWithOptions(request *DisableServ
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableServiceGroupWebhook"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/disableWebhook"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableServiceGroupWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("DisableServiceGroupWebhook"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/disableWebhook"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20482,8 +22477,19 @@ func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptio
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/doDisable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DisableSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("DisableSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/doDisable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20521,8 +22527,19 @@ func (client *Client) EnableEscalationPlanWithOptions(request *EnableEscalationP
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("EnableEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/enable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20560,8 +22577,19 @@ func (client *Client) EnableIntegrationConfigWithOptions(request *EnableIntegrat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("EnableIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/enable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20599,8 +22627,19 @@ func (client *Client) EnableRouteRuleWithOptions(request *EnableRouteRuleRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("EnableRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/enable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20638,8 +22677,19 @@ func (client *Client) EnableServiceGroupWebhookWithOptions(request *EnableServic
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableServiceGroupWebhook"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/enableWebhook"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableServiceGroupWebhookResponse{}
-	_body, _err := client.DoROARequest(tea.String("EnableServiceGroupWebhook"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/enableWebhook"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20673,8 +22723,19 @@ func (client *Client) EnableSubscriptionWithOptions(request *EnableSubscriptionR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &EnableSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("EnableSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/enable"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20728,8 +22789,19 @@ func (client *Client) FinishIncidentWithOptions(request *FinishIncidentRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("FinishIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/finish"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &FinishIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("FinishIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/finish"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20767,8 +22839,123 @@ func (client *Client) FinishProblemWithOptions(request *FinishProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("FinishProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/finish"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &FinishProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("FinishProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/finish"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GeneratePictureLink(request *GeneratePictureLinkRequest) (_result *GeneratePictureLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GeneratePictureLinkResponse{}
+	_body, _err := client.GeneratePictureLinkWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GeneratePictureLinkWithOptions(request *GeneratePictureLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GeneratePictureLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keys)) {
+		body["keys"] = request.Keys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProblemId)) {
+		body["problemId"] = request.ProblemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GeneratePictureLink"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/rich/oss/getPictureLink"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GeneratePictureLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GeneratePictureUploadSign(request *GeneratePictureUploadSignRequest) (_result *GeneratePictureUploadSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GeneratePictureUploadSignResponse{}
+	_body, _err := client.GeneratePictureUploadSignWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GeneratePictureUploadSignWithOptions(request *GeneratePictureUploadSignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GeneratePictureUploadSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Files)) {
+		body["files"] = request.Files
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GeneratePictureUploadSign"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/rich/oss/generatePostPolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GeneratePictureUploadSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20806,8 +22993,19 @@ func (client *Client) GenerateProblemPictureLinkWithOptions(request *GeneratePro
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateProblemPictureLink"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/oss/getPresignedLink"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateProblemPictureLinkResponse{}
-	_body, _err := client.DoROARequest(tea.String("GenerateProblemPictureLink"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/oss/getPresignedLink"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20853,8 +23051,19 @@ func (client *Client) GenerateProblemPictureUploadSignWithOptions(request *Gener
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateProblemPictureUploadSign"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/oss/generatePostPolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateProblemPictureUploadSignResponse{}
-	_body, _err := client.DoROARequest(tea.String("GenerateProblemPictureUploadSign"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/oss/generatePostPolicy"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20892,8 +23101,19 @@ func (client *Client) GetEscalationPlanWithOptions(request *GetEscalationPlanReq
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20927,8 +23147,19 @@ func (client *Client) GetEventWithOptions(request *GetEventRequest, headers map[
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEvent"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/events/getLastTimeEvent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetEventResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetEvent"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/events/getLastTimeEvent"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20962,8 +23193,19 @@ func (client *Client) GetHomePageGuidanceWithOptions(request *GetHomePageGuidanc
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHomePageGuidance"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/guidance/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetHomePageGuidanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetHomePageGuidance"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/guidance/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21001,8 +23243,19 @@ func (client *Client) GetIncidentWithOptions(request *GetIncidentRequest, header
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21036,8 +23289,19 @@ func (client *Client) GetIncidentStatisticsWithOptions(request *GetIncidentStati
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIncidentStatistics"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/count"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetIncidentStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetIncidentStatistics"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/count"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21075,8 +23339,19 @@ func (client *Client) GetIncidentSubtotalCountWithOptions(request *GetIncidentSu
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIncidentSubtotalCount"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/subtotal/count"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetIncidentSubtotalCountResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetIncidentSubtotalCount"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/subtotal/count"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21114,8 +23389,19 @@ func (client *Client) GetIntegrationConfigWithOptions(request *GetIntegrationCon
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21153,8 +23439,19 @@ func (client *Client) GetProblemWithOptions(request *GetProblemRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21196,8 +23493,19 @@ func (client *Client) GetProblemEffectionServiceWithOptions(request *GetProblemE
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProblemEffectionService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/effectionService/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetProblemEffectionServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProblemEffectionService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/effectionService/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21235,8 +23543,19 @@ func (client *Client) GetProblemImprovementWithOptions(request *GetProblemImprov
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProblemImprovement"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/improvement/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetProblemImprovementResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProblemImprovement"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/improvement/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21298,8 +23617,19 @@ func (client *Client) GetProblemPreviewWithOptions(request *GetProblemPreviewReq
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProblemPreview"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/preview"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetProblemPreviewResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetProblemPreview"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/preview"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21333,8 +23663,73 @@ func (client *Client) GetResourceStatisticsWithOptions(request *GetResourceStati
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceStatistics"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/config/resource/count"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetResourceStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetResourceStatistics"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/config/resource/count"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRichText(request *GetRichTextRequest) (_result *GetRichTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRichTextResponse{}
+	_body, _err := client.GetRichTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRichTextWithOptions(request *GetRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRichTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RichTextId)) {
+		body["richTextId"] = request.RichTextId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRichText"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/rich/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRichTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21372,8 +23767,19 @@ func (client *Client) GetRouteRuleWithOptions(request *GetRouteRuleRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21411,8 +23817,19 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21450,8 +23867,19 @@ func (client *Client) GetServiceGroupWithOptions(request *GetServiceGroupRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21501,8 +23929,19 @@ func (client *Client) GetServiceGroupPersonSchedulingWithOptions(request *GetSer
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceGroupPersonScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/user/getScheduling"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceGroupPersonSchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetServiceGroupPersonScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/user/getScheduling"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21540,8 +23979,19 @@ func (client *Client) GetServiceGroupSchedulingWithOptions(request *GetServiceGr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceGroupScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceGroupSchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetServiceGroupScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21599,8 +24049,19 @@ func (client *Client) GetServiceGroupSchedulingPreviewWithOptions(request *GetSe
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceGroupSchedulingPreview"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/preview"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceGroupSchedulingPreviewResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetServiceGroupSchedulingPreview"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/preview"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21642,8 +24103,19 @@ func (client *Client) GetServiceGroupSpecialPersonSchedulingWithOptions(request 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceGroupSpecialPersonScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/getUserScheduling"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetServiceGroupSpecialPersonSchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetServiceGroupSpecialPersonScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/getUserScheduling"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21697,8 +24169,19 @@ func (client *Client) GetSimilarIncidentStatisticsWithOptions(request *GetSimila
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSimilarIncidentStatistics"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/similarIncident/statistics"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetSimilarIncidentStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSimilarIncidentStatistics"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/similarIncident/statistics"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21732,8 +24215,19 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21767,8 +24261,19 @@ func (client *Client) GetTenantApplicationWithOptions(request *GetTenantApplicat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTenantApplication"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/mobileApp/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetTenantApplicationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetTenantApplication"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/mobileApp/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21806,8 +24311,19 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/getUser"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/getUser"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21841,8 +24357,19 @@ func (client *Client) GetUserGuideStatusWithOptions(request *GetUserGuideStatusR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserGuideStatus"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/guide/status"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetUserGuideStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserGuideStatus"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/guide/status"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21896,6 +24423,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 		body["relatedServiceId"] = request.RelatedServiceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		body["ruleName"] = request.RuleName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["startTime"] = request.StartTime
 	}
@@ -21904,8 +24435,19 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAlerts"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alerts/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListAlertsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListAlerts"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/alerts/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21947,8 +24489,19 @@ func (client *Client) ListChartDataForServiceGroupWithOptions(request *ListChart
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChartDataForServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/statistics/chartDataForServiceGroup/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListChartDataForServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListChartDataForServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/statistics/chartDataForServiceGroup/"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21990,8 +24543,19 @@ func (client *Client) ListChartDataForUserWithOptions(request *ListChartDataForU
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChartDataForUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/statistics/chartDataForUser/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListChartDataForUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListChartDataForUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/statistics/chartDataForUser/"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22025,8 +24589,19 @@ func (client *Client) ListConfigsWithOptions(request *ListConfigsRequest, header
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigs"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/config/all"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListConfigs"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/config/all"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22068,8 +24643,19 @@ func (client *Client) ListDataReportForServiceGroupWithOptions(request *ListData
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataReportForServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/statistics/listDataReportForServiceGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataReportForServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataReportForServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/statistics/listDataReportForServiceGroup"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22115,8 +24701,19 @@ func (client *Client) ListDataReportForUserWithOptions(request *ListDataReportFo
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataReportForUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/statistics/listDataReportForUser"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataReportForUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataReportForUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/statistics/listDataReportForUser"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22150,8 +24747,19 @@ func (client *Client) ListDictionariesWithOptions(request *ListDictionariesReque
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDictionaries"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dict/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDictionariesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDictionaries"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/dict/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22185,8 +24793,19 @@ func (client *Client) ListEscalationPlanServicesWithOptions(request *ListEscalat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEscalationPlanServices"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/services"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEscalationPlanServicesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEscalationPlanServices"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/services"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22236,8 +24855,19 @@ func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlan
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEscalationPlans"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEscalationPlansResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEscalationPlans"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22275,8 +24905,19 @@ func (client *Client) ListIncidentDetailEscalationPlansWithOptions(request *List
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIncidentDetailEscalationPlans"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/detail/escalation"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIncidentDetailEscalationPlansResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIncidentDetailEscalationPlans"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/detail/escalation"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22322,8 +24963,19 @@ func (client *Client) ListIncidentDetailTimelinesWithOptions(request *ListIncide
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIncidentDetailTimelines"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/detail/timeline"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIncidentDetailTimelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIncidentDetailTimelines"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/detail/timeline"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22361,8 +25013,19 @@ func (client *Client) ListIncidentSubtotalsWithOptions(request *ListIncidentSubt
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIncidentSubtotals"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/list/subtotal"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIncidentSubtotalsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIncidentSubtotals"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/list/subtotal"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22404,8 +25067,19 @@ func (client *Client) ListIncidentTimelinesWithOptions(request *ListIncidentTime
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIncidentTimelines"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/timeline"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIncidentTimelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIncidentTimelines"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/timeline"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22471,12 +25145,27 @@ func (client *Client) ListIncidentsWithOptions(request *ListIncidentsRequest, he
 		body["relationServiceId"] = request.RelationServiceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		body["ruleName"] = request.RuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIncidents"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIncidentsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIncidents"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22522,8 +25211,19 @@ func (client *Client) ListIntegrationConfigTimelinesWithOptions(request *ListInt
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntegrationConfigTimelines"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/timeline"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIntegrationConfigTimelinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIntegrationConfigTimelines"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/timeline"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22561,8 +25261,19 @@ func (client *Client) ListIntegrationConfigsWithOptions(request *ListIntegration
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntegrationConfigs"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListIntegrationConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListIntegrationConfigs"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22596,8 +25307,19 @@ func (client *Client) ListMonitorSourcesWithOptions(request *ListMonitorSourcesR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMonitorSources"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/monitorSource/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListMonitorSourcesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListMonitorSources"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/monitorSource/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22647,8 +25369,19 @@ func (client *Client) ListProblemDetailOperationsWithOptions(request *ListProble
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProblemDetailOperations"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/detail/operations"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProblemDetailOperationsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProblemDetailOperations"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/detail/operations"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22690,8 +25423,19 @@ func (client *Client) ListProblemOperationsWithOptions(request *ListProblemOpera
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProblemOperations"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/operations"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProblemOperationsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProblemOperations"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/operations"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22729,8 +25473,19 @@ func (client *Client) ListProblemSubtotalsWithOptions(request *ListProblemSubtot
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProblemSubtotals"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/list/subtotal"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProblemSubtotalsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProblemSubtotals"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/list/subtotal"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22768,8 +25523,19 @@ func (client *Client) ListProblemTimeLinesWithOptions(request *ListProblemTimeLi
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProblemTimeLines"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/detail/timeLines"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProblemTimeLinesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProblemTimeLines"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/detail/timeLines"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22855,8 +25621,19 @@ func (client *Client) ListProblemsWithOptions(request *ListProblemsRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProblems"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/listProblems"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListProblemsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListProblems"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/listProblems"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22894,6 +25671,10 @@ func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, 
 		body["pageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RouteType)) {
+		body["routeType"] = request.RouteType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		body["ruleName"] = request.RuleName
 	}
@@ -22906,8 +25687,73 @@ func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRouteRules"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListRouteRulesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRouteRules"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceGroupMonitorSourceTemplates(request *ListServiceGroupMonitorSourceTemplatesRequest) (_result *ListServiceGroupMonitorSourceTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceGroupMonitorSourceTemplatesResponse{}
+	_body, _err := client.ListServiceGroupMonitorSourceTemplatesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceGroupMonitorSourceTemplatesWithOptions(request *ListServiceGroupMonitorSourceTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceGroupMonitorSourceTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceGroupId)) {
+		body["serviceGroupId"] = request.ServiceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceGroupMonitorSourceTemplates"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/listServiceGroupMonitorSourceTemplates"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceGroupMonitorSourceTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22969,8 +25815,19 @@ func (client *Client) ListServiceGroupsWithOptions(request *ListServiceGroupsReq
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceGroups"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListServiceGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListServiceGroups"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23016,8 +25873,19 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServices"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListServices"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23083,8 +25951,19 @@ func (client *Client) ListSourceEventsWithOptions(request *ListSourceEventsReque
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSourceEvents"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/events/listOriginalEvent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSourceEventsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSourceEvents"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/events/listOriginalEvent"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23118,8 +25997,19 @@ func (client *Client) ListSourceEventsForMonitorSourceWithOptions(request *ListS
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSourceEventsForMonitorSource"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/events/queryLastestEvents"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSourceEventsForMonitorSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSourceEventsForMonitorSource"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/events/queryLastestEvents"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23157,8 +26047,19 @@ func (client *Client) ListSubscriptionServiceGroupsWithOptions(request *ListSubs
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSubscriptionServiceGroups"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/serviceGroup/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSubscriptionServiceGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSubscriptionServiceGroups"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/serviceGroup/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23220,8 +26121,85 @@ func (client *Client) ListSubscriptionsWithOptions(request *ListSubscriptionsReq
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSubscriptions"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSubscriptionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSubscriptions"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTrendForSourceEvent(request *ListTrendForSourceEventRequest) (_result *ListTrendForSourceEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrendForSourceEventResponse{}
+	_body, _err := client.ListTrendForSourceEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTrendForSourceEventWithOptions(request *ListTrendForSourceEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrendForSourceEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeUnit)) {
+		body["timeUnit"] = request.TimeUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrendForSourceEvent"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/events/querySourceEventTrend"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTrendForSourceEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23259,8 +26237,19 @@ func (client *Client) ListUserSerivceGroupsWithOptions(request *ListUserSerivceG
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserSerivceGroups"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/preview/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListUserSerivceGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListUserSerivceGroups"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/preview/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23322,8 +26311,19 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListUsers"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23365,8 +26365,19 @@ func (client *Client) RecoverProblemWithOptions(request *RecoverProblemRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RecoverProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/recovery"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RecoverProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("RecoverProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/recovery"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23404,8 +26415,19 @@ func (client *Client) RefreshIntegrationConfigKeyWithOptions(request *RefreshInt
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshIntegrationConfigKey"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/refreshKey"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RefreshIntegrationConfigKeyResponse{}
-	_body, _err := client.DoROARequest(tea.String("RefreshIntegrationConfigKey"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/refreshKey"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23443,8 +26465,19 @@ func (client *Client) RemoveProblemServiceGroupWithOptions(request *RemoveProble
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveProblemServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/removeServiceGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RemoveProblemServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("RemoveProblemServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/removeServiceGroup"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23486,8 +26519,19 @@ func (client *Client) ReplayProblemWithOptions(request *ReplayProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ReplayProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/replay"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ReplayProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("ReplayProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/replay"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23525,8 +26569,19 @@ func (client *Client) RespondIncidentWithOptions(request *RespondIncidentRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RespondIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/response"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RespondIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("RespondIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/response"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23568,8 +26623,19 @@ func (client *Client) RevokeProblemRecoveryWithOptions(request *RevokeProblemRec
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeProblemRecovery"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/revoke"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RevokeProblemRecoveryResponse{}
-	_body, _err := client.DoROARequest(tea.String("RevokeProblemRecovery"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/revoke"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23623,8 +26689,19 @@ func (client *Client) UpdateEscalationPlanWithOptions(request *UpdateEscalationP
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEscalationPlan"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateEscalationPlanResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateEscalationPlan"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/escalationPlan/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23674,8 +26751,19 @@ func (client *Client) UpdateIncidentWithOptions(request *UpdateIncidentRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIncident"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/incident/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateIncidentResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateIncident"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/incident/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23717,8 +26805,19 @@ func (client *Client) UpdateIntegrationConfigWithOptions(request *UpdateIntegrat
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateIntegrationConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateIntegrationConfig"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/integrationConfig/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23772,6 +26871,10 @@ func (client *Client) UpdateProblemWithOptions(request *UpdateProblemRequest, he
 		body["progressSummary"] = request.ProgressSummary
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProgressSummaryRichTextId)) {
+		body["progressSummaryRichTextId"] = request.ProgressSummaryRichTextId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RelatedServiceId)) {
 		body["relatedServiceId"] = request.RelatedServiceId
 	}
@@ -23784,8 +26887,19 @@ func (client *Client) UpdateProblemWithOptions(request *UpdateProblemRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblem"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblem"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23847,8 +26961,19 @@ func (client *Client) UpdateProblemEffectionServiceWithOptions(request *UpdatePr
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblemEffectionService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/effectionService/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemEffectionServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblemEffectionService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/effectionService/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23938,8 +27063,19 @@ func (client *Client) UpdateProblemImprovementWithOptions(request *UpdateProblem
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblemImprovement"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/improvement/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemImprovementResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblemImprovement"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/improvement/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24013,8 +27149,19 @@ func (client *Client) UpdateProblemMeasureWithOptions(request *UpdateProblemMeas
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblemMeasure"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/improvement/measure/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemMeasureResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblemMeasure"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/improvement/measure/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24056,8 +27203,19 @@ func (client *Client) UpdateProblemNoticeWithOptions(request *UpdateProblemNotic
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblemNotice"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/notify"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemNoticeResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblemNotice"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/notify"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24111,8 +27269,77 @@ func (client *Client) UpdateProblemTimelineWithOptions(request *UpdateProblemTim
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProblemTimeline"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/problem/process/timeline/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateProblemTimelineResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateProblemTimeline"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/problem/process/timeline/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRichText(request *UpdateRichTextRequest) (_result *UpdateRichTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRichTextResponse{}
+	_body, _err := client.UpdateRichTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRichTextWithOptions(request *UpdateRichTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRichTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RichText)) {
+		body["richText"] = request.RichText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RichTextId)) {
+		body["richTextId"] = request.RichTextId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRichText"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/rich/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRichTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24144,6 +27371,10 @@ func (client *Client) UpdateRouteRuleWithOptions(request *UpdateRouteRuleRequest
 
 	if !tea.BoolValue(util.IsUnset(request.AssignObjectType)) {
 		body["assignObjectType"] = request.AssignObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildRuleRelation)) {
+		body["childRuleRelation"] = request.ChildRuleRelation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -24198,8 +27429,19 @@ func (client *Client) UpdateRouteRuleWithOptions(request *UpdateRouteRuleRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/edit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateRouteRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateRouteRule"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/routeRule/edit"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24245,8 +27487,19 @@ func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, he
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateServiceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateService"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24280,6 +27533,10 @@ func (client *Client) UpdateServiceGroupWithOptions(request *UpdateServiceGroupR
 		body["enableWebhook"] = request.EnableWebhook
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MonitorSourceTemplates)) {
+		body["monitorSourceTemplates"] = request.MonitorSourceTemplates
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceGroupDescription)) {
 		body["serviceGroupDescription"] = request.ServiceGroupDescription
 	}
@@ -24308,8 +27565,19 @@ func (client *Client) UpdateServiceGroupWithOptions(request *UpdateServiceGroupR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceGroup"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/modify"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateServiceGroupResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateServiceGroup"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/modify"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24359,8 +27627,19 @@ func (client *Client) UpdateServiceGroupSchedulingWithOptions(request *UpdateSer
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceGroupScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateServiceGroupSchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateServiceGroupScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24406,8 +27685,19 @@ func (client *Client) UpdateServiceGroupSpecialDaySchedulingWithOptions(request 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceGroupSpecialDayScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/updateSpecialDayScheduling"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateServiceGroupSpecialDaySchedulingResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateServiceGroupSpecialDayScheduling"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/services/group/scheduling/updateSpecialDayScheduling"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24481,8 +27771,19 @@ func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionR
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSubscription"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/notify/subscription/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateSubscriptionResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateSubscription"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/notify/subscription/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24536,8 +27837,19 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateUserResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateUser"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/update"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24575,8 +27887,69 @@ func (client *Client) UpdateUserGuideStatusWithOptions(request *UpdateUserGuideS
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserGuideStatus"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/update/guide/status"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateUserGuideStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateUserGuideStatus"), tea.String("2021-04-13"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/user/update/guide/status"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyRouteRule(request *VerifyRouteRuleRequest) (_result *VerifyRouteRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifyRouteRuleResponse{}
+	_body, _err := client.VerifyRouteRuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyRouteRuleWithOptions(request *VerifyRouteRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyRouteRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RouteRuleId)) {
+		body["routeRuleId"] = request.RouteRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestSourceEvents)) {
+		body["testSourceEvents"] = request.TestSourceEvents
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyRouteRule"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/verify"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyRouteRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
