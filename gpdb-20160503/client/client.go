@@ -987,69 +987,6 @@ func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteD
 	return s
 }
 
-type DeleteInstanceSPInfoRequest struct {
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceInfos *string `json:"DBInstanceInfos,omitempty" xml:"DBInstanceInfos,omitempty"`
-}
-
-func (s DeleteInstanceSPInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceSPInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceSPInfoRequest) SetDBInstanceId(v string) *DeleteInstanceSPInfoRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DeleteInstanceSPInfoRequest) SetDBInstanceInfos(v string) *DeleteInstanceSPInfoRequest {
-	s.DBInstanceInfos = &v
-	return s
-}
-
-type DeleteInstanceSPInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteInstanceSPInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceSPInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceSPInfoResponseBody) SetRequestId(v string) *DeleteInstanceSPInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteInstanceSPInfoResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceSPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteInstanceSPInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteInstanceSPInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteInstanceSPInfoResponse) SetHeaders(v map[string]*string) *DeleteInstanceSPInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteInstanceSPInfoResponse) SetBody(v *DeleteInstanceSPInfoResponseBody) *DeleteInstanceSPInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAccountsRequest struct {
 	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -1584,98 +1521,6 @@ func (s *DescribeDBClusterNodeResponse) SetHeaders(v map[string]*string) *Descri
 }
 
 func (s *DescribeDBClusterNodeResponse) SetBody(v *DescribeDBClusterNodeResponseBody) *DescribeDBClusterNodeResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDBClusterNodesRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-}
-
-func (s DescribeDBClusterNodesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBClusterNodesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBClusterNodesRequest) SetDBInstanceId(v string) *DescribeDBClusterNodesRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeDBClusterNodesRequest) SetNodeType(v string) *DescribeDBClusterNodesRequest {
-	s.NodeType = &v
-	return s
-}
-
-type DescribeDBClusterNodesResponseBody struct {
-	DBClusterId *string                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Nodes       []*DescribeDBClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDBClusterNodesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBClusterNodesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBClusterNodesResponseBody) SetDBClusterId(v string) *DescribeDBClusterNodesResponseBody {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *DescribeDBClusterNodesResponseBody) SetNodes(v []*DescribeDBClusterNodesResponseBodyNodes) *DescribeDBClusterNodesResponseBody {
-	s.Nodes = v
-	return s
-}
-
-func (s *DescribeDBClusterNodesResponseBody) SetRequestId(v string) *DescribeDBClusterNodesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDBClusterNodesResponseBodyNodes struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DescribeDBClusterNodesResponseBodyNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBClusterNodesResponseBodyNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBClusterNodesResponseBodyNodes) SetName(v string) *DescribeDBClusterNodesResponseBodyNodes {
-	s.Name = &v
-	return s
-}
-
-type DescribeDBClusterNodesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDBClusterNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDBClusterNodesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBClusterNodesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBClusterNodesResponse) SetHeaders(v map[string]*string) *DescribeDBClusterNodesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDBClusterNodesResponse) SetBody(v *DescribeDBClusterNodesResponseBody) *DescribeDBClusterNodesResponse {
 	s.Body = v
 	return s
 }
@@ -2888,6 +2733,111 @@ func (s *DescribeDBInstanceOnECSAttributeResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *DescribeDBInstanceOnECSAttributeResponse) SetBody(v *DescribeDBInstanceOnECSAttributeResponseBody) *DescribeDBInstanceOnECSAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstancePerformanceRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDBInstancePerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetDBInstanceId(v string) *DescribeDBInstancePerformanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetEndTime(v string) *DescribeDBInstancePerformanceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetKey(v string) *DescribeDBInstancePerformanceRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetStartTime(v string) *DescribeDBInstancePerformanceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDBInstancePerformanceResponseBody struct {
+	DBInstanceId    *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime         *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Engine          *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PerformanceKeys []*string `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDBInstancePerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetDBInstanceId(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetEndTime(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetEngine(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetPerformanceKeys(v []*string) *DescribeDBInstancePerformanceResponseBody {
+	s.PerformanceKeys = v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetRequestId(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponseBody) SetStartTime(v string) *DescribeDBInstancePerformanceResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDBInstancePerformanceResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDBInstancePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstancePerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancePerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancePerformanceResponse) SetHeaders(v map[string]*string) *DescribeDBInstancePerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceResponse) SetBody(v *DescribeDBInstancePerformanceResponseBody) *DescribeDBInstancePerformanceResponse {
 	s.Body = v
 	return s
 }
@@ -5506,176 +5456,6 @@ func (s *DescribeSQLCollectorPolicyResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeSQLCollectorPolicyResponse) SetBody(v *DescribeSQLCollectorPolicyResponseBody) *DescribeSQLCollectorPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeSQLLogRequest struct {
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	QueryId      *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-}
-
-func (s DescribeSQLLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogRequest) SetDBInstanceId(v string) *DescribeSQLLogRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *DescribeSQLLogRequest) SetQueryId(v string) *DescribeSQLLogRequest {
-	s.QueryId = &v
-	return s
-}
-
-type DescribeSQLLogResponseBody struct {
-	Items     []*DescribeSQLLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeSQLLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogResponseBody) SetItems(v []*DescribeSQLLogResponseBodyItems) *DescribeSQLLogResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBody) SetRequestId(v string) *DescribeSQLLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeSQLLogResponseBodyItems struct {
-	AccountName          *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBName               *string  `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBRole               *string  `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	ExecuteCost          *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	ExecuteState         *string  `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	OperationClass       *string  `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	OperationExecuteTime *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	OperationType        *string  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	QueryId              *string  `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	ReturnRowCounts      *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	SQLPlan              *string  `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
-	SQLText              *string  `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	ScanRowCounts        *int64   `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
-	SourceIP             *string  `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	SourcePort           *int32   `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-}
-
-func (s DescribeSQLLogResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetAccountName(v string) *DescribeSQLLogResponseBodyItems {
-	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetDBName(v string) *DescribeSQLLogResponseBodyItems {
-	s.DBName = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetDBRole(v string) *DescribeSQLLogResponseBodyItems {
-	s.DBRole = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogResponseBodyItems {
-	s.ExecuteCost = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetExecuteState(v string) *DescribeSQLLogResponseBodyItems {
-	s.ExecuteState = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetOperationClass(v string) *DescribeSQLLogResponseBodyItems {
-	s.OperationClass = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSQLLogResponseBodyItems {
-	s.OperationExecuteTime = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetOperationType(v string) *DescribeSQLLogResponseBodyItems {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetQueryId(v string) *DescribeSQLLogResponseBodyItems {
-	s.QueryId = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogResponseBodyItems {
-	s.ReturnRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetSQLPlan(v string) *DescribeSQLLogResponseBodyItems {
-	s.SQLPlan = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetSQLText(v string) *DescribeSQLLogResponseBodyItems {
-	s.SQLText = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogResponseBodyItems {
-	s.ScanRowCounts = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetSourceIP(v string) *DescribeSQLLogResponseBodyItems {
-	s.SourceIP = &v
-	return s
-}
-
-func (s *DescribeSQLLogResponseBodyItems) SetSourcePort(v int32) *DescribeSQLLogResponseBodyItems {
-	s.SourcePort = &v
-	return s
-}
-
-type DescribeSQLLogResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSQLLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeSQLLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeSQLLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeSQLLogResponse) SetHeaders(v map[string]*string) *DescribeSQLLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeSQLLogResponse) SetBody(v *DescribeSQLLogResponseBody) *DescribeSQLLogResponse {
 	s.Body = v
 	return s
 }
@@ -10215,54 +9995,6 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DeleteInstanceSPInfoWithOptions(request *DeleteInstanceSPInfoRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceSPInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceInfos)) {
-		query["DBInstanceInfos"] = request.DBInstanceInfos
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteInstanceSPInfo"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteInstanceSPInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteInstanceSPInfo(request *DeleteInstanceSPInfoRequest) (_result *DeleteInstanceSPInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteInstanceSPInfoResponse{}
-	_body, _err := client.DeleteInstanceSPInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10448,54 +10180,6 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterNodeResponse{}
 	_body, _err := client.DescribeDBClusterNodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDBClusterNodesWithOptions(request *DescribeDBClusterNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterNodesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
-		query["NodeType"] = request.NodeType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDBClusterNodes"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDBClusterNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDBClusterNodes(request *DescribeDBClusterNodesRequest) (_result *DescribeDBClusterNodesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDBClusterNodesResponse{}
-	_body, _err := client.DescribeDBClusterNodesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10744,6 +10428,62 @@ func (client *Client) DescribeDBInstanceOnECSAttribute(request *DescribeDBInstan
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceOnECSAttributeResponse{}
 	_body, _err := client.DescribeDBInstanceOnECSAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstancePerformanceWithOptions(request *DescribeDBInstancePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancePerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstancePerformance"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstancePerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstancePerformanceRequest) (_result *DescribeDBInstancePerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstancePerformanceResponse{}
+	_body, _err := client.DescribeDBInstancePerformanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11574,54 +11314,6 @@ func (client *Client) DescribeSQLCollectorPolicy(request *DescribeSQLCollectorPo
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLCollectorPolicyResponse{}
 	_body, _err := client.DescribeSQLCollectorPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLogWithOptions(request *DescribeSQLLogRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
-		query["QueryId"] = request.QueryId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSQLLog"),
-		Version:     tea.String("2016-05-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeSQLLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeSQLLog(request *DescribeSQLLogRequest) (_result *DescribeSQLLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSQLLogResponse{}
-	_body, _err := client.DescribeSQLLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
