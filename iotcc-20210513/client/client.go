@@ -582,6 +582,117 @@ func (s *CreateConnectionPoolResponse) SetBody(v *CreateConnectionPoolResponseBo
 	return s
 }
 
+type CreateDNSServiceRuleRequest struct {
+	AuthorizationRuleDescription *string `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
+	AuthorizationRuleName        *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Destination                  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType                  *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CreateDNSServiceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNSServiceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNSServiceRuleRequest) SetAuthorizationRuleDescription(v string) *CreateDNSServiceRuleRequest {
+	s.AuthorizationRuleDescription = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetAuthorizationRuleName(v string) *CreateDNSServiceRuleRequest {
+	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetClientToken(v string) *CreateDNSServiceRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetDestination(v string) *CreateDNSServiceRuleRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetDryRun(v bool) *CreateDNSServiceRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetIoTCloudConnectorId(v string) *CreateDNSServiceRuleRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetRegionId(v string) *CreateDNSServiceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetServiceType(v string) *CreateDNSServiceRuleRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleRequest) SetSource(v string) *CreateDNSServiceRuleRequest {
+	s.Source = &v
+	return s
+}
+
+type CreateDNSServiceRuleResponseBody struct {
+	DNSServiceRuleId *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDNSServiceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNSServiceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNSServiceRuleResponseBody) SetDNSServiceRuleId(v string) *CreateDNSServiceRuleResponseBody {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *CreateDNSServiceRuleResponseBody) SetRequestId(v string) *CreateDNSServiceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDNSServiceRuleResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDNSServiceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDNSServiceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDNSServiceRuleResponse) SetHeaders(v map[string]*string) *CreateDNSServiceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDNSServiceRuleResponse) SetBody(v *CreateDNSServiceRuleResponseBody) *CreateDNSServiceRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateGroupAuthorizationRuleRequest struct {
 	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
 	AuthorizationRuleName        *string   `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
@@ -701,6 +812,123 @@ func (s *CreateGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *CreateGroupAuthorizationRuleResponse) SetBody(v *CreateGroupAuthorizationRuleResponseBody) *CreateGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGroupDNSServiceRuleRequest struct {
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleDescription *string `json:"DNSServiceRuleDescription,omitempty" xml:"DNSServiceRuleDescription,omitempty"`
+	DNSServiceRuleName        *string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty"`
+	Destination               *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId  *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CreateGroupDNSServiceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupDNSServiceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetClientToken(v string) *CreateGroupDNSServiceRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetDNSServiceRuleDescription(v string) *CreateGroupDNSServiceRuleRequest {
+	s.DNSServiceRuleDescription = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetDNSServiceRuleName(v string) *CreateGroupDNSServiceRuleRequest {
+	s.DNSServiceRuleName = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetDestination(v string) *CreateGroupDNSServiceRuleRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetDryRun(v bool) *CreateGroupDNSServiceRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetIoTCloudConnectorGroupId(v string) *CreateGroupDNSServiceRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetRegionId(v string) *CreateGroupDNSServiceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetServiceType(v string) *CreateGroupDNSServiceRuleRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleRequest) SetSource(v string) *CreateGroupDNSServiceRuleRequest {
+	s.Source = &v
+	return s
+}
+
+type CreateGroupDNSServiceRuleResponseBody struct {
+	DNSServiceRuleId         *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGroupDNSServiceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupDNSServiceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupDNSServiceRuleResponseBody) SetDNSServiceRuleId(v string) *CreateGroupDNSServiceRuleResponseBody {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleResponseBody) SetIoTCloudConnectorGroupId(v string) *CreateGroupDNSServiceRuleResponseBody {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleResponseBody) SetRequestId(v string) *CreateGroupDNSServiceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGroupDNSServiceRuleResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupDNSServiceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupDNSServiceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupDNSServiceRuleResponse) SetHeaders(v map[string]*string) *CreateGroupDNSServiceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleResponse) SetBody(v *CreateGroupDNSServiceRuleResponseBody) *CreateGroupDNSServiceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -1269,6 +1497,87 @@ func (s *DeleteConnectionPoolResponse) SetBody(v *DeleteConnectionPoolResponseBo
 	return s
 }
 
+type DeleteDNSServiceRuleRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleId    *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDNSServiceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNSServiceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNSServiceRuleRequest) SetClientToken(v string) *DeleteDNSServiceRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleRequest) SetDNSServiceRuleId(v string) *DeleteDNSServiceRuleRequest {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleRequest) SetDryRun(v bool) *DeleteDNSServiceRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleRequest) SetIoTCloudConnectorId(v string) *DeleteDNSServiceRuleRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleRequest) SetRegionId(v string) *DeleteDNSServiceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDNSServiceRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDNSServiceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNSServiceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNSServiceRuleResponseBody) SetRequestId(v string) *DeleteDNSServiceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDNSServiceRuleResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDNSServiceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDNSServiceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDNSServiceRuleResponse) SetHeaders(v map[string]*string) *DeleteDNSServiceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleResponse) SetBody(v *DeleteDNSServiceRuleResponseBody) *DeleteDNSServiceRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGroupAuthorizationRuleRequest struct {
 	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -1346,6 +1655,87 @@ func (s *DeleteGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *DeleteGroupAuthorizationRuleResponse) SetBody(v *DeleteGroupAuthorizationRuleResponseBody) *DeleteGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGroupDNSServiceRuleRequest struct {
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleId         *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteGroupDNSServiceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupDNSServiceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupDNSServiceRuleRequest) SetClientToken(v string) *DeleteGroupDNSServiceRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleRequest) SetDNSServiceRuleId(v string) *DeleteGroupDNSServiceRuleRequest {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleRequest) SetDryRun(v bool) *DeleteGroupDNSServiceRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleRequest) SetIoTCloudConnectorGroupId(v string) *DeleteGroupDNSServiceRuleRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleRequest) SetRegionId(v string) *DeleteGroupDNSServiceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteGroupDNSServiceRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGroupDNSServiceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupDNSServiceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupDNSServiceRuleResponseBody) SetRequestId(v string) *DeleteGroupDNSServiceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGroupDNSServiceRuleResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupDNSServiceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupDNSServiceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupDNSServiceRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupDNSServiceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleResponse) SetBody(v *DeleteGroupDNSServiceRuleResponseBody) *DeleteGroupDNSServiceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2111,7 +2501,7 @@ type GetDiagnoseResultForSingleCardResponseBody struct {
 	DiagnoseItem        []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem `json:"DiagnoseItem,omitempty" xml:"DiagnoseItem,omitempty" type:"Repeated"`
 	EndTime             *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ErrorResult         []*GetDiagnoseResultForSingleCardResponseBodyErrorResult  `json:"ErrorResult,omitempty" xml:"ErrorResult,omitempty" type:"Repeated"`
-	Iccid               *string                                                   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	IccId               *string                                                   `json:"IccId,omitempty" xml:"IccId,omitempty"`
 	IoTCloudConnectorId *string                                                   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status              *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -2155,8 +2545,8 @@ func (s *GetDiagnoseResultForSingleCardResponseBody) SetErrorResult(v []*GetDiag
 	return s
 }
 
-func (s *GetDiagnoseResultForSingleCardResponseBody) SetIccid(v string) *GetDiagnoseResultForSingleCardResponseBody {
-	s.Iccid = &v
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetIccId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.IccId = &v
 	return s
 }
 
@@ -3350,6 +3740,200 @@ func (s *ListConnectionPoolsResponse) SetBody(v *ListConnectionPoolsResponseBody
 	return s
 }
 
+type ListDNSServiceRulesRequest struct {
+	DNSServiceRuleIds    []*string `json:"DNSServiceRuleIds,omitempty" xml:"DNSServiceRuleIds,omitempty" type:"Repeated"`
+	DNSServiceRuleName   []*string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty" type:"Repeated"`
+	DNSServiceRuleStatus []*string `json:"DNSServiceRuleStatus,omitempty" xml:"DNSServiceRuleStatus,omitempty" type:"Repeated"`
+	Destination          []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	IoTCloudConnectorId  *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	MaxResults           *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType          *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source               []*string `json:"Source,omitempty" xml:"Source,omitempty" type:"Repeated"`
+}
+
+func (s ListDNSServiceRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNSServiceRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNSServiceRulesRequest) SetDNSServiceRuleIds(v []*string) *ListDNSServiceRulesRequest {
+	s.DNSServiceRuleIds = v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetDNSServiceRuleName(v []*string) *ListDNSServiceRulesRequest {
+	s.DNSServiceRuleName = v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetDNSServiceRuleStatus(v []*string) *ListDNSServiceRulesRequest {
+	s.DNSServiceRuleStatus = v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetDestination(v []*string) *ListDNSServiceRulesRequest {
+	s.Destination = v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetIoTCloudConnectorId(v string) *ListDNSServiceRulesRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetMaxResults(v int32) *ListDNSServiceRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetNextToken(v string) *ListDNSServiceRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetRegionId(v string) *ListDNSServiceRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetServiceType(v string) *ListDNSServiceRulesRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesRequest) SetSource(v []*string) *ListDNSServiceRulesRequest {
+	s.Source = v
+	return s
+}
+
+type ListDNSServiceRulesResponseBody struct {
+	DNSServiceRules []*ListDNSServiceRulesResponseBodyDNSServiceRules `json:"DNSServiceRules,omitempty" xml:"DNSServiceRules,omitempty" type:"Repeated"`
+	MaxResults      *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDNSServiceRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNSServiceRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNSServiceRulesResponseBody) SetDNSServiceRules(v []*ListDNSServiceRulesResponseBodyDNSServiceRules) *ListDNSServiceRulesResponseBody {
+	s.DNSServiceRules = v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBody) SetMaxResults(v int32) *ListDNSServiceRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBody) SetNextToken(v string) *ListDNSServiceRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBody) SetRequestId(v string) *ListDNSServiceRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBody) SetTotalCount(v int32) *ListDNSServiceRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDNSServiceRulesResponseBodyDNSServiceRules struct {
+	DNSServiceRuleDescription *string `json:"DNSServiceRuleDescription,omitempty" xml:"DNSServiceRuleDescription,omitempty"`
+	DNSServiceRuleId          *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	DNSServiceRuleName        *string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty"`
+	DNSServiceRuleStatus      *string `json:"DNSServiceRuleStatus,omitempty" xml:"DNSServiceRuleStatus,omitempty"`
+	Destination               *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	IoTCloudConnectorId       *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListDNSServiceRulesResponseBodyDNSServiceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNSServiceRulesResponseBodyDNSServiceRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleDescription(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleDescription = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleId(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleName(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleName = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleStatus(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleStatus = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetDestination(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetIoTCloudConnectorId(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetServiceType(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetSource(v string) *ListDNSServiceRulesResponseBodyDNSServiceRules {
+	s.Source = &v
+	return s
+}
+
+type ListDNSServiceRulesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDNSServiceRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDNSServiceRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDNSServiceRulesResponse) SetHeaders(v map[string]*string) *ListDNSServiceRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponse) SetBody(v *ListDNSServiceRulesResponseBody) *ListDNSServiceRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListDiagnoseInfoForSingleCardRequest struct {
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -3445,7 +4029,7 @@ type ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo struct {
 	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DiagnoseTime        *int64  `json:"DiagnoseTime,omitempty" xml:"DiagnoseTime,omitempty"`
 	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Iccid               *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	IccId               *string `json:"IccId,omitempty" xml:"IccId,omitempty"`
 	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
@@ -3491,8 +4075,8 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetEndTime(v int
 	return s
 }
 
-func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIccid(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
-	s.Iccid = &v
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIccId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.IccId = &v
 	return s
 }
 
@@ -3740,6 +4324,200 @@ func (s *ListGroupAuthorizationRulesResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *ListGroupAuthorizationRulesResponse) SetBody(v *ListGroupAuthorizationRulesResponseBody) *ListGroupAuthorizationRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupDNSServiceRulesRequest struct {
+	DNSServiceRuleIds        []*string `json:"DNSServiceRuleIds,omitempty" xml:"DNSServiceRuleIds,omitempty" type:"Repeated"`
+	DNSServiceRuleName       []*string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty" type:"Repeated"`
+	DNSServiceRuleStatus     []*string `json:"DNSServiceRuleStatus,omitempty" xml:"DNSServiceRuleStatus,omitempty" type:"Repeated"`
+	Destination              []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	IoTCloudConnectorGroupId *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType              *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                   []*string `json:"Source,omitempty" xml:"Source,omitempty" type:"Repeated"`
+}
+
+func (s ListGroupDNSServiceRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupDNSServiceRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetDNSServiceRuleIds(v []*string) *ListGroupDNSServiceRulesRequest {
+	s.DNSServiceRuleIds = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetDNSServiceRuleName(v []*string) *ListGroupDNSServiceRulesRequest {
+	s.DNSServiceRuleName = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetDNSServiceRuleStatus(v []*string) *ListGroupDNSServiceRulesRequest {
+	s.DNSServiceRuleStatus = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetDestination(v []*string) *ListGroupDNSServiceRulesRequest {
+	s.Destination = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetIoTCloudConnectorGroupId(v string) *ListGroupDNSServiceRulesRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetMaxResults(v int32) *ListGroupDNSServiceRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetNextToken(v string) *ListGroupDNSServiceRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetRegionId(v string) *ListGroupDNSServiceRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetServiceType(v string) *ListGroupDNSServiceRulesRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesRequest) SetSource(v []*string) *ListGroupDNSServiceRulesRequest {
+	s.Source = v
+	return s
+}
+
+type ListGroupDNSServiceRulesResponseBody struct {
+	DNSServiceRules []*ListGroupDNSServiceRulesResponseBodyDNSServiceRules `json:"DNSServiceRules,omitempty" xml:"DNSServiceRules,omitempty" type:"Repeated"`
+	MaxResults      *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupDNSServiceRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupDNSServiceRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupDNSServiceRulesResponseBody) SetDNSServiceRules(v []*ListGroupDNSServiceRulesResponseBodyDNSServiceRules) *ListGroupDNSServiceRulesResponseBody {
+	s.DNSServiceRules = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBody) SetMaxResults(v int32) *ListGroupDNSServiceRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBody) SetNextToken(v string) *ListGroupDNSServiceRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBody) SetRequestId(v string) *ListGroupDNSServiceRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBody) SetTotalCount(v int32) *ListGroupDNSServiceRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupDNSServiceRulesResponseBodyDNSServiceRules struct {
+	DNSServiceRuleDescription *string `json:"DNSServiceRuleDescription,omitempty" xml:"DNSServiceRuleDescription,omitempty"`
+	DNSServiceRuleId          *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	DNSServiceRuleName        *string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty"`
+	DNSServiceRuleStatus      *string `json:"DNSServiceRuleStatus,omitempty" xml:"DNSServiceRuleStatus,omitempty"`
+	Destination               *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	IoTCloudConnectorGroupId  *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListGroupDNSServiceRulesResponseBodyDNSServiceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupDNSServiceRulesResponseBodyDNSServiceRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleDescription(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleDescription = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleId(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleName(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleName = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetDNSServiceRuleStatus(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.DNSServiceRuleStatus = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetDestination(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetIoTCloudConnectorGroupId(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetServiceType(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetSource(v string) *ListGroupDNSServiceRulesResponseBodyDNSServiceRules {
+	s.Source = &v
+	return s
+}
+
+type ListGroupDNSServiceRulesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGroupDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupDNSServiceRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupDNSServiceRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupDNSServiceRulesResponse) SetHeaders(v map[string]*string) *ListGroupDNSServiceRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponse) SetBody(v *ListGroupDNSServiceRulesResponseBody) *ListGroupDNSServiceRulesResponse {
 	s.Body = v
 	return s
 }
@@ -4710,6 +5488,168 @@ func (s *ListServiceEntriesResponse) SetBody(v *ListServiceEntriesResponseBody) 
 	return s
 }
 
+type MoveAuthorizationRuleToDNSServiceRequest struct {
+	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s MoveAuthorizationRuleToDNSServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveAuthorizationRuleToDNSServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceRequest) SetAuthorizationRuleId(v string) *MoveAuthorizationRuleToDNSServiceRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceRequest) SetClientToken(v string) *MoveAuthorizationRuleToDNSServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceRequest) SetDryRun(v bool) *MoveAuthorizationRuleToDNSServiceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceRequest) SetIoTCloudConnectorId(v string) *MoveAuthorizationRuleToDNSServiceRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceRequest) SetRegionId(v string) *MoveAuthorizationRuleToDNSServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type MoveAuthorizationRuleToDNSServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveAuthorizationRuleToDNSServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveAuthorizationRuleToDNSServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceResponseBody) SetRequestId(v string) *MoveAuthorizationRuleToDNSServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveAuthorizationRuleToDNSServiceResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MoveAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveAuthorizationRuleToDNSServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveAuthorizationRuleToDNSServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceResponse) SetHeaders(v map[string]*string) *MoveAuthorizationRuleToDNSServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceResponse) SetBody(v *MoveAuthorizationRuleToDNSServiceResponseBody) *MoveAuthorizationRuleToDNSServiceResponse {
+	s.Body = v
+	return s
+}
+
+type MoveGroupAuthorizationRuleToDNSServiceRequest struct {
+	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceRequest) SetAuthorizationRuleId(v string) *MoveGroupAuthorizationRuleToDNSServiceRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceRequest) SetClientToken(v string) *MoveGroupAuthorizationRuleToDNSServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceRequest) SetDryRun(v bool) *MoveGroupAuthorizationRuleToDNSServiceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceRequest) SetIoTCloudConnectorGroupId(v string) *MoveGroupAuthorizationRuleToDNSServiceRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceRequest) SetRegionId(v string) *MoveGroupAuthorizationRuleToDNSServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type MoveGroupAuthorizationRuleToDNSServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceResponseBody) SetRequestId(v string) *MoveGroupAuthorizationRuleToDNSServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveGroupAuthorizationRuleToDNSServiceResponse struct {
+	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *MoveGroupAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveGroupAuthorizationRuleToDNSServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceResponse) SetHeaders(v map[string]*string) *MoveGroupAuthorizationRuleToDNSServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceResponse) SetBody(v *MoveGroupAuthorizationRuleToDNSServiceResponseBody) *MoveGroupAuthorizationRuleToDNSServiceResponse {
+	s.Body = v
+	return s
+}
+
 type OpenIoTCloudConnectorServiceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -5181,6 +6121,117 @@ func (s *UpdateConnectionPoolAttributeResponse) SetBody(v *UpdateConnectionPoolA
 	return s
 }
 
+type UpdateDNSServiceRuleAttributeRequest struct {
+	AuthorizationRuleDescription *string `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
+	AuthorizationRuleName        *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleId             *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	Destination                  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType                  *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s UpdateDNSServiceRuleAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDNSServiceRuleAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetAuthorizationRuleDescription(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.AuthorizationRuleDescription = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetAuthorizationRuleName(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.AuthorizationRuleName = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetClientToken(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetDNSServiceRuleId(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetDestination(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetDryRun(v bool) *UpdateDNSServiceRuleAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetIoTCloudConnectorId(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetRegionId(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetServiceType(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetSource(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.Source = &v
+	return s
+}
+
+type UpdateDNSServiceRuleAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDNSServiceRuleAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDNSServiceRuleAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDNSServiceRuleAttributeResponseBody) SetRequestId(v string) *UpdateDNSServiceRuleAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDNSServiceRuleAttributeResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDNSServiceRuleAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDNSServiceRuleAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDNSServiceRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateDNSServiceRuleAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeResponse) SetBody(v *UpdateDNSServiceRuleAttributeResponseBody) *UpdateDNSServiceRuleAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGroupAuthorizationRuleAttributeRequest struct {
 	AuthorizationRuleDescription *string   `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
 	AuthorizationRuleId          *string   `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
@@ -5306,6 +6357,117 @@ func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetHeaders(v map[string]
 }
 
 func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetBody(v *UpdateGroupAuthorizationRuleAttributeResponseBody) *UpdateGroupAuthorizationRuleAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGroupDNSServiceRuleAttributeRequest struct {
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleDescription *string `json:"DNSServiceRuleDescription,omitempty" xml:"DNSServiceRuleDescription,omitempty"`
+	DNSServiceRuleId          *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	DNSServiceRuleName        *string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty"`
+	Destination               *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorGroupId  *string `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetClientToken(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetDNSServiceRuleDescription(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.DNSServiceRuleDescription = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetDNSServiceRuleId(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.DNSServiceRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetDNSServiceRuleName(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.DNSServiceRuleName = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetDestination(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetDryRun(v bool) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetIoTCloudConnectorGroupId(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.IoTCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetRegionId(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetServiceType(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeRequest) SetSource(v string) *UpdateGroupDNSServiceRuleAttributeRequest {
+	s.Source = &v
+	return s
+}
+
+type UpdateGroupDNSServiceRuleAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeResponseBody) SetRequestId(v string) *UpdateGroupDNSServiceRuleAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupDNSServiceRuleAttributeResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGroupDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDNSServiceRuleAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateGroupDNSServiceRuleAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeResponse) SetBody(v *UpdateGroupDNSServiceRuleAttributeResponseBody) *UpdateGroupDNSServiceRuleAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -6143,6 +7305,82 @@ func (client *Client) CreateConnectionPool(request *CreateConnectionPoolRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateDNSServiceRuleWithOptions(request *CreateDNSServiceRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDNSServiceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDNSServiceRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDNSServiceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDNSServiceRule(request *CreateDNSServiceRuleRequest) (_result *CreateDNSServiceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDNSServiceRuleResponse{}
+	_body, _err := client.CreateDNSServiceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGroupAuthorizationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6216,6 +7454,82 @@ func (client *Client) CreateGroupAuthorizationRule(request *CreateGroupAuthoriza
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupAuthorizationRuleResponse{}
 	_body, _err := client.CreateGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGroupDNSServiceRuleWithOptions(request *CreateGroupDNSServiceRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGroupDNSServiceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleDescription)) {
+		query["DNSServiceRuleDescription"] = request.DNSServiceRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleName)) {
+		query["DNSServiceRuleName"] = request.DNSServiceRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroupDNSServiceRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupDNSServiceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGroupDNSServiceRule(request *CreateGroupDNSServiceRuleRequest) (_result *CreateGroupDNSServiceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGroupDNSServiceRuleResponse{}
+	_body, _err := client.CreateGroupDNSServiceRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6619,6 +7933,66 @@ func (client *Client) DeleteConnectionPool(request *DeleteConnectionPoolRequest)
 	return _result, _err
 }
 
+func (client *Client) DeleteDNSServiceRuleWithOptions(request *DeleteDNSServiceRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDNSServiceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleId)) {
+		query["DNSServiceRuleId"] = request.DNSServiceRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDNSServiceRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDNSServiceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDNSServiceRule(request *DeleteDNSServiceRuleRequest) (_result *DeleteDNSServiceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDNSServiceRuleResponse{}
+	_body, _err := client.DeleteDNSServiceRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteGroupAuthorizationRuleWithOptions(request *DeleteGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupAuthorizationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6672,6 +8046,66 @@ func (client *Client) DeleteGroupAuthorizationRule(request *DeleteGroupAuthoriza
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupAuthorizationRuleResponse{}
 	_body, _err := client.DeleteGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupDNSServiceRuleWithOptions(request *DeleteGroupDNSServiceRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupDNSServiceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleId)) {
+		query["DNSServiceRuleId"] = request.DNSServiceRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroupDNSServiceRule"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupDNSServiceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupDNSServiceRule(request *DeleteGroupDNSServiceRuleRequest) (_result *DeleteGroupDNSServiceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGroupDNSServiceRuleResponse{}
+	_body, _err := client.DeleteGroupDNSServiceRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7771,6 +9205,86 @@ func (client *Client) ListConnectionPools(request *ListConnectionPoolsRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListDNSServiceRulesWithOptions(request *ListDNSServiceRulesRequest, runtime *util.RuntimeOptions) (_result *ListDNSServiceRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleIds)) {
+		query["DNSServiceRuleIds"] = request.DNSServiceRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleName)) {
+		query["DNSServiceRuleName"] = request.DNSServiceRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleStatus)) {
+		query["DNSServiceRuleStatus"] = request.DNSServiceRuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDNSServiceRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDNSServiceRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDNSServiceRules(request *ListDNSServiceRulesRequest) (_result *ListDNSServiceRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDNSServiceRulesResponse{}
+	_body, _err := client.ListDNSServiceRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDiagnoseInfoForSingleCardWithOptions(request *ListDiagnoseInfoForSingleCardRequest, runtime *util.RuntimeOptions) (_result *ListDiagnoseInfoForSingleCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7908,6 +9422,86 @@ func (client *Client) ListGroupAuthorizationRules(request *ListGroupAuthorizatio
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupAuthorizationRulesResponse{}
 	_body, _err := client.ListGroupAuthorizationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupDNSServiceRulesWithOptions(request *ListGroupDNSServiceRulesRequest, runtime *util.RuntimeOptions) (_result *ListGroupDNSServiceRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleIds)) {
+		query["DNSServiceRuleIds"] = request.DNSServiceRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleName)) {
+		query["DNSServiceRuleName"] = request.DNSServiceRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleStatus)) {
+		query["DNSServiceRuleStatus"] = request.DNSServiceRuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupDNSServiceRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupDNSServiceRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupDNSServiceRules(request *ListGroupDNSServiceRulesRequest) (_result *ListGroupDNSServiceRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupDNSServiceRulesResponse{}
+	_body, _err := client.ListGroupDNSServiceRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8307,6 +9901,126 @@ func (client *Client) ListServiceEntries(request *ListServiceEntriesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) MoveAuthorizationRuleToDNSServiceWithOptions(request *MoveAuthorizationRuleToDNSServiceRequest, runtime *util.RuntimeOptions) (_result *MoveAuthorizationRuleToDNSServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveAuthorizationRuleToDNSService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveAuthorizationRuleToDNSServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveAuthorizationRuleToDNSService(request *MoveAuthorizationRuleToDNSServiceRequest) (_result *MoveAuthorizationRuleToDNSServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveAuthorizationRuleToDNSServiceResponse{}
+	_body, _err := client.MoveAuthorizationRuleToDNSServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MoveGroupAuthorizationRuleToDNSServiceWithOptions(request *MoveGroupAuthorizationRuleToDNSServiceRequest, runtime *util.RuntimeOptions) (_result *MoveGroupAuthorizationRuleToDNSServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveGroupAuthorizationRuleToDNSService"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveGroupAuthorizationRuleToDNSServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveGroupAuthorizationRuleToDNSService(request *MoveGroupAuthorizationRuleToDNSServiceRequest) (_result *MoveGroupAuthorizationRuleToDNSServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveGroupAuthorizationRuleToDNSServiceResponse{}
+	_body, _err := client.MoveGroupAuthorizationRuleToDNSServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenIoTCloudConnectorServiceWithOptions(request *OpenIoTCloudConnectorServiceRequest, runtime *util.RuntimeOptions) (_result *OpenIoTCloudConnectorServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8647,6 +10361,86 @@ func (client *Client) UpdateConnectionPoolAttribute(request *UpdateConnectionPoo
 	return _result, _err
 }
 
+func (client *Client) UpdateDNSServiceRuleAttributeWithOptions(request *UpdateDNSServiceRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateDNSServiceRuleAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
+		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
+		query["AuthorizationRuleName"] = request.AuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleId)) {
+		query["DNSServiceRuleId"] = request.DNSServiceRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDNSServiceRuleAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDNSServiceRuleAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDNSServiceRuleAttribute(request *UpdateDNSServiceRuleAttributeRequest) (_result *UpdateDNSServiceRuleAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDNSServiceRuleAttributeResponse{}
+	_body, _err := client.UpdateDNSServiceRuleAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGroupAuthorizationRuleAttributeWithOptions(request *UpdateGroupAuthorizationRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupAuthorizationRuleAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8724,6 +10518,86 @@ func (client *Client) UpdateGroupAuthorizationRuleAttribute(request *UpdateGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupAuthorizationRuleAttributeResponse{}
 	_body, _err := client.UpdateGroupAuthorizationRuleAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupDNSServiceRuleAttributeWithOptions(request *UpdateGroupDNSServiceRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupDNSServiceRuleAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleDescription)) {
+		query["DNSServiceRuleDescription"] = request.DNSServiceRuleDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleId)) {
+		query["DNSServiceRuleId"] = request.DNSServiceRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleName)) {
+		query["DNSServiceRuleName"] = request.DNSServiceRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorGroupId)) {
+		query["IoTCloudConnectorGroupId"] = request.IoTCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupDNSServiceRuleAttribute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupDNSServiceRuleAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupDNSServiceRuleAttribute(request *UpdateGroupDNSServiceRuleAttributeRequest) (_result *UpdateGroupDNSServiceRuleAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGroupDNSServiceRuleAttributeResponse{}
+	_body, _err := client.UpdateGroupDNSServiceRuleAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
