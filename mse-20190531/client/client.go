@@ -4829,6 +4829,7 @@ func (s *ExportNacosConfigResponse) SetBody(v *ExportNacosConfigResponseBody) *E
 type GetBlackWhiteListRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IsWhite         *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4848,6 +4849,11 @@ func (s *GetBlackWhiteListRequest) SetAcceptLanguage(v string) *GetBlackWhiteLis
 
 func (s *GetBlackWhiteListRequest) SetGatewayUniqueId(v string) *GetBlackWhiteListRequest {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetBlackWhiteListRequest) SetIsWhite(v bool) *GetBlackWhiteListRequest {
+	s.IsWhite = &v
 	return s
 }
 
@@ -9401,7 +9407,9 @@ func (s *ListClusterConnectionTypesResponse) SetBody(v *ListClusterConnectionTyp
 
 type ListClusterTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 网络连接类型
+	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListClusterTypesRequest) String() string {
@@ -9414,6 +9422,11 @@ func (s ListClusterTypesRequest) GoString() string {
 
 func (s *ListClusterTypesRequest) SetAcceptLanguage(v string) *ListClusterTypesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListClusterTypesRequest) SetConnectType(v string) *ListClusterTypesRequest {
+	s.ConnectType = &v
 	return s
 }
 
@@ -13798,6 +13811,8 @@ func (s *QueryClusterDiskSpecificationResponse) SetBody(v *QueryClusterDiskSpeci
 
 type QueryClusterSpecificationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 网络连接类型
+	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
 }
 
 func (s QueryClusterSpecificationRequest) String() string {
@@ -13810,6 +13825,11 @@ func (s QueryClusterSpecificationRequest) GoString() string {
 
 func (s *QueryClusterSpecificationRequest) SetAcceptLanguage(v string) *QueryClusterSpecificationRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QueryClusterSpecificationRequest) SetConnectType(v string) *QueryClusterSpecificationRequest {
+	s.ConnectType = &v
 	return s
 }
 
@@ -15465,6 +15485,7 @@ type UpdateBlackWhiteListRequest struct {
 	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsWhite         *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -15495,6 +15516,11 @@ func (s *UpdateBlackWhiteListRequest) SetGatewayUniqueId(v string) *UpdateBlackW
 
 func (s *UpdateBlackWhiteListRequest) SetId(v int64) *UpdateBlackWhiteListRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateBlackWhiteListRequest) SetIsWhite(v bool) *UpdateBlackWhiteListRequest {
+	s.IsWhite = &v
 	return s
 }
 
@@ -20887,6 +20913,10 @@ func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesReque
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectType)) {
+		query["ConnectType"] = request.ConnectType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -22003,6 +22033,10 @@ func (client *Client) QueryClusterSpecificationWithOptions(request *QueryCluster
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectType)) {
+		query["ConnectType"] = request.ConnectType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22605,6 +22639,10 @@ func (client *Client) UpdateBlackWhiteListWithOptions(request *UpdateBlackWhiteL
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsWhite)) {
+		query["IsWhite"] = request.IsWhite
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
