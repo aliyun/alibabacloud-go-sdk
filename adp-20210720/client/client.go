@@ -241,6 +241,8 @@ type FoundationVersion struct {
 	Documents *string `json:"documents,omitempty" xml:"documents,omitempty"`
 	// 底座功能列表
 	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	// 标签
+	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// name，目前仅能是 “ADP 底座“
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 打包工具
@@ -277,6 +279,11 @@ func (s *FoundationVersion) SetDocuments(v string) *FoundationVersion {
 
 func (s *FoundationVersion) SetFeatures(v []*string) *FoundationVersion {
 	s.Features = v
+	return s
+}
+
+func (s *FoundationVersion) SetLabels(v string) *FoundationVersion {
+	s.Labels = &v
 	return s
 }
 
@@ -578,6 +585,8 @@ type InstanceInfo struct {
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	// dataDisk
 	DataDisk []*Disk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Repeated"`
+	// diskConfigAnnotations
+	DiskConfigAnnotations map[string]*string `json:"diskConfigAnnotations,omitempty" xml:"diskConfigAnnotations,omitempty"`
 	// hostName
 	HostName *string `json:"hostName,omitempty" xml:"hostName,omitempty"`
 	// identifier
@@ -641,6 +650,11 @@ func (s *InstanceInfo) SetCpu(v string) *InstanceInfo {
 
 func (s *InstanceInfo) SetDataDisk(v []*Disk) *InstanceInfo {
 	s.DataDisk = v
+	return s
+}
+
+func (s *InstanceInfo) SetDiskConfigAnnotations(v map[string]*string) *InstanceInfo {
+	s.DiskConfigAnnotations = v
 	return s
 }
 
@@ -1539,7 +1553,8 @@ type AddProductVersionConfigRequest struct {
 	// 父组件uid
 	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
 	// 配置信息value
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value     *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s AddProductVersionConfigRequest) String() string {
@@ -1572,6 +1587,11 @@ func (s *AddProductVersionConfigRequest) SetParentComponentVersionUID(v string) 
 
 func (s *AddProductVersionConfigRequest) SetValue(v string) *AddProductVersionConfigRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *AddProductVersionConfigRequest) SetValueType(v string) *AddProductVersionConfigRequest {
+	s.ValueType = &v
 	return s
 }
 
@@ -1652,68 +1672,180 @@ func (s *AddProductVersionConfigResponse) SetBody(v *AddProductVersionConfigResp
 	return s
 }
 
-type AuthorizeProductVersionRequest struct {
-	// 被授权者uid
-	Grantee *string `json:"grantee,omitempty" xml:"grantee,omitempty"`
+type BatchAddEnvironmentNodesRequest struct {
+	InstanceList []*InstanceInfo `json:"instanceList,omitempty" xml:"instanceList,omitempty" type:"Repeated"`
 }
 
-func (s AuthorizeProductVersionRequest) String() string {
+func (s BatchAddEnvironmentNodesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AuthorizeProductVersionRequest) GoString() string {
+func (s BatchAddEnvironmentNodesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AuthorizeProductVersionRequest) SetGrantee(v string) *AuthorizeProductVersionRequest {
-	s.Grantee = &v
+func (s *BatchAddEnvironmentNodesRequest) SetInstanceList(v []*InstanceInfo) *BatchAddEnvironmentNodesRequest {
+	s.InstanceList = v
 	return s
 }
 
-type AuthorizeProductVersionResponseBody struct {
-	// 错误码
+type BatchAddEnvironmentNodesResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误信息
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
-func (s AuthorizeProductVersionResponseBody) String() string {
+func (s BatchAddEnvironmentNodesResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AuthorizeProductVersionResponseBody) GoString() string {
+func (s BatchAddEnvironmentNodesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AuthorizeProductVersionResponseBody) SetCode(v string) *AuthorizeProductVersionResponseBody {
+func (s *BatchAddEnvironmentNodesResponseBody) SetCode(v string) *BatchAddEnvironmentNodesResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *AuthorizeProductVersionResponseBody) SetMsg(v string) *AuthorizeProductVersionResponseBody {
+func (s *BatchAddEnvironmentNodesResponseBody) SetMsg(v string) *BatchAddEnvironmentNodesResponseBody {
 	s.Msg = &v
 	return s
 }
 
-type AuthorizeProductVersionResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AuthorizeProductVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type BatchAddEnvironmentNodesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchAddEnvironmentNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s AuthorizeProductVersionResponse) String() string {
+func (s BatchAddEnvironmentNodesResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AuthorizeProductVersionResponse) GoString() string {
+func (s BatchAddEnvironmentNodesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *AuthorizeProductVersionResponse) SetHeaders(v map[string]*string) *AuthorizeProductVersionResponse {
+func (s *BatchAddEnvironmentNodesResponse) SetHeaders(v map[string]*string) *BatchAddEnvironmentNodesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *AuthorizeProductVersionResponse) SetBody(v *AuthorizeProductVersionResponseBody) *AuthorizeProductVersionResponse {
+func (s *BatchAddEnvironmentNodesResponse) SetBody(v *BatchAddEnvironmentNodesResponseBody) *BatchAddEnvironmentNodesResponse {
+	s.Body = v
+	return s
+}
+
+type BatchAddProductVersionConfigRequest struct {
+	ProductVersionConfigList []*BatchAddProductVersionConfigRequestProductVersionConfigList `json:"productVersionConfigList,omitempty" xml:"productVersionConfigList,omitempty" type:"Repeated"`
+}
+
+func (s BatchAddProductVersionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddProductVersionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddProductVersionConfigRequest) SetProductVersionConfigList(v []*BatchAddProductVersionConfigRequestProductVersionConfigList) *BatchAddProductVersionConfigRequest {
+	s.ProductVersionConfigList = v
+	return s
+}
+
+type BatchAddProductVersionConfigRequestProductVersionConfigList struct {
+	// 组件uid
+	ComponentVersionUID *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	// 配置说明
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 配置信息key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 父组件uid
+	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	// 配置信息value
+	Value     *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+}
+
+func (s BatchAddProductVersionConfigRequestProductVersionConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddProductVersionConfigRequestProductVersionConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetComponentVersionUID(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.ComponentVersionUID = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetDescription(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetName(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.Name = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetParentComponentVersionUID(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.ParentComponentVersionUID = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetValue(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.Value = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigRequestProductVersionConfigList) SetValueType(v string) *BatchAddProductVersionConfigRequestProductVersionConfigList {
+	s.ValueType = &v
+	return s
+}
+
+type BatchAddProductVersionConfigResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s BatchAddProductVersionConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddProductVersionConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddProductVersionConfigResponseBody) SetCode(v string) *BatchAddProductVersionConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigResponseBody) SetMsg(v string) *BatchAddProductVersionConfigResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type BatchAddProductVersionConfigResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchAddProductVersionConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddProductVersionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddProductVersionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddProductVersionConfigResponse) SetHeaders(v map[string]*string) *BatchAddProductVersionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddProductVersionConfigResponse) SetBody(v *BatchAddProductVersionConfigResponseBody) *BatchAddProductVersionConfigResponse {
 	s.Body = v
 	return s
 }
@@ -1895,6 +2027,123 @@ func (s *CreateEnvironmentResponse) SetHeaders(v map[string]*string) *CreateEnvi
 }
 
 func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *CreateEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnvironmentLicenseRequest struct {
+	// 企业名称
+	CompanyName *string `json:"companyName,omitempty" xml:"companyName,omitempty"`
+	// 联系方式
+	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// 机器指纹信息
+	MachineFingerprint *string `json:"machineFingerprint,omitempty" xml:"machineFingerprint,omitempty"`
+	// 使用场景
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	// 证书类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateEnvironmentLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetCompanyName(v string) *CreateEnvironmentLicenseRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetContact(v string) *CreateEnvironmentLicenseRequest {
+	s.Contact = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetMachineFingerprint(v string) *CreateEnvironmentLicenseRequest {
+	s.MachineFingerprint = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetScenario(v string) *CreateEnvironmentLicenseRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseRequest) SetType(v string) *CreateEnvironmentLicenseRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateEnvironmentLicenseResponseBody struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 业务数据
+	Data *CreateEnvironmentLicenseResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Msg  *string                                   `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s CreateEnvironmentLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentLicenseResponseBody) SetCode(v string) *CreateEnvironmentLicenseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseResponseBody) SetData(v *CreateEnvironmentLicenseResponseBodyData) *CreateEnvironmentLicenseResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseResponseBody) SetMsg(v string) *CreateEnvironmentLicenseResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type CreateEnvironmentLicenseResponseBodyData struct {
+	// license uid
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s CreateEnvironmentLicenseResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentLicenseResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentLicenseResponseBodyData) SetUid(v string) *CreateEnvironmentLicenseResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type CreateEnvironmentLicenseResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateEnvironmentLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnvironmentLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnvironmentLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnvironmentLicenseResponse) SetHeaders(v map[string]*string) *CreateEnvironmentLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnvironmentLicenseResponse) SetBody(v *CreateEnvironmentLicenseResponseBody) *CreateEnvironmentLicenseResponse {
 	s.Body = v
 	return s
 }
@@ -3359,6 +3608,195 @@ func (s *GetEnvironmentResponse) SetBody(v *GetEnvironmentResponseBody) *GetEnvi
 	return s
 }
 
+type GetEnvironmentLicenseResponseBody struct {
+	// 错误码
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetEnvironmentLicenseResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// 错误信息
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s GetEnvironmentLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponseBody) SetCode(v string) *GetEnvironmentLicenseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBody) SetData(v *GetEnvironmentLicenseResponseBodyData) *GetEnvironmentLicenseResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBody) SetMsg(v string) *GetEnvironmentLicenseResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type GetEnvironmentLicenseResponseBodyData struct {
+	// 过期时间
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// license内容
+	LicenseKey *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
+	// license配额
+	LicenseQuota *GetEnvironmentLicenseResponseBodyDataLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
+	// 拒绝原因
+	RejectReason *string `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// license uid
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s GetEnvironmentLicenseResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetExpireTime(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetLicenseKey(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetLicenseQuota(v *GetEnvironmentLicenseResponseBodyDataLicenseQuota) *GetEnvironmentLicenseResponseBodyData {
+	s.LicenseQuota = v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetRejectReason(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.RejectReason = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetStatus(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetType(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyData) SetUid(v string) *GetEnvironmentLicenseResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetEnvironmentLicenseResponseBodyDataLicenseQuota struct {
+	// 集群配额
+	ClusterQuota *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
+	// 组件配额
+	ComponentQuotas []*GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas `json:"componentQuotas,omitempty" xml:"componentQuotas,omitempty" type:"Repeated"`
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuota) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuota) SetClusterQuota(v *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota) *GetEnvironmentLicenseResponseBodyDataLicenseQuota {
+	s.ClusterQuota = v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuota) SetComponentQuotas(v []*GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) *GetEnvironmentLicenseResponseBodyDataLicenseQuota {
+	s.ComponentQuotas = v
+	return s
+}
+
+type GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota struct {
+	// cpu核数限制
+	CpuCoreLimit *int64 `json:"cpuCoreLimit,omitempty" xml:"cpuCoreLimit,omitempty"`
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota) SetCpuCoreLimit(v int64) *GetEnvironmentLicenseResponseBodyDataLicenseQuotaClusterQuota {
+	s.CpuCoreLimit = &v
+	return s
+}
+
+type GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas struct {
+	// 组件名
+	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	// 组件来源
+	ComponentSource *string `json:"componentSource,omitempty" xml:"componentSource,omitempty"`
+	// 实例数限制
+	InstanceLimit *int64 `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) SetComponentName(v string) *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) SetComponentSource(v string) *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas {
+	s.ComponentSource = &v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas) SetInstanceLimit(v int64) *GetEnvironmentLicenseResponseBodyDataLicenseQuotaComponentQuotas {
+	s.InstanceLimit = &v
+	return s
+}
+
+type GetEnvironmentLicenseResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetEnvironmentLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnvironmentLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentLicenseResponse) SetHeaders(v map[string]*string) *GetEnvironmentLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnvironmentLicenseResponse) SetBody(v *GetEnvironmentLicenseResponseBody) *GetEnvironmentLicenseResponse {
+	s.Body = v
+	return s
+}
+
 type GetEnvironmentNodeResponseBody struct {
 	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
 	Data *GetEnvironmentNodeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -3849,6 +4287,7 @@ type GetFoundationVersionResponseBodyData struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 底座功能列表
 	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	Labels   *string   `json:"labels,omitempty" xml:"labels,omitempty"`
 	// name，目前仅能是 “ADP 底座“
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// platforms
@@ -3878,6 +4317,11 @@ func (s *GetFoundationVersionResponseBodyData) SetDescription(v string) *GetFoun
 
 func (s *GetFoundationVersionResponseBodyData) SetFeatures(v []*string) *GetFoundationVersionResponseBodyData {
 	s.Features = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetLabels(v string) *GetFoundationVersionResponseBodyData {
+	s.Labels = &v
 	return s
 }
 
@@ -5452,6 +5896,267 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 	return s
 }
 
+type ListEnvironmentLicensesRequest struct {
+	// 页码
+	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// 页大小
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListEnvironmentLicensesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesRequest) SetPageNum(v int32) *ListEnvironmentLicensesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesRequest) SetPageSize(v int32) *ListEnvironmentLicensesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesRequest) SetType(v string) *ListEnvironmentLicensesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBody struct {
+	// 错误码
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 业务数据
+	Data *ListEnvironmentLicensesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// 错误信息
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s ListEnvironmentLicensesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBody) SetCode(v string) *ListEnvironmentLicensesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBody) SetData(v *ListEnvironmentLicensesResponseBodyData) *ListEnvironmentLicensesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBody) SetMsg(v string) *ListEnvironmentLicensesResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBodyData struct {
+	// license列表
+	List []*ListEnvironmentLicensesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// 页码
+	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// 页大小
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// 总数
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEnvironmentLicensesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBodyData) SetList(v []*ListEnvironmentLicensesResponseBodyDataList) *ListEnvironmentLicensesResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyData) SetPageNum(v int32) *ListEnvironmentLicensesResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyData) SetPageSize(v int32) *ListEnvironmentLicensesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyData) SetTotal(v int32) *ListEnvironmentLicensesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBodyDataList struct {
+	// 过期时间
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// license内容
+	LicenseKey *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
+	// license配额
+	LicenseQuota *ListEnvironmentLicensesResponseBodyDataListLicenseQuota `json:"licenseQuota,omitempty" xml:"licenseQuota,omitempty" type:"Struct"`
+	// 拒绝原因
+	RejectReason *string `json:"rejectReason,omitempty" xml:"rejectReason,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// license uid
+	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetExpireTime(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetLicenseKey(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetLicenseQuota(v *ListEnvironmentLicensesResponseBodyDataListLicenseQuota) *ListEnvironmentLicensesResponseBodyDataList {
+	s.LicenseQuota = v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetRejectReason(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.RejectReason = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetStatus(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetType(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataList) SetUid(v string) *ListEnvironmentLicensesResponseBodyDataList {
+	s.Uid = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBodyDataListLicenseQuota struct {
+	// 集群配额
+	ClusterQuota *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota `json:"clusterQuota,omitempty" xml:"clusterQuota,omitempty" type:"Struct"`
+	// 组件配额
+	ComponentQuotas []*ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas `json:"componentQuotas,omitempty" xml:"componentQuotas,omitempty" type:"Repeated"`
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuota) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuota) SetClusterQuota(v *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota) *ListEnvironmentLicensesResponseBodyDataListLicenseQuota {
+	s.ClusterQuota = v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuota) SetComponentQuotas(v []*ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) *ListEnvironmentLicensesResponseBodyDataListLicenseQuota {
+	s.ComponentQuotas = v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota struct {
+	// cpu核数限制
+	CpuCoreLimit *int32 `json:"cpuCoreLimit,omitempty" xml:"cpuCoreLimit,omitempty"`
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota) SetCpuCoreLimit(v int32) *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaClusterQuota {
+	s.CpuCoreLimit = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas struct {
+	// 组件名
+	ComponentName *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	// 组件来源
+	ComponentSource *string `json:"componentSource,omitempty" xml:"componentSource,omitempty"`
+	// 实例数限制
+	InstanceLimit *int32 `json:"instanceLimit,omitempty" xml:"instanceLimit,omitempty"`
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) SetComponentName(v string) *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) SetComponentSource(v string) *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas {
+	s.ComponentSource = &v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas) SetInstanceLimit(v int32) *ListEnvironmentLicensesResponseBodyDataListLicenseQuotaComponentQuotas {
+	s.InstanceLimit = &v
+	return s
+}
+
+type ListEnvironmentLicensesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEnvironmentLicensesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentLicensesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentLicensesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentLicensesResponse) SetHeaders(v map[string]*string) *ListEnvironmentLicensesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentLicensesResponse) SetBody(v *ListEnvironmentLicensesResponseBody) *ListEnvironmentLicensesResponse {
+	s.Body = v
+	return s
+}
+
 type ListEnvironmentNodesRequest struct {
 	PageNum  *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -6876,6 +7581,7 @@ type ListProductInstanceConfigsResponseBodyDataList struct {
 	ProductVersionUID          *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 	Uid                        *string `json:"uid,omitempty" xml:"uid,omitempty"`
 	Value                      *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                  *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 	VendorType                 *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
@@ -6964,6 +7670,11 @@ func (s *ListProductInstanceConfigsResponseBodyDataList) SetUid(v string) *ListP
 
 func (s *ListProductInstanceConfigsResponseBodyDataList) SetValue(v string) *ListProductInstanceConfigsResponseBodyDataList {
 	s.Value = &v
+	return s
+}
+
+func (s *ListProductInstanceConfigsResponseBodyDataList) SetValueType(v string) *ListProductInstanceConfigsResponseBodyDataList {
+	s.ValueType = &v
 	return s
 }
 
@@ -8152,6 +8863,7 @@ type PutProductInstanceConfigRequest struct {
 	ReleaseName               *string   `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 	Scope                     []*string `json:"scope,omitempty" xml:"scope,omitempty" type:"Repeated"`
 	Value                     *string   `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                 *string   `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s PutProductInstanceConfigRequest) String() string {
@@ -8219,6 +8931,11 @@ func (s *PutProductInstanceConfigRequest) SetScope(v []*string) *PutProductInsta
 
 func (s *PutProductInstanceConfigRequest) SetValue(v string) *PutProductInstanceConfigRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *PutProductInstanceConfigRequest) SetValueType(v string) *PutProductInstanceConfigRequest {
+	s.ValueType = &v
 	return s
 }
 
@@ -8995,6 +9712,8 @@ type UpdateProductVersionConfigRequest struct {
 	ParentComponentVersionUID *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
 	// 配置信息value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// value类型
+	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s UpdateProductVersionConfigRequest) String() string {
@@ -9027,6 +9746,11 @@ func (s *UpdateProductVersionConfigRequest) SetParentComponentVersionUID(v strin
 
 func (s *UpdateProductVersionConfigRequest) SetValue(v string) *UpdateProductVersionConfigRequest {
 	s.Value = &v
+	return s
+}
+
+func (s *UpdateProductVersionConfigRequest) SetValueType(v string) *UpdateProductVersionConfigRequest {
+	s.ValueType = &v
 	return s
 }
 
@@ -9446,6 +10170,10 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 		body["value"] = request.Value
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ValueType)) {
+		body["valueType"] = request.ValueType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -9470,11 +10198,11 @@ func (client *Client) AddProductVersionConfigWithOptions(uid *string, request *A
 	return _result, _err
 }
 
-func (client *Client) AuthorizeProductVersion(uid *string, request *AuthorizeProductVersionRequest) (_result *AuthorizeProductVersionResponse, _err error) {
+func (client *Client) BatchAddEnvironmentNodes(uid *string, request *BatchAddEnvironmentNodesRequest) (_result *BatchAddEnvironmentNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AuthorizeProductVersionResponse{}
-	_body, _err := client.AuthorizeProductVersionWithOptions(uid, request, headers, runtime)
+	_result = &BatchAddEnvironmentNodesResponse{}
+	_body, _err := client.BatchAddEnvironmentNodesWithOptions(uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9482,15 +10210,15 @@ func (client *Client) AuthorizeProductVersion(uid *string, request *AuthorizePro
 	return _result, _err
 }
 
-func (client *Client) AuthorizeProductVersionWithOptions(uid *string, request *AuthorizeProductVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthorizeProductVersionResponse, _err error) {
+func (client *Client) BatchAddEnvironmentNodesWithOptions(uid *string, request *BatchAddEnvironmentNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchAddEnvironmentNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	uid = openapiutil.GetEncodeParam(uid)
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Grantee)) {
-		body["grantee"] = request.Grantee
+	if !tea.BoolValue(util.IsUnset(request.InstanceList)) {
+		body["instanceList"] = request.InstanceList
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9498,17 +10226,64 @@ func (client *Client) AuthorizeProductVersionWithOptions(uid *string, request *A
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("AuthorizeProductVersion"),
+		Action:      tea.String("BatchAddEnvironmentNodes"),
 		Version:     tea.String("2021-07-20"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/authorizations"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/batch/nodes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AuthorizeProductVersionResponse{}
+	_result = &BatchAddEnvironmentNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddProductVersionConfig(uid *string, request *BatchAddProductVersionConfigRequest) (_result *BatchAddProductVersionConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchAddProductVersionConfigResponse{}
+	_body, _err := client.BatchAddProductVersionConfigWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchAddProductVersionConfigWithOptions(uid *string, request *BatchAddProductVersionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchAddProductVersionConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductVersionConfigList)) {
+		body["productVersionConfigList"] = request.ProductVersionConfigList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddProductVersionConfig"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/product-versions/" + tea.StringValue(uid) + "/batch/configs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchAddProductVersionConfigResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9592,6 +10367,69 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentLicense(uid *string, request *CreateEnvironmentLicenseRequest) (_result *CreateEnvironmentLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEnvironmentLicenseResponse{}
+	_body, _err := client.CreateEnvironmentLicenseWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnvironmentLicenseWithOptions(uid *string, request *CreateEnvironmentLicenseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEnvironmentLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		body["companyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contact)) {
+		body["contact"] = request.Contact
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineFingerprint)) {
+		body["machineFingerprint"] = request.MachineFingerprint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnvironmentLicense"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnvironmentLicenseResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10352,6 +11190,44 @@ func (client *Client) GetEnvironmentWithOptions(uid *string, headers map[string]
 	return _result, _err
 }
 
+func (client *Client) GetEnvironmentLicense(uid *string, licenseUID *string) (_result *GetEnvironmentLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEnvironmentLicenseResponse{}
+	_body, _err := client.GetEnvironmentLicenseWithOptions(uid, licenseUID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnvironmentLicenseWithOptions(uid *string, licenseUID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentLicenseResponse, _err error) {
+	uid = openapiutil.GetEncodeParam(uid)
+	licenseUID = openapiutil.GetEncodeParam(licenseUID)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnvironmentLicense"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses/" + tea.StringValue(licenseUID)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnvironmentLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEnvironmentNode(uid *string, nodeUID *string) (_result *GetEnvironmentNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10971,6 +11847,61 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentLicenses(uid *string, request *ListEnvironmentLicensesRequest) (_result *ListEnvironmentLicensesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEnvironmentLicensesResponse{}
+	_body, _err := client.ListEnvironmentLicensesWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentLicensesWithOptions(uid *string, request *ListEnvironmentLicensesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnvironmentLicensesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	uid = openapiutil.GetEncodeParam(uid)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentLicenses"),
+		Version:     tea.String("2021-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/environments/" + tea.StringValue(uid) + "/licenses"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentLicensesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11966,6 +12897,10 @@ func (client *Client) PutProductInstanceConfigWithOptions(request *PutProductIns
 		body["value"] = request.Value
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ValueType)) {
+		body["valueType"] = request.ValueType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -12501,6 +13436,10 @@ func (client *Client) UpdateProductVersionConfigWithOptions(uid *string, configU
 
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
 		body["value"] = request.Value
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValueType)) {
+		body["valueType"] = request.ValueType
 	}
 
 	req := &openapi.OpenApiRequest{
