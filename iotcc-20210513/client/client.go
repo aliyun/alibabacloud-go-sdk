@@ -584,8 +584,8 @@ func (s *CreateConnectionPoolResponse) SetBody(v *CreateConnectionPoolResponseBo
 
 type CreateDNSServiceRuleRequest struct {
 	AuthorizationRuleDescription *string `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
-	AuthorizationRuleName        *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
 	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleName           *string `json:"DNSServiceRuleName,omitempty" xml:"DNSServiceRuleName,omitempty"`
 	Destination                  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
@@ -607,13 +607,13 @@ func (s *CreateDNSServiceRuleRequest) SetAuthorizationRuleDescription(v string) 
 	return s
 }
 
-func (s *CreateDNSServiceRuleRequest) SetAuthorizationRuleName(v string) *CreateDNSServiceRuleRequest {
-	s.AuthorizationRuleName = &v
+func (s *CreateDNSServiceRuleRequest) SetClientToken(v string) *CreateDNSServiceRuleRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *CreateDNSServiceRuleRequest) SetClientToken(v string) *CreateDNSServiceRuleRequest {
-	s.ClientToken = &v
+func (s *CreateDNSServiceRuleRequest) SetDNSServiceRuleName(v string) *CreateDNSServiceRuleRequest {
+	s.DNSServiceRuleName = &v
 	return s
 }
 
@@ -6122,16 +6122,16 @@ func (s *UpdateConnectionPoolAttributeResponse) SetBody(v *UpdateConnectionPoolA
 }
 
 type UpdateDNSServiceRuleAttributeRequest struct {
-	AuthorizationRuleDescription *string `json:"AuthorizationRuleDescription,omitempty" xml:"AuthorizationRuleDescription,omitempty"`
-	AuthorizationRuleName        *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DNSServiceRuleId             *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
-	Destination                  *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	DryRun                       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	IoTCloudConnectorId          *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceType                  *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Source                       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	AuthorizationRuleName     *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DNSServiceRuleDescription *string `json:"DNSServiceRuleDescription,omitempty" xml:"DNSServiceRuleDescription,omitempty"`
+	DNSServiceRuleId          *string `json:"DNSServiceRuleId,omitempty" xml:"DNSServiceRuleId,omitempty"`
+	Destination               *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId       *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s UpdateDNSServiceRuleAttributeRequest) String() string {
@@ -6142,11 +6142,6 @@ func (s UpdateDNSServiceRuleAttributeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDNSServiceRuleAttributeRequest) SetAuthorizationRuleDescription(v string) *UpdateDNSServiceRuleAttributeRequest {
-	s.AuthorizationRuleDescription = &v
-	return s
-}
-
 func (s *UpdateDNSServiceRuleAttributeRequest) SetAuthorizationRuleName(v string) *UpdateDNSServiceRuleAttributeRequest {
 	s.AuthorizationRuleName = &v
 	return s
@@ -6154,6 +6149,11 @@ func (s *UpdateDNSServiceRuleAttributeRequest) SetAuthorizationRuleName(v string
 
 func (s *UpdateDNSServiceRuleAttributeRequest) SetClientToken(v string) *UpdateDNSServiceRuleAttributeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeRequest) SetDNSServiceRuleDescription(v string) *UpdateDNSServiceRuleAttributeRequest {
+	s.DNSServiceRuleDescription = &v
 	return s
 }
 
@@ -7315,12 +7315,12 @@ func (client *Client) CreateDNSServiceRuleWithOptions(request *CreateDNSServiceR
 		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
-		query["AuthorizationRuleName"] = request.AuthorizationRuleName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleName)) {
+		query["DNSServiceRuleName"] = request.DNSServiceRuleName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Destination)) {
@@ -10367,16 +10367,16 @@ func (client *Client) UpdateDNSServiceRuleAttributeWithOptions(request *UpdateDN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleDescription)) {
-		query["AuthorizationRuleDescription"] = request.AuthorizationRuleDescription
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleName)) {
 		query["AuthorizationRuleName"] = request.AuthorizationRuleName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleDescription)) {
+		query["DNSServiceRuleDescription"] = request.DNSServiceRuleDescription
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DNSServiceRuleId)) {
