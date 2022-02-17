@@ -295,6 +295,75 @@ func (s *AddVMIntoServiceMeshResponse) SetBody(v *AddVMIntoServiceMeshResponseBo
 	return s
 }
 
+type CreateASMGatewayRequest struct {
+	Body             *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s CreateASMGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateASMGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateASMGatewayRequest) SetBody(v string) *CreateASMGatewayRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *CreateASMGatewayRequest) SetIstioGatewayName(v string) *CreateASMGatewayRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateASMGatewayRequest) SetServiceMeshId(v string) *CreateASMGatewayRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type CreateASMGatewayResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateASMGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateASMGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateASMGatewayResponseBody) SetRequestId(v string) *CreateASMGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateASMGatewayResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateASMGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateASMGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateASMGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateASMGatewayResponse) SetHeaders(v map[string]*string) *CreateASMGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateASMGatewayResponse) SetBody(v *CreateASMGatewayResponseBody) *CreateASMGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type CreateExtensionProviderRequest struct {
 	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -7875,6 +7944,75 @@ func (s *SetServiceRegistrySourceResponse) SetBody(v *SetServiceRegistrySourceRe
 	return s
 }
 
+type UpdateASMGatewayRequest struct {
+	Body             *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateASMGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMGatewayRequest) SetBody(v string) *UpdateASMGatewayRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *UpdateASMGatewayRequest) SetIstioGatewayName(v string) *UpdateASMGatewayRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *UpdateASMGatewayRequest) SetServiceMeshId(v string) *UpdateASMGatewayRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateASMGatewayResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateASMGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMGatewayResponseBody) SetRequestId(v string) *UpdateASMGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateASMGatewayResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateASMGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateASMGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMGatewayResponse) SetHeaders(v map[string]*string) *UpdateASMGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateASMGatewayResponse) SetBody(v *UpdateASMGatewayResponseBody) *UpdateASMGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateASMGatewayImportedServicesRequest struct {
 	ASMGatewayName   *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
 	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -9480,6 +9618,58 @@ func (client *Client) AddVMIntoServiceMesh(request *AddVMIntoServiceMeshRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVMIntoServiceMeshResponse{}
 	_body, _err := client.AddVMIntoServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateASMGatewayWithOptions(request *CreateASMGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateASMGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateASMGateway"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateASMGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateASMGateway(request *CreateASMGatewayRequest) (_result *CreateASMGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateASMGatewayResponse{}
+	_body, _err := client.CreateASMGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12681,6 +12871,58 @@ func (client *Client) SetServiceRegistrySource(request *SetServiceRegistrySource
 	runtime := &util.RuntimeOptions{}
 	_result = &SetServiceRegistrySourceResponse{}
 	_body, _err := client.SetServiceRegistrySourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateASMGatewayWithOptions(request *UpdateASMGatewayRequest, runtime *util.RuntimeOptions) (_result *UpdateASMGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateASMGateway"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateASMGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateASMGateway(request *UpdateASMGatewayRequest) (_result *UpdateASMGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateASMGatewayResponse{}
+	_body, _err := client.UpdateASMGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
