@@ -2946,6 +2946,504 @@ func (s *GetSceneBuildTaskStatusResponse) SetBody(v *GetSceneBuildTaskStatusResp
 	return s
 }
 
+type GetScenePreviewDataRequest struct {
+	// 自定义oss域名（可为cdn域名）
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 是否开启自用资源访问（默认false）
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 预览token
+	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+	// 是否返回热点数据（默认false）
+	ShowTag *bool `json:"ShowTag,omitempty" xml:"ShowTag,omitempty"`
+}
+
+func (s GetScenePreviewDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataRequest) SetDomain(v string) *GetScenePreviewDataRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *GetScenePreviewDataRequest) SetEnabled(v bool) *GetScenePreviewDataRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetScenePreviewDataRequest) SetPreviewToken(v string) *GetScenePreviewDataRequest {
+	s.PreviewToken = &v
+	return s
+}
+
+func (s *GetScenePreviewDataRequest) SetShowTag(v bool) *GetScenePreviewDataRequest {
+	s.ShowTag = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBody struct {
+	// 返回码
+	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetScenePreviewDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBody) SetCode(v int64) *GetScenePreviewDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBody) SetData(v *GetScenePreviewDataResponseBodyData) *GetScenePreviewDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBody) SetMessage(v string) *GetScenePreviewDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBody) SetRequestId(v string) *GetScenePreviewDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBody) SetSuccess(v bool) *GetScenePreviewDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyData struct {
+	// 模型数据
+	Model *GetScenePreviewDataResponseBodyDataModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// 热点数据
+	Tags []*GetScenePreviewDataResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetScenePreviewDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyData) SetModel(v *GetScenePreviewDataResponseBodyDataModel) *GetScenePreviewDataResponseBodyData {
+	s.Model = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyData) SetTags(v []*GetScenePreviewDataResponseBodyDataTags) *GetScenePreviewDataResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataModel struct {
+	// 模型地址
+	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
+	// 点位数据
+	PanoList []*GetScenePreviewDataResponseBodyDataModelPanoList `json:"PanoList,omitempty" xml:"PanoList,omitempty" type:"Repeated"`
+	// 模型的贴图路径
+	TextureModelPath *string `json:"TextureModelPath,omitempty" xml:"TextureModelPath,omitempty"`
+	// 漫游后预览图片路径
+	TexturePanoPath *string `json:"TexturePanoPath,omitempty" xml:"TexturePanoPath,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModel) SetModelPath(v string) *GetScenePreviewDataResponseBodyDataModel {
+	s.ModelPath = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModel) SetPanoList(v []*GetScenePreviewDataResponseBodyDataModelPanoList) *GetScenePreviewDataResponseBodyDataModel {
+	s.PanoList = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModel) SetTextureModelPath(v string) *GetScenePreviewDataResponseBodyDataModel {
+	s.TextureModelPath = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModel) SetTexturePanoPath(v string) *GetScenePreviewDataResponseBodyDataModel {
+	s.TexturePanoPath = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataModelPanoList struct {
+	// 当前房间的所有点位
+	CurRoomPicList []*string `json:"CurRoomPicList,omitempty" xml:"CurRoomPicList,omitempty" type:"Repeated"`
+	// 当前点位是否渲染，false不渲染，场景无法跳转
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// 楼层号
+	FloorIdx *string `json:"FloorIdx,omitempty" xml:"FloorIdx,omitempty"`
+	// 点位ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 单房间多图情况下，是否为主图，默认true
+	MainImage *bool `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	// 当前房间邻近可视的点位id
+	Neighbours []*string `json:"Neighbours,omitempty" xml:"Neighbours,omitempty" type:"Repeated"`
+	// 位置数据
+	Position *GetScenePreviewDataResponseBodyDataModelPanoListPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Struct"`
+	// 一个名称，无实际意义
+	RawName *string `json:"RawName,omitempty" xml:"RawName,omitempty"`
+	// 全景贴图路径
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// 房间号
+	RoomIdx *string `json:"RoomIdx,omitempty" xml:"RoomIdx,omitempty"`
+	// 子场景ID
+	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
+	// token
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 图片虚拟ID
+	VirtualId *string `json:"VirtualId,omitempty" xml:"VirtualId,omitempty"`
+	// 图片名称
+	VirtualName *string `json:"VirtualName,omitempty" xml:"VirtualName,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataModelPanoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataModelPanoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetCurRoomPicList(v []*string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.CurRoomPicList = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetEnabled(v bool) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetFloorIdx(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.FloorIdx = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetId(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetMainImage(v bool) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.MainImage = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetNeighbours(v []*string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Neighbours = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetPosition(v *GetScenePreviewDataResponseBodyDataModelPanoListPosition) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Position = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetRawName(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.RawName = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetResource(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Resource = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetRoomIdx(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.RoomIdx = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetSubSceneId(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.SubSceneId = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetToken(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.Token = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetVirtualId(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.VirtualId = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoList) SetVirtualName(v string) *GetScenePreviewDataResponseBodyDataModelPanoList {
+	s.VirtualName = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataModelPanoListPosition struct {
+	// 当前点位在场景中的旋转四元素
+	Rotation []*float64 `json:"Rotation,omitempty" xml:"Rotation,omitempty" type:"Repeated"`
+	// 当前点位在场景中的坐标
+	Spot []*float64 `json:"Spot,omitempty" xml:"Spot,omitempty" type:"Repeated"`
+	// 当前子场景名标签在场景中的坐标
+	Viewpoint []*float64 `json:"Viewpoint,omitempty" xml:"Viewpoint,omitempty" type:"Repeated"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataModelPanoListPosition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataModelPanoListPosition) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoListPosition) SetRotation(v []*float64) *GetScenePreviewDataResponseBodyDataModelPanoListPosition {
+	s.Rotation = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoListPosition) SetSpot(v []*float64) *GetScenePreviewDataResponseBodyDataModelPanoListPosition {
+	s.Spot = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataModelPanoListPosition) SetViewpoint(v []*float64) *GetScenePreviewDataResponseBodyDataModelPanoListPosition {
+	s.Viewpoint = v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataTags struct {
+	// 配置
+	Config *GetScenePreviewDataResponseBodyDataTagsConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// 标签ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 坐标
+	Position         []*float64 `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	PositionPanoCube []*float64 `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
+	// 热点类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTags) SetConfig(v *GetScenePreviewDataResponseBodyDataTagsConfig) *GetScenePreviewDataResponseBodyDataTags {
+	s.Config = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTags) SetId(v string) *GetScenePreviewDataResponseBodyDataTags {
+	s.Id = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTags) SetPosition(v []*float64) *GetScenePreviewDataResponseBodyDataTags {
+	s.Position = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTags) SetPositionPanoCube(v []*float64) *GetScenePreviewDataResponseBodyDataTags {
+	s.PositionPanoCube = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTags) SetType(v string) *GetScenePreviewDataResponseBodyDataTags {
+	s.Type = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataTagsConfig struct {
+	// 背景色
+	BackgroundColor *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// 按钮配置
+	ButtonConfig *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig `json:"ButtonConfig,omitempty" xml:"ButtonConfig,omitempty" type:"Struct"`
+	// 内容
+	Content           *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	FormImgSize       []*int64 `json:"FormImgSize,omitempty" xml:"FormImgSize,omitempty" type:"Repeated"`
+	FormJumpType      *bool    `json:"FormJumpType,omitempty" xml:"FormJumpType,omitempty"`
+	FormSelectImgType *string  `json:"FormSelectImgType,omitempty" xml:"FormSelectImgType,omitempty"`
+	// 图片链接
+	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// 是否在鸟瞰模式下显示
+	IsTagVisibleBy3d *bool `json:"IsTagVisibleBy3d,omitempty" xml:"IsTagVisibleBy3d,omitempty"`
+	// 超链接
+	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// 点位ID
+	PanoId *string `json:"PanoId,omitempty" xml:"PanoId,omitempty"`
+	// 坐标
+	Position         []*float64 `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	PositionPanoCube []*float64 `json:"PositionPanoCube,omitempty" xml:"PositionPanoCube,omitempty" type:"Repeated"`
+	RelatedPanoIds   []*string  `json:"RelatedPanoIds,omitempty" xml:"RelatedPanoIds,omitempty" type:"Repeated"`
+	// 场景ID
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 视频链接
+	Video *string `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataTagsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataTagsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetBackgroundColor(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.BackgroundColor = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetButtonConfig(v *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.ButtonConfig = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetContent(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetFormImgSize(v []*int64) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.FormImgSize = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetFormJumpType(v bool) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.FormJumpType = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetFormSelectImgType(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.FormSelectImgType = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetImages(v []*string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Images = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetIsTagVisibleBy3d(v bool) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.IsTagVisibleBy3d = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetLink(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Link = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetPanoId(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.PanoId = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetPosition(v []*float64) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Position = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetPositionPanoCube(v []*float64) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.PositionPanoCube = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetRelatedPanoIds(v []*string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.RelatedPanoIds = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetSceneId(v int64) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.SceneId = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetTitle(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Title = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfig) SetVideo(v string) *GetScenePreviewDataResponseBodyDataTagsConfig {
+	s.Video = &v
+	return s
+}
+
+type GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig struct {
+	CustomText *string `json:"CustomText,omitempty" xml:"CustomText,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig) SetCustomText(v string) *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig {
+	s.CustomText = &v
+	return s
+}
+
+func (s *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig) SetType(v string) *GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig {
+	s.Type = &v
+	return s
+}
+
+type GetScenePreviewDataResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetScenePreviewDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetScenePreviewDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewDataResponse) SetHeaders(v map[string]*string) *GetScenePreviewDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScenePreviewDataResponse) SetBody(v *GetScenePreviewDataResponseBody) *GetScenePreviewDataResponse {
+	s.Body = v
+	return s
+}
+
 type GetScenePreviewInfoRequest struct {
 	// 自定义oss域名（可为cdn域名）
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
@@ -7655,6 +8153,62 @@ func (client *Client) GetSceneBuildTaskStatus(request *GetSceneBuildTaskStatusRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSceneBuildTaskStatusResponse{}
 	_body, _err := client.GetSceneBuildTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewDataWithOptions(request *GetScenePreviewDataRequest, runtime *util.RuntimeOptions) (_result *GetScenePreviewDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowTag)) {
+		query["ShowTag"] = request.ShowTag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetScenePreviewData"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScenePreviewDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewData(request *GetScenePreviewDataRequest) (_result *GetScenePreviewDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetScenePreviewDataResponse{}
+	_body, _err := client.GetScenePreviewDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
