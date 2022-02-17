@@ -1,3 +1,6 @@
+2022-02-17 Version: v1.0.5
+- AMP version.
+
 2022-01-17 Version: v1.0.4
 - Generated golang 2018-05-10 for Cdn.
 

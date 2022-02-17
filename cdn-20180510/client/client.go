@@ -1006,6 +1006,75 @@ func (s *CreateCdnCertificateSigningRequestResponse) SetBody(v *CreateCdnCertifi
 	return s
 }
 
+type CreateCdnComputeDomainRequest struct {
+	Coverage   *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s CreateCdnComputeDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCdnComputeDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCdnComputeDomainRequest) SetCoverage(v string) *CreateCdnComputeDomainRequest {
+	s.Coverage = &v
+	return s
+}
+
+func (s *CreateCdnComputeDomainRequest) SetDomainName(v string) *CreateCdnComputeDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CreateCdnComputeDomainRequest) SetOwnerId(v int64) *CreateCdnComputeDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type CreateCdnComputeDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCdnComputeDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCdnComputeDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCdnComputeDomainResponseBody) SetRequestId(v string) *CreateCdnComputeDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCdnComputeDomainResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateCdnComputeDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCdnComputeDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCdnComputeDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCdnComputeDomainResponse) SetHeaders(v map[string]*string) *CreateCdnComputeDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCdnComputeDomainResponse) SetBody(v *CreateCdnComputeDomainResponseBody) *CreateCdnComputeDomainResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCdnDeliverTaskRequest struct {
 	Deliver    *string `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -2638,6 +2707,157 @@ func (s *DescribeCdnCertificateListResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeCdnCertificateListResponse) SetBody(v *DescribeCdnCertificateListResponseBody) *DescribeCdnCertificateListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCdnComputeUserDomainRequest struct {
+	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCdnComputeUserDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnComputeUserDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnComputeUserDomainRequest) SetOwnerId(v int64) *DescribeCdnComputeUserDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainRequest) SetPageNumber(v int32) *DescribeCdnComputeUserDomainRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainRequest) SetPageSize(v int32) *DescribeCdnComputeUserDomainRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCdnComputeUserDomainResponseBody struct {
+	Domains    *DescribeCdnComputeUserDomainResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCdnComputeUserDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnComputeUserDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBody) SetDomains(v *DescribeCdnComputeUserDomainResponseBodyDomains) *DescribeCdnComputeUserDomainResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBody) SetPageNumber(v int64) *DescribeCdnComputeUserDomainResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBody) SetPageSize(v int64) *DescribeCdnComputeUserDomainResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBody) SetRequestId(v string) *DescribeCdnComputeUserDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBody) SetTotalCount(v int64) *DescribeCdnComputeUserDomainResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCdnComputeUserDomainResponseBodyDomains struct {
+	PageData []*DescribeCdnComputeUserDomainResponseBodyDomainsPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCdnComputeUserDomainResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnComputeUserDomainResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomains) SetPageData(v []*DescribeCdnComputeUserDomainResponseBodyDomainsPageData) *DescribeCdnComputeUserDomainResponseBodyDomains {
+	s.PageData = v
+	return s
+}
+
+type DescribeCdnComputeUserDomainResponseBodyDomainsPageData struct {
+	Cname        *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	GmtCreated   *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+}
+
+func (s DescribeCdnComputeUserDomainResponseBodyDomainsPageData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnComputeUserDomainResponseBodyDomainsPageData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomainsPageData) SetCname(v string) *DescribeCdnComputeUserDomainResponseBodyDomainsPageData {
+	s.Cname = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomainsPageData) SetDomainName(v string) *DescribeCdnComputeUserDomainResponseBodyDomainsPageData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomainsPageData) SetDomainStatus(v string) *DescribeCdnComputeUserDomainResponseBodyDomainsPageData {
+	s.DomainStatus = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomainsPageData) SetGmtCreated(v string) *DescribeCdnComputeUserDomainResponseBodyDomainsPageData {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponseBodyDomainsPageData) SetGmtModified(v string) *DescribeCdnComputeUserDomainResponseBodyDomainsPageData {
+	s.GmtModified = &v
+	return s
+}
+
+type DescribeCdnComputeUserDomainResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeCdnComputeUserDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCdnComputeUserDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdnComputeUserDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdnComputeUserDomainResponse) SetHeaders(v map[string]*string) *DescribeCdnComputeUserDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdnComputeUserDomainResponse) SetBody(v *DescribeCdnComputeUserDomainResponseBody) *DescribeCdnComputeUserDomainResponse {
 	s.Body = v
 	return s
 }
@@ -22552,6 +22772,58 @@ func (client *Client) CreateCdnCertificateSigningRequest(request *CreateCdnCerti
 	return _result, _err
 }
 
+func (client *Client) CreateCdnComputeDomainWithOptions(request *CreateCdnComputeDomainRequest, runtime *util.RuntimeOptions) (_result *CreateCdnComputeDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Coverage)) {
+		query["Coverage"] = request.Coverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCdnComputeDomain"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCdnComputeDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCdnComputeDomain(request *CreateCdnComputeDomainRequest) (_result *CreateCdnComputeDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCdnComputeDomainResponse{}
+	_body, _err := client.CreateCdnComputeDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCdnDeliverTaskWithOptions(request *CreateCdnDeliverTaskRequest, runtime *util.RuntimeOptions) (_result *CreateCdnDeliverTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23529,6 +23801,58 @@ func (client *Client) DescribeCdnCertificateList(request *DescribeCdnCertificate
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnCertificateListResponse{}
 	_body, _err := client.DescribeCdnCertificateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnComputeUserDomainWithOptions(request *DescribeCdnComputeUserDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnComputeUserDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdnComputeUserDomain"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCdnComputeUserDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCdnComputeUserDomain(request *DescribeCdnComputeUserDomainRequest) (_result *DescribeCdnComputeUserDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdnComputeUserDomainResponse{}
+	_body, _err := client.DescribeCdnComputeUserDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
