@@ -984,6 +984,8 @@ type SubmitCopyrightExtractRequest struct {
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	// 输入文件oss地址
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// url链接
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 用户数据
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
@@ -1003,6 +1005,11 @@ func (s *SubmitCopyrightExtractRequest) SetCallBack(v string) *SubmitCopyrightEx
 
 func (s *SubmitCopyrightExtractRequest) SetInput(v string) *SubmitCopyrightExtractRequest {
 	s.Input = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractRequest) SetUrl(v string) *SubmitCopyrightExtractRequest {
+	s.Url = &v
 	return s
 }
 
@@ -1385,6 +1392,10 @@ type SubmitTraceAbRequest struct {
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
 	// 溯源水印ab流处理输出
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// 嵌入水印开始时间
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 嵌入水印总时长
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// 外部url链接(Input和url二选一)
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 用户自定义数据，最大长度1024个字节
@@ -1416,6 +1427,16 @@ func (s *SubmitTraceAbRequest) SetLevel(v int64) *SubmitTraceAbRequest {
 
 func (s *SubmitTraceAbRequest) SetOutput(v string) *SubmitTraceAbRequest {
 	s.Output = &v
+	return s
+}
+
+func (s *SubmitTraceAbRequest) SetStartTime(v int64) *SubmitTraceAbRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitTraceAbRequest) SetTotalTime(v int64) *SubmitTraceAbRequest {
+	s.TotalTime = &v
 	return s
 }
 
@@ -1521,6 +1542,8 @@ type SubmitTraceExtractRequest struct {
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	// 输入文件oss地址
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// url链接
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 用户数据
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
@@ -1540,6 +1563,11 @@ func (s *SubmitTraceExtractRequest) SetCallBack(v string) *SubmitTraceExtractReq
 
 func (s *SubmitTraceExtractRequest) SetInput(v string) *SubmitTraceExtractRequest {
 	s.Input = &v
+	return s
+}
+
+func (s *SubmitTraceExtractRequest) SetUrl(v string) *SubmitTraceExtractRequest {
+	s.Url = &v
 	return s
 }
 
@@ -2202,6 +2230,10 @@ func (client *Client) SubmitCopyrightExtractWithOptions(request *SubmitCopyright
 		body["Input"] = request.Input
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		body["UserData"] = request.UserData
 	}
@@ -2408,6 +2440,14 @@ func (client *Client) SubmitTraceAbWithOptions(request *SubmitTraceAbRequest, he
 		body["Output"] = request.Output
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalTime)) {
+		body["TotalTime"] = request.TotalTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		body["Url"] = request.Url
 	}
@@ -2464,6 +2504,10 @@ func (client *Client) SubmitTraceExtractWithOptions(request *SubmitTraceExtractR
 
 	if !tea.BoolValue(util.IsUnset(request.Input)) {
 		body["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
