@@ -857,6 +857,470 @@ func (s *AddGatewayDomainResponse) SetBody(v *AddGatewayDomainResponseBody) *Add
 	return s
 }
 
+type AddGatewayRouteRequest struct {
+	AcceptLanguage     *string                                   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DestinationType    *string                                   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
+	DomainId           *int64                                    `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdListJSON   *string                                   `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	GatewayId          *int64                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                   `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Name               *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates         *AddGatewayRouteRequestPredicates         `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
+	RedirectJSON       *AddGatewayRouteRequestRedirectJSON       `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
+	RouteOrder         *int32                                    `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	Services           []*AddGatewayRouteRequestServices         `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+}
+
+func (s AddGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequest) SetAcceptLanguage(v string) *AddGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetDestinationType(v string) *AddGatewayRouteRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetDirectResponseJSON(v *AddGatewayRouteRequestDirectResponseJSON) *AddGatewayRouteRequest {
+	s.DirectResponseJSON = v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetDomainId(v int64) *AddGatewayRouteRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetDomainIdListJSON(v string) *AddGatewayRouteRequest {
+	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetGatewayId(v int64) *AddGatewayRouteRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetGatewayUniqueId(v string) *AddGatewayRouteRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetName(v string) *AddGatewayRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetPredicates(v *AddGatewayRouteRequestPredicates) *AddGatewayRouteRequest {
+	s.Predicates = v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetRedirectJSON(v *AddGatewayRouteRequestRedirectJSON) *AddGatewayRouteRequest {
+	s.RedirectJSON = v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetRouteOrder(v int32) *AddGatewayRouteRequest {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetServices(v []*AddGatewayRouteRequestServices) *AddGatewayRouteRequest {
+	s.Services = v
+	return s
+}
+
+type AddGatewayRouteRequestDirectResponseJSON struct {
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Code *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s AddGatewayRouteRequestDirectResponseJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestDirectResponseJSON) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestDirectResponseJSON) SetBody(v string) *AddGatewayRouteRequestDirectResponseJSON {
+	s.Body = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestDirectResponseJSON) SetCode(v int64) *AddGatewayRouteRequestDirectResponseJSON {
+	s.Code = &v
+	return s
+}
+
+type AddGatewayRouteRequestPredicates struct {
+	HeaderPredicates []*AddGatewayRouteRequestPredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                           `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *AddGatewayRouteRequestPredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*AddGatewayRouteRequestPredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s AddGatewayRouteRequestPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestPredicates) SetHeaderPredicates(v []*AddGatewayRouteRequestPredicatesHeaderPredicates) *AddGatewayRouteRequestPredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicates) SetMethodPredicates(v []*string) *AddGatewayRouteRequestPredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicates) SetPathPredicates(v *AddGatewayRouteRequestPredicatesPathPredicates) *AddGatewayRouteRequestPredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicates) SetQueryPredicates(v []*AddGatewayRouteRequestPredicatesQueryPredicates) *AddGatewayRouteRequestPredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type AddGatewayRouteRequestPredicatesHeaderPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddGatewayRouteRequestPredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestPredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestPredicatesHeaderPredicates) SetKey(v string) *AddGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesHeaderPredicates) SetType(v string) *AddGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesHeaderPredicates) SetValue(v string) *AddGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type AddGatewayRouteRequestPredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddGatewayRouteRequestPredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestPredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestPredicatesPathPredicates) SetIgnoreCase(v bool) *AddGatewayRouteRequestPredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesPathPredicates) SetPath(v string) *AddGatewayRouteRequestPredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesPathPredicates) SetType(v string) *AddGatewayRouteRequestPredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type AddGatewayRouteRequestPredicatesQueryPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddGatewayRouteRequestPredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestPredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestPredicatesQueryPredicates) SetKey(v string) *AddGatewayRouteRequestPredicatesQueryPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesQueryPredicates) SetType(v string) *AddGatewayRouteRequestPredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestPredicatesQueryPredicates) SetValue(v string) *AddGatewayRouteRequestPredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type AddGatewayRouteRequestRedirectJSON struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s AddGatewayRouteRequestRedirectJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestRedirectJSON) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestRedirectJSON) SetCode(v int32) *AddGatewayRouteRequestRedirectJSON {
+	s.Code = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestRedirectJSON) SetHost(v string) *AddGatewayRouteRequestRedirectJSON {
+	s.Host = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestRedirectJSON) SetPath(v string) *AddGatewayRouteRequestRedirectJSON {
+	s.Path = &v
+	return s
+}
+
+type AddGatewayRouteRequestServices struct {
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Percent    *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	ServiceId  *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s AddGatewayRouteRequestServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteRequestServices) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteRequestServices) SetGroupName(v string) *AddGatewayRouteRequestServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetName(v string) *AddGatewayRouteRequestServices {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetNamespace(v string) *AddGatewayRouteRequestServices {
+	s.Namespace = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetPercent(v int32) *AddGatewayRouteRequestServices {
+	s.Percent = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetServiceId(v int64) *AddGatewayRouteRequestServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetSourceType(v string) *AddGatewayRouteRequestServices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRequestServices {
+	s.Version = &v
+	return s
+}
+
+type AddGatewayRouteShrinkRequest struct {
+	AcceptLanguage           *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DestinationType          *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
+	DomainId                 *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdListJSON         *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PredicatesShrink         *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	RedirectJSONShrink       *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
+	RouteOrder               *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	ServicesShrink           *string `json:"Services,omitempty" xml:"Services,omitempty"`
+}
+
+func (s AddGatewayRouteShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetAcceptLanguage(v string) *AddGatewayRouteShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetDestinationType(v string) *AddGatewayRouteShrinkRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetDirectResponseJSONShrink(v string) *AddGatewayRouteShrinkRequest {
+	s.DirectResponseJSONShrink = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetDomainId(v int64) *AddGatewayRouteShrinkRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetDomainIdListJSON(v string) *AddGatewayRouteShrinkRequest {
+	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetGatewayId(v int64) *AddGatewayRouteShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetGatewayUniqueId(v string) *AddGatewayRouteShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetName(v string) *AddGatewayRouteShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetPredicatesShrink(v string) *AddGatewayRouteShrinkRequest {
+	s.PredicatesShrink = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetRedirectJSONShrink(v string) *AddGatewayRouteShrinkRequest {
+	s.RedirectJSONShrink = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetRouteOrder(v int32) *AddGatewayRouteShrinkRequest {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetServicesShrink(v string) *AddGatewayRouteShrinkRequest {
+	s.ServicesShrink = &v
+	return s
+}
+
+type AddGatewayRouteResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteResponseBody) SetCode(v int32) *AddGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddGatewayRouteResponseBody) SetData(v int64) *AddGatewayRouteResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddGatewayRouteResponseBody) SetHttpStatusCode(v int32) *AddGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddGatewayRouteResponseBody) SetMessage(v string) *AddGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddGatewayRouteResponseBody) SetRequestId(v string) *AddGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddGatewayRouteResponseBody) SetSuccess(v bool) *AddGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddGatewayRouteResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRouteResponse) SetHeaders(v map[string]*string) *AddGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGatewayRouteResponse) SetBody(v *AddGatewayRouteResponseBody) *AddGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
 type AddGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -1537,6 +2001,106 @@ func (s *AddServiceSourceResponse) SetHeaders(v map[string]*string) *AddServiceS
 }
 
 func (s *AddServiceSourceResponse) SetBody(v *AddServiceSourceResponseBody) *AddServiceSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ApplyGatewayRouteRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+}
+
+func (s ApplyGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyGatewayRouteRequest) SetAcceptLanguage(v string) *ApplyGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteRequest) SetGatewayUniqueId(v string) *ApplyGatewayRouteRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteRequest) SetRouteId(v string) *ApplyGatewayRouteRequest {
+	s.RouteId = &v
+	return s
+}
+
+type ApplyGatewayRouteResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ApplyGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetCode(v int32) *ApplyGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetData(v bool) *ApplyGatewayRouteResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetHttpStatusCode(v int32) *ApplyGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetMessage(v string) *ApplyGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetRequestId(v string) *ApplyGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponseBody) SetSuccess(v bool) *ApplyGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApplyGatewayRouteResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApplyGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyGatewayRouteResponse) SetHeaders(v map[string]*string) *ApplyGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyGatewayRouteResponse) SetBody(v *ApplyGatewayRouteResponseBody) *ApplyGatewayRouteResponse {
 	s.Body = v
 	return s
 }
@@ -2945,6 +3509,508 @@ func (s *CreateNacosServiceResponse) SetBody(v *CreateNacosServiceResponseBody) 
 	return s
 }
 
+type CreateOrUpdateSwimmingLaneRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 是否开启。
+	Enable      *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// json string
+	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	// SwimmingLane
+	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 更新时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 所属泳道组
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 主键ID。由SP生成(数据库自增主键)。
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 格式为UUID。比如48bd91e9-41d5-4dae-8a9a-439611742b45
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	// 名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// region
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 来源。可选值为: EDAS。
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 0 未生效
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 标识
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// EDAS账号。格式为数字，比如1362469756373809。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEnableRules(v bool) *CreateOrUpdateSwimmingLaneRequest {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRule(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRules(v []*CreateOrUpdateSwimmingLaneRequestEntryRules) *CreateOrUpdateSwimmingLaneRequest {
+	s.EntryRules = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGmtCreate(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGmtModified(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetName(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetRegionId(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetSource(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetTag(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Tag = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetUserId(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
+	Condition *string                                                 `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Enable    *bool                                                   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Path      *string                                                 `json:"Path,omitempty" xml:"Path,omitempty"`
+	Priority  *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RestItems []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetCondition(v string) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetEnable(v bool) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetPath(v string) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetPriority(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetRestItems(v []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.RestItems = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
+	Cond      *string   `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	Datum     *string   `json:"Datum,omitempty" xml:"Datum,omitempty"`
+	Divisor   *int32    `json:"Divisor,omitempty" xml:"Divisor,omitempty"`
+	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NameList  []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	Operator  *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Rate      *int32    `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Remainder *int32    `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
+	Type      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value     *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetCond(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetDatum(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetDivisor(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetName(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetNameList(v []*string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.NameList = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetOperator(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetRate(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetRemainder(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetType(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetCode(v int32) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetData(v interface{}) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetDynamicMessage(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetHttpStatusCode(v int32) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateOrUpdateSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetBody(v *CreateOrUpdateSwimmingLaneResponseBody) *CreateOrUpdateSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 应用集合。以 "," 分割应用 id
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// 是否开启。
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// 入口应用。格式 "来源系统:id"，比如 EDAS:UUID 或者 CSB:UUID
+	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	// 创建时间
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 更新时间
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 主键ID。由SP生成(数据库自增主键)。
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// mse licenseKey
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	// 名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// region
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// 来源。可选值为: EDAS。
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 0 未生效
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 阿里云账号。格式为数字，比如1362469756373809。
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEntryApp(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGmtCreate(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGmtModified(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetName(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRegion(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetSource(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetUserId(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetData(v interface{}) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetDynamicMessage(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetHttpStatusCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateOrUpdateSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimmingLaneGroupResponseBody) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateZnodeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -3889,6 +4955,177 @@ func (s *DeleteGatewayDomainResponse) SetBody(v *DeleteGatewayDomainResponseBody
 	return s
 }
 
+type DeleteGatewayRouteRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+}
+
+func (s DeleteGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteRequest) SetAcceptLanguage(v string) *DeleteGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteRequest) SetGatewayUniqueId(v string) *DeleteGatewayRouteRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteRequest) SetRouteId(v string) *DeleteGatewayRouteRequest {
+	s.RouteId = &v
+	return s
+}
+
+type DeleteGatewayRouteResponseBody struct {
+	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DeleteGatewayRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetCode(v int32) *DeleteGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetData(v *DeleteGatewayRouteResponseBodyData) *DeleteGatewayRouteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetHttpStatusCode(v int32) *DeleteGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetMessage(v string) *DeleteGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetRequestId(v string) *DeleteGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetSuccess(v bool) *DeleteGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteGatewayRouteResponseBodyData struct {
+	DefaultServiceId *int64  `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
+	GatewayId        *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId  *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates       *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	RouteOrder       *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteGatewayRouteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetDefaultServiceId(v int64) *DeleteGatewayRouteResponseBodyData {
+	s.DefaultServiceId = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetGatewayId(v int64) *DeleteGatewayRouteResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetGatewayUniqueId(v string) *DeleteGatewayRouteResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetGmtCreate(v string) *DeleteGatewayRouteResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetGmtModified(v string) *DeleteGatewayRouteResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetId(v int64) *DeleteGatewayRouteResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetName(v string) *DeleteGatewayRouteResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetPredicates(v string) *DeleteGatewayRouteResponseBodyData {
+	s.Predicates = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetRouteOrder(v int32) *DeleteGatewayRouteResponseBodyData {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponseBodyData) SetStatus(v int32) *DeleteGatewayRouteResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DeleteGatewayRouteResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteResponse) SetHeaders(v map[string]*string) *DeleteGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponse) SetBody(v *DeleteGatewayRouteResponseBody) *DeleteGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -4530,6 +5767,220 @@ func (s *DeleteServiceSourceResponse) SetHeaders(v map[string]*string) *DeleteSe
 }
 
 func (s *DeleteServiceSourceResponse) SetBody(v *DeleteServiceSourceResponseBody) *DeleteServiceSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSwimmingLaneRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	LaneId         *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneRequest) SetAcceptLanguage(v string) *DeleteSwimmingLaneRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneRequest) SetLaneId(v int64) *DeleteSwimmingLaneRequest {
+	s.LaneId = &v
+	return s
+}
+
+type DeleteSwimmingLaneResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetCode(v int32) *DeleteSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetData(v interface{}) *DeleteSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetDynamicMessage(v string) *DeleteSwimmingLaneResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetErrorCode(v string) *DeleteSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetHttpStatusCode(v int32) *DeleteSwimmingLaneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetMessage(v string) *DeleteSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetRequestId(v string) *DeleteSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetSuccess(v bool) *DeleteSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSwimmingLaneResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneResponse) SetHeaders(v map[string]*string) *DeleteSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponse) SetBody(v *DeleteSwimmingLaneResponseBody) *DeleteSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSwimmingLaneGroupRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *DeleteSwimmingLaneGroupRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetGroupId(v int64) *DeleteSwimmingLaneGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type DeleteSwimmingLaneGroupResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetCode(v int32) *DeleteSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetData(v interface{}) *DeleteSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetDynamicMessage(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetErrorCode(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetHttpStatusCode(v int32) *DeleteSwimmingLaneGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetMessage(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetRequestId(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetSuccess(v bool) *DeleteSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSwimmingLaneGroupResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *DeleteSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponse) SetBody(v *DeleteSwimmingLaneGroupResponseBody) *DeleteSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5736,6 +7187,734 @@ func (s *GetGatewayOptionResponse) SetHeaders(v map[string]*string) *GetGatewayO
 }
 
 func (s *GetGatewayOptionResponse) SetBody(v *GetGatewayOptionResponseBody) *GetGatewayOptionResponse {
+	s.Body = v
+	return s
+}
+
+type GetGatewayRouteDetailRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+}
+
+func (s GetGatewayRouteDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailRequest) SetAcceptLanguage(v string) *GetGatewayRouteDetailRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailRequest) SetGatewayUniqueId(v string) *GetGatewayRouteDetailRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailRequest) SetRouteId(v int64) *GetGatewayRouteDetailRequest {
+	s.RouteId = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBody struct {
+	Code           *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetGatewayRouteDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetCode(v int32) *GetGatewayRouteDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetData(v *GetGatewayRouteDetailResponseBodyData) *GetGatewayRouteDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetHttpStatusCode(v int32) *GetGatewayRouteDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetMessage(v string) *GetGatewayRouteDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetRequestId(v string) *GetGatewayRouteDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBody) SetSuccess(v bool) *GetGatewayRouteDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyData struct {
+	Cors               *GetGatewayRouteDetailResponseBodyDataCors            `json:"Cors,omitempty" xml:"Cors,omitempty" type:"Struct"`
+	DefaultServiceId   *int64                                                `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
+	DefaultServiceName *string                                               `json:"DefaultServiceName,omitempty" xml:"DefaultServiceName,omitempty"`
+	DestinationType    *string                                               `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponse     *GetGatewayRouteDetailResponseBodyDataDirectResponse  `json:"DirectResponse,omitempty" xml:"DirectResponse,omitempty" type:"Struct"`
+	DomainId           *int64                                                `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdList       []*int64                                              `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	DomainName         *string                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameList     []*string                                             `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	GatewayId          *int64                                                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                               `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate          *string                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HTTPRewrite        *GetGatewayRouteDetailResponseBodyDataHTTPRewrite     `json:"HTTPRewrite,omitempty" xml:"HTTPRewrite,omitempty" type:"Struct"`
+	HeaderOp           *GetGatewayRouteDetailResponseBodyDataHeaderOp        `json:"HeaderOp,omitempty" xml:"HeaderOp,omitempty" type:"Struct"`
+	Id                 *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates         *string                                               `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	Redirect           *GetGatewayRouteDetailResponseBodyDataRedirect        `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	Retry              *GetGatewayRouteDetailResponseBodyDataRetry           `json:"Retry,omitempty" xml:"Retry,omitempty" type:"Struct"`
+	RouteOrder         *int32                                                `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RoutePredicates    *GetGatewayRouteDetailResponseBodyDataRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
+	RouteServices      []*GetGatewayRouteDetailResponseBodyDataRouteServices `json:"RouteServices,omitempty" xml:"RouteServices,omitempty" type:"Repeated"`
+	Services           *string                                               `json:"Services,omitempty" xml:"Services,omitempty"`
+	Status             *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timeout            *GetGatewayRouteDetailResponseBodyDataTimeout         `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetCors(v *GetGatewayRouteDetailResponseBodyDataCors) *GetGatewayRouteDetailResponseBodyData {
+	s.Cors = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDefaultServiceId(v int64) *GetGatewayRouteDetailResponseBodyData {
+	s.DefaultServiceId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDefaultServiceName(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.DefaultServiceName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDestinationType(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDirectResponse(v *GetGatewayRouteDetailResponseBodyDataDirectResponse) *GetGatewayRouteDetailResponseBodyData {
+	s.DirectResponse = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDomainId(v int64) *GetGatewayRouteDetailResponseBodyData {
+	s.DomainId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDomainIdList(v []*int64) *GetGatewayRouteDetailResponseBodyData {
+	s.DomainIdList = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDomainName(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetDomainNameList(v []*string) *GetGatewayRouteDetailResponseBodyData {
+	s.DomainNameList = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetGatewayId(v int64) *GetGatewayRouteDetailResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetGatewayUniqueId(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetGmtCreate(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetGmtModified(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetHTTPRewrite(v *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) *GetGatewayRouteDetailResponseBodyData {
+	s.HTTPRewrite = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetHeaderOp(v *GetGatewayRouteDetailResponseBodyDataHeaderOp) *GetGatewayRouteDetailResponseBodyData {
+	s.HeaderOp = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetId(v int64) *GetGatewayRouteDetailResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetName(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetPredicates(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.Predicates = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetRedirect(v *GetGatewayRouteDetailResponseBodyDataRedirect) *GetGatewayRouteDetailResponseBodyData {
+	s.Redirect = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetRetry(v *GetGatewayRouteDetailResponseBodyDataRetry) *GetGatewayRouteDetailResponseBodyData {
+	s.Retry = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetRouteOrder(v int32) *GetGatewayRouteDetailResponseBodyData {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetRoutePredicates(v *GetGatewayRouteDetailResponseBodyDataRoutePredicates) *GetGatewayRouteDetailResponseBodyData {
+	s.RoutePredicates = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetRouteServices(v []*GetGatewayRouteDetailResponseBodyDataRouteServices) *GetGatewayRouteDetailResponseBodyData {
+	s.RouteServices = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetServices(v string) *GetGatewayRouteDetailResponseBodyData {
+	s.Services = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetStatus(v int32) *GetGatewayRouteDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetTimeout(v *GetGatewayRouteDetailResponseBodyDataTimeout) *GetGatewayRouteDetailResponseBodyData {
+	s.Timeout = v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataCors struct {
+	AllowCredentials *bool   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
+	AllowMethods     *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
+	AllowOrigins     *string `json:"AllowOrigins,omitempty" xml:"AllowOrigins,omitempty"`
+	ExposeHeaders    *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit         *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum          *int64  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataCors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataCors) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetAllowCredentials(v bool) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetAllowHeaders(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.AllowHeaders = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetAllowMethods(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.AllowMethods = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetAllowOrigins(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.AllowOrigins = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetExposeHeaders(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.ExposeHeaders = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetStatus(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetTimeUnit(v string) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataCors) SetUnitNum(v int64) *GetGatewayRouteDetailResponseBodyDataCors {
+	s.UnitNum = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataDirectResponse struct {
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataDirectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataDirectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataDirectResponse) SetBody(v string) *GetGatewayRouteDetailResponseBodyDataDirectResponse {
+	s.Body = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataDirectResponse) SetCode(v int32) *GetGatewayRouteDetailResponseBodyDataDirectResponse {
+	s.Code = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataHTTPRewrite struct {
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	PathType     *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	Pattern      *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Substitution *string `json:"Substitution,omitempty" xml:"Substitution,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHTTPRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHTTPRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetHost(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.Host = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetPath(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.Path = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetPathType(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.PathType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetPattern(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetStatus(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHTTPRewrite) SetSubstitution(v string) *GetGatewayRouteDetailResponseBodyDataHTTPRewrite {
+	s.Substitution = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataHeaderOp struct {
+	HeaderOpItems []*GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems `json:"HeaderOpItems,omitempty" xml:"HeaderOpItems,omitempty" type:"Repeated"`
+	Status        *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHeaderOp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHeaderOp) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOp) SetHeaderOpItems(v []*GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) *GetGatewayRouteDetailResponseBodyDataHeaderOp {
+	s.HeaderOpItems = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOp) SetStatus(v string) *GetGatewayRouteDetailResponseBodyDataHeaderOp {
+	s.Status = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems struct {
+	DirectionType *string `json:"DirectionType,omitempty" xml:"DirectionType,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OpType        *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) SetDirectionType(v string) *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems {
+	s.DirectionType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) SetKey(v string) *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems {
+	s.Key = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) SetOpType(v string) *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems {
+	s.OpType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems) SetValue(v string) *GetGatewayRouteDetailResponseBodyDataHeaderOpHeaderOpItems {
+	s.Value = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRedirect struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRedirect) SetCode(v int32) *GetGatewayRouteDetailResponseBodyDataRedirect {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRedirect) SetHost(v string) *GetGatewayRouteDetailResponseBodyDataRedirect {
+	s.Host = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRedirect) SetPath(v string) *GetGatewayRouteDetailResponseBodyDataRedirect {
+	s.Path = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRetry struct {
+	Attempts  *int32    `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	HttpCodes []*string `json:"HttpCodes,omitempty" xml:"HttpCodes,omitempty" type:"Repeated"`
+	RetryOn   []*string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty" type:"Repeated"`
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRetry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRetry) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRetry) SetAttempts(v int32) *GetGatewayRouteDetailResponseBodyDataRetry {
+	s.Attempts = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRetry) SetHttpCodes(v []*string) *GetGatewayRouteDetailResponseBodyDataRetry {
+	s.HttpCodes = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRetry) SetRetryOn(v []*string) *GetGatewayRouteDetailResponseBodyDataRetry {
+	s.RetryOn = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRetry) SetStatus(v string) *GetGatewayRouteDetailResponseBodyDataRetry {
+	s.Status = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRoutePredicates struct {
+	HeaderPredicates []*GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                                               `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicates) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetHeaderPredicates(v []*GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) *GetGatewayRouteDetailResponseBodyDataRoutePredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetMethodPredicates(v []*string) *GetGatewayRouteDetailResponseBodyDataRoutePredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetPathPredicates(v *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) *GetGatewayRouteDetailResponseBodyDataRoutePredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicates) SetQueryPredicates(v []*GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) *GetGatewayRouteDetailResponseBodyDataRoutePredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) SetKey(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) SetType(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates) SetValue(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) SetIgnoreCase(v bool) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) SetPath(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates) SetType(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) SetKey(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) SetType(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates) SetValue(v string) *GetGatewayRouteDetailResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataRouteServices struct {
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Percent     *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRouteServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataRouteServices) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetGroupName(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetName(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetNamespace(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetPercent(v int32) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.Percent = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServiceId(v int64) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServiceName(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetSourceType(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetVersion(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.Version = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponseBodyDataTimeout struct {
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum  *int32  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponseBodyDataTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataTimeout) SetStatus(v string) *GetGatewayRouteDetailResponseBodyDataTimeout {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataTimeout) SetTimeUnit(v string) *GetGatewayRouteDetailResponseBodyDataTimeout {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataTimeout) SetUnitNum(v int32) *GetGatewayRouteDetailResponseBodyDataTimeout {
+	s.UnitNum = &v
+	return s
+}
+
+type GetGatewayRouteDetailResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGatewayRouteDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGatewayRouteDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayRouteDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponse) SetHeaders(v map[string]*string) *GetGatewayRouteDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponse) SetBody(v *GetGatewayRouteDetailResponseBody) *GetGatewayRouteDetailResponse {
 	s.Body = v
 	return s
 }
@@ -7496,6 +9675,113 @@ func (s *GetOverviewResponse) SetHeaders(v map[string]*string) *GetOverviewRespo
 }
 
 func (s *GetOverviewResponse) SetBody(v *GetOverviewResponseBody) *GetOverviewResponse {
+	s.Body = v
+	return s
+}
+
+type GetTagsBySwimmingLaneGroupIdRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s GetTagsBySwimmingLaneGroupIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagsBySwimmingLaneGroupIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdRequest) SetAcceptLanguage(v string) *GetTagsBySwimmingLaneGroupIdRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdRequest) SetGroupId(v int64) *GetTagsBySwimmingLaneGroupIdRequest {
+	s.GroupId = &v
+	return s
+}
+
+type GetTagsBySwimmingLaneGroupIdResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTagsBySwimmingLaneGroupIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagsBySwimmingLaneGroupIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetCode(v int32) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetData(v interface{}) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetDynamicMessage(v string) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetErrorCode(v string) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetHttpStatusCode(v int32) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetMessage(v string) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetRequestId(v string) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponseBody) SetSuccess(v bool) *GetTagsBySwimmingLaneGroupIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTagsBySwimmingLaneGroupIdResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTagsBySwimmingLaneGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTagsBySwimmingLaneGroupIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTagsBySwimmingLaneGroupIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponse) SetHeaders(v map[string]*string) *GetTagsBySwimmingLaneGroupIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdResponse) SetBody(v *GetTagsBySwimmingLaneGroupIdResponseBody) *GetTagsBySwimmingLaneGroupIdResponse {
 	s.Body = v
 	return s
 }
@@ -9285,6 +11571,119 @@ func (s *ListAnsServicesResponse) SetHeaders(v map[string]*string) *ListAnsServi
 }
 
 func (s *ListAnsServicesResponse) SetBody(v *ListAnsServicesResponseBody) *ListAnsServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListAppBySwimmingLaneGroupTagRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListAppBySwimmingLaneGroupTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppBySwimmingLaneGroupTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppBySwimmingLaneGroupTagRequest) SetAcceptLanguage(v string) *ListAppBySwimmingLaneGroupTagRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagRequest) SetGroupId(v int64) *ListAppBySwimmingLaneGroupTagRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagRequest) SetTag(v string) *ListAppBySwimmingLaneGroupTagRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListAppBySwimmingLaneGroupTagResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAppBySwimmingLaneGroupTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppBySwimmingLaneGroupTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetCode(v int32) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetData(v interface{}) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetDynamicMessage(v string) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetErrorCode(v string) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetHttpStatusCode(v int32) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetMessage(v string) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetRequestId(v string) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponseBody) SetSuccess(v bool) *ListAppBySwimmingLaneGroupTagResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAppBySwimmingLaneGroupTagResponse struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAppBySwimmingLaneGroupTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAppBySwimmingLaneGroupTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppBySwimmingLaneGroupTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponse) SetHeaders(v map[string]*string) *ListAppBySwimmingLaneGroupTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagResponse) SetBody(v *ListAppBySwimmingLaneGroupTagResponseBody) *ListAppBySwimmingLaneGroupTagResponse {
 	s.Body = v
 	return s
 }
@@ -11153,6 +13552,629 @@ func (s *ListGatewayDomainResponse) SetBody(v *ListGatewayDomainResponseBody) *L
 	return s
 }
 
+type ListGatewayRouteRequest struct {
+	AcceptLanguage *string                              `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DescSort       *bool                                `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	FilterParams   *ListGatewayRouteRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
+	OrderItem      *string                              `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	PageNumber     *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteRequest) SetAcceptLanguage(v string) *ListGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequest) SetDescSort(v bool) *ListGatewayRouteRequest {
+	s.DescSort = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequest) SetFilterParams(v *ListGatewayRouteRequestFilterParams) *ListGatewayRouteRequest {
+	s.FilterParams = v
+	return s
+}
+
+func (s *ListGatewayRouteRequest) SetOrderItem(v string) *ListGatewayRouteRequest {
+	s.OrderItem = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequest) SetPageNumber(v int32) *ListGatewayRouteRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequest) SetPageSize(v int32) *ListGatewayRouteRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListGatewayRouteRequestFilterParams struct {
+	DefaultServiceId *int64  `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
+	DomainId         *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	GatewayId        *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId  *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RouteOrder       *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListGatewayRouteRequestFilterParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteRequestFilterParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetDefaultServiceId(v int64) *ListGatewayRouteRequestFilterParams {
+	s.DefaultServiceId = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetDomainId(v int64) *ListGatewayRouteRequestFilterParams {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetGatewayId(v int64) *ListGatewayRouteRequestFilterParams {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetGatewayUniqueId(v string) *ListGatewayRouteRequestFilterParams {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetName(v string) *ListGatewayRouteRequestFilterParams {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetRouteOrder(v int32) *ListGatewayRouteRequestFilterParams {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *ListGatewayRouteRequestFilterParams) SetStatus(v int32) *ListGatewayRouteRequestFilterParams {
+	s.Status = &v
+	return s
+}
+
+type ListGatewayRouteShrinkRequest struct {
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DescSort           *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+	OrderItem          *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListGatewayRouteShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetAcceptLanguage(v string) *ListGatewayRouteShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetDescSort(v bool) *ListGatewayRouteShrinkRequest {
+	s.DescSort = &v
+	return s
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetFilterParamsShrink(v string) *ListGatewayRouteShrinkRequest {
+	s.FilterParamsShrink = &v
+	return s
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetOrderItem(v string) *ListGatewayRouteShrinkRequest {
+	s.OrderItem = &v
+	return s
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetPageNumber(v int32) *ListGatewayRouteShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayRouteShrinkRequest) SetPageSize(v int32) *ListGatewayRouteShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListGatewayRouteResponseBody struct {
+	Code           *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListGatewayRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBody) SetCode(v int32) *ListGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBody) SetData(v *ListGatewayRouteResponseBodyData) *ListGatewayRouteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBody) SetHttpStatusCode(v int32) *ListGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBody) SetMessage(v string) *ListGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBody) SetRequestId(v string) *ListGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBody) SetSuccess(v bool) *ListGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyData struct {
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayRouteResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int64                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyData) SetPageNumber(v int32) *ListGatewayRouteResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyData) SetPageSize(v int32) *ListGatewayRouteResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyData) SetResult(v []*ListGatewayRouteResponseBodyDataResult) *ListGatewayRouteResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyData) SetTotalSize(v int64) *ListGatewayRouteResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResult struct {
+	DefaultServiceId   *int64                                                 `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
+	DefaultServiceName *string                                                `json:"DefaultServiceName,omitempty" xml:"DefaultServiceName,omitempty"`
+	DestinationType    *string                                                `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponse     *ListGatewayRouteResponseBodyDataResultDirectResponse  `json:"DirectResponse,omitempty" xml:"DirectResponse,omitempty" type:"Struct"`
+	DomainId           *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdList       []*int64                                               `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	DomainName         *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameList     []*string                                              `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	GatewayId          *int64                                                 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate          *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates         *string                                                `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	Redirect           *ListGatewayRouteResponseBodyDataResultRedirect        `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	RouteOrder         *int32                                                 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RoutePredicates    *ListGatewayRouteResponseBodyDataResultRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
+	RouteServices      []*ListGatewayRouteResponseBodyDataResultRouteServices `json:"RouteServices,omitempty" xml:"RouteServices,omitempty" type:"Repeated"`
+	Services           *string                                                `json:"Services,omitempty" xml:"Services,omitempty"`
+	Status             *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDefaultServiceId(v int64) *ListGatewayRouteResponseBodyDataResult {
+	s.DefaultServiceId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDefaultServiceName(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.DefaultServiceName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDestinationType(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDirectResponse(v *ListGatewayRouteResponseBodyDataResultDirectResponse) *ListGatewayRouteResponseBodyDataResult {
+	s.DirectResponse = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDomainId(v int64) *ListGatewayRouteResponseBodyDataResult {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDomainIdList(v []*int64) *ListGatewayRouteResponseBodyDataResult {
+	s.DomainIdList = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDomainName(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetDomainNameList(v []*string) *ListGatewayRouteResponseBodyDataResult {
+	s.DomainNameList = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetGatewayId(v int64) *ListGatewayRouteResponseBodyDataResult {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetGmtCreate(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetGmtModified(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetId(v int64) *ListGatewayRouteResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetName(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetPredicates(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.Predicates = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetRedirect(v *ListGatewayRouteResponseBodyDataResultRedirect) *ListGatewayRouteResponseBodyDataResult {
+	s.Redirect = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetRouteOrder(v int32) *ListGatewayRouteResponseBodyDataResult {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetRoutePredicates(v *ListGatewayRouteResponseBodyDataResultRoutePredicates) *ListGatewayRouteResponseBodyDataResult {
+	s.RoutePredicates = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetRouteServices(v []*ListGatewayRouteResponseBodyDataResultRouteServices) *ListGatewayRouteResponseBodyDataResult {
+	s.RouteServices = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetServices(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.Services = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetStatus(v int32) *ListGatewayRouteResponseBodyDataResult {
+	s.Status = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultDirectResponse struct {
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultDirectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultDirectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultDirectResponse) SetBody(v string) *ListGatewayRouteResponseBodyDataResultDirectResponse {
+	s.Body = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultDirectResponse) SetCode(v int32) *ListGatewayRouteResponseBodyDataResultDirectResponse {
+	s.Code = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRedirect struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRedirect) SetCode(v int32) *ListGatewayRouteResponseBodyDataResultRedirect {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRedirect) SetHost(v string) *ListGatewayRouteResponseBodyDataResultRedirect {
+	s.Host = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRedirect) SetPath(v string) *ListGatewayRouteResponseBodyDataResultRedirect {
+	s.Path = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRoutePredicates struct {
+	HeaderPredicates []*ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                                                `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) SetHeaderPredicates(v []*ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) *ListGatewayRouteResponseBodyDataResultRoutePredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) SetMethodPredicates(v []*string) *ListGatewayRouteResponseBodyDataResultRoutePredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) SetPathPredicates(v *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) *ListGatewayRouteResponseBodyDataResultRoutePredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicates) SetQueryPredicates(v []*ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) *ListGatewayRouteResponseBodyDataResultRoutePredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) SetKey(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) SetType(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates) SetValue(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) SetIgnoreCase(v bool) *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) SetPath(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates) SetType(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) SetKey(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) SetType(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates) SetValue(v string) *ListGatewayRouteResponseBodyDataResultRoutePredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type ListGatewayRouteResponseBodyDataResultRouteServices struct {
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Percent     *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRouteServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponseBodyDataResultRouteServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetGroupName(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetName(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetNamespace(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetPercent(v int32) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.Percent = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServiceId(v int64) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServiceName(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetSourceType(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetVersion(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.Version = &v
+	return s
+}
+
+type ListGatewayRouteResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteResponse) SetHeaders(v map[string]*string) *ListGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayRouteResponse) SetBody(v *ListGatewayRouteResponseBody) *ListGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
 type ListGatewayServiceRequest struct {
 	AcceptLanguage *string                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort       *bool                                  `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
@@ -12968,6 +15990,106 @@ func (s *ModifyGovernanceKubernetesClusterResponse) SetBody(v *ModifyGovernanceK
 	return s
 }
 
+type OfflineGatewayRouteRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+}
+
+func (s OfflineGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineGatewayRouteRequest) SetAcceptLanguage(v string) *OfflineGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteRequest) SetGatewayUniqueId(v string) *OfflineGatewayRouteRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteRequest) SetRouteId(v string) *OfflineGatewayRouteRequest {
+	s.RouteId = &v
+	return s
+}
+
+type OfflineGatewayRouteResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OfflineGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetCode(v int32) *OfflineGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetData(v bool) *OfflineGatewayRouteResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetHttpStatusCode(v int32) *OfflineGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetMessage(v string) *OfflineGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetRequestId(v string) *OfflineGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponseBody) SetSuccess(v bool) *OfflineGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OfflineGatewayRouteResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OfflineGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OfflineGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineGatewayRouteResponse) SetHeaders(v map[string]*string) *OfflineGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OfflineGatewayRouteResponse) SetBody(v *OfflineGatewayRouteResponseBody) *OfflineGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
 type PullServicesRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -13140,6 +16262,214 @@ func (s *PullServicesResponse) SetHeaders(v map[string]*string) *PullServicesRes
 }
 
 func (s *PullServicesResponse) SetBody(v *PullServicesResponseBody) *PullServicesResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAllSwimmingLaneRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneRequest) SetAcceptLanguage(v string) *QueryAllSwimmingLaneRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneRequest) SetGroupId(v int64) *QueryAllSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+type QueryAllSwimmingLaneResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetCode(v int32) *QueryAllSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetData(v interface{}) *QueryAllSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetDynamicMessage(v string) *QueryAllSwimmingLaneResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetErrorCode(v string) *QueryAllSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetHttpStatusCode(v int32) *QueryAllSwimmingLaneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetMessage(v string) *QueryAllSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetRequestId(v string) *QueryAllSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBody) SetSuccess(v bool) *QueryAllSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAllSwimmingLaneResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryAllSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAllSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneResponse) SetHeaders(v map[string]*string) *QueryAllSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponse) SetBody(v *QueryAllSwimmingLaneResponseBody) *QueryAllSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAllSwimmingLaneGroupRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *QueryAllSwimmingLaneGroupRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type QueryAllSwimmingLaneGroupResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetCode(v int32) *QueryAllSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetData(v interface{}) *QueryAllSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetDynamicMessage(v string) *QueryAllSwimmingLaneGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetErrorCode(v string) *QueryAllSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetHttpStatusCode(v int32) *QueryAllSwimmingLaneGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetMessage(v string) *QueryAllSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetRequestId(v string) *QueryAllSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetSuccess(v bool) *QueryAllSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAllSwimmingLaneGroupResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryAllSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAllSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *QueryAllSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponse) SetBody(v *QueryAllSwimmingLaneGroupResponseBody) *QueryAllSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -14839,6 +18169,113 @@ func (s *QuerySlbSpecResponse) SetBody(v *QuerySlbSpecResponseBody) *QuerySlbSpe
 	return s
 }
 
+type QuerySwimmingLaneByIdRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	LaneId         *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+}
+
+func (s QuerySwimmingLaneByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySwimmingLaneByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySwimmingLaneByIdRequest) SetAcceptLanguage(v string) *QuerySwimmingLaneByIdRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdRequest) SetLaneId(v int64) *QuerySwimmingLaneByIdRequest {
+	s.LaneId = &v
+	return s
+}
+
+type QuerySwimmingLaneByIdResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySwimmingLaneByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySwimmingLaneByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetCode(v int32) *QuerySwimmingLaneByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetData(v interface{}) *QuerySwimmingLaneByIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetDynamicMessage(v string) *QuerySwimmingLaneByIdResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetErrorCode(v string) *QuerySwimmingLaneByIdResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetHttpStatusCode(v int32) *QuerySwimmingLaneByIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetMessage(v string) *QuerySwimmingLaneByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetRequestId(v string) *QuerySwimmingLaneByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponseBody) SetSuccess(v bool) *QuerySwimmingLaneByIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySwimmingLaneByIdResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySwimmingLaneByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySwimmingLaneByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySwimmingLaneByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySwimmingLaneByIdResponse) SetHeaders(v map[string]*string) *QuerySwimmingLaneByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdResponse) SetBody(v *QuerySwimmingLaneByIdResponseBody) *QuerySwimmingLaneByIdResponse {
+	s.Body = v
+	return s
+}
+
 type QueryZnodeDetailRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -16423,6 +19860,682 @@ func (s *UpdateGatewayOptionResponse) SetBody(v *UpdateGatewayOptionResponseBody
 	return s
 }
 
+type UpdateGatewayRouteRequest struct {
+	AcceptLanguage     *string                                      `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DestinationType    *string                                      `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponseJSON *UpdateGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
+	DomainIdListJSON   *string                                      `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	GatewayId          *int64                                       `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                      `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                 *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates         *UpdateGatewayRouteRequestPredicates         `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
+	RedirectJSON       *UpdateGatewayRouteRequestRedirectJSON       `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
+	RouteOrder         *int32                                       `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	Services           []*UpdateGatewayRouteRequestServices         `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+}
+
+func (s UpdateGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetDestinationType(v string) *UpdateGatewayRouteRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetDirectResponseJSON(v *UpdateGatewayRouteRequestDirectResponseJSON) *UpdateGatewayRouteRequest {
+	s.DirectResponseJSON = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetDomainIdListJSON(v string) *UpdateGatewayRouteRequest {
+	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetGatewayId(v int64) *UpdateGatewayRouteRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetId(v int64) *UpdateGatewayRouteRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetName(v string) *UpdateGatewayRouteRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetPredicates(v *UpdateGatewayRouteRequestPredicates) *UpdateGatewayRouteRequest {
+	s.Predicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetRedirectJSON(v *UpdateGatewayRouteRequestRedirectJSON) *UpdateGatewayRouteRequest {
+	s.RedirectJSON = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetRouteOrder(v int32) *UpdateGatewayRouteRequest {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetServices(v []*UpdateGatewayRouteRequestServices) *UpdateGatewayRouteRequest {
+	s.Services = v
+	return s
+}
+
+type UpdateGatewayRouteRequestDirectResponseJSON struct {
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Code *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestDirectResponseJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestDirectResponseJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestDirectResponseJSON) SetBody(v string) *UpdateGatewayRouteRequestDirectResponseJSON {
+	s.Body = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestDirectResponseJSON) SetCode(v int64) *UpdateGatewayRouteRequestDirectResponseJSON {
+	s.Code = &v
+	return s
+}
+
+type UpdateGatewayRouteRequestPredicates struct {
+	HeaderPredicates []*UpdateGatewayRouteRequestPredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                              `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *UpdateGatewayRouteRequestPredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*UpdateGatewayRouteRequestPredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s UpdateGatewayRouteRequestPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestPredicates) SetHeaderPredicates(v []*UpdateGatewayRouteRequestPredicatesHeaderPredicates) *UpdateGatewayRouteRequestPredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicates) SetMethodPredicates(v []*string) *UpdateGatewayRouteRequestPredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicates) SetPathPredicates(v *UpdateGatewayRouteRequestPredicatesPathPredicates) *UpdateGatewayRouteRequestPredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicates) SetQueryPredicates(v []*UpdateGatewayRouteRequestPredicatesQueryPredicates) *UpdateGatewayRouteRequestPredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type UpdateGatewayRouteRequestPredicatesHeaderPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestPredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestPredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesHeaderPredicates) SetKey(v string) *UpdateGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesHeaderPredicates) SetType(v string) *UpdateGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesHeaderPredicates) SetValue(v string) *UpdateGatewayRouteRequestPredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayRouteRequestPredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestPredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestPredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesPathPredicates) SetIgnoreCase(v bool) *UpdateGatewayRouteRequestPredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesPathPredicates) SetPath(v string) *UpdateGatewayRouteRequestPredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesPathPredicates) SetType(v string) *UpdateGatewayRouteRequestPredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type UpdateGatewayRouteRequestPredicatesQueryPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestPredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestPredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesQueryPredicates) SetKey(v string) *UpdateGatewayRouteRequestPredicatesQueryPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesQueryPredicates) SetType(v string) *UpdateGatewayRouteRequestPredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestPredicatesQueryPredicates) SetValue(v string) *UpdateGatewayRouteRequestPredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayRouteRequestRedirectJSON struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestRedirectJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestRedirectJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestRedirectJSON) SetCode(v int32) *UpdateGatewayRouteRequestRedirectJSON {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestRedirectJSON) SetHost(v string) *UpdateGatewayRouteRequestRedirectJSON {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestRedirectJSON) SetPath(v string) *UpdateGatewayRouteRequestRedirectJSON {
+	s.Path = &v
+	return s
+}
+
+type UpdateGatewayRouteRequestServices struct {
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Percent    *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	ServiceId  *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateGatewayRouteRequestServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRequestServices) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetGroupName(v string) *UpdateGatewayRouteRequestServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetName(v string) *UpdateGatewayRouteRequestServices {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetNamespace(v string) *UpdateGatewayRouteRequestServices {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetPercent(v int32) *UpdateGatewayRouteRequestServices {
+	s.Percent = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetServiceId(v int64) *UpdateGatewayRouteRequestServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetSourceType(v string) *UpdateGatewayRouteRequestServices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequestServices) SetVersion(v string) *UpdateGatewayRouteRequestServices {
+	s.Version = &v
+	return s
+}
+
+type UpdateGatewayRouteShrinkRequest struct {
+	AcceptLanguage           *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DestinationType          *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
+	DomainIdListJSON         *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PredicatesShrink         *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	RedirectJSONShrink       *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
+	RouteOrder               *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	ServicesShrink           *string `json:"Services,omitempty" xml:"Services,omitempty"`
+}
+
+func (s UpdateGatewayRouteShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetDestinationType(v string) *UpdateGatewayRouteShrinkRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetDirectResponseJSONShrink(v string) *UpdateGatewayRouteShrinkRequest {
+	s.DirectResponseJSONShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetDomainIdListJSON(v string) *UpdateGatewayRouteShrinkRequest {
+	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetGatewayId(v int64) *UpdateGatewayRouteShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetId(v int64) *UpdateGatewayRouteShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetName(v string) *UpdateGatewayRouteShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetPredicatesShrink(v string) *UpdateGatewayRouteShrinkRequest {
+	s.PredicatesShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetRedirectJSONShrink(v string) *UpdateGatewayRouteShrinkRequest {
+	s.RedirectJSONShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetRouteOrder(v int32) *UpdateGatewayRouteShrinkRequest {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetServicesShrink(v string) *UpdateGatewayRouteShrinkRequest {
+	s.ServicesShrink = &v
+	return s
+}
+
+type UpdateGatewayRouteResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetCode(v int32) *UpdateGatewayRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetData(v int64) *UpdateGatewayRouteResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetMessage(v string) *UpdateGatewayRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetRequestId(v string) *UpdateGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponseBody) SetSuccess(v bool) *UpdateGatewayRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteResponse) SetBody(v *UpdateGatewayRouteResponseBody) *UpdateGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayRouteCORSRequest struct {
+	AcceptLanguage  *string                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CorsJSON        *UpdateGatewayRouteCORSRequestCorsJSON `json:"CorsJSON,omitempty" xml:"CorsJSON,omitempty" type:"Struct"`
+	GatewayId       *int64                                 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayRouteCORSRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteCORSRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteCORSRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteCORSRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequest) SetCorsJSON(v *UpdateGatewayRouteCORSRequestCorsJSON) *UpdateGatewayRouteCORSRequest {
+	s.CorsJSON = v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequest) SetGatewayId(v int64) *UpdateGatewayRouteCORSRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteCORSRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequest) SetId(v int64) *UpdateGatewayRouteCORSRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayRouteCORSRequestCorsJSON struct {
+	AllowCredentials *bool   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
+	AllowMethods     *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
+	AllowOrigins     *string `json:"AllowOrigins,omitempty" xml:"AllowOrigins,omitempty"`
+	ExposeHeaders    *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit         *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum          *int64  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s UpdateGatewayRouteCORSRequestCorsJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteCORSRequestCorsJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetAllowCredentials(v bool) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetAllowHeaders(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.AllowHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetAllowMethods(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.AllowMethods = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetAllowOrigins(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.AllowOrigins = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetExposeHeaders(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.ExposeHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetStatus(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetTimeUnit(v string) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSRequestCorsJSON) SetUnitNum(v int64) *UpdateGatewayRouteCORSRequestCorsJSON {
+	s.UnitNum = &v
+	return s
+}
+
+type UpdateGatewayRouteCORSShrinkRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CorsJSONShrink  *string `json:"CorsJSON,omitempty" xml:"CorsJSON,omitempty"`
+	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayRouteCORSShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteCORSShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteCORSShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteCORSShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSShrinkRequest) SetCorsJSONShrink(v string) *UpdateGatewayRouteCORSShrinkRequest {
+	s.CorsJSONShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSShrinkRequest) SetGatewayId(v int64) *UpdateGatewayRouteCORSShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteCORSShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSShrinkRequest) SetId(v int64) *UpdateGatewayRouteCORSShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayRouteCORSResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteCORSResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteCORSResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetCode(v int32) *UpdateGatewayRouteCORSResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetData(v int64) *UpdateGatewayRouteCORSResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteCORSResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetMessage(v string) *UpdateGatewayRouteCORSResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetRequestId(v string) *UpdateGatewayRouteCORSResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponseBody) SetSuccess(v bool) *UpdateGatewayRouteCORSResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteCORSResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteCORSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteCORSResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteCORSResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteCORSResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteCORSResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteCORSResponse) SetBody(v *UpdateGatewayRouteCORSResponseBody) *UpdateGatewayRouteCORSResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayRouteHTTPRewriteRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
@@ -16531,6 +20644,488 @@ func (s *UpdateGatewayRouteHTTPRewriteResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *UpdateGatewayRouteHTTPRewriteResponse) SetBody(v *UpdateGatewayRouteHTTPRewriteResponseBody) *UpdateGatewayRouteHTTPRewriteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayRouteHeaderOpRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	HeaderOpJSON    *string `json:"HeaderOpJSON,omitempty" xml:"HeaderOpJSON,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayRouteHeaderOpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteHeaderOpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteHeaderOpRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteHeaderOpRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpRequest) SetGatewayId(v int64) *UpdateGatewayRouteHeaderOpRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteHeaderOpRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpRequest) SetHeaderOpJSON(v string) *UpdateGatewayRouteHeaderOpRequest {
+	s.HeaderOpJSON = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpRequest) SetId(v int64) *UpdateGatewayRouteHeaderOpRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayRouteHeaderOpResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteHeaderOpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteHeaderOpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetCode(v int32) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetData(v int64) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetMessage(v string) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetRequestId(v string) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponseBody) SetSuccess(v bool) *UpdateGatewayRouteHeaderOpResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteHeaderOpResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteHeaderOpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteHeaderOpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteHeaderOpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteHeaderOpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteHeaderOpResponse) SetBody(v *UpdateGatewayRouteHeaderOpResponseBody) *UpdateGatewayRouteHeaderOpResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayRouteRetryRequest struct {
+	AcceptLanguage  *string                                  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId       *int64                                   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	RetryJSON       *UpdateGatewayRouteRetryRequestRetryJSON `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty" type:"Struct"`
+}
+
+func (s UpdateGatewayRouteRetryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRetryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRetryRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteRetryRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequest) SetGatewayId(v int64) *UpdateGatewayRouteRetryRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteRetryRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequest) SetId(v int64) *UpdateGatewayRouteRetryRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequest) SetRetryJSON(v *UpdateGatewayRouteRetryRequestRetryJSON) *UpdateGatewayRouteRetryRequest {
+	s.RetryJSON = v
+	return s
+}
+
+type UpdateGatewayRouteRetryRequestRetryJSON struct {
+	Attempts  *int32    `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	HttpCodes []*string `json:"HttpCodes,omitempty" xml:"HttpCodes,omitempty" type:"Repeated"`
+	RetryOn   []*string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty" type:"Repeated"`
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateGatewayRouteRetryRequestRetryJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRetryRequestRetryJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRetryRequestRetryJSON) SetAttempts(v int32) *UpdateGatewayRouteRetryRequestRetryJSON {
+	s.Attempts = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequestRetryJSON) SetHttpCodes(v []*string) *UpdateGatewayRouteRetryRequestRetryJSON {
+	s.HttpCodes = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequestRetryJSON) SetRetryOn(v []*string) *UpdateGatewayRouteRetryRequestRetryJSON {
+	s.RetryOn = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryRequestRetryJSON) SetStatus(v string) *UpdateGatewayRouteRetryRequestRetryJSON {
+	s.Status = &v
+	return s
+}
+
+type UpdateGatewayRouteRetryShrinkRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RetryJSONShrink *string `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty"`
+}
+
+func (s UpdateGatewayRouteRetryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRetryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRetryShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteRetryShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryShrinkRequest) SetGatewayId(v int64) *UpdateGatewayRouteRetryShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteRetryShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryShrinkRequest) SetId(v int64) *UpdateGatewayRouteRetryShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryShrinkRequest) SetRetryJSONShrink(v string) *UpdateGatewayRouteRetryShrinkRequest {
+	s.RetryJSONShrink = &v
+	return s
+}
+
+type UpdateGatewayRouteRetryResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteRetryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRetryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetCode(v int32) *UpdateGatewayRouteRetryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetData(v int64) *UpdateGatewayRouteRetryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteRetryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetMessage(v string) *UpdateGatewayRouteRetryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetRequestId(v string) *UpdateGatewayRouteRetryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponseBody) SetSuccess(v bool) *UpdateGatewayRouteRetryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteRetryResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteRetryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteRetryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteRetryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteRetryResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteRetryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteRetryResponse) SetBody(v *UpdateGatewayRouteRetryResponseBody) *UpdateGatewayRouteRetryResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayRouteTimeoutRequest struct {
+	AcceptLanguage  *string                                      `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId       *int64                                       `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                      `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	TimeoutJSON     *UpdateGatewayRouteTimeoutRequestTimeoutJSON `json:"TimeoutJSON,omitempty" xml:"TimeoutJSON,omitempty" type:"Struct"`
+}
+
+func (s UpdateGatewayRouteTimeoutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteTimeoutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteTimeoutRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteTimeoutRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequest) SetGatewayId(v int64) *UpdateGatewayRouteTimeoutRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteTimeoutRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequest) SetId(v int64) *UpdateGatewayRouteTimeoutRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequest) SetTimeoutJSON(v *UpdateGatewayRouteTimeoutRequestTimeoutJSON) *UpdateGatewayRouteTimeoutRequest {
+	s.TimeoutJSON = v
+	return s
+}
+
+type UpdateGatewayRouteTimeoutRequestTimeoutJSON struct {
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum  *int32  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s UpdateGatewayRouteTimeoutRequestTimeoutJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteTimeoutRequestTimeoutJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteTimeoutRequestTimeoutJSON) SetStatus(v string) *UpdateGatewayRouteTimeoutRequestTimeoutJSON {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequestTimeoutJSON) SetTimeUnit(v string) *UpdateGatewayRouteTimeoutRequestTimeoutJSON {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutRequestTimeoutJSON) SetUnitNum(v int32) *UpdateGatewayRouteTimeoutRequestTimeoutJSON {
+	s.UnitNum = &v
+	return s
+}
+
+type UpdateGatewayRouteTimeoutShrinkRequest struct {
+	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId         *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId   *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	TimeoutJSONShrink *string `json:"TimeoutJSON,omitempty" xml:"TimeoutJSON,omitempty"`
+}
+
+func (s UpdateGatewayRouteTimeoutShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteTimeoutShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteTimeoutShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetGatewayId(v int64) *UpdateGatewayRouteTimeoutShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteTimeoutShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetId(v int64) *UpdateGatewayRouteTimeoutShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetTimeoutJSONShrink(v string) *UpdateGatewayRouteTimeoutShrinkRequest {
+	s.TimeoutJSONShrink = &v
+	return s
+}
+
+type UpdateGatewayRouteTimeoutResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteTimeoutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteTimeoutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetCode(v int32) *UpdateGatewayRouteTimeoutResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetData(v int64) *UpdateGatewayRouteTimeoutResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteTimeoutResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetMessage(v string) *UpdateGatewayRouteTimeoutResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetRequestId(v string) *UpdateGatewayRouteTimeoutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponseBody) SetSuccess(v bool) *UpdateGatewayRouteTimeoutResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteTimeoutResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteTimeoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteTimeoutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteTimeoutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteTimeoutResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteTimeoutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteTimeoutResponse) SetBody(v *UpdateGatewayRouteTimeoutResponseBody) *UpdateGatewayRouteTimeoutResponse {
 	s.Body = v
 	return s
 }
@@ -17953,6 +22548,112 @@ func (client *Client) AddGatewayDomain(request *AddGatewayDomainRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *AddGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddGatewayRouteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
+		request.ServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Services, tea.String("Services"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectResponseJSONShrink)) {
+		query["DirectResponseJSON"] = request.DirectResponseJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainIdListJSON)) {
+		query["DomainIdListJSON"] = request.DomainIdListJSON
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredicatesShrink)) {
+		query["Predicates"] = request.PredicatesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectJSONShrink)) {
+		query["RedirectJSON"] = request.RedirectJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteOrder)) {
+		query["RouteOrder"] = request.RouteOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesShrink)) {
+		query["Services"] = request.ServicesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGatewayRoute(request *AddGatewayRouteRequest) (_result *AddGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddGatewayRouteResponse{}
+	_body, _err := client.AddGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddGatewayServiceVersionWithOptions(request *AddGatewayServiceVersionRequest, runtime *util.RuntimeOptions) (_result *AddGatewayServiceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18250,6 +22951,46 @@ func (client *Client) AddServiceSource(request *AddServiceSourceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &AddServiceSourceResponse{}
 	_body, _err := client.AddServiceSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyGatewayRouteWithOptions(request *ApplyGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *ApplyGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyGatewayRoute(request *ApplyGatewayRouteRequest) (_result *ApplyGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyGatewayRouteResponse{}
+	_body, _err := client.ApplyGatewayRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18893,6 +23634,202 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(request *CreateOrUpdateSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRules)) {
+		query["EnableRules"] = request.EnableRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRule)) {
+		query["EntryRule"] = request.EntryRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRules)) {
+		query["EntryRules"] = request.EntryRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreate)) {
+		query["GmtCreate"] = request.GmtCreate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtModified)) {
+		query["GmtModified"] = request.GmtModified
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseKey)) {
+		query["LicenseKey"] = request.LicenseKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLane"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimmingLaneRequest) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *CreateOrUpdateSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryApp)) {
+		query["EntryApp"] = request.EntryApp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreate)) {
+		query["GmtCreate"] = request.GmtCreate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtModified)) {
+		query["GmtModified"] = request.GmtModified
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseKey)) {
+		query["LicenseKey"] = request.LicenseKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwimmingLaneGroupRequest) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateZnodeWithOptions(request *CreateZnodeRequest, runtime *util.RuntimeOptions) (_result *CreateZnodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19225,6 +24162,46 @@ func (client *Client) DeleteGatewayDomain(request *DeleteGatewayDomainRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayRoute(request *DeleteGatewayRouteRequest) (_result *DeleteGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayRouteResponse{}
+	_body, _err := client.DeleteGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteGatewayServiceVersionWithOptions(request *DeleteGatewayServiceVersionRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayServiceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19534,6 +24511,102 @@ func (client *Client) DeleteServiceSource(request *DeleteServiceSourceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceSourceResponse{}
 	_body, _err := client.DeleteServiceSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *DeleteSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimmingLane"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLane(request *DeleteSwimmingLaneRequest) (_result *DeleteSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSwimmingLaneResponse{}
+	_body, _err := client.DeleteSwimmingLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRequest) (_result *DeleteSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSwimmingLaneGroupResponse{}
+	_body, _err := client.DeleteSwimmingLaneGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19886,6 +24959,46 @@ func (client *Client) GetGatewayOption(request *GetGatewayOptionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGatewayOptionResponse{}
 	_body, _err := client.GetGatewayOptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGatewayRouteDetailWithOptions(request *GetGatewayRouteDetailRequest, runtime *util.RuntimeOptions) (_result *GetGatewayRouteDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGatewayRouteDetail"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGatewayRouteDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGatewayRouteDetail(request *GetGatewayRouteDetailRequest) (_result *GetGatewayRouteDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGatewayRouteDetailResponse{}
+	_body, _err := client.GetGatewayRouteDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20453,6 +25566,54 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 	return _result, _err
 }
 
+func (client *Client) GetTagsBySwimmingLaneGroupIdWithOptions(request *GetTagsBySwimmingLaneGroupIdRequest, runtime *util.RuntimeOptions) (_result *GetTagsBySwimmingLaneGroupIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTagsBySwimmingLaneGroupId"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTagsBySwimmingLaneGroupIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTagsBySwimmingLaneGroupId(request *GetTagsBySwimmingLaneGroupIdRequest) (_result *GetTagsBySwimmingLaneGroupIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTagsBySwimmingLaneGroupIdResponse{}
+	_body, _err := client.GetTagsBySwimmingLaneGroupIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ImportNacosConfigWithOptions(request *ImportNacosConfigRequest, runtime *util.RuntimeOptions) (_result *ImportNacosConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20852,6 +26013,58 @@ func (client *Client) ListAnsServices(request *ListAnsServicesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAnsServicesResponse{}
 	_body, _err := client.ListAnsServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAppBySwimmingLaneGroupTagWithOptions(request *ListAppBySwimmingLaneGroupTagRequest, runtime *util.RuntimeOptions) (_result *ListAppBySwimmingLaneGroupTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAppBySwimmingLaneGroupTag"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAppBySwimmingLaneGroupTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAppBySwimmingLaneGroupTag(request *ListAppBySwimmingLaneGroupTagRequest) (_result *ListAppBySwimmingLaneGroupTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAppBySwimmingLaneGroupTagResponse{}
+	_body, _err := client.ListAppBySwimmingLaneGroupTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21266,6 +26479,76 @@ func (client *Client) ListGatewayDomain(request *ListGatewayDomainRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGatewayDomainResponse{}
 	_body, _err := client.ListGatewayDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *ListGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListGatewayRouteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DescSort)) {
+		query["DescSort"] = request.DescSort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterParamsShrink)) {
+		query["FilterParams"] = request.FilterParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
+		query["OrderItem"] = request.OrderItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayRoute(request *ListGatewayRouteRequest) (_result *ListGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayRouteResponse{}
+	_body, _err := client.ListGatewayRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21843,6 +27126,46 @@ func (client *Client) ModifyGovernanceKubernetesCluster(request *ModifyGovernanc
 	return _result, _err
 }
 
+func (client *Client) OfflineGatewayRouteWithOptions(request *OfflineGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *OfflineGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OfflineGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OfflineGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OfflineGatewayRoute(request *OfflineGatewayRouteRequest) (_result *OfflineGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OfflineGatewayRouteResponse{}
+	_body, _err := client.OfflineGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PullServicesWithOptions(request *PullServicesRequest, runtime *util.RuntimeOptions) (_result *PullServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21876,6 +27199,98 @@ func (client *Client) PullServices(request *PullServicesRequest) (_result *PullS
 	runtime := &util.RuntimeOptions{}
 	_result = &PullServicesResponse{}
 	_body, _err := client.PullServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAllSwimmingLaneWithOptions(request *QueryAllSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *QueryAllSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAllSwimmingLane"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAllSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAllSwimmingLane(request *QueryAllSwimmingLaneRequest) (_result *QueryAllSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAllSwimmingLaneResponse{}
+	_body, _err := client.QueryAllSwimmingLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAllSwimmingLaneGroupWithOptions(request *QueryAllSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *QueryAllSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAllSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAllSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAllSwimmingLaneGroup(request *QueryAllSwimmingLaneGroupRequest) (_result *QueryAllSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAllSwimmingLaneGroupResponse{}
+	_body, _err := client.QueryAllSwimmingLaneGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22304,6 +27719,54 @@ func (client *Client) QuerySlbSpec(request *QuerySlbSpecRequest) (_result *Query
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySlbSpecResponse{}
 	_body, _err := client.QuerySlbSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySwimmingLaneByIdWithOptions(request *QuerySwimmingLaneByIdRequest, runtime *util.RuntimeOptions) (_result *QuerySwimmingLaneByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySwimmingLaneById"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySwimmingLaneByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySwimmingLaneById(request *QuerySwimmingLaneByIdRequest) (_result *QuerySwimmingLaneByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySwimmingLaneByIdResponse{}
+	_body, _err := client.QuerySwimmingLaneByIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23103,6 +28566,178 @@ func (client *Client) UpdateGatewayOption(request *UpdateGatewayOptionRequest) (
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayRouteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
+		request.ServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Services, tea.String("Services"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectResponseJSONShrink)) {
+		query["DirectResponseJSON"] = request.DirectResponseJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainIdListJSON)) {
+		query["DomainIdListJSON"] = request.DomainIdListJSON
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredicatesShrink)) {
+		query["Predicates"] = request.PredicatesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectJSONShrink)) {
+		query["RedirectJSON"] = request.RedirectJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteOrder)) {
+		query["RouteOrder"] = request.RouteOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesShrink)) {
+		query["Services"] = request.ServicesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRoute(request *UpdateGatewayRouteRequest) (_result *UpdateGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteResponse{}
+	_body, _err := client.UpdateGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteCORSWithOptions(tmpReq *UpdateGatewayRouteCORSRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteCORSResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayRouteCORSShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CorsJSON))) {
+		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CorsJSON), tea.String("CorsJSON"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorsJSONShrink)) {
+		query["CorsJSON"] = request.CorsJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteCORS"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteCORSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteCORS(request *UpdateGatewayRouteCORSRequest) (_result *UpdateGatewayRouteCORSResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteCORSResponse{}
+	_body, _err := client.UpdateGatewayRouteCORSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGatewayRouteHTTPRewriteWithOptions(request *UpdateGatewayRouteHTTPRewriteRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteHTTPRewriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23156,6 +28791,198 @@ func (client *Client) UpdateGatewayRouteHTTPRewrite(request *UpdateGatewayRouteH
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayRouteHTTPRewriteResponse{}
 	_body, _err := client.UpdateGatewayRouteHTTPRewriteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteHeaderOpWithOptions(request *UpdateGatewayRouteHeaderOpRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteHeaderOpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeaderOpJSON)) {
+		query["HeaderOpJSON"] = request.HeaderOpJSON
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteHeaderOp"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteHeaderOpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteHeaderOp(request *UpdateGatewayRouteHeaderOpRequest) (_result *UpdateGatewayRouteHeaderOpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteHeaderOpResponse{}
+	_body, _err := client.UpdateGatewayRouteHeaderOpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRouteRetryRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteRetryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayRouteRetryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RetryJSON))) {
+		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RetryJSON), tea.String("RetryJSON"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryJSONShrink)) {
+		query["RetryJSON"] = request.RetryJSONShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteRetry"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteRetryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteRetry(request *UpdateGatewayRouteRetryRequest) (_result *UpdateGatewayRouteRetryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteRetryResponse{}
+	_body, _err := client.UpdateGatewayRouteRetryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteTimeoutWithOptions(tmpReq *UpdateGatewayRouteTimeoutRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteTimeoutResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayRouteTimeoutShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimeoutJSON))) {
+		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimeoutJSON), tea.String("TimeoutJSON"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeoutJSONShrink)) {
+		query["TimeoutJSON"] = request.TimeoutJSONShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteTimeout"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteTimeoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteTimeout(request *UpdateGatewayRouteTimeoutRequest) (_result *UpdateGatewayRouteTimeoutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteTimeoutResponse{}
+	_body, _err := client.UpdateGatewayRouteTimeoutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
