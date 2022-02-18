@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cms-20190101/v2
+module github.com/alibabacloud-go/cms-20190101/v7
 
 go 1.15
 
