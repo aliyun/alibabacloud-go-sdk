@@ -2664,8 +2664,8 @@ func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerR
 type DeployPolicyInstanceRequest struct {
 	// 规则治理动作
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 策略实例实施范围
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// 策略实例实施范围（限定命名空间）。默认 [] 代表集群所有命名空间。
+	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
 	// 当前规则实例的配置参数
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 }
@@ -2683,8 +2683,8 @@ func (s *DeployPolicyInstanceRequest) SetAction(v string) *DeployPolicyInstanceR
 	return s
 }
 
-func (s *DeployPolicyInstanceRequest) SetNamespace(v string) *DeployPolicyInstanceRequest {
-	s.Namespace = &v
+func (s *DeployPolicyInstanceRequest) SetNamespaces(v []*string) *DeployPolicyInstanceRequest {
+	s.Namespaces = v
 	return s
 }
 
@@ -10371,6 +10371,72 @@ func (s *RemoveWorkflowResponse) SetHeaders(v map[string]*string) *RemoveWorkflo
 	return s
 }
 
+type RepairClusterNodePoolRequest struct {
+	// 节点列表，如果不指定则表示当前节点池内所有节点
+	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
+}
+
+func (s RepairClusterNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepairClusterNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RepairClusterNodePoolRequest) SetNodes(v []*string) *RepairClusterNodePoolRequest {
+	s.Nodes = v
+	return s
+}
+
+type RepairClusterNodePoolResponseBody struct {
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// 任务ID
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s RepairClusterNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepairClusterNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RepairClusterNodePoolResponseBody) SetRequestId(v string) *RepairClusterNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RepairClusterNodePoolResponseBody) SetTaskId(v string) *RepairClusterNodePoolResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type RepairClusterNodePoolResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RepairClusterNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RepairClusterNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepairClusterNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RepairClusterNodePoolResponse) SetHeaders(v map[string]*string) *RepairClusterNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RepairClusterNodePoolResponse) SetBody(v *RepairClusterNodePoolResponseBody) *RepairClusterNodePoolResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeComponentUpgradeResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -13086,8 +13152,8 @@ func (client *Client) DeployPolicyInstanceWithOptions(clusterId *string, policyN
 		body["action"] = request.Action
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.Namespaces)) {
+		body["namespaces"] = request.Namespaces
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
@@ -15684,6 +15750,54 @@ func (client *Client) RemoveWorkflowWithOptions(workflowName *string, headers ma
 		BodyType:    tea.String("none"),
 	}
 	_result = &RemoveWorkflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *string, request *RepairClusterNodePoolRequest) (_result *RepairClusterNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RepairClusterNodePoolResponse{}
+	_body, _err := client.RepairClusterNodePoolWithOptions(clusterId, nodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RepairClusterNodePoolWithOptions(clusterId *string, nodepoolId *string, request *RepairClusterNodePoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RepairClusterNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	clusterId = openapiutil.GetEncodeParam(clusterId)
+	nodepoolId = openapiutil.GetEncodeParam(nodepoolId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
+		body["nodes"] = request.Nodes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RepairClusterNodePool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(clusterId) + "/nodepools/" + tea.StringValue(nodepoolId) + "/repair"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RepairClusterNodePoolResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
