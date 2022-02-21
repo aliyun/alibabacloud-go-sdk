@@ -18813,11 +18813,11 @@ func (s *QueryMonitorRequest) SetStep(v int64) *QueryMonitorRequest {
 }
 
 type QueryMonitorResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      []*QueryMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMonitorResponseBody) String() string {
@@ -18828,8 +18828,8 @@ func (s QueryMonitorResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryMonitorResponseBody) SetData(v string) *QueryMonitorResponseBody {
-	s.Data = &v
+func (s *QueryMonitorResponseBody) SetData(v []*QueryMonitorResponseBodyData) *QueryMonitorResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -18850,6 +18850,35 @@ func (s *QueryMonitorResponseBody) SetRequestId(v string) *QueryMonitorResponseB
 
 func (s *QueryMonitorResponseBody) SetSuccess(v bool) *QueryMonitorResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QueryMonitorResponseBodyData struct {
+	ClusterNamePrefix *string                  `json:"clusterNamePrefix,omitempty" xml:"clusterNamePrefix,omitempty"`
+	PodName           *string                  `json:"podName,omitempty" xml:"podName,omitempty"`
+	Values            []map[string]interface{} `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s QueryMonitorResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMonitorResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMonitorResponseBodyData) SetClusterNamePrefix(v string) *QueryMonitorResponseBodyData {
+	s.ClusterNamePrefix = &v
+	return s
+}
+
+func (s *QueryMonitorResponseBodyData) SetPodName(v string) *QueryMonitorResponseBodyData {
+	s.PodName = &v
+	return s
+}
+
+func (s *QueryMonitorResponseBodyData) SetValues(v []map[string]interface{}) *QueryMonitorResponseBodyData {
+	s.Values = v
 	return s
 }
 
