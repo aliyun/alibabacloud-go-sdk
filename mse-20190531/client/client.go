@@ -2105,6 +2105,200 @@ func (s *ApplyGatewayRouteResponse) SetBody(v *ApplyGatewayRouteResponseBody) *A
 	return s
 }
 
+type ApplyTagPoliciesRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Rules          *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ApplyTagPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTagPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTagPoliciesRequest) SetAcceptLanguage(v string) *ApplyTagPoliciesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetAppId(v string) *ApplyTagPoliciesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetEnable(v bool) *ApplyTagPoliciesRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetNamespaceId(v string) *ApplyTagPoliciesRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetRegion(v string) *ApplyTagPoliciesRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetRules(v string) *ApplyTagPoliciesRequest {
+	s.Rules = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetSource(v string) *ApplyTagPoliciesRequest {
+	s.Source = &v
+	return s
+}
+
+type ApplyTagPoliciesResponseBody struct {
+	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ApplyTagPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ApplyTagPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTagPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetCode(v int32) *ApplyTagPoliciesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetData(v []*ApplyTagPoliciesResponseBodyData) *ApplyTagPoliciesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetHttpStatusCode(v int32) *ApplyTagPoliciesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetMessage(v string) *ApplyTagPoliciesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetRequestId(v string) *ApplyTagPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBody) SetSuccess(v bool) *ApplyTagPoliciesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ApplyTagPoliciesResponseBodyData struct {
+	CarryData   *bool   `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
+	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceNum *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Rate        *int32  `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Remove      *bool   `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Rules       *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ApplyTagPoliciesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTagPoliciesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetCarryData(v bool) *ApplyTagPoliciesResponseBodyData {
+	s.CarryData = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetEnable(v bool) *ApplyTagPoliciesResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetId(v int64) *ApplyTagPoliciesResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetInstanceNum(v int32) *ApplyTagPoliciesResponseBodyData {
+	s.InstanceNum = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetName(v string) *ApplyTagPoliciesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetRate(v int32) *ApplyTagPoliciesResponseBodyData {
+	s.Rate = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetRemove(v bool) *ApplyTagPoliciesResponseBodyData {
+	s.Remove = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetRules(v string) *ApplyTagPoliciesResponseBodyData {
+	s.Rules = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetStatus(v int32) *ApplyTagPoliciesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponseBodyData) SetTag(v string) *ApplyTagPoliciesResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type ApplyTagPoliciesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ApplyTagPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyTagPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTagPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTagPoliciesResponse) SetHeaders(v map[string]*string) *ApplyTagPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyTagPoliciesResponse) SetBody(v *ApplyTagPoliciesResponseBody) *ApplyTagPoliciesResponse {
+	s.Body = v
+	return s
+}
+
 type CloneNacosConfigRequest struct {
 	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Ids               *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
@@ -2715,7 +2909,6 @@ type CreateClusterRequest struct {
 	ClusterType          *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	ClusterVersion       *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
 	ConnectionType       *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	DiskCapacity         *int32  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
 	DiskType             *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	// 用于区分基础/专业版本
@@ -2760,11 +2953,6 @@ func (s *CreateClusterRequest) SetClusterVersion(v string) *CreateClusterRequest
 
 func (s *CreateClusterRequest) SetConnectionType(v string) *CreateClusterRequest {
 	s.ConnectionType = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetDiskCapacity(v int32) *CreateClusterRequest {
-	s.DiskCapacity = &v
 	return s
 }
 
@@ -5556,6 +5744,155 @@ func (s *DeleteNacosConfigsResponse) SetHeaders(v map[string]*string) *DeleteNac
 }
 
 func (s *DeleteNacosConfigsResponse) SetBody(v *DeleteNacosConfigsResponseBody) *DeleteNacosConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNacosInstanceRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Ephemeral      *bool   `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DeleteNacosInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosInstanceRequest) SetAcceptLanguage(v string) *DeleteNacosInstanceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetClusterName(v string) *DeleteNacosInstanceRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetEphemeral(v bool) *DeleteNacosInstanceRequest {
+	s.Ephemeral = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetGroupName(v string) *DeleteNacosInstanceRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetInstanceId(v string) *DeleteNacosInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetIp(v string) *DeleteNacosInstanceRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetNamespaceId(v string) *DeleteNacosInstanceRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetPort(v int32) *DeleteNacosInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceRequest) SetServiceName(v string) *DeleteNacosInstanceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type DeleteNacosInstanceResponseBody struct {
+	// code仅仅用来和success同步
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 动态错误信息中的占位符
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteNacosInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetCode(v int32) *DeleteNacosInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetData(v string) *DeleteNacosInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetDynamicMessage(v string) *DeleteNacosInstanceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetErrorCode(v string) *DeleteNacosInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetHttpStatusCode(v int32) *DeleteNacosInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetMessage(v string) *DeleteNacosInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetRequestId(v string) *DeleteNacosInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponseBody) SetSuccess(v bool) *DeleteNacosInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteNacosInstanceResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteNacosInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNacosInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNacosInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNacosInstanceResponse) SetHeaders(v map[string]*string) *DeleteNacosInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNacosInstanceResponse) SetBody(v *DeleteNacosInstanceResponseBody) *DeleteNacosInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -9679,6 +10016,241 @@ func (s *GetOverviewResponse) SetBody(v *GetOverviewResponseBody) *GetOverviewRe
 	return s
 }
 
+type GetServiceListRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceType    *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+}
+
+func (s GetServiceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceListRequest) SetAcceptLanguage(v string) *GetServiceListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetServiceListRequest) SetAppId(v string) *GetServiceListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetServiceListRequest) SetIp(v string) *GetServiceListRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetServiceListRequest) SetRegion(v string) *GetServiceListRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetServiceListRequest) SetServiceName(v string) *GetServiceListRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetServiceListRequest) SetServiceType(v string) *GetServiceListRequest {
+	s.ServiceType = &v
+	return s
+}
+
+type GetServiceListResponseBody struct {
+	Code           *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*GetServiceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetServiceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceListResponseBody) SetCode(v int32) *GetServiceListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetServiceListResponseBody) SetData(v []*GetServiceListResponseBodyData) *GetServiceListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetServiceListResponseBody) SetHttpStatusCode(v int32) *GetServiceListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetServiceListResponseBody) SetMessage(v string) *GetServiceListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetServiceListResponseBody) SetRequestId(v string) *GetServiceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceListResponseBody) SetSuccess(v bool) *GetServiceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetServiceListResponseBodyData struct {
+	DubboApplicationName  *string                                  `json:"DubboApplicationName,omitempty" xml:"DubboApplicationName,omitempty"`
+	EdasAppName           *string                                  `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
+	Group                 *string                                  `json:"Group,omitempty" xml:"Group,omitempty"`
+	Metadata              map[string]interface{}                   `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Methods               []*GetServiceListResponseBodyDataMethods `json:"Methods,omitempty" xml:"Methods,omitempty" type:"Repeated"`
+	RegistryType          *string                                  `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	ServiceName           *string                                  `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceType           *string                                  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SpringApplicationName *string                                  `json:"SpringApplicationName,omitempty" xml:"SpringApplicationName,omitempty"`
+	Version               *string                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetServiceListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceListResponseBodyData) SetDubboApplicationName(v string) *GetServiceListResponseBodyData {
+	s.DubboApplicationName = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetEdasAppName(v string) *GetServiceListResponseBodyData {
+	s.EdasAppName = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetGroup(v string) *GetServiceListResponseBodyData {
+	s.Group = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetMetadata(v map[string]interface{}) *GetServiceListResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetMethods(v []*GetServiceListResponseBodyDataMethods) *GetServiceListResponseBodyData {
+	s.Methods = v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetRegistryType(v string) *GetServiceListResponseBodyData {
+	s.RegistryType = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetServiceName(v string) *GetServiceListResponseBodyData {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetServiceType(v string) *GetServiceListResponseBodyData {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetSpringApplicationName(v string) *GetServiceListResponseBodyData {
+	s.SpringApplicationName = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyData) SetVersion(v string) *GetServiceListResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetServiceListResponseBodyDataMethods struct {
+	MethodController *string   `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParameterTypes   []*string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
+	Paths            []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	RequestMethods   []*string `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty" type:"Repeated"`
+	ReturnType       *string   `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
+}
+
+func (s GetServiceListResponseBodyDataMethods) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceListResponseBodyDataMethods) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetMethodController(v string) *GetServiceListResponseBodyDataMethods {
+	s.MethodController = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetName(v string) *GetServiceListResponseBodyDataMethods {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetParameterTypes(v []*string) *GetServiceListResponseBodyDataMethods {
+	s.ParameterTypes = v
+	return s
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetPaths(v []*string) *GetServiceListResponseBodyDataMethods {
+	s.Paths = v
+	return s
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetRequestMethods(v []*string) *GetServiceListResponseBodyDataMethods {
+	s.RequestMethods = v
+	return s
+}
+
+func (s *GetServiceListResponseBodyDataMethods) SetReturnType(v string) *GetServiceListResponseBodyDataMethods {
+	s.ReturnType = &v
+	return s
+}
+
+type GetServiceListResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetServiceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceListResponse) SetHeaders(v map[string]*string) *GetServiceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceListResponse) SetBody(v *GetServiceListResponseBody) *GetServiceListResponse {
+	s.Body = v
+	return s
+}
+
 type GetTagsBySwimmingLaneGroupIdRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -11684,6 +12256,276 @@ func (s *ListAppBySwimmingLaneGroupTagResponse) SetHeaders(v map[string]*string)
 }
 
 func (s *ListAppBySwimmingLaneGroupTagResponse) SetBody(v *ListAppBySwimmingLaneGroupTagResponseBody) *ListAppBySwimmingLaneGroupTagResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplicationsWithTagRulesRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetAcceptLanguage(v string) *ListApplicationsWithTagRulesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetAppId(v string) *ListApplicationsWithTagRulesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetAppName(v string) *ListApplicationsWithTagRulesRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetPageNumber(v int32) *ListApplicationsWithTagRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetPageSize(v int32) *ListApplicationsWithTagRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetRegion(v string) *ListApplicationsWithTagRulesRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetSource(v string) *ListApplicationsWithTagRulesRequest {
+	s.Source = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBody struct {
+	Code           *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListApplicationsWithTagRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetCode(v int32) *ListApplicationsWithTagRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetData(v *ListApplicationsWithTagRulesResponseBodyData) *ListApplicationsWithTagRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetHttpStatusCode(v int32) *ListApplicationsWithTagRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetMessage(v string) *ListApplicationsWithTagRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetRequestId(v string) *ListApplicationsWithTagRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBody) SetSuccess(v bool) *ListApplicationsWithTagRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyData struct {
+	PageNumber *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListApplicationsWithTagRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                                `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyData) SetPageNumber(v int32) *ListApplicationsWithTagRulesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyData) SetPageSize(v int32) *ListApplicationsWithTagRulesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyData) SetResult(v []*ListApplicationsWithTagRulesResponseBodyDataResult) *ListApplicationsWithTagRulesResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyData) SetTotalSize(v int32) *ListApplicationsWithTagRulesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResult struct {
+	AppId       *string                                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string                                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	RouteRules  []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules `json:"RouteRules,omitempty" xml:"RouteRules,omitempty" type:"Repeated"`
+	RouteStatus *int64                                                          `json:"RouteStatus,omitempty" xml:"RouteStatus,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetAppId(v string) *ListApplicationsWithTagRulesResponseBodyDataResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetAppName(v string) *ListApplicationsWithTagRulesResponseBodyDataResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteRules(v []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) *ListApplicationsWithTagRulesResponseBodyDataResult {
+	s.RouteRules = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v int64) *ListApplicationsWithTagRulesResponseBodyDataResult {
+	s.RouteStatus = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
+	CarryData   *bool   `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
+	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceNum *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Rate        *int32  `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Remove      *bool   `json:"Remove,omitempty" xml:"Remove,omitempty"`
+	Rules       *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetCarryData(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.CarryData = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetEnable(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetGmtModified(v int64) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetId(v int64) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetInstanceNum(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.InstanceNum = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetName(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRate(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Rate = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRemove(v bool) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Remove = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetRules(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Rules = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetStatus(v int32) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetTag(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+	s.Tag = &v
+	return s
+}
+
+type ListApplicationsWithTagRulesResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListApplicationsWithTagRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationsWithTagRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsWithTagRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsWithTagRulesResponse) SetHeaders(v map[string]*string) *ListApplicationsWithTagRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponse) SetBody(v *ListApplicationsWithTagRulesResponseBody) *ListApplicationsWithTagRulesResponse {
 	s.Body = v
 	return s
 }
@@ -22998,6 +23840,74 @@ func (client *Client) ApplyGatewayRoute(request *ApplyGatewayRouteRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ApplyTagPoliciesWithOptions(request *ApplyTagPoliciesRequest, runtime *util.RuntimeOptions) (_result *ApplyTagPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		query["Rules"] = request.Rules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyTagPolicies"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyTagPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyTagPolicies(request *ApplyTagPoliciesRequest) (_result *ApplyTagPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyTagPoliciesResponse{}
+	_body, _err := client.ApplyTagPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigRequest, runtime *util.RuntimeOptions) (_result *CloneNacosConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23240,10 +24150,6 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
 		query["ConnectionType"] = request.ConnectionType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DiskCapacity)) {
-		query["DiskCapacity"] = request.DiskCapacity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
@@ -24418,6 +25324,82 @@ func (client *Client) DeleteNacosConfigs(request *DeleteNacosConfigsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteNacosInstanceWithOptions(request *DeleteNacosInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ephemeral)) {
+		query["Ephemeral"] = request.Ephemeral
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNacosInstance"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNacosInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNacosInstance(request *DeleteNacosInstanceRequest) (_result *DeleteNacosInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNacosInstanceResponse{}
+	_body, _err := client.DeleteNacosInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteNacosServiceWithOptions(request *DeleteNacosServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteNacosServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25566,6 +26548,70 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 	return _result, _err
 }
 
+func (client *Client) GetServiceListWithOptions(request *GetServiceListRequest, runtime *util.RuntimeOptions) (_result *GetServiceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceList"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceList(request *GetServiceListRequest) (_result *GetServiceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceListResponse{}
+	_body, _err := client.GetServiceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTagsBySwimmingLaneGroupIdWithOptions(request *GetTagsBySwimmingLaneGroupIdRequest, runtime *util.RuntimeOptions) (_result *GetTagsBySwimmingLaneGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26065,6 +27111,46 @@ func (client *Client) ListAppBySwimmingLaneGroupTag(request *ListAppBySwimmingLa
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppBySwimmingLaneGroupTagResponse{}
 	_body, _err := client.ListAppBySwimmingLaneGroupTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApplicationsWithTagRulesWithOptions(request *ListApplicationsWithTagRulesRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsWithTagRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplicationsWithTagRules"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationsWithTagRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplicationsWithTagRules(request *ListApplicationsWithTagRulesRequest) (_result *ListApplicationsWithTagRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApplicationsWithTagRulesResponse{}
+	_body, _err := client.ListApplicationsWithTagRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
