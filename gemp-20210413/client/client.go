@@ -1759,7 +1759,7 @@ type CreateRouteRuleRequest struct {
 	// 路由类型：INCIDENT 触发事件 ALERT仅触发报警
 	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
 	// 规则名称
-	RuleName []byte `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// 时间窗口
 	TimeWindow *int64 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
 	// 时间窗口单位 MINUTE  分钟  SECOND 秒
@@ -1834,8 +1834,8 @@ func (s *CreateRouteRuleRequest) SetRouteType(v string) *CreateRouteRuleRequest 
 	return s
 }
 
-func (s *CreateRouteRuleRequest) SetRuleName(v []byte) *CreateRouteRuleRequest {
-	s.RuleName = v
+func (s *CreateRouteRuleRequest) SetRuleName(v string) *CreateRouteRuleRequest {
+	s.RuleName = &v
 	return s
 }
 
