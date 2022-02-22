@@ -13494,6 +13494,7 @@ type ModifyDBNodeClassRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SubCategory          *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
 func (s ModifyDBNodeClassRequest) String() string {
@@ -13551,6 +13552,11 @@ func (s *ModifyDBNodeClassRequest) SetResourceOwnerAccount(v string) *ModifyDBNo
 
 func (s *ModifyDBNodeClassRequest) SetResourceOwnerId(v int64) *ModifyDBNodeClassRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBNodeClassRequest) SetSubCategory(v string) *ModifyDBNodeClassRequest {
+	s.SubCategory = &v
 	return s
 }
 
@@ -14085,6 +14091,111 @@ func (s *ModifyPendingMaintenanceActionResponse) SetHeaders(v map[string]*string
 }
 
 func (s *ModifyPendingMaintenanceActionResponse) SetBody(v *ModifyPendingMaintenanceActionResponseBody) *ModifyPendingMaintenanceActionResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshProxyLevelRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	FromTimeService      *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlannedEndTime       *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	ProxyTargetClass     *string `json:"ProxyTargetClass,omitempty" xml:"ProxyTargetClass,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RefreshProxyLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshProxyLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshProxyLevelRequest) SetDBClusterId(v string) *RefreshProxyLevelRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetFromTimeService(v bool) *RefreshProxyLevelRequest {
+	s.FromTimeService = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetOwnerAccount(v string) *RefreshProxyLevelRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetOwnerId(v int64) *RefreshProxyLevelRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetPlannedEndTime(v string) *RefreshProxyLevelRequest {
+	s.PlannedEndTime = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetPlannedStartTime(v string) *RefreshProxyLevelRequest {
+	s.PlannedStartTime = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetProxyTargetClass(v string) *RefreshProxyLevelRequest {
+	s.ProxyTargetClass = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetResourceOwnerAccount(v string) *RefreshProxyLevelRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RefreshProxyLevelRequest) SetResourceOwnerId(v int64) *RefreshProxyLevelRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RefreshProxyLevelResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshProxyLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshProxyLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshProxyLevelResponseBody) SetRequestId(v string) *RefreshProxyLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshProxyLevelResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshProxyLevelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshProxyLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshProxyLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshProxyLevelResponse) SetHeaders(v map[string]*string) *RefreshProxyLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshProxyLevelResponse) SetBody(v *RefreshProxyLevelResponseBody) *RefreshProxyLevelResponse {
 	s.Body = v
 	return s
 }
@@ -21813,6 +21924,10 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SubCategory)) {
+		query["SubCategory"] = request.SubCategory
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -22172,6 +22287,82 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
 	_body, _err := client.ModifyPendingMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshProxyLevelWithOptions(request *RefreshProxyLevelRequest, runtime *util.RuntimeOptions) (_result *RefreshProxyLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromTimeService)) {
+		query["FromTimeService"] = request.FromTimeService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlannedEndTime)) {
+		query["PlannedEndTime"] = request.PlannedEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlannedStartTime)) {
+		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyTargetClass)) {
+		query["ProxyTargetClass"] = request.ProxyTargetClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshProxyLevel"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshProxyLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshProxyLevel(request *RefreshProxyLevelRequest) (_result *RefreshProxyLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshProxyLevelResponse{}
+	_body, _err := client.RefreshProxyLevelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
