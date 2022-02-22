@@ -12,6 +12,724 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateGroupRequest struct {
+	// 算法名称
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 手机号列名
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// ODPS过滤语句
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 推理任务
+	InferenceJob *string `json:"InferenceJob,omitempty" xml:"InferenceJob,omitempty"`
+	// 人群名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ODPS项目名
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 人群来源
+	// - 0: Text，每行一个手机号
+	// - 1: 无header的csv文件，每行一个手机号
+	// - 2: 带header的csv文件，需指定手机号列名
+	// - 3: Odps，需指定手机号列名
+	// - 4: Algorithm，由算法预测生成
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// ODPS表名
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// 文本
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// 文件地址
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupRequest) SetAlgorithm(v string) *CreateGroupRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetColumn(v string) *CreateGroupRequest {
+	s.Column = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetFilter(v string) *CreateGroupRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetInferenceJob(v string) *CreateGroupRequest {
+	s.InferenceJob = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetName(v string) *CreateGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetProject(v string) *CreateGroupRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetRemark(v string) *CreateGroupRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetSource(v int32) *CreateGroupRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetTable(v string) *CreateGroupRequest {
+	s.Table = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetText(v string) *CreateGroupRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetUri(v string) *CreateGroupRequest {
+	s.Uri = &v
+	return s
+}
+
+type CreateGroupResponseBody struct {
+	// 返回数据
+	Data *CreateGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CreateGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponseBody) SetData(v *CreateGroupResponseBodyData) *CreateGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateGroupResponseBody) SetErrorCode(v int32) *CreateGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateGroupResponseBody) SetErrorMessage(v string) *CreateGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateGroupResponseBodyData struct {
+	// 算法名称
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 人群数量
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 手机号列名
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// ODPS过滤语句
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 人群Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 推理任务
+	InferenceJob *string `json:"InferenceJob,omitempty" xml:"InferenceJob,omitempty"`
+	// 人群名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ODPS项目名
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 人群来源
+	// - 0: Text，每行一个手机号
+	// - 1: 无header的csv文件，每行一个手机号
+	// - 2: 带header的csv文件，需指定手机号列名
+	// - 3: Odps，需指定手机号列名
+	// - 4: Algorithm，由算法预测生成
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 人群状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ODPS表名
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// 文本
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 文件地址
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponseBodyData) SetAlgorithm(v string) *CreateGroupResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetAmount(v int32) *CreateGroupResponseBodyData {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetColumn(v string) *CreateGroupResponseBodyData {
+	s.Column = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetCreatedTime(v string) *CreateGroupResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetFilter(v string) *CreateGroupResponseBodyData {
+	s.Filter = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetId(v string) *CreateGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetInferenceJob(v string) *CreateGroupResponseBodyData {
+	s.InferenceJob = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetName(v string) *CreateGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetProject(v string) *CreateGroupResponseBodyData {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetRemark(v string) *CreateGroupResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetSource(v int32) *CreateGroupResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetStatus(v int32) *CreateGroupResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetTable(v string) *CreateGroupResponseBodyData {
+	s.Table = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetText(v string) *CreateGroupResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetUpdatedTime(v string) *CreateGroupResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *CreateGroupResponseBodyData) SetUri(v string) *CreateGroupResponseBodyData {
+	s.Uri = &v
+	return s
+}
+
+type CreateGroupResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponse) SetHeaders(v map[string]*string) *CreateGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInferenceJobRequest struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 关联训练任务
+	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s CreateInferenceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInferenceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInferenceJobRequest) SetAlgorithm(v string) *CreateInferenceJobRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateInferenceJobRequest) SetName(v string) *CreateInferenceJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateInferenceJobRequest) SetRemark(v string) *CreateInferenceJobRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateInferenceJobRequest) SetTrainingJobId(v string) *CreateInferenceJobRequest {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *CreateInferenceJobRequest) SetUserConfig(v string) *CreateInferenceJobRequest {
+	s.UserConfig = &v
+	return s
+}
+
+type CreateInferenceJobResponseBody struct {
+	// 返回数据
+	Data *CreateInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CreateInferenceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInferenceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInferenceJobResponseBody) SetData(v *CreateInferenceJobResponseBodyData) *CreateInferenceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBody) SetErrorCode(v int32) *CreateInferenceJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBody) SetErrorMessage(v string) *CreateInferenceJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateInferenceJobResponseBodyData struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 关联人群Id，如果任务失败则人群无效
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 关联训练任务
+	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s CreateInferenceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInferenceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetAlgorithm(v string) *CreateInferenceJobResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetCreatedTime(v string) *CreateInferenceJobResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetGroupId(v string) *CreateInferenceJobResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetHistory(v string) *CreateInferenceJobResponseBodyData {
+	s.History = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetId(v string) *CreateInferenceJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetName(v string) *CreateInferenceJobResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetRemark(v string) *CreateInferenceJobResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetStatus(v int32) *CreateInferenceJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetTrainingJobId(v string) *CreateInferenceJobResponseBodyData {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetUpdatedTime(v string) *CreateInferenceJobResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *CreateInferenceJobResponseBodyData) SetUserConfig(v string) *CreateInferenceJobResponseBodyData {
+	s.UserConfig = &v
+	return s
+}
+
+type CreateInferenceJobResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateInferenceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInferenceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInferenceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInferenceJobResponse) SetHeaders(v map[string]*string) *CreateInferenceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInferenceJobResponse) SetBody(v *CreateInferenceJobResponseBody) *CreateInferenceJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateScheduleRequest struct {
+	// 终止时间（UTC+8），精确到分钟。
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行时间 (UTC+8)，为空立即执行。
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// 人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 发送计划名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 重复周期，按重复周期与重复周期单位执行。
+	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	// 重复周期单位，若指定执行时间，则重复周期生效。
+	// - 0: 从不（默认）
+	// - 1: 小时
+	// - 2: 天
+	// - 3: 周
+	// - 4: 月
+	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	// 重复次数。
+	// - -1: 不设终止时间
+	// - 0: 不重复
+	// - N: 重复N次后终止
+	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	// 签名Id。
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// 模板Id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleRequest) SetEndTime(v int32) *CreateScheduleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetExecuteTime(v string) *CreateScheduleRequest {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetGroupId(v string) *CreateScheduleRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetName(v string) *CreateScheduleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetRepeatCycle(v int32) *CreateScheduleRequest {
+	s.RepeatCycle = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetRepeatCycleUnit(v int32) *CreateScheduleRequest {
+	s.RepeatCycleUnit = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetRepeatTimes(v int32) *CreateScheduleRequest {
+	s.RepeatTimes = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetSignatureId(v string) *CreateScheduleRequest {
+	s.SignatureId = &v
+	return s
+}
+
+func (s *CreateScheduleRequest) SetTemplateId(v string) *CreateScheduleRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateScheduleResponseBody struct {
+	// 返回数据
+	Data *CreateScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CreateScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleResponseBody) SetData(v *CreateScheduleResponseBodyData) *CreateScheduleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateScheduleResponseBody) SetErrorCode(v int32) *CreateScheduleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBody) SetErrorMessage(v string) *CreateScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateScheduleResponseBodyData struct {
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 终止时间（UTC+8），精确到分钟。
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行时间 (UTC+8)，为空立即执行。
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// 人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 发送计划名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 重复周期，按重复周期与重复周期单位执行。
+	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	// 重复周期单位，若指定执行时间，则重复周期生效。
+	// - 0: 从不（默认）
+	// - 1: 小时
+	// - 2: 天
+	// - 3: 周
+	// - 4: 月
+	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	// 重复次数。
+	// - -1: 不设终止时间
+	// - 0: 不重复
+	// - N: 重复N次后终止
+	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	// 签名Id。
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// 状态
+	// - 0: 检查中
+	// - 1: 检查成功
+	// - 2: 检查失败
+	// - 3: 发送中
+	// - 4: 发送成功
+	// - 5: 发送失败
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板Id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s CreateScheduleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleResponseBodyData) SetCreatedTime(v string) *CreateScheduleResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetEndTime(v int32) *CreateScheduleResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetExecuteTime(v string) *CreateScheduleResponseBodyData {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetGroupId(v string) *CreateScheduleResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetId(v string) *CreateScheduleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetName(v string) *CreateScheduleResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetRepeatCycle(v int32) *CreateScheduleResponseBodyData {
+	s.RepeatCycle = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetRepeatCycleUnit(v int32) *CreateScheduleResponseBodyData {
+	s.RepeatCycleUnit = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetRepeatTimes(v int32) *CreateScheduleResponseBodyData {
+	s.RepeatTimes = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetSignatureId(v string) *CreateScheduleResponseBodyData {
+	s.SignatureId = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetStatus(v int32) *CreateScheduleResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetTemplateId(v string) *CreateScheduleResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateScheduleResponseBodyData) SetUpdatedTime(v string) *CreateScheduleResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+type CreateScheduleResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleResponse) SetHeaders(v map[string]*string) *CreateScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateScheduleResponse) SetBody(v *CreateScheduleResponseBody) *CreateScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSignatureRequest struct {
 	// 申请说明。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -341,6 +1059,339 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 	return s
 }
 
+type CreateTrainingJobRequest struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s CreateTrainingJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequest) SetAlgorithm(v string) *CreateTrainingJobRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetName(v string) *CreateTrainingJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetRemark(v string) *CreateTrainingJobRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetUserConfig(v string) *CreateTrainingJobRequest {
+	s.UserConfig = &v
+	return s
+}
+
+type CreateTrainingJobResponseBody struct {
+	// 返回数据
+	Data *CreateTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CreateTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobResponseBody) SetData(v *CreateTrainingJobResponseBodyData) *CreateTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBody) SetErrorCode(v int32) *CreateTrainingJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBody) SetErrorMessage(v string) *CreateTrainingJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CreateTrainingJobResponseBodyData struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s CreateTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetAlgorithm(v string) *CreateTrainingJobResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetCreatedTime(v string) *CreateTrainingJobResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetHistory(v string) *CreateTrainingJobResponseBodyData {
+	s.History = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetId(v string) *CreateTrainingJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetName(v string) *CreateTrainingJobResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetRemark(v string) *CreateTrainingJobResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetStatus(v int32) *CreateTrainingJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetUpdatedTime(v string) *CreateTrainingJobResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *CreateTrainingJobResponseBodyData) SetUserConfig(v string) *CreateTrainingJobResponseBodyData {
+	s.UserConfig = &v
+	return s
+}
+
+type CreateTrainingJobResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobResponse) SetHeaders(v map[string]*string) *CreateTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrainingJobResponse) SetBody(v *CreateTrainingJobResponseBody) *CreateTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGroupResponseBody struct {
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupResponseBody) SetData(v string) *DeleteGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGroupResponseBody) SetErrorCode(v int32) *DeleteGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteGroupResponseBody) SetErrorMessage(v string) *DeleteGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteGroupResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupResponse) SetHeaders(v map[string]*string) *DeleteGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInferenceJobResponseBody struct {
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteInferenceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInferenceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInferenceJobResponseBody) SetData(v string) *DeleteInferenceJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteInferenceJobResponseBody) SetErrorCode(v int32) *DeleteInferenceJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteInferenceJobResponseBody) SetErrorMessage(v string) *DeleteInferenceJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteInferenceJobResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInferenceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInferenceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInferenceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInferenceJobResponse) SetHeaders(v map[string]*string) *DeleteInferenceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInferenceJobResponse) SetBody(v *DeleteInferenceJobResponseBody) *DeleteInferenceJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteScheduleResponseBody struct {
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduleResponseBody) SetData(v string) *DeleteScheduleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteScheduleResponseBody) SetErrorCode(v int32) *DeleteScheduleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteScheduleResponseBody) SetErrorMessage(v string) *DeleteScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteScheduleResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScheduleResponse) SetHeaders(v map[string]*string) *DeleteScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteScheduleResponse) SetBody(v *DeleteScheduleResponseBody) *DeleteScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSignatureResponseBody struct {
 	// 返回数据
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -447,6 +1498,565 @@ func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplat
 }
 
 func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTrainingJobResponseBody struct {
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s DeleteTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrainingJobResponseBody) SetData(v string) *DeleteTrainingJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteTrainingJobResponseBody) SetErrorCode(v int32) *DeleteTrainingJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTrainingJobResponseBody) SetErrorMessage(v string) *DeleteTrainingJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type DeleteTrainingJobResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrainingJobResponse) SetHeaders(v map[string]*string) *DeleteTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTrainingJobResponse) SetBody(v *DeleteTrainingJobResponseBody) *DeleteTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetGroupResponseBody struct {
+	// 返回数据
+	Data *GetGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s GetGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupResponseBody) SetData(v *GetGroupResponseBodyData) *GetGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetErrorCode(v int32) *GetGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetErrorMessage(v string) *GetGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type GetGroupResponseBodyData struct {
+	// 算法名称
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 人群数量
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 手机号列名
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// ODPS过滤语句
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 人群Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 推理任务
+	InferenceJob *string `json:"InferenceJob,omitempty" xml:"InferenceJob,omitempty"`
+	// 人群名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ODPS项目名
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 人群来源
+	// - 0: Text，每行一个手机号
+	// - 1: 无header的csv文件，每行一个手机号
+	// - 2: 带header的csv文件，需指定手机号列名
+	// - 3: Odps，需指定手机号列名
+	// - 4: Algorithm，由算法预测生成
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 人群状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ODPS表名
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// 文本
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 文件地址
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s GetGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupResponseBodyData) SetAlgorithm(v string) *GetGroupResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetAmount(v int32) *GetGroupResponseBodyData {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetColumn(v string) *GetGroupResponseBodyData {
+	s.Column = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetCreatedTime(v string) *GetGroupResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetFilter(v string) *GetGroupResponseBodyData {
+	s.Filter = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetId(v string) *GetGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetInferenceJob(v string) *GetGroupResponseBodyData {
+	s.InferenceJob = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetName(v string) *GetGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetProject(v string) *GetGroupResponseBodyData {
+	s.Project = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetRemark(v string) *GetGroupResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetSource(v int32) *GetGroupResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetStatus(v int32) *GetGroupResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetTable(v string) *GetGroupResponseBodyData {
+	s.Table = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetText(v string) *GetGroupResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetUpdatedTime(v string) *GetGroupResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetUri(v string) *GetGroupResponseBodyData {
+	s.Uri = &v
+	return s
+}
+
+type GetGroupResponse struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupResponse) SetHeaders(v map[string]*string) *GetGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetInferenceJobResponseBody struct {
+	// 返回数据
+	Data *GetInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s GetInferenceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInferenceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInferenceJobResponseBody) SetData(v *GetInferenceJobResponseBodyData) *GetInferenceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInferenceJobResponseBody) SetErrorCode(v int32) *GetInferenceJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBody) SetErrorMessage(v string) *GetInferenceJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type GetInferenceJobResponseBodyData struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 关联人群Id，如果任务失败则人群无效
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 关联训练任务
+	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s GetInferenceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInferenceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInferenceJobResponseBodyData) SetAlgorithm(v string) *GetInferenceJobResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetCreatedTime(v string) *GetInferenceJobResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetGroupId(v string) *GetInferenceJobResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetHistory(v string) *GetInferenceJobResponseBodyData {
+	s.History = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetId(v string) *GetInferenceJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetName(v string) *GetInferenceJobResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetRemark(v string) *GetInferenceJobResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetStatus(v int32) *GetInferenceJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetTrainingJobId(v string) *GetInferenceJobResponseBodyData {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetUpdatedTime(v string) *GetInferenceJobResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *GetInferenceJobResponseBodyData) SetUserConfig(v string) *GetInferenceJobResponseBodyData {
+	s.UserConfig = &v
+	return s
+}
+
+type GetInferenceJobResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInferenceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInferenceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInferenceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInferenceJobResponse) SetHeaders(v map[string]*string) *GetInferenceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInferenceJobResponse) SetBody(v *GetInferenceJobResponseBody) *GetInferenceJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetScheduleResponseBody struct {
+	// 返回数据
+	Data *GetScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s GetScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBody) SetData(v *GetScheduleResponseBodyData) *GetScheduleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetScheduleResponseBody) SetErrorCode(v int32) *GetScheduleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetScheduleResponseBody) SetErrorMessage(v string) *GetScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type GetScheduleResponseBodyData struct {
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 终止时间（UTC+8），精确到分钟。
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行时间 (UTC+8)，为空立即执行。
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// 人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 历史记录
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 发送计划名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 重复周期，按重复周期与重复周期单位执行。
+	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	// 重复周期单位，若指定执行时间，则重复周期生效。
+	// - 0: 从不（默认）
+	// - 1: 小时
+	// - 2: 天
+	// - 3: 周
+	// - 4: 月
+	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	// 重复次数。
+	// - -1: 不设终止时间
+	// - 0: 不重复
+	// - N: 重复N次后终止
+	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	// 签名Id。
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// 状态
+	// - 0: 检查中
+	// - 1: 检查成功
+	// - 2: 检查失败
+	// - 3: 发送中
+	// - 4: 发送成功
+	// - 5: 发送失败
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板Id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s GetScheduleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponseBodyData) SetCreatedTime(v string) *GetScheduleResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetEndTime(v int32) *GetScheduleResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetExecuteTime(v string) *GetScheduleResponseBodyData {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetGroupId(v string) *GetScheduleResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetHistory(v string) *GetScheduleResponseBodyData {
+	s.History = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetId(v string) *GetScheduleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetName(v string) *GetScheduleResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetRepeatCycle(v int32) *GetScheduleResponseBodyData {
+	s.RepeatCycle = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetRepeatCycleUnit(v int32) *GetScheduleResponseBodyData {
+	s.RepeatCycleUnit = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetRepeatTimes(v int32) *GetScheduleResponseBodyData {
+	s.RepeatTimes = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetSignatureId(v string) *GetScheduleResponseBodyData {
+	s.SignatureId = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetStatus(v int32) *GetScheduleResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetTemplateId(v string) *GetScheduleResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetScheduleResponseBodyData) SetUpdatedTime(v string) *GetScheduleResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+type GetScheduleResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScheduleResponse) SetHeaders(v map[string]*string) *GetScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScheduleResponse) SetBody(v *GetScheduleResponseBody) *GetScheduleResponse {
 	s.Body = v
 	return s
 }
@@ -715,6 +2325,1332 @@ func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateRespo
 }
 
 func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetTrainingJobResponseBody struct {
+	// 返回数据
+	Data *GetTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s GetTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBody) SetData(v *GetTrainingJobResponseBodyData) *GetTrainingJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetErrorCode(v int32) *GetTrainingJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetErrorMessage(v string) *GetTrainingJobResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyData struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyData) SetAlgorithm(v string) *GetTrainingJobResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetCreatedTime(v string) *GetTrainingJobResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetHistory(v string) *GetTrainingJobResponseBodyData {
+	s.History = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetId(v string) *GetTrainingJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetName(v string) *GetTrainingJobResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetRemark(v string) *GetTrainingJobResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetStatus(v int32) *GetTrainingJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetUpdatedTime(v string) *GetTrainingJobResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyData) SetUserConfig(v string) *GetTrainingJobResponseBodyData {
+	s.UserConfig = &v
+	return s
+}
+
+type GetTrainingJobResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponse) SetHeaders(v map[string]*string) *GetTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTrainingJobResponse) SetBody(v *GetTrainingJobResponseBody) *GetTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupsRequest struct {
+	// 人群名称过滤，使用%name%模糊匹配
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 人群备注过滤，使用%name%模糊匹配
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 来源过滤
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 审核状态过滤
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsRequest) SetName(v string) *ListGroupsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetPageNumber(v int32) *ListGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetPageSize(v int32) *ListGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetRemark(v string) *ListGroupsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetSource(v int32) *ListGroupsRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetStatus(v int32) *ListGroupsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListGroupsResponseBody struct {
+	// 返回数据
+	Data *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBody) SetData(v *ListGroupsResponseBodyData) *ListGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetErrorCode(v int32) *ListGroupsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetErrorMessage(v string) *ListGroupsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListGroupsResponseBodyData struct {
+	// 人群列表
+	Groups []*ListGroupsResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总人群数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBodyData) SetGroups(v []*ListGroupsResponseBodyDataGroups) *ListGroupsResponseBodyData {
+	s.Groups = v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetPageNumber(v int32) *ListGroupsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetPageSize(v int32) *ListGroupsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetTotalCount(v int32) *ListGroupsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupsResponseBodyDataGroups struct {
+	// 算法名称
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 人群数量
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 手机号列名
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// ODPS过滤语句
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// 人群Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 推理任务
+	InferenceJob *string `json:"InferenceJob,omitempty" xml:"InferenceJob,omitempty"`
+	// 人群名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ODPS项目名
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 人群来源
+	// - 0: Text，每行一个手机号
+	// - 1: 无header的csv文件，每行一个手机号
+	// - 2: 带header的csv文件，需指定手机号列名
+	// - 3: Odps，需指定手机号列名
+	// - 4: Algorithm，由算法预测生成
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// 人群状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ODPS表名
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// 文本
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 文件地址
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s ListGroupsResponseBodyDataGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBodyDataGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetAlgorithm(v string) *ListGroupsResponseBodyDataGroups {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetAmount(v int32) *ListGroupsResponseBodyDataGroups {
+	s.Amount = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetColumn(v string) *ListGroupsResponseBodyDataGroups {
+	s.Column = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetCreatedTime(v string) *ListGroupsResponseBodyDataGroups {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetFilter(v string) *ListGroupsResponseBodyDataGroups {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetId(v string) *ListGroupsResponseBodyDataGroups {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetInferenceJob(v string) *ListGroupsResponseBodyDataGroups {
+	s.InferenceJob = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetName(v string) *ListGroupsResponseBodyDataGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetProject(v string) *ListGroupsResponseBodyDataGroups {
+	s.Project = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetRemark(v string) *ListGroupsResponseBodyDataGroups {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetSource(v int32) *ListGroupsResponseBodyDataGroups {
+	s.Source = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetStatus(v int32) *ListGroupsResponseBodyDataGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetTable(v string) *ListGroupsResponseBodyDataGroups {
+	s.Table = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetText(v string) *ListGroupsResponseBodyDataGroups {
+	s.Text = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetUpdatedTime(v string) *ListGroupsResponseBodyDataGroups {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyDataGroups) SetUri(v string) *ListGroupsResponseBodyDataGroups {
+	s.Uri = &v
+	return s
+}
+
+type ListGroupsResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponse) SetHeaders(v map[string]*string) *ListGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListInferenceJobsRequest struct {
+	// 训练任务名称过滤，使用%name%模糊匹配
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 训练任务备注过滤，使用%name%模糊匹配
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态过滤
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInferenceJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInferenceJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInferenceJobsRequest) SetName(v string) *ListInferenceJobsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListInferenceJobsRequest) SetPageNumber(v int32) *ListInferenceJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInferenceJobsRequest) SetPageSize(v int32) *ListInferenceJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInferenceJobsRequest) SetRemark(v string) *ListInferenceJobsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListInferenceJobsRequest) SetStatus(v int32) *ListInferenceJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListInferenceJobsResponseBody struct {
+	// 返回数据
+	Data *ListInferenceJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListInferenceJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInferenceJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInferenceJobsResponseBody) SetData(v *ListInferenceJobsResponseBodyData) *ListInferenceJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBody) SetErrorCode(v int32) *ListInferenceJobsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBody) SetErrorMessage(v string) *ListInferenceJobsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListInferenceJobsResponseBodyData struct {
+	// 训练任务列表
+	InferenceJobs []*ListInferenceJobsResponseBodyDataInferenceJobs `json:"InferenceJobs,omitempty" xml:"InferenceJobs,omitempty" type:"Repeated"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总训练任务数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInferenceJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInferenceJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInferenceJobsResponseBodyData) SetInferenceJobs(v []*ListInferenceJobsResponseBodyDataInferenceJobs) *ListInferenceJobsResponseBodyData {
+	s.InferenceJobs = v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyData) SetPageNumber(v int32) *ListInferenceJobsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyData) SetPageSize(v int32) *ListInferenceJobsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyData) SetTotalCount(v int32) *ListInferenceJobsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInferenceJobsResponseBodyDataInferenceJobs struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 关联人群Id，如果任务失败则人群无效
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 关联训练任务
+	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s ListInferenceJobsResponseBodyDataInferenceJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInferenceJobsResponseBodyDataInferenceJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetAlgorithm(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetCreatedTime(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetGroupId(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetHistory(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.History = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetId(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetName(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetRemark(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetStatus(v int32) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetTrainingJobId(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetUpdatedTime(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetUserConfig(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.UserConfig = &v
+	return s
+}
+
+type ListInferenceJobsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInferenceJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInferenceJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInferenceJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInferenceJobsResponse) SetHeaders(v map[string]*string) *ListInferenceJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInferenceJobsResponse) SetBody(v *ListInferenceJobsResponseBody) *ListInferenceJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMessageMetricsRequest struct {
+	// 结束日期
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 开始日期
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s ListMessageMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageMetricsRequest) SetEndDate(v string) *ListMessageMetricsRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ListMessageMetricsRequest) SetPageNumber(v int32) *ListMessageMetricsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessageMetricsRequest) SetPageSize(v int32) *ListMessageMetricsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessageMetricsRequest) SetStartDate(v string) *ListMessageMetricsRequest {
+	s.StartDate = &v
+	return s
+}
+
+type ListMessageMetricsResponseBody struct {
+	// 返回数据
+	Data *ListMessageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListMessageMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageMetricsResponseBody) SetData(v *ListMessageMetricsResponseBodyData) *ListMessageMetricsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBody) SetErrorCode(v int32) *ListMessageMetricsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBody) SetErrorMessage(v string) *ListMessageMetricsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListMessageMetricsResponseBodyData struct {
+	// 统计数据列表
+	Metrics []*ListMessageMetricsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总统计数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMessageMetricsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageMetricsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageMetricsResponseBodyData) SetMetrics(v []*ListMessageMetricsResponseBodyDataMetrics) *ListMessageMetricsResponseBodyData {
+	s.Metrics = v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyData) SetPageNumber(v int32) *ListMessageMetricsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyData) SetPageSize(v int32) *ListMessageMetricsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyData) SetTotalCount(v int32) *ListMessageMetricsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMessageMetricsResponseBodyDataMetrics struct {
+	// 日期
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// 失败
+	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// 挂起
+	Pending *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	// 非失败率
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// 成功
+	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总计
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListMessageMetricsResponseBodyDataMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageMetricsResponseBodyDataMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetDate(v string) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Date = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetFail(v int32) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Fail = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetPending(v int32) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Pending = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetRate(v float32) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Rate = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetSuccess(v int32) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Success = &v
+	return s
+}
+
+func (s *ListMessageMetricsResponseBodyDataMetrics) SetTotal(v int32) *ListMessageMetricsResponseBodyDataMetrics {
+	s.Total = &v
+	return s
+}
+
+type ListMessageMetricsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMessageMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMessageMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageMetricsResponse) SetHeaders(v map[string]*string) *ListMessageMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessageMetricsResponse) SetBody(v *ListMessageMetricsResponseBody) *ListMessageMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMessagesRequest struct {
+	// 发送日期，格式为20220101
+	Datetime *string `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
+	// 关联人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 短信序列号。
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 手机号码。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 请求序列号。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 关联发送计划Id。
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// 签名名称。
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// 模板号。
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s ListMessagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesRequest) SetDatetime(v string) *ListMessagesRequest {
+	s.Datetime = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetGroupId(v string) *ListMessagesRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetMessageId(v string) *ListMessagesRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetPageNumber(v int32) *ListMessagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetPageSize(v int32) *ListMessagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetPhoneNumber(v string) *ListMessagesRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetRequestId(v string) *ListMessagesRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetScheduleId(v string) *ListMessagesRequest {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetSignature(v string) *ListMessagesRequest {
+	s.Signature = &v
+	return s
+}
+
+func (s *ListMessagesRequest) SetTemplateCode(v string) *ListMessagesRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type ListMessagesResponseBody struct {
+	// 返回数据
+	Data *ListMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListMessagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBody) SetData(v *ListMessagesResponseBodyData) *ListMessagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetErrorCode(v int32) *ListMessagesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMessagesResponseBody) SetErrorMessage(v string) *ListMessagesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListMessagesResponseBodyData struct {
+	// 短信列表。
+	Messages []*ListMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 短信数量。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMessagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBodyData) SetMessages(v []*ListMessagesResponseBodyDataMessages) *ListMessagesResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetPageNumber(v int32) *ListMessagesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetPageSize(v int32) *ListMessagesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyData) SetTotalCount(v int32) *ListMessagesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMessagesResponseBodyDataMessages struct {
+	// 错误码。
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 关联人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 短信序列号。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 外部拓展字段。
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// 手机号码。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 关联发送计划Id。
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// 签名名称。
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// 短信发送状态
+	// - 0 : 发送中。
+	// - 1 : 发送成功。
+	// - 2 : 发送失败。
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板号。
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// 模板参数。
+	TemplateParams *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
+}
+
+func (s ListMessagesResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetErrorCode(v string) *ListMessagesResponseBodyDataMessages {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetGroupId(v string) *ListMessagesResponseBodyDataMessages {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetId(v string) *ListMessagesResponseBodyDataMessages {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetOutId(v string) *ListMessagesResponseBodyDataMessages {
+	s.OutId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetPhoneNumber(v string) *ListMessagesResponseBodyDataMessages {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetScheduleId(v string) *ListMessagesResponseBodyDataMessages {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetSignature(v string) *ListMessagesResponseBodyDataMessages {
+	s.Signature = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetStatus(v int32) *ListMessagesResponseBodyDataMessages {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetTemplateCode(v string) *ListMessagesResponseBodyDataMessages {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ListMessagesResponseBodyDataMessages) SetTemplateParams(v string) *ListMessagesResponseBodyDataMessages {
+	s.TemplateParams = &v
+	return s
+}
+
+type ListMessagesResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMessagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessagesResponse) SetHeaders(v map[string]*string) *ListMessagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessagesResponse) SetBody(v *ListMessagesResponseBody) *ListMessagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSchedulesRequest struct {
+	// 发送计划名称，用于名称过滤或搜索，使用%name%模糊匹配
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 发送状态过滤
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListSchedulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesRequest) SetName(v string) *ListSchedulesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetPageNumber(v int32) *ListSchedulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetPageSize(v int32) *ListSchedulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchedulesRequest) SetStatus(v int32) *ListSchedulesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListSchedulesResponseBody struct {
+	// 返回数据
+	Data *ListSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListSchedulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponseBody) SetData(v *ListSchedulesResponseBodyData) *ListSchedulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetErrorCode(v int32) *ListSchedulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBody) SetErrorMessage(v string) *ListSchedulesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListSchedulesResponseBodyData struct {
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 发送计划列表
+	Schedules []*ListSchedulesResponseBodyDataSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
+	// 发送计划数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSchedulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponseBodyData) SetPageNumber(v int32) *ListSchedulesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyData) SetPageSize(v int32) *ListSchedulesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyData) SetSchedules(v []*ListSchedulesResponseBodyDataSchedules) *ListSchedulesResponseBodyData {
+	s.Schedules = v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyData) SetTotalCount(v int32) *ListSchedulesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSchedulesResponseBodyDataSchedules struct {
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 终止时间（UTC+8），精确到分钟。
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行时间 (UTC+8)，为空立即执行。
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// 人群Id。
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 发送计划名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 重复周期，按重复周期与重复周期单位执行。
+	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	// 重复周期单位，若指定执行时间，则重复周期生效。
+	// - 0: 从不（默认）
+	// - 1: 小时
+	// - 2: 天
+	// - 3: 周
+	// - 4: 月
+	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	// 重复次数。
+	// - -1: 不设终止时间
+	// - 0: 不重复
+	// - N: 重复N次后终止
+	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	// 签名Id。
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// 状态
+	// - 0: 检查中
+	// - 1: 检查成功
+	// - 2: 检查失败
+	// - 3: 发送中
+	// - 4: 发送成功
+	// - 5: 发送失败
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 模板Id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s ListSchedulesResponseBodyDataSchedules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponseBodyDataSchedules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetCreatedTime(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetEndTime(v int32) *ListSchedulesResponseBodyDataSchedules {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetExecuteTime(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetGroupId(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetId(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetName(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetRepeatCycle(v int32) *ListSchedulesResponseBodyDataSchedules {
+	s.RepeatCycle = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetRepeatCycleUnit(v int32) *ListSchedulesResponseBodyDataSchedules {
+	s.RepeatCycleUnit = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetRepeatTimes(v int32) *ListSchedulesResponseBodyDataSchedules {
+	s.RepeatTimes = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetSignatureId(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.SignatureId = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetStatus(v int32) *ListSchedulesResponseBodyDataSchedules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetTemplateId(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListSchedulesResponseBodyDataSchedules) SetUpdatedTime(v string) *ListSchedulesResponseBodyDataSchedules {
+	s.UpdatedTime = &v
+	return s
+}
+
+type ListSchedulesResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListSchedulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSchedulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchedulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchedulesResponse) SetHeaders(v map[string]*string) *ListSchedulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSchedulesResponse {
 	s.Body = v
 	return s
 }
@@ -1143,6 +4079,220 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 	return s
 }
 
+type ListTrainingJobsRequest struct {
+	// 训练任务名称过滤，使用%name%模糊匹配
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 训练任务备注过滤，使用%name%模糊匹配
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态过滤
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTrainingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsRequest) SetName(v string) *ListTrainingJobsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetPageNumber(v int32) *ListTrainingJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetPageSize(v int32) *ListTrainingJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetRemark(v string) *ListTrainingJobsRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetStatus(v int32) *ListTrainingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListTrainingJobsResponseBody struct {
+	// 返回数据
+	Data *ListTrainingJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误码
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBody) SetData(v *ListTrainingJobsResponseBodyData) *ListTrainingJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBody) SetErrorCode(v int32) *ListTrainingJobsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBody) SetErrorMessage(v string) *ListTrainingJobsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyData struct {
+	// 分页数，从1开始，默认为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小，默认为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总训练任务数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 训练任务列表
+	TrainingJobs []*ListTrainingJobsResponseBodyDataTrainingJobs `json:"TrainingJobs,omitempty" xml:"TrainingJobs,omitempty" type:"Repeated"`
+}
+
+func (s ListTrainingJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyData) SetPageNumber(v int32) *ListTrainingJobsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyData) SetPageSize(v int32) *ListTrainingJobsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyData) SetTotalCount(v int32) *ListTrainingJobsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyData) SetTrainingJobs(v []*ListTrainingJobsResponseBodyDataTrainingJobs) *ListTrainingJobsResponseBodyData {
+	s.TrainingJobs = v
+	return s
+}
+
+type ListTrainingJobsResponseBodyDataTrainingJobs struct {
+	// 关联算法
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// 创建时间 (UTC+8)
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 训练任务日志
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// 训练任务Id
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 训练任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 训练任务状态
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 更新时间 (UTC+8)
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// 用户配置
+	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyDataTrainingJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyDataTrainingJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetAlgorithm(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetCreatedTime(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetHistory(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.History = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetId(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetName(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetRemark(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetStatus(v int32) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetUpdatedTime(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetUserConfig(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.UserConfig = &v
+	return s
+}
+
+type ListTrainingJobsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTrainingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTrainingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponse) SetHeaders(v map[string]*string) *ListTrainingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTrainingJobsResponse) SetBody(v *ListTrainingJobsResponseBody) *ListTrainingJobsResponse {
+	s.Body = v
+	return s
+}
+
 type SendMessageRequest struct {
 	// 人群ID，用于关联人群。
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -1226,7 +4376,7 @@ func (s *SendMessageRequest) SetTemplateParams(v []*string) *SendMessageRequest 
 
 type SendMessageResponseBody struct {
 	// 返回数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *SendMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// 错误码
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// 错误信息
@@ -1241,8 +4391,8 @@ func (s SendMessageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SendMessageResponseBody) SetData(v string) *SendMessageResponseBody {
-	s.Data = &v
+func (s *SendMessageResponseBody) SetData(v *SendMessageResponseBodyData) *SendMessageResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1253,6 +4403,52 @@ func (s *SendMessageResponseBody) SetErrorCode(v int32) *SendMessageResponseBody
 
 func (s *SendMessageResponseBody) SetErrorMessage(v string) *SendMessageResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+type SendMessageResponseBodyData struct {
+	Messages  []*SendMessageResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendMessageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageResponseBodyData) SetMessages(v []*SendMessageResponseBodyDataMessages) *SendMessageResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *SendMessageResponseBodyData) SetRequestId(v string) *SendMessageResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+type SendMessageResponseBodyDataMessages struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s SendMessageResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageResponseBodyDataMessages) SetId(v string) *SendMessageResponseBodyDataMessages {
+	s.Id = &v
+	return s
+}
+
+func (s *SendMessageResponseBodyDataMessages) SetPhoneNumber(v string) *SendMessageResponseBodyDataMessages {
+	s.PhoneNumber = &v
 	return s
 }
 
@@ -1323,6 +4519,232 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CreateGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Column)) {
+		body["Column"] = request.Column
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		body["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InferenceJob)) {
+		body["InferenceJob"] = request.InferenceJob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		body["Table"] = request.Table
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInferenceJob(request *CreateInferenceJobRequest) (_result *CreateInferenceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInferenceJobResponse{}
+	_body, _err := client.CreateInferenceJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInferenceJobWithOptions(request *CreateInferenceJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInferenceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingJobId)) {
+		body["TrainingJobId"] = request.TrainingJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConfig)) {
+		body["UserConfig"] = request.UserConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInferenceJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/inference/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSchedule(request *CreateScheduleRequest) (_result *CreateScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateScheduleResponse{}
+	_body, _err := client.CreateScheduleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateScheduleWithOptions(request *CreateScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteTime)) {
+		body["ExecuteTime"] = request.ExecuteTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatCycle)) {
+		body["RepeatCycle"] = request.RepeatCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatCycleUnit)) {
+		body["RepeatCycleUnit"] = request.RepeatCycleUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatTimes)) {
+		body["RepeatTimes"] = request.RepeatTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
+		body["SignatureId"] = request.SignatureId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSchedule"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/schedules"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -1438,6 +4860,175 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	return _result, _err
 }
 
+func (client *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (_result *CreateTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrainingJobResponse{}
+	_body, _err := client.CreateTrainingJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTrainingJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConfig)) {
+		body["UserConfig"] = request.UserConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrainingJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/training/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroup(Id *string) (_result *DeleteGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGroupResponse{}
+	_body, _err := client.DeleteGroupWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(Id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInferenceJob(Id *string) (_result *DeleteInferenceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInferenceJobResponse{}
+	_body, _err := client.DeleteInferenceJobWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInferenceJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInferenceJobResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInferenceJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(Id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSchedule(Id *string) (_result *DeleteScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteScheduleResponse{}
+	_body, _err := client.DeleteScheduleWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteScheduleWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteScheduleResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSchedule"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(Id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteSignature(Id *string) (_result *DeleteSignatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1512,6 +5103,154 @@ func (client *Client) DeleteTemplateWithOptions(Id *string, headers map[string]*
 	return _result, _err
 }
 
+func (client *Client) DeleteTrainingJob(Id *string) (_result *DeleteTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTrainingJobResponse{}
+	_body, _err := client.DeleteTrainingJobWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTrainingJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTrainingJobResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrainingJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(Id)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGroup(Id *string) (_result *GetGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGroupResponse{}
+	_body, _err := client.GetGroupWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGroupWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(Id)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInferenceJob(Id *string) (_result *GetInferenceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInferenceJobResponse{}
+	_body, _err := client.GetInferenceJobWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInferenceJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInferenceJobResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInferenceJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(Id)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSchedule(Id *string) (_result *GetScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetScheduleResponse{}
+	_body, _err := client.GetScheduleWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetScheduleWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScheduleResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSchedule"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(Id)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetSignature(Id *string) (_result *GetSignatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1578,6 +5317,369 @@ func (client *Client) GetTemplateWithOptions(Id *string, headers map[string]*str
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTrainingJob(Id *string) (_result *GetTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrainingJobResponse{}
+	_body, _err := client.GetTrainingJobWithOptions(Id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTrainingJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrainingJobResponse, _err error) {
+	Id = openapiutil.GetEncodeParam(Id)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrainingJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(Id)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGroupsResponse{}
+	_body, _err := client.ListGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroups"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInferenceJobs(request *ListInferenceJobsRequest) (_result *ListInferenceJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInferenceJobsResponse{}
+	_body, _err := client.ListInferenceJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInferenceJobsWithOptions(request *ListInferenceJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInferenceJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInferenceJobs"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/inference/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInferenceJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMessageMetrics(request *ListMessageMetricsRequest) (_result *ListMessageMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMessageMetricsResponse{}
+	_body, _err := client.ListMessageMetricsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMessageMetricsWithOptions(request *ListMessageMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMessageMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessageMetrics"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/messages/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMessageMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMessages(request *ListMessagesRequest) (_result *ListMessagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMessagesResponse{}
+	_body, _err := client.ListMessagesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMessagesWithOptions(request *ListMessagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMessagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Datetime)) {
+		body["Datetime"] = request.Datetime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleId)) {
+		body["ScheduleId"] = request.ScheduleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Signature)) {
+		body["Signature"] = request.Signature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		body["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessages"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/messages"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSchedules(request *ListSchedulesRequest) (_result *ListSchedulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSchedulesResponse{}
+	_body, _err := client.ListSchedulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSchedulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSchedules"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/schedules"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSchedulesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1702,6 +5804,68 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_result *ListTrainingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrainingJobsResponse{}
+	_body, _err := client.ListTrainingJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTrainingJobsWithOptions(request *ListTrainingJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrainingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrainingJobs"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/training/jobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTrainingJobsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
