@@ -3813,6 +3813,7 @@ type GetStackResponseBody struct {
 	Description         *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisableRollback     *bool                                 `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
 	DriftDetectionTime  *string                               `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	Interface           *string                               `json:"Interface,omitempty" xml:"Interface,omitempty"`
 	Log                 *GetStackResponseBodyLog              `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	NotificationURLs    []*string                             `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
 	Outputs             []map[string]interface{}              `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
@@ -3870,6 +3871,11 @@ func (s *GetStackResponseBody) SetDisableRollback(v bool) *GetStackResponseBody 
 
 func (s *GetStackResponseBody) SetDriftDetectionTime(v string) *GetStackResponseBody {
 	s.DriftDetectionTime = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetInterface(v string) *GetStackResponseBody {
+	s.Interface = &v
 	return s
 }
 
@@ -5346,6 +5352,7 @@ type GetTemplateResponseBody struct {
 	ChangeSetId     *string                               `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	CreateTime      *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description     *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	Interface       *string                               `json:"Interface,omitempty" xml:"Interface,omitempty"`
 	OwnerId         *string                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Permissions     []*GetTemplateResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	RegionId        *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5382,6 +5389,11 @@ func (s *GetTemplateResponseBody) SetCreateTime(v string) *GetTemplateResponseBo
 
 func (s *GetTemplateResponseBody) SetDescription(v string) *GetTemplateResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetInterface(v string) *GetTemplateResponseBody {
+	s.Interface = &v
 	return s
 }
 
