@@ -126,8 +126,6 @@ type Resource struct {
 	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
 	// 资源组预付费实例个数
 	PrePaidInstanceCount *int32 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 资源组ID
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// 资源组名字
@@ -188,11 +186,6 @@ func (s *Resource) SetPostPaidInstanceCount(v int32) *Resource {
 
 func (s *Resource) SetPrePaidInstanceCount(v int32) *Resource {
 	s.PrePaidInstanceCount = &v
-	return s
-}
-
-func (s *Resource) SetRequestId(v string) *Resource {
-	s.RequestId = &v
 	return s
 }
 
@@ -1145,6 +1138,110 @@ func (s *CreateServiceAutoScalerResponse) SetBody(v *CreateServiceAutoScalerResp
 	return s
 }
 
+type CreateServiceCronScalerRequest struct {
+	// 需要排除的时间点的cron表达式
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	// 定时伸缩任务描述
+	ScaleJobs []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+}
+
+func (s CreateServiceCronScalerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCronScalerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCronScalerRequest) SetExcludeDates(v []*string) *CreateServiceCronScalerRequest {
+	s.ExcludeDates = v
+	return s
+}
+
+func (s *CreateServiceCronScalerRequest) SetScaleJobs(v []*CreateServiceCronScalerRequestScaleJobs) *CreateServiceCronScalerRequest {
+	s.ScaleJobs = v
+	return s
+}
+
+type CreateServiceCronScalerRequestScaleJobs struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 要执行伸缩任务的cron表达式
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// 执行伸缩任务的目标replica
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+}
+
+func (s CreateServiceCronScalerRequestScaleJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCronScalerRequestScaleJobs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCronScalerRequestScaleJobs) SetName(v string) *CreateServiceCronScalerRequestScaleJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateServiceCronScalerRequestScaleJobs) SetSchedule(v string) *CreateServiceCronScalerRequestScaleJobs {
+	s.Schedule = &v
+	return s
+}
+
+func (s *CreateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *CreateServiceCronScalerRequestScaleJobs {
+	s.TargetSize = &v
+	return s
+}
+
+type CreateServiceCronScalerResponseBody struct {
+	// 操作成功消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateServiceCronScalerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCronScalerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCronScalerResponseBody) SetMessage(v string) *CreateServiceCronScalerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateServiceCronScalerResponseBody) SetRequestId(v string) *CreateServiceCronScalerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateServiceCronScalerResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceCronScalerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceCronScalerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceCronScalerResponse) SetHeaders(v map[string]*string) *CreateServiceCronScalerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceCronScalerResponse) SetBody(v *CreateServiceCronScalerResponseBody) *CreateServiceCronScalerResponse {
+	s.Body = v
+	return s
+}
+
 type CreateServiceMirrorRequest struct {
 	// 比例 [0, 100]
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
@@ -1522,6 +1619,53 @@ func (s *DeleteServiceAutoScalerResponse) SetBody(v *DeleteServiceAutoScalerResp
 	return s
 }
 
+type DeleteServiceCronScalerResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceCronScalerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceCronScalerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceCronScalerResponseBody) SetMessage(v string) *DeleteServiceCronScalerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteServiceCronScalerResponseBody) SetRequestId(v string) *DeleteServiceCronScalerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceCronScalerResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceCronScalerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceCronScalerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceCronScalerResponse) SetHeaders(v map[string]*string) *DeleteServiceCronScalerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceCronScalerResponse) SetBody(v *DeleteServiceCronScalerResponseBody) *DeleteServiceCronScalerResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteServiceInstancesRequest struct {
 	// 删除的实例列表，多个实例名字之间逗号隔开
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
@@ -1634,9 +1778,110 @@ func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody
 	return s
 }
 
+type DescribeResourceResponseBody struct {
+	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CpuCount              *int32  `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtraData             *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	GpuCount              *int32  `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	InstanceCount         *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	Message               *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OwnerUid              *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	PostPaidInstanceCount *int32  `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
+	PrePaidInstanceCount  *int32  `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName          *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceResponseBody) SetClusterId(v string) *DescribeResourceResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetCpuCount(v int32) *DescribeResourceResponseBody {
+	s.CpuCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetCreateTime(v string) *DescribeResourceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetExtraData(v string) *DescribeResourceResponseBody {
+	s.ExtraData = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetGpuCount(v int32) *DescribeResourceResponseBody {
+	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetInstanceCount(v int32) *DescribeResourceResponseBody {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetMessage(v string) *DescribeResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetOwnerUid(v string) *DescribeResourceResponseBody {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetPostPaidInstanceCount(v int32) *DescribeResourceResponseBody {
+	s.PostPaidInstanceCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetPrePaidInstanceCount(v int32) *DescribeResourceResponseBody {
+	s.PrePaidInstanceCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetRequestId(v string) *DescribeResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetResourceId(v string) *DescribeResourceResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetResourceName(v string) *DescribeResourceResponseBody {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetStatus(v string) *DescribeResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetUpdateTime(v string) *DescribeResourceResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
 type DescribeResourceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Resource          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeResourceResponse) String() string {
@@ -1652,7 +1897,7 @@ func (s *DescribeResourceResponse) SetHeaders(v map[string]*string) *DescribeRes
 	return s
 }
 
-func (s *DescribeResourceResponse) SetBody(v *Resource) *DescribeResourceResponse {
+func (s *DescribeResourceResponse) SetBody(v *DescribeResourceResponseBody) *DescribeResourceResponse {
 	s.Body = v
 	return s
 }
@@ -1943,6 +2188,111 @@ func (s *DescribeServiceAutoScalerResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DescribeServiceAutoScalerResponse) SetBody(v *DescribeServiceAutoScalerResponseBody) *DescribeServiceAutoScalerResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceCronScalerResponseBody struct {
+	ExcludeDates []*string                                         `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScaleJobs    []*DescribeServiceCronScalerResponseBodyScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	ServiceName  *string                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DescribeServiceCronScalerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceCronScalerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceCronScalerResponseBody) SetExcludeDates(v []*string) *DescribeServiceCronScalerResponseBody {
+	s.ExcludeDates = v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBody) SetRequestId(v string) *DescribeServiceCronScalerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBody) SetScaleJobs(v []*DescribeServiceCronScalerResponseBodyScaleJobs) *DescribeServiceCronScalerResponseBody {
+	s.ScaleJobs = v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBody) SetServiceName(v string) *DescribeServiceCronScalerResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+type DescribeServiceCronScalerResponseBodyScaleJobs struct {
+	LastProbeTime *string `json:"LastProbeTime,omitempty" xml:"LastProbeTime,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Schedule      *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	TargetSize    *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+}
+
+func (s DescribeServiceCronScalerResponseBodyScaleJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceCronScalerResponseBodyScaleJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetLastProbeTime(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.LastProbeTime = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetMessage(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetName(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetSchedule(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.Schedule = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetState(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetTargetSize(v int32) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.TargetSize = &v
+	return s
+}
+
+type DescribeServiceCronScalerResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceCronScalerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceCronScalerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceCronScalerResponse) SetHeaders(v map[string]*string) *DescribeServiceCronScalerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponse) SetBody(v *DescribeServiceCronScalerResponseBody) *DescribeServiceCronScalerResponse {
 	s.Body = v
 	return s
 }
@@ -3179,6 +3529,109 @@ func (s *UpdateServiceAutoScalerResponse) SetBody(v *UpdateServiceAutoScalerResp
 	return s
 }
 
+type UpdateServiceCronScalerRequest struct {
+	// 需要排除的时间点的cron表达式
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	// 定时伸缩任务描述
+	ScaleJobs []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateServiceCronScalerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceCronScalerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceCronScalerRequest) SetExcludeDates(v []*string) *UpdateServiceCronScalerRequest {
+	s.ExcludeDates = v
+	return s
+}
+
+func (s *UpdateServiceCronScalerRequest) SetScaleJobs(v []*UpdateServiceCronScalerRequestScaleJobs) *UpdateServiceCronScalerRequest {
+	s.ScaleJobs = v
+	return s
+}
+
+type UpdateServiceCronScalerRequestScaleJobs struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 要执行伸缩任务的cron表达式
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// 执行伸缩任务的目标replica
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+}
+
+func (s UpdateServiceCronScalerRequestScaleJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceCronScalerRequestScaleJobs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceCronScalerRequestScaleJobs) SetName(v string) *UpdateServiceCronScalerRequestScaleJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceCronScalerRequestScaleJobs) SetSchedule(v string) *UpdateServiceCronScalerRequestScaleJobs {
+	s.Schedule = &v
+	return s
+}
+
+func (s *UpdateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *UpdateServiceCronScalerRequestScaleJobs {
+	s.TargetSize = &v
+	return s
+}
+
+type UpdateServiceCronScalerResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceCronScalerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceCronScalerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceCronScalerResponseBody) SetMessage(v string) *UpdateServiceCronScalerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceCronScalerResponseBody) SetRequestId(v string) *UpdateServiceCronScalerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceCronScalerResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceCronScalerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceCronScalerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceCronScalerResponse) SetHeaders(v map[string]*string) *UpdateServiceCronScalerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResponseBody) *UpdateServiceCronScalerResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceMirrorRequest struct {
 	// 比例 [0, 100]
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
@@ -3728,6 +4181,58 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest) (_result *CreateServiceCronScalerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceCronScalerResponse{}
+	_body, _err := client.CreateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceCronScalerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	ServiceName = openapiutil.GetEncodeParam(ServiceName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeDates)) {
+		body["ExcludeDates"] = request.ExcludeDates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleJobs)) {
+		body["ScaleJobs"] = request.ScaleJobs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceCronScaler"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceCronScalerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest) (_result *CreateServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4014,6 +4519,44 @@ func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, Serv
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceAutoScalerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceCronScalerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceCronScalerResponse{}
+	_body, _err := client.DeleteServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceCronScalerResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	ServiceName = openapiutil.GetEncodeParam(ServiceName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceCronScaler"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceCronScalerResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4326,6 +4869,44 @@ func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, Se
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeServiceAutoScalerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceCronScalerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeServiceCronScalerResponse{}
+	_body, _err := client.DescribeServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceCronScalerResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	ServiceName = openapiutil.GetEncodeParam(ServiceName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceCronScaler"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceCronScalerResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5084,6 +5665,58 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceAutoScalerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest) (_result *UpdateServiceCronScalerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceCronScalerResponse{}
+	_body, _err := client.UpdateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceCronScalerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	ServiceName = openapiutil.GetEncodeParam(ServiceName)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeDates)) {
+		body["ExcludeDates"] = request.ExcludeDates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleJobs)) {
+		body["ScaleJobs"] = request.ScaleJobs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceCronScaler"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(ServiceName) + "/cronscaler"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceCronScalerResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
