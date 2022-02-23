@@ -5565,50 +5565,50 @@ func (client *Client) ListMessagesWithOptions(request *ListMessagesRequest, head
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Datetime)) {
-		body["Datetime"] = request.Datetime
+		query["Datetime"] = request.Datetime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		body["GroupId"] = request.GroupId
+		query["GroupId"] = request.GroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
-		body["MessageId"] = request.MessageId
+		query["MessageId"] = request.MessageId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
+		query["PageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
-		body["RequestId"] = request.RequestId
+		query["RequestId"] = request.RequestId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScheduleId)) {
-		body["ScheduleId"] = request.ScheduleId
+		query["ScheduleId"] = request.ScheduleId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Signature)) {
-		body["Signature"] = request.Signature
+		query["Signature"] = request.Signature
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
-		body["TemplateCode"] = request.TemplateCode
+		query["TemplateCode"] = request.TemplateCode
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListMessages"),
