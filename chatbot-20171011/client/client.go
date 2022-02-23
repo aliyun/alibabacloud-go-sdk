@@ -1028,6 +1028,8 @@ func (s *UsersayMtopDTO) SetStrict(v bool) *UsersayMtopDTO {
 }
 
 type ActivatePerspectiveRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -1037,6 +1039,11 @@ func (s ActivatePerspectiveRequest) String() string {
 
 func (s ActivatePerspectiveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ActivatePerspectiveRequest) SetAgentKey(v string) *ActivatePerspectiveRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ActivatePerspectiveRequest) SetPerspectiveId(v string) *ActivatePerspectiveRequest {
@@ -1085,6 +1092,8 @@ func (s *ActivatePerspectiveResponse) SetBody(v *ActivatePerspectiveResponseBody
 }
 
 type AddSynonymRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	Synonym      *string `json:"Synonym,omitempty" xml:"Synonym,omitempty"`
 }
@@ -1095,6 +1104,11 @@ func (s AddSynonymRequest) String() string {
 
 func (s AddSynonymRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddSynonymRequest) SetAgentKey(v string) *AddSynonymRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *AddSynonymRequest) SetCoreWordName(v string) *AddSynonymRequest {
@@ -1148,6 +1162,8 @@ func (s *AddSynonymResponse) SetBody(v *AddSynonymResponseBody) *AddSynonymRespo
 }
 
 type AppendEntityMemberRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ApplyType *string                          `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	EntityId  *int64                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	Member    *AppendEntityMemberRequestMember `json:"Member,omitempty" xml:"Member,omitempty" type:"Struct"`
@@ -1159,6 +1175,11 @@ func (s AppendEntityMemberRequest) String() string {
 
 func (s AppendEntityMemberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AppendEntityMemberRequest) SetAgentKey(v string) *AppendEntityMemberRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *AppendEntityMemberRequest) SetApplyType(v string) *AppendEntityMemberRequest {
@@ -1200,6 +1221,8 @@ func (s *AppendEntityMemberRequestMember) SetSynonyms(v []*string) *AppendEntity
 }
 
 type AppendEntityMemberShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ApplyType    *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	MemberShrink *string `json:"Member,omitempty" xml:"Member,omitempty"`
@@ -1211,6 +1234,11 @@ func (s AppendEntityMemberShrinkRequest) String() string {
 
 func (s AppendEntityMemberShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AppendEntityMemberShrinkRequest) SetAgentKey(v string) *AppendEntityMemberShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *AppendEntityMemberShrinkRequest) SetApplyType(v string) *AppendEntityMemberShrinkRequest {
@@ -1862,6 +1890,8 @@ func (s *ChatResponse) SetBody(v *ChatResponseBody) *ChatResponse {
 }
 
 type CreateBotRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
@@ -1875,6 +1905,11 @@ func (s CreateBotRequest) String() string {
 
 func (s CreateBotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBotRequest) SetAgentKey(v string) *CreateBotRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateBotRequest) SetAvatar(v string) *CreateBotRequest {
@@ -1949,6 +1984,8 @@ func (s *CreateBotResponse) SetBody(v *CreateBotResponseBody) *CreateBotResponse
 }
 
 type CreateCategoryRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1961,6 +1998,11 @@ func (s CreateCategoryRequest) String() string {
 
 func (s CreateCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCategoryRequest) SetAgentKey(v string) *CreateCategoryRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateCategoryRequest) SetBizCode(v string) *CreateCategoryRequest {
@@ -2036,6 +2078,8 @@ func (s *CreateCategoryResponse) SetBody(v *CreateCategoryResponseBody) *CreateC
 }
 
 type CreateCoreWordRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
 
@@ -2045,6 +2089,11 @@ func (s CreateCoreWordRequest) String() string {
 
 func (s CreateCoreWordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCoreWordRequest) SetAgentKey(v string) *CreateCoreWordRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateCoreWordRequest) SetCoreWordName(v string) *CreateCoreWordRequest {
@@ -2099,6 +2148,8 @@ func (s *CreateCoreWordResponse) SetBody(v *CreateCoreWordResponseBody) *CreateC
 }
 
 type CreateDialogRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DialogName  *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2110,6 +2161,11 @@ func (s CreateDialogRequest) String() string {
 
 func (s CreateDialogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDialogRequest) SetAgentKey(v string) *CreateDialogRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateDialogRequest) SetDescription(v string) *CreateDialogRequest {
@@ -2174,6 +2230,8 @@ func (s *CreateDialogResponse) SetBody(v *CreateDialogResponseBody) *CreateDialo
 }
 
 type CreateEntityRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string                       `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId   *int64                        `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName *string                       `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	EntityType *string                       `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
@@ -2187,6 +2245,11 @@ func (s CreateEntityRequest) String() string {
 
 func (s CreateEntityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEntityRequest) SetAgentKey(v string) *CreateEntityRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateEntityRequest) SetDialogId(v int64) *CreateEntityRequest {
@@ -2238,6 +2301,8 @@ func (s *CreateEntityRequestMembers) SetSynonyms(v []*string) *CreateEntityReque
 }
 
 type CreateEntityShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId      *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
@@ -2251,6 +2316,11 @@ func (s CreateEntityShrinkRequest) String() string {
 
 func (s CreateEntityShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEntityShrinkRequest) SetAgentKey(v string) *CreateEntityShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateEntityShrinkRequest) SetDialogId(v int64) *CreateEntityShrinkRequest {
@@ -2325,6 +2395,8 @@ func (s *CreateEntityResponse) SetBody(v *CreateEntityResponseBody) *CreateEntit
 }
 
 type CreateIntentRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey         *string          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId         *int64           `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	IntentDefinition *IntentCreateDTO `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 }
@@ -2335,6 +2407,11 @@ func (s CreateIntentRequest) String() string {
 
 func (s CreateIntentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateIntentRequest) SetAgentKey(v string) *CreateIntentRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateIntentRequest) SetDialogId(v int64) *CreateIntentRequest {
@@ -2348,6 +2425,8 @@ func (s *CreateIntentRequest) SetIntentDefinition(v *IntentCreateDTO) *CreateInt
 }
 
 type CreateIntentShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId               *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 }
@@ -2358,6 +2437,11 @@ func (s CreateIntentShrinkRequest) String() string {
 
 func (s CreateIntentShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateIntentShrinkRequest) SetAgentKey(v string) *CreateIntentShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateIntentShrinkRequest) SetDialogId(v int64) *CreateIntentShrinkRequest {
@@ -2417,6 +2501,8 @@ func (s *CreateIntentResponse) SetBody(v *CreateIntentResponseBody) *CreateInten
 }
 
 type CreateKnowledgeRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Knowledge *CreateKnowledgeRequestKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 }
 
@@ -2426,6 +2512,11 @@ func (s CreateKnowledgeRequest) String() string {
 
 func (s CreateKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKnowledgeRequest) SetAgentKey(v string) *CreateKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateKnowledgeRequest) SetKnowledge(v *CreateKnowledgeRequestKnowledge) *CreateKnowledgeRequest {
@@ -2562,6 +2653,8 @@ func (s *CreateKnowledgeRequestKnowledgeSolutions) SetPlainText(v string) *Creat
 }
 
 type CreateKnowledgeShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeShrink *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 }
 
@@ -2571,6 +2664,11 @@ func (s CreateKnowledgeShrinkRequest) String() string {
 
 func (s CreateKnowledgeShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKnowledgeShrinkRequest) SetAgentKey(v string) *CreateKnowledgeShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreateKnowledgeShrinkRequest) SetKnowledgeShrink(v string) *CreateKnowledgeShrinkRequest {
@@ -2625,7 +2723,9 @@ func (s *CreateKnowledgeResponse) SetBody(v *CreateKnowledgeResponseBody) *Creat
 }
 
 type CreatePerspectiveRequest struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePerspectiveRequest) String() string {
@@ -2634,6 +2734,11 @@ func (s CreatePerspectiveRequest) String() string {
 
 func (s CreatePerspectiveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePerspectiveRequest) SetAgentKey(v string) *CreatePerspectiveRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *CreatePerspectiveRequest) SetName(v string) *CreatePerspectiveRequest {
@@ -2688,6 +2793,8 @@ func (s *CreatePerspectiveResponse) SetBody(v *CreatePerspectiveResponseBody) *C
 }
 
 type DeleteBotRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2697,6 +2804,11 @@ func (s DeleteBotRequest) String() string {
 
 func (s DeleteBotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteBotRequest) SetAgentKey(v string) *DeleteBotRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteBotRequest) SetInstanceId(v string) *DeleteBotRequest {
@@ -2745,7 +2857,9 @@ func (s *DeleteBotResponse) SetBody(v *DeleteBotResponseBody) *DeleteBotResponse
 }
 
 type DeleteCategoryRequest struct {
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DeleteCategoryRequest) String() string {
@@ -2754,6 +2868,11 @@ func (s DeleteCategoryRequest) String() string {
 
 func (s DeleteCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCategoryRequest) SetAgentKey(v string) *DeleteCategoryRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteCategoryRequest) SetCategoryId(v int64) *DeleteCategoryRequest {
@@ -2808,6 +2927,8 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteCoreWordRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
 
@@ -2817,6 +2938,11 @@ func (s DeleteCoreWordRequest) String() string {
 
 func (s DeleteCoreWordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCoreWordRequest) SetAgentKey(v string) *DeleteCoreWordRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteCoreWordRequest) SetCoreWordName(v string) *DeleteCoreWordRequest {
@@ -2871,7 +2997,9 @@ func (s *DeleteCoreWordResponse) SetBody(v *DeleteCoreWordResponseBody) *DeleteC
 }
 
 type DeleteDialogRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s DeleteDialogRequest) String() string {
@@ -2880,6 +3008,11 @@ func (s DeleteDialogRequest) String() string {
 
 func (s DeleteDialogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDialogRequest) SetAgentKey(v string) *DeleteDialogRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteDialogRequest) SetDialogId(v int64) *DeleteDialogRequest {
@@ -2928,7 +3061,9 @@ func (s *DeleteDialogResponse) SetBody(v *DeleteDialogResponseBody) *DeleteDialo
 }
 
 type DeleteEntityRequest struct {
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
 
 func (s DeleteEntityRequest) String() string {
@@ -2937,6 +3072,11 @@ func (s DeleteEntityRequest) String() string {
 
 func (s DeleteEntityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteEntityRequest) SetAgentKey(v string) *DeleteEntityRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteEntityRequest) SetEntityId(v int64) *DeleteEntityRequest {
@@ -2991,7 +3131,9 @@ func (s *DeleteEntityResponse) SetBody(v *DeleteEntityResponseBody) *DeleteEntit
 }
 
 type DeleteIntentRequest struct {
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DeleteIntentRequest) String() string {
@@ -3000,6 +3142,11 @@ func (s DeleteIntentRequest) String() string {
 
 func (s DeleteIntentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteIntentRequest) SetAgentKey(v string) *DeleteIntentRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteIntentRequest) SetIntentId(v int64) *DeleteIntentRequest {
@@ -3054,7 +3201,9 @@ func (s *DeleteIntentResponse) SetBody(v *DeleteIntentResponseBody) *DeleteInten
 }
 
 type DeleteKnowledgeRequest struct {
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DeleteKnowledgeRequest) String() string {
@@ -3063,6 +3212,11 @@ func (s DeleteKnowledgeRequest) String() string {
 
 func (s DeleteKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteKnowledgeRequest) SetAgentKey(v string) *DeleteKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DeleteKnowledgeRequest) SetKnowledgeId(v int64) *DeleteKnowledgeRequest {
@@ -3111,6 +3265,8 @@ func (s *DeleteKnowledgeResponse) SetBody(v *DeleteKnowledgeResponseBody) *Delet
 }
 
 type DescribeBotRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3120,6 +3276,11 @@ func (s DescribeBotRequest) String() string {
 
 func (s DescribeBotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBotRequest) SetAgentKey(v string) *DescribeBotRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeBotRequest) SetInstanceId(v string) *DescribeBotRequest {
@@ -3251,7 +3412,9 @@ func (s *DescribeBotResponse) SetBody(v *DescribeBotResponseBody) *DescribeBotRe
 }
 
 type DescribeCategoryRequest struct {
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DescribeCategoryRequest) String() string {
@@ -3260,6 +3423,11 @@ func (s DescribeCategoryRequest) String() string {
 
 func (s DescribeCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCategoryRequest) SetAgentKey(v string) *DescribeCategoryRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeCategoryRequest) SetCategoryId(v int64) *DescribeCategoryRequest {
@@ -3326,6 +3494,8 @@ func (s *DescribeCategoryResponse) SetBody(v *DescribeCategoryResponseBody) *Des
 }
 
 type DescribeCoreWordRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
 
@@ -3335,6 +3505,11 @@ func (s DescribeCoreWordRequest) String() string {
 
 func (s DescribeCoreWordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCoreWordRequest) SetAgentKey(v string) *DescribeCoreWordRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeCoreWordRequest) SetCoreWordName(v string) *DescribeCoreWordRequest {
@@ -3413,7 +3588,9 @@ func (s *DescribeCoreWordResponse) SetBody(v *DescribeCoreWordResponseBody) *Des
 }
 
 type DescribeDialogRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s DescribeDialogRequest) String() string {
@@ -3422,6 +3599,11 @@ func (s DescribeDialogRequest) String() string {
 
 func (s DescribeDialogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDialogRequest) SetAgentKey(v string) *DescribeDialogRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeDialogRequest) SetDialogId(v int64) *DescribeDialogRequest {
@@ -3542,7 +3724,9 @@ func (s *DescribeDialogResponse) SetBody(v *DescribeDialogResponseBody) *Describ
 }
 
 type DescribeDialogFlowRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s DescribeDialogFlowRequest) String() string {
@@ -3551,6 +3735,11 @@ func (s DescribeDialogFlowRequest) String() string {
 
 func (s DescribeDialogFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDialogFlowRequest) SetAgentKey(v string) *DescribeDialogFlowRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeDialogFlowRequest) SetDialogId(v int64) *DescribeDialogFlowRequest {
@@ -3701,7 +3890,9 @@ func (s *DescribeDialogFlowResponse) SetBody(v *DescribeDialogFlowResponseBody) 
 }
 
 type DescribeEntitiesRequest struct {
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
 
 func (s DescribeEntitiesRequest) String() string {
@@ -3710,6 +3901,11 @@ func (s DescribeEntitiesRequest) String() string {
 
 func (s DescribeEntitiesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEntitiesRequest) SetAgentKey(v string) *DescribeEntitiesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeEntitiesRequest) SetEntityId(v int64) *DescribeEntitiesRequest {
@@ -3847,7 +4043,9 @@ func (s *DescribeEntitiesResponse) SetBody(v *DescribeEntitiesResponseBody) *Des
 }
 
 type DescribeIntentRequest struct {
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DescribeIntentRequest) String() string {
@@ -3856,6 +4054,11 @@ func (s DescribeIntentRequest) String() string {
 
 func (s DescribeIntentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeIntentRequest) SetAgentKey(v string) *DescribeIntentRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeIntentRequest) SetIntentId(v int64) *DescribeIntentRequest {
@@ -4151,7 +4354,9 @@ func (s *DescribeIntentResponse) SetBody(v *DescribeIntentResponseBody) *Describ
 }
 
 type DescribeKnowledgeRequest struct {
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DescribeKnowledgeRequest) String() string {
@@ -4160,6 +4365,11 @@ func (s DescribeKnowledgeRequest) String() string {
 
 func (s DescribeKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeKnowledgeRequest) SetAgentKey(v string) *DescribeKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribeKnowledgeRequest) SetKnowledgeId(v int64) *DescribeKnowledgeRequest {
@@ -4427,6 +4637,8 @@ func (s *DescribeKnowledgeResponse) SetBody(v *DescribeKnowledgeResponseBody) *D
 }
 
 type DescribePerspectiveRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -4436,6 +4648,11 @@ func (s DescribePerspectiveRequest) String() string {
 
 func (s DescribePerspectiveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePerspectiveRequest) SetAgentKey(v string) *DescribePerspectiveRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DescribePerspectiveRequest) SetPerspectiveId(v string) *DescribePerspectiveRequest {
@@ -4538,7 +4755,9 @@ func (s *DescribePerspectiveResponse) SetBody(v *DescribePerspectiveResponseBody
 }
 
 type DisableDialogFlowRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s DisableDialogFlowRequest) String() string {
@@ -4547,6 +4766,11 @@ func (s DisableDialogFlowRequest) String() string {
 
 func (s DisableDialogFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DisableDialogFlowRequest) SetAgentKey(v string) *DisableDialogFlowRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DisableDialogFlowRequest) SetDialogId(v int64) *DisableDialogFlowRequest {
@@ -4595,7 +4819,9 @@ func (s *DisableDialogFlowResponse) SetBody(v *DisableDialogFlowResponseBody) *D
 }
 
 type DisableKnowledgeRequest struct {
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DisableKnowledgeRequest) String() string {
@@ -4604,6 +4830,11 @@ func (s DisableKnowledgeRequest) String() string {
 
 func (s DisableKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DisableKnowledgeRequest) SetAgentKey(v string) *DisableKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *DisableKnowledgeRequest) SetKnowledgeId(v int64) *DisableKnowledgeRequest {
@@ -4652,6 +4883,8 @@ func (s *DisableKnowledgeResponse) SetBody(v *DisableKnowledgeResponseBody) *Dis
 }
 
 type FeedbackRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Feedback   *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MessageId  *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
@@ -4664,6 +4897,11 @@ func (s FeedbackRequest) String() string {
 
 func (s FeedbackRequest) GoString() string {
 	return s.String()
+}
+
+func (s *FeedbackRequest) SetAgentKey(v string) *FeedbackRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *FeedbackRequest) SetFeedback(v string) *FeedbackRequest {
@@ -4751,7 +4989,9 @@ func (s *FeedbackResponse) SetBody(v *FeedbackResponseBody) *FeedbackResponse {
 }
 
 type GetAsyncResultRequest struct {
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAsyncResultRequest) String() string {
@@ -4760,6 +5000,11 @@ func (s GetAsyncResultRequest) String() string {
 
 func (s GetAsyncResultRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetAsyncResultRequest) SetAgentKey(v string) *GetAsyncResultRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetAsyncResultRequest) SetTaskId(v string) *GetAsyncResultRequest {
@@ -4832,6 +5077,8 @@ func (s *GetAsyncResultResponse) SetBody(v *GetAsyncResultResponseBody) *GetAsyn
 }
 
 type GetBotChatDataRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -4843,6 +5090,11 @@ func (s GetBotChatDataRequest) String() string {
 
 func (s GetBotChatDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetBotChatDataRequest) SetAgentKey(v string) *GetBotChatDataRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetBotChatDataRequest) SetEndTime(v string) *GetBotChatDataRequest {
@@ -4913,6 +5165,8 @@ func (s *GetBotChatDataResponse) SetBody(v *GetBotChatDataResponseBody) *GetBotC
 }
 
 type GetBotDsStatDataRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -4924,6 +5178,11 @@ func (s GetBotDsStatDataRequest) String() string {
 
 func (s GetBotDsStatDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetBotDsStatDataRequest) SetAgentKey(v string) *GetBotDsStatDataRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetBotDsStatDataRequest) SetEndTime(v string) *GetBotDsStatDataRequest {
@@ -4994,6 +5253,8 @@ func (s *GetBotDsStatDataResponse) SetBody(v *GetBotDsStatDataResponseBody) *Get
 }
 
 type GetBotKnowledgeStatDataRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -5005,6 +5266,11 @@ func (s GetBotKnowledgeStatDataRequest) String() string {
 
 func (s GetBotKnowledgeStatDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetBotKnowledgeStatDataRequest) SetAgentKey(v string) *GetBotKnowledgeStatDataRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetBotKnowledgeStatDataRequest) SetEndTime(v string) *GetBotKnowledgeStatDataRequest {
@@ -5075,6 +5341,8 @@ func (s *GetBotKnowledgeStatDataResponse) SetBody(v *GetBotKnowledgeStatDataResp
 }
 
 type GetBotSessionDataRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -5086,6 +5354,11 @@ func (s GetBotSessionDataRequest) String() string {
 
 func (s GetBotSessionDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetBotSessionDataRequest) SetAgentKey(v string) *GetBotSessionDataRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetBotSessionDataRequest) SetEndTime(v string) *GetBotSessionDataRequest {
@@ -5156,6 +5429,8 @@ func (s *GetBotSessionDataResponse) SetBody(v *GetBotSessionDataResponseBody) *G
 }
 
 type GetConversationListRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5171,6 +5446,11 @@ func (s GetConversationListRequest) String() string {
 
 func (s GetConversationListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetConversationListRequest) SetAgentKey(v string) *GetConversationListRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *GetConversationListRequest) SetEndDate(v string) *GetConversationListRequest {
@@ -5273,6 +5553,8 @@ func (s *GetConversationListResponse) SetBody(v *GetConversationListResponseBody
 }
 
 type ListBotChatHistorysRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5285,6 +5567,11 @@ func (s ListBotChatHistorysRequest) String() string {
 
 func (s ListBotChatHistorysRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotChatHistorysRequest) SetAgentKey(v string) *ListBotChatHistorysRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotChatHistorysRequest) SetEndTime(v string) *ListBotChatHistorysRequest {
@@ -5360,6 +5647,8 @@ func (s *ListBotChatHistorysResponse) SetBody(v *ListBotChatHistorysResponseBody
 }
 
 type ListBotColdDsDatasRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5372,6 +5661,11 @@ func (s ListBotColdDsDatasRequest) String() string {
 
 func (s ListBotColdDsDatasRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotColdDsDatasRequest) SetAgentKey(v string) *ListBotColdDsDatasRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotColdDsDatasRequest) SetEndTime(v string) *ListBotColdDsDatasRequest {
@@ -5447,6 +5741,8 @@ func (s *ListBotColdDsDatasResponse) SetBody(v *ListBotColdDsDatasResponseBody) 
 }
 
 type ListBotColdKnowledgesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5459,6 +5755,11 @@ func (s ListBotColdKnowledgesRequest) String() string {
 
 func (s ListBotColdKnowledgesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotColdKnowledgesRequest) SetAgentKey(v string) *ListBotColdKnowledgesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotColdKnowledgesRequest) SetEndTime(v string) *ListBotColdKnowledgesRequest {
@@ -5534,6 +5835,8 @@ func (s *ListBotColdKnowledgesResponse) SetBody(v *ListBotColdKnowledgesResponse
 }
 
 type ListBotDsDetailsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5546,6 +5849,11 @@ func (s ListBotDsDetailsRequest) String() string {
 
 func (s ListBotDsDetailsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotDsDetailsRequest) SetAgentKey(v string) *ListBotDsDetailsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotDsDetailsRequest) SetEndTime(v string) *ListBotDsDetailsRequest {
@@ -5621,6 +5929,8 @@ func (s *ListBotDsDetailsResponse) SetBody(v *ListBotDsDetailsResponseBody) *Lis
 }
 
 type ListBotHotDsDatasRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5633,6 +5943,11 @@ func (s ListBotHotDsDatasRequest) String() string {
 
 func (s ListBotHotDsDatasRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotHotDsDatasRequest) SetAgentKey(v string) *ListBotHotDsDatasRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotHotDsDatasRequest) SetEndTime(v string) *ListBotHotDsDatasRequest {
@@ -5708,6 +6023,8 @@ func (s *ListBotHotDsDatasResponse) SetBody(v *ListBotHotDsDatasResponseBody) *L
 }
 
 type ListBotHotKnowledgesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5720,6 +6037,11 @@ func (s ListBotHotKnowledgesRequest) String() string {
 
 func (s ListBotHotKnowledgesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotHotKnowledgesRequest) SetAgentKey(v string) *ListBotHotKnowledgesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotHotKnowledgesRequest) SetEndTime(v string) *ListBotHotKnowledgesRequest {
@@ -5795,6 +6117,8 @@ func (s *ListBotHotKnowledgesResponse) SetBody(v *ListBotHotKnowledgesResponseBo
 }
 
 type ListBotKnowledgeDetailsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5807,6 +6131,11 @@ func (s ListBotKnowledgeDetailsRequest) String() string {
 
 func (s ListBotKnowledgeDetailsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotKnowledgeDetailsRequest) SetAgentKey(v string) *ListBotKnowledgeDetailsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotKnowledgeDetailsRequest) SetEndTime(v string) *ListBotKnowledgeDetailsRequest {
@@ -5882,6 +6211,8 @@ func (s *ListBotKnowledgeDetailsResponse) SetBody(v *ListBotKnowledgeDetailsResp
 }
 
 type ListBotReceptionDetailDatasRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -5893,6 +6224,11 @@ func (s ListBotReceptionDetailDatasRequest) String() string {
 
 func (s ListBotReceptionDetailDatasRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListBotReceptionDetailDatasRequest) SetAgentKey(v string) *ListBotReceptionDetailDatasRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListBotReceptionDetailDatasRequest) SetEndTime(v string) *ListBotReceptionDetailDatasRequest {
@@ -5963,6 +6299,8 @@ func (s *ListBotReceptionDetailDatasResponse) SetBody(v *ListBotReceptionDetailD
 }
 
 type ListConversationLogsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
@@ -5972,6 +6310,11 @@ func (s ListConversationLogsRequest) String() string {
 
 func (s ListConversationLogsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListConversationLogsRequest) SetAgentKey(v string) *ListConversationLogsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ListConversationLogsRequest) SetSessionId(v string) *ListConversationLogsRequest {
@@ -6032,8 +6375,10 @@ func (s *ListConversationLogsResponse) SetBody(v *ListConversationLogsResponseBo
 }
 
 type MoveKnowledgeCategoryRequest struct {
-	CategoryId  *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s MoveKnowledgeCategoryRequest) String() string {
@@ -6042,6 +6387,11 @@ func (s MoveKnowledgeCategoryRequest) String() string {
 
 func (s MoveKnowledgeCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MoveKnowledgeCategoryRequest) SetAgentKey(v string) *MoveKnowledgeCategoryRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *MoveKnowledgeCategoryRequest) SetCategoryId(v int64) *MoveKnowledgeCategoryRequest {
@@ -6095,7 +6445,9 @@ func (s *MoveKnowledgeCategoryResponse) SetBody(v *MoveKnowledgeCategoryResponse
 }
 
 type PublishDialogFlowRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s PublishDialogFlowRequest) String() string {
@@ -6104,6 +6456,11 @@ func (s PublishDialogFlowRequest) String() string {
 
 func (s PublishDialogFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PublishDialogFlowRequest) SetAgentKey(v string) *PublishDialogFlowRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *PublishDialogFlowRequest) SetDialogId(v int64) *PublishDialogFlowRequest {
@@ -6152,8 +6509,10 @@ func (s *PublishDialogFlowResponse) SetBody(v *PublishDialogFlowResponseBody) *P
 }
 
 type PublishKnowledgeRequest struct {
-	Async       *bool  `json:"Async,omitempty" xml:"Async,omitempty"`
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Async       *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s PublishKnowledgeRequest) String() string {
@@ -6162,6 +6521,11 @@ func (s PublishKnowledgeRequest) String() string {
 
 func (s PublishKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PublishKnowledgeRequest) SetAgentKey(v string) *PublishKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *PublishKnowledgeRequest) SetAsync(v bool) *PublishKnowledgeRequest {
@@ -6215,8 +6579,10 @@ func (s *PublishKnowledgeResponse) SetBody(v *PublishKnowledgeResponseBody) *Pub
 }
 
 type QueryBotsRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryBotsRequest) String() string {
@@ -6225,6 +6591,11 @@ func (s QueryBotsRequest) String() string {
 
 func (s QueryBotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryBotsRequest) SetAgentKey(v string) *QueryBotsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryBotsRequest) SetPageNumber(v int32) *QueryBotsRequest {
@@ -6355,9 +6726,11 @@ func (s *QueryBotsResponse) SetBody(v *QueryBotsResponseBody) *QueryBotsResponse
 }
 
 type QueryCategoriesRequest struct {
-	KnowledgeType    *int64 `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	ShowChildrens    *bool  `json:"ShowChildrens,omitempty" xml:"ShowChildrens,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeType    *int64  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
+	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	ShowChildrens    *bool   `json:"ShowChildrens,omitempty" xml:"ShowChildrens,omitempty"`
 }
 
 func (s QueryCategoriesRequest) String() string {
@@ -6366,6 +6739,11 @@ func (s QueryCategoriesRequest) String() string {
 
 func (s QueryCategoriesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCategoriesRequest) SetAgentKey(v string) *QueryCategoriesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryCategoriesRequest) SetKnowledgeType(v int64) *QueryCategoriesRequest {
@@ -6430,6 +6808,8 @@ func (s *QueryCategoriesResponse) SetBody(v *QueryCategoriesResponseBody) *Query
 }
 
 type QueryCoreWordsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6442,6 +6822,11 @@ func (s QueryCoreWordsRequest) String() string {
 
 func (s QueryCoreWordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCoreWordsRequest) SetAgentKey(v string) *QueryCoreWordsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryCoreWordsRequest) SetCoreWordName(v string) *QueryCoreWordsRequest {
@@ -6570,6 +6955,8 @@ func (s *QueryCoreWordsResponse) SetBody(v *QueryCoreWordsResponseBody) *QueryCo
 }
 
 type QueryDialogsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -6582,6 +6969,11 @@ func (s QueryDialogsRequest) String() string {
 
 func (s QueryDialogsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDialogsRequest) SetAgentKey(v string) *QueryDialogsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryDialogsRequest) SetDialogName(v string) *QueryDialogsRequest {
@@ -6752,6 +7144,8 @@ func (s *QueryDialogsResponse) SetBody(v *QueryDialogsResponseBody) *QueryDialog
 }
 
 type QueryEntitiesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId   *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -6764,6 +7158,11 @@ func (s QueryEntitiesRequest) String() string {
 
 func (s QueryEntitiesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryEntitiesRequest) SetAgentKey(v string) *QueryEntitiesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryEntitiesRequest) SetDialogId(v int64) *QueryEntitiesRequest {
@@ -6951,6 +7350,8 @@ func (s *QueryEntitiesResponse) SetBody(v *QueryEntitiesResponseBody) *QueryEnti
 }
 
 type QueryIntentsRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId   *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -6963,6 +7364,11 @@ func (s QueryIntentsRequest) String() string {
 
 func (s QueryIntentsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryIntentsRequest) SetAgentKey(v string) *QueryIntentsRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryIntentsRequest) SetDialogId(v int64) *QueryIntentsRequest {
@@ -7296,6 +7702,8 @@ func (s *QueryIntentsResponse) SetBody(v *QueryIntentsResponseBody) *QueryIntent
 }
 
 type QueryKnowledgesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId     *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CoreWordName   *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	KnowledgeTitle *string `json:"KnowledgeTitle,omitempty" xml:"KnowledgeTitle,omitempty"`
@@ -7309,6 +7717,11 @@ func (s QueryKnowledgesRequest) String() string {
 
 func (s QueryKnowledgesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryKnowledgesRequest) SetAgentKey(v string) *QueryKnowledgesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QueryKnowledgesRequest) SetCategoryId(v int64) *QueryKnowledgesRequest {
@@ -7483,6 +7896,24 @@ func (s *QueryKnowledgesResponse) SetBody(v *QueryKnowledgesResponseBody) *Query
 	return s
 }
 
+type QueryPerspectivesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s QueryPerspectivesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPerspectivesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPerspectivesRequest) SetAgentKey(v string) *QueryPerspectivesRequest {
+	s.AgentKey = &v
+	return s
+}
+
 type QueryPerspectivesResponseBody struct {
 	Perspectives []*QueryPerspectivesResponseBodyPerspectives `json:"Perspectives,omitempty" xml:"Perspectives,omitempty" type:"Repeated"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7595,6 +8026,8 @@ func (s *QueryPerspectivesResponse) SetBody(v *QueryPerspectivesResponseBody) *Q
 }
 
 type QuerySystemEntitiesRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
@@ -7604,6 +8037,11 @@ func (s QuerySystemEntitiesRequest) String() string {
 
 func (s QuerySystemEntitiesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySystemEntitiesRequest) SetAgentKey(v string) *QuerySystemEntitiesRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *QuerySystemEntitiesRequest) SetEntityName(v string) *QuerySystemEntitiesRequest {
@@ -7687,6 +8125,8 @@ func (s *QuerySystemEntitiesResponse) SetBody(v *QuerySystemEntitiesResponseBody
 }
 
 type RemoveEntityMemberRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId   *int64                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	Member     *RemoveEntityMemberRequestMember `json:"Member,omitempty" xml:"Member,omitempty" type:"Struct"`
 	RemoveType *string                          `json:"RemoveType,omitempty" xml:"RemoveType,omitempty"`
@@ -7698,6 +8138,11 @@ func (s RemoveEntityMemberRequest) String() string {
 
 func (s RemoveEntityMemberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveEntityMemberRequest) SetAgentKey(v string) *RemoveEntityMemberRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *RemoveEntityMemberRequest) SetEntityId(v int64) *RemoveEntityMemberRequest {
@@ -7739,6 +8184,8 @@ func (s *RemoveEntityMemberRequestMember) SetSynonyms(v []*string) *RemoveEntity
 }
 
 type RemoveEntityMemberShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	MemberShrink *string `json:"Member,omitempty" xml:"Member,omitempty"`
 	RemoveType   *string `json:"RemoveType,omitempty" xml:"RemoveType,omitempty"`
@@ -7750,6 +8197,11 @@ func (s RemoveEntityMemberShrinkRequest) String() string {
 
 func (s RemoveEntityMemberShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveEntityMemberShrinkRequest) SetAgentKey(v string) *RemoveEntityMemberShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *RemoveEntityMemberShrinkRequest) SetEntityId(v int64) *RemoveEntityMemberShrinkRequest {
@@ -7814,6 +8266,8 @@ func (s *RemoveEntityMemberResponse) SetBody(v *RemoveEntityMemberResponseBody) 
 }
 
 type RemoveSynonymRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	Synonym      *string `json:"Synonym,omitempty" xml:"Synonym,omitempty"`
 }
@@ -7824,6 +8278,11 @@ func (s RemoveSynonymRequest) String() string {
 
 func (s RemoveSynonymRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveSynonymRequest) SetAgentKey(v string) *RemoveSynonymRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *RemoveSynonymRequest) SetCoreWordName(v string) *RemoveSynonymRequest {
@@ -7877,7 +8336,9 @@ func (s *RemoveSynonymResponse) SetBody(v *RemoveSynonymResponseBody) *RemoveSyn
 }
 
 type TestDialogFlowRequest struct {
-	DialogId *int64 `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
 
 func (s TestDialogFlowRequest) String() string {
@@ -7886,6 +8347,11 @@ func (s TestDialogFlowRequest) String() string {
 
 func (s TestDialogFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TestDialogFlowRequest) SetAgentKey(v string) *TestDialogFlowRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *TestDialogFlowRequest) SetDialogId(v int64) *TestDialogFlowRequest {
@@ -7934,6 +8400,8 @@ func (s *TestDialogFlowResponse) SetBody(v *TestDialogFlowResponseBody) *TestDia
 }
 
 type UpdateCategoryRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -7944,6 +8412,11 @@ func (s UpdateCategoryRequest) String() string {
 
 func (s UpdateCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCategoryRequest) SetAgentKey(v string) *UpdateCategoryRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateCategoryRequest) SetCategoryId(v int64) *UpdateCategoryRequest {
@@ -8003,6 +8476,8 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateCoreWordRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordCode *string `json:"CoreWordCode,omitempty" xml:"CoreWordCode,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
@@ -8013,6 +8488,11 @@ func (s UpdateCoreWordRequest) String() string {
 
 func (s UpdateCoreWordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCoreWordRequest) SetAgentKey(v string) *UpdateCoreWordRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateCoreWordRequest) SetCoreWordCode(v string) *UpdateCoreWordRequest {
@@ -8072,6 +8552,8 @@ func (s *UpdateCoreWordResponse) SetBody(v *UpdateCoreWordResponseBody) *UpdateC
 }
 
 type UpdateDialogRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DialogId    *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	DialogName  *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
@@ -8083,6 +8565,11 @@ func (s UpdateDialogRequest) String() string {
 
 func (s UpdateDialogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDialogRequest) SetAgentKey(v string) *UpdateDialogRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateDialogRequest) SetDescription(v string) *UpdateDialogRequest {
@@ -8141,6 +8628,8 @@ func (s *UpdateDialogResponse) SetBody(v *UpdateDialogResponseBody) *UpdateDialo
 }
 
 type UpdateDialogFlowRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey         *string                                  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId         *int64                                   `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	ModuleDefinition *UpdateDialogFlowRequestModuleDefinition `json:"ModuleDefinition,omitempty" xml:"ModuleDefinition,omitempty" type:"Struct"`
 }
@@ -8151,6 +8640,11 @@ func (s UpdateDialogFlowRequest) String() string {
 
 func (s UpdateDialogFlowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDialogFlowRequest) SetAgentKey(v string) *UpdateDialogFlowRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateDialogFlowRequest) SetDialogId(v int64) *UpdateDialogFlowRequest {
@@ -8187,6 +8681,8 @@ func (s *UpdateDialogFlowRequestModuleDefinition) SetModuleDefinition(v *PaasPro
 }
 
 type UpdateDialogFlowShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId               *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	ModuleDefinitionShrink *string `json:"ModuleDefinition,omitempty" xml:"ModuleDefinition,omitempty"`
 }
@@ -8197,6 +8693,11 @@ func (s UpdateDialogFlowShrinkRequest) String() string {
 
 func (s UpdateDialogFlowShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDialogFlowShrinkRequest) SetAgentKey(v string) *UpdateDialogFlowShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateDialogFlowShrinkRequest) SetDialogId(v int64) *UpdateDialogFlowShrinkRequest {
@@ -8250,6 +8751,8 @@ func (s *UpdateDialogFlowResponse) SetBody(v *UpdateDialogFlowResponseBody) *Upd
 }
 
 type UpdateEntityRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey   *string                       `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId   *int64                        `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName *string                       `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	EntityType *string                       `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
@@ -8263,6 +8766,11 @@ func (s UpdateEntityRequest) String() string {
 
 func (s UpdateEntityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEntityRequest) SetAgentKey(v string) *UpdateEntityRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateEntityRequest) SetEntityId(v int64) *UpdateEntityRequest {
@@ -8314,6 +8822,8 @@ func (s *UpdateEntityRequestMembers) SetSynonyms(v []*string) *UpdateEntityReque
 }
 
 type UpdateEntityShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
@@ -8327,6 +8837,11 @@ func (s UpdateEntityShrinkRequest) String() string {
 
 func (s UpdateEntityShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEntityShrinkRequest) SetAgentKey(v string) *UpdateEntityShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateEntityShrinkRequest) SetEntityId(v int64) *UpdateEntityShrinkRequest {
@@ -8401,6 +8916,8 @@ func (s *UpdateEntityResponse) SetBody(v *UpdateEntityResponseBody) *UpdateEntit
 }
 
 type UpdateIntentRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey         *string          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentDefinition *IntentCreateDTO `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 	IntentId         *int64           `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
@@ -8411,6 +8928,11 @@ func (s UpdateIntentRequest) String() string {
 
 func (s UpdateIntentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateIntentRequest) SetAgentKey(v string) *UpdateIntentRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateIntentRequest) SetIntentDefinition(v *IntentCreateDTO) *UpdateIntentRequest {
@@ -8424,6 +8946,8 @@ func (s *UpdateIntentRequest) SetIntentId(v int64) *UpdateIntentRequest {
 }
 
 type UpdateIntentShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 	IntentId               *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
@@ -8434,6 +8958,11 @@ func (s UpdateIntentShrinkRequest) String() string {
 
 func (s UpdateIntentShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateIntentShrinkRequest) SetAgentKey(v string) *UpdateIntentShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateIntentShrinkRequest) SetIntentDefinitionShrink(v string) *UpdateIntentShrinkRequest {
@@ -8493,6 +9022,8 @@ func (s *UpdateIntentResponse) SetBody(v *UpdateIntentResponseBody) *UpdateInten
 }
 
 type UpdateKnowledgeRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Knowledge *UpdateKnowledgeRequestKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 }
 
@@ -8502,6 +9033,11 @@ func (s UpdateKnowledgeRequest) String() string {
 
 func (s UpdateKnowledgeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateKnowledgeRequest) SetAgentKey(v string) *UpdateKnowledgeRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateKnowledgeRequest) SetKnowledge(v *UpdateKnowledgeRequestKnowledge) *UpdateKnowledgeRequest {
@@ -8680,6 +9216,8 @@ func (s *UpdateKnowledgeRequestKnowledgeSolutions) SetSolutionId(v int64) *Updat
 }
 
 type UpdateKnowledgeShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeShrink *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 }
 
@@ -8689,6 +9227,11 @@ func (s UpdateKnowledgeShrinkRequest) String() string {
 
 func (s UpdateKnowledgeShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateKnowledgeShrinkRequest) SetAgentKey(v string) *UpdateKnowledgeShrinkRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdateKnowledgeShrinkRequest) SetKnowledgeShrink(v string) *UpdateKnowledgeShrinkRequest {
@@ -8743,6 +9286,8 @@ func (s *UpdateKnowledgeResponse) SetBody(v *UpdateKnowledgeResponseBody) *Updat
 }
 
 type UpdatePerspectiveRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
@@ -8753,6 +9298,11 @@ func (s UpdatePerspectiveRequest) String() string {
 
 func (s UpdatePerspectiveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdatePerspectiveRequest) SetAgentKey(v string) *UpdatePerspectiveRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *UpdatePerspectiveRequest) SetName(v string) *UpdatePerspectiveRequest {
@@ -8857,11 +9407,31 @@ func (client *Client) ActivatePerspectiveWithOptions(request *ActivatePerspectiv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveId)) {
+		query["PerspectiveId"] = request.PerspectiveId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ActivatePerspective"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ActivatePerspectiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ActivatePerspective"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8885,11 +9455,35 @@ func (client *Client) AddSynonymWithOptions(request *AddSynonymRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Synonym)) {
+		query["Synonym"] = request.Synonym
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSynonym"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddSynonymResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddSynonym"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8919,11 +9513,39 @@ func (client *Client) AppendEntityMemberWithOptions(tmpReq *AppendEntityMemberRe
 		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Member), tea.String("Member"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberShrink)) {
+		query["Member"] = request.MemberShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AppendEntityMember"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AppendEntityMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AppendEntityMember"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8947,11 +9569,43 @@ func (client *Client) AssociateWithOptions(request *AssociateRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Perspective)) {
+		query["Perspective"] = request.Perspective
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendNum)) {
+		query["RecommendNum"] = request.RecommendNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		query["Utterance"] = request.Utterance
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Associate"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssociateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Associate"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8975,11 +9629,67 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *util.Runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
+		query["IntentName"] = request.IntentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Perspective)) {
+		query["Perspective"] = request.Perspective
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
+		query["Recommend"] = request.Recommend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
+		query["SenderId"] = request.SenderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderNick)) {
+		query["SenderNick"] = request.SenderNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		query["Utterance"] = request.Utterance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VendorParam)) {
+		query["VendorParam"] = request.VendorParam
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Chat"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChatResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Chat"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9003,11 +9713,47 @@ func (client *Client) CreateBotWithOptions(request *CreateBotRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Avatar)) {
+		query["Avatar"] = request.Avatar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Introduction)) {
+		query["Introduction"] = request.Introduction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		query["LanguageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotType)) {
+		query["RobotType"] = request.RobotType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBot"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBot"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9031,11 +9777,43 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeType)) {
+		query["KnowledgeType"] = request.KnowledgeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
+		query["ParentCategoryId"] = request.ParentCategoryId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCategory"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCategory"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9059,11 +9837,31 @@ func (client *Client) CreateCoreWordWithOptions(request *CreateCoreWordRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCoreWord"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCoreWordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCoreWord"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9087,11 +9885,39 @@ func (client *Client) CreateDialogWithOptions(request *CreateDialogRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogName)) {
+		query["DialogName"] = request.DialogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDialog"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDialogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDialog"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9121,11 +9947,47 @@ func (client *Client) CreateEntityWithOptions(tmpReq *CreateEntityRequest, runti
 		request.MembersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Members, tea.String("Members"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MembersShrink)) {
+		query["Members"] = request.MembersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regex)) {
+		query["Regex"] = request.Regex
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEntity"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateEntityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateEntity"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9155,11 +10017,35 @@ func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runti
 		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentDefinitionShrink)) {
+		query["IntentDefinition"] = request.IntentDefinitionShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIntent"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateIntentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateIntent"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9189,11 +10075,33 @@ func (client *Client) CreateKnowledgeWithOptions(tmpReq *CreateKnowledgeRequest,
 		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Knowledge), tea.String("Knowledge"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeShrink)) {
+		body["Knowledge"] = request.KnowledgeShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9217,11 +10125,31 @@ func (client *Client) CreatePerspectiveWithOptions(request *CreatePerspectiveReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePerspective"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePerspectiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePerspective"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9245,11 +10173,31 @@ func (client *Client) DeleteBotWithOptions(request *DeleteBotRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBot"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteBotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteBot"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9273,11 +10221,31 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCategory"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCategory"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9301,11 +10269,31 @@ func (client *Client) DeleteCoreWordWithOptions(request *DeleteCoreWordRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCoreWord"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCoreWordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCoreWord"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9329,11 +10317,31 @@ func (client *Client) DeleteDialogWithOptions(request *DeleteDialogRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDialog"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDialogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteDialog"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9357,11 +10365,31 @@ func (client *Client) DeleteEntityWithOptions(request *DeleteEntityRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEntity"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEntityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteEntity"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9385,11 +10413,31 @@ func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIntent"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIntentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteIntent"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9413,11 +10461,31 @@ func (client *Client) DeleteKnowledgeWithOptions(request *DeleteKnowledgeRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9441,11 +10509,31 @@ func (client *Client) DescribeBotWithOptions(request *DescribeBotRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBot"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBotResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBot"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9469,11 +10557,31 @@ func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCategory"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCategory"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9497,11 +10605,31 @@ func (client *Client) DescribeCoreWordWithOptions(request *DescribeCoreWordReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCoreWord"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCoreWordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCoreWord"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9525,11 +10653,31 @@ func (client *Client) DescribeDialogWithOptions(request *DescribeDialogRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDialog"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDialogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDialog"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9553,11 +10701,31 @@ func (client *Client) DescribeDialogFlowWithOptions(request *DescribeDialogFlowR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDialogFlow"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDialogFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDialogFlow"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9581,11 +10749,31 @@ func (client *Client) DescribeEntitiesWithOptions(request *DescribeEntitiesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEntities"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEntitiesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEntities"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9609,11 +10797,31 @@ func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIntent"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIntentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIntent"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9637,11 +10845,31 @@ func (client *Client) DescribeKnowledgeWithOptions(request *DescribeKnowledgeReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9665,11 +10893,31 @@ func (client *Client) DescribePerspectiveWithOptions(request *DescribePerspectiv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveId)) {
+		query["PerspectiveId"] = request.PerspectiveId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePerspective"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePerspectiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePerspective"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9693,11 +10941,31 @@ func (client *Client) DisableDialogFlowWithOptions(request *DisableDialogFlowReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDialogFlow"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableDialogFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableDialogFlow"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9721,11 +10989,31 @@ func (client *Client) DisableKnowledgeWithOptions(request *DisableKnowledgeReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9749,11 +11037,43 @@ func (client *Client) FeedbackWithOptions(request *FeedbackRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Feedback)) {
+		query["Feedback"] = request.Feedback
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Feedback"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FeedbackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Feedback"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9777,11 +11097,31 @@ func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncResult"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsyncResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncResult"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9805,11 +11145,39 @@ func (client *Client) GetBotChatDataWithOptions(request *GetBotChatDataRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBotChatData"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBotChatDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBotChatData"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9833,11 +11201,39 @@ func (client *Client) GetBotDsStatDataWithOptions(request *GetBotDsStatDataReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBotDsStatData"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBotDsStatDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBotDsStatData"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9861,11 +11257,39 @@ func (client *Client) GetBotKnowledgeStatDataWithOptions(request *GetBotKnowledg
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBotKnowledgeStatData"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBotKnowledgeStatDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBotKnowledgeStatData"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9889,11 +11313,39 @@ func (client *Client) GetBotSessionDataWithOptions(request *GetBotSessionDataReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBotSessionData"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBotSessionDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBotSessionData"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9917,11 +11369,55 @@ func (client *Client) GetConversationListWithOptions(request *GetConversationLis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
+		query["SenderId"] = request.SenderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConversationList"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConversationListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConversationList"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9945,11 +11441,43 @@ func (client *Client) ListBotChatHistorysWithOptions(request *ListBotChatHistory
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotChatHistorys"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotChatHistorysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotChatHistorys"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9973,11 +11501,43 @@ func (client *Client) ListBotColdDsDatasWithOptions(request *ListBotColdDsDatasR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotColdDsDatas"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotColdDsDatasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotColdDsDatas"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10001,11 +11561,43 @@ func (client *Client) ListBotColdKnowledgesWithOptions(request *ListBotColdKnowl
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotColdKnowledges"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotColdKnowledgesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotColdKnowledges"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10029,11 +11621,43 @@ func (client *Client) ListBotDsDetailsWithOptions(request *ListBotDsDetailsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotDsDetails"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotDsDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotDsDetails"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10057,11 +11681,43 @@ func (client *Client) ListBotHotDsDatasWithOptions(request *ListBotHotDsDatasReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotHotDsDatas"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotHotDsDatasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotHotDsDatas"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10085,11 +11741,43 @@ func (client *Client) ListBotHotKnowledgesWithOptions(request *ListBotHotKnowled
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotHotKnowledges"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotHotKnowledgesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotHotKnowledges"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10113,11 +11801,43 @@ func (client *Client) ListBotKnowledgeDetailsWithOptions(request *ListBotKnowled
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotKnowledgeDetails"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotKnowledgeDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotKnowledgeDetails"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10141,11 +11861,39 @@ func (client *Client) ListBotReceptionDetailDatasWithOptions(request *ListBotRec
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBotReceptionDetailDatas"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListBotReceptionDetailDatasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBotReceptionDetailDatas"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10169,11 +11917,31 @@ func (client *Client) ListConversationLogsWithOptions(request *ListConversationL
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConversationLogs"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConversationLogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConversationLogs"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10197,11 +11965,35 @@ func (client *Client) MoveKnowledgeCategoryWithOptions(request *MoveKnowledgeCat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveKnowledgeCategory"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveKnowledgeCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveKnowledgeCategory"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10225,11 +12017,31 @@ func (client *Client) PublishDialogFlowWithOptions(request *PublishDialogFlowReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishDialogFlow"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PublishDialogFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishDialogFlow"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10253,11 +12065,35 @@ func (client *Client) PublishKnowledgeWithOptions(request *PublishKnowledgeReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Async)) {
+		query["Async"] = request.Async
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		query["KnowledgeId"] = request.KnowledgeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PublishKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10281,11 +12117,35 @@ func (client *Client) QueryBotsWithOptions(request *QueryBotsRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBots"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryBotsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBots"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10309,11 +12169,39 @@ func (client *Client) QueryCategoriesWithOptions(request *QueryCategoriesRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeType)) {
+		query["KnowledgeType"] = request.KnowledgeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
+		query["ParentCategoryId"] = request.ParentCategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowChildrens)) {
+		query["ShowChildrens"] = request.ShowChildrens
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCategories"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCategoriesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCategories"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10337,11 +12225,43 @@ func (client *Client) QueryCoreWordsWithOptions(request *QueryCoreWordsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Synonym)) {
+		query["Synonym"] = request.Synonym
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCoreWords"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCoreWordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCoreWords"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10365,11 +12285,43 @@ func (client *Client) QueryDialogsWithOptions(request *QueryDialogsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogName)) {
+		query["DialogName"] = request.DialogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDialogs"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDialogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDialogs"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10393,11 +12345,43 @@ func (client *Client) QueryEntitiesWithOptions(request *QueryEntitiesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEntities"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryEntitiesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryEntities"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10421,11 +12405,43 @@ func (client *Client) QueryIntentsWithOptions(request *QueryIntentsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
+		query["IntentName"] = request.IntentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryIntents"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryIntentsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryIntents"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10449,11 +12465,47 @@ func (client *Client) QueryKnowledgesWithOptions(request *QueryKnowledgesRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeTitle)) {
+		query["KnowledgeTitle"] = request.KnowledgeTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryKnowledges"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryKnowledgesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryKnowledges"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10472,10 +12524,32 @@ func (client *Client) QueryKnowledges(request *QueryKnowledgesRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) QueryPerspectivesWithOptions(runtime *util.RuntimeOptions) (_result *QueryPerspectivesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) QueryPerspectivesWithOptions(request *QueryPerspectivesRequest, runtime *util.RuntimeOptions) (_result *QueryPerspectivesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPerspectives"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryPerspectivesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPerspectives"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10483,10 +12557,10 @@ func (client *Client) QueryPerspectivesWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
-func (client *Client) QueryPerspectives() (_result *QueryPerspectivesResponse, _err error) {
+func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_result *QueryPerspectivesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPerspectivesResponse{}
-	_body, _err := client.QueryPerspectivesWithOptions(runtime)
+	_body, _err := client.QueryPerspectivesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10499,11 +12573,31 @@ func (client *Client) QuerySystemEntitiesWithOptions(request *QuerySystemEntitie
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySystemEntities"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySystemEntitiesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySystemEntities"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,11 +12627,39 @@ func (client *Client) RemoveEntityMemberWithOptions(tmpReq *RemoveEntityMemberRe
 		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Member), tea.String("Member"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberShrink)) {
+		query["Member"] = request.MemberShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveType)) {
+		query["RemoveType"] = request.RemoveType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveEntityMember"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveEntityMemberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveEntityMember"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10561,11 +12683,35 @@ func (client *Client) RemoveSynonymWithOptions(request *RemoveSynonymRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Synonym)) {
+		query["Synonym"] = request.Synonym
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveSynonym"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveSynonymResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveSynonym"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10589,11 +12735,31 @@ func (client *Client) TestDialogFlowWithOptions(request *TestDialogFlowRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestDialogFlow"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TestDialogFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TestDialogFlow"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10617,11 +12783,35 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCategory"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCategoryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCategory"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10645,11 +12835,35 @@ func (client *Client) UpdateCoreWordWithOptions(request *UpdateCoreWordRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordCode)) {
+		query["CoreWordCode"] = request.CoreWordCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreWordName)) {
+		query["CoreWordName"] = request.CoreWordName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCoreWord"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCoreWordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCoreWord"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10673,11 +12887,39 @@ func (client *Client) UpdateDialogWithOptions(request *UpdateDialogRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogName)) {
+		query["DialogName"] = request.DialogName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDialog"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDialogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDialog"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10707,11 +12949,37 @@ func (client *Client) UpdateDialogFlowWithOptions(tmpReq *UpdateDialogFlowReques
 		request.ModuleDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ModuleDefinition), tea.String("ModuleDefinition"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
+		query["DialogId"] = request.DialogId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ModuleDefinitionShrink)) {
+		body["ModuleDefinition"] = request.ModuleDefinitionShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDialogFlow"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDialogFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateDialogFlow"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10741,11 +13009,49 @@ func (client *Client) UpdateEntityWithOptions(tmpReq *UpdateEntityRequest, runti
 		request.MembersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Members, tea.String("Members"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regex)) {
+		query["Regex"] = request.Regex
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MembersShrink)) {
+		body["Members"] = request.MembersShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEntity"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateEntityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateEntity"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10775,11 +13081,35 @@ func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runti
 		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentDefinitionShrink)) {
+		query["IntentDefinition"] = request.IntentDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIntent"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateIntentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateIntent"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10809,11 +13139,33 @@ func (client *Client) UpdateKnowledgeWithOptions(tmpReq *UpdateKnowledgeRequest,
 		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Knowledge), tea.String("Knowledge"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeShrink)) {
+		body["Knowledge"] = request.KnowledgeShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKnowledge"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateKnowledgeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateKnowledge"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10837,11 +13189,35 @@ func (client *Client) UpdatePerspectiveWithOptions(request *UpdatePerspectiveReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveId)) {
+		query["PerspectiveId"] = request.PerspectiveId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePerspective"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdatePerspectiveResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdatePerspective"), tea.String("2017-10-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
