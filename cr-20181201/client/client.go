@@ -9071,14 +9071,17 @@ func (s *ListRepoTagResponse) SetBody(v *ListRepoTagResponseBody) *ListRepoTagRe
 }
 
 type ListRepoTagScanResultRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Digest      *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo      *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoId      *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	ScanTaskId  *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	Severity    *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Tag         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	VulQueryKey *string `json:"VulQueryKey,omitempty" xml:"VulQueryKey,omitempty"`
 }
 
 func (s ListRepoTagScanResultRequest) String() string {
@@ -9091,6 +9094,11 @@ func (s ListRepoTagScanResultRequest) GoString() string {
 
 func (s *ListRepoTagScanResultRequest) SetDigest(v string) *ListRepoTagScanResultRequest {
 	s.Digest = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultRequest) SetFilterValue(v string) *ListRepoTagScanResultRequest {
+	s.FilterValue = &v
 	return s
 }
 
@@ -9119,6 +9127,11 @@ func (s *ListRepoTagScanResultRequest) SetScanTaskId(v string) *ListRepoTagScanR
 	return s
 }
 
+func (s *ListRepoTagScanResultRequest) SetScanType(v string) *ListRepoTagScanResultRequest {
+	s.ScanType = &v
+	return s
+}
+
 func (s *ListRepoTagScanResultRequest) SetSeverity(v string) *ListRepoTagScanResultRequest {
 	s.Severity = &v
 	return s
@@ -9126,6 +9139,11 @@ func (s *ListRepoTagScanResultRequest) SetSeverity(v string) *ListRepoTagScanRes
 
 func (s *ListRepoTagScanResultRequest) SetTag(v string) *ListRepoTagScanResultRequest {
 	s.Tag = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultRequest) SetVulQueryKey(v string) *ListRepoTagScanResultRequest {
+	s.VulQueryKey = &v
 	return s
 }
 
@@ -9184,11 +9202,14 @@ func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagS
 
 type ListRepoTagScanResultResponseBodyVulnerabilities struct {
 	AddedBy       *string `json:"AddedBy,omitempty" xml:"AddedBy,omitempty"`
+	AliasName     *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	CveLink       *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
+	CveLocation   *string `json:"CveLocation,omitempty" xml:"CveLocation,omitempty"`
 	CveName       *string `json:"CveName,omitempty" xml:"CveName,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Feature       *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
 	FixCmd        *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
+	ScanType      *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
 	Severity      *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	VersionFixed  *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
@@ -9208,8 +9229,18 @@ func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetAddedBy(v string) 
 	return s
 }
 
+func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetAliasName(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
+	s.AliasName = &v
+	return s
+}
+
 func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetCveLink(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
 	s.CveLink = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetCveLocation(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
+	s.CveLocation = &v
 	return s
 }
 
@@ -9230,6 +9261,11 @@ func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetFeature(v string) 
 
 func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetFixCmd(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
 	s.FixCmd = &v
+	return s
+}
+
+func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetScanType(v string) *ListRepoTagScanResultResponseBodyVulnerabilities {
+	s.ScanType = &v
 	return s
 }
 
@@ -14639,6 +14675,10 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		query["Digest"] = request.Digest
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
+		query["FilterValue"] = request.FilterValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -14659,12 +14699,20 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		query["ScanTaskId"] = request.ScanTaskId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScanType)) {
+		query["ScanType"] = request.ScanType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Severity)) {
 		query["Severity"] = request.Severity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulQueryKey)) {
+		query["VulQueryKey"] = request.VulQueryKey
 	}
 
 	req := &openapi.OpenApiRequest{
